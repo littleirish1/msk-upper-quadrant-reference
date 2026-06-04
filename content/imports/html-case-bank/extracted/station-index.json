@@ -1,0 +1,477 @@
+{
+  "source": "content/imports/html-case-bank/raw/index.html",
+  "extractedAt": "2026-06-04T17:40:25.313Z",
+  "count": 47,
+  "stations": [
+    {
+      "id": "s1",
+      "num": "Station 1",
+      "title": "Cervical Radiculopathy",
+      "diff": "med",
+      "diffLabel": "Moderate",
+      "suggestedRegion": "cervical",
+      "suggestedCaseSlug": "cervical-radiculopathy-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s2",
+      "num": "Station 2",
+      "title": "Degenerative Cervical Myelopathy",
+      "diff": "high",
+      "diffLabel": "High Stakes",
+      "suggestedRegion": "cervical",
+      "suggestedCaseSlug": "degenerative-cervical-myelopathy-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s3",
+      "num": "Station 3",
+      "title": "Whiplash Associated Disorder",
+      "diff": "med",
+      "diffLabel": "Moderate",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "whiplash-associated-disorder-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s4",
+      "num": "Station 4",
+      "title": "Cervicogenic Headache",
+      "diff": "med",
+      "diffLabel": "Moderate",
+      "suggestedRegion": "cervical",
+      "suggestedCaseSlug": "cervicogenic-headache-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s5",
+      "num": "Station 5",
+      "title": "Rotator Cuff Related Shoulder Pain",
+      "diff": "med",
+      "diffLabel": "Moderate",
+      "suggestedRegion": "shoulder",
+      "suggestedCaseSlug": "rotator-cuff-related-shoulder-pain-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s6",
+      "num": "Station 6",
+      "title": "Adhesive Capsulitis",
+      "diff": "med",
+      "diffLabel": "Moderate",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "adhesive-capsulitis-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s7",
+      "num": "Station 7",
+      "title": "Shoulder Instability",
+      "diff": "complex",
+      "diffLabel": "Complex",
+      "suggestedRegion": "shoulder",
+      "suggestedCaseSlug": "shoulder-instability-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s8",
+      "num": "Station 8",
+      "title": "Neuralgic Amyotrophy (Parsonage-Turner)",
+      "diff": "high",
+      "diffLabel": "Complex",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "neuralgic-amyotrophy-parsonage-turner-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s9",
+      "num": "Station 9",
+      "title": "Thoracic Pain: Visceral vs MSK",
+      "diff": "high",
+      "diffLabel": "High Stakes",
+      "suggestedRegion": "thoracic",
+      "suggestedCaseSlug": "thoracic-pain-visceral-vs-msk-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s10",
+      "num": "Station 10",
+      "title": "Thoracic Osteoporotic Fracture",
+      "diff": "high",
+      "diffLabel": "High Stakes",
+      "suggestedRegion": "thoracic",
+      "suggestedCaseSlug": "thoracic-osteoporotic-fracture-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s11",
+      "num": "Station 11",
+      "title": "Thumb Base Osteoarthritis",
+      "diff": "low",
+      "diffLabel": "Accessible",
+      "suggestedRegion": "wrist-hand",
+      "suggestedCaseSlug": "thumb-base-osteoarthritis-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s12",
+      "num": "Station 12",
+      "title": "Acute Thumb UCL Injury",
+      "diff": "med",
+      "diffLabel": "Moderate",
+      "suggestedRegion": "wrist-hand",
+      "suggestedCaseSlug": "acute-thumb-ucl-injury-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s13",
+      "num": "Station 13",
+      "title": "Hand Osteoarthritis",
+      "diff": "low",
+      "diffLabel": "Accessible",
+      "suggestedRegion": "wrist-hand",
+      "suggestedCaseSlug": "hand-osteoarthritis-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s14",
+      "num": "Station 14",
+      "title": "General Red Flag Framework",
+      "diff": "high",
+      "diffLabel": "Core Competency",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "general-red-flag-framework-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s15",
+      "num": "Station 15",
+      "title": "Headache / Cervical Safety Screen",
+      "diff": "high",
+      "diffLabel": "High Stakes",
+      "suggestedRegion": "cervical",
+      "suggestedCaseSlug": "headache-cervical-safety-screen-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s16",
+      "num": "Station 16",
+      "title": "Modern Manual Therapy Justification",
+      "diff": "med",
+      "diffLabel": "Clinical Philosophy",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "modern-manual-therapy-justification-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s17",
+      "num": "Station 17",
+      "title": "Lateral Epicondylitis — Injection Dilemma",
+      "diff": "med",
+      "diffLabel": "Complex",
+      "suggestedRegion": "elbow",
+      "suggestedCaseSlug": "lateral-epicondylitis-injection-dilemma-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s18",
+      "num": "Station 18",
+      "title": "Cubital Tunnel Syndrome",
+      "diff": "med",
+      "diffLabel": "Moderate",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "cubital-tunnel-syndrome-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s19",
+      "num": "Station 19",
+      "title": "Thoracic Outlet Syndrome — nTOS",
+      "diff": "high",
+      "diffLabel": "Complex",
+      "suggestedRegion": "thoracic",
+      "suggestedCaseSlug": "thoracic-outlet-syndrome-ntos-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s20",
+      "num": "Station 20",
+      "title": "Degenerative Cervical Myelopathy — Early Presentation",
+      "diff": "high",
+      "diffLabel": "High Stakes",
+      "suggestedRegion": "cervical",
+      "suggestedCaseSlug": "degenerative-cervical-myelopathy-early-presentation-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s21",
+      "num": "Station 21",
+      "title": "Parsonage-Turner Syndrome — Extended Case",
+      "diff": "high",
+      "diffLabel": "Complex",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "parsonage-turner-syndrome-extended-case-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s22",
+      "num": "Station 22",
+      "title": "Osteoporotic Vertebral Fracture — Management",
+      "diff": "high",
+      "diffLabel": "High Stakes",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "osteoporotic-vertebral-fracture-management-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s23",
+      "num": "Station 23",
+      "title": "Cervical Radiculopathy — Official OSCE Format",
+      "diff": "med",
+      "diffLabel": "OSCE Practice",
+      "suggestedRegion": "cervical",
+      "suggestedCaseSlug": "cervical-radiculopathy-official-osce-format-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s24",
+      "num": "Station 24",
+      "title": "DCM — Escalation &amp; Communication",
+      "diff": "high",
+      "diffLabel": "OSCE Practice",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "dcm-escalation-andamp-communication-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s25",
+      "num": "Station 25",
+      "title": "Neurogenic TOS + Vascular Safety Net",
+      "diff": "high",
+      "diffLabel": "OSCE Practice",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "neurogenic-tos-vascular-safety-net-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s26",
+      "num": "Station 26",
+      "title": "WAD — Biopsychosocial Management",
+      "diff": "med",
+      "diffLabel": "OSCE Practice",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "wad-biopsychosocial-management-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s27",
+      "num": "Station 27",
+      "title": "CGH — Return to Running",
+      "diff": "med",
+      "diffLabel": "OSCE Practice",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "cgh-return-to-running-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s28",
+      "num": "Station 28",
+      "title": "Distal Biceps Rupture — Referral Decision",
+      "diff": "high",
+      "diffLabel": "OSCE Practice",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "distal-biceps-rupture-referral-decision-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s29",
+      "num": "Station 29",
+      "title": "CTS High Irritability — Conservative Management &amp; Referral Criteria",
+      "diff": "med",
+      "diffLabel": "OSCE Practice",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "cts-high-irritability-conservative-management-andamp-referral-criteria-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s30",
+      "num": "Station 30",
+      "title": "TFCC Irritation — Return to Climbing",
+      "diff": "med",
+      "diffLabel": "OSCE Practice",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "tfcc-irritation-return-to-climbing-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s31",
+      "num": "Station 31",
+      "title": "AC Joint Injury — Return to Sport",
+      "diff": "med",
+      "diffLabel": "Moderate",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "ac-joint-injury-return-to-sport-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s32",
+      "num": "Station 32",
+      "title": "Massive Rotator Cuff Tear — Surgical Decision",
+      "diff": "high",
+      "diffLabel": "Complex",
+      "suggestedRegion": "shoulder",
+      "suggestedCaseSlug": "massive-rotator-cuff-tear-surgical-decision-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s33",
+      "num": "Station 33",
+      "title": "Shoulder Arthroplasty — Pre/Post Surgical Rehab",
+      "diff": "med",
+      "diffLabel": "Advancing Practice",
+      "suggestedRegion": "shoulder",
+      "suggestedCaseSlug": "shoulder-arthroplasty-pre-post-surgical-rehab-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s34",
+      "num": "Station 34",
+      "title": "Olecranon Bursitis — Septic vs Non-Septic Decision",
+      "diff": "high",
+      "diffLabel": "High Stakes",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "olecranon-bursitis-septic-vs-non-septic-decision-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s35",
+      "num": "Station 35",
+      "title": "Medial Epicondylitis with UCL Consideration",
+      "diff": "med",
+      "diffLabel": "Moderate",
+      "suggestedRegion": "elbow",
+      "suggestedCaseSlug": "medial-epicondylitis-with-ucl-consideration-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s36",
+      "num": "Station 36",
+      "title": "Elbow Osteoarthritis — Conservative Management",
+      "diff": "low",
+      "diffLabel": "Accessible",
+      "suggestedRegion": "elbow",
+      "suggestedCaseSlug": "elbow-osteoarthritis-conservative-management-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s39",
+      "num": "Station 39",
+      "title": "Trigger Finger — Management and Injection Decision",
+      "diff": "low",
+      "diffLabel": "Accessible",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "trigger-finger-management-and-injection-decision-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s40",
+      "num": "Station 40",
+      "title": "Scaphoid Fracture — Acute Presentation",
+      "diff": "high",
+      "diffLabel": "High Stakes",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "scaphoid-fracture-acute-presentation-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s41",
+      "num": "Station 41",
+      "title": "Ganglion Cyst — Assessment and Management",
+      "diff": "low",
+      "diffLabel": "Accessible",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "ganglion-cyst-assessment-and-management-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s42",
+      "num": "Station 42",
+      "title": "Axial Spondyloarthropathy (AxSpA) — Referral Pathway",
+      "diff": "high",
+      "diffLabel": "High Stakes",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "axial-spondyloarthropathy-axspa-referral-pathway-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s43",
+      "num": "Station 43",
+      "title": "PTS Misdiagnosed as Shoulder — Pattern Recognition",
+      "diff": "high",
+      "diffLabel": "Complex",
+      "suggestedRegion": "shoulder",
+      "suggestedCaseSlug": "pts-misdiagnosed-as-shoulder-pattern-recognition-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s44",
+      "num": "Station 44",
+      "title": "Visceral Referral Mimicking Thoracic MSK",
+      "diff": "high",
+      "diffLabel": "High Stakes",
+      "suggestedRegion": "thoracic",
+      "suggestedCaseSlug": "visceral-referral-mimicking-thoracic-msk-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s45",
+      "num": "Station 45",
+      "title": "Multifocal Motor Neuropathy — Recognition and Referral",
+      "diff": "high",
+      "diffLabel": "Complex",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "multifocal-motor-neuropathy-recognition-and-referral-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s46",
+      "num": "Station 46",
+      "title": "Craniocervical Instability — RA Patient",
+      "diff": "high",
+      "diffLabel": "High Stakes",
+      "suggestedRegion": "cervical",
+      "suggestedCaseSlug": "craniocervical-instability-ra-patient-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s47",
+      "num": "Station 47",
+      "title": "CGH Contributing to Migraine — Complex Headache Case",
+      "diff": "high",
+      "diffLabel": "Complex",
+      "suggestedRegion": "cervical",
+      "suggestedCaseSlug": "cgh-contributing-to-migraine-complex-headache-case-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s48",
+      "num": "Station 48",
+      "title": "WAD with Concussion Component — Dual Pathway",
+      "diff": "high",
+      "diffLabel": "Complex",
+      "suggestedRegion": "unknown",
+      "suggestedCaseSlug": "wad-with-concussion-component-dual-pathway-case-legacy",
+      "status": "extracted-not-reviewed"
+    },
+    {
+      "id": "s49",
+      "num": "Station 49",
+      "title": "Sarah — Cervical Radiculopathy in the Workplace",
+      "diff": "med",
+      "diffLabel": "Official OSCE Style",
+      "suggestedRegion": "cervical",
+      "suggestedCaseSlug": "sarah-cervical-radiculopathy-in-the-workplace-case-legacy",
+      "status": "extracted-not-reviewed"
+    }
+  ]
+}
