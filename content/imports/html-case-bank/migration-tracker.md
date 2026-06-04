@@ -8,7 +8,7 @@ Generated from:
 
 ## Status labels
 
-- `pending-review` — extracted but not reviewed
+-| s44 | Visceral Referral Mimicking Thoracic MSK | thoracic | high | converted | Converted to content/cases/thoracic/visceral-referral-mimicking-thoracic-msk-case-01.mdx |
 - `selected` — chosen for conversion
 - `converted` — converted into a guided case MDX file
 - `needs-edit` — converted but requires clinical/content review
