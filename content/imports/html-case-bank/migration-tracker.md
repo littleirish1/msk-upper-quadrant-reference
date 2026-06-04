@@ -47,7 +47,7 @@ Generated from:
 | s17 | Lateral Epicondylitis — Injection Dilemma | elbow | normal | pending-review |  |
 | s18 | Cubital Tunnel Syndrome | unknown | normal | pending-review |  |
 | s19 | Thoracic Outlet Syndrome — nTOS | thoracic | medium | pending-review |  |
-| s20 | Degenerative Cervical Myelopathy — Early Presentation | cervical | high | pending-review |  |
+| s20 | Degenerative Cervical Myelopathy — Early Presentation | cervical | high | converted |  |
 | s21 | Parsonage-Turner Syndrome — Extended Case | unknown | normal | pending-review |  |
 | s22 | Osteoporotic Vertebral Fracture — Management | unknown | high | pending-review |  |
 | s23 | Cervical Radiculopathy — Official OSCE Format | cervical | medium | pending-review |  |
