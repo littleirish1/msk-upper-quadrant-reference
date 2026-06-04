@@ -126,5 +126,33 @@ Individual cases render at:
 
 
 
+\## Content hygiene / names to flag
+
+
+
+When reviewing imported legacy content or generating guided cases, flag and remove or replace any references to the following names unless there is a deliberate reason to keep them:
+
+
+
+\- Mr Ally McKeown
+
+\-Dr Grace McMacken (ST7 Neurology, RVH/QUB)
+
+\- Joanne Marley
+
+\- Suzzan Manning
+
+&#x20;- Donna McElhill
+- Sonya Thomson
+-Suzie Johnston
+
+&#x20;- Dr Marley
+
+
+
+These names should not appear in final guided case content, case metadata, evidence notes, prompts, or extracted learner-facing material.
+
+
+
 Do not manually hardcode new cases into src/app/cases/page.tsx unless there is a specific reason.
 
