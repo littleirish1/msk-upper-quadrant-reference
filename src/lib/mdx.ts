@@ -225,6 +225,7 @@ export interface CaseListItem {
   condition?: string
   difficulty?: string
   caseType?: string
+  status?: string
   learningFocus: string[]
   estimatedTime?: string
   lastReviewed?: string
@@ -267,6 +268,7 @@ export function getAllCases(): CaseListItem[] {
   condition: typeof data.condition === 'string' ? data.condition : undefined,
   difficulty: typeof data.difficulty === 'string' ? data.difficulty : undefined,
   caseType: typeof data.caseType === 'string' ? data.caseType : undefined,
+  status: typeof data.status === 'string' ? data.status : 'published',
   learningFocus: Array.isArray(data.learningFocus)
     ? data.learningFocus.filter((item): item is string => typeof item === 'string')
     : [],
@@ -278,5 +280,7 @@ export function getAllCases(): CaseListItem[] {
     }
   }
 
-  return results.sort((a, b) => a.title.localeCompare(b.title))
+return results
+  .filter((caseItem) => !['draft', 'archived'].includes((caseItem.status ?? 'published').toLowerCase()))
+  .sort((a, b) => a.title.localeCompare(b.title))
 }
