@@ -217,3 +217,53 @@ export function getAllCasePaths(): Array<{ region: string; caseSlug: string }> {
 
   return results
 }
+
+export interface CaseListItem {
+  region: string
+  caseSlug: string
+  title: string
+  condition?: string
+  difficulty?: string
+  excerpt: string
+}
+
+/**
+ * Returns all guided cases with frontmatter and excerpt.
+ * Used by /cases to automatically build the case list.
+ */
+export function getAllCases(): CaseListItem[] {
+  const results: CaseListItem[] = []
+  const casesDir = path.join(CONTENT_DIR, 'cases')
+
+  if (!fs.existsSync(casesDir)) return results
+
+  const regions = fs.readdirSync(casesDir, { withFileTypes: true })
+    .filter(d => d.isDirectory())
+    .map(d => d.name)
+
+  for (const region of regions) {
+    const regionDir = path.join(casesDir, region)
+
+    const files = fs.readdirSync(regionDir, { withFileTypes: true })
+      .filter(f => f.isFile() && f.name.endsWith('.mdx'))
+
+    for (const file of files) {
+      const caseSlug = file.name.replace('.mdx', '')
+      const filePath = path.join(regionDir, file.name)
+      const raw = fs.readFileSync(filePath, 'utf-8')
+      const { content: rawContent, data } = matter(raw)
+      const content = sanitizeMdxContent(rawContent)
+
+      results.push({
+        region,
+        caseSlug,
+        title: typeof data.title === 'string' ? data.title : caseSlug,
+        condition: typeof data.condition === 'string' ? data.condition : undefined,
+        difficulty: typeof data.difficulty === 'string' ? data.difficulty : undefined,
+        excerpt: extractExcerpt(content, 180),
+      })
+    }
+  }
+
+  return results.sort((a, b) => a.title.localeCompare(b.title))
+}
