@@ -51,7 +51,7 @@ _No beyond section extracted._
 
 **Visceral referral — gastro-oesophageal source mimicking thoracic MSK pain.**
 
-Dr Marley's key teaching: maintain a broad differential in thoracic presentations. If thoracic pain does NOT change with movement/position AND is associated with systemic symptoms — the visceral possibility must be actively excluded before assuming MSK cause. The clinical trap is anchoring on a partial MSK link (e.g. posture or lifting) and missing the systemic picture.
+Maintain a broad differential in thoracic presentations. If thoracic pain does NOT change with movement/position AND is associated with systemic symptoms — the visceral possibility must be actively excluded before assuming MSK cause. The clinical trap is anchoring on a partial MSK link (e.g. posture or lifting) and missing the systemic picture.
 
 ### 2. Visceral vs MSK Discriminators
 
