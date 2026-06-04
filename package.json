@@ -8,9 +8,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+"extract:legacy-index": "node scripts/extract-legacy-html.mjs",
+"extract:legacy-station": "node scripts/extract-legacy-station.mjs",
+"extract:legacy-all": "node scripts/extract-all-legacy-stations.mjs",
+"tracker:legacy": "node scripts/generate-migration-tracker.mjs",
     "type-check": "tsc --noEmit",
-    "export": "next build"
-  },
+    "export": "next build" 
+},
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
     "clsx": "^2.1.1",
