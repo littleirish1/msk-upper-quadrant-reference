@@ -224,8 +224,14 @@ export interface CaseListItem {
   title: string
   condition?: string
   difficulty?: string
+  caseType?: string
+  learningFocus: string[]
+  estimatedTime?: string
+  lastReviewed?: string
+  reviewedBy?: string
   excerpt: string
 }
+
 
 /**
  * Returns all guided cases with frontmatter and excerpt.
@@ -254,14 +260,21 @@ export function getAllCases(): CaseListItem[] {
       const { content: rawContent, data } = matter(raw)
       const content = sanitizeMdxContent(rawContent)
 
-      results.push({
-        region,
-        caseSlug,
-        title: typeof data.title === 'string' ? data.title : caseSlug,
-        condition: typeof data.condition === 'string' ? data.condition : undefined,
-        difficulty: typeof data.difficulty === 'string' ? data.difficulty : undefined,
-        excerpt: extractExcerpt(content, 180),
-      })
+   results.push({
+  region,
+  caseSlug,
+  title: typeof data.title === 'string' ? data.title : caseSlug,
+  condition: typeof data.condition === 'string' ? data.condition : undefined,
+  difficulty: typeof data.difficulty === 'string' ? data.difficulty : undefined,
+  caseType: typeof data.caseType === 'string' ? data.caseType : undefined,
+  learningFocus: Array.isArray(data.learningFocus)
+    ? data.learningFocus.filter((item): item is string => typeof item === 'string')
+    : [],
+  estimatedTime: typeof data.estimatedTime === 'string' ? data.estimatedTime : undefined,
+  lastReviewed: typeof data.lastReviewed === 'string' ? data.lastReviewed : undefined,
+  reviewedBy: typeof data.reviewedBy === 'string' ? data.reviewedBy : undefined,
+  excerpt: extractExcerpt(content, 180),
+})
     }
   }
 

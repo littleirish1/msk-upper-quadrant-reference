@@ -11,9 +11,11 @@ export default function CasesPage() {
         <p className="text-sm font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">
           Interactive revision guide
         </p>
+
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-surface-900 dark:text-surface-50">
           Guided clinical cases
         </h1>
+
         <p className="mt-3 max-w-2xl text-surface-600 dark:text-surface-400">
           Work through MSK presentations using guided prompts, revealable reasoning,
           differential diagnosis checks, and evidence-linked learning.
@@ -52,6 +54,12 @@ export default function CasesPage() {
                       {caseItem.difficulty}
                     </span>
                   )}
+
+                  {caseItem.estimatedTime && (
+                    <span className="rounded-full bg-surface-100 px-2.5 py-1 text-xs font-medium text-surface-600 dark:bg-surface-800 dark:text-surface-300">
+                      {caseItem.estimatedTime}
+                    </span>
+                  )}
                 </div>
 
                 <h2 className="mt-3 text-xl font-semibold text-surface-900 dark:text-surface-50">
@@ -67,6 +75,25 @@ export default function CasesPage() {
                 <p className="mt-3 text-sm leading-relaxed text-surface-600 dark:text-surface-400">
                   {caseItem.excerpt}
                 </p>
+
+                {caseItem.learningFocus.length > 0 && (
+                  <div className="mt-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-surface-500 dark:text-surface-400">
+                      Learning focus
+                    </p>
+
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {caseItem.learningFocus.map((focus) => (
+                        <span
+                          key={focus}
+                          className="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-medium text-brand-700 dark:bg-brand-950 dark:text-brand-300"
+                        >
+                          {focus}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 <Link
                   href={`/cases/${caseItem.region}/${caseItem.caseSlug}`}
