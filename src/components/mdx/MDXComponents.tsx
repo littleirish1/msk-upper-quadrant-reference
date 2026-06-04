@@ -333,9 +333,7 @@ export function CitationList({ citations }: CitationListProps) {
     </section>
   )
 }
-
 // ─── Clinical Note ────────────────────────────────────────────────────────────
-
 interface ClinicalNoteProps {
   children: React.ReactNode
   title?: string
@@ -352,6 +350,55 @@ export function ClinicalNote({ children, title }: ClinicalNoteProps) {
         </div>
       </div>
     </div>
+  )
+}
+
+// ─── Reasoning  ────────────────────────────────────────────────────────────
+interface ReasoningPromptProps {
+  question: string
+  children?: React.ReactNode
+}
+
+export function ReasoningPrompt({ question, children }: ReasoningPromptProps) {
+  return (
+    <div className="my-5 rounded-xl border border-purple-200 bg-purple-50 p-4 dark:border-purple-800 dark:bg-purple-950/30">
+      <div className="flex items-start gap-3">
+        <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-purple-600 text-white">
+          ?
+        </div>
+        <div className="min-w-0">
+          <p className="mb-1 text-sm font-bold uppercase tracking-wide text-purple-700 dark:text-purple-300">
+            Clinical reasoning prompt
+          </p>
+          <p className="text-sm font-medium leading-relaxed text-purple-950 dark:text-purple-100">
+            {question}
+          </p>
+          {children && (
+            <div className="mt-3 text-sm leading-relaxed text-purple-900 dark:text-purple-100">
+              {children}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+interface RevealAnswerProps {
+  title?: string
+  children: React.ReactNode
+}
+
+export function RevealAnswer({ title = 'Compare your reasoning', children }: RevealAnswerProps) {
+  return (
+    <details className="my-4 rounded-xl border border-brand-200 bg-white p-4 shadow-sm dark:border-brand-800 dark:bg-surface-900">
+      <summary className="cursor-pointer select-none text-sm font-semibold text-brand-700 hover:text-brand-900 dark:text-brand-300 dark:hover:text-brand-100">
+        {title}
+      </summary>
+      <div className="mt-3 border-t border-surface-100 pt-3 text-sm leading-relaxed text-surface-700 dark:border-surface-800 dark:text-surface-300">
+        {children}
+      </div>
+    </details>
   )
 }
 
@@ -465,6 +512,8 @@ export const mdxComponents: MDXComponents = {
   CitationList,
   EvidenceBadge,
   ClinicalNote,
+  ReasoningPrompt,
+  RevealAnswer,
   RedFlag,
   ReferralBox,
 

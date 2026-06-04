@@ -151,3 +151,69 @@ export function extractExcerpt(mdx: string, maxLength = 200): string {
     .trim()
     .slice(0, maxLength)
 }
+export interface CaseContent {
+  content: string
+  frontmatter: {
+    title?: string
+    region?: string
+    condition?: string
+    difficulty?: string
+    [key: string]: unknown
+  }
+  sections: Array<{ heading: string; slug: string; content: string }>
+}
+
+/**
+ * Loads a guided case from content/cases/{region}/{caseSlug}.mdx
+ */
+export async function getCaseContent(
+  region: string,
+  caseSlug: string
+): Promise<CaseContent | null> {
+  const filePath = path.join(CONTENT_DIR, 'cases', region, `${caseSlug}.mdx`)
+
+  if (!fs.existsSync(filePath)) {
+    return null
+  }
+
+  const raw = fs.readFileSync(filePath, 'utf-8')
+  const { content: rawContent, data } = matter(raw)
+
+  const content = sanitizeMdxContent(rawContent)
+  const sections = parseSections(content)
+
+  return {
+    content,
+    frontmatter: data,
+    sections,
+  }
+}
+
+/**
+ * Returns all guided case MDX files.
+ * Used by generateStaticParams.
+ */
+export function getAllCasePaths(): Array<{ region: string; caseSlug: string }> {
+  const results: Array<{ region: string; caseSlug: string }> = []
+  const casesDir = path.join(CONTENT_DIR, 'cases')
+
+  if (!fs.existsSync(casesDir)) return results
+
+  const regions = fs.readdirSync(casesDir, { withFileTypes: true })
+    .filter(d => d.isDirectory())
+    .map(d => d.name)
+
+  for (const region of regions) {
+    const regionDir = path.join(casesDir, region)
+
+    const files = fs.readdirSync(regionDir, { withFileTypes: true })
+      .filter(f => f.isFile() && f.name.endsWith('.mdx'))
+      .map(f => f.name.replace('.mdx', ''))
+
+    for (const caseSlug of files) {
+      results.push({ region, caseSlug })
+    }
+  }
+
+  return results
+}
