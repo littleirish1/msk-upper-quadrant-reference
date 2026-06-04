@@ -8,7 +8,7 @@ Generated from:
 
 ## Status labels
 
--| s44 | Visceral Referral Mimicking Thoracic MSK | thoracic | high | converted | Converted to content/cases/thoracic/visceral-referral-mimicking-thoracic-msk-case-01.mdx |
+
 - `selected` — chosen for conversion
 - `converted` — converted into a guided case MDX file
 - `needs-edit` — converted but requires clinical/content review
@@ -23,6 +23,8 @@ Generated from:
 | manual | Adhesive capsulitis case | content/cases/shoulder/adhesive-capsulitis-case-01.mdx | converted | Created manually before legacy extraction |
 | manual | Cervical radiculopathy case | content/cases/cervical/cervical-radiculopathy-case-01.mdx | converted | Created manually before legacy extraction |
 | s28 | Distal Biceps Rupture — Referral Decision | content/cases/elbow/distal-biceps-rupture-case-01.mdx | converted | Acute referral reasoning case |
+| s20 | Degenerative Cervical Myelopathy — Early Presentation | content/cases/cervical/early-degenerative-cervical-myelopathy-case-01.mdx | converted | Early DCM / wrong-pathway prevention case |
+| s44 | Visceral Referral Mimicking Thoracic MSK | content/cases/thoracic/visceral-referral-mimicking-thoracic-msk-case-01.mdx | converted | Visceral referral / non-MSK thoracic pain case |
 
 ## Pending review
 
@@ -47,7 +49,6 @@ Generated from:
 | s17 | Lateral Epicondylitis — Injection Dilemma | elbow | normal | pending-review |  |
 | s18 | Cubital Tunnel Syndrome | unknown | normal | pending-review |  |
 | s19 | Thoracic Outlet Syndrome — nTOS | thoracic | medium | pending-review |  |
-| s20 | Degenerative Cervical Myelopathy — Early Presentation | cervical | high | converted |  |
 | s21 | Parsonage-Turner Syndrome — Extended Case | unknown | normal | pending-review |  |
 | s22 | Osteoporotic Vertebral Fracture — Management | unknown | high | pending-review |  |
 | s23 | Cervical Radiculopathy — Official OSCE Format | cervical | medium | pending-review |  |
@@ -68,7 +69,6 @@ Generated from:
 | s41 | Ganglion Cyst — Assessment and Management | unknown | normal | pending-review |  |
 | s42 | Axial Spondyloarthropathy (AxSpA) — Referral Pathway | unknown | high | pending-review |  |
 | s43 | PTS Misdiagnosed as Shoulder — Pattern Recognition | shoulder | normal | pending-review |  |
-| s44 | Visceral Referral Mimicking Thoracic MSK | thoracic | high | pending-review |  |
 | s45 | Multifocal Motor Neuropathy — Recognition and Referral | unknown | high | pending-review |  |
 | s46 | Craniocervical Instability — RA Patient | cervical | medium | pending-review |  |
 | s47 | CGH Contributing to Migraine — Complex Headache Case | cervical | normal | pending-review |  |
