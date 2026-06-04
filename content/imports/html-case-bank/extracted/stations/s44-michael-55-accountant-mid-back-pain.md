@@ -32,7 +32,7 @@ Visceral Referral — Upper GI Source Masquerading as Thoracic MSK Pain
 
 ## Legacy reasoning
 
-Meal-related + antacid relief + lying-down aggravation + prior GI history + unintentional weight loss + non-mechanical pattern = visceral source must be excluded before MSK treatment. Viscero-somatic convergence (Dr Marley): visceral afferents converge on dorsal horn neurons shared with T6-T8 somatic afferents. Weight loss = red flag for malignancy or serious GI pathology.
+Meal-related + antacid relief + lying-down aggravation + prior GI history + unintentional weight loss + non-mechanical pattern = visceral source must be excluded before MSK treatment. Viscero-somatic convergence: visceral afferents converge on dorsal horn neurons shared with T6-T8 somatic afferents. Weight loss = red flag for malignancy or serious GI pathology.
 
 ## Clinical traps
 
@@ -87,7 +87,7 @@ The outstanding answer at this station is NOT a treatment plan. It is a clear, c
 - Icon: 🩷
 - Badge: db-evid
 
-Dr Marley's thoracic spine teaching: thoracic pain has a higher index of suspicion for serious pathology than cervical or lumbar. Viscero-somatic convergence: visceral afferents converge on same dorsal horn neurons as somatic afferents — pain perceived as thoracic MSK. Cannot always be distinguished by movement or palpation alone. The outstanding answer applies this mechanistic understanding to justify the referral decision.
+Thoracic pain has a higher index of suspicion for serious pathology than cervical or lumbar. Viscero-somatic convergence: visceral afferents converge on same dorsal horn neurons as somatic afferents — pain perceived as thoracic MSK. Cannot always be distinguished by movement or palpation alone. The outstanding answer applies this mechanistic understanding to justify the referral decision.
 
 
 ## Conversion notes

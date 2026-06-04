@@ -101,7 +101,7 @@ Physiotherapy alone is inappropriate as the primary pathway if AxSpA is suspecte
 - Icon: 🩷
 - Badge: db-evid
 
-AxSpA: early diagnosis and biological therapy access are the most important clinical goals. SPADE tool from Dr Marley's teaching — inflammatory back pain screening in MSK practice. Outstanding answer explains the SPADE pathway, the consequences of delayed diagnosis, and the physiotherapist's role in recognising and initiating the correct referral.
+AxSpA: early diagnosis and biological therapy access are the most important clinical goals. SPADE tool inflammatory back pain screening in MSK practice. Outstanding answer explains the SPADE pathway, the consequences of delayed diagnosis, and the physiotherapist's role in recognising and initiating the correct referral.
 
 
 ## Conversion notes
