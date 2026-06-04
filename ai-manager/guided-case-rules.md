@@ -1,4 +1,4 @@
-\# Guided Case Authoring Rules
+﻿\# Guided Case Authoring Rules
 
 
 
@@ -126,33 +126,49 @@ Individual cases render at:
 
 
 
-\## Content hygiene / names to flag
+\
 
-
+## Content hygiene / names to flag
 
 When reviewing imported legacy content or generating guided cases, flag and remove or replace any references to the following names unless there is a deliberate reason to keep them:
 
-
-
-\- Mr Ally McKeown
-
-\-Dr Grace McMacken (ST7 Neurology, RVH/QUB)
-
-\- Joanne Marley
-
-\- Suzzan Manning
-
-&#x20;- Donna McElhill
+- Mr Ally McKeown
+- Ally McKeown
+- Ally Mc Hose
+- Dr Grace McMacken
+- Grace McMacken
+- ST7 Neurology
+- RVH/QUB
+- Joanne Marley
+- Suzann Manning
+- Donna McElhill
 - Sonya Thomson
--Suzie Johnston
-
-&#x20;- Dr Marley
-
-
+- Suzie Johnston
+- Dr Marley
 
 These names should not appear in final guided case content, case metadata, evidence notes, prompts, or extracted learner-facing material.
 
+## Presentation / speaker-name cleanup
 
+When importing PowerPoint slides, teaching notes, or legacy HTML content, speaker names, lecturer names, contributor names, and local staff identifiers should be treated as content-hygiene risks.
+
+Do not blindly delete the whole teaching point. Instead:
+
+1. Remove the named attribution.
+2. Keep the clinically useful teaching point.
+3. Rewrite in neutral educational language.
+4. Flag uncertain cases for human review.
+
+Example:
+
+Original:
+
+"Dr Marley’s key teaching: maintain a broad differential in thoracic presentations."
+
+Cleaned:
+
+"Maintain a broad differential in thoracic presentations."
 
 Do not manually hardcode new cases into src/app/cases/page.tsx unless there is a specific reason.
+
 
