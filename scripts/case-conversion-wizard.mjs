@@ -109,7 +109,8 @@ const defaultRegion = station.suggestedRegion && station.suggestedRegion !== 'un
   ? station.suggestedRegion
   : 'cervical'
 
-const region = (await rl.question(`\nRegion [${defaultRegion}]: `)).trim() || defaultRegion
+const rawRegion = (await rl.question(`\nRegion [${defaultRegion}]: `)).trim() || defaultRegion
+const region = normalizeRegion(rawRegion)
 
 const defaultTitle = `${toTitleCase(region)} Case: ${station.title}`
 const title = (await rl.question(`Case title [${defaultTitle}]: `)).trim() || defaultTitle
@@ -368,6 +369,27 @@ function inferDifficulty(title) {
   return 'early-intermediate'
 }
 
+function normalizeRegion(value) {
+  const normalized = slugify(value)
+
+  const aliases = {
+    wrist: 'wrist-hand',
+    hand: 'wrist-hand',
+    'wrist-hand': 'wrist-hand',
+    'wrist-and-hand': 'wrist-hand',
+    'wrist-hand-upper-limb': 'wrist-hand',
+    neck: 'cervical',
+    cspine: 'cervical',
+    'c-spine': 'cervical',
+    shoulder: 'shoulder',
+    elbow: 'elbow',
+    thoracic: 'thoracic',
+    tspine: 'thoracic',
+    't-spine': 'thoracic',
+  }
+
+  return aliases[normalized] ?? normalized
+}
 function escapeYaml(value) {
   return String(value || '').replace(/"/g, '\\"')
 }
