@@ -1,0 +1,12 @@
+{
+  "project_name": "AI Managed Website",
+  "website_root": "website",
+  "pages": [],
+  "rules": [
+    "Never invent sources.",
+    "Never edit unrelated files.",
+    "Always produce a changelog.",
+    "Run local checks before using an expensive model.",
+    "Prefer small diffs over full-file rewrites."
+  ]
+}
