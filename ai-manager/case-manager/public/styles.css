@@ -27,7 +27,8 @@ header {
   font-size: 0.8rem;
 }
 
-h1, h2 {
+h1,
+h2 {
   margin: 0 0 12px;
 }
 
@@ -47,7 +48,7 @@ p {
   border-radius: 16px;
   padding: 18px;
   margin-bottom: 18px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
 pre {
@@ -56,6 +57,7 @@ pre {
   border-radius: 12px;
   padding: 12px;
   color: #dce2ff;
+  overflow: auto;
 }
 
 .row {
@@ -65,6 +67,13 @@ pre {
 
 .row:first-child {
   border-top: 0;
+}
+
+.row-main {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
 }
 
 .meta {
@@ -92,24 +101,13 @@ pre {
   color: #ffe2a7;
 }
 
-@media (max-width: 850px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  main {
-    padding: 18px;
-  }
+.archived {
+  background: #4d2530;
+  color: #ffd1dc;
 }
 
-.row-main {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: flex-start;
-}
-
-.small-button {
+.small-button,
+.primary-button {
   border: 1px solid #39415a;
   background: #202638;
   color: #e8eaf0;
@@ -119,11 +117,88 @@ pre {
   font-weight: 700;
 }
 
-.small-button:hover {
+.primary-button {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 12px;
+  background: #2856b6;
+  border-color: #416ee0;
+}
+
+.small-button:hover,
+.primary-button:hover {
   background: #2b3450;
 }
 
+.primary-button:hover {
+  background: #3467d6;
+}
+
+.primary-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 #stationPreview {
-  max-height: 520px;
-  overflow: auto;
+  max-height: 720px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  display: grid;
+  gap: 5px;
+  color: #9ca4bb;
+  font-size: 0.85rem;
+}
+
+input,
+select {
+  background: #0f1117;
+  border: 1px solid #39415a;
+  color: #e8eaf0;
+  border-radius: 10px;
+  padding: 9px 10px;
+  font: inherit;
+}
+
+.detail-note {
+  background: #0f1117;
+  border: 1px solid #2a2f3f;
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 12px;
+}
+
+.warning {
+  color: #ffe2a7;
+}
+
+.ok {
+  color: #caffdf;
+}
+
+.error {
+  color: #ffb4c2;
+}
+
+.success {
+  color: #caffdf;
+}
+
+@media (max-width: 850px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 18px;
+  }
+
+  .row-main {
+    flex-direction: column;
+  }
 }

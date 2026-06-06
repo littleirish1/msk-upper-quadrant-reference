@@ -11,7 +11,7 @@
     <header>
       <p class="eyebrow">Local back-office tool</p>
       <h1>MSK Case Manager</h1>
-      <p>Review cases, migration status, hygiene checks, and local project state.</p>
+      <p>Review cases, migration status, hygiene checks, local project state, and draft conversion readiness.</p>
     </header>
 
     <section class="grid">
@@ -42,12 +42,20 @@
         <div id="converted"></div>
       </article>
     </section>
-  
 
-    <section class="card">
-      <h2>Legacy station preview</h2>
+    <section class="grid">
+      <article class="card">
+        <h2>Legacy station preview</h2>
         <p class="meta" id="stationFile">Select a pending station to preview its extracted source.</p>
         <pre id="stationPreview">No station selected.</pre>
+      </article>
+
+      <article class="card">
+        <h2>Create draft guided case</h2>
+        <div id="conversionDetails">
+          <p class="meta">Select a pending station to prepare draft details.</p>
+        </div>
+      </article>
     </section>
   </main>
 
