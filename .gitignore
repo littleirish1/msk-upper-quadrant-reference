@@ -11,6 +11,9 @@ overnight-check.log
 # Local AI starter scratch folders - do not commit
 ai-site-manager-starter/
 _tmp_ai_site_manager/
+.venv/
+*.log
+.env
 
 # Local logs and Python clutter
 *.log
