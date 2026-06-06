@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MSK Case Manager</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Local back-office tool</p>
+      <h1>MSK Case Manager</h1>
+      <p>Review cases, migration status, hygiene checks, and local project state.</p>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Project status</h2>
+        <pre id="status">Loading...</pre>
+      </article>
+
+      <article class="card">
+        <h2>Case counts</h2>
+        <div id="caseCounts">Loading...</div>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Guided cases</h2>
+      <div id="cases"></div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Pending legacy stations</h2>
+        <div id="pending"></div>
+      </article>
+
+      <article class="card">
+        <h2>Converted legacy stations</h2>
+        <div id="converted"></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
