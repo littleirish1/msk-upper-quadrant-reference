@@ -179,11 +179,20 @@ function renderDashboard(status, cases, tracker) {
     <p>Converted legacy stations: <strong>${tracker.converted.length}</strong></p>
   `
 
-  document.getElementById('cases').innerHTML = cases.length
-    ? cases.map((item) =>
-        row(item.title, `${item.region} · ${item.difficulty} · ${item.path}`, item.status)
-      ).join('')
-    : '<p>No guided cases found.</p>'
+  const publishedCases = cases.filter((item) => item.status === 'published')
+const draftCases = cases.filter((item) => item.status === 'draft')
+
+document.getElementById('publishedCases').innerHTML = publishedCases.length
+  ? publishedCases.map((item) =>
+      row(item.title, `${item.region} · ${item.difficulty} · ${item.path}`, item.status)
+    ).join('')
+  : '<p>No published cases found.</p>'
+
+document.getElementById('draftCases').innerHTML = draftCases.length
+  ? draftCases.map((item) =>
+      row(item.title, `${item.region} · ${item.difficulty} · ${item.path}`, item.status)
+    ).join('')
+  : '<p>No draft cases found.</p>'
 
   document.getElementById('pending').innerHTML = tracker.pending.length
     ? tracker.pending.map((item) =>
