@@ -4,16 +4,24 @@ async function loadJson(url) {
   return res.json()
 }
 
-function row(title, meta = '', status = '') {
+function row(title, meta = '', status = '', id = '') {
+  const button = id
+    ? `<button class="small-button" data-station-id="${escapeHtml(id)}">Preview</button>`
+    : ''
+
   return `
     <div class="row">
-      <strong>${escapeHtml(title)}</strong>
-      ${status ? `<span class="badge ${escapeHtml(status)}">${escapeHtml(status)}</span>` : ''}
-      ${meta ? `<div class="meta">${escapeHtml(meta)}</div>` : ''}
+      <div class="row-main">
+        <div>
+          <strong>${escapeHtml(title)}</strong>
+          ${status ? `<span class="badge ${escapeHtml(status)}">${escapeHtml(status)}</span>` : ''}
+          ${meta ? `<div class="meta">${escapeHtml(meta)}</div>` : ''}
+        </div>
+        ${button}
+      </div>
     </div>
   `
 }
-
 function escapeHtml(value) {
   return String(value ?? '')
     .replaceAll('&', '&amp;')
@@ -46,14 +54,39 @@ async function main() {
     row(item.title, `${item.region} · ${item.difficulty} · ${item.path}`, item.status)
   ).join('')
 
-  document.getElementById('pending').innerHTML = tracker.pending.length
-    ? tracker.pending.map((item) => row(`${item.id} — ${item.title}`, `${item.third} · ${item.fourth}`)).join('')
-    : '<p>No pending stations found.</p>'
+ document.getElementById('pending').innerHTML = tracker.pending.length
+  ? tracker.pending.map((item) => row(`${item.id} — ${item.title}`, `${item.third} · ${item.fourth}`, '', item.id)).join('')
+  : '<p>No pending stations found.</p>'
 
   document.getElementById('converted').innerHTML = tracker.converted.length
     ? tracker.converted.map((item) => row(`${item.id} — ${item.title}`, item.third, 'published')).join('')
     : '<p>No converted stations found.</p>'
 }
+
+document.getElementById('pending').addEventListener('click', async (event) => {
+  const button = event.target.closest('[data-station-id]')
+  if (!button) return
+
+  const id = button.getAttribute('data-station-id') || ''
+  console.log('Preview station id:', id)
+
+  const preview = document.getElementById('stationPreview')
+  const stationFile = document.getElementById('stationFile')
+
+  preview.textContent = 'Loading...'
+  stationFile.textContent = `Loading ${id}...`
+
+  const station = await loadJson(`/api/station?id=${encodeURIComponent(id)}`)
+
+  if (station.error) {
+    stationFile.textContent = 'Error'
+    preview.textContent = station.error
+    return
+  }
+
+  stationFile.textContent = station.file
+  preview.textContent = station.text
+})
 
 main().catch((error) => {
   document.body.innerHTML = `<main><pre>${escapeHtml(error.stack || error.message)}</pre></main>`

@@ -27,6 +27,11 @@ const server = http.createServer(async (req, res) => {
       return sendJson(res, getTracker())
     }
 
+if (url.pathname === '/api/station') {
+  const id = url.searchParams.get('id')
+  return sendJson(res, getStation(id))
+}
+
     if (url.pathname === '/') {
       return sendFile(res, path.join(PUBLIC_DIR, 'index.html'), 'text/html')
     }
@@ -140,6 +145,40 @@ function getTracker() {
   }
 }
 
+function getStation(id) {
+  if (!id) {
+    return { error: 'Missing station id' }
+  }
+
+  const stationsDir = path.join(
+    ROOT,
+    'content',
+    'imports',
+    'html-case-bank',
+    'extracted',
+    'stations'
+  )
+
+  if (!fs.existsSync(stationsDir)) {
+    return { error: 'Extracted stations folder not found' }
+  }
+
+  const files = fs.readdirSync(stationsDir)
+  const match = files.find((file) => file.startsWith(`${id}-`) && file.endsWith('.md'))
+
+  if (!match) {
+    return { error: `No extracted station file found for ${id}` }
+  }
+
+  const filePath = path.join(stationsDir, match)
+  const text = fs.readFileSync(filePath, 'utf8')
+
+  return {
+    id,
+    file: path.relative(ROOT, filePath),
+    text,
+  }
+}
 function walk(dir, callback) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const fullPath = path.join(dir, entry.name)
