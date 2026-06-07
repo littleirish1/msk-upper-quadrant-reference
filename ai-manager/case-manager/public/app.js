@@ -1,4 +1,8 @@
-let selectedStation = null
+let dashboardState = {
+  status: null,
+  cases: [],
+  tracker: { pending: [], converted: [] },
+}
 
 async function loadJson(url, options = undefined) {
   const res = await fetch(url, options)
@@ -20,21 +24,47 @@ function escapeHtml(value) {
     .replaceAll("'", '&#039;')
 }
 
-function row(title, meta = '', status = '', id = '') {
-  const button = id
-    ? `<button class="small-button" data-station-id="${escapeHtml(id)}">Preview</button>`
-    : ''
+function button(label, attrs = '') {
+  return `<button class="small-button" ${attrs}>${escapeHtml(label)}</button>`
+}
 
+function caseRow(item, actions = '') {
   return `
     <div class="row">
       <div class="row-main">
         <div>
-          <strong>${escapeHtml(title)}</strong>
-          ${status ? `<span class="badge ${escapeHtml(status)}">${escapeHtml(status)}</span>` : ''}
-          ${meta ? `<div class="meta">${escapeHtml(meta)}</div>` : ''}
+          <strong>${escapeHtml(item.title)}</strong>
+          <span class="badge ${escapeHtml(item.status)}">${escapeHtml(item.status)}</span>
+          <div class="meta">${escapeHtml(item.region)} · ${escapeHtml(item.difficulty)} · ${escapeHtml(item.path)}</div>
         </div>
-        ${button}
+        <div class="row-actions">${actions}</div>
       </div>
+    </div>
+  `
+}
+
+function stationRow(item) {
+  return `
+    <div class="row">
+      <div class="row-main">
+        <div>
+          <strong>${escapeHtml(item.id)} — ${escapeHtml(item.title)}</strong>
+          <div class="meta">${escapeHtml(item.region)} · ${escapeHtml(item.priority)} · ${escapeHtml(item.notes || '')}</div>
+        </div>
+        <div class="row-actions">
+          ${button('Preview', `data-station-id="${escapeHtml(item.id)}"`)}
+        </div>
+      </div>
+    </div>
+  `
+}
+
+function convertedRow(item) {
+  return `
+    <div class="row">
+      <strong>${escapeHtml(item.id)} — ${escapeHtml(item.title)}</strong>
+      <div class="meta">${escapeHtml(item.target || '')}</div>
+      ${item.notes ? `<div class="meta">${escapeHtml(item.notes)}</div>` : ''}
     </div>
   `
 }
@@ -126,11 +156,11 @@ function getDraftPayload() {
 
 async function createDraftCase() {
   const result = document.getElementById('createDraftResult')
-  const button = document.getElementById('createDraftButton')
+  const buttonEl = document.getElementById('createDraftButton')
 
   result.textContent = 'Creating draft...'
   result.className = 'detail-note meta'
-  button.disabled = true
+  buttonEl.disabled = true
 
   try {
     const created = await loadJson('/api/create-draft', {
@@ -148,7 +178,44 @@ async function createDraftCase() {
     await refreshDashboard()
   } catch (error) {
     result.innerHTML = `<p class="error"><strong>Draft creation failed.</strong></p><p>${escapeHtml(error.message)}</p>`
-    button.disabled = false
+    buttonEl.disabled = false
+  }
+}
+
+async function updateCaseStatus(path, status) {
+  const label = status === 'published' ? 'publish' : status === 'archived' ? 'archive' : 'restore to draft'
+  const confirmed = window.confirm(`Are you sure you want to ${label} this case?\n\n${path}`)
+
+  if (!confirmed) return
+
+  await loadJson('/api/case-status', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ path, status }),
+  })
+
+  await refreshDashboard()
+}
+
+async function copyText(text) {
+  await navigator.clipboard.writeText(text)
+}
+
+async function runPreflight() {
+  const output = document.getElementById('preflightOutput')
+  const buttonEl = document.getElementById('runPreflightButton')
+
+  output.textContent = 'Running preflight...'
+  buttonEl.disabled = true
+
+  try {
+    const result = await loadJson('/api/preflight', { method: 'POST' })
+    output.textContent = result.output || (result.ok ? 'Preflight passed.' : 'Preflight failed.')
+    await refreshDashboard()
+  } catch (error) {
+    output.textContent = error.message
+  } finally {
+    buttonEl.disabled = false
   }
 }
 
@@ -159,82 +226,139 @@ async function refreshDashboard() {
     loadJson('/api/tracker'),
   ])
 
-  renderDashboard(status, cases, tracker)
+  dashboardState = { status, cases, tracker }
+  renderDashboard()
 }
 
-function renderDashboard(status, cases, tracker) {
+function renderDashboard() {
+  const { status, cases, tracker } = dashboardState
+
   document.getElementById('status').textContent =
     `Git:\n${status.git}\n\nHygiene:\n${status.hygiene}`
 
-  const published = cases.filter((c) => c.status === 'published').length
-  const draft = cases.filter((c) => c.status === 'draft').length
-  const archived = cases.filter((c) => c.status === 'archived').length
+  const published = cases.filter((c) => c.status === 'published')
+  const draft = cases.filter((c) => c.status === 'draft')
+  const archived = cases.filter((c) => c.status === 'archived')
 
   document.getElementById('caseCounts').innerHTML = `
     <p>Total: <strong>${cases.length}</strong></p>
-    <p>Published: <strong>${published}</strong></p>
-    <p>Draft: <strong>${draft}</strong></p>
-    <p>Archived: <strong>${archived}</strong></p>
+    <p>Published: <strong>${published.length}</strong></p>
+    <p>Draft: <strong>${draft.length}</strong></p>
+    <p>Archived: <strong>${archived.length}</strong></p>
     <p>Pending legacy stations: <strong>${tracker.pending.length}</strong></p>
     <p>Converted legacy stations: <strong>${tracker.converted.length}</strong></p>
   `
 
-  const publishedCases = cases.filter((item) => item.status === 'published')
-const draftCases = cases.filter((item) => item.status === 'draft')
-
-document.getElementById('publishedCases').innerHTML = publishedCases.length
-  ? publishedCases.map((item) =>
-      row(item.title, `${item.region} · ${item.difficulty} · ${item.path}`, item.status)
-    ).join('')
-  : '<p>No published cases found.</p>'
-
-document.getElementById('draftCases').innerHTML = draftCases.length
-  ? draftCases.map((item) =>
-      row(item.title, `${item.region} · ${item.difficulty} · ${item.path}`, item.status)
-    ).join('')
-  : '<p>No draft cases found.</p>'
-
-  document.getElementById('pending').innerHTML = tracker.pending.length
-    ? tracker.pending.map((item) =>
-        row(`${item.id} — ${item.title}`, `${item.region} · ${item.priority}`, '', item.id)
+  document.getElementById('publishedCases').innerHTML = published.length
+    ? published.map((item) =>
+        caseRow(item, button('Copy path', `data-copy-path="${escapeHtml(item.path)}"`))
       ).join('')
-    : '<p>No pending stations found.</p>'
+    : '<p>No published cases found.</p>'
 
-  document.getElementById('converted').innerHTML = tracker.converted.length
-    ? tracker.converted.map((item) =>
-        row(`${item.id} — ${item.title}`, item.target || item.notes, 'published')
+  document.getElementById('draftCases').innerHTML = draft.length
+    ? draft.map((item) =>
+        caseRow(
+          item,
+          [
+            button('Copy path', `data-copy-path="${escapeHtml(item.path)}"`),
+            button('Mark published', `data-case-path="${escapeHtml(item.path)}" data-case-status="published"`),
+            button('Archive', `data-case-path="${escapeHtml(item.path)}" data-case-status="archived"`),
+          ].join('')
+        )
       ).join('')
+    : '<p>No draft cases found.</p>'
+
+  document.getElementById('archivedCases').innerHTML = archived.length
+    ? archived.map((item) =>
+        caseRow(
+          item,
+          [
+            button('Copy path', `data-copy-path="${escapeHtml(item.path)}"`),
+            button('Restore draft', `data-case-path="${escapeHtml(item.path)}" data-case-status="draft"`),
+          ].join('')
+        )
+      ).join('')
+    : '<p>No archived cases found.</p>'
+
+  renderPending()
+  renderConverted()
+}
+
+function renderPending() {
+  const search = document.getElementById('stationSearch').value.toLowerCase().trim()
+  const filter = document.getElementById('stationFilter').value
+
+  const filtered = dashboardState.tracker.pending.filter((item) => {
+    const haystack = `${item.id} ${item.title} ${item.region} ${item.priority} ${item.notes}`.toLowerCase()
+    const matchesSearch = !search || haystack.includes(search)
+    const matchesFilter =
+      filter === 'all' ||
+      item.priority.toLowerCase() === filter ||
+      item.region.toLowerCase() === filter
+
+    return matchesSearch && matchesFilter
+  })
+
+  document.getElementById('pending').innerHTML = filtered.length
+    ? filtered.map(stationRow).join('')
+    : '<p>No pending stations match this filter.</p>'
+}
+
+function renderConverted() {
+  document.getElementById('converted').innerHTML = dashboardState.tracker.converted.length
+    ? dashboardState.tracker.converted.map(convertedRow).join('')
     : '<p>No converted stations found.</p>'
+}
+
+async function previewStation(id) {
+  const preview = document.getElementById('stationPreview')
+  const stationFile = document.getElementById('stationFile')
+
+  preview.textContent = 'Loading...'
+  stationFile.textContent = `Loading ${id}...`
+  renderConversionForm(null)
+
+  const station = await loadJson(`/api/station?id=${encodeURIComponent(id)}`)
+
+  if (station.error) {
+    stationFile.textContent = 'Error'
+    preview.textContent = station.error
+    return
+  }
+
+  stationFile.textContent = station.file
+  preview.textContent = station.text
+  renderConversionForm(station.conversion)
 }
 
 async function main() {
   await refreshDashboard()
 
-  document.getElementById('pending').addEventListener('click', async (event) => {
-    const button = event.target.closest('[data-station-id]')
-    if (!button) return
+  document.getElementById('refreshButton').addEventListener('click', refreshDashboard)
+  document.getElementById('runPreflightButton').addEventListener('click', runPreflight)
+  document.getElementById('stationSearch').addEventListener('input', renderPending)
+  document.getElementById('stationFilter').addEventListener('change', renderPending)
 
-    const id = button.getAttribute('data-station-id') || ''
-    const preview = document.getElementById('stationPreview')
-    const stationFile = document.getElementById('stationFile')
-
-    selectedStation = null
-    preview.textContent = 'Loading...'
-    stationFile.textContent = `Loading ${id}...`
-    renderConversionForm(null)
-
-    const station = await loadJson(`/api/station?id=${encodeURIComponent(id)}`)
-    selectedStation = station
-
-    if (station.error) {
-      stationFile.textContent = 'Error'
-      preview.textContent = station.error
+  document.body.addEventListener('click', async (event) => {
+    const stationButton = event.target.closest('[data-station-id]')
+    if (stationButton) {
+      await previewStation(stationButton.getAttribute('data-station-id'))
       return
     }
 
-    stationFile.textContent = station.file
-    preview.textContent = station.text
-    renderConversionForm(station.conversion)
+    const copyButton = event.target.closest('[data-copy-path]')
+    if (copyButton) {
+      await copyText(copyButton.getAttribute('data-copy-path'))
+      return
+    }
+
+    const statusButton = event.target.closest('[data-case-path][data-case-status]')
+    if (statusButton) {
+      await updateCaseStatus(
+        statusButton.getAttribute('data-case-path'),
+        statusButton.getAttribute('data-case-status')
+      )
+    }
   })
 }
 

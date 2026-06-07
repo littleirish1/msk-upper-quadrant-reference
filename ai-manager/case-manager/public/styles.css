@@ -10,7 +10,7 @@ body {
 }
 
 main {
-  max-width: 1180px;
+  max-width: 1220px;
   margin: 0 auto;
   padding: 32px;
 }
@@ -76,6 +76,13 @@ pre {
   align-items: flex-start;
 }
 
+.row-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .meta {
   color: #9ca4bb;
   font-size: 0.9rem;
@@ -106,6 +113,14 @@ pre {
   color: #ffd1dc;
 }
 
+.toolbar,
+.filter-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
 .small-button,
 .primary-button {
   border: 1px solid #39415a;
@@ -134,7 +149,8 @@ pre {
   background: #3467d6;
 }
 
-.primary-button:disabled {
+.primary-button:disabled,
+.small-button:disabled {
   opacity: 0.55;
   cursor: not-allowed;
 }
@@ -165,7 +181,13 @@ select {
   font: inherit;
 }
 
-.detail-note {
+.filter-row input {
+  flex: 1;
+  min-width: 280px;
+}
+
+.detail-note,
+.safety-note {
   background: #0f1117;
   border: 1px solid #2a2f3f;
   border-radius: 12px;
@@ -173,20 +195,21 @@ select {
   margin-top: 12px;
 }
 
+.safety-note {
+  color: #cbd7ff;
+}
+
 .warning {
   color: #ffe2a7;
 }
 
-.ok {
+.ok,
+.success {
   color: #caffdf;
 }
 
 .error {
   color: #ffb4c2;
-}
-
-.success {
-  color: #caffdf;
 }
 
 @media (max-width: 850px) {
@@ -200,5 +223,9 @@ select {
 
   .row-main {
     flex-direction: column;
+  }
+
+  .row-actions {
+    justify-content: flex-start;
   }
 }

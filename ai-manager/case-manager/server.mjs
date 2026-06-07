@@ -41,14 +41,39 @@ const server = http.createServer(async (req, res) => {
       return sendJson(res, createDraftCase(body))
     }
 
+    if (url.pathname === '/api/case-status' && req.method === 'POST') {
+      const body = await readRequestJson(req)
+      return sendJson(res, updateCaseStatus(body))
+    }
+
+    if (url.pathname === '/api/preflight' && req.method === 'POST') {
+      const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm'
+      const result = await run(npmCommand, ['run', 'preflight'])
+
+      return sendJson(res, {
+        ok: result.ok,
+        output: result.output,
+      })
+    }
+
     if (url.pathname === '/') {
       return sendFile(res, path.join(PUBLIC_DIR, 'index.html'), 'text/html')
     }
 
     const filePath = path.join(PUBLIC_DIR, url.pathname)
-    if (filePath.startsWith(PUBLIC_DIR) && fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+    if (
+      filePath.startsWith(PUBLIC_DIR) &&
+      fs.existsSync(filePath) &&
+      fs.statSync(filePath).isFile()
+    ) {
       const ext = path.extname(filePath)
-      const type = ext === '.css' ? 'text/css' : ext === '.js' ? 'text/javascript' : 'text/plain'
+      const type =
+        ext === '.css'
+          ? 'text/css'
+          : ext === '.js'
+            ? 'text/javascript'
+            : 'text/plain'
+
       return sendFile(res, filePath, type)
     }
 
@@ -334,7 +359,81 @@ function createDraftCase(payload) {
     file: path.relative(ROOT, targetFile),
   }
 }
+function updateCaseStatus(payload) {
+  const relativePath = String(payload.path || '').trim()
+  const status = String(payload.status || '').trim().toLowerCase()
 
+  const allowed = new Set(['draft', 'published', 'archived'])
+
+  if (!relativePath || !status) {
+    throw new Error('Missing path or status.')
+  }
+
+  if (!allowed.has(status)) {
+    throw new Error(`Unsupported status: ${status}`)
+  }
+
+  const filePath = path.resolve(ROOT, relativePath)
+
+  if (!filePath.startsWith(ROOT)) {
+    throw new Error('Refusing to edit file outside project root.')
+  }
+
+  if (!filePath.endsWith('.mdx')) {
+    throw new Error('Can only update MDX case files.')
+  }
+
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`File not found: ${relativePath}`)
+  }
+
+  const text = fs.readFileSync(filePath, 'utf8')
+  const updated = setFrontmatterStatus(text, status)
+
+  fs.writeFileSync(filePath, updated, 'utf8')
+
+  return {
+    ok: true,
+    file: relativePath,
+    status,
+  }
+}
+function setFrontmatterStatus(text, status) {
+  if (!text.startsWith('---')) {
+    throw new Error('File does not start with frontmatter.')
+  }
+
+  const parts = text.split('---')
+
+  if (parts.length < 3) {
+    throw new Error('Invalid frontmatter.')
+  }
+
+  const frontmatter = parts[1]
+  const body = parts.slice(2).join('---')
+
+  let found = false
+  const updatedLines = frontmatter.split(/\r?\n/).map((line) => {
+    if (line.match(/^status:\s*/)) {
+      found = true
+      return `status: "${status}"`
+    }
+
+    return line
+  })
+
+  if (!found) {
+    const caseTypeIndex = updatedLines.findIndex((line) => line.match(/^caseType:\s*/))
+
+    if (caseTypeIndex >= 0) {
+      updatedLines.splice(caseTypeIndex + 1, 0, `status: "${status}"`)
+    } else {
+      updatedLines.push(`status: "${status}"`)
+    }
+  }
+
+  return `---${updatedLines.join('\n')}---${body}`
+}
 function buildDraftMdx({
   title,
   region,

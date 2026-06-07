@@ -11,7 +11,16 @@
     <header>
       <p class="eyebrow">Local back-office tool</p>
       <h1>MSK Case Manager</h1>
-      <p>Review cases, migration status, hygiene checks, local project state, and draft conversion readiness.</p>
+      <p>Local-only case preparation, draft review, migration tracking, and preflight checks.</p>
+
+      <div class="toolbar">
+        <button class="small-button" id="refreshButton">Refresh dashboard</button>
+        <button class="small-button" id="runPreflightButton">Run preflight</button>
+      </div>
+
+      <p class="safety-note">
+        Local tool only. Draft and archived cases are hidden from the public case index and public route generation.
+      </p>
     </header>
 
     <section class="grid">
@@ -26,28 +35,54 @@
       </article>
     </section>
 
-  <section class="grid">
-  <article class="card">
-    <h2>Published guided cases</h2>
-    <div id="publishedCases"></div>
-  </article>
-
-  <article class="card">
-    <h2>Draft guided cases</h2>
-    <div id="draftCases"></div>
-  </article>
-</section>
+    <section class="card">
+      <h2>Preflight output</h2>
+      <pre id="preflightOutput">Not run from this session.</pre>
+    </section>
 
     <section class="grid">
       <article class="card">
-        <h2>Pending legacy stations</h2>
-        <div id="pending"></div>
+        <h2>Published guided cases</h2>
+        <div id="publishedCases"></div>
       </article>
 
       <article class="card">
-        <h2>Converted legacy stations</h2>
-        <div id="converted"></div>
+        <h2>Draft guided cases</h2>
+        <div id="draftCases"></div>
       </article>
+    </section>
+
+    <section class="card">
+      <h2>Archived guided cases</h2>
+      <div id="archivedCases"></div>
+    </section>
+
+    <section class="card">
+      <h2>Pending legacy stations</h2>
+
+      <div class="filter-row">
+        <input id="stationSearch" placeholder="Search pending stations, e.g. s42, DCM, fracture..." />
+        <select id="stationFilter">
+          <option value="all">All</option>
+          <option value="high">High priority</option>
+          <option value="normal">Normal priority</option>
+          <option value="medium">Medium priority</option>
+          <option value="cervical">Cervical</option>
+          <option value="thoracic">Thoracic</option>
+          <option value="shoulder">Shoulder</option>
+          <option value="elbow">Elbow</option>
+          <option value="wrist-hand">Wrist/Hand</option>
+          <option value="lumbar">Lumbar</option>
+          <option value="unknown">Unknown</option>
+        </select>
+      </div>
+
+      <div id="pending"></div>
+    </section>
+
+    <section class="card">
+      <h2>Converted legacy stations</h2>
+      <div id="converted"></div>
     </section>
 
     <section class="grid">
