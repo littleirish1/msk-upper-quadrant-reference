@@ -13,10 +13,11 @@
   "extract:legacy-all": "node scripts/extract-all-legacy-stations.mjs",
   "tracker:legacy": "node scripts/generate-migration-tracker.mjs",
   "check:hygiene": "node scripts/check-content-hygiene.mjs",
+  "check:sources": "node scripts/check-case-source-integrity.mjs",
   "case:wizard": "node scripts/case-conversion-wizard.mjs",
   "case:manager": "node ai-manager/case-manager/server.mjs",
   "clean:build": "cmd /c if exist .next rmdir /s /q .next && cmd /c if exist out rmdir /s /q out",
-  "preflight": "npm run clean:build && npm run check:hygiene && npm run build",
+  "preflight": "npm run clean:build && npm run check:hygiene && npm run check:sources && npm run build",
   "manager:status": "python ai-manager/project_status.py",
   "type-check": "tsc --noEmit",
   "export": "next build"
