@@ -233,6 +233,24 @@ async function runPreflight() {
   }
 }
 
+async function generateRegistry() {
+  const output = document.getElementById('registryOutput')
+  const buttonEl = document.getElementById('generateRegistryButton')
+
+  output.textContent = 'Generating source registry...'
+  buttonEl.disabled = true
+
+  try {
+    const result = await loadJson('/api/source-registry/regenerate', { method: 'POST' })
+    output.textContent = result.output || (result.ok ? 'Source registry generated.' : 'Source registry generation failed.')
+    await refreshDashboard()
+  } catch (error) {
+    output.textContent = error.message
+  } finally {
+    buttonEl.disabled = false
+  }
+}
+
 async function refreshDashboard() {
   const [status, cases, tracker, sourceRegistry] = await Promise.all([
     loadJson('/api/status'),
@@ -249,7 +267,7 @@ function renderDashboard() {
   const { status, cases, tracker, sourceRegistry } = dashboardState
 
   document.getElementById('status').textContent =
-    `Git:\n${status.git}\n\nHygiene:\n${status.hygiene}`
+    `Project root:\n${status.projectRoot || 'unknown'}\n\nGit:\n${status.git}\n\nHygiene:\n${status.hygiene}`
 
   const published = cases.filter((c) => c.status === 'published')
   const draft = cases.filter((c) => c.status === 'draft')
@@ -386,6 +404,7 @@ async function main() {
 
   document.getElementById('refreshButton').addEventListener('click', refreshDashboard)
   document.getElementById('runPreflightButton').addEventListener('click', runPreflight)
+  document.getElementById('generateRegistryButton').addEventListener('click', generateRegistry)
   document.getElementById('stationSearch').addEventListener('input', renderPending)
   document.getElementById('stationFilter').addEventListener('change', renderPending)
 

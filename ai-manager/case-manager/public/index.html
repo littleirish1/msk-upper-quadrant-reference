@@ -36,8 +36,20 @@
 
       <article class="card">
         <h2>Source Registry</h2>
+        <div class="toolbar">
+          <button class="small-button" id="generateRegistryButton">Generate registry</button>
+        </div>
         <div id="sourceRegistrySummary">Loading...</div>
+        <pre id="registryOutput">Not run from this session.</pre>
       </article>
+    </section>
+
+    <section class="card">
+      <h2>Workflow key</h2>
+      <p class="meta">
+        Pending review = no draft yet. Draft-created = draft exists but needs review.
+        Converted = published/reviewed. Archived = intentionally hidden.
+      </p>
     </section>
 
     <section class="card">

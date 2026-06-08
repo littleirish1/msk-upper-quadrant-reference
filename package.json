@@ -17,6 +17,7 @@
   "check:sources": "node scripts/check-case-source-integrity.mjs",
   "case:wizard": "node scripts/case-conversion-wizard.mjs",
   "case:manager": "node ai-manager/case-manager/server.mjs",
+  "manager:demo-report": "node scripts/generate-demo-report.mjs",
   "clean:build": "cmd /c if exist .next rmdir /s /q .next && cmd /c if exist out rmdir /s /q out",
   "preflight": "npm run clean:build && npm run check:hygiene && npm run check:sources && npm run build",
   "manager:status": "python ai-manager/project_status.py",

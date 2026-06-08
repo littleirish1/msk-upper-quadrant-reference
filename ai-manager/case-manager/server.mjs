@@ -30,6 +30,17 @@ const server = http.createServer(async (req, res) => {
       return sendJson(res, getSourceRegistry())
     }
 
+    if (url.pathname === '/api/source-registry/regenerate' && req.method === 'POST') {
+      const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm'
+      const result = await run(npmCommand, ['run', 'registry:sources'])
+
+      return sendJson(res, {
+        ok: result.ok,
+        output: result.output,
+        registry: getSourceRegistry(),
+      })
+    }
+
     if (url.pathname === '/api/station') {
       const id =
         url.searchParams.get('id') ||
@@ -144,6 +155,7 @@ async function getProjectStatus() {
   const hygiene = await run(npmCommand, ['run', 'check:hygiene'])
 
   return {
+    projectRoot: ROOT,
     git: git.ok ? (git.output || 'clean') : `failed\n${git.output}`,
     hygiene: hygiene.ok ? 'passed' : `failed\n${hygiene.output}`,
   }
@@ -369,6 +381,7 @@ function createDraftCase(payload) {
     conditionSlug,
     difficulty,
     estimatedTime,
+    stationId: station.id,
     sourceFile: station.file.replaceAll('\\', '/'),
     sourceText: station.text,
   })
@@ -461,6 +474,7 @@ function buildDraftMdx({
   conditionSlug,
   difficulty,
   estimatedTime,
+  stationId,
   sourceFile,
   sourceText,
 }) {
@@ -474,6 +488,10 @@ condition: "${escapeYaml(conditionSlug)}"
 difficulty: "${escapeYaml(difficulty)}"
 caseType: "guided-reasoning"
 status: "draft"
+sourceType: "legacy-html-case-bank"
+sourceId: "${escapeYaml(stationId)}"
+sourcePath: "${escapeYaml(sourceFile)}"
+reviewStatus: "needs-review"
 learningFocus:
   - "Primary diagnosis"
   - "Differential diagnosis"
@@ -568,7 +586,7 @@ Suggested linked condition page:
 
 Legacy source:
 
-- \`${sourcePath}\`
+- \`${sourceFile}\`
 
 ## Legacy source notes for review
 
