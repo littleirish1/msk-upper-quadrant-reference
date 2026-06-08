@@ -1,0 +1,23 @@
+[build]
+command = "npm run preflight"
+publish = "out"
+
+[[redirects]]
+from = "/msk-upper-quadrant-reference"
+to = "/"
+status = 200
+
+[[redirects]]
+from = "/msk-upper-quadrant-reference/"
+to = "/"
+status = 200
+
+[[redirects]]
+from = "/msk-upper-quadrant-reference/_next/*"
+to = "/_next/:splat"
+status = 200
+
+[[redirects]]
+from = "/msk-upper-quadrant-reference/*"
+to = "/:splat"
+status = 200
