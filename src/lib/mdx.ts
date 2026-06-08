@@ -208,9 +208,18 @@ export function getAllCasePaths(): Array<{ region: string; caseSlug: string }> {
 
     const files = fs.readdirSync(regionDir, { withFileTypes: true })
       .filter(f => f.isFile() && f.name.endsWith('.mdx'))
-      .map(f => f.name.replace('.mdx', ''))
 
-    for (const caseSlug of files) {
+    for (const file of files) {
+      const filePath = path.join(regionDir, file.name)
+      const raw = fs.readFileSync(filePath, 'utf-8')
+      const { data } = matter(raw)
+      const status = typeof data.status === 'string' ? data.status : 'published'
+
+      if (isPrivateCaseStatus(status)) {
+        continue
+      }
+
+      const caseSlug = file.name.replace('.mdx', '')
       results.push({ region, caseSlug })
     }
   }
@@ -281,6 +290,10 @@ export function getAllCases(): CaseListItem[] {
   }
 
 return results
-  .filter((caseItem) => !['draft', 'archived'].includes((caseItem.status ?? 'published').toLowerCase()))
+  .filter((caseItem) => !isPrivateCaseStatus(caseItem.status ?? 'published'))
   .sort((a, b) => a.title.localeCompare(b.title))
+}
+
+function isPrivateCaseStatus(status: string): boolean {
+  return ['draft', 'archived'].includes(status.toLowerCase())
 }
