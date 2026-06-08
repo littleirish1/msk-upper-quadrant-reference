@@ -1,4 +1,4 @@
-import http from 'http'
+﻿import http from 'http'
 import fs from 'fs'
 import path from 'path'
 import { exec } from 'child_process'
@@ -547,7 +547,7 @@ Suggested linked condition page:
 
 Legacy source:
 
-- \`${sourceFile}\`
+- \`${sourcePath}\`
 
 ## Legacy source notes for review
 
@@ -681,8 +681,8 @@ function slugify(text) {
     .toLowerCase()
     .replace(/&amp;/g, 'and')
     .replace(/&/g, 'and')
-    .replace(/—/g, '-')
-    .replace(/–/g, '-')
+    .replace(/â€”/g, '-')
+    .replace(/â€“/g, '-')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
 }
