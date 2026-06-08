@@ -2,7 +2,7 @@
 
 ## Project
 
-- Branch: feature/guided-cases
+- Branch: main
 - Project root: C:/dev/msk-upper-quadrant-reference
 - Preflight status: build artifacts present from latest Next build
 

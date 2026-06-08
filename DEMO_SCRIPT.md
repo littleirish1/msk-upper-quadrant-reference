@@ -5,11 +5,12 @@ Use this as a concise trial-run path for the MSK Clinical Reasoning Lab demo.
 ## A. Public Learner Site
 
 1. Open the home page and frame the project as a learner-facing MSK clinical reasoning reference.
-2. Navigate by region to show the upper-quadrant structure.
-3. Open a condition page and point out clinical organization, red flags, assessment cues, and management content where available.
-4. Open a published guided case and show the case-based reasoning flow.
-5. Use search or the red-flags page if available in the build.
-6. Explain that draft and archived guided cases are intentionally hidden from public route generation.
+2. Open `/demo` to show the trial status screen and safety cards.
+3. Navigate by region to show the upper-quadrant structure.
+4. Open a condition page and point out clinical organization, red flags, assessment cues, and management content where available.
+5. Open a published guided case and show the case-based reasoning flow.
+6. Use search or the red-flags page if available in the build.
+7. Explain that draft and archived guided cases are intentionally hidden from public route generation.
 
 ## B. Local Case Manager
 
