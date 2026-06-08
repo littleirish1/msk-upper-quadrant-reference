@@ -174,59 +174,46 @@ function getTracker() {
   const trackerPath = path.join(ROOT, 'content', 'imports', 'html-case-bank', 'migration-tracker.md')
 
   if (!fs.existsSync(trackerPath)) {
-    return { pending: [], converted: [] }
+    return { pending: [], draftCreated: [], converted: [], archived: [] }
   }
 
   const text = fs.readFileSync(trackerPath, 'utf8')
   const lines = text.split(/\r?\n/)
 
   const pending = []
+  const draftCreated = []
   const converted = []
-  let section = ''
+  const archived = []
 
   for (const line of lines) {
-    if (line.startsWith('## Converted cases')) {
-      section = 'converted'
-      continue
-    }
-
-    if (line.startsWith('## Pending review')) {
-      section = 'pending'
-      continue
-    }
-
     if (!line.startsWith('|')) continue
     if (line.includes('---')) continue
     if (line.includes('Legacy ID')) continue
 
-    const cells = line.split('|').map((cell) => cell.trim()).filter(Boolean)
-    if (cells.length < 4) continue
+    const cells = line.slice(1, -1).split('|').map((cell) => cell.trim())
+    if (cells.length < 6) continue
 
-    if (section === 'converted') {
-      converted.push({
-        id: cells[0] || '',
-        title: cells[1] || '',
-        target: cells[2] || '',
-        status: cells[3] || '',
-        notes: cells[4] || '',
-      })
+    const row = {
+      id: cells[0] || '',
+      title: cells[1] || '',
+      region: cells[2] || '',
+      priority: cells[3] || '',
+      status: cells[4] || '',
+      target: cells[5] || '',
+      notes: cells[5] || '',
     }
 
-    if (section === 'pending') {
-      pending.push({
-        id: cells[0] || '',
-        title: cells[1] || '',
-        region: cells[2] || '',
-        priority: cells[3] || '',
-        status: cells[4] || '',
-        notes: cells[5] || '',
-      })
-    }
+    if (row.status === 'pending-review') pending.push(row)
+    if (row.status === 'draft-created') draftCreated.push(row)
+    if (row.status === 'converted') converted.push(row)
+    if (row.status === 'archived') archived.push(row)
   }
 
   return {
-    converted: converted.filter((row) => row.status === 'converted'),
-    pending: pending.filter((row) => row.status === 'pending-review'),
+    pending,
+    draftCreated,
+    converted,
+    archived,
   }
 }
 

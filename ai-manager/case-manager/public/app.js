@@ -1,7 +1,7 @@
 let dashboardState = {
   status: null,
   cases: [],
-  tracker: { pending: [], converted: [] },
+  tracker: { pending: [], draftCreated: [], converted: [], archived: [] },
 }
 
 async function loadJson(url, options = undefined) {
@@ -63,8 +63,8 @@ function convertedRow(item) {
   return `
     <div class="row">
       <strong>${escapeHtml(item.id)} — ${escapeHtml(item.title)}</strong>
-      <div class="meta">${escapeHtml(item.target || '')}</div>
-      ${item.notes ? `<div class="meta">${escapeHtml(item.notes)}</div>` : ''}
+      <div class="meta">${escapeHtml(item.region || '')} · ${escapeHtml(item.priority || '')} · ${escapeHtml(item.status || '')}</div>
+      <div class="meta">${escapeHtml(item.target || item.notes || '')}</div>
     </div>
   `
 }
@@ -246,7 +246,9 @@ function renderDashboard() {
     <p>Draft: <strong>${draft.length}</strong></p>
     <p>Archived: <strong>${archived.length}</strong></p>
     <p>Pending legacy stations: <strong>${tracker.pending.length}</strong></p>
+    <p>Draft-created legacy stations: <strong>${tracker.draftCreated.length}</strong></p>
     <p>Converted legacy stations: <strong>${tracker.converted.length}</strong></p>
+    <p>Archived legacy stations: <strong>${tracker.archived.length}</strong></p>
   `
 
   document.getElementById('publishedCases').innerHTML = published.length
@@ -281,6 +283,7 @@ function renderDashboard() {
     : '<p>No archived cases found.</p>'
 
   renderPending()
+  renderDraftCreated()
   renderConverted()
 }
 
@@ -302,6 +305,12 @@ function renderPending() {
   document.getElementById('pending').innerHTML = filtered.length
     ? filtered.map(stationRow).join('')
     : '<p>No pending stations match this filter.</p>'
+}
+
+function renderDraftCreated() {
+  document.getElementById('draftCreated').innerHTML = dashboardState.tracker.draftCreated.length
+    ? dashboardState.tracker.draftCreated.map(convertedRow).join('')
+    : '<p>No draft-created legacy stations found.</p>'
 }
 
 function renderConverted() {
