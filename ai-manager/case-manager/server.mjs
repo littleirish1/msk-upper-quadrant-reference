@@ -26,6 +26,10 @@ const server = http.createServer(async (req, res) => {
       return sendJson(res, getTracker())
     }
 
+    if (url.pathname === '/api/source-registry') {
+      return sendJson(res, getSourceRegistry())
+    }
+
     if (url.pathname === '/api/station') {
       const id =
         url.searchParams.get('id') ||
@@ -215,6 +219,36 @@ function getTracker() {
     converted,
     archived,
   }
+}
+
+function getSourceRegistry() {
+  const registryPath = path.join(ROOT, 'content', 'imports', 'source-registry.json')
+
+  if (!fs.existsSync(registryPath)) {
+    return {
+      schemaVersion: 1,
+      missing: true,
+      message: 'Source registry has not been generated yet. Run npm run registry:sources.',
+      generatedFrom: {
+        legacyStations: 'content/imports/html-case-bank/extracted/stations',
+        cases: 'content/cases',
+      },
+      sources: [],
+      linkedCases: [],
+      unlinkedCases: [],
+      summary: {
+        totalSources: 0,
+        pendingReview: 0,
+        draftCreated: 0,
+        converted: 0,
+        archived: 0,
+        linkedCases: 0,
+        unlinkedCases: 0,
+      },
+    }
+  }
+
+  return JSON.parse(fs.readFileSync(registryPath, 'utf8'))
 }
 
 function getStation(id) {

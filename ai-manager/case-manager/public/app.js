@@ -2,6 +2,10 @@ let dashboardState = {
   status: null,
   cases: [],
   tracker: { pending: [], draftCreated: [], converted: [], archived: [] },
+  sourceRegistry: {
+    summary: {},
+    unlinkedCases: [],
+  },
 }
 
 async function loadJson(url, options = undefined) {
@@ -65,6 +69,16 @@ function convertedRow(item) {
       <strong>${escapeHtml(item.id)} — ${escapeHtml(item.title)}</strong>
       <div class="meta">${escapeHtml(item.region || '')} · ${escapeHtml(item.priority || '')} · ${escapeHtml(item.status || '')}</div>
       <div class="meta">${escapeHtml(item.target || item.notes || '')}</div>
+    </div>
+  `
+}
+
+function unlinkedCaseRow(item) {
+  return `
+    <div class="row">
+      <strong>${escapeHtml(item.title || item.path)}</strong>
+      <div class="meta">${escapeHtml(item.status || '')} · ${escapeHtml(item.reason || '')}</div>
+      <div class="meta">${escapeHtml(item.path || '')}</div>
     </div>
   `
 }
@@ -220,18 +234,19 @@ async function runPreflight() {
 }
 
 async function refreshDashboard() {
-  const [status, cases, tracker] = await Promise.all([
+  const [status, cases, tracker, sourceRegistry] = await Promise.all([
     loadJson('/api/status'),
     loadJson('/api/cases'),
     loadJson('/api/tracker'),
+    loadJson('/api/source-registry'),
   ])
 
-  dashboardState = { status, cases, tracker }
+  dashboardState = { status, cases, tracker, sourceRegistry }
   renderDashboard()
 }
 
 function renderDashboard() {
-  const { status, cases, tracker } = dashboardState
+  const { status, cases, tracker, sourceRegistry } = dashboardState
 
   document.getElementById('status').textContent =
     `Git:\n${status.git}\n\nHygiene:\n${status.hygiene}`
@@ -250,6 +265,8 @@ function renderDashboard() {
     <p>Converted legacy stations: <strong>${tracker.converted.length}</strong></p>
     <p>Archived legacy stations: <strong>${tracker.archived.length}</strong></p>
   `
+
+  renderSourceRegistry(sourceRegistry)
 
   document.getElementById('publishedCases').innerHTML = published.length
     ? published.map((item) =>
@@ -285,6 +302,30 @@ function renderDashboard() {
   renderPending()
   renderDraftCreated()
   renderConverted()
+}
+
+function renderSourceRegistry(sourceRegistry) {
+  const summary = sourceRegistry.summary || {}
+
+  document.getElementById('sourceRegistrySummary').innerHTML = sourceRegistry.missing
+    ? `<p class="warning">${escapeHtml(sourceRegistry.message || 'Source registry not found.')}</p>`
+    : `
+      <p>Total sources: <strong>${summary.totalSources ?? 0}</strong></p>
+      <p>Pending review: <strong>${summary.pendingReview ?? 0}</strong></p>
+      <p>Draft created: <strong>${summary.draftCreated ?? 0}</strong></p>
+      <p>Converted: <strong>${summary.converted ?? 0}</strong></p>
+      <p>Archived: <strong>${summary.archived ?? 0}</strong></p>
+      <p>Linked cases: <strong>${summary.linkedCases ?? 0}</strong></p>
+      <p>Unlinked cases: <strong>${summary.unlinkedCases ?? 0}</strong></p>
+    `
+
+  const unlinkedCases = Array.isArray(sourceRegistry.unlinkedCases)
+    ? sourceRegistry.unlinkedCases
+    : []
+
+  document.getElementById('unlinkedCases').innerHTML = unlinkedCases.length
+    ? unlinkedCases.map(unlinkedCaseRow).join('')
+    : '<p>No unlinked cases found.</p>'
 }
 
 function renderPending() {
