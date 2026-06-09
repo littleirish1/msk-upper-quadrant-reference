@@ -9,9 +9,10 @@ Use this as a concise trial-run path for the MSK Clinical Reasoning Lab demo.
 3. Explain that upper quadrant is Phase 1 of a future whole-body physiotherapy clinical reasoning platform.
 4. Navigate by region to show the upper-quadrant structure.
 5. Open a condition page and point out clinical organization, red flags, assessment cues, and management content where available.
-6. Open a published guided case and show the case-based reasoning flow.
-7. Use search or the red-flags page if available in the build.
-8. Explain that draft and archived guided cases are intentionally hidden from public route generation.
+6. Use the related guided cases panel on a condition page, or open `/cases`, to show published case studies.
+7. Open a published guided case and show the case-based reasoning flow.
+8. Use search or the red-flags page if available in the build.
+9. Explain that only reviewed/published cases are public; draft and archived guided cases are intentionally hidden from public route generation.
 
 ## B. Local Case Manager
 

@@ -20,6 +20,11 @@ export default function CasesPage() {
           Work through MSK presentations using guided prompts, revealable reasoning,
           differential diagnosis checks, and evidence-linked learning.
         </p>
+
+        <p className="mt-3 text-sm text-surface-500 dark:text-surface-400">
+          {cases.length} reviewed case{cases.length === 1 ? '' : 's'} currently public.
+          Draft and archived cases stay hidden until review is complete.
+        </p>
       </div>
 
       {cases.length === 0 ? (

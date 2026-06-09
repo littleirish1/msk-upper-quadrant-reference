@@ -34,6 +34,7 @@ export function Header() {
             { href: '/shoulder',   label: 'Shoulder' },
             { href: '/elbow',      label: 'Elbow' },
             { href: '/wrist-hand', label: 'Wrist & Hand' },
+            { href: '/cases',      label: 'Cases' },
           ].map(({ href, label }) => (
             <Link
               key={href}
@@ -99,6 +100,7 @@ export function Header() {
               { href: '/shoulder',   label: 'Shoulder' },
               { href: '/elbow',      label: 'Elbow' },
               { href: '/wrist-hand', label: 'Wrist & Hand' },
+              { href: '/cases',      label: 'Guided Cases' },
             ].map(({ href, label }) => (
               <li key={href}>
                 <Link

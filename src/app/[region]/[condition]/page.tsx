@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import { getAllConditionPaths, getRegion, getCondition } from '@/data/taxonomy'
-import { getConditionContent } from '@/lib/mdx'
+import { getAllCases, getConditionContent } from '@/lib/mdx'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
 import { mdxComponents } from '@/components/mdx/MDXComponents'
@@ -40,6 +41,9 @@ export default async function ConditionPage({ params }: Props) {
   if (!region || !condition) notFound()
 
   const result = await getConditionContent(regionSlug, conditionSlug)
+  const relatedCases = getAllCases().filter(
+    (caseItem) => caseItem.region === regionSlug && caseItem.condition === conditionSlug,
+  )
 
   return (
     <div className="flex">
@@ -76,6 +80,25 @@ export default async function ConditionPage({ params }: Props) {
             frontmatter={result.frontmatter}
             sections={result.sections}
           />
+        )}
+
+        {relatedCases.length > 0 && (
+          <section className="mb-8 rounded-xl border border-brand-200 bg-brand-50 p-5 dark:border-brand-800 dark:bg-brand-950/30">
+            <p className="text-xs font-semibold uppercase tracking-wide text-brand-700 dark:text-brand-300">
+              Related guided cases
+            </p>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              {relatedCases.map((caseItem) => (
+                <Link
+                  key={`${caseItem.region}-${caseItem.caseSlug}`}
+                  href={`/cases/${caseItem.region}/${caseItem.caseSlug}`}
+                  className="rounded-lg border border-brand-200 bg-white p-3 text-sm font-semibold text-brand-700 transition-colors hover:border-brand-300 hover:text-brand-900 dark:border-brand-800 dark:bg-surface-900 dark:text-brand-300 dark:hover:border-brand-600 dark:hover:text-brand-100"
+                >
+                  {caseItem.title}
+                </Link>
+              ))}
+            </div>
+          </section>
         )}
 
         {/* Section anchor nav (mobile-friendly pills) */}

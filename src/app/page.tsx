@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Brain, Columns, CircleDot, GitBranch, Hand, Search, ShieldAlert, Stethoscope } from 'lucide-react'
+import { BookOpen, Brain, Columns, CircleDot, GitBranch, Hand, Search, ShieldAlert, Stethoscope } from 'lucide-react'
 import { REGIONS } from '@/data/taxonomy'
 import { QuickFind } from '@/components/ui/QuickFind'
 
@@ -48,6 +48,13 @@ export default function HomePage() {
           >
             <Search className="h-4 w-4" aria-hidden />
             Full Search
+          </Link>
+          <Link
+            href="/cases"
+            className="inline-flex items-center gap-2 rounded-lg border-2 border-brand-200 bg-white px-5 py-2.5 text-sm font-semibold text-brand-700 shadow-sm transition-colors hover:border-brand-300 hover:bg-brand-50 dark:border-brand-800 dark:bg-surface-900 dark:text-brand-300 dark:hover:bg-brand-950"
+          >
+            <BookOpen className="h-4 w-4" aria-hidden />
+            Guided Cases
           </Link>
           <Link
             href="/red-flags"
