@@ -7,6 +7,9 @@ const CONFIG_FILE = path.join(ROOT, 'ai-manager', 'content-hygiene-names.json')
 
 const SEARCH_DIRS = [
   'content',
+  'docs',
+  'public',
+  'src',
   'ai-manager',
 ]
 
