@@ -84,7 +84,7 @@ export function CaseReasoningPrompt({
             <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green-700 dark:text-green-300" aria-hidden />
             <div>
               <p className="text-sm font-semibold text-green-900 dark:text-green-100">
-                Suggested diagnosis cue
+                Likely diagnosis / linked condition
               </p>
               <p className="mt-1 text-sm leading-6 text-green-900 dark:text-green-100">
                 {conditionLabel || actualTitle || 'Compare your hypothesis with the reasoning below.'}

@@ -165,12 +165,17 @@ const CASE_LEARNER_LABELS: Record<string, string> = {
   'visceral-referral-mimicking-thoracic-msk-case-01': 'Case 06 · Thoracic pain with broader screening cues',
 }
 
-export function getCaseLearnerLabel(caseSlug: string, title?: string): string {
+export function getCaseLearnerLabel(caseSlug: string, title?: string, region?: string): string {
   if (CASE_LEARNER_LABELS[caseSlug]) {
     return CASE_LEARNER_LABELS[caseSlug]
   }
 
-  const fallback = title?.replace(/^.*?:\s*/, '').trim() || caseSlug.replace(/-/g, ' ')
+  void title
+
+  const caseNumber = caseSlug.match(/case-(\d+)/i)?.[1]
+  const caseLabel = caseNumber ? `Case ${caseNumber.padStart(2, '0')}` : 'Guided case'
+  const regionLabel = region ? region.replace(/-/g, ' ') : 'MSK'
+  const fallback = `${caseLabel} - ${regionLabel} clinical reasoning case`
   return `Guided case · ${fallback}`
 }
 
@@ -298,7 +303,11 @@ export function getAllCases(): CaseListItem[] {
   region,
   caseSlug,
   title: typeof data.title === 'string' ? data.title : caseSlug,
-  displayTitle: getCaseLearnerLabel(caseSlug, typeof data.title === 'string' ? data.title : caseSlug),
+  displayTitle: getCaseLearnerLabel(
+    caseSlug,
+    typeof data.title === 'string' ? data.title : caseSlug,
+    region,
+  ),
   condition: typeof data.condition === 'string' ? data.condition : undefined,
   difficulty: typeof data.difficulty === 'string' ? data.difficulty : undefined,
   caseType: typeof data.caseType === 'string' ? data.caseType : undefined,

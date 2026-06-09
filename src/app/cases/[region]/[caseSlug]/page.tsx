@@ -20,7 +20,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const result = await getCaseContent(params.region, params.caseSlug)
-  const displayTitle = getCaseLearnerLabel(params.caseSlug, result?.frontmatter.title)
+  const displayTitle = getCaseLearnerLabel(params.caseSlug, result?.frontmatter.title, params.region)
 
   return {
     title: `${displayTitle} - Guided Case`,
@@ -45,12 +45,17 @@ export default async function GuidedCasePage({ params }: Props) {
     conditionSlug && region
       ? getCondition(regionSlug, conditionSlug)
       : null
-  const displayTitle = getCaseLearnerLabel(caseSlug, result.frontmatter.title)
-  const learnerContent = result.content.replace(/^# .*(?:\r?\n)+/, '')
+  const displayTitle = getCaseLearnerLabel(caseSlug, result.frontmatter.title, regionSlug)
+  const learnerContent = stripPreRevealLinkedConditionSection(
+    result.content.replace(/^# .*(?:\r?\n)+/, ''),
+  )
+  const learnerSections = result.sections.filter(
+    (section) => section.heading.toLowerCase() !== 'linked evidence and condition pages',
+  )
 
   return (
     <div className="flex">
-      <Sidebar currentRegion={regionSlug} currentCondition={conditionSlug} />
+      <Sidebar currentRegion={regionSlug} showConditions={false} />
 
       <div className="flex-1 min-w-0 px-4 py-8 sm:px-8 lg:px-12 xl:pr-4 pb-24 lg:pb-8">
         <Breadcrumb
@@ -93,9 +98,9 @@ export default async function GuidedCasePage({ params }: Props) {
           conditionLabel={condition?.label}
         />
 
-        {result.sections.length > 0 && (
+        {learnerSections.length > 0 && (
           <nav aria-label="Case sections" className="mb-8 flex flex-wrap gap-2 xl:hidden">
-            {result.sections.map((section) => (
+            {learnerSections.map((section) => (
               <a
                 key={section.slug}
                 href={`#${section.slug}`}
@@ -122,4 +127,8 @@ export default async function GuidedCasePage({ params }: Props) {
       </div>
     </div>
   )
+}
+
+function stripPreRevealLinkedConditionSection(content: string): string {
+  return content.replace(/\n## Linked evidence and condition pages[\s\S]*$/i, '')
 }
