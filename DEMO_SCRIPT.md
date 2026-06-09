@@ -6,11 +6,12 @@ Use this as a concise trial-run path for the MSK Clinical Reasoning Lab demo.
 
 1. Open the home page and frame the project as a learner-facing MSK clinical reasoning reference.
 2. Open `/demo` to show the trial status screen and safety cards.
-3. Navigate by region to show the upper-quadrant structure.
-4. Open a condition page and point out clinical organization, red flags, assessment cues, and management content where available.
-5. Open a published guided case and show the case-based reasoning flow.
-6. Use search or the red-flags page if available in the build.
-7. Explain that draft and archived guided cases are intentionally hidden from public route generation.
+3. Explain that upper quadrant is Phase 1 of a future whole-body physiotherapy clinical reasoning platform.
+4. Navigate by region to show the upper-quadrant structure.
+5. Open a condition page and point out clinical organization, red flags, assessment cues, and management content where available.
+6. Open a published guided case and show the case-based reasoning flow.
+7. Use search or the red-flags page if available in the build.
+8. Explain that draft and archived guided cases are intentionally hidden from public route generation.
 
 ## B. Local Case Manager
 
@@ -42,9 +43,11 @@ C:\dev\msk-upper-quadrant-reference
 ## C. Safety Story
 
 - Source metadata links generated cases back to legacy source IDs and paths.
+- The source registry and migration tracker show current pipeline state from metadata.
 - `check:hygiene` blocks draft notes, source notes, or TODO material from leaking into published content.
 - `check:sources` validates legacy source metadata and duplicate source IDs.
 - Static case route generation excludes draft and archived cases.
+- The public Netlify build and the local Case Manager are intentionally separate.
 - Git remains the audit trail; do not auto-commit generated changes.
 
 ## D. Roadmap
@@ -54,3 +57,4 @@ C:\dev\msk-upper-quadrant-reference
 - Shared admin access with authentication and review permissions.
 - GitHub pull-request publishing workflow.
 - AI-assisted case generation followed by human clinical review.
+- Whole-body physiotherapy expansion beyond the current upper-quadrant Phase 1.

@@ -1,6 +1,6 @@
 # Deployment
 
-This project is prepared for a Netlify trial demo as a static Next.js export.
+This project is prepared for a Netlify trial demo as a static Next.js export. The current public content is Phase 1 of a broader MSK Clinical Reasoning Lab, with future whole-body physiotherapy scope.
 
 ## Local Working Directory
 
@@ -61,6 +61,7 @@ Public:
 
 - Published learner site pages.
 - Published condition, region, red-flag, search, and guided case pages.
+- Public demo/status page for the trial build.
 
 Not public:
 
@@ -68,6 +69,8 @@ Not public:
 - Archived cases.
 - `ai-manager` local Case Manager tooling.
 - Source notes, TODO material, and unreviewed draft material.
+
+The local Case Manager can show source registry and metadata-driven tracker state, but it is not part of the public Netlify export.
 
 ## Draft Route Check
 

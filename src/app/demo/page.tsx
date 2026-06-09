@@ -45,6 +45,24 @@ const statusCards = [
     icon: Stethoscope,
   },
   {
+    title: 'Source registry',
+    status: 'Active',
+    description: 'Legacy source records are gathered into a deterministic registry for traceability and dashboard summaries.',
+    icon: FileSearch,
+  },
+  {
+    title: 'Migration tracker',
+    status: 'Metadata-driven',
+    description: 'Legacy station status is derived from case metadata rather than a hardcoded content list.',
+    icon: GitPullRequest,
+  },
+  {
+    title: 'Whole-body roadmap',
+    status: 'Planned',
+    description: 'The upper-quadrant build is Phase 1 of a broader physiotherapy clinical reasoning platform.',
+    icon: Users,
+  },
+  {
     title: 'Next steps',
     status: 'PowerPoint + evidence import',
     description: 'The source pipeline is being shaped for teaching decks, papers, and review-first AI assistance.',
@@ -78,6 +96,11 @@ const roadmap = [
     description: 'Generate draft cases and teaching materials for human clinical review before publishing.',
     icon: Sparkles,
   },
+  {
+    title: 'Whole-body modules',
+    description: 'Extend beyond upper quadrant into lower limb, spine, persistent pain, systemic screening, and multi-region reasoning.',
+    icon: Stethoscope,
+  },
 ]
 
 export default function DemoPage() {
@@ -94,7 +117,8 @@ export default function DemoPage() {
           <p className="mt-4 text-base leading-7 text-surface-600 dark:text-surface-400 sm:text-lg">
             This screen summarises the public learner site, the local admin prototype,
             and the review-first source pipeline for tomorrow&apos;s trial demo. It is a
-            pilot build, not final production software.
+            pilot build, not final production software. The current learner content is
+            Phase 1 of a wider whole-body physiotherapy clinical reasoning platform.
           </p>
         </div>
         <div className="mt-6 flex flex-wrap gap-3">
@@ -161,6 +185,12 @@ export default function DemoPage() {
               guided cases for clinical reasoning practice.
             </p>
             <p>
+              The long-term direction is whole-body physiotherapy clinical reasoning:
+              spine, lower limb, neuro/MSK overlap, systemic screening, persistent pain,
+              post-operative rehabilitation, return-to-sport reasoning, and multi-region
+              presentations.
+            </p>
+            <p>
               The local Case Manager/admin prototype supports source preview, draft
               creation, migration tracking, registry summaries, and preflight validation.
               It is intentionally separate from the public site.
@@ -190,7 +220,7 @@ export default function DemoPage() {
         <h2 id="roadmap-heading" className="text-xl font-semibold text-surface-900 dark:text-surface-50">
           Roadmap for the next phase
         </h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {roadmap.map((item) => {
             const Icon = item.icon
 
