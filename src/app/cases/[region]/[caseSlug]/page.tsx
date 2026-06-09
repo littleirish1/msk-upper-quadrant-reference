@@ -4,10 +4,11 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import { getRegion, getCondition } from '@/data/taxonomy'
-import { getAllCasePaths, getCaseContent } from '@/lib/mdx'
+import { getAllCasePaths, getCaseContent, getCaseLearnerLabel } from '@/lib/mdx'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
 import { mdxComponents } from '@/components/mdx/MDXComponents'
+import { CaseReasoningPrompt } from '@/components/cases/CaseReasoningPrompt'
 
 interface Props {
   params: { region: string; caseSlug: string }
@@ -19,11 +20,10 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const result = await getCaseContent(params.region, params.caseSlug)
+  const displayTitle = getCaseLearnerLabel(params.caseSlug, result?.frontmatter.title)
 
   return {
-    title: result?.frontmatter.title
-      ? `${result.frontmatter.title} — Guided Case`
-      : 'Guided Case',
+    title: `${displayTitle} - Guided Case`,
     description: 'Guided MSK clinical reasoning case.',
   }
 }
@@ -45,6 +45,8 @@ export default async function GuidedCasePage({ params }: Props) {
     conditionSlug && region
       ? getCondition(regionSlug, conditionSlug)
       : null
+  const displayTitle = getCaseLearnerLabel(caseSlug, result.frontmatter.title)
+  const learnerContent = result.content.replace(/^# .*(?:\r?\n)+/, '')
 
   return (
     <div className="flex">
@@ -57,7 +59,7 @@ export default async function GuidedCasePage({ params }: Props) {
             region
               ? { label: region.label, href: `/${regionSlug}` }
               : { label: regionSlug },
-            { label: result.frontmatter.title ?? 'Guided case' },
+            { label: displayTitle },
           ]}
         />
 
@@ -67,19 +69,13 @@ export default async function GuidedCasePage({ params }: Props) {
           </p>
 
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-surface-900 dark:text-surface-50">
-            {result.frontmatter.title ?? 'Guided case'}
+            {displayTitle}
           </h1>
 
           <div className="mt-3 flex flex-wrap gap-2 text-xs">
             {region && (
               <span className="rounded-full bg-white px-2.5 py-1 font-medium text-brand-700 dark:bg-surface-900 dark:text-brand-300">
                 Region: {region.label}
-              </span>
-            )}
-
-            {condition && (
-              <span className="rounded-full bg-white px-2.5 py-1 font-medium text-brand-700 dark:bg-surface-900 dark:text-brand-300">
-                Condition link: {condition.label}
               </span>
             )}
 
@@ -90,6 +86,12 @@ export default async function GuidedCasePage({ params }: Props) {
             )}
           </div>
         </div>
+
+        <CaseReasoningPrompt
+          displayTitle={displayTitle}
+          actualTitle={result.frontmatter.title}
+          conditionLabel={condition?.label}
+        />
 
         {result.sections.length > 0 && (
           <nav aria-label="Case sections" className="mb-8 flex flex-wrap gap-2 xl:hidden">
@@ -107,7 +109,7 @@ export default async function GuidedCasePage({ params }: Props) {
 
         <article className="prose-clinical">
           <MDXRemote
-            source={result.content}
+            source={learnerContent}
             components={mdxComponents}
             options={{
               mdxOptions: {

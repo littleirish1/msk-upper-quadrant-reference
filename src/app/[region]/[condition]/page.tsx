@@ -94,7 +94,7 @@ export default async function ConditionPage({ params }: Props) {
                   href={`/cases/${caseItem.region}/${caseItem.caseSlug}`}
                   className="rounded-lg border border-brand-200 bg-white p-3 text-sm font-semibold text-brand-700 transition-colors hover:border-brand-300 hover:text-brand-900 dark:border-brand-800 dark:bg-surface-900 dark:text-brand-300 dark:hover:border-brand-600 dark:hover:text-brand-100"
                 >
-                  {caseItem.title}
+                  {caseItem.displayTitle}
                 </Link>
               ))}
             </div>

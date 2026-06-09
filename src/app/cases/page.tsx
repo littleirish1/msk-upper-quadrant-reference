@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { getAllCases } from '@/lib/mdx'
-import { getRegion, getCondition } from '@/data/taxonomy'
+import { getRegion } from '@/data/taxonomy'
 
 export default function CasesPage() {
   const cases = getAllCases()
@@ -40,9 +40,6 @@ export default function CasesPage() {
         <div className="grid gap-4 sm:grid-cols-2">
           {cases.map((caseItem) => {
             const region = getRegion(caseItem.region)
-            const condition = caseItem.condition
-              ? getCondition(caseItem.region, caseItem.condition)
-              : null
 
             return (
               <section
@@ -68,37 +65,16 @@ export default function CasesPage() {
                 </div>
 
                 <h2 className="mt-3 text-xl font-semibold text-surface-900 dark:text-surface-50">
-                  {caseItem.title}
+                  {caseItem.displayTitle}
                 </h2>
-
-                {condition && (
-                  <p className="mt-1 text-xs font-medium text-brand-600 dark:text-brand-400">
-                    Linked condition: {condition.label}
-                  </p>
-                )}
 
                 <p className="mt-3 text-sm leading-relaxed text-surface-600 dark:text-surface-400">
                   {caseItem.excerpt}
                 </p>
 
-                {caseItem.learningFocus.length > 0 && (
-                  <div className="mt-4">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-surface-500 dark:text-surface-400">
-                      Learning focus
-                    </p>
-
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {caseItem.learningFocus.map((focus) => (
-                        <span
-                          key={focus}
-                          className="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-medium text-brand-700 dark:bg-brand-950 dark:text-brand-300"
-                        >
-                          {focus}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                <p className="mt-3 text-xs font-medium text-surface-500 dark:text-surface-400">
+                  Diagnosis and reasoning are revealed inside the case.
+                </p>
 
                 <Link
                   href={`/cases/${caseItem.region}/${caseItem.caseSlug}`}

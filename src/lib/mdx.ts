@@ -143,7 +143,7 @@ export function getAllMdxPaths(): Array<{ region: string; condition: string }> {
  * Build a plain-text excerpt from MDX content (strips JSX/markdown syntax).
  */
 export function extractExcerpt(mdx: string, maxLength = 200): string {
-  return mdx
+  return stripFirstHeading(mdx)
     .replace(/---[\s\S]*?---/, '')
     .replace(/<[^>]+>/g, '')
     .replace(/[#*`[\]]/g, '')
@@ -151,6 +151,29 @@ export function extractExcerpt(mdx: string, maxLength = 200): string {
     .trim()
     .slice(0, maxLength)
 }
+
+function stripFirstHeading(mdx: string): string {
+  return mdx.replace(/^# .*(?:\r?\n)+/, '')
+}
+
+const CASE_LEARNER_LABELS: Record<string, string> = {
+  'cervical-radiculopathy-case-01': 'Case 01 · Neck and arm symptoms',
+  'early-degenerative-cervical-myelopathy-case-01': 'Case 02 · Hand clumsiness and heavy legs',
+  'distal-biceps-rupture-case-01': 'Case 03 · Sudden anterior elbow pain after lifting',
+  'rcrsp-case-01': 'Case 04 · Lateral shoulder pain with overhead activity',
+  'adhesive-capsulitis-case-01': 'Case 05 · Progressive shoulder stiffness',
+  'visceral-referral-mimicking-thoracic-msk-case-01': 'Case 06 · Thoracic pain with broader screening cues',
+}
+
+export function getCaseLearnerLabel(caseSlug: string, title?: string): string {
+  if (CASE_LEARNER_LABELS[caseSlug]) {
+    return CASE_LEARNER_LABELS[caseSlug]
+  }
+
+  const fallback = title?.replace(/^.*?:\s*/, '').trim() || caseSlug.replace(/-/g, ' ')
+  return `Guided case · ${fallback}`
+}
+
 export interface CaseContent {
   content: string
   frontmatter: {
@@ -240,6 +263,7 @@ export interface CaseListItem {
   lastReviewed?: string
   reviewedBy?: string
   excerpt: string
+  displayTitle: string
 }
 
 
@@ -274,6 +298,7 @@ export function getAllCases(): CaseListItem[] {
   region,
   caseSlug,
   title: typeof data.title === 'string' ? data.title : caseSlug,
+  displayTitle: getCaseLearnerLabel(caseSlug, typeof data.title === 'string' ? data.title : caseSlug),
   condition: typeof data.condition === 'string' ? data.condition : undefined,
   difficulty: typeof data.difficulty === 'string' ? data.difficulty : undefined,
   caseType: typeof data.caseType === 'string' ? data.caseType : undefined,
