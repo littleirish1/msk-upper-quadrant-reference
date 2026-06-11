@@ -135,6 +135,13 @@ export default function DemoPage() {
           >
             Published cases
           </Link>
+          <Link
+            href="/future"
+            className="inline-flex items-center gap-2 rounded-lg border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-semibold text-brand-700 shadow-sm transition-colors hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950 dark:text-brand-300 dark:hover:bg-brand-900"
+          >
+            Future direction
+            <Sparkles className="h-4 w-4" aria-hidden />
+          </Link>
         </div>
       </section>
 
@@ -220,6 +227,26 @@ export default function DemoPage() {
         <h2 id="roadmap-heading" className="text-xl font-semibold text-surface-900 dark:text-surface-50">
           Roadmap for the next phase
         </h2>
+        <div className="mt-4 rounded-xl border border-brand-200 bg-brand-50 p-5 dark:border-brand-800 dark:bg-brand-950/30">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 className="text-sm font-semibold text-surface-900 dark:text-surface-50">
+                Future Direction page
+              </h3>
+              <p className="mt-1 text-sm leading-6 text-surface-600 dark:text-surface-300">
+                A public-safe summary of planned interactive cases, local AI support,
+                source-informed growth, and whole-body expansion.
+              </p>
+            </div>
+            <Link
+              href="/future"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600"
+            >
+              View future direction
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
+          </div>
+        </div>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {roadmap.map((item) => {
             const Icon = item.icon
