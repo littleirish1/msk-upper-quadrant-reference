@@ -8,7 +8,11 @@ import { getAllCasePaths, getCaseContent, getCaseLearnerLabel } from '@/lib/mdx'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
 import { mdxComponents } from '@/components/mdx/MDXComponents'
-import { CaseReasoningPrompt } from '@/components/cases/CaseReasoningPrompt'
+import {
+  CaseReasoningPrompt,
+  type EnhancedReasoningFeedbackConfig,
+} from '@/components/cases/CaseReasoningPrompt'
+import { ConversationCase } from '@/components/cases/ConversationCase'
 
 interface Props {
   params: { region: string; caseSlug: string }
@@ -52,6 +56,8 @@ export default async function GuidedCasePage({ params }: Props) {
   const learnerSections = result.sections.filter(
     (section) => section.heading.toLowerCase() !== 'linked evidence and condition pages',
   )
+  const enhancedFeedback = getEnhancedFeedbackConfig(caseSlug)
+  const showConversationPreview = caseSlug === 'visceral-referral-mimicking-thoracic-msk-case-01'
 
   return (
     <div className="flex">
@@ -92,38 +98,41 @@ export default async function GuidedCasePage({ params }: Props) {
           </div>
         </div>
 
+        {showConversationPreview && <ConversationCase />}
+
         <CaseReasoningPrompt
           displayTitle={displayTitle}
           actualTitle={result.frontmatter.title}
           conditionLabel={condition?.label}
-        />
+          enhancedFeedback={enhancedFeedback}
+        >
+          {learnerSections.length > 0 && (
+            <nav aria-label="Case sections" className="mb-8 flex flex-wrap gap-2 xl:hidden">
+              {learnerSections.map((section) => (
+                <a
+                  key={section.slug}
+                  href={`#${section.slug}`}
+                  className="rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 transition-colors hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950 dark:text-brand-300 dark:hover:bg-brand-900"
+                >
+                  {section.heading}
+                </a>
+              ))}
+            </nav>
+          )}
 
-        {learnerSections.length > 0 && (
-          <nav aria-label="Case sections" className="mb-8 flex flex-wrap gap-2 xl:hidden">
-            {learnerSections.map((section) => (
-              <a
-                key={section.slug}
-                href={`#${section.slug}`}
-                className="rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950 dark:text-brand-300 dark:hover:bg-brand-900 transition-colors"
-              >
-                {section.heading}
-              </a>
-            ))}
-          </nav>
-        )}
-
-        <article className="prose-clinical">
-          <MDXRemote
-            source={learnerContent}
-            components={mdxComponents}
-            options={{
-              mdxOptions: {
-                remarkPlugins: [remarkGfm],
-                rehypePlugins: [rehypeSlug],
-              },
-            }}
-          />
-        </article>
+          <article className="prose-clinical">
+            <MDXRemote
+              source={learnerContent}
+              components={mdxComponents}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                  rehypePlugins: [rehypeSlug],
+                },
+              }}
+            />
+          </article>
+        </CaseReasoningPrompt>
       </div>
     </div>
   )
@@ -131,4 +140,83 @@ export default async function GuidedCasePage({ params }: Props) {
 
 function stripPreRevealLinkedConditionSection(content: string): string {
   return content.replace(/\n## Linked evidence and condition pages[\s\S]*$/i, '')
+}
+
+function getEnhancedFeedbackConfig(
+  caseSlug: string,
+): EnhancedReasoningFeedbackConfig | undefined {
+  if (caseSlug !== 'cervical-radiculopathy-case-01') {
+    return undefined
+  }
+
+  return {
+    badgeLabel: 'Enhanced reasoning feedback preview',
+    conceptGroups: {
+      hypothesis: [
+        'cervical nerve root',
+        'cervical radiculopathy',
+        'nerve root irritation',
+        'nerve root',
+        'c6 pattern',
+        'radicular pain',
+        'radicular',
+      ],
+      supportingFeatures: [
+        'arm pain',
+        'dermatomal distribution',
+        'dermatome',
+        'thumb',
+        'index finger',
+        'paresthesia',
+        'pins and needles',
+        'reduced sensation',
+        'reflex change',
+        'biceps reflex',
+        'weakness',
+        'myotomal weakness',
+        'spurling',
+        'distraction relief',
+        'ultt',
+        'upper limb tension',
+        'shoulder abduction relief',
+        'bakody',
+      ],
+      cautionSafety: [
+        'myelopathy',
+        'bilateral symptoms',
+        'gait change',
+        'hand clumsiness',
+        'upper motor neuron',
+        'upper motor neurone',
+        'progressive weakness',
+        'bowel',
+        'bladder',
+        'systemic red flags',
+        'cancer',
+        'fever',
+        'weight loss',
+      ],
+      nextAssessment: [
+        'neurological exam',
+        'neurological examination',
+        'dermatomes',
+        'myotomes',
+        'reflexes',
+        'myelopathy screen',
+        'spurling',
+        'distraction',
+        'ultt',
+        'upper limb tension',
+        'cervical range of motion',
+        'shoulder screen',
+      ],
+      localOnlyPattern: [
+        'shoulder',
+        'rotator cuff',
+        'impingement',
+        'local arm pain',
+        'muscle strain',
+      ],
+    },
+  }
 }

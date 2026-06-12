@@ -10,6 +10,7 @@ const requiredRoutes = [
   ['/', path.join(OUT_DIR, 'index.html')],
   ['/cases', path.join(OUT_DIR, 'cases', 'index.html')],
   ['/demo', path.join(OUT_DIR, 'demo', 'index.html')],
+  ['/future', path.join(OUT_DIR, 'future', 'index.html')],
   ['/red-flags', path.join(OUT_DIR, 'red-flags', 'index.html')],
   ['/search', path.join(OUT_DIR, 'search', 'index.html')],
 ]

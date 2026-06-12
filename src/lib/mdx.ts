@@ -143,8 +143,7 @@ export function getAllMdxPaths(): Array<{ region: string; condition: string }> {
  * Build a plain-text excerpt from MDX content (strips JSX/markdown syntax).
  */
 export function extractExcerpt(mdx: string, maxLength = 200): string {
-  return stripFirstHeading(mdx)
-    .replace(/---[\s\S]*?---/, '')
+  return stripFirstHeading(mdx.replace(/---[\s\S]*?---/, '').trimStart())
     .replace(/<[^>]+>/g, '')
     .replace(/[#*`[\]]/g, '')
     .replace(/\s+/g, ' ')
