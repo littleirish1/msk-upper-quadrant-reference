@@ -4,6 +4,66 @@ This plan describes a future local-only retrieval layer for the MSK Clinical Rea
 
 The goal is to help the local Case Manager find and compare source material across legacy stations, PowerPoints, PDFs, evidence notes, and guided case MDX while keeping the public learner site unaffected.
 
+## Trust-approved AI pathway: Microsoft Copilot-first option
+
+The Trust currently has an agreed Microsoft Copilot licence. For institutional AI planning, the first pathway to explore should be Microsoft Copilot, Copilot Studio, and the Trust-approved Microsoft 365 environment, not a direct jump to external OpenAI, LangChain, or public chatbot integration.
+
+This does not approve implementation. Copilot use still requires local information governance, IT/security, clinical safety, and procurement confirmation.
+
+Why Copilot matters:
+
+- The agreed Trust licence may make Copilot or Copilot Studio the safest first institutional AI route.
+- It may align with existing Microsoft 365, Entra ID, SharePoint, Teams, Purview, and audit arrangements.
+- It may reduce the need to send teaching material to an unapproved external AI provider during early pilots.
+- It gives educators a more familiar environment for early source-grounded drafting experiments.
+
+Possible architecture options:
+
+- Option A - Public site remains static, no AI: current safest deployment on Netlify, no user data, no AI processing.
+- Option B - Local/back-office AI script-maker: `ai-manager` remains local/private; AI helps draft scripts, cases, red herrings, and feedback rules; human review required.
+- Option C - Trust Microsoft Copilot / Copilot Studio integration: a future Trust-approved agent could help educators generate draft cases from approved source material, potentially grounded in SharePoint, Teams, or other approved document stores; output enters a draft/review queue only.
+- Option D - External RAG/vector architecture: only if Trust-approved and needed later; requires DPIA, data-flow mapping, contracts, security review, retention policy, and model/provider assessment.
+
+Governance requirements before any AI integration:
+
+- Confirm Trust licence scope.
+- Confirm whether Copilot Chat, Microsoft 365 Copilot, or Copilot Studio is available.
+- Confirm whether custom agents are allowed.
+- Confirm approved data locations.
+- Confirm whether teaching materials can be processed.
+- Confirm whether patient-like scenarios must be synthetic or anonymised.
+- Confirm retention, audit, and logging.
+- Confirm who reviews generated clinical content.
+- Confirm whether output is educational only and not clinical decision support.
+
+AI content safety model:
+
+- AI can draft but must not publish.
+- Human review is required before public release.
+- Published content requires an approved review state.
+- No generated case should bypass hygiene, source, route, or preflight checks.
+- No patient-identifiable data should be entered.
+- No clinical advice should be generated for real patients.
+- Educational disclaimers should remain clear.
+
+Recommended post-demo path:
+
+1. Document Copilot governance questions.
+2. Use Copilot manually, if permitted, to help draft one reviewed case script from non-sensitive teaching content.
+3. Build the local case-script template and review checklist.
+4. Explore Copilot Studio only if the Trust allows custom agents and source grounding.
+5. Consider external RAG/vector databases only if Copilot cannot meet the requirement and governance approval exists.
+
+AI integration decision matrix:
+
+| Pathway | Data risk | Implementation complexity | Governance burden | Demo value | Scalability | Recommended timing |
+| --- | --- | --- | --- | --- | --- | --- |
+| Static reviewed content | Low | Low | Low | High | Medium | Now |
+| Local-only `ai-manager` | Low to medium | Medium | Medium | Medium | Medium | Post-demo prototype |
+| Microsoft Copilot / Copilot Studio | Medium | Medium | Medium to high | High for Trust setting | High if approved | Preferred institutional exploration |
+| External OpenAI/LangChain/RAG | Medium to high | High | High | Medium | High | Later, only if approved |
+| Institution-hosted private RAG | Medium | High | High | Medium | High | Later institutional phase |
+
 ## Friday Demo Boundary
 
 Vector search is not needed for the Friday demo. The demo already depends on reviewed public pages, published guided cases, draft route exclusion, the source registry, the metadata-driven migration tracker, and validation scripts. Adding embeddings, LangChain, Chroma, or database state before the demo would increase deployment risk without improving the public learner walkthrough.
@@ -12,6 +72,7 @@ The right post-demo sequence is:
 
 - Keep the public learner site static and demo-safe.
 - Keep AI/vector work local and back-office only.
+- Explore Trust-approved Microsoft Copilot or Copilot Studio before external AI providers.
 - Start with documentation and schema alignment.
 - Add keyword and metadata search before embeddings.
 - Add source-grounded drafting only after traceable retrieval works.
@@ -270,7 +331,7 @@ Recommended use:
 
 ## Possible LangChain Role
 
-LangChain may be useful later, but should not be added before the local data model is proven.
+LangChain may be useful later, but should not be added before the local data model is proven and the Trust-approved Copilot pathway has been assessed.
 
 Potential roles:
 

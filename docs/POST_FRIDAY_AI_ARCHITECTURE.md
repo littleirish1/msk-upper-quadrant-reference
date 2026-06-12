@@ -4,11 +4,73 @@ This document sketches the next architecture layer for the MSK Clinical Reasonin
 
 The current upper-quadrant work remains Phase 1 of a broader whole-body physiotherapy clinical reasoning platform. The public learner site should stay static, review-first, and demo-safe while local source-management tools evolve under `ai-manager`.
 
+## Trust-approved AI pathway: Microsoft Copilot-first option
+
+The Trust currently has an agreed Microsoft Copilot licence. That changes the preferred institutional AI planning sequence: Microsoft Copilot, Copilot Studio, and the Trust-approved Microsoft 365 environment should be considered before direct OpenAI, LangChain, or public chatbot integration.
+
+This is not an implementation decision or governance approval. Any Copilot use still needs local information governance, IT/security, clinical safety, and procurement approval.
+
+Why Copilot matters:
+
+- The Trust already has an agreed Copilot licence.
+- Copilot or Copilot Studio may be the safest first institutional AI pathway.
+- It may reduce the need for an unapproved external AI provider during early pilots.
+- It may align better with existing Microsoft 365, Entra ID, SharePoint, Teams, Purview, audit, and governance arrangements.
+
+Possible architecture options:
+
+| Option | Description | Boundary |
+| --- | --- | --- |
+| A - Static public site, no AI | Keep the Netlify learner site static and reviewed. | Safest current deployment; no user data or AI processing. |
+| B - Local/back-office script-maker | Keep `ai-manager` local/private while AI helps draft scripts, cases, red herrings, and feedback rules. | Draft only; human review required; no automatic publishing. |
+| C - Trust Microsoft Copilot / Copilot Studio | Future Trust-approved educator agent grounded in approved Microsoft 365 sources such as SharePoint or Teams. | Output goes to draft/review queue only; needs IG/IT/security approval. |
+| D - External RAG/vector architecture | External OpenAI/LangChain/RAG stack only if Trust-approved and needed later. | Requires DPIA, data-flow mapping, contracts, security review, retention policy, and provider assessment. |
+
+Governance questions before any AI integration:
+
+- Confirm the Trust licence scope.
+- Confirm whether Copilot Chat, Microsoft 365 Copilot, or Copilot Studio is available.
+- Confirm whether custom agents are allowed.
+- Confirm approved data locations.
+- Confirm whether teaching materials can be processed.
+- Confirm whether patient-like scenarios must be synthetic or anonymised.
+- Confirm retention, audit, and logging arrangements.
+- Confirm who reviews generated clinical content.
+- Confirm whether output is educational only and not clinical decision support.
+
+AI content safety model:
+
+- AI can draft.
+- Humans review.
+- Published content requires approved review state.
+- No generated case should bypass hygiene, source, route, or preflight checks.
+- No patient-identifiable data should be entered.
+- No clinical advice should be given to real patients.
+- Clear educational disclaimers should remain visible.
+
+Recommended post-demo path:
+
+1. Document Copilot governance questions.
+2. Use Copilot manually, if permitted, to help draft one reviewed case script from non-sensitive teaching content.
+3. Build a local case-script template and review checklist.
+4. Explore a Copilot Studio agent only if the Trust allows custom agents and approved source grounding.
+5. Consider external RAG/vector databases only if the Copilot pathway cannot meet requirements and governance approval exists.
+
+AI integration decision matrix:
+
+| Pathway | Data risk | Implementation complexity | Governance burden | Demo value | Scalability | Recommended timing |
+| --- | --- | --- | --- | --- | --- | --- |
+| Static reviewed content | Low | Low | Low | High | Medium | Now |
+| Local-only `ai-manager` | Low to medium | Medium | Medium | Medium | Medium | Post-demo prototype |
+| Microsoft Copilot / Copilot Studio | Medium | Medium | Medium to high | High for Trust setting | High if approved | Preferred institutional exploration |
+| External OpenAI/LangChain/RAG | Medium to high | High | High | Medium | High | Later, only if approved |
+| Institution-hosted private RAG | Medium | High | High | Medium | High | Later institutional phase |
+
 ## Operating Principles
 
 - Public learner site: static, published, reviewed learner content only.
 - Local Case Manager: back-office tool for source review, draft generation, registry inspection, and future retrieval.
-- RAG/vector search: post-demo local capability, not required for the Friday trial.
+- RAG/vector search: post-demo local capability, not required for the Friday trial; external RAG should come after Trust-approved Copilot options are assessed.
 - Generated content: always draft or `needs-review` until a human reviewer promotes it.
 - Git: source of truth and audit trail for reviewed content, metadata, and generated artifacts.
 - Source metadata: every output must trace back to `sourceType`, `sourceId`, `sourcePath`, and review state.
