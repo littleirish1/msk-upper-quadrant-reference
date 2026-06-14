@@ -428,7 +428,7 @@
       "suggestedRegion": "wrist-hand",
       "priority": "high",
       "sourceStatus": "draft-created",
-      "targetCasePath": "content/cases/wrist - hand/scaphoid-fracture-acute-presentation-case-01.mdx",
+      "targetCasePath": "content/cases/wrist-hand/scaphoid-fracture-acute-presentation-case-01.mdx",
       "targetCaseStatus": "draft",
       "reviewStatus": "needs-review"
     },
@@ -593,9 +593,9 @@
       "reviewStatus": "reviewed"
     },
     {
-      "path": "content/cases/wrist - hand/scaphoid-fracture-acute-presentation-case-01.mdx",
+      "path": "content/cases/wrist-hand/scaphoid-fracture-acute-presentation-case-01.mdx",
       "title": "Wrist/Hand Case 01: Suspected Scaphoid Fracture",
-      "region": "wrist - hand",
+      "region": "wrist-hand",
       "status": "draft",
       "sourceType": "legacy-html-case-bank",
       "sourceId": "s40",

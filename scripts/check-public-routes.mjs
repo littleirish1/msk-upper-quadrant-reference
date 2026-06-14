@@ -42,17 +42,22 @@ if (fs.existsSync(path.join(OUT_DIR, 'ai-manager'))) {
 const cases = readCases()
 
 for (const item of cases) {
-  const routeFile = path.join(OUT_DIR, 'cases', item.region, item.caseSlug, 'index.html')
+  const publicRouteFile = path.join(OUT_DIR, 'cases', item.region, item.publicSlug, 'index.html')
+  const internalRouteFile = path.join(OUT_DIR, 'cases', item.region, item.caseSlug, 'index.html')
 
   if (isPrivateStatus(item.status)) {
-    if (fs.existsSync(routeFile)) {
+    if (fs.existsSync(publicRouteFile) || fs.existsSync(internalRouteFile)) {
       fail(`Private case route was generated: ${item.route}`)
     }
     continue
   }
 
-  if (!fs.existsSync(routeFile)) {
+  if (!fs.existsSync(publicRouteFile)) {
     fail(`Published case route missing: ${item.route}`)
+  }
+
+  if (fs.existsSync(internalRouteFile) && item.publicSlug !== item.caseSlug) {
+    fail(`Diagnostic internal case route was generated: /cases/${item.region}/${item.caseSlug}`)
   }
 }
 
@@ -93,12 +98,16 @@ function readCases() {
       const region = path.basename(path.dirname(file))
       const caseSlug = path.basename(file, '.mdx')
       const status = typeof data.status === 'string' ? data.status : 'published'
+      const publicSlug = typeof data.publicSlug === 'string' && data.publicSlug.trim()
+        ? data.publicSlug.trim()
+        : caseSlug
 
       return {
         region,
         caseSlug,
+        publicSlug,
         status,
-        route: `/cases/${region}/${caseSlug}`,
+        route: `/cases/${region}/${publicSlug}`,
       }
     })
 }

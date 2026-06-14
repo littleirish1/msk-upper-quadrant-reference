@@ -77,7 +77,7 @@ export default function CasesPage() {
                 </p>
 
                 <Link
-                  href={`/cases/${caseItem.region}/${caseItem.caseSlug}`}
+                  href={`/cases/${caseItem.region}/${caseItem.publicSlug}`}
                   className="mt-4 inline-flex rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
                 >
                   Start case

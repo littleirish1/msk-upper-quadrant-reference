@@ -185,9 +185,12 @@ export interface CaseContent {
     region?: string
     condition?: string
     difficulty?: string
+    publicSlug?: string
     [key: string]: unknown
   }
   sections: Array<{ heading: string; slug: string; content: string }>
+  caseSlug: string
+  publicSlug: string
 }
 
 /**
@@ -213,7 +216,36 @@ export async function getCaseContent(
     content,
     frontmatter: data,
     sections,
+    caseSlug,
+    publicSlug: getCasePublicSlug(caseSlug, data, region),
   }
+}
+
+export function resolveCaseSlugFromPublicSlug(region: string, publicSlug: string): string | null {
+  const casesDir = path.join(CONTENT_DIR, 'cases', region)
+
+  if (!fs.existsSync(casesDir)) return null
+
+  const files = fs.readdirSync(casesDir, { withFileTypes: true })
+    .filter(f => f.isFile() && f.name.endsWith('.mdx'))
+
+  for (const file of files) {
+    const caseSlug = file.name.replace('.mdx', '')
+    const filePath = path.join(casesDir, file.name)
+    const raw = fs.readFileSync(filePath, 'utf-8')
+    const { data } = matter(raw)
+    const status = typeof data.status === 'string' ? data.status : 'published'
+
+    if (isPrivateCaseStatus(status)) {
+      continue
+    }
+
+    if (getCasePublicSlug(caseSlug, data, region) === publicSlug) {
+      return caseSlug
+    }
+  }
+
+  return null
 }
 
 /**
@@ -247,7 +279,7 @@ export function getAllCasePaths(): Array<{ region: string; caseSlug: string }> {
       }
 
       const caseSlug = file.name.replace('.mdx', '')
-      results.push({ region, caseSlug })
+      results.push({ region, caseSlug: getCasePublicSlug(caseSlug, data, region) })
     }
   }
 
@@ -257,6 +289,7 @@ export function getAllCasePaths(): Array<{ region: string; caseSlug: string }> {
 export interface CaseListItem {
   region: string
   caseSlug: string
+  publicSlug: string
   title: string
   condition?: string
   difficulty?: string
@@ -311,6 +344,7 @@ export function getAllCases(): CaseListItem[] {
   difficulty: typeof data.difficulty === 'string' ? data.difficulty : undefined,
   caseType: typeof data.caseType === 'string' ? data.caseType : undefined,
   status: typeof data.status === 'string' ? data.status : 'published',
+  publicSlug: getCasePublicSlug(caseSlug, data, region),
   learningFocus: Array.isArray(data.learningFocus)
     ? data.learningFocus.filter((item): item is string => typeof item === 'string')
     : [],
@@ -329,4 +363,19 @@ return results
 
 function isPrivateCaseStatus(status: string): boolean {
   return ['draft', 'archived'].includes(status.toLowerCase())
+}
+
+function getCasePublicSlug(
+  caseSlug: string,
+  data: Record<string, unknown>,
+  region?: string,
+): string {
+  if (typeof data.publicSlug === 'string' && data.publicSlug.trim()) {
+    return data.publicSlug.trim()
+  }
+
+  const caseNumber = caseSlug.match(/case-(\d+)/i)?.[1]
+  const caseLabel = caseNumber ? `case-${caseNumber.padStart(2, '0')}` : 'case'
+  const regionLabel = region ? region.replace(/[^a-z0-9]+/gi, '-').toLowerCase() : 'msk'
+  return `${caseLabel}-${regionLabel}-clinical-reasoning`
 }

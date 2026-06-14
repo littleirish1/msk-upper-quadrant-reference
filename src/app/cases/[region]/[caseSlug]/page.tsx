@@ -4,7 +4,12 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import { getRegion, getCondition } from '@/data/taxonomy'
-import { getAllCasePaths, getCaseContent, getCaseLearnerLabel } from '@/lib/mdx'
+import {
+  getAllCasePaths,
+  getCaseContent,
+  getCaseLearnerLabel,
+  resolveCaseSlugFromPublicSlug,
+} from '@/lib/mdx'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
 import { mdxComponents } from '@/components/mdx/MDXComponents'
@@ -23,8 +28,15 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const result = await getCaseContent(params.region, params.caseSlug)
-  const displayTitle = getCaseLearnerLabel(params.caseSlug, result?.frontmatter.title, params.region)
+  const internalCaseSlug = resolveCaseSlugFromPublicSlug(params.region, params.caseSlug)
+  const result = internalCaseSlug
+    ? await getCaseContent(params.region, internalCaseSlug)
+    : null
+  const displayTitle = getCaseLearnerLabel(
+    internalCaseSlug ?? params.caseSlug,
+    result?.frontmatter.title,
+    params.region,
+  )
 
   return {
     title: `${displayTitle} - Guided Case`,
@@ -33,7 +45,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function GuidedCasePage({ params }: Props) {
-  const { region: regionSlug, caseSlug } = params
+  const { region: regionSlug, caseSlug: publicCaseSlug } = params
+
+  const caseSlug = resolveCaseSlugFromPublicSlug(regionSlug, publicCaseSlug)
+  if (!caseSlug) notFound()
 
   const result = await getCaseContent(regionSlug, caseSlug)
   if (!result) notFound()
