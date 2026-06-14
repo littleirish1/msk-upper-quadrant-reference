@@ -1,259 +1,151 @@
-# Architecture — MSK Upper Quadrant Clinical Reference
+# Architecture
 
-## System Overview
+## Current Shape
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    STATIC NEXT.JS SITE                          │
-│                                                                 │
-│  ┌─────────────────┐    ┌──────────────────┐                   │
-│  │   App Router    │    │   MDX Content    │                   │
-│  │  (Next.js 14)   │───▶│  (content/**/)   │                   │
-│  └────────┬────────┘    └──────────────────┘                   │
-│           │                                                     │
-│  ┌────────▼────────┐    ┌──────────────────┐                   │
-│  │   Components    │    │   Taxonomy Data  │                   │
-│  │  Layout + MDX   │    │ (taxonomy.ts)    │                   │
-│  └────────┬────────┘    └──────────────────┘                   │
-│           │                                                     │
-│  ┌────────▼────────┐    ┌──────────────────┐                   │
-│  │  Static Export  │───▶│  /out/ directory │                   │
-│  │  (next export)  │    │  (deployable)    │                   │
-│  └─────────────────┘    └──────────────────┘                   │
-└─────────────────────────────────────────────────────────────────┘
-```
+The MSK Clinical Reasoning Lab is a static Next.js learner site plus local-only back-office tooling. The current public content is Phase 1 upper-quadrant material; the source pipeline and docs are being kept broad enough for future whole-body physiotherapy reasoning content.
 
----
+The public app is intentionally simple:
 
-## Tech Stack Rationale
+- Next.js App Router with static export.
+- No public backend.
+- No public AI, vector, database, or admin endpoints.
+- Reviewed MDX content rendered at build time.
+- Netlify deploys the static `out` directory after `npm run preflight`.
 
-| Concern | Choice | Rationale |
-|---------|--------|-----------|
-| Framework | Next.js 14 (App Router) | Static export, SEO, modern React patterns, Vercel-native |
-| Language | TypeScript | Type safety for taxonomy + frontmatter validation |
-| Styling | Tailwind CSS | Utility-first, dark mode support, no runtime CSS |
-| Content | MDX (next-mdx-remote) | Markdown + React components; author-friendly |
-| Search | FlexSearch (client-side) | Zero server cost; pre-built JSON index |
-| Themes | next-themes | SSR-safe dark mode without flash |
-| Fonts | Inter (Google Fonts) | Professional, legible, clinical UX convention |
-| Deployment | Vercel / Netlify | Free tier, automatic deploys, zero ops |
+## Content Model
 
----
+### Conditions
 
-## URL Structure
+Condition content is stored as one flat MDX file per condition:
 
-```
-/                                     → Home (region grid)
-/[region]                             → Region overview
-/[region]/[condition]                 → Redirect → /[region]/[condition]/overview
-/[region]/[condition]/[section]       → Content page (MDX rendered)
-/search                               → Full-text search (client-side)
+```text
+content/{region}/{condition}.mdx
 ```
 
-### Example URLs
+`src/lib/mdx.ts` reads that file with `getConditionContent(region, condition)`, parses frontmatter with `gray-matter`, sanitizes MDX notation, and splits the body into in-page sections by `##` headings.
 
-```
-/shoulder
-/shoulder/rotator-cuff-tendinopathy
-/shoulder/rotator-cuff-tendinopathy/overview
-/shoulder/rotator-cuff-tendinopathy/special-tests
-/shoulder/rotator-cuff-tendinopathy/red-flags
-/shoulder/rotator-cuff-tendinopathy/management
-/cervical/cervical-radiculopathy/overview
-/wrist-hand/carpal-tunnel-syndrome/special-tests
+Those sections are page anchors. They are not separate MDX files and they are not separate routes.
+
+Public condition route:
+
+```text
+/{region}/{condition}
 ```
 
----
+Example:
 
-## Data Model
-
-### Taxonomy (compile-time, `src/data/taxonomy.ts`)
-
-```
-Region
-  slug: string          (URL segment)
-  label: string         (display name)
-  conditions: Condition[]
-
-Condition
-  slug: string
-  label: string
-  region: RegionSlug
-  icd10?: string
-
-Section (fixed set of 8)
-  overview
-  special-tests
-  red-flags
-  clinical-frameworks
-  outcome-measures
-  evidence-based-diagnosis
-  differential-diagnosis
-  management
+```text
+/cervical/cervical-radiculopathy
 ```
 
-### Content (MDX frontmatter)
+### Guided Cases
 
-```
-ConditionFrontmatter
-  title: string
-  region: RegionSlug
-  condition: string
-  section: SectionSlug
-  lastReviewed: ISO date string
-  reviewedBy?: string
-  evidenceGrade?: A | B | C | D | GPP
-  icd10?: string
-  tags?: string[]
-  relatedConditions?: string[]
-  citations?: Citation[]
+Guided case content is stored separately:
+
+```text
+content/cases/{region}/{caseSlug}.mdx
 ```
 
----
+`src/lib/mdx.ts` reads case files, excludes draft and archived cases from public lists/routes, and maps internal case slugs to neutral `publicSlug` values when present.
 
-## Content Authoring Pipeline
+Public case route:
 
-```
-Author writes .mdx file
-         │
-         ▼
-Frontmatter parsed by gray-matter (lib/mdx.ts)
-         │
-         ▼
-MDX compiled by next-mdx-remote (server component)
-         │
-         ├─── Custom components injected (MDXComponents.tsx)
-         │
-         ▼
-Page rendered at build time (generateStaticParams)
-         │
-         ▼
-HTML + JS written to /out/
+```text
+/cases/{region}/{publicSlug}
 ```
 
----
+Internal case filenames and source metadata remain available for provenance, but learner-facing public routes and case cards should avoid revealing the diagnosis before the reveal step.
 
-## Search Architecture
+## Route Generation
 
-```
-Build time:
-  scripts/build-search-index.mjs
-    → reads all content/*.mdx files
-    → extracts title + plain text excerpt
-    → writes /public/search-index.json
+Static routes are generated from source files and taxonomy metadata:
 
-Runtime (client):
-  /search page loads
-    → fetches /search-index.json (single HTTP request)
-    → cached in component state
-    → simple substring search on user input
-    → results rendered with links back to content pages
-```
+- Region pages come from the taxonomy.
+- Condition pages come from flat MDX files and taxonomy routes.
+- Case routes come from published guided case files only.
+- Draft and archived cases are excluded.
+- `ai-manager` is never imported into the public app and must not appear in `out`.
 
-**Why not a server-side search API?**  
-This is a static site — there's no server. Client-side search with a pre-built JSON index is the standard pattern. FlexSearch is included as a dependency for future upgrade to indexed full-text search if the content volume grows.
-
----
-
-## Static Generation Strategy
-
-All pages use `generateStaticParams()` to produce the full set of valid routes at build time:
-
-```typescript
-// getAllConditionPaths() returns:
-// { region, condition, section } for every combination in taxonomy.ts
-```
-
-Pages with no corresponding MDX file render a **"Content coming soon"** placeholder rather than 404-ing. This allows the full navigation structure to exist before all content is authored.
-
----
-
-## Custom MDX Components
-
-| Component | Purpose | Props |
-|-----------|---------|-------|
-| `<Callout>` | Clinical callout box | `variant`, `title`, `children` |
-| `<SpecialTestsTable>` | Diagnostic accuracy table | `tests: SpecialTest[]` |
-| `<OutcomeMeasuresTable>` | Outcome measures table | `measures: OutcomeMeasure[]` |
-| `<Cite>` | Inline citation superscript | `id: string` |
-| `<CitationList>` | Reference list at page bottom | `citations: Citation[]` |
-| `<EvidenceBadge>` | Grade badge (A/B/C/D/GPP) | `grade: string` |
-
-All components are typed via `src/types/index.ts`.
-
----
-
-## Colour System
-
-The Tailwind config defines four semantic colour scales:
-
-| Scale | Use | Key colour |
-|-------|-----|-----------|
-| `brand` | Links, active states, primary actions | Teal/HSC NI blue `#1a87aa` |
-| `accent` | Warnings, clinical notes | Amber `#f08000` |
-| `danger` | Red flags, urgent alerts | Red `#e02020` |
-| `surface` | Backgrounds, borders, text | Slate-based neutrals |
-
-Dark mode is implemented via Tailwind's `dark:` variant + `next-themes` class strategy.
-
----
-
-## Performance Considerations
-
-- **Static export** — zero server compute, CDN-cached HTML
-- **No client-side route fetching** — all pages pre-rendered
-- **Search JSON** loaded once per session, thereafter in-memory
-- **Inter font** — variable font, single request, `display: swap`
-- **No image optimisation** (`unoptimized: true`) — required for static export; images should be pre-optimised before adding
-- **Typography plugin** — prose styles applied via `prose-clinical` utility class; no runtime overhead
-
----
-
-## Development Workflow
+Route and no-leak checks validate these invariants after build:
 
 ```bash
-# Local dev
-npm run dev
-
-# Type check
-npm run type-check
-
-# Lint
-npm run lint
-
-# Build + export (production)
-node scripts/build-search-index.mjs && npm run build
-# Output: ./out/
-
-# Preview production build locally
-npx serve out
+npm run check:no-leak
+npm run check:routes
 ```
 
----
+Both are included in `npm run preflight`.
 
-## Deployment Checklist
+## Source Pipeline
 
-- [ ] All MDX frontmatter `lastReviewed` dates are current
-- [ ] `node scripts/build-search-index.mjs` run before `next build`
-- [ ] `next.config.ts` has `output: 'export'` and `trailingSlash: true`
-- [ ] Environment: Node ≥ 18
-- [ ] Build command on host: `node scripts/build-search-index.mjs && next build`
-- [ ] Publish directory on host: `out`
-- [ ] Verify dark mode toggle works post-deploy
-- [ ] Verify search returns results post-deploy
-- [ ] Test on mobile (iOS Safari, Android Chrome) — responsive layout
+Imported and generated source state is metadata-driven:
 
----
+- Legacy source stations live under `content/imports/html-case-bank/extracted/stations/`.
+- Guided cases can reference source metadata with `sourceType`, `sourceId`, `sourcePath`, and `reviewStatus`.
+- `npm run registry:sources` generates `content/imports/source-registry.json`.
+- `npm run tracker:legacy` generates the migration tracker.
+- `npm run check:sources` validates source metadata for legacy-derived cases.
 
-## Future Enhancements
+Source files and frontmatter hold the truth. Generated trackers and registries should be refreshed from files rather than hand-maintained.
 
-| Priority | Feature |
-|----------|---------|
-| High | CMS integration (Contentlayer or Keystatic) for GUI content editing |
-| High | PDF export per condition section |
-| Medium | Filtering by evidence grade on region/condition pages |
-| Medium | "Recently updated" feed |
-| Medium | Multilingual support (Irish/Ulster Scots for patient-facing materials) |
-| Low | Offline PWA mode (service worker for offline clinical use) |
-| Low | QR codes for each condition page (paper-to-digital workflow) |
-| Low | Integration with NICE Evidence Search API |
+## Public Site Versus Local Admin
+
+Public learner site:
+
+- Static export only.
+- Published/reviewed learner content.
+- Neutral case discovery and staged reveal flow.
+- No local file paths, secrets, draft notes, or admin controls.
+
+Local admin tooling:
+
+- Lives under `ai-manager/`.
+- Can preview source registry and migration state.
+- Can support local draft/review workflows.
+- Must remain outside public route generation and Netlify output.
+
+## Deployment Architecture
+
+The active deployment target is Netlify.
+
+`netlify.toml`:
+
+```toml
+[build]
+command = "npm run preflight"
+publish = "out"
+```
+
+GitHub Actions is not used for deployment. If present, it should run validation only and use the same `npm run preflight` gate.
+
+## Preflight Gate
+
+`npm run preflight` is the single release gate:
+
+```bash
+npm run clean:build
+npm run check:hygiene
+npm run check:sources
+npm run check:secrets
+npm run build
+npm run check:no-leak
+npm run check:routes
+```
+
+The gate protects against:
+
+- flagged names or draft markers leaking into scanned content,
+- inconsistent source metadata,
+- committed secret patterns,
+- broken static build output,
+- diagnostic public case URL leakage,
+- draft/archived case routes,
+- accidental public `ai-manager` output.
+
+## Future Architecture Direction
+
+Future work can add PowerPoint imports, paper/evidence imports, AI-assisted draft generation, and shared/admin review workflows. Those systems should remain source-traceable and review-first:
+
+- AI can draft; humans review.
+- Drafts stay private.
+- Published content must pass the same preflight gate.
+- Git remains the audit trail until a future approved shared/admin workflow replaces or augments it.
