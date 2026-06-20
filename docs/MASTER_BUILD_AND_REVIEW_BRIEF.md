@@ -54,7 +54,7 @@ A live Google API key (prefix `AIzaSyBq-…`) is committed in `content/imports/h
 - *Acceptance:* key revoked/rotated upstream.
 
 **T0.2 — Remove the secret from the repo and prevent regression.**
-Redact or delete the key from `raw/index.html`; add a secret scan (`AIza…`, `sk-…`, `API_KEY`, `PRIVATE_KEY`) into `preflight`.
+Redact or delete the key from `raw/index.html`; add a secret scan for Google-style keys, OpenAI-style keys, API-key environment tokens, and private-key tokens into `preflight`.
 - *Acceptance:* `grep -rE 'AIza[0-9A-Za-z_-]{20,}' content` returns nothing; preflight fails if any secret pattern is present.
 
 **T0.3 — Make `clean:build` cross-platform.**
