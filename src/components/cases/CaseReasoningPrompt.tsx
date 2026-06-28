@@ -2,6 +2,7 @@
 
 import type { ReactNode } from 'react'
 import { useState } from 'react'
+import Link from 'next/link'
 import { ArrowDown, CheckCircle2, Eye, Lightbulb } from 'lucide-react'
 
 type ReflectionField = 'hypothesis' | 'supportingFeatures' | 'safetyFeatures' | 'nextAssessment'
@@ -28,6 +29,7 @@ interface CaseReasoningPromptProps {
   displayTitle: string
   actualTitle?: string
   conditionLabel?: string
+  conditionHref?: string
   enhancedFeedback?: EnhancedReasoningFeedbackConfig
   children: ReactNode
 }
@@ -36,6 +38,7 @@ export function CaseReasoningPrompt({
   displayTitle,
   actualTitle,
   conditionLabel,
+  conditionHref,
   enhancedFeedback,
   children,
 }: CaseReasoningPromptProps) {
@@ -197,6 +200,14 @@ export function CaseReasoningPrompt({
                   <p className="mt-1 text-xs text-green-800 dark:text-green-200">
                     Case title: {actualTitle}
                   </p>
+                )}
+                {conditionHref && (
+                  <Link
+                    href={conditionHref}
+                    className="mt-3 inline-flex rounded-lg bg-green-700 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700"
+                  >
+                    Open linked condition reference
+                  </Link>
                 )}
               </div>
             </div>

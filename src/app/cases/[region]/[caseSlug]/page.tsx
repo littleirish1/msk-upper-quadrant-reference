@@ -119,6 +119,7 @@ export default async function GuidedCasePage({ params }: Props) {
           displayTitle={displayTitle}
           actualTitle={result.frontmatter.title}
           conditionLabel={condition?.label}
+          conditionHref={condition ? `/${regionSlug}/${condition.slug}` : undefined}
           enhancedFeedback={enhancedFeedback}
         >
           {learnerSections.length > 0 && (

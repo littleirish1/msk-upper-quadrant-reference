@@ -6,14 +6,23 @@ const ROOT = process.cwd()
 const OUT_DIR = path.join(ROOT, 'out')
 const CASES_DIR = path.join(ROOT, 'content', 'cases')
 const TAXONOMY_FILE = path.join(ROOT, 'src', 'data', 'taxonomy.ts')
+const SEARCH_INDEX_FILE = path.join(ROOT, 'public', 'search-index.json')
+const BASE_PATH = '/msk-upper-quadrant-reference'
+const LIVE_REGION_SLUGS = new Set(['cervical', 'thoracic', 'shoulder', 'elbow', 'wrist-hand'])
 
 const findings = []
-const conditionLabels = readConditionLabels()
+const conditions = readConditions()
+const conditionsByKey = new Map(conditions.map((condition) => [conditionKey(condition.region, condition.slug), condition]))
 const cases = readCases()
+const publishedCases = cases.filter((item) => !isPrivateStatus(item.status))
 
 if (!fs.existsSync(OUT_DIR)) {
   fail('Missing static export directory: out. Run npm run build before npm run check:no-leak.')
 }
+
+checkCaseDiscoveryPage(publishedCases)
+checkSearchIndex()
+checkConditionPagesDoNotLinkPublishedCases(publishedCases)
 
 for (const item of cases) {
   const publicRouteFile = path.join(OUT_DIR, 'cases', item.region, item.publicSlug, 'index.html')
@@ -52,7 +61,10 @@ for (const item of cases) {
 
   const html = fs.readFileSync(publicRouteFile, 'utf8')
   const preRevealHtml = getPreRevealHtml(html)
-  const label = item.condition ? conditionLabels.get(item.condition) : ''
+  const conditionRoute = item.condition ? `/${item.region}/${item.condition}` : ''
+  const publicCaseRoute = `/cases/${item.region}/${item.publicSlug}`
+  const condition = item.condition ? conditionsByKey.get(conditionKey(item.region, item.condition)) : null
+  const label = condition?.label ?? ''
   const preRevealTerms = uniqueTerms([
     item.condition,
     label,
@@ -61,6 +73,22 @@ for (const item of cases) {
   for (const term of preRevealTerms) {
     if (containsTerm(preRevealHtml, term)) {
       fail(`Pre-reveal case HTML leaks "${term}" for /cases/${item.region}/${item.publicSlug}`)
+    }
+  }
+
+  if (conditionRoute && htmlIncludesRoute(preRevealHtml, conditionRoute)) {
+    fail(`Pre-reveal case HTML links to matching condition route: ${publicCaseRoute} -> ${conditionRoute}`)
+  }
+
+  if (item.condition) {
+    const conditionRouteFile = path.join(OUT_DIR, item.region, item.condition, 'index.html')
+
+    if (fs.existsSync(conditionRouteFile)) {
+      const conditionHtml = fs.readFileSync(conditionRouteFile, 'utf8')
+
+      if (htmlIncludesRoute(conditionHtml, publicCaseRoute)) {
+        fail(`Condition page links directly to matching guided case: ${conditionRoute} -> ${publicCaseRoute}`)
+      }
     }
   }
 }
@@ -74,8 +102,9 @@ if (findings.length > 0) {
 }
 
 console.log('Diagnosis no-leak check passed.')
-console.log(`Published case routes checked: ${cases.filter((item) => !isPrivateStatus(item.status)).length}`)
+console.log(`Published case routes checked: ${publishedCases.length}`)
 console.log(`Private case routes excluded: ${cases.filter((item) => isPrivateStatus(item.status)).length}`)
+console.log(`Live condition pages checked: ${conditions.length}`)
 
 function readCases() {
   if (!fs.existsSync(CASES_DIR)) return []
@@ -97,23 +126,118 @@ function readCases() {
         caseSlug,
         publicSlug,
         condition: typeof data.condition === 'string' ? data.condition : '',
+        title: typeof data.title === 'string' ? data.title : '',
         status,
       }
     })
 }
 
-function readConditionLabels() {
-  const labels = new Map()
-  if (!fs.existsSync(TAXONOMY_FILE)) return labels
+function readConditions() {
+  if (!fs.existsSync(TAXONOMY_FILE)) return []
 
   const text = fs.readFileSync(TAXONOMY_FILE, 'utf8')
-  const conditionPattern = /\{\s*slug:\s*['"]([^'"]+)['"],\s*label:\s*['"]([^'"]+)['"]/g
+  const conditionPattern = /\{\s*slug:\s*(['"])(.*?)\1,\s*label:\s*(['"])(.*?)\3,\s*region:\s*(['"])(.*?)\5/g
+  const conditions = []
   let match
   while ((match = conditionPattern.exec(text)) !== null) {
-    labels.set(match[1], match[2])
+    const condition = {
+      slug: match[2],
+      label: match[4],
+      region: match[6],
+    }
+
+    if (LIVE_REGION_SLUGS.has(condition.region)) {
+      conditions.push(condition)
+    }
   }
 
-  return labels
+  return conditions.sort((a, b) => (
+    a.region.localeCompare(b.region) ||
+    a.slug.localeCompare(b.slug)
+  ))
+}
+
+function checkCaseDiscoveryPage(items) {
+  const casesIndexFile = path.join(OUT_DIR, 'cases', 'index.html')
+
+  if (!fs.existsSync(casesIndexFile)) {
+    fail('Missing cases index route: /cases')
+    return
+  }
+
+  const html = fs.readFileSync(casesIndexFile, 'utf8')
+
+  for (const item of items) {
+    const publicCaseRoute = `/cases/${item.region}/${item.publicSlug}`
+    const cardHtml = getHtmlAroundRoute(html, publicCaseRoute)
+    const condition = item.condition ? conditionsByKey.get(conditionKey(item.region, item.condition)) : null
+    const terms = uniqueTerms([item.condition, condition?.label]).filter((term) => term.length >= 4)
+
+    for (const term of terms) {
+      if (containsTerm(cardHtml, term)) {
+        fail(`Case discovery card leaks "${term}" before reveal: ${publicCaseRoute}`)
+      }
+    }
+  }
+}
+
+function checkSearchIndex() {
+  if (!fs.existsSync(SEARCH_INDEX_FILE)) {
+    fail('Missing search index: public/search-index.json')
+    return
+  }
+
+  let entries
+  try {
+    entries = JSON.parse(fs.readFileSync(SEARCH_INDEX_FILE, 'utf8'))
+  } catch (error) {
+    fail(`Search index is invalid JSON: ${error.message}`)
+    return
+  }
+
+  if (!Array.isArray(entries)) {
+    fail('Search index is not a JSON array.')
+    return
+  }
+
+  for (const [index, entry] of entries.entries()) {
+    const href = typeof entry?.href === 'string' ? entry.href : ''
+    const id = typeof entry?.id === 'string' ? entry.id : ''
+
+    if (href.startsWith('/cases/') || id.startsWith('cases/')) {
+      fail(`Search entry exposes a guided case before reveal: entry ${index} (${id || href})`)
+    }
+  }
+}
+
+function checkConditionPagesDoNotLinkPublishedCases(items) {
+  const publishedCaseRoutes = items.map((item) => `/cases/${item.region}/${item.publicSlug}`)
+
+  for (const condition of conditions) {
+    const conditionRouteFile = path.join(OUT_DIR, condition.region, condition.slug, 'index.html')
+    if (!fs.existsSync(conditionRouteFile)) continue
+
+    const html = fs.readFileSync(conditionRouteFile, 'utf8')
+
+    for (const publicCaseRoute of publishedCaseRoutes) {
+      if (htmlIncludesRoute(html, publicCaseRoute)) {
+        fail(`Condition page links directly to a guided case route: /${condition.region}/${condition.slug} -> ${publicCaseRoute}`)
+      }
+    }
+  }
+}
+
+function getHtmlAroundRoute(html, route) {
+  const indexes = routeVariants(route)
+    .map((variant) => html.indexOf(variant))
+    .filter((index) => index >= 0)
+
+  if (indexes.length === 0) {
+    return ''
+  }
+
+  const index = Math.min(...indexes)
+  return html.slice(Math.max(0, index - 3000), Math.min(html.length, index + 3000))
 }
 
 function walk(dir) {
@@ -158,6 +282,23 @@ function containsTerm(text, term) {
   return normalize(text).includes(normalize(term))
 }
 
+function htmlIncludesRoute(html, route) {
+  return routeVariants(route).some((variant) => html.includes(variant))
+}
+
+function routeVariants(route) {
+  const normalizedRoute = route.startsWith('/') ? route : `/${route}`
+  const withoutTrailingSlash = normalizedRoute.replace(/\/+$/g, '')
+  const withTrailingSlash = `${withoutTrailingSlash}/`
+
+  return [
+    withoutTrailingSlash,
+    withTrailingSlash,
+    `${BASE_PATH}${withoutTrailingSlash}`,
+    `${BASE_PATH}${withTrailingSlash}`,
+  ]
+}
+
 function normalize(value) {
   return String(value)
     .toLowerCase()
@@ -168,6 +309,10 @@ function normalize(value) {
 
 function uniqueTerms(terms) {
   return [...new Set(terms.map((term) => String(term || '').trim()).filter(Boolean))]
+}
+
+function conditionKey(region, condition) {
+  return `${region}:${condition}`
 }
 
 function fallbackPublicSlug(caseSlug, region) {
