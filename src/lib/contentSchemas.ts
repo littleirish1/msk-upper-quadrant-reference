@@ -6,6 +6,7 @@ export const regionSlugSchema = z.enum([
   'shoulder',
   'elbow',
   'wrist-hand',
+  'lumbar',
 ])
 
 export const sectionSlugSchema = z.enum([
