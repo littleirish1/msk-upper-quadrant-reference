@@ -22,3 +22,7 @@ overnight-check.log
 __pycache__/
 *.pyc
 .env
+
+# Local review packets
+review-packet/
+review-packet.zip
