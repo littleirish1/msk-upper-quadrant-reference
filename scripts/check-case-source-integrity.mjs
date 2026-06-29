@@ -1,8 +1,13 @@
 import fs from 'fs'
 import path from 'path'
+import {
+  CASES_DIR,
+  collectCaseFiles,
+  readCaseFrontmatter,
+  relativePath as getRelativePath,
+} from './lib/readMdxFrontmatter.mjs'
 
 const ROOT = process.cwd()
-const CASES_DIR = path.join(ROOT, 'content', 'cases')
 const LEGACY_SOURCE_TYPE = 'legacy-html-case-bank'
 const DRAFT_MARKER = 'Draft generated from legacy station'
 
@@ -14,25 +19,33 @@ if (!fs.existsSync(CASES_DIR)) {
   process.exit(1)
 }
 
-for (const file of walk(CASES_DIR)) {
-  const relativePath = toPosix(path.relative(ROOT, file))
-  const text = fs.readFileSync(file, 'utf8')
-  const parsed = parseMdxFrontmatter(text)
+const caseFiles = collectCaseFiles()
 
-  if (!parsed.frontmatter) {
+if (caseFiles.length === 0) {
+  addFinding(toPosix(path.relative(ROOT, CASES_DIR)), 'no guided case files found')
+}
+
+for (const file of caseFiles) {
+  const relativePath = getRelativePath(file)
+  let parsed
+
+  try {
+    parsed = await readCaseFrontmatter(file)
+  } catch (error) {
+    addFinding(relativePath, error.message)
     continue
   }
 
-  const sourceType = parsed.frontmatter.sourceType
+  const sourceType = parsed.data.sourceType
 
   if (sourceType !== LEGACY_SOURCE_TYPE) {
     continue
   }
 
-  const sourceId = parsed.frontmatter.sourceId
-  const sourcePath = parsed.frontmatter.sourcePath
-  const reviewStatus = parsed.frontmatter.reviewStatus
-  const status = parsed.frontmatter.status
+  const sourceId = parsed.data.sourceId
+  const sourcePath = parsed.data.sourcePath
+  const reviewStatus = parsed.data.reviewStatus
+  const status = parsed.data.status
 
   requireField(relativePath, 'sourceId', sourceId)
   requireField(relativePath, 'sourcePath', sourcePath)
@@ -67,11 +80,11 @@ for (const file of walk(CASES_DIR)) {
       addFinding(relativePath, 'published legacy-derived cases require reviewStatus: "reviewed"')
     }
 
-    if (parsed.body.includes('TODO')) {
+    if (parsed.content.includes('TODO')) {
       addFinding(relativePath, 'published legacy-derived case body contains TODO')
     }
 
-    if (parsed.body.includes(DRAFT_MARKER)) {
+    if (parsed.content.includes(DRAFT_MARKER)) {
       addFinding(relativePath, `published legacy-derived case body contains "${DRAFT_MARKER}"`)
     }
   }
@@ -101,69 +114,6 @@ if (findings.length > 0) {
 }
 
 console.log('Case source integrity check passed.')
-
-function walk(dir) {
-  const files = []
-  const entries = fs.readdirSync(dir, { withFileTypes: true })
-
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name)
-
-    if (entry.isDirectory()) {
-      files.push(...walk(fullPath))
-      continue
-    }
-
-    if (entry.isFile() && entry.name.endsWith('.mdx')) {
-      files.push(fullPath)
-    }
-  }
-
-  return files
-}
-
-function parseMdxFrontmatter(text) {
-  const normalized = text.replace(/^\uFEFF/, '')
-
-  if (!normalized.startsWith('---')) {
-    return {
-      frontmatter: null,
-      body: normalized,
-    }
-  }
-
-  const match = normalized.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
-
-  if (!match) {
-    return {
-      frontmatter: null,
-      body: normalized,
-    }
-  }
-
-  return {
-    frontmatter: parseFlatYaml(match[1]),
-    body: match[2],
-  }
-}
-
-function parseFlatYaml(yaml) {
-  const data = {}
-  const lines = yaml.split(/\r?\n/)
-
-  for (const line of lines) {
-    const match = line.match(/^([A-Za-z][A-Za-z0-9]*):\s*(.*)$/)
-
-    if (!match) {
-      continue
-    }
-
-    const [, key, rawValue] = match
-    data[key] = rawValue.replace(/^["']|["']$/g, '')
-  }
-
-  return data
-}
 
 function requireField(file, field, value) {
   if (!value) {

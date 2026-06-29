@@ -1,6 +1,10 @@
 import fs from 'fs'
 import path from 'path'
-import matter from 'gray-matter'
+import {
+  collectCaseFiles,
+  isPrivateStatus,
+  readCaseFrontmatter,
+} from './lib/readMdxFrontmatter.mjs'
 
 const ROOT = process.cwd()
 const OUT_DIR = path.join(ROOT, 'out')
@@ -39,7 +43,7 @@ if (fs.existsSync(path.join(OUT_DIR, 'ai-manager'))) {
   fail('Public export includes out/ai-manager, but Case Manager must remain local-only.')
 }
 
-const cases = readCases()
+const cases = await readCases()
 
 for (const item of cases) {
   const publicRouteFile = path.join(OUT_DIR, 'cases', item.region, item.publicSlug, 'index.html')
@@ -87,52 +91,39 @@ console.log('Public route smoke check passed.')
 console.log(`Published case routes: ${cases.filter((item) => !isPrivateStatus(item.status)).length}`)
 console.log(`Private case routes excluded: ${cases.filter((item) => isPrivateStatus(item.status)).length}`)
 
-function readCases() {
+async function readCases() {
   if (!fs.existsSync(CASES_DIR)) return []
 
-  return walk(CASES_DIR)
-    .filter((file) => file.endsWith('.mdx'))
-    .map((file) => {
-      const raw = fs.readFileSync(file, 'utf8')
-      const { data } = matter(raw)
+  const files = collectCaseFiles()
+
+  if (files.length === 0) {
+    fail('No guided case MDX files found.')
+    return []
+  }
+
+  const cases = []
+  for (const file of files) {
+    try {
+      const { data } = await readCaseFrontmatter(file)
       const region = path.basename(path.dirname(file))
       const caseSlug = path.basename(file, '.mdx')
-      const status = typeof data.status === 'string' ? data.status : 'published'
       const publicSlug = typeof data.publicSlug === 'string' && data.publicSlug.trim()
         ? data.publicSlug.trim()
         : caseSlug
 
-      return {
+      cases.push({
         region,
         caseSlug,
         publicSlug,
-        status,
+        status: data.status,
         route: `/cases/${region}/${publicSlug}`,
-      }
-    })
-}
-
-function walk(dir) {
-  const files = []
-
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const fullPath = path.join(dir, entry.name)
-
-    if (entry.isDirectory()) {
-      files.push(...walk(fullPath))
-      continue
-    }
-
-    if (entry.isFile()) {
-      files.push(fullPath)
+      })
+    } catch (error) {
+      fail(error.message)
     }
   }
 
-  return files
-}
-
-function isPrivateStatus(status) {
-  return ['draft', 'archived'].includes(String(status).toLowerCase())
+  return cases
 }
 
 function fail(message) {

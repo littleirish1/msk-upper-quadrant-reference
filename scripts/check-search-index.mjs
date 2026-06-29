@@ -1,5 +1,10 @@
 import fs from 'fs'
 import path from 'path'
+import {
+  collectCaseFiles,
+  isPrivateStatus,
+  readCaseFrontmatter,
+} from './lib/readMdxFrontmatter.mjs'
 
 const ROOT = process.cwd()
 const INDEX_FILE = path.join(ROOT, 'public', 'search-index.json')
@@ -27,7 +32,7 @@ if (!fs.existsSync(INDEX_FILE)) {
       fail('public/search-index.json contains no entries.')
     }
 
-    checkEntries(entries)
+    await checkEntries(entries)
   }
 }
 
@@ -41,9 +46,9 @@ if (findings.length > 0) {
 
 console.log('Search index check passed.')
 
-function checkEntries(entries) {
+async function checkEntries(entries) {
   const seenIds = new Set()
-  const draftOrPrivateCaseSlugs = readDraftOrPrivateCaseSlugs()
+  const draftOrPrivateCaseSlugs = await readDraftOrPrivateCaseSlugs()
 
   for (const [index, entry] of entries.entries()) {
     if (!entry || typeof entry !== 'object') {
@@ -93,35 +98,23 @@ function checkEntries(entries) {
   }
 }
 
-function readDraftOrPrivateCaseSlugs() {
+async function readDraftOrPrivateCaseSlugs() {
   if (!fs.existsSync(CASES_DIR)) return []
 
-  return walk(CASES_DIR)
-    .filter((file) => file.endsWith('.mdx'))
-    .filter((file) => {
-      const raw = fs.readFileSync(file, 'utf8')
-      return /^status:\s*["']?(draft|archived)["']?\s*$/im.test(raw)
-    })
-    .map((file) => path.basename(file, '.mdx'))
-}
+  const slugs = []
 
-function walk(dir) {
-  const files = []
-
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const fullPath = path.join(dir, entry.name)
-
-    if (entry.isDirectory()) {
-      files.push(...walk(fullPath))
-      continue
-    }
-
-    if (entry.isFile()) {
-      files.push(fullPath)
+  for (const file of collectCaseFiles()) {
+    try {
+      const { data } = await readCaseFrontmatter(file)
+      if (isPrivateStatus(data.status)) {
+        slugs.push(path.basename(file, '.mdx'))
+      }
+    } catch (error) {
+      fail(error.message)
     }
   }
 
-  return files
+  return slugs
 }
 
 function fail(message) {

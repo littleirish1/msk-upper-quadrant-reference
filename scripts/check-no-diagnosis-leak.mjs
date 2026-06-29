@@ -1,20 +1,35 @@
 import fs from 'fs'
 import path from 'path'
-import matter from 'gray-matter'
+import {
+  collectCaseFiles,
+  getTaxonomyConditions,
+  isPrivateStatus,
+  readCaseFrontmatter,
+} from './lib/readMdxFrontmatter.mjs'
 
 const ROOT = process.cwd()
 const OUT_DIR = path.join(ROOT, 'out')
 const CASES_DIR = path.join(ROOT, 'content', 'cases')
-const TAXONOMY_FILE = path.join(ROOT, 'src', 'data', 'taxonomy.ts')
 const SEARCH_INDEX_FILE = path.join(ROOT, 'public', 'search-index.json')
 const BASE_PATH = '/msk-upper-quadrant-reference'
-const LIVE_REGION_SLUGS = new Set(['cervical', 'thoracic', 'shoulder', 'elbow', 'wrist-hand'])
 
 const findings = []
-const conditions = readConditions()
+const conditions = await readConditions()
 const conditionsByKey = new Map(conditions.map((condition) => [conditionKey(condition.region, condition.slug), condition]))
-const cases = readCases()
+const cases = await readCases()
 const publishedCases = cases.filter((item) => !isPrivateStatus(item.status))
+
+if (conditions.length === 0) {
+  fail('No taxonomy conditions found for diagnosis no-leak checks.')
+}
+
+if (cases.length === 0) {
+  fail('No guided case files found for diagnosis no-leak checks.')
+}
+
+if (publishedCases.length === 0) {
+  fail('No published guided cases found for diagnosis no-leak checks.')
+}
 
 if (!fs.existsSync(OUT_DIR)) {
   fail('Missing static export directory: out. Run npm run build before npm run check:no-leak.')
@@ -106,55 +121,42 @@ console.log(`Published case routes checked: ${publishedCases.length}`)
 console.log(`Private case routes excluded: ${cases.filter((item) => isPrivateStatus(item.status)).length}`)
 console.log(`Live condition pages checked: ${conditions.length}`)
 
-function readCases() {
+async function readCases() {
   if (!fs.existsSync(CASES_DIR)) return []
 
-  return walk(CASES_DIR)
-    .filter((file) => file.endsWith('.mdx'))
-    .map((file) => {
-      const raw = fs.readFileSync(file, 'utf8')
-      const { data } = matter(raw)
+  const items = []
+  for (const file of collectCaseFiles()) {
+    try {
+      const { data } = await readCaseFrontmatter(file)
       const region = path.basename(path.dirname(file))
       const caseSlug = path.basename(file, '.mdx')
-      const status = typeof data.status === 'string' ? data.status : 'published'
       const publicSlug = typeof data.publicSlug === 'string' && data.publicSlug.trim()
         ? data.publicSlug.trim()
         : fallbackPublicSlug(caseSlug, region)
 
-      return {
+      items.push({
         region,
         caseSlug,
         publicSlug,
         condition: typeof data.condition === 'string' ? data.condition : '',
         title: typeof data.title === 'string' ? data.title : '',
-        status,
-      }
-    })
-}
-
-function readConditions() {
-  if (!fs.existsSync(TAXONOMY_FILE)) return []
-
-  const text = fs.readFileSync(TAXONOMY_FILE, 'utf8')
-  const conditionPattern = /\{\s*slug:\s*(['"])(.*?)\1,\s*label:\s*(['"])(.*?)\3,\s*region:\s*(['"])(.*?)\5/g
-  const conditions = []
-  let match
-  while ((match = conditionPattern.exec(text)) !== null) {
-    const condition = {
-      slug: match[2],
-      label: match[4],
-      region: match[6],
-    }
-
-    if (LIVE_REGION_SLUGS.has(condition.region)) {
-      conditions.push(condition)
+        status: data.status,
+      })
+    } catch (error) {
+      fail(error.message)
     }
   }
 
-  return conditions.sort((a, b) => (
-    a.region.localeCompare(b.region) ||
-    a.slug.localeCompare(b.slug)
-  ))
+  return items
+}
+
+async function readConditions() {
+  try {
+    return await getTaxonomyConditions()
+  } catch (error) {
+    fail(error.message)
+    return []
+  }
 }
 
 function checkCaseDiscoveryPage(items) {
@@ -240,25 +242,6 @@ function getHtmlAroundRoute(html, route) {
   return html.slice(Math.max(0, index - 3000), Math.min(html.length, index + 3000))
 }
 
-function walk(dir) {
-  const files = []
-
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const fullPath = path.join(dir, entry.name)
-
-    if (entry.isDirectory()) {
-      files.push(...walk(fullPath))
-      continue
-    }
-
-    if (entry.isFile()) {
-      files.push(fullPath)
-    }
-  }
-
-  return files
-}
-
 function getPreRevealHtml(html) {
   const markers = [
     'Reveal likely diagnosis / linked condition',
@@ -319,10 +302,6 @@ function fallbackPublicSlug(caseSlug, region) {
   const caseNumber = caseSlug.match(/case-(\d+)/i)?.[1]
   const caseLabel = caseNumber ? `case-${caseNumber.padStart(2, '0')}` : 'case'
   return `${caseLabel}-${region}-clinical-reasoning`
-}
-
-function isPrivateStatus(status) {
-  return ['draft', 'archived'].includes(String(status).toLowerCase())
 }
 
 function fail(message) {
