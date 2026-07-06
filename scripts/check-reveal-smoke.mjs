@@ -46,6 +46,14 @@ for (const item of publishedCases) {
   }
 
   const html = fs.readFileSync(routeFile, 'utf8')
+  if (!hasPreQuestionPresentation(html)) {
+    fail(`Published case page is missing a pre-question case presentation block: ${route}`)
+  }
+
+  if (!hasPerQuestionFeedbackToggles(html)) {
+    fail(`Published case page is missing per-question feedback toggles: ${route}`)
+  }
+
   if (!hasStagedRevealControls(html)) {
     fail(`Published case page is missing staged reveal controls: ${route}`)
   }
@@ -169,6 +177,18 @@ function hasStagedRevealControls(html) {
       html.includes('Reveal likely concern / linked condition')) &&
     html.includes('Reveal suggested reasoning')
   )
+}
+
+function hasPreQuestionPresentation(html) {
+  return html.includes('Case presentation') && html.includes('What you know so far')
+}
+
+function hasPerQuestionFeedbackToggles(html) {
+  return countOccurrences(html, 'Show model reasoning') >= 4
+}
+
+function countOccurrences(value, needle) {
+  return value.split(needle).length - 1
 }
 
 function stripMarkup(value) {

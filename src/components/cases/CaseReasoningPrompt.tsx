@@ -14,6 +14,14 @@ interface ReasoningResponses {
   nextAssessment: string
 }
 
+interface ReflectionPromptConfig {
+  field: ReflectionField
+  label: string
+  placeholder: string
+  feedbackTitle: string
+  feedback: string
+}
+
 export interface EnhancedReasoningFeedbackConfig {
   badgeLabel: string
   conceptGroups: {
@@ -24,6 +32,41 @@ export interface EnhancedReasoningFeedbackConfig {
     localOnlyPattern?: string[]
   }
 }
+
+const REFLECTION_PROMPTS: ReflectionPromptConfig[] = [
+  {
+    field: 'hypothesis',
+    label: 'Leading hypothesis',
+    placeholder: 'What is your leading clinical hypothesis?',
+    feedbackTitle: 'Model reasoning prompt',
+    feedback:
+      'Frame this as a working problem representation: symptom area, behaviour, time course, mechanism, and risk context. Keep alternative explanations open until the final reveal.',
+  },
+  {
+    field: 'supportingFeatures',
+    label: 'Two supporting features',
+    placeholder: 'Which findings support it?',
+    feedbackTitle: 'Model reasoning prompt',
+    feedback:
+      'Choose features from the case stem that genuinely change probability: symptom distribution, aggravating and easing behaviour, functional impact, objective clues, and timeline.',
+  },
+  {
+    field: 'safetyFeatures',
+    label: 'Two caution/safety features',
+    placeholder: 'What red flags, cautions, or alternative explanations must stay on the table?',
+    feedbackTitle: 'Model reasoning prompt',
+    feedback:
+      'Name anything that would change urgency, referral, or scope of practice. Include serious pathology screens, progressive neurological signs, systemic features, and non-MSK explanations where relevant.',
+  },
+  {
+    field: 'nextAssessment',
+    label: 'What would you assess next?',
+    placeholder: 'Which tests, screens, or questions would you prioritise?',
+    feedbackTitle: 'Model reasoning prompt',
+    feedback:
+      'Prioritise assessment steps that test your hypothesis, check competing explanations, and identify safety decisions. Be specific about what each test or question would help you decide.',
+  },
+]
 
 interface CaseReasoningPromptProps {
   displayTitle: string
@@ -44,6 +87,12 @@ export function CaseReasoningPrompt({
 }: CaseReasoningPromptProps) {
   const [diagnosisRevealed, setDiagnosisRevealed] = useState(false)
   const [reasoningRevealed, setReasoningRevealed] = useState(false)
+  const [openFieldFeedback, setOpenFieldFeedback] = useState<Record<ReflectionField, boolean>>({
+    hypothesis: false,
+    supportingFeatures: false,
+    safetyFeatures: false,
+    nextAssessment: false,
+  })
   const [responses, setResponses] = useState<ReasoningResponses>({
     hypothesis: '',
     supportingFeatures: '',
@@ -62,6 +111,13 @@ export function CaseReasoningPrompt({
       [field]: value,
     }))
     setFeedbackChecked(false)
+  }
+
+  function toggleFieldFeedback(field: ReflectionField) {
+    setOpenFieldFeedback((current) => ({
+      ...current,
+      [field]: !current[field],
+    }))
   }
 
   return (
@@ -90,53 +146,54 @@ export function CaseReasoningPrompt({
         </div>
 
         <div className="mt-5 grid gap-4 md:grid-cols-2">
-          <label className="block">
-            <span className="text-sm font-medium text-surface-700 dark:text-surface-300">
-              Leading hypothesis
-            </span>
-            <textarea
-              value={responses.hypothesis}
-              onChange={(event) => updateResponse('hypothesis', event.target.value)}
-              className="mt-2 min-h-28 w-full rounded-lg border border-surface-200 bg-surface-50 px-3 py-2 text-sm text-surface-800 outline-none transition focus:border-brand-400 focus:bg-white focus:ring-2 focus:ring-brand-100 dark:border-surface-700 dark:bg-surface-950 dark:text-surface-100 dark:focus:border-brand-500 dark:focus:bg-surface-900 dark:focus:ring-brand-950"
-              placeholder="What is your leading clinical hypothesis?"
-            />
-          </label>
+          {REFLECTION_PROMPTS.map((prompt) => {
+            const isFeedbackOpen = openFieldFeedback[prompt.field]
+            const feedbackId = `field-feedback-${prompt.field}`
 
-          <label className="block">
-            <span className="text-sm font-medium text-surface-700 dark:text-surface-300">
-              Two supporting features
-            </span>
-            <textarea
-              value={responses.supportingFeatures}
-              onChange={(event) => updateResponse('supportingFeatures', event.target.value)}
-              className="mt-2 min-h-28 w-full rounded-lg border border-surface-200 bg-surface-50 px-3 py-2 text-sm text-surface-800 outline-none transition focus:border-brand-400 focus:bg-white focus:ring-2 focus:ring-brand-100 dark:border-surface-700 dark:bg-surface-950 dark:text-surface-100 dark:focus:border-brand-500 dark:focus:bg-surface-900 dark:focus:ring-brand-950"
-              placeholder="Which findings support it?"
-            />
-          </label>
+            return (
+              <div
+                key={prompt.field}
+                className="rounded-lg border border-surface-200 bg-surface-50 p-3 dark:border-surface-800 dark:bg-surface-950"
+              >
+                <label className="block">
+                  <span className="text-sm font-medium text-surface-700 dark:text-surface-300">
+                    {prompt.label}
+                  </span>
+                  <textarea
+                    value={responses[prompt.field]}
+                    onChange={(event) => updateResponse(prompt.field, event.target.value)}
+                    className="mt-2 min-h-28 w-full rounded-lg border border-surface-200 bg-white px-3 py-2 text-sm text-surface-800 outline-none transition focus:border-brand-400 focus:bg-white focus:ring-2 focus:ring-brand-100 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-100 dark:focus:border-brand-500 dark:focus:bg-surface-900 dark:focus:ring-brand-950"
+                    placeholder={prompt.placeholder}
+                  />
+                </label>
 
-          <label className="block">
-            <span className="text-sm font-medium text-surface-700 dark:text-surface-300">
-              Two caution/safety features
-            </span>
-            <textarea
-              value={responses.safetyFeatures}
-              onChange={(event) => updateResponse('safetyFeatures', event.target.value)}
-              className="mt-2 min-h-28 w-full rounded-lg border border-surface-200 bg-surface-50 px-3 py-2 text-sm text-surface-800 outline-none transition focus:border-brand-400 focus:bg-white focus:ring-2 focus:ring-brand-100 dark:border-surface-700 dark:bg-surface-950 dark:text-surface-100 dark:focus:border-brand-500 dark:focus:bg-surface-900 dark:focus:ring-brand-950"
-              placeholder="What red flags, cautions, or alternative explanations must stay on the table?"
-            />
-          </label>
+                <button
+                  type="button"
+                  onClick={() => toggleFieldFeedback(prompt.field)}
+                  className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg border border-surface-200 bg-white px-3 py-1.5 text-xs font-semibold text-surface-700 transition hover:border-brand-300 hover:text-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-100 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-200 dark:hover:border-brand-600 dark:hover:text-brand-300"
+                  aria-expanded={isFeedbackOpen}
+                  aria-controls={feedbackId}
+                >
+                  <CheckCircle2 className="h-3.5 w-3.5" aria-hidden />
+                  {isFeedbackOpen ? 'Hide model reasoning' : 'Show model reasoning'}
+                </button>
 
-          <label className="block">
-            <span className="text-sm font-medium text-surface-700 dark:text-surface-300">
-              What would you assess next?
-            </span>
-            <textarea
-              value={responses.nextAssessment}
-              onChange={(event) => updateResponse('nextAssessment', event.target.value)}
-              className="mt-2 min-h-28 w-full rounded-lg border border-surface-200 bg-surface-50 px-3 py-2 text-sm text-surface-800 outline-none transition focus:border-brand-400 focus:bg-white focus:ring-2 focus:ring-brand-100 dark:border-surface-700 dark:bg-surface-950 dark:text-surface-100 dark:focus:border-brand-500 dark:focus:bg-surface-900 dark:focus:ring-brand-950"
-              placeholder="Which tests, screens, or questions would you prioritise?"
-            />
-          </label>
+                {isFeedbackOpen && (
+                  <div
+                    id={feedbackId}
+                    className="mt-3 rounded-lg border border-brand-100 bg-white p-3 text-sm leading-6 text-surface-700 dark:border-brand-900 dark:bg-surface-900 dark:text-surface-300"
+                  >
+                    <p className="font-semibold text-surface-900 dark:text-surface-100">
+                      {prompt.feedbackTitle}
+                    </p>
+                    <p className="mt-1">
+                      {prompt.feedback}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </div>
 
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

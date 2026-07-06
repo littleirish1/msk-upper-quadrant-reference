@@ -68,6 +68,7 @@ export default async function GuidedCasePage({ params }: Props) {
   const learnerContent = stripPreRevealLinkedConditionSection(
     result.content.replace(/^# .*(?:\r?\n)+/, ''),
   )
+  const casePresentationContent = extractCasePresentationStem(learnerContent)
   const learnerSections = result.sections.filter(
     (section) => section.heading.toLowerCase() !== 'linked evidence and condition pages',
   )
@@ -115,6 +116,29 @@ export default async function GuidedCasePage({ params }: Props) {
 
         {showConversationPreview && <ConversationCase />}
 
+        {casePresentationContent && (
+          <section className="mb-6 rounded-xl border border-surface-200 bg-white p-5 shadow-sm dark:border-surface-800 dark:bg-surface-900">
+            <p className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">
+              Case presentation
+            </p>
+            <h2 className="mt-2 text-xl font-semibold text-surface-900 dark:text-surface-50">
+              What you know so far
+            </h2>
+            <div className="prose-clinical mt-4 max-w-none">
+              <MDXRemote
+                source={casePresentationContent}
+                components={mdxComponents}
+                options={{
+                  mdxOptions: {
+                    remarkPlugins: [remarkGfm],
+                    rehypePlugins: [rehypeSlug],
+                  },
+                }}
+              />
+            </div>
+          </section>
+        )}
+
         <CaseReasoningPrompt
           displayTitle={displayTitle}
           actualTitle={result.frontmatter.title}
@@ -156,6 +180,27 @@ export default async function GuidedCasePage({ params }: Props) {
 
 function stripPreRevealLinkedConditionSection(content: string): string {
   return content.replace(/\n## Linked evidence and condition pages[\s\S]*$/i, '')
+}
+
+function extractCasePresentationStem(content: string): string {
+  const firstRevealIndex = firstIndexOf(content, [
+    '<ReasoningPrompt',
+    '<RevealAnswer',
+  ])
+  const stem = firstRevealIndex >= 0 ? content.slice(0, firstRevealIndex) : content
+
+  return stem
+    .replace(/^##\s+(case presentation|initial presentation|what you know so far)\s*/i, '')
+    .replace(/^##\s+[^\n]+\n+/, '')
+    .trim()
+}
+
+function firstIndexOf(content: string, markers: string[]): number {
+  const indexes = markers
+    .map((marker) => content.indexOf(marker))
+    .filter((index) => index >= 0)
+
+  return indexes.length ? Math.min(...indexes) : -1
 }
 
 function getEnhancedFeedbackConfig(
