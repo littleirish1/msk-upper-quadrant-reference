@@ -35,8 +35,11 @@ npm run clean:build
 npm run check:hygiene
 npm run check:sources
 npm run check:secrets
+npm run check:frontmatter
 npm run build
+npm run check:search
 npm run check:no-leak
+npm run check:reveal
 npm run check:routes
 ```
 
@@ -52,7 +55,7 @@ command = "npm run preflight"
 publish = "out"
 ```
 
-The app uses `output: 'export'` in `next.config.mjs`, so `next build` writes static files to `out`.
+The app uses `output: 'export'` in `next.config.mjs`, so `next build` writes static files to `out`. The config also uses `trailingSlash: true` and the repository base path `/msk-upper-quadrant-reference`; `netlify.toml` publishes `out` and includes redirects so existing base-path URLs resolve on the Netlify-hosted public site.
 
 GitHub Pages is not the deployment target. Any GitHub workflow should be validation-only and should run `npm run preflight`, not a separate deploy command.
 

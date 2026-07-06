@@ -36,8 +36,11 @@ npm run clean:build
 npm run check:hygiene
 npm run check:sources
 npm run check:secrets
+npm run check:frontmatter
 npm run build
+npm run check:search
 npm run check:no-leak
+npm run check:reveal
 npm run check:routes
 ```
 
@@ -106,6 +109,8 @@ The active deployment target is Netlify.
 - Build command: `npm run preflight`
 - Publish directory: `out`
 - Config: `netlify.toml`
+
+`next.config.mjs` uses static export, `trailingSlash: true`, and the repository base path. Netlify publishes the generated `out` directory and keeps compatibility redirects for base-path URLs.
 
 GitHub Actions may run validation, but GitHub Pages is not the deployment target.
 

@@ -126,8 +126,11 @@ npm run clean:build
 npm run check:hygiene
 npm run check:sources
 npm run check:secrets
+npm run check:frontmatter
 npm run build
+npm run check:search
 npm run check:no-leak
+npm run check:reveal
 npm run check:routes
 ```
 
@@ -136,8 +139,11 @@ The gate protects against:
 - flagged names or draft markers leaking into scanned content,
 - inconsistent source metadata,
 - committed secret patterns,
+- invalid condition or guided-case frontmatter,
 - broken static build output,
+- stale or unsafe search index output,
 - diagnostic public case URL leakage,
+- broken or missing reveal controls,
 - draft/archived case routes,
 - accidental public `ai-manager` output.
 
