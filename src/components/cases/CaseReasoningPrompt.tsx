@@ -41,7 +41,7 @@ const REFLECTION_PROMPTS: ReflectionPromptConfig[] = [
     placeholder: 'What is your leading clinical hypothesis?',
     feedbackTitle: 'Model reasoning prompt',
     feedback:
-      'Model reasoning not yet authored for this prompt. Use the checklist below to compare your response without confirming the final answer.',
+      'Compare your response against the checklist below without confirming the final answer.',
     checklist: [
       'States a working hypothesis without treating it as final.',
       'Includes symptom area, behaviour, time course, mechanism, or risk context.',
@@ -54,7 +54,7 @@ const REFLECTION_PROMPTS: ReflectionPromptConfig[] = [
     placeholder: 'Which findings support it?',
     feedbackTitle: 'Model reasoning prompt',
     feedback:
-      'Model reasoning not yet authored for this prompt. Use the checklist below to compare your response without confirming the final answer.',
+      'Compare your response against the checklist below without confirming the final answer.',
     checklist: [
       'Uses details from the case presentation rather than generic pattern recognition.',
       'Links each feature to why it changes probability.',
@@ -67,7 +67,7 @@ const REFLECTION_PROMPTS: ReflectionPromptConfig[] = [
     placeholder: 'What red flags, cautions, or alternative explanations must stay on the table?',
     feedbackTitle: 'Model reasoning prompt',
     feedback:
-      'Model reasoning not yet authored for this prompt. Use the checklist below to compare your response without confirming the final answer.',
+      'Compare your response against the checklist below without confirming the final answer.',
     checklist: [
       'Names features that would change urgency, referral, or scope of practice.',
       'Considers serious pathology, progressive neurological change, systemic features, or non-MSK explanations where relevant.',
@@ -80,7 +80,7 @@ const REFLECTION_PROMPTS: ReflectionPromptConfig[] = [
     placeholder: 'Which tests, screens, or questions would you prioritise?',
     feedbackTitle: 'Model reasoning prompt',
     feedback:
-      'Model reasoning not yet authored for this prompt. Use the checklist below to compare your response without confirming the final answer.',
+      'Compare your response against the checklist below without confirming the final answer.',
     checklist: [
       'Prioritises tests or questions that test the working hypothesis.',
       'Includes safety screening before routine treatment decisions.',

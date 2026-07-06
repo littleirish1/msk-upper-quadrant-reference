@@ -10,6 +10,10 @@ const ROOT = process.cwd()
 const CASES_DIR = path.join(ROOT, 'content', 'cases')
 const OUT_DIR = path.join(ROOT, 'out')
 const COMPONENT_FILE = path.join(ROOT, 'src', 'components', 'mdx', 'MDXComponents.tsx')
+const REASONING_PROMPT_FILE = path.join(ROOT, 'src', 'components', 'cases', 'CaseReasoningPrompt.tsx')
+
+// Must match REFLECTION_PROMPTS.length in CaseReasoningPrompt.tsx.
+const REASONING_CHECKLIST_PROMPT_COUNT = 4
 
 const findings = []
 
@@ -22,6 +26,7 @@ if (!fs.existsSync(OUT_DIR)) {
 }
 
 checkRevealAnswerComponent()
+checkReasoningPromptComponent()
 
 const cases = await readCases()
 const publishedCases = cases.filter((item) => !isPrivateStatus(item.status))
@@ -50,12 +55,20 @@ for (const item of publishedCases) {
     fail(`Published case page is missing a pre-question case presentation block: ${route}`)
   }
 
-  if (!hasPerQuestionFeedbackToggles(html)) {
-    fail(`Published case page is missing per-question feedback toggles: ${route}`)
+  if (!hasReasoningChecklistRevealControls(html)) {
+    fail(`Published case page is missing the reasoning checklist reveal controls: ${route}`)
   }
 
-  if (!hasStagedRevealControls(html)) {
-    fail(`Published case page is missing staged reveal controls: ${route}`)
+  if (!hasSuggestedReasoningRevealControl(html)) {
+    fail(`Published case page is missing the suggested reasoning reveal/collapse control: ${route}`)
+  }
+
+  if (!hasDiagnosisRevealControl(html)) {
+    fail(`Published case page is missing the diagnosis reveal control: ${route}`)
+  }
+
+  if (!hasNoPrematureLinkedConditionButton(html)) {
+    fail(`Published case page exposes the linked condition button before diagnosis reveal: ${route}`)
   }
 
   const blocks = extractRevealAnswerBlocks(item.content)
@@ -163,6 +176,29 @@ function checkRevealAnswerComponent() {
   }
 }
 
+function checkReasoningPromptComponent() {
+  if (!fs.existsSync(REASONING_PROMPT_FILE)) {
+    fail('Missing CaseReasoningPrompt component file: src/components/cases/CaseReasoningPrompt.tsx')
+    return
+  }
+
+  const source = fs.readFileSync(REASONING_PROMPT_FILE, 'utf8')
+
+  // Pin the exact reveal/collapse label pair so a wording change that keeps
+  // the old label as a substring of the new one cannot pass silently.
+  if (!/reasoningRevealed\s*\?\s*'Hide suggested reasoning'\s*:\s*'Reveal suggested reasoning'/.test(source)) {
+    fail(
+      'Suggested reasoning control must toggle exactly between "Reveal suggested reasoning" and "Hide suggested reasoning".',
+    )
+  }
+
+  if (!/isFeedbackOpen\s*\?\s*'Hide model reasoning'\s*:\s*'Show model reasoning checklist'/.test(source)) {
+    fail(
+      'Reasoning checklist control must toggle exactly between "Show model reasoning checklist" and "Hide model reasoning".',
+    )
+  }
+}
+
 function extractRevealAnswerBlocks(content) {
   return [...content.matchAll(/<RevealAnswer\b([^>]*)>([\s\S]*?)<\/RevealAnswer>/gi)]
     .map((match) => ({
@@ -171,24 +207,76 @@ function extractRevealAnswerBlocks(content) {
     }))
 }
 
-function hasStagedRevealControls(html) {
-  return (
-    (html.includes('Reveal likely diagnosis / linked condition') ||
-      html.includes('Reveal likely concern / linked condition')) &&
-    html.includes('Reveal suggested reasoning')
-  )
-}
-
 function hasPreQuestionPresentation(html) {
   return html.includes('Case presentation') && html.includes('What you know so far')
 }
 
-function hasPerQuestionFeedbackToggles(html) {
-  return countOccurrences(html, 'Show model reasoning') >= 4
+// Structural + exact-text checks below replace loose substring matching.
+// A relabel such as "Reveal suggested reasoning and next steps" must fail
+// these checks even though it still contains the old string as a substring.
+
+function hasReasoningChecklistRevealControls(html) {
+  const matches = extractButtons(html).filter((button) => {
+    const controls = getAttr(button.attrs, 'aria-controls')
+    return (
+      typeof controls === 'string' &&
+      controls.startsWith('field-feedback-') &&
+      getAttr(button.attrs, 'aria-expanded') === 'false' &&
+      button.text === 'Show model reasoning checklist'
+    )
+  })
+
+  return matches.length === REASONING_CHECKLIST_PROMPT_COUNT
 }
 
-function countOccurrences(value, needle) {
-  return value.split(needle).length - 1
+function hasSuggestedReasoningRevealControl(html) {
+  return extractButtons(html).some(
+    (button) =>
+      getAttr(button.attrs, 'aria-controls') === 'case-learning-content' &&
+      getAttr(button.attrs, 'aria-expanded') === 'false' &&
+      button.text === 'Reveal suggested reasoning',
+  )
+}
+
+function hasDiagnosisRevealControl(html) {
+  return extractButtons(html).some(
+    (button) =>
+      getAttr(button.attrs, 'aria-controls') === null &&
+      getAttr(button.attrs, 'aria-expanded') === 'false' &&
+      (button.text === 'Reveal likely diagnosis / linked condition' ||
+        button.text === 'Reveal likely concern / linked condition'),
+  )
+}
+
+function hasNoPrematureLinkedConditionButton(html) {
+  return !extractButtons(html).some((button) => button.text === 'Open linked condition reference')
+}
+
+function extractButtons(html) {
+  const buttons = []
+  const buttonPattern = /<button\b([^>]*)>([\s\S]*?)<\/button>/gi
+  let match
+
+  while ((match = buttonPattern.exec(html)) !== null) {
+    buttons.push({
+      attrs: match[1] ?? '',
+      text: stripInnerMarkup(match[2] ?? ''),
+    })
+  }
+
+  return buttons
+}
+
+function stripInnerMarkup(value) {
+  return String(value)
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function getAttr(attrs, name) {
+  const match = attrs.match(new RegExp(`${name}="([^"]*)"`, 'i'))
+  return match ? match[1] : null
 }
 
 function stripMarkup(value) {
