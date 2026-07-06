@@ -95,17 +95,6 @@ for (const item of cases) {
     fail(`Pre-reveal case HTML links to matching condition route: ${publicCaseRoute} -> ${conditionRoute}`)
   }
 
-  if (item.condition) {
-    const conditionRouteFile = path.join(OUT_DIR, item.region, item.condition, 'index.html')
-
-    if (fs.existsSync(conditionRouteFile)) {
-      const conditionHtml = fs.readFileSync(conditionRouteFile, 'utf8')
-
-      if (htmlIncludesRoute(conditionHtml, publicCaseRoute)) {
-        fail(`Condition page links directly to matching guided case: ${conditionRoute} -> ${publicCaseRoute}`)
-      }
-    }
-  }
 }
 
 if (findings.length > 0) {

@@ -405,7 +405,7 @@ function isPrivateCaseStatus(status: string): boolean {
 
 function getCasePublicSlug(
   caseSlug: string,
-  data: Pick<CaseFrontmatterSchema, 'publicSlug'> | Record<string, unknown>,
+  data: Pick<CaseFrontmatterSchema, 'publicSlug'>,
   region?: string,
 ): string {
   if (typeof data.publicSlug === 'string' && data.publicSlug.trim()) {
