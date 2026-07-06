@@ -40,6 +40,8 @@ R2 from review 0003 is closed.
 
 The runtime app reader now uses the shared frontmatter schema.
 
+F2 from review 0002 is closed by `check:routes` coverage that confirms every published guided case appears on `/cases`.
+
 ## Remaining follow-ups
 
 ### R5 - Shared reader consolidation
@@ -53,10 +55,6 @@ Data-URL TypeScript transpile fragility remains in script-side loading, especial
 ### F1 - Browser smoke test reveal behaviour
 
 Manual browser reveal smoke test remains open.
-
-### F2 - `/cases` discovery coverage check
-
-Add coverage proving every published case appears on `/cases`.
 
 ### F5 - Tidy repeated scans
 
