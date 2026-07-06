@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { BookOpen, Brain, Columns, CircleDot, GitBranch, Hand, Search, ShieldAlert, Stethoscope } from 'lucide-react'
 import { REGIONS } from '@/data/taxonomy'
+import { BodyRegionRoadmap } from '@/components/ui/BodyRegionRoadmap'
 import { QuickFind } from '@/components/ui/QuickFind'
 
 const iconMap: Record<string, React.ElementType> = {
@@ -110,6 +111,8 @@ export default function HomePage() {
           })}
         </div>
       </section>
+
+      <BodyRegionRoadmap />
 
       {/* Disclaimer */}
       <section className="mt-10 rounded-xl border border-accent-200 bg-accent-50 p-5 dark:border-accent-900 dark:bg-surface-900">
