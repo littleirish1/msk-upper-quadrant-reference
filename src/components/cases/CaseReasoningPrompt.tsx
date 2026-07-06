@@ -20,6 +20,7 @@ interface ReflectionPromptConfig {
   placeholder: string
   feedbackTitle: string
   feedback: string
+  checklist: string[]
 }
 
 export interface EnhancedReasoningFeedbackConfig {
@@ -40,7 +41,12 @@ const REFLECTION_PROMPTS: ReflectionPromptConfig[] = [
     placeholder: 'What is your leading clinical hypothesis?',
     feedbackTitle: 'Model reasoning prompt',
     feedback:
-      'Frame this as a working problem representation: symptom area, behaviour, time course, mechanism, and risk context. Keep alternative explanations open until the final reveal.',
+      'Model reasoning not yet authored for this prompt. Use the checklist below to compare your response without confirming the final answer.',
+    checklist: [
+      'States a working hypothesis without treating it as final.',
+      'Includes symptom area, behaviour, time course, mechanism, or risk context.',
+      'Keeps at least one plausible alternative explanation open.',
+    ],
   },
   {
     field: 'supportingFeatures',
@@ -48,7 +54,12 @@ const REFLECTION_PROMPTS: ReflectionPromptConfig[] = [
     placeholder: 'Which findings support it?',
     feedbackTitle: 'Model reasoning prompt',
     feedback:
-      'Choose features from the case stem that genuinely change probability: symptom distribution, aggravating and easing behaviour, functional impact, objective clues, and timeline.',
+      'Model reasoning not yet authored for this prompt. Use the checklist below to compare your response without confirming the final answer.',
+    checklist: [
+      'Uses details from the case presentation rather than generic pattern recognition.',
+      'Links each feature to why it changes probability.',
+      'Separates strong supporting features from weak or tempting cues.',
+    ],
   },
   {
     field: 'safetyFeatures',
@@ -56,7 +67,12 @@ const REFLECTION_PROMPTS: ReflectionPromptConfig[] = [
     placeholder: 'What red flags, cautions, or alternative explanations must stay on the table?',
     feedbackTitle: 'Model reasoning prompt',
     feedback:
-      'Name anything that would change urgency, referral, or scope of practice. Include serious pathology screens, progressive neurological signs, systemic features, and non-MSK explanations where relevant.',
+      'Model reasoning not yet authored for this prompt. Use the checklist below to compare your response without confirming the final answer.',
+    checklist: [
+      'Names features that would change urgency, referral, or scope of practice.',
+      'Considers serious pathology, progressive neurological change, systemic features, or non-MSK explanations where relevant.',
+      'States what finding would stop routine MSK management.',
+    ],
   },
   {
     field: 'nextAssessment',
@@ -64,7 +80,12 @@ const REFLECTION_PROMPTS: ReflectionPromptConfig[] = [
     placeholder: 'Which tests, screens, or questions would you prioritise?',
     feedbackTitle: 'Model reasoning prompt',
     feedback:
-      'Prioritise assessment steps that test your hypothesis, check competing explanations, and identify safety decisions. Be specific about what each test or question would help you decide.',
+      'Model reasoning not yet authored for this prompt. Use the checklist below to compare your response without confirming the final answer.',
+    checklist: [
+      'Prioritises tests or questions that test the working hypothesis.',
+      'Includes safety screening before routine treatment decisions.',
+      'States what each assessment step would help you decide.',
+    ],
   },
 ]
 
@@ -93,6 +114,7 @@ export function CaseReasoningPrompt({
     safetyFeatures: false,
     nextAssessment: false,
   })
+  const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({})
   const [responses, setResponses] = useState<ReasoningResponses>({
     hypothesis: '',
     supportingFeatures: '',
@@ -117,6 +139,14 @@ export function CaseReasoningPrompt({
     setOpenFieldFeedback((current) => ({
       ...current,
       [field]: !current[field],
+    }))
+  }
+
+  function toggleChecklistItem(field: ReflectionField, index: number) {
+    const key = `${field}-${index}`
+    setCheckedItems((current) => ({
+      ...current,
+      [key]: !current[key],
     }))
   }
 
@@ -175,7 +205,7 @@ export function CaseReasoningPrompt({
                   aria-controls={feedbackId}
                 >
                   <CheckCircle2 className="h-3.5 w-3.5" aria-hidden />
-                  {isFeedbackOpen ? 'Hide model reasoning' : 'Show model reasoning'}
+                  {isFeedbackOpen ? 'Hide model reasoning' : 'Show model reasoning checklist'}
                 </button>
 
                 {isFeedbackOpen && (
@@ -189,6 +219,29 @@ export function CaseReasoningPrompt({
                     <p className="mt-1">
                       {prompt.feedback}
                     </p>
+                    <fieldset className="mt-3 space-y-2">
+                      <legend className="text-xs font-semibold uppercase tracking-wide text-surface-500 dark:text-surface-400">
+                        Check against your response
+                      </legend>
+                      {prompt.checklist.map((item, index) => {
+                        const key = `${prompt.field}-${index}`
+
+                        return (
+                          <label
+                            key={item}
+                            className="flex cursor-pointer items-start gap-2 rounded-md border border-surface-100 bg-surface-50 px-2.5 py-2 text-sm leading-5 transition hover:border-brand-200 dark:border-surface-800 dark:bg-surface-950 dark:hover:border-brand-800"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={Boolean(checkedItems[key])}
+                              onChange={() => toggleChecklistItem(prompt.field, index)}
+                              className="mt-0.5 h-4 w-4 rounded border-surface-300 text-brand-600 focus:ring-brand-500 dark:border-surface-600 dark:bg-surface-900"
+                            />
+                            <span>{item}</span>
+                          </label>
+                        )
+                      })}
+                    </fieldset>
                   </div>
                 )}
               </div>
@@ -220,12 +273,13 @@ export function CaseReasoningPrompt({
 
           <button
             type="button"
-            onClick={() => setReasoningRevealed(true)}
+            onClick={() => setReasoningRevealed((current) => !current)}
             className="inline-flex items-center justify-center gap-2 rounded-lg border border-brand-200 bg-white px-4 py-2 text-sm font-semibold text-brand-700 transition hover:bg-brand-50 focus:outline-none focus:ring-2 focus:ring-brand-200 dark:border-brand-800 dark:bg-surface-900 dark:text-brand-300 dark:hover:bg-brand-950"
             aria-expanded={reasoningRevealed}
+            aria-controls="case-learning-content"
           >
             <ArrowDown className="h-4 w-4" aria-hidden />
-            Reveal suggested reasoning
+            {reasoningRevealed ? 'Hide suggested reasoning' : 'Reveal suggested reasoning'}
           </button>
         </div>
 

@@ -192,11 +192,20 @@ export function ConversationCase() {
 
       <div className="mt-5 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="space-y-4">
+          <div>
+            <h3 className="text-sm font-semibold text-surface-900 dark:text-surface-50">
+              Scripted question bank
+            </h3>
+            <p className="mt-1 text-xs leading-5 text-surface-600 dark:text-surface-400">
+              Choose targeted questions. Responses are fixed for this teaching case, not live AI.
+            </p>
+          </div>
+
           {categoryOrder.map((category) => (
             <div key={category}>
-              <h3 className="text-sm font-semibold text-surface-900 dark:text-surface-50">
+              <h4 className="text-sm font-semibold text-surface-900 dark:text-surface-50">
                 {category}
-              </h3>
+              </h4>
               <div className="mt-2 space-y-2">
                 {questions
                   .filter((question) => question.category === category)
@@ -209,9 +218,13 @@ export function ConversationCase() {
                         type="button"
                         onClick={() => askQuestion(question.id)}
                         disabled={asked}
-                        className="w-full rounded-lg border border-surface-200 bg-white px-3 py-2 text-left text-sm font-medium text-surface-700 transition hover:border-amber-300 hover:bg-amber-50 disabled:cursor-default disabled:border-amber-200 disabled:bg-amber-100 disabled:text-amber-900 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-200 dark:hover:border-amber-700 dark:hover:bg-amber-950 dark:disabled:border-amber-800 dark:disabled:bg-amber-950 dark:disabled:text-amber-100"
+                        aria-pressed={asked}
+                        className="flex min-h-11 w-full items-center justify-between gap-3 rounded-lg border border-surface-200 bg-white px-3 py-2 text-left text-sm font-medium text-surface-700 transition hover:border-amber-300 hover:bg-amber-50 disabled:cursor-default disabled:border-amber-200 disabled:bg-amber-100 disabled:text-amber-900 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-200 dark:hover:border-amber-700 dark:hover:bg-amber-950 dark:disabled:border-amber-800 dark:disabled:bg-amber-950 dark:disabled:text-amber-100"
                       >
-                        {question.question}
+                        <span>{question.question}</span>
+                        <span className="shrink-0 rounded-full bg-surface-100 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-surface-500 dark:bg-surface-800 dark:text-surface-300">
+                          {asked ? 'Asked' : 'Ask'}
+                        </span>
                       </button>
                     )
                   })}
@@ -222,29 +235,37 @@ export function ConversationCase() {
 
         <div>
           <h3 className="text-sm font-semibold text-surface-900 dark:text-surface-50">
-            Conversation
+            Conversation feed
           </h3>
+          <p className="mt-1 text-xs leading-5 text-surface-600 dark:text-surface-400">
+            Each learner question adds a patient response to the thread.
+          </p>
           {askedQuestions.length === 0 ? (
-            <div className="mt-2 rounded-lg border border-dashed border-surface-300 bg-white p-4 text-sm text-surface-500 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-400">
+            <div className="mt-3 rounded-lg border border-dashed border-surface-300 bg-white p-4 text-sm text-surface-500 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-400">
               Choose a question to begin. Try asking both MSK-pattern questions and
               safety questions before deciding.
             </div>
           ) : (
-            <div className="mt-2 space-y-3">
+            <div className="mt-3 space-y-4 rounded-xl border border-surface-200 bg-surface-50 p-3 dark:border-surface-800 dark:bg-surface-950">
               {askedQuestions.map((question) => (
-                <div key={question.id} className="rounded-lg border border-surface-200 bg-white p-4 dark:border-surface-800 dark:bg-surface-900">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">
-                    You asked
-                  </p>
-                  <p className="mt-1 text-sm font-medium text-surface-900 dark:text-surface-50">
-                    {question.question}
-                  </p>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-300">
-                    Patient response
-                  </p>
-                  <p className="mt-1 text-sm leading-6 text-surface-700 dark:text-surface-300">
-                    {question.response}
-                  </p>
+                <div key={question.id} className="space-y-2">
+                  <div className="ml-auto max-w-[92%] rounded-2xl rounded-br-md bg-brand-600 px-4 py-3 text-white shadow-sm sm:max-w-[78%]">
+                    <p className="text-[11px] font-semibold uppercase tracking-wide text-brand-100">
+                      You asked
+                    </p>
+                    <p className="mt-1 text-sm font-medium leading-6">
+                      {question.question}
+                    </p>
+                  </div>
+
+                  <div className="mr-auto max-w-[92%] rounded-2xl rounded-bl-md border border-surface-200 bg-white px-4 py-3 shadow-sm dark:border-surface-800 dark:bg-surface-900 sm:max-w-[84%]">
+                    <p className="text-[11px] font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-300">
+                      Patient response
+                    </p>
+                    <p className="mt-1 text-sm leading-6 text-surface-700 dark:text-surface-300">
+                      {question.response}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
