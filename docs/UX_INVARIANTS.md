@@ -35,13 +35,23 @@ Guided case prompts should support active reasoning before answer reveal:
 
 Per-question feedback must not expose the final diagnosis early. Feedback should focus on reasoning process, safety thinking, assessment planning, and how to use the presented information.
 
+Reasoning checklists must not invent clinical answers. If model reasoning has not been authored from existing reviewed case content, use a neutral fallback rather than adding new clinical claims.
+
 ## Reveal Behaviour
 
-Reveal controls should be closed by default and keyboard accessible.
+Suggested reasoning and reveal panels should be hidden by default. Reveal controls should be obvious, closed by default, and keyboard accessible.
 
 Native `details` and `summary` are acceptable for comparison panels because they provide built-in keyboard operation. If the reveal mechanism changes, `check:reveal` and `check:no-leak` must be updated in the same diff.
 
 The diagnosis reveal must remain separate from reasoning-process feedback. Per-question feedback can be toggled open and closed without confirming the final answer.
+
+## Conversation Sections
+
+Conversation sections must be deterministic and static. They may present scripted learner questions and patient-style responses, but they must not imply live AI, free-text simulation, or stored learner interaction.
+
+## Future Scope
+
+Future body regions, neuro reasoning, and anatomy areas should appear as roadmap items only until real reviewed content and routes exist. Do not create empty clickable routes for planned modules.
 
 ## Mobile And Navigation
 
@@ -73,4 +83,3 @@ The public site must remain static and dumb:
 ## Review Rule
 
 No clinical content changes should be included inside UI-only diffs. If clinical wording or case facts need to change, use a separate clinically reviewed content task.
-

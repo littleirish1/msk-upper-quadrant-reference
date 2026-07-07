@@ -1,6 +1,6 @@
 # Agent Instructions
 
-Read `docs/MASTER_BUILD_AND_REVIEW_BRIEF.md` first. Treat it as the standing build, review, and safety contract for this repository.
+Read this file first, then read `docs/MASTER_BUILD_AND_REVIEW_BRIEF.md`. Treat both as the standing build, review, and safety contract for this repository.
 
 ## Project Boundaries
 
@@ -15,7 +15,7 @@ Read `docs/MASTER_BUILD_AND_REVIEW_BRIEF.md` first. Treat it as the standing bui
 - Draft/private case routes must not appear in the public build.
 - Diagnosis must not leak before the learner reveal step.
 - Condition pages must not link directly to matching unrevealed guided cases.
-- Guided cases must use neutral public routes and neutral learner-facing labels.
+- Guided cases must use neutral public routes and neutral learner-facing labels. Case routes must stay neutral.
 - Clinical content requires clinician approval before publication.
 - Do not change clinical facts or case body content during UI/tooling-only tasks.
 
@@ -52,4 +52,3 @@ Final reports should include:
 - Validation output
 - Residual risks
 - Suggested commit message
-
