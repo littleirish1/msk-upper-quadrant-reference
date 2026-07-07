@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { Menu, X, Search, Sun, Moon, Activity } from 'lucide-react'
+import { Menu, X, Search, Sun, Moon, Activity, RotateCw } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { cn } from '@/lib/utils'
 
@@ -29,17 +29,19 @@ export function Header() {
         {/* Desktop nav */}
         <nav className="ml-8 hidden items-center gap-1 lg:flex" aria-label="Primary">
           {[
-            { href: '/cervical',    label: 'Cervical' },
+            { href: '/3d-model',  label: '3D Model',    icon: RotateCw },
+            { href: '/cervical',   label: 'Cervical' },
             { href: '/thoracic',   label: 'Thoracic' },
             { href: '/shoulder',   label: 'Shoulder' },
             { href: '/elbow',      label: 'Elbow' },
             { href: '/wrist-hand', label: 'Wrist & Hand' },
-          ].map(({ href, label }) => (
+          ].map(({ href, label, icon: Icon }) => (
             <Link
               key={href}
               href={href}
-              className="rounded-md px-3 py-1.5 text-sm font-medium text-surface-700 transition-colors hover:bg-surface-100 hover:text-brand-600 dark:text-surface-300 dark:hover:bg-surface-800 dark:hover:text-brand-400"
+              className="flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-surface-700 transition-colors hover:bg-surface-100 hover:text-brand-600 dark:text-surface-300 dark:hover:bg-surface-800 dark:hover:text-brand-400"
             >
+              {Icon && <Icon className="h-3.5 w-3.5" aria-hidden />}
               {label}
             </Link>
           ))}
@@ -94,18 +96,20 @@ export function Header() {
         >
           <ul className="space-y-1">
             {[
+              { href: '/3d-model',    label: '3D Body Model', icon: RotateCw },
               { href: '/cervical',    label: 'Cervical Spine' },
               { href: '/thoracic',   label: 'Thoracic Spine' },
               { href: '/shoulder',   label: 'Shoulder' },
               { href: '/elbow',      label: 'Elbow' },
               { href: '/wrist-hand', label: 'Wrist & Hand' },
-            ].map(({ href, label }) => (
+            ].map(({ href, label, icon: Icon }) => (
               <li key={href}>
                 <Link
                   href={href}
-                  className="block rounded-md px-3 py-2 text-sm font-medium text-surface-700 hover:bg-surface-100 dark:text-surface-300 dark:hover:bg-surface-800"
+                  className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-surface-700 hover:bg-surface-100 dark:text-surface-300 dark:hover:bg-surface-800"
                   onClick={() => setMobileOpen(false)}
                 >
+                  {Icon && <Icon className="h-4 w-4" aria-hidden />}
                   {label}
                 </Link>
               </li>

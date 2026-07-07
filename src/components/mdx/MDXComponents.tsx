@@ -12,7 +12,7 @@ import type { SpecialTest, OutcomeMeasure, Citation } from '@/types'
 type CalloutVariant = 'warning' | 'danger' | 'info' | 'tip' | 'evidence'
 
 const calloutConfig: Record<CalloutVariant, {
-  icon: React.ElementType
+  icon: React.ComponentType<{ className?: string }>
   classes: string
   label: string
 }> = {
