@@ -1,5 +1,5 @@
 [build]
-command = "npm run preflight"
+command = "npm run build"
 publish = "out"
 
 [[redirects]]
