@@ -1,6 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { REGIONS } from '@/data/taxonomy'
@@ -54,7 +55,16 @@ export function BodyModelPage() {
 
       {/* 3D viewer */}
       <div className="relative flex-1 bg-gradient-to-b from-surface-50 to-white dark:from-surface-950 dark:to-surface-900">
-        <InteractiveBodyModel />
+        <Suspense fallback={
+          <div className="flex h-[min(80vh,700px)] w-full items-center justify-center sm:h-[min(85vh,800px)]">
+            <div className="flex flex-col items-center gap-3">
+              <div className="h-10 w-10 animate-spin rounded-full border-4 border-brand-200 border-t-brand-600" />
+              <p className="text-sm text-surface-500 dark:text-surface-400">Loading 3D model...</p>
+            </div>
+          </div>
+        }>
+          <InteractiveBodyModel />
+        </Suspense>
       </div>
 
       {/* Region legend */}

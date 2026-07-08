@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, useMemo, useCallback } from 'react'
+import { useRef, useState, useMemo, useCallback, Component, type ReactNode } from 'react'
 import Link from 'next/link'
 import { X, ChevronRight, ExternalLink } from 'lucide-react'
 import { Canvas, useFrame, type ThreeEvent } from '@react-three/fiber'
@@ -18,6 +18,38 @@ const regionColors: Record<string, string> = {
 }
 
 type BodyPartKey = RegionSlug
+
+// Error boundary for 3D canvas
+class CanvasErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean; error: Error | null }> {
+  constructor(props: { children: ReactNode }) {
+    super(props)
+    this.state = { hasError: false, error: null }
+  }
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error }
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="flex h-[min(80vh,700px)] w-full items-center justify-center sm:h-[min(85vh,800px)]">
+          <div className="max-w-md rounded-xl border border-danger-200 bg-danger-50 p-6 text-center dark:border-danger-800 dark:bg-danger-950">
+            <p className="mb-2 text-lg font-semibold text-danger-700 dark:text-danger-300">3D Model Error</p>
+            <p className="text-sm text-danger-600 dark:text-danger-400">
+              {this.state.error?.message || 'Failed to load the 3D model. Please try a different browser or device.'}
+            </p>
+            <button
+              onClick={() => this.setState({ hasError: false, error: null })}
+              className="mt-4 rounded-lg bg-danger-600 px-4 py-2 text-sm font-medium text-white hover:bg-danger-700"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      )
+    }
+    return this.props.children
+  }
+}
 
 function BodyPartMesh({
   position,
@@ -107,7 +139,6 @@ function BodyPartMesh({
         <Html
           position={[0, scale[1] * 0.6 + 0.15, 0]}
           center
-          distanceFactor={8}
           style={{ pointerEvents: 'none' }}
         >
           <div className="whitespace-nowrap rounded-lg bg-surface-900/95 px-3 py-1.5 text-sm font-semibold text-white shadow-lg dark:bg-surface-50 dark:text-surface-900">
@@ -294,30 +325,40 @@ export function InteractiveBodyModel() {
   }, [])
 
   return (
-    <div className="relative h-[min(80vh,700px)] w-full sm:h-[min(85vh,800px)]">
-      <Canvas shadows camera={{ position: [0, 2.5, 7], fov: 40 }} className="touch-none">
-        <Scene hovered={hovered} selected={selected} onHover={handleHover} onSelect={handleSelect} />
-      </Canvas>
+    <CanvasErrorBoundary>
+      <div className="relative h-[min(80vh,700px)] w-full sm:h-[min(85vh,800px)]">
+        <Canvas
+          shadows
+          camera={{ position: [0, 2.5, 7], fov: 40 }}
+          className="touch-none"
+          gl={{ antialias: true, alpha: false }}
+          onCreated={({ gl }) => {
+            gl.setClearColor('#f8fafc')
+          }}
+        >
+          <Scene hovered={hovered} selected={selected} onHover={handleHover} onSelect={handleSelect} />
+        </Canvas>
 
-      {hovered && !selected && (
-        <div className="pointer-events-none absolute left-1/2 top-4 -translate-x-1/2">
-          <div className="rounded-full bg-surface-900/80 px-4 py-1.5 text-sm font-medium text-white shadow-lg dark:bg-surface-50/80 dark:text-surface-900">
-            {REGIONS.find(r => r.slug === hovered)?.label}
-            <span className="ml-1.5 text-xs opacity-70">&mdash; click to explore</span>
+        {hovered && !selected && (
+          <div className="pointer-events-none absolute left-1/2 top-4 -translate-x-1/2">
+            <div className="rounded-full bg-surface-900/80 px-4 py-1.5 text-sm font-medium text-white shadow-lg dark:bg-surface-50/80 dark:text-surface-900">
+              {REGIONS.find(r => r.slug === hovered)?.label}
+              <span className="ml-1.5 text-xs opacity-70">&mdash; click to explore</span>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {!selected && (
-        <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2">
-          <div className="rounded-lg bg-surface-900/60 px-4 py-2 text-xs text-white/80 backdrop-blur-sm dark:bg-surface-100/60 dark:text-surface-800">
-            Drag to rotate &middot; Scroll to zoom &middot; Click a body part to explore
+        {!selected && (
+          <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2">
+            <div className="rounded-lg bg-surface-900/60 px-4 py-2 text-xs text-white/80 backdrop-blur-sm dark:bg-surface-100/60 dark:text-surface-800">
+              Drag to rotate &middot; Scroll to zoom &middot; Click a body part to explore
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {selected && <RegionDetailPanel region={selected} onClose={handleCloseDetail} />}
-      {selected && <div className="absolute inset-0 z-10" onClick={handleCloseDetail} />}
-    </div>
+        {selected && <RegionDetailPanel region={selected} onClose={handleCloseDetail} />}
+        {selected && <div className="absolute inset-0 z-10" onClick={handleCloseDetail} />}
+      </div>
+    </CanvasErrorBoundary>
   )
 }
