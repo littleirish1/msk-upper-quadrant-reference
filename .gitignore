@@ -22,6 +22,8 @@ overnight-check.log
 __pycache__/
 *.pyc
 .env
+# Local Netlify folder
+.netlify
 
 # Local review packets
 review-packet/
