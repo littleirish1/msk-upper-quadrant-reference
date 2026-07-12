@@ -4,10 +4,20 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import { getRegion, getCondition } from '@/data/taxonomy'
-import { getAllCasePaths, getCaseContent } from '@/lib/mdx'
+import {
+  getAllCasePaths,
+  getCaseContent,
+  getCaseLearnerLabel,
+  resolveCaseSlugFromPublicSlug,
+} from '@/lib/mdx'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
 import { mdxComponents } from '@/components/mdx/MDXComponents'
+import {
+  CaseReasoningPrompt,
+  type EnhancedReasoningFeedbackConfig,
+} from '@/components/cases/CaseReasoningPrompt'
+import { ConversationCase } from '@/components/cases/ConversationCase'
 
 interface Props {
   params: { region: string; caseSlug: string }
@@ -18,18 +28,27 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const result = await getCaseContent(params.region, params.caseSlug)
+  const internalCaseSlug = resolveCaseSlugFromPublicSlug(params.region, params.caseSlug)
+  const result = internalCaseSlug
+    ? await getCaseContent(params.region, internalCaseSlug)
+    : null
+  const displayTitle = getCaseLearnerLabel(
+    internalCaseSlug ?? params.caseSlug,
+    result?.frontmatter.title,
+    params.region,
+  )
 
   return {
-    title: result?.frontmatter.title
-      ? `${result.frontmatter.title} — Guided Case`
-      : 'Guided Case',
+    title: `${displayTitle} - Guided Case`,
     description: 'Guided MSK clinical reasoning case.',
   }
 }
 
 export default async function GuidedCasePage({ params }: Props) {
-  const { region: regionSlug, caseSlug } = params
+  const { region: regionSlug, caseSlug: publicCaseSlug } = params
+
+  const caseSlug = resolveCaseSlugFromPublicSlug(regionSlug, publicCaseSlug)
+  if (!caseSlug) notFound()
 
   const result = await getCaseContent(regionSlug, caseSlug)
   if (!result) notFound()
@@ -45,10 +64,20 @@ export default async function GuidedCasePage({ params }: Props) {
     conditionSlug && region
       ? getCondition(regionSlug, conditionSlug)
       : null
+  const displayTitle = getCaseLearnerLabel(caseSlug, result.frontmatter.title, regionSlug)
+  const learnerContent = stripPreRevealLinkedConditionSection(
+    result.content.replace(/^# .*(?:\r?\n)+/, ''),
+  )
+  const casePresentationContent = extractCasePresentationStem(learnerContent)
+  const learnerSections = result.sections.filter(
+    (section) => section.heading.toLowerCase() !== 'linked evidence and condition pages',
+  )
+  const enhancedFeedback = getEnhancedFeedbackConfig(caseSlug)
+  const showConversationPreview = caseSlug === 'visceral-referral-mimicking-thoracic-msk-case-01'
 
   return (
     <div className="flex">
-      <Sidebar currentRegion={regionSlug} currentCondition={conditionSlug} />
+      <Sidebar currentRegion={regionSlug} showConditions={false} />
 
       <div className="flex-1 min-w-0 px-4 py-8 sm:px-8 lg:px-12 xl:pr-4 pb-24 lg:pb-8">
         <Breadcrumb
@@ -57,7 +86,7 @@ export default async function GuidedCasePage({ params }: Props) {
             region
               ? { label: region.label, href: `/${regionSlug}` }
               : { label: regionSlug },
-            { label: result.frontmatter.title ?? 'Guided case' },
+            { label: displayTitle },
           ]}
         />
 
@@ -67,19 +96,13 @@ export default async function GuidedCasePage({ params }: Props) {
           </p>
 
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-surface-900 dark:text-surface-50">
-            {result.frontmatter.title ?? 'Guided case'}
+            {displayTitle}
           </h1>
 
           <div className="mt-3 flex flex-wrap gap-2 text-xs">
             {region && (
               <span className="rounded-full bg-white px-2.5 py-1 font-medium text-brand-700 dark:bg-surface-900 dark:text-brand-300">
                 Region: {region.label}
-              </span>
-            )}
-
-            {condition && (
-              <span className="rounded-full bg-white px-2.5 py-1 font-medium text-brand-700 dark:bg-surface-900 dark:text-brand-300">
-                Condition link: {condition.label}
               </span>
             )}
 
@@ -91,33 +114,170 @@ export default async function GuidedCasePage({ params }: Props) {
           </div>
         </div>
 
-        {result.sections.length > 0 && (
-          <nav aria-label="Case sections" className="mb-8 flex flex-wrap gap-2 xl:hidden">
-            {result.sections.map((section) => (
-              <a
-                key={section.slug}
-                href={`#${section.slug}`}
-                className="rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950 dark:text-brand-300 dark:hover:bg-brand-900 transition-colors"
-              >
-                {section.heading}
-              </a>
-            ))}
-          </nav>
+        {showConversationPreview && <ConversationCase />}
+
+        {casePresentationContent && (
+          <section className="mb-6 rounded-xl border border-surface-200 bg-white p-5 shadow-sm dark:border-surface-800 dark:bg-surface-900">
+            <p className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">
+              Case presentation
+            </p>
+            <h2 className="mt-2 text-xl font-semibold text-surface-900 dark:text-surface-50">
+              What you know so far
+            </h2>
+            <div className="prose-clinical mt-4 max-w-none">
+              <MDXRemote
+                source={casePresentationContent}
+                components={mdxComponents}
+                options={{
+                  mdxOptions: {
+                    remarkPlugins: [remarkGfm],
+                    rehypePlugins: [rehypeSlug],
+                  },
+                }}
+              />
+            </div>
+          </section>
         )}
 
-        <article className="prose-clinical">
-          <MDXRemote
-            source={result.content}
-            components={mdxComponents}
-            options={{
-              mdxOptions: {
-                remarkPlugins: [remarkGfm],
-                rehypePlugins: [rehypeSlug],
-              },
-            }}
-          />
-        </article>
+        <CaseReasoningPrompt
+          displayTitle={displayTitle}
+          actualTitle={result.frontmatter.title}
+          conditionLabel={condition?.label}
+          conditionHref={condition ? `/${regionSlug}/${condition.slug}` : undefined}
+          enhancedFeedback={enhancedFeedback}
+        >
+          {learnerSections.length > 0 && (
+            <nav aria-label="Case sections" className="mb-8 flex flex-wrap gap-2 xl:hidden">
+              {learnerSections.map((section) => (
+                <a
+                  key={section.slug}
+                  href={`#${section.slug}`}
+                  className="rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 transition-colors hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950 dark:text-brand-300 dark:hover:bg-brand-900"
+                >
+                  {section.heading}
+                </a>
+              ))}
+            </nav>
+          )}
+
+          <article className="prose-clinical">
+            <MDXRemote
+              source={learnerContent}
+              components={mdxComponents}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                  rehypePlugins: [rehypeSlug],
+                },
+              }}
+            />
+          </article>
+        </CaseReasoningPrompt>
       </div>
     </div>
   )
+}
+
+function stripPreRevealLinkedConditionSection(content: string): string {
+  return content.replace(/\n## Linked evidence and condition pages[\s\S]*$/i, '')
+}
+
+function extractCasePresentationStem(content: string): string {
+  const firstRevealIndex = firstIndexOf(content, [
+    '<ReasoningPrompt',
+    '<RevealAnswer',
+  ])
+  const stem = firstRevealIndex >= 0 ? content.slice(0, firstRevealIndex) : content
+
+  return stem
+    .replace(/^##\s+(case presentation|initial presentation|what you know so far)\s*/i, '')
+    .replace(/^##\s+[^\n]+\n+/, '')
+    .trim()
+}
+
+function firstIndexOf(content: string, markers: string[]): number {
+  const indexes = markers
+    .map((marker) => content.indexOf(marker))
+    .filter((index) => index >= 0)
+
+  return indexes.length ? Math.min(...indexes) : -1
+}
+
+function getEnhancedFeedbackConfig(
+  caseSlug: string,
+): EnhancedReasoningFeedbackConfig | undefined {
+  if (caseSlug !== 'cervical-radiculopathy-case-01') {
+    return undefined
+  }
+
+  return {
+    badgeLabel: 'Enhanced reasoning feedback preview',
+    conceptGroups: {
+      hypothesis: [
+        'cervical nerve root',
+        'cervical radiculopathy',
+        'nerve root irritation',
+        'nerve root',
+        'c6 pattern',
+        'radicular pain',
+        'radicular',
+      ],
+      supportingFeatures: [
+        'arm pain',
+        'dermatomal distribution',
+        'dermatome',
+        'thumb',
+        'index finger',
+        'paresthesia',
+        'pins and needles',
+        'reduced sensation',
+        'reflex change',
+        'biceps reflex',
+        'weakness',
+        'myotomal weakness',
+        'spurling',
+        'distraction relief',
+        'ultt',
+        'upper limb tension',
+        'shoulder abduction relief',
+        'bakody',
+      ],
+      cautionSafety: [
+        'myelopathy',
+        'bilateral symptoms',
+        'gait change',
+        'hand clumsiness',
+        'upper motor neuron',
+        'upper motor neurone',
+        'progressive weakness',
+        'bowel',
+        'bladder',
+        'systemic red flags',
+        'cancer',
+        'fever',
+        'weight loss',
+      ],
+      nextAssessment: [
+        'neurological exam',
+        'neurological examination',
+        'dermatomes',
+        'myotomes',
+        'reflexes',
+        'myelopathy screen',
+        'spurling',
+        'distraction',
+        'ultt',
+        'upper limb tension',
+        'cervical range of motion',
+        'shoulder screen',
+      ],
+      localOnlyPattern: [
+        'shoulder',
+        'rotator cuff',
+        'impingement',
+        'local arm pain',
+        'muscle strain',
+      ],
+    },
+  }
 }

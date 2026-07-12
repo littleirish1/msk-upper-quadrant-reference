@@ -41,17 +41,31 @@ export function StickyTOC({ sections }: StickyTOCProps) {
   const [collapsed, setCollapsed] = useState(false)
 
   const handleScroll = useCallback(() => {
-    const headings = sections.map(s => ({
-      slug: s.slug,
-      el: document.getElementById(s.slug),
-    })).filter(h => h.el)
+    const headings = sections
+      .map(s => ({
+        slug: s.slug,
+        el: document.getElementById(s.slug),
+      }))
+      .filter((heading): heading is { slug: string; el: HTMLElement } => Boolean(heading.el))
 
-    let current = ''
+    if (headings.length === 0) return
+
+    const activationLine = 180
+    const firstVisible = headings.find(({ el }) => el.getBoundingClientRect().top >= activationLine)
+
+    let current = headings[0].slug
     for (const { slug, el } of headings) {
-      if (el && el.getBoundingClientRect().top <= 120) {
+      if (el.getBoundingClientRect().top <= activationLine) {
         current = slug
       }
     }
+
+    if (window.scrollY < 40) {
+      current = headings[0].slug
+    } else if (firstVisible && firstVisible.el.getBoundingClientRect().top < activationLine + 80) {
+      current = firstVisible.slug
+    }
+
     setActiveSlug(current)
   }, [sections])
 
@@ -80,6 +94,7 @@ export function StickyTOC({ sections }: StickyTOCProps) {
                 <li key={s.slug}>
                   <a
                     href={`#${s.slug}`}
+                    aria-current={isActive ? 'location' : undefined}
                     className={cn(
                       'flex items-center gap-2 border-l-2 -ml-[2px] py-1.5 pl-3 pr-2 text-sm transition-colors',
                       isActive
@@ -120,6 +135,7 @@ export function StickyTOC({ sections }: StickyTOCProps) {
                       <a
                         href={`#${s.slug}`}
                         onClick={() => setCollapsed(false)}
+                        aria-current={activeSlug === s.slug ? 'location' : undefined}
                         className={cn(
                           'flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors',
                           activeSlug === s.slug

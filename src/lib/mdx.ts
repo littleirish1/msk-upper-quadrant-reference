@@ -1,13 +1,55 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import type { ConditionFrontmatter } from '@/types'
+import {
+  caseFrontmatterSchema,
+  conditionFrontmatterSchema,
+  type CaseFrontmatterSchema,
+  type ConditionFrontmatterSchema,
+} from './contentSchemas'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content')
 
+function relativeContentPath(filePath: string): string {
+  return path.relative(process.cwd(), filePath).split(path.sep).join('/')
+}
+
+function formatSchemaError(error: { issues: Array<{ path: PropertyKey[]; message: string }> }): string {
+  return error.issues
+    .map((issue) => {
+      const fieldPath = issue.path.length ? issue.path.map(String).join('.') : '(root)'
+      return `${fieldPath}: ${issue.message}`
+    })
+    .join('; ')
+}
+
+function parseConditionFrontmatter(filePath: string, data: Record<string, unknown>): ConditionFrontmatterSchema {
+  const result = conditionFrontmatterSchema.safeParse(data)
+
+  if (!result.success) {
+    throw new Error(
+      `Invalid condition frontmatter in ${relativeContentPath(filePath)}: ${formatSchemaError(result.error)}`,
+    )
+  }
+
+  return result.data
+}
+
+function parseCaseFrontmatter(filePath: string, data: Record<string, unknown>): CaseFrontmatterSchema {
+  const result = caseFrontmatterSchema.safeParse(data)
+
+  if (!result.success) {
+    throw new Error(
+      `Invalid guided case frontmatter in ${relativeContentPath(filePath)}: ${formatSchemaError(result.error)}`,
+    )
+  }
+
+  return result.data
+}
+
 export interface ConditionContent {
   content: string
-  frontmatter: Partial<ConditionFrontmatter>
+  frontmatter: ConditionFrontmatterSchema
   sections: Array<{ heading: string; slug: string; content: string }>
 }
 
@@ -27,6 +69,7 @@ export async function getConditionContent(
 
   const raw = fs.readFileSync(filePath, 'utf-8')
   const { content: rawContent, data } = matter(raw)
+  const frontmatter = parseConditionFrontmatter(filePath, data)
 
   // Sanitize content for MDX parsing:
   // Replace bare < and > that aren't MDX/HTML tags to avoid parser errors
@@ -37,7 +80,7 @@ export async function getConditionContent(
 
   return {
     content,
-    frontmatter: data as Partial<ConditionFrontmatter>,
+    frontmatter,
     sections,
   }
 }
@@ -106,9 +149,9 @@ function parseSections(content: string): Array<{ heading: string; slug: string; 
 function slugify(text: string): string {
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
+    .trim()
+    .replace(/[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~]/g, '')
+    .replace(/\s/g, '-')
     .trim()
 }
 
@@ -143,24 +186,47 @@ export function getAllMdxPaths(): Array<{ region: string; condition: string }> {
  * Build a plain-text excerpt from MDX content (strips JSX/markdown syntax).
  */
 export function extractExcerpt(mdx: string, maxLength = 200): string {
-  return mdx
-    .replace(/---[\s\S]*?---/, '')
+  return stripFirstHeading(mdx.replace(/---[\s\S]*?---/, '').trimStart())
     .replace(/<[^>]+>/g, '')
     .replace(/[#*`[\]]/g, '')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, maxLength)
 }
+
+function stripFirstHeading(mdx: string): string {
+  return mdx.replace(/^# .*(?:\r?\n)+/, '')
+}
+
+const CASE_LEARNER_LABELS: Record<string, string> = {
+  'cervical-radiculopathy-case-01': 'Case 01 · Neck and arm symptoms',
+  'early-degenerative-cervical-myelopathy-case-01': 'Case 02 · Hand clumsiness and heavy legs',
+  'distal-biceps-rupture-case-01': 'Case 03 · Sudden anterior elbow pain after lifting',
+  'rcrsp-case-01': 'Case 04 · Lateral shoulder pain with overhead activity',
+  'adhesive-capsulitis-case-01': 'Case 05 · Progressive shoulder stiffness',
+  'visceral-referral-mimicking-thoracic-msk-case-01': 'Case 06 · Thoracic pain with broader screening cues',
+}
+
+export function getCaseLearnerLabel(caseSlug: string, title?: string, region?: string): string {
+  if (CASE_LEARNER_LABELS[caseSlug]) {
+    return CASE_LEARNER_LABELS[caseSlug]
+  }
+
+  void title
+
+  const caseNumber = caseSlug.match(/case-(\d+)/i)?.[1]
+  const caseLabel = caseNumber ? `Case ${caseNumber.padStart(2, '0')}` : 'Guided case'
+  const regionLabel = region ? region.replace(/-/g, ' ') : 'MSK'
+  const fallback = `${caseLabel} - ${regionLabel} clinical reasoning case`
+  return `Guided case · ${fallback}`
+}
+
 export interface CaseContent {
   content: string
-  frontmatter: {
-    title?: string
-    region?: string
-    condition?: string
-    difficulty?: string
-    [key: string]: unknown
-  }
+  frontmatter: CaseFrontmatterSchema
   sections: Array<{ heading: string; slug: string; content: string }>
+  caseSlug: string
+  publicSlug: string
 }
 
 /**
@@ -178,15 +244,46 @@ export async function getCaseContent(
 
   const raw = fs.readFileSync(filePath, 'utf-8')
   const { content: rawContent, data } = matter(raw)
+  const frontmatter = parseCaseFrontmatter(filePath, data)
 
   const content = sanitizeMdxContent(rawContent)
   const sections = parseSections(content)
 
   return {
     content,
-    frontmatter: data,
+    frontmatter,
     sections,
+    caseSlug,
+    publicSlug: getCasePublicSlug(caseSlug, frontmatter, region),
   }
+}
+
+export function resolveCaseSlugFromPublicSlug(region: string, publicSlug: string): string | null {
+  const casesDir = path.join(CONTENT_DIR, 'cases', region)
+
+  if (!fs.existsSync(casesDir)) return null
+
+  const files = fs.readdirSync(casesDir, { withFileTypes: true })
+    .filter(f => f.isFile() && f.name.endsWith('.mdx'))
+
+  for (const file of files) {
+    const caseSlug = file.name.replace('.mdx', '')
+    const filePath = path.join(casesDir, file.name)
+    const raw = fs.readFileSync(filePath, 'utf-8')
+    const { data } = matter(raw)
+    const frontmatter = parseCaseFrontmatter(filePath, data)
+    const status = frontmatter.status
+
+    if (isPrivateCaseStatus(status)) {
+      continue
+    }
+
+    if (getCasePublicSlug(caseSlug, frontmatter, region) === publicSlug) {
+      return caseSlug
+    }
+  }
+
+  return null
 }
 
 /**
@@ -213,14 +310,15 @@ export function getAllCasePaths(): Array<{ region: string; caseSlug: string }> {
       const filePath = path.join(regionDir, file.name)
       const raw = fs.readFileSync(filePath, 'utf-8')
       const { data } = matter(raw)
-      const status = typeof data.status === 'string' ? data.status : 'published'
+      const frontmatter = parseCaseFrontmatter(filePath, data)
+      const status = frontmatter.status
 
       if (isPrivateCaseStatus(status)) {
         continue
       }
 
       const caseSlug = file.name.replace('.mdx', '')
-      results.push({ region, caseSlug })
+      results.push({ region, caseSlug: getCasePublicSlug(caseSlug, frontmatter, region) })
     }
   }
 
@@ -230,6 +328,7 @@ export function getAllCasePaths(): Array<{ region: string; caseSlug: string }> {
 export interface CaseListItem {
   region: string
   caseSlug: string
+  publicSlug: string
   title: string
   condition?: string
   difficulty?: string
@@ -240,6 +339,7 @@ export interface CaseListItem {
   lastReviewed?: string
   reviewedBy?: string
   excerpt: string
+  displayTitle: string
 }
 
 
@@ -268,22 +368,27 @@ export function getAllCases(): CaseListItem[] {
       const filePath = path.join(regionDir, file.name)
       const raw = fs.readFileSync(filePath, 'utf-8')
       const { content: rawContent, data } = matter(raw)
+      const frontmatter = parseCaseFrontmatter(filePath, data)
       const content = sanitizeMdxContent(rawContent)
 
    results.push({
   region,
   caseSlug,
-  title: typeof data.title === 'string' ? data.title : caseSlug,
-  condition: typeof data.condition === 'string' ? data.condition : undefined,
-  difficulty: typeof data.difficulty === 'string' ? data.difficulty : undefined,
-  caseType: typeof data.caseType === 'string' ? data.caseType : undefined,
-  status: typeof data.status === 'string' ? data.status : 'published',
-  learningFocus: Array.isArray(data.learningFocus)
-    ? data.learningFocus.filter((item): item is string => typeof item === 'string')
-    : [],
-  estimatedTime: typeof data.estimatedTime === 'string' ? data.estimatedTime : undefined,
-  lastReviewed: typeof data.lastReviewed === 'string' ? data.lastReviewed : undefined,
-  reviewedBy: typeof data.reviewedBy === 'string' ? data.reviewedBy : undefined,
+  title: frontmatter.title,
+  displayTitle: getCaseLearnerLabel(
+    caseSlug,
+    frontmatter.title,
+    region,
+  ),
+  condition: frontmatter.condition,
+  difficulty: frontmatter.difficulty,
+  caseType: frontmatter.caseType,
+  status: frontmatter.status,
+  publicSlug: getCasePublicSlug(caseSlug, frontmatter, region),
+  learningFocus: frontmatter.learningFocus,
+  estimatedTime: frontmatter.estimatedTime,
+  lastReviewed: frontmatter.lastReviewed,
+  reviewedBy: frontmatter.reviewedBy,
   excerpt: extractExcerpt(content, 180),
 })
     }
@@ -296,4 +401,19 @@ return results
 
 function isPrivateCaseStatus(status: string): boolean {
   return ['draft', 'archived'].includes(status.toLowerCase())
+}
+
+function getCasePublicSlug(
+  caseSlug: string,
+  data: Pick<CaseFrontmatterSchema, 'publicSlug'>,
+  region?: string,
+): string {
+  if (typeof data.publicSlug === 'string' && data.publicSlug.trim()) {
+    return data.publicSlug.trim()
+  }
+
+  const caseNumber = caseSlug.match(/case-(\d+)/i)?.[1]
+  const caseLabel = caseNumber ? `case-${caseNumber.padStart(2, '0')}` : 'case'
+  const regionLabel = region ? region.replace(/[^a-z0-9]+/gi, '-').toLowerCase() : 'msk'
+  return `${caseLabel}-${regionLabel}-clinical-reasoning`
 }

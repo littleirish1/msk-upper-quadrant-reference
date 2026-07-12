@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Menu, X, Search, Sun, Moon, Activity, RotateCw } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { cn } from '@/lib/utils'
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -35,6 +34,7 @@ export function Header() {
             { href: '/shoulder',   label: 'Shoulder' },
             { href: '/elbow',      label: 'Elbow' },
             { href: '/wrist-hand', label: 'Wrist & Hand' },
+            { href: '/cases',      label: 'Cases' },
           ].map(({ href, label, icon: Icon }) => (
             <Link
               key={href}
@@ -102,6 +102,7 @@ export function Header() {
               { href: '/shoulder',   label: 'Shoulder' },
               { href: '/elbow',      label: 'Elbow' },
               { href: '/wrist-hand', label: 'Wrist & Hand' },
+            { href: '/cases',      label: 'Guided Cases' },
             ].map(({ href, label, icon: Icon }) => (
               <li key={href}>
                 <Link

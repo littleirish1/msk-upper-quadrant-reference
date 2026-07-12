@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { REGIONS } from '@/data/taxonomy'
@@ -9,11 +8,10 @@ import { REGIONS } from '@/data/taxonomy'
 interface SidebarProps {
   currentRegion?: string
   currentCondition?: string
+  showConditions?: boolean
 }
 
-export function Sidebar({ currentRegion, currentCondition }: SidebarProps) {
-  const pathname = usePathname()
-
+export function Sidebar({ currentRegion, currentCondition, showConditions = true }: SidebarProps) {
   return (
     <aside
       className={cn(
@@ -48,7 +46,7 @@ export function Sidebar({ currentRegion, currentCondition }: SidebarProps) {
                     <ChevronRight className={cn('h-3.5 w-3.5 transition-transform', isActiveRegion && 'rotate-90')} />
                   </Link>
 
-                  {isActiveRegion && (
+                  {isActiveRegion && showConditions && (
                     <ul className="ml-3 mt-1 space-y-0.5 border-l border-surface-200 pl-3 dark:border-surface-700">
                       {region.conditions.map(condition => {
                         const isActiveCondition = condition.slug === currentCondition

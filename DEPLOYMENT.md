@@ -1,16 +1,16 @@
 # Deployment
 
-This project is prepared for a Netlify trial demo as a static Next.js export.
+This project deploys the public learner site as a static Next.js export on Netlify. The local Case Manager and source tooling are not public routes.
 
 ## Local Working Directory
 
-Use the local project copy at:
+Use:
 
 ```powershell
 C:\dev\msk-upper-quadrant-reference
 ```
 
-Avoid running deployment or Case Manager commands from older synced copies.
+Avoid running deployment commands from older synced copies.
 
 ## Install
 
@@ -18,9 +18,9 @@ Avoid running deployment or Case Manager commands from older synced copies.
 npm install
 ```
 
-## Local Validation
+## Required Local Validation
 
-Run these from `C:\dev\msk-upper-quadrant-reference` before a demo or deployment:
+Before a deploy or demo:
 
 ```powershell
 npm run registry:sources
@@ -28,68 +28,110 @@ npm run tracker:legacy
 npm run preflight
 ```
 
-`npm run preflight` runs:
+`preflight` is the same gate used by Netlify:
 
 ```powershell
 npm run clean:build
 npm run check:hygiene
 npm run check:sources
+npm run check:secrets
+npm run check:frontmatter
 npm run build
+npm run check:search
+npm run check:no-leak
+npm run check:reveal
+npm run check:routes
 ```
 
-## Netlify Settings
+## Deploy Target
 
-Build command:
+The active deploy target is Netlify.
 
-```powershell
-npm run preflight
+`netlify.toml`:
+
+```toml
+[build]
+command = "npm run preflight"
+publish = "out"
 ```
 
-Publish directory:
+The app uses `output: 'export'` in `next.config.mjs`, so `next build` writes static files to `out`. The config also uses `trailingSlash: true` and the repository base path `/msk-upper-quadrant-reference`; `netlify.toml` publishes `out` and includes redirects so existing base-path URLs resolve on the Netlify-hosted public site.
 
-```powershell
-out
-```
-
-The project uses `output: 'export'` in `next.config.mjs`, so `next build` writes the static learner site to `out`.
-
-`next.config.mjs` currently sets `basePath: '/msk-upper-quadrant-reference'`. `netlify.toml` includes small rewrite rules so those base-path URLs resolve against the static files in `out` during the Netlify trial.
+GitHub Pages is not the deployment target. Any GitHub workflow should be validation-only and should run `npm run preflight`, not a separate deploy command.
 
 ## Public Surface
 
 Public:
 
-- Published learner site pages.
-- Published condition, region, red-flag, search, and guided case pages.
+- Reviewed learner pages.
+- Region and condition pages.
+- Published guided cases using neutral public case slugs.
+- Demo/status pages intended for the public trial build.
 
 Not public:
 
 - Draft cases.
 - Archived cases.
 - `ai-manager` local Case Manager tooling.
-- Source notes, TODO material, and unreviewed draft material.
+- Imported source notes and unreviewed TODO material.
+- Local file paths, secrets, or admin-only details.
 
-## Draft Route Check
+## Content And Route Reality
 
-After `npm run preflight`, confirm draft-created cases are absent from `out` and published cases are present:
+Condition pages use flat MDX files:
+
+```text
+content/{region}/{condition}.mdx
+```
+
+The sections inside those files are parsed from `##` headings and rendered as in-page anchor navigation. They are not separate files or separate routes.
+
+Guided cases live under:
+
+```text
+content/cases/{region}/{caseSlug}.mdx
+```
+
+Published cases may have a neutral `publicSlug`. Public routes use that neutral slug, while internal filenames and metadata remain available for source tracking.
+
+## Route Safety Checks
+
+After build, `check:no-leak` and `check:routes` confirm that:
+
+- required public routes exist,
+- published cases have public routes,
+- draft and archived case routes are absent,
+- diagnostic internal case routes are not generated when a neutral `publicSlug` is used,
+- `/ai-manager` is absent from the public export.
+
+Run them directly if needed:
+
+```powershell
+npm run check:no-leak
+npm run check:routes
+```
+
+## Manual Spot Checks
+
+After `npm run preflight`, expected public case routes include neutral labels such as:
+
+```powershell
+Test-Path "out\cases\cervical\case-01-neck-arm-symptoms\index.html"
+```
+
+Expected private/diagnostic routes should be absent:
 
 ```powershell
 Test-Path "out\cases\cervical\craniocervical-instability-ra-patient-case-01\index.html"
 Test-Path "out\cases\cervical\cervical-radiculopathy-case-01\index.html"
+Test-Path "out\ai-manager"
 ```
 
-The draft route check should return `False`; the published route check should return `True`.
-
-## Known Non-Blocking Warnings
-
-- `src/components/Header.tsx`: unused `cn`.
-- `src/components/Sidebar.tsx`: unused `pathname`.
-
-These warnings should be cleaned up, but they do not currently block the Netlify trial build.
+These should return `False` for draft/private, diagnostic internal, and admin routes.
 
 ## If Preflight Fails
 
-Do not bypass the failing check. Read the first failing command in the output, fix the underlying issue, and rerun:
+Do not bypass the failing check. Fix the first failing command and rerun:
 
 ```powershell
 npm run registry:sources
@@ -99,10 +141,8 @@ npm run preflight
 
 Common failure categories:
 
-- `check:hygiene`: source notes, TODO text, or generated draft markers leaking into published content.
-- `check:sources`: missing or inconsistent source metadata on legacy-derived cases.
+- `check:hygiene`: flagged names, TODO text, or generated draft markers in scanned content.
+- `check:sources`: missing or inconsistent source metadata.
+- `check:secrets`: committed secret-like strings.
 - `build`: route, MDX, TypeScript, or static export errors.
-
-## Trial URL Note
-
-For a longer-lived Netlify root-domain deployment, review whether the current `basePath` should stay. Removing it would be a separate routing/config decision from this trial-demo setup.
+- `check:no-leak` or `check:routes`: public route safety regression.

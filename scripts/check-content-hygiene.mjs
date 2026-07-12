@@ -7,12 +7,15 @@ const CONFIG_FILE = path.join(ROOT, 'ai-manager', 'content-hygiene-names.json')
 
 const SEARCH_DIRS = [
   'content',
+  'docs',
+  'public',
+  'src',
   'ai-manager',
 ]
 
 const IGNORE_FILES = new Set([
-  'ai-manager\\content-hygiene-names.json',
-  'ai-manager\\guided-case-rules.md',
+  'ai-manager/content-hygiene-names.json',
+  'ai-manager/guided-case-rules.md',
 ])
 
 const EXTENSIONS = new Set([
@@ -78,7 +81,7 @@ function walk(dir) {
 
     if (!entry.isFile()) continue
 
-    const relativePath = path.relative(ROOT, fullPath)
+    const relativePath = toPosix(path.relative(ROOT, fullPath))
 
     if (IGNORE_FILES.has(relativePath)) continue
 
@@ -101,4 +104,8 @@ function walk(dir) {
       }
     })
   }
+}
+
+function toPosix(value) {
+  return value.split(path.sep).join('/')
 }

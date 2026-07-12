@@ -2,7 +2,7 @@
 
 ## Project
 
-- Branch: feature/guided-cases
+- Branch: main
 - Project root: C:/dev/msk-upper-quadrant-reference
 - Preflight status: build artifacts present from latest Next build
 
@@ -32,7 +32,7 @@
 
 ## Draft-Created Sources
 
-- s40: Scaphoid Fracture — Acute Presentation -> content/cases/wrist - hand/scaphoid-fracture-acute-presentation-case-01.mdx
+- s40: Scaphoid Fracture — Acute Presentation -> content/cases/wrist-hand/scaphoid-fracture-acute-presentation-case-01.mdx
 - s42: Axial Spondyloarthropathy (AxSpA) — Referral Pathway -> content/cases/lumbar/axial-spondyloarthropathy-axspa-referral-pathway-case-01.mdx
 - s46: Craniocervical Instability — RA Patient -> content/cases/cervical/craniocervical-instability-ra-patient-case-01.mdx
 

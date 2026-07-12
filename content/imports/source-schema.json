@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/msk-clinical-reasoning-lab/source-schema.json",
+  "title": "MSK Clinical Reasoning Lab Source Metadata",
+  "description": "Future-friendly schema for source records used by the whole-body physiotherapy clinical reasoning pipeline. This schema is intentionally permissive and does not require every field yet.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "legacy-html-case-bank",
+        "powerpoint",
+        "paper",
+        "manual-case",
+        "evidence-note",
+        "teaching-session",
+        "assessment-template",
+        "clinical-guideline"
+      ]
+    },
+    "sourceId": {
+      "type": "string"
+    },
+    "sourcePath": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "bodyRegion": {
+      "type": "string"
+    },
+    "bodyRegionTags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/bodyRegionTag"
+      },
+      "uniqueItems": true
+    },
+    "conditionTags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "physiotherapyDomainTags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "assessment",
+          "triage",
+          "red-flags",
+          "differential-diagnosis",
+          "rehabilitation",
+          "manual-therapy",
+          "exercise-prescription",
+          "education",
+          "self-management",
+          "referral",
+          "return-to-sport",
+          "occupational-health",
+          "post-operative",
+          "persistent-pain",
+          "systemic-screening",
+          "evidence-appraisal",
+          "teaching"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "sourceStatus": {
+      "type": "string",
+      "enum": [
+        "pending-review",
+        "draft-created",
+        "converted",
+        "archived",
+        "imported",
+        "extracted",
+        "needs-review",
+        "reviewed",
+        "rejected"
+      ]
+    },
+    "targetOutputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/targetOutput"
+      }
+    },
+    "linkedCases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/linkedCase"
+      }
+    },
+    "linkedEvidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/linkedEvidence"
+      }
+    },
+    "reviewStatus": {
+      "type": "string",
+      "enum": [
+        "needs-review",
+        "reviewed",
+        "revision-needed",
+        "archived",
+        "rejected",
+        "unknown"
+      ]
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "reviewedBy": {
+      "type": "string"
+    },
+    "notes": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "bodyRegionTag": {
+      "type": "string",
+      "enum": [
+        "cervical",
+        "thoracic",
+        "shoulder",
+        "elbow",
+        "wrist-hand",
+        "lumbar",
+        "pelvis-sij",
+        "hip-groin",
+        "knee",
+        "ankle-foot",
+        "neuro",
+        "rheumatology",
+        "persistent-pain",
+        "post-op",
+        "return-to-sport",
+        "whole-body",
+        "multi-region"
+      ]
+    },
+    "targetOutput": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "outputType": {
+          "type": "string",
+          "enum": [
+            "guided-case",
+            "condition-page",
+            "evidence-note",
+            "presentation",
+            "teaching-session",
+            "assessment-template"
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "reviewStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "linkedCase": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "reviewStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "linkedEvidence": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "evidenceId": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "relationship": {
+          "type": "string"
+        },
+        "reviewStatus": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

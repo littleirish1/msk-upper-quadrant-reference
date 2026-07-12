@@ -6,9 +6,13 @@
  *
  * Content structure: content/{region}/{condition}.mdx (flat files)
  */
-import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'fs'
+import { writeFileSync, readdirSync, existsSync, mkdirSync } from 'fs'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
+import {
+  getTaxonomyRegions,
+  readConditionFrontmatter,
+} from './lib/readMdxFrontmatter.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..')
@@ -24,17 +28,6 @@ function stripMdx(text) {
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 300)
-}
-
-function parseFrontmatter(raw) {
-  const match = raw.match(/^---\n([\s\S]*?)\n---/)
-  if (!match) return {}
-  const fm = {}
-  for (const line of match[1].split('\n')) {
-    const [k, ...v] = line.split(':')
-    if (k && v.length) fm[k.trim()] = v.join(':').trim().replace(/^["']|["']$/g, '')
-  }
-  return fm
 }
 
 function slugToLabel(slug) {
@@ -53,32 +46,37 @@ if (!existsSync(CONTENT_DIR)) {
   process.exit(0)
 }
 
-const regions = readdirSync(CONTENT_DIR, { withFileTypes: true })
-  .filter(d => d.isDirectory() && !d.name.startsWith('_'))
-  .map(d => d.name)
+const regions = (await getTaxonomyRegions())
+  .map((region) => region.slug)
+  .sort((a, b) => a.localeCompare(b))
 
 for (const region of regions) {
   const regionDir = join(CONTENT_DIR, region)
+  if (!existsSync(regionDir)) {
+    continue
+  }
+
   const files = readdirSync(regionDir, { withFileTypes: true })
     .filter(f => f.isFile() && f.name.endsWith('.mdx'))
     .map(f => f.name)
+    .sort((a, b) => a.localeCompare(b))
 
   for (const file of files) {
     const condition = file.replace('.mdx', '')
-    const raw = readFileSync(join(regionDir, file), 'utf-8')
-    const fm = parseFrontmatter(raw)
+    const { content, data } = await readConditionFrontmatter(join(regionDir, file))
 
     entries.push({
       id: `${region}/${condition}`,
-      title: fm.title ?? slugToLabel(condition),
+      title: data.title || slugToLabel(condition),
       region,
       condition,
       section: '',
-      content: stripMdx(raw),
+      content: stripMdx(content),
       href: `/${region}/${condition}`,
     })
   }
 }
 
+entries.sort((a, b) => a.id.localeCompare(b.id))
 writeFileSync(OUT_FILE, JSON.stringify(entries, null, 2))
 console.log(`✓ Search index built: ${entries.length} entries → ${OUT_FILE}`)

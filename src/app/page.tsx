@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { Brain, Columns, CircleDot, GitBranch, Hand, Search, ShieldAlert, Stethoscope, RotateCw } from 'lucide-react'
+import { BookOpen, Brain, Columns, CircleDot, GitBranch, Hand, Search, ShieldAlert, Stethoscope, RotateCw } from 'lucide-react'
 import { REGIONS } from '@/data/taxonomy'
+import { BodyRegionRoadmap } from '@/components/ui/BodyRegionRoadmap'
 import { QuickFind } from '@/components/ui/QuickFind'
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -57,6 +58,13 @@ export default function HomePage() {
             3D Body Model
           </Link>
           <Link
+            href="/cases"
+            className="inline-flex items-center gap-2 rounded-lg border-2 border-brand-200 bg-white px-5 py-2.5 text-sm font-semibold text-brand-700 shadow-sm transition-colors hover:border-brand-300 hover:bg-brand-50 dark:border-brand-800 dark:bg-surface-900 dark:text-brand-300 dark:hover:bg-brand-950"
+          >
+            <BookOpen className="h-4 w-4" aria-hidden />
+            Guided Cases
+          </Link>
+          <Link
             href="/red-flags"
             className="inline-flex items-center gap-2 rounded-lg border-2 border-danger-300 bg-danger-50 px-5 py-2.5 text-sm font-semibold text-danger-700 shadow-sm transition-colors hover:bg-danger-100 dark:border-danger-700 dark:bg-danger-950 dark:text-danger-300 dark:hover:bg-danger-900"
           >
@@ -110,6 +118,8 @@ export default function HomePage() {
           })}
         </div>
       </section>
+
+      <BodyRegionRoadmap />
 
       {/* Disclaimer */}
       <section className="mt-10 rounded-xl border border-accent-200 bg-accent-50 p-5 dark:border-accent-900 dark:bg-surface-900">

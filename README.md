@@ -1,184 +1,137 @@
-# MSK Upper Quadrant Clinical Reference
+# MSK Clinical Reasoning Lab
 
-> Evidence-based clinical reference for physiotherapists and allied health professionals in **HSC Northern Ireland**.
+Static learner site and local source-management tooling for a physiotherapy clinical reasoning platform. The current public build focuses on upper-quadrant MSK content as Phase 1, with a longer-term direction toward whole-body clinical reasoning.
 
-[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://typescriptlang.org)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38bdf8)](https://tailwindcss.com)
+## What This Repo Contains
 
----
+- A static Next.js learner site for reviewed public content.
+- Flat condition MDX files under `content/{region}/{condition}.mdx`.
+- Guided case MDX files under `content/cases/{region}/{case}.mdx`.
+- Local-only Case Manager tooling under `ai-manager/`.
+- Metadata-driven source registry, migration tracker, route checks, source checks, hygiene checks, and secret scanning.
 
-## Overview
-
-This is a **static-export Next.js site** providing a structured clinical reference for MSK upper quadrant conditions across five anatomical regions:
-
-- 🧠 Cervical Spine
-- 🔲 Thoracic Spine
-- 🔵 Shoulder
-- 🌿 Elbow
-- ✋ Wrist & Hand
-
-Each condition has eight standardised sections, all authored as MDX files for easy content population.
-
----
+The public site is deliberately static. Draft cases, archived cases, imported source notes, and `ai-manager` are not exposed as public routes.
 
 ## Quick Start
-
-### Prerequisites
-
-- Node.js ≥ 18
-- npm or pnpm
-
-### Install & run
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open `http://localhost:3000`.
 
-### Build for production
+## Production Gate
+
+Use the same gate locally and in Netlify:
 
 ```bash
-# 1. Generate search index
-node scripts/build-search-index.mjs
+npm run preflight
+```
 
-# 2. Build static site
+`preflight` currently runs:
+
+```bash
+npm run clean:build
+npm run check:hygiene
+npm run check:sources
+npm run check:secrets
+npm run check:frontmatter
 npm run build
-
-# Output is in ./out/ — deploy to Vercel, Netlify, or any static host
+npm run check:search
+npm run check:no-leak
+npm run check:reveal
+npm run check:routes
 ```
 
----
+## Content Model
 
-## Adding Content
+Condition content is not stored as separate per-section route files. Each condition is one MDX file:
 
-Content lives in `content/[region]/[condition]/[section].mdx`.
-
-### Example path
-
-```
-content/shoulder/rotator-cuff-tendinopathy/overview.mdx
+```text
+content/{region}/{condition}.mdx
 ```
 
-### Step-by-step
+Example:
 
-1. Find the condition slug in [`src/data/taxonomy.ts`](./src/data/taxonomy.ts)
-2. Copy `content/_TEMPLATE/overview.mdx` to your target path
-3. Edit the frontmatter (title, region, condition, section, dates, citations)
-4. Write the content using MDX + custom components
-5. Run `node scripts/build-search-index.mjs` to update search
-6. Run `npm run dev` to preview
+```text
+content/shoulder/rotator-cuff-related-shoulder-pain.mdx
+```
 
-### Available MDX Components
+The route is:
 
-| Component | Purpose |
-|-----------|---------|
-| `<Callout variant="info|warning|danger|tip|evidence">` | Highlighted clinical callout boxes |
-| `<SpecialTestsTable tests={[...]} />` | Formatted special tests table with Sn/Sp data |
-| `<OutcomeMeasuresTable measures={[...]} />` | Outcome measures table with MCID data |
-| `<Cite id="key" />` | Inline citation reference |
-| `<CitationList citations={[...]} />` | Rendered reference list at page bottom |
-| `<EvidenceBadge grade="A|B|C|D|GPP" />` | Evidence grade badge |
+```text
+/{region}/{condition}
+```
 
-### Adding a New Condition
+Inside each file, `##` headings become in-page sections for the sidebar and anchor navigation. Links such as Overview, Pathophysiology, Assessment, Management, and Outcome Measures are in-page section links, not separate MDX routes.
 
-1. Add the condition to the appropriate region in `src/data/taxonomy.ts`
-2. Create the directory: `content/[region]/[condition]/`
-3. Add MDX files for each section (copy from `_TEMPLATE/`)
+Guided cases live separately:
 
----
+```text
+content/cases/{region}/{internal-case-slug}.mdx
+```
 
-## Architecture
+Published cases can define a neutral `publicSlug` so learner-facing routes do not reveal the diagnosis before the reveal step. Draft and archived cases are excluded from static route generation.
 
-See [ARCHITECTURE.md](./ARCHITECTURE.md) for full technical design.
+## Adding Or Updating A Condition
 
----
+1. Add or update the condition entry in `src/data/taxonomy.ts`.
+2. Create or edit `content/{region}/{condition}.mdx`.
+3. Use `##` headings for learner sections.
+4. Keep clinical changes reviewed and source-traceable.
+5. Run `npm run preflight`.
+
+Do not create `content/{region}/{condition}/{section}.mdx` files for public condition sections. That older model is no longer how the app works.
+
+## Adding Or Updating A Guided Case
+
+Guided cases are MDX files under `content/cases/`. Public cases should use safe learner-facing labels and neutral public slugs. Keep internal metadata, source metadata, and provenance intact.
+
+Draft or archived cases must stay private:
+
+```yaml
+status: "draft"
+```
+
+or
+
+```yaml
+status: "archived"
+```
+
+The route and no-leak checks protect against draft routes and diagnosis-revealing public case URLs.
 
 ## Deployment
 
-### Vercel (recommended)
+The active deployment target is Netlify.
 
-```bash
-# Install Vercel CLI
-npm i -g vercel
+- Build command: `npm run preflight`
+- Publish directory: `out`
+- Config: `netlify.toml`
 
-# Deploy
-vercel --prod
-```
+`next.config.mjs` uses static export, `trailingSlash: true`, and the repository base path. Netlify publishes the generated `out` directory and keeps compatibility redirects for base-path URLs.
 
-In `vercel.json` or Vercel dashboard, add a build command:
-```
-node scripts/build-search-index.mjs && next build
-```
-
-### Netlify
-
-```toml
-# netlify.toml
-[build]
-  command = "node scripts/build-search-index.mjs && next build"
-  publish = "out"
-```
-
----
+GitHub Actions may run validation, but GitHub Pages is not the deployment target.
 
 ## Project Structure
 
+```text
+content/
+  cervical/*.mdx                 # Flat condition files
+  shoulder/*.mdx
+  thoracic/*.mdx
+  elbow/*.mdx
+  wrist-hand/*.mdx
+  cases/{region}/*.mdx           # Guided cases
+  imports/                       # Imported source material and registries
+ai-manager/                      # Local-only admin/source tooling
+scripts/                         # Registry, tracker, safety, and route checks
+src/app/                         # Next.js App Router pages
+src/lib/mdx.ts                   # File readers and section parsing
+src/data/taxonomy.ts             # Region and condition taxonomy
 ```
-msk-reference-site/
-├── content/                    # MDX content files
-│   ├── _TEMPLATE/              # Copy these when authoring new content
-│   ├── cervical/
-│   │   └── cervical-radiculopathy/
-│   │       ├── overview.mdx
-│   │       └── ...
-│   ├── shoulder/
-│   │   └── rotator-cuff-tendinopathy/
-│   │       ├── overview.mdx
-│   │       ├── special-tests.mdx
-│   │       ├── red-flags.mdx
-│   │       ├── outcome-measures.mdx
-│   │       ├── management.mdx
-│   │       └── ...
-│   └── ...
-├── public/
-│   └── search-index.json       # Auto-generated at build time
-├── scripts/
-│   └── build-search-index.mjs  # Search index builder
-├── src/
-│   ├── app/                    # Next.js App Router pages
-│   │   ├── page.tsx            # Home page
-│   │   ├── [region]/           # Region pages
-│   │   │   └── [condition]/
-│   │   │       └── [section]/  # Content pages
-│   │   └── search/             # Search page
-│   ├── components/
-│   │   ├── layout/             # Header, Footer, Sidebar, etc.
-│   │   └── mdx/                # Custom MDX components
-│   ├── data/
-│   │   └── taxonomy.ts         # Master list of regions, conditions, sections
-│   ├── lib/
-│   │   ├── mdx.ts              # MDX file reading utilities
-│   │   ├── search.ts           # Client-side search
-│   │   └── utils.ts            # Helpers
-│   └── types/
-│       └── index.ts            # All TypeScript types
-└── ...config files
-```
-
----
 
 ## Clinical Disclaimer
 
-This resource is for **qualified, registered health professionals only**. Clinical information must be applied in conjunction with professional judgement, patient-specific factors, and applicable HSC Northern Ireland policies. This reference does not substitute for appropriate clinical training or professional supervision.
-
----
-
-## Maintenance
-
-- **Content reviews**: Schedule quarterly reviews aligned with NICE guideline updates
-- **Evidence grades**: Reassess when new systematic reviews / CPGs are published
-- **Citation audit**: Verify DOIs annually
-- **Dependency updates**: `npm audit` monthly; major upgrades reviewed before deployment
+This resource is for qualified, registered health professionals. It is educational support and does not replace clinical judgement, patient-specific assessment, local governance, or appropriate supervision.

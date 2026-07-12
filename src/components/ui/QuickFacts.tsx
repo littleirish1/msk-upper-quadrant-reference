@@ -1,12 +1,12 @@
 import { Activity, Stethoscope, Hash, TrendingUp } from 'lucide-react'
-import type { ConditionFrontmatter } from '@/types'
+import type { ConditionFrontmatterSchema } from '@/lib/contentSchemas'
 
 interface QuickFactsProps {
   condition: {
     label: string
     icd10?: string
   }
-  frontmatter: Partial<ConditionFrontmatter>
+  frontmatter: ConditionFrontmatterSchema
   sections: Array<{ heading: string; slug: string; content: string }>
 }
 

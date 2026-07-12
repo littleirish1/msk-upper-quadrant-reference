@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
@@ -77,6 +78,21 @@ export default async function ConditionPage({ params }: Props) {
             sections={result.sections}
           />
         )}
+
+        <section className="mb-8 rounded-xl border border-brand-200 bg-brand-50 p-5 dark:border-brand-800 dark:bg-brand-950/30">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-700 dark:text-brand-300">
+            Guided reasoning practice
+          </p>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-surface-700 dark:text-surface-300">
+            Practise clinical reasoning with neutral guided cases. Case answers are hidden until the reveal step.
+          </p>
+          <Link
+            href="/cases"
+            className="mt-4 inline-flex rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
+          >
+            Browse neutral guided cases
+          </Link>
+        </section>
 
         {/* Section anchor nav (mobile-friendly pills) */}
         {result && result.sections.length > 0 && (

@@ -55,7 +55,7 @@ Generated from:
 | s35 | Medial Epicondylitis with UCL Consideration | elbow | normal | pending-review |  |
 | s36 | Elbow Osteoarthritis — Conservative Management | elbow | normal | pending-review |  |
 | s39 | Trigger Finger — Management and Injection Decision | unknown | normal | pending-review |  |
-| s40 | Scaphoid Fracture — Acute Presentation | wrist-hand | high | draft-created | content/cases/wrist - hand/scaphoid-fracture-acute-presentation-case-01.mdx; reviewStatus: needs-review |
+| s40 | Scaphoid Fracture — Acute Presentation | wrist-hand | high | draft-created | content/cases/wrist-hand/scaphoid-fracture-acute-presentation-case-01.mdx; reviewStatus: needs-review |
 | s41 | Ganglion Cyst — Assessment and Management | wrist-hand | normal | pending-review |  |
 | s42 | Axial Spondyloarthropathy (AxSpA) — Referral Pathway | unknown | high | draft-created | content/cases/lumbar/axial-spondyloarthropathy-axspa-referral-pathway-case-01.mdx; reviewStatus: needs-review |
 | s43 | PTS Misdiagnosed as Shoulder — Pattern Recognition | shoulder | medium | pending-review |  |

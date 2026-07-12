@@ -24,3 +24,10 @@ __pycache__/
 .env
 # Local Netlify folder
 .netlify
+
+# Local review packets
+review-packet/
+review-packet.zip
+
+# Local agent/tooling state
+.claude/
