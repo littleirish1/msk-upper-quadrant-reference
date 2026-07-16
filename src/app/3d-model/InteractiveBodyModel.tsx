@@ -4,7 +4,7 @@ import { useRef, useState, useMemo, useCallback, Suspense } from 'react'
 import Link from 'next/link'
 import { X, ChevronRight, ExternalLink } from 'lucide-react'
 import { Canvas, useFrame, type ThreeEvent } from '@react-three/fiber'
-import { OrbitControls, Html, Environment, ContactShadows, Float } from '@react-three/drei'
+import { OrbitControls, Html, Environment, ContactShadows } from '@react-three/drei'
 import { EffectComposer, Bloom, DepthOfField, Vignette, SMAA } from '@react-three/postprocessing'
 import * as THREE from 'three'
 import { REGIONS } from '@/data/taxonomy'
@@ -1012,6 +1012,7 @@ function Scene({
       <pointLight position={[2, 1.5, 3]} intensity={0.4} color="#ffcc88" distance={5} />
       <pointLight position={[-2, 0.5, 2]} intensity={0.3} color="#88aaff" distance={4} />
 
+      {/* Environment for reflections — wrapped in Suspense in case HDR fails to load */}
       <Suspense fallback={null}>
         <Environment preset="studio" />
       </Suspense>
