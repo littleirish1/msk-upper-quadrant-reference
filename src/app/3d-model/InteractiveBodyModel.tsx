@@ -4,8 +4,7 @@ import { useRef, useState, useMemo, useCallback, Suspense } from 'react'
 import Link from 'next/link'
 import { X, ChevronRight, ExternalLink } from 'lucide-react'
 import { Canvas, useFrame, type ThreeEvent } from '@react-three/fiber'
-import { OrbitControls, Html, Environment, ContactShadows } from '@react-three/drei'
-import { EffectComposer, Bloom, DepthOfField, Vignette, SMAA } from '@react-three/postprocessing'
+import { OrbitControls, Html, ContactShadows } from '@react-three/drei'
 import * as THREE from 'three'
 import { REGIONS } from '@/data/taxonomy'
 import type { RegionSlug } from '@/types'
@@ -22,183 +21,39 @@ const regionColors: Record<string, string> = {
 
 type BodyPartKey = RegionSlug
 
-// ─── Bone material presets ──────────────────────────────────────────────────
+// ─── Muscle material ────────────────────────────────────────────────────────
 
-function useBoneMaterial(opts?: { color?: string; emissive?: string; emissiveIntensity?: number }) {
+function useMuscleMaterial(opts?: { color?: string; emissive?: string; emissiveIntensity?: number }) {
   return useMemo(() => {
     return new THREE.MeshPhysicalMaterial({
-      color: new THREE.Color(opts?.color ?? '#e8dcc8'),
-      roughness: 0.35,
-      metalness: 0.05,
-      clearcoat: 0.8,
-      clearcoatRoughness: 0.4,
+      color: new THREE.Color(opts?.color ?? '#c4654a'),
+      roughness: 0.6,
+      metalness: 0.0,
+      clearcoat: 0.3,
+      clearcoatRoughness: 0.7,
       emissive: new THREE.Color(opts?.emissive ?? '#000000'),
       emissiveIntensity: opts?.emissiveIntensity ?? 0,
-      reflectivity: 0.3,
-      sheen: 0.5,
-      sheenRoughness: 0.5,
-      sheenColor: new THREE.Color('#fff5e6'),
+      sheen: 0.3,
+      sheenRoughness: 0.8,
+      sheenColor: new THREE.Color('#d49b7a'),
       transparent: true,
-      opacity: 0.92,
+      opacity: 0.93,
     })
   }, [opts?.color, opts?.emissive, opts?.emissiveIntensity])
 }
 
-// ─── Vertebra generator (anatomically inspired) ────────────────────────────
+// ─── Muscle belly shape (elongated, bulging) ────────────────────────────────
 
-function Vertebra({
+function MuscleBelly({
   position,
-  scale = 1,
-  region,
-  label,
-  conditions,
-  hovered,
-  selected,
-  onHover,
-  onSelect,
-}: {
-  position: [number, number, number]
-  scale?: number
-  region: BodyPartKey
-  label: string
-  conditions: { slug: string; label: string }[]
-  hovered: BodyPartKey | null
-  selected: BodyPartKey | null
-  onHover: (key: BodyPartKey | null) => void
-  onSelect: (key: BodyPartKey) => void
-}) {
-  const meshRef = useRef<THREE.Group>(null!)
-  const color = regionColors[region] ?? '#3aa3c2'
-  const isHovered = hovered === region
-  const isSelected = selected === region
-
-  useFrame((state) => {
-    if (!meshRef.current) return
-    const t = state.clock.getElapsedTime()
-    if (isSelected) {
-      meshRef.current.rotation.y = Math.sin(t * 0.8) * 0.05
-    } else {
-      meshRef.current.rotation.y = 0
-    }
-  })
-
-  const handleClick = useCallback((e: ThreeEvent<MouseEvent>) => {
-    e.stopPropagation()
-    onSelect(region)
-  }, [region, onSelect])
-
-  const handlePointerOver = useCallback((e: ThreeEvent<PointerEvent>) => {
-    e.stopPropagation()
-    onHover(region)
-  }, [region, onHover])
-
-  const handlePointerOut = useCallback(() => {
-    onHover(null)
-  }, [onHover])
-
-  const boneMat = useBoneMaterial({
-    color: isHovered || isSelected ? color : '#e8dcc8',
-    emissive: color,
-    emissiveIntensity: isSelected ? 0.3 : isHovered ? 0.15 : 0,
-  })
-
-  return (
-    <group
-      ref={meshRef}
-      position={position}
-      scale={scale}
-      onClick={handleClick}
-      onPointerOver={handlePointerOver}
-      onPointerOut={handlePointerOut}
-    >
-      {/* Vertebral body (centrum) - the thick disc */}
-      <mesh castShadow receiveShadow material={boneMat}>
-        <cylinderGeometry args={[0.14, 0.16, 0.1, 24]} />
-      </mesh>
-
-      {/* Spinous process - pointing backward */}
-      <mesh position={[0, 0.02, -0.16]} rotation={[0.3, 0, 0]} castShadow receiveShadow material={boneMat}>
-        <capsuleGeometry args={[0.035, 0.12, 8, 16]} />
-      </mesh>
-
-      {/* Transverse processes - pointing sideways */}
-      <mesh position={[-0.14, 0.02, 0]} rotation={[0, 0, Math.PI / 2]} castShadow receiveShadow material={boneMat}>
-        <capsuleGeometry args={[0.025, 0.06, 8, 16]} />
-      </mesh>
-      <mesh position={[0.14, 0.02, 0]} rotation={[0, 0, Math.PI / 2]} castShadow receiveShadow material={boneMat}>
-        <capsuleGeometry args={[0.025, 0.06, 8, 16]} />
-      </mesh>
-
-      {/* Vertebral arch */}
-      <mesh position={[0, 0.05, -0.04]} castShadow receiveShadow material={boneMat}>
-        <torusGeometry args={[0.08, 0.03, 12, 20, Math.PI]} />
-      </mesh>
-
-      {(isHovered || isSelected) && (
-        <Html position={[0, 0.25, 0]} center distanceFactor={6} style={{ pointerEvents: 'none' }}>
-          <div className="whitespace-nowrap rounded-lg bg-surface-900/95 px-3 py-1.5 text-sm font-semibold text-white shadow-lg dark:bg-surface-50 dark:text-surface-900">
-            {label}
-            {conditions.length > 0 && (
-              <span className="ml-1.5 text-xs font-normal opacity-70">
-                ({conditions.length} {conditions.length === 1 ? 'condition' : 'conditions'})
-              </span>
-            )}
-          </div>
-        </Html>
-      )}
-    </group>
-  )
-}
-
-// ─── Rib generator ──────────────────────────────────────────────────────────
-
-function Rib({
-  side,
-  index,
-  yStart,
-  color = '#e8dcc8',
-}: {
-  side: 'left' | 'right'
-  index: number
-  yStart: number
-  color?: string
-}) {
-  const ribMat = useBoneMaterial({ color })
-  const dir = side === 'left' ? -1 : 1
-
-  // Curved rib shape using a tube geometry along a curve
-  const ribCurve = useMemo(() => {
-    const curve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(0, yStart, 0),
-      new THREE.Vector3(dir * 0.15, yStart - 0.02, 0.05),
-      new THREE.Vector3(dir * 0.35, yStart - 0.06, 0.1),
-      new THREE.Vector3(dir * 0.5, yStart - 0.1, 0.08),
-      new THREE.Vector3(dir * 0.55, yStart - 0.14, 0.02),
-      new THREE.Vector3(dir * 0.5, yStart - 0.16, -0.04),
-      new THREE.Vector3(dir * 0.35, yStart - 0.14, -0.08),
-      new THREE.Vector3(dir * 0.15, yStart - 0.1, -0.06),
-    ])
-    return curve
-  }, [dir, yStart])
-
-  const thickness = useMemo(() => Math.max(0.015, 0.022 - index * 0.0008), [index])
-
-  return (
-    <mesh castShadow receiveShadow material={ribMat}>
-      <tubeGeometry args={[ribCurve, 32, thickness, 8, false]} />
-    </mesh>
-  )
-}
-
-// ─── Long bone (humerus, radius, ulna) ──────────────────────────────────────
-
-function LongBone({
-  position,
-  length,
-  radiusTop = 0.04,
-  radiusBottom = 0.035,
+  scale = [1, 1, 1],
   rotation = [0, 0, 0],
-  color = '#e8dcc8',
+  length = 1,
+  radius = 0.08,
+  taper = 0.7,
+  color = '#c4654a',
+  emissive = '#000000',
+  emissiveIntensity = 0,
   region,
   label,
   conditions,
@@ -209,11 +64,14 @@ function LongBone({
   interactive = true,
 }: {
   position: [number, number, number]
-  length: number
-  radiusTop?: number
-  radiusBottom?: number
+  scale?: [number, number, number]
   rotation?: [number, number, number]
+  length?: number
+  radius?: number
+  taper?: number
   color?: string
+  emissive?: string
+  emissiveIntensity?: number
   region?: BodyPartKey
   label?: string
   conditions?: { slug: string; label: string }[]
@@ -223,15 +81,43 @@ function LongBone({
   onSelect?: (key: BodyPartKey) => void
   interactive?: boolean
 }) {
-  const meshRef = useRef<THREE.Group>(null!)
+  const meshRef = useRef<THREE.Mesh>(null!)
   const isHovered = interactive && hovered === region
   const isSelected = interactive && selected === region
-  const boneColor = interactive && (isHovered || isSelected) ? (regionColors[region!] ?? color) : color
+  const muscleColor = interactive && (isHovered || isSelected) ? (regionColors[region!] ?? color) : color
 
-  const boneMat = useBoneMaterial({
-    color: boneColor,
-    emissive: interactive ? (regionColors[region!] ?? '#000000') : '#000000',
-    emissiveIntensity: isSelected ? 0.25 : isHovered ? 0.12 : 0,
+  useFrame((state) => {
+    if (!meshRef.current) return
+    const t = state.clock.getElapsedTime()
+    if (isSelected) {
+      const pulse = 1 + Math.sin(t * 3) * 0.02
+      meshRef.current.scale.setScalar(pulse)
+    } else {
+      meshRef.current.scale.setScalar(1)
+    }
+  })
+
+  // Build a muscle-shaped geometry: bulging center, tapered ends
+  const geometry = useMemo(() => {
+    const geo = new THREE.CylinderGeometry(radius * taper, radius * taper, length, 16, 8)
+    // Deform vertices to create muscle belly bulge
+    const pos = geo.attributes.position
+    for (let i = 0; i < pos.count; i++) {
+      const y = pos.getY(i)
+      const norm = y / (length / 2) // -1 to 1
+      const bulge = 1 - norm * norm * 0.3 // bulge at center
+      pos.setX(i, pos.getX(i) * bulge)
+      pos.setZ(i, pos.getZ(i) * bulge)
+    }
+    pos.needsUpdate = true
+    geo.computeVertexNormals()
+    return geo
+  }, [radius, length, taper])
+
+  const material = useMuscleMaterial({
+    color: muscleColor,
+    emissive: interactive ? (emissive || regionColors[region!] || '#000000') : emissive,
+    emissiveIntensity: isSelected ? 0.25 : isHovered ? 0.12 : emissiveIntensity,
   })
 
   const handleClick = useCallback((e: ThreeEvent<MouseEvent>) => {
@@ -252,37 +138,19 @@ function LongBone({
   }, [interactive, onHover])
 
   return (
-    <group
-      ref={meshRef}
-      position={position}
-      rotation={rotation as THREE.EulerTuple}
-      onClick={interactive ? handleClick : undefined}
-      onPointerOver={interactive ? handlePointerOver : undefined}
-      onPointerOut={interactive ? handlePointerOut : undefined}
-    >
-      {/* Shaft */}
-      <mesh castShadow receiveShadow material={boneMat}>
-        <cylinderGeometry args={[radiusTop, radiusBottom, length, 24]} />
-      </mesh>
-
-      {/* Proximal epiphysis (head) */}
-      <mesh position={[0, length / 2 + radiusTop * 0.5, 0]} castShadow receiveShadow material={boneMat}>
-        <sphereGeometry args={[radiusTop * 1.4, 24, 24]} />
-      </mesh>
-
-      {/* Distal epiphysis (condyle) */}
-      <mesh position={[0, -length / 2 - radiusBottom * 0.5, 0]} castShadow receiveShadow material={boneMat}>
-        <sphereGeometry args={[radiusBottom * 1.3, 24, 24]} />
-      </mesh>
-
-      {/* Surface detail - subtle growth plate ridge */}
-      <mesh position={[0, 0, 0]} castShadow receiveShadow>
-        <torusGeometry args={[radiusTop * 0.95, 0.005, 8, 24]} />
-        <meshStandardMaterial color="#d4c4a8" roughness={0.4} metalness={0.05} transparent opacity={0.6} />
-      </mesh>
-
+    <group position={position} rotation={rotation as THREE.EulerTuple} scale={scale as THREE.Vector3Tuple}>
+      <mesh
+        ref={meshRef}
+        geometry={geometry}
+        material={material}
+        castShadow
+        receiveShadow
+        onClick={interactive ? handleClick : undefined}
+        onPointerOver={interactive ? handlePointerOver : undefined}
+        onPointerOut={interactive ? handlePointerOut : undefined}
+      />
       {interactive && (isHovered || isSelected) && label && (
-        <Html position={[0, length / 2 + 0.15, 0]} center distanceFactor={6} style={{ pointerEvents: 'none' }}>
+        <Html position={[0, length / 2 + 0.1, 0]} center distanceFactor={6} style={{ pointerEvents: 'none' }}>
           <div className="whitespace-nowrap rounded-lg bg-surface-900/95 px-3 py-1.5 text-sm font-semibold text-white shadow-lg dark:bg-surface-50 dark:text-surface-900">
             {label}
             {conditions && conditions.length > 0 && (
@@ -297,11 +165,17 @@ function LongBone({
   )
 }
 
-// ─── Scapula (shoulder blade) ────────────────────────────────────────────────
+// ─── Flat muscle sheet (for trapezius, pectoralis etc.) ────────────────────
 
-function Scapula({
-  side,
+function MuscleSheet({
   position,
+  scale = [1, 1, 1],
+  rotation = [0, 0, 0],
+  shape,
+  depth = 0.04,
+  color = '#c4654a',
+  emissive = '#000000',
+  emissiveIntensity = 0,
   region,
   label,
   conditions,
@@ -310,8 +184,14 @@ function Scapula({
   onHover,
   onSelect,
 }: {
-  side: 'left' | 'right'
   position: [number, number, number]
+  scale?: [number, number, number]
+  rotation?: [number, number, number]
+  shape: THREE.Shape
+  depth?: number
+  color?: string
+  emissive?: string
+  emissiveIntensity?: number
   region: BodyPartKey
   label: string
   conditions: { slug: string; label: string }[]
@@ -320,372 +200,84 @@ function Scapula({
   onHover: (key: BodyPartKey | null) => void
   onSelect: (key: BodyPartKey) => void
 }) {
-  const dir = side === 'left' ? -1 : 1
+  const meshRef = useRef<THREE.Mesh>(null!)
   const isHovered = hovered === region
   const isSelected = selected === region
-  const color = regionColors[region] ?? '#e02020'
+  const muscleColor = isHovered || isSelected ? (regionColors[region] ?? color) : color
 
-  const boneMat = useBoneMaterial({
-    color: isHovered || isSelected ? color : '#e8dcc8',
-    emissive: color,
-    emissiveIntensity: isSelected ? 0.25 : isHovered ? 0.12 : 0,
+  useFrame((state) => {
+    if (!meshRef.current) return
+    const t = state.clock.getElapsedTime()
+    if (isSelected) {
+      meshRef.current.scale.setScalar(1 + Math.sin(t * 3) * 0.015)
+    } else {
+      meshRef.current.scale.setScalar(1)
+    }
   })
 
-  const handleClick = useCallback((e: ThreeEvent<MouseEvent>) => {
-    e.stopPropagation()
-    onSelect(region)
-  }, [region, onSelect])
-
-  const handlePointerOver = useCallback((e: ThreeEvent<PointerEvent>) => {
-    e.stopPropagation()
-    onHover(region)
-  }, [region, onHover])
-
-  const handlePointerOut = useCallback(() => {
-    onHover(null)
-  }, [onHover])
-
-  // Scapula shape via custom geometry
-  const scapulaShape = useMemo(() => {
-    const shape = new THREE.Shape()
-    shape.moveTo(0, 0)
-    shape.bezierCurveTo(dir * 0.25, 0.1, dir * 0.3, 0.3, dir * 0.25, 0.5)
-    shape.bezierCurveTo(dir * 0.15, 0.55, dir * 0.05, 0.52, dir * 0.02, 0.4)
-    shape.bezierCurveTo(dir * 0.01, 0.3, dir * 0.03, 0.15, dir * 0.08, 0.05)
-    shape.bezierCurveTo(dir * 0.06, -0.02, dir * 0.03, -0.03, 0, 0)
-    return shape
-  }, [dir])
-
-  const scapulaGeo = useMemo(() => {
-    const geo = new THREE.ExtrudeGeometry(scapulaShape, {
-      depth: 0.03,
+  const geometry = useMemo(() => {
+    const geo = new THREE.ExtrudeGeometry(shape, {
+      depth,
       bevelEnabled: true,
       bevelThickness: 0.008,
-      bevelSize: 0.008,
-      bevelSegments: 4,
-    })
-    geo.center()
-    return geo
-  }, [scapulaShape])
-
-  return (
-    <group
-      position={position}
-      rotation={[0, dir * 0.3, dir * 0.15]}
-      onClick={handleClick}
-      onPointerOver={handlePointerOver}
-      onPointerOut={handlePointerOut}
-    >
-      <mesh geometry={scapulaGeo} castShadow receiveShadow material={boneMat} />
-
-      {/* Acromion process */}
-      <mesh position={[dir * 0.18, 0.22, 0]} castShadow receiveShadow material={boneMat}>
-        <boxGeometry args={[0.06, 0.04, 0.04]} />
-      </mesh>
-
-      {/* Coracoid process */}
-      <mesh position={[dir * 0.12, 0.15, 0.02]} rotation={[0.3, 0, 0]} castShadow receiveShadow material={boneMat}>
-        <capsuleGeometry args={[0.02, 0.05, 8, 12]} />
-      </mesh>
-
-      {/* Glenoid cavity (socket) */}
-      <mesh position={[dir * 0.2, 0.18, 0]} castShadow receiveShadow material={boneMat}>
-        <sphereGeometry args={[0.04, 16, 16]} />
-      </mesh>
-
-      {(isHovered || isSelected) && (
-        <Html position={[dir * 0.1, 0.35, 0]} center distanceFactor={6} style={{ pointerEvents: 'none' }}>
-          <div className="whitespace-nowrap rounded-lg bg-surface-900/95 px-3 py-1.5 text-sm font-semibold text-white shadow-lg dark:bg-surface-50 dark:text-surface-900">
-            {label}
-            {conditions.length > 0 && (
-              <span className="ml-1.5 text-xs font-normal opacity-70">
-                ({conditions.length} {conditions.length === 1 ? 'condition' : 'conditions'})
-              </span>
-            )}
-          </div>
-        </Html>
-      )}
-    </group>
-  )
-}
-
-// ─── Clavicle ────────────────────────────────────────────────────────────────
-
-function Clavicle({ side, y }: { side: 'left' | 'right'; y: number }) {
-  const dir = side === 'left' ? -1 : 1
-  const boneMat = useBoneMaterial({ color: '#e8dcc8' })
-
-  const curve = useMemo(() => {
-    return new THREE.CatmullRomCurve3([
-      new THREE.Vector3(0, y, 0.02),
-      new THREE.Vector3(dir * 0.15, y + 0.02, 0.04),
-      new THREE.Vector3(dir * 0.3, y - 0.01, 0.03),
-      new THREE.Vector3(dir * 0.45, y - 0.03, 0.01),
-    ])
-  }, [dir, y])
-
-  return (
-    <mesh castShadow receiveShadow material={boneMat}>
-      <tubeGeometry args={[curve, 24, 0.018, 8, false]} />
-    </mesh>
-  )
-}
-
-// ─── Hand/wrist complex ─────────────────────────────────────────────────────
-
-function HandComplex({
-  side,
-  position,
-  region,
-  label,
-  conditions,
-  hovered,
-  selected,
-  onHover,
-  onSelect,
-}: {
-  side: 'left' | 'right'
-  position: [number, number, number]
-  region: BodyPartKey
-  label: string
-  conditions: { slug: string; label: string }[]
-  hovered: BodyPartKey | null
-  selected: BodyPartKey | null
-  onHover: (key: BodyPartKey | null) => void
-  onSelect: (key: BodyPartKey) => void
-}) {
-  const dir = side === 'left' ? -1 : 1
-  const isHovered = hovered === region
-  const isSelected = selected === region
-  const color = regionColors[region] ?? '#10b981'
-
-  const boneMat = useBoneMaterial({
-    color: isHovered || isSelected ? color : '#e8dcc8',
-    emissive: color,
-    emissiveIntensity: isSelected ? 0.25 : isHovered ? 0.12 : 0,
-  })
-
-  const handleClick = useCallback((e: ThreeEvent<MouseEvent>) => {
-    e.stopPropagation()
-    onSelect(region)
-  }, [region, onSelect])
-
-  const handlePointerOver = useCallback((e: ThreeEvent<PointerEvent>) => {
-    e.stopPropagation()
-    onHover(region)
-  }, [region, onHover])
-
-  const handlePointerOut = useCallback(() => {
-    onHover(null)
-  }, [onHover])
-
-  // Carpals - small irregular bones
-  const carpalPositions = useMemo(() => {
-    const positions: [number, number, number][] = []
-    const rows = 2
-    const cols = 4
-    for (let row = 0; row < rows; row++) {
-      for (let col = 0; col < cols; col++) {
-        const x = dir * (0.02 + col * 0.025)
-        const y = -row * 0.025 - 0.02
-        const z = (col % 2) * 0.01
-        positions.push([x, y, z])
-      }
-    }
-    return positions
-  }, [dir])
-
-  // Metacarpals
-  const metacarpalAngles = [-0.15, -0.05, 0, 0.05, 0.12]
-
-  // Phalanges (fingers)
-  const fingerData = useMemo(() => {
-    const fingers = [
-      { name: 'thumb', baseAngle: 0.4, segments: 2, len: [0.06, 0.04] },
-      { name: 'index', baseAngle: 0.05, segments: 3, len: [0.05, 0.04, 0.03] },
-      { name: 'middle', baseAngle: 0, segments: 3, len: [0.055, 0.045, 0.03] },
-      { name: 'ring', baseAngle: -0.05, segments: 3, len: [0.05, 0.04, 0.025] },
-      { name: 'pinky', baseAngle: -0.12, segments: 3, len: [0.04, 0.03, 0.022] },
-    ]
-    return fingers
-  }, [])
-
-  return (
-    <group
-      position={position}
-      onClick={handleClick}
-      onPointerOver={handlePointerOver}
-      onPointerOut={handlePointerOut}
-    >
-      {/* Wrist/carpal bones */}
-      {carpalPositions.map((pos, i) => (
-        <mesh key={`carpal-${i}`} position={pos} castShadow receiveShadow material={boneMat}>
-          <sphereGeometry args={[0.014, 12, 12]} />
-        </mesh>
-      ))}
-
-      {/* Metacarpals */}
-      {metacarpalAngles.map((angle, i) => (
-        <mesh
-          key={`meta-${i}`}
-          position={[dir * (0.12 + i * 0.022), 0.06, 0]}
-          rotation={[0, 0, dir * angle]}
-          castShadow
-          receiveShadow
-          material={boneMat}
-        >
-          <cylinderGeometry args={[0.01, 0.012, 0.06, 12]} />
-        </mesh>
-      ))}
-
-      {/* Phalanges */}
-      {fingerData.map((finger, fi) => (
-        <group key={`finger-${fi}`} position={[dir * (0.16 + fi * 0.022), 0.1, 0]} rotation={[0, 0, dir * finger.baseAngle]}>
-          {finger.len.map((segLen, si) => (
-            <group key={`seg-${si}`} position={[0, si === 0 ? 0 : finger.len[si - 1] / 2 + segLen / 2, 0]}>
-              <mesh position={[0, si === 0 ? segLen / 2 : 0, 0]} castShadow receiveShadow material={boneMat}>
-                <cylinderGeometry args={[0.009 - si * 0.001, 0.011 - si * 0.001, segLen, 10]} />
-              </mesh>
-            </group>
-          ))}
-        </group>
-      ))}
-
-      {(isHovered || isSelected) && (
-        <Html position={[dir * 0.1, 0.25, 0]} center distanceFactor={5} style={{ pointerEvents: 'none' }}>
-          <div className="whitespace-nowrap rounded-lg bg-surface-900/95 px-3 py-1.5 text-sm font-semibold text-white shadow-lg dark:bg-surface-50 dark:text-surface-900">
-            {label}
-            {conditions.length > 0 && (
-              <span className="ml-1.5 text-xs font-normal opacity-70">
-                ({conditions.length} {conditions.length === 1 ? 'condition' : 'conditions'})
-              </span>
-            )}
-          </div>
-        </Html>
-      )}
-    </group>
-  )
-}
-
-// ─── Skull ──────────────────────────────────────────────────────────────────
-
-function Skull() {
-  const boneMat = useBoneMaterial({ color: '#f0e6d4' })
-
-  return (
-    <group position={[0, 2.62, 0]}>
-      {/* Cranium */}
-      <mesh castShadow receiveShadow material={boneMat}>
-        <sphereGeometry args={[0.22, 32, 32]} />
-      </mesh>
-
-      {/* Face/jaw structure */}
-      <mesh position={[0, -0.15, 0.08]} castShadow receiveShadow material={boneMat}>
-        <boxGeometry args={[0.16, 0.14, 0.12]} />
-      </mesh>
-
-      {/* Mandible */}
-      <mesh position={[0, -0.22, 0.06]} castShadow receiveShadow material={boneMat}>
-        <boxGeometry args={[0.15, 0.05, 0.1]} />
-      </mesh>
-
-      {/* Eye sockets */}
-      <mesh position={[-0.07, -0.05, 0.18]} material={boneMat}>
-        <sphereGeometry args={[0.035, 16, 16]} />
-      </mesh>
-      <mesh position={[0.07, -0.05, 0.18]} material={boneMat}>
-        <sphereGeometry args={[0.035, 16, 16]} />
-      </mesh>
-
-      {/* Nasal cavity */}
-      <mesh position={[0, -0.1, 0.19]} material={boneMat}>
-        <coneGeometry args={[0.02, 0.05, 8]} />
-      </mesh>
-
-      {/* Cranial sutures - subtle lines */}
-      <mesh position={[0, 0.05, 0]} rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[0.21, 0.002, 8, 32, Math.PI * 0.6]} />
-        <meshStandardMaterial color="#d4c4a8" roughness={0.6} transparent opacity={0.4} />
-      </mesh>
-    </group>
-  )
-}
-
-// ─── Sternum ────────────────────────────────────────────────────────────────
-
-function Sternum() {
-  const boneMat = useBoneMaterial({ color: '#e8dcc8' })
-
-  return (
-    <group position={[0, 1.7, 0.12]}>
-      {/* Manubrium */}
-      <mesh castShadow receiveShadow material={boneMat}>
-        <boxGeometry args={[0.08, 0.06, 0.025]} />
-      </mesh>
-      {/* Body of sternum */}
-      <mesh position={[0, -0.1, 0]} castShadow receiveShadow material={boneMat}>
-        <boxGeometry args={[0.06, 0.16, 0.02]} />
-      </mesh>
-      {/* Xiphoid process */}
-      <mesh position={[0, -0.2, 0]} castShadow receiveShadow material={boneMat}>
-        <coneGeometry args={[0.02, 0.04, 8]} />
-      </mesh>
-    </group>
-  )
-}
-
-// ─── Pelvis ─────────────────────────────────────────────────────────────────
-
-function Pelvis() {
-  const boneMat = useBoneMaterial({ color: '#e8dcc8' })
-
-  const pelvisShape = useMemo(() => {
-    const shape = new THREE.Shape()
-    shape.moveTo(-0.25, 0)
-    shape.bezierCurveTo(-0.3, -0.08, -0.25, -0.18, -0.1, -0.2)
-    shape.bezierCurveTo(-0.02, -0.22, 0.02, -0.22, 0.1, -0.2)
-    shape.bezierCurveTo(0.25, -0.18, 0.3, -0.08, 0.25, 0)
-    shape.bezierCurveTo(0.2, 0.05, 0.15, 0.08, 0.1, 0.06)
-    shape.bezierCurveTo(0, 0.04, 0, 0.04, -0.1, 0.06)
-    shape.bezierCurveTo(-0.15, 0.08, -0.2, 0.05, -0.25, 0)
-    return shape
-  }, [])
-
-  const pelvisGeo = useMemo(() => {
-    const geo = new THREE.ExtrudeGeometry(pelvisShape, {
-      depth: 0.06,
-      bevelEnabled: true,
-      bevelThickness: 0.01,
-      bevelSize: 0.01,
+      bevelSize: 0.012,
       bevelSegments: 3,
     })
     geo.center()
     return geo
-  }, [pelvisShape])
+  }, [shape, depth])
+
+  const material = useMuscleMaterial({
+    color: muscleColor,
+    emissive: emissive || regionColors[region] || '#000000',
+    emissiveIntensity: isSelected ? 0.25 : isHovered ? 0.12 : emissiveIntensity,
+  })
+
+  const handleClick = useCallback((e: ThreeEvent<MouseEvent>) => {
+    e.stopPropagation()
+    onSelect(region)
+  }, [region, onSelect])
+
+  const handlePointerOver = useCallback((e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation()
+    onHover(region)
+  }, [region, onHover])
+
+  const handlePointerOut = useCallback(() => {
+    onHover(null)
+  }, [onHover])
 
   return (
-    <group position={[0, -0.05, 0]}>
-      <mesh geometry={pelvisGeo} castShadow receiveShadow material={boneMat} />
-
-      {/* Sacrum */}
-      <mesh position={[0, -0.02, -0.04]} castShadow receiveShadow material={boneMat}>
-        <boxGeometry args={[0.08, 0.1, 0.04]} />
-      </mesh>
-
-      {/* Hip sockets */}
-      <mesh position={[-0.18, -0.05, 0]} castShadow receiveShadow material={boneMat}>
-        <sphereGeometry args={[0.04, 16, 16]} />
-      </mesh>
-      <mesh position={[0.18, -0.05, 0]} castShadow receiveShadow material={boneMat}>
-        <sphereGeometry args={[0.04, 16, 16]} />
-      </mesh>
+    <group position={position} rotation={rotation as THREE.EulerTuple} scale={scale as THREE.Vector3Tuple}>
+      <mesh
+        ref={meshRef}
+        geometry={geometry}
+        material={material}
+        castShadow
+        receiveShadow
+        onClick={handleClick}
+        onPointerOver={handlePointerOver}
+        onPointerOut={handlePointerOut}
+      />
+      {(isHovered || isSelected) && (
+        <Html position={[0, 0.2, 0]} center distanceFactor={6} style={{ pointerEvents: 'none' }}>
+          <div className="whitespace-nowrap rounded-lg bg-surface-900/95 px-3 py-1.5 text-sm font-semibold text-white shadow-lg dark:bg-surface-50 dark:text-surface-900">
+            {label}
+            {conditions.length > 0 && (
+              <span className="ml-1.5 text-xs font-normal opacity-70">
+                ({conditions.length} {conditions.length === 1 ? 'condition' : 'conditions'})
+              </span>
+            )}
+          </div>
+        </Html>
+      )}
     </group>
   )
 }
 
-// ─── Full skeleton composition ──────────────────────────────────────────────
+// ─── Neck muscles (cervical region) ─────────────────────────────────────────
 
-function SkeletonBody({
+function NeckMuscles({
   hovered,
   selected,
   onHover,
@@ -697,278 +289,1147 @@ function SkeletonBody({
   onSelect: (key: BodyPartKey) => void
 }) {
   const cervical = REGIONS.find(r => r.slug === 'cervical')!
-  const thoracic = REGIONS.find(r => r.slug === 'thoracic')!
-  const shoulder = REGIONS.find(r => r.slug === 'shoulder')!
-  const elbow = REGIONS.find(r => r.slug === 'elbow')!
-  const wristHand = REGIONS.find(r => r.slug === 'wrist-hand')!
 
-  const partProps = { hovered, selected, onHover, onSelect }
-
-  // Cervical vertebrae positions (C1-C7)
-  const cervicalVertebrae = useMemo(() => {
-    const verts: { pos: [number, number, number]; scale: number }[] = []
-    for (let i = 0; i < 7; i++) {
-      verts.push({
-        pos: [0, 2.35 - i * 0.045, 0],
-        scale: 1 - i * 0.02,
-      })
-    }
-    return verts
+  // Sternocleidomastoid shape
+  const scmShape = useMemo(() => {
+    const s = new THREE.Shape()
+    s.moveTo(0, 0)
+    s.bezierCurveTo(0.02, 0.1, 0.01, 0.2, 0.03, 0.28)
+    s.bezierCurveTo(0.02, 0.3, 0, 0.3, -0.01, 0.28)
+    s.bezierCurveTo(-0.02, 0.2, -0.01, 0.1, 0, 0)
+    return s
   }, [])
 
-  // Thoracic vertebrae positions (T1-T12)
-  const thoracicVertebrae = useMemo(() => {
-    const verts: { pos: [number, number, number]; scale: number }[] = []
-    for (let i = 0; i < 12; i++) {
-      verts.push({
-        pos: [0, 2.05 - i * 0.065, -0.02],
-        scale: 1 + i * 0.02,
-      })
-    }
-    return verts
-  }, [])
-
-  // Rib pairs (T1-T10 have ribs)
-  const ribPairs = useMemo(() => {
-    const pairs: { side: 'left' | 'right'; index: number; yStart: number }[] = []
-    for (let i = 0; i < 10; i++) {
-      const y = 2.0 - i * 0.065
-      pairs.push({ side: 'left', index: i, yStart: y })
-      pairs.push({ side: 'right', index: i, yStart: y })
-    }
-    return pairs
+  // Trapezius (upper portion — neck/shoulder)
+  const trapShape = useMemo(() => {
+    const s = new THREE.Shape()
+    s.moveTo(-0.15, 0)
+    s.bezierCurveTo(-0.1, 0.08, -0.02, 0.1, 0, 0.12)
+    s.bezierCurveTo(0.02, 0.1, 0.1, 0.08, 0.15, 0)
+    s.bezierCurveTo(0.1, -0.02, 0.05, -0.03, 0, -0.02)
+    s.bezierCurveTo(-0.05, -0.03, -0.1, -0.02, -0.15, 0)
+    return s
   }, [])
 
   return (
-    <group scale={1.2}>
-      {/* Skull */}
-      <Skull />
-
-      {/* Cervical spine - interactive group */}
-      {cervicalVertebrae.map((v, i) => (
-        <Vertebra
-          key={`cerv-${i}`}
-          position={v.pos}
-          scale={v.scale * 0.6}
-          region="cervical"
-          label={cervical.label}
-          conditions={cervical.conditions}
-          {...partProps}
-        />
-      ))}
-
-      {/* Thoracic spine */}
-      {thoracicVertebrae.map((v, i) => (
-        <Vertebra
-          key={`thor-${i}`}
-          position={v.pos}
-          scale={v.scale * 0.7}
-          region="thoracic"
-          label={thoracic.label}
-          conditions={thoracic.conditions}
-          {...partProps}
-        />
-      ))}
-
-      {/* Ribs */}
-      {ribPairs.map((rib, i) => (
-        <Rib key={`rib-${i}`} side={rib.side} index={rib.index} yStart={rib.yStart} />
-      ))}
-
-      {/* Sternum */}
-      <Sternum />
-
-      {/* Clavicles */}
-      <Clavicle side="left" y={2.15} />
-      <Clavicle side="right" y={2.15} />
-
-      {/* Scapulae - interactive */}
-      <Scapula side="left" position={[-0.25, 1.95, -0.08]} region="shoulder" label="Left Shoulder" conditions={shoulder.conditions} {...partProps} />
-      <Scapula side="right" position={[0.25, 1.95, -0.08]} region="shoulder" label="Right Shoulder" conditions={shoulder.conditions} {...partProps} />
-
-      {/* Humerus (upper arm) - interactive */}
-      <LongBone
-        position={[-0.4, 1.35, 0]}
-        length={0.6}
-        radiusTop={0.045}
-        radiusBottom={0.038}
-        rotation={[0, 0, 0.15]}
-        region="shoulder"
-        label="Left Humerus"
-        conditions={shoulder.conditions}
-        {...partProps}
+    <group>
+      {/* Sternocleidomastoid — left */}
+      <MuscleSheet
+        position={[-0.06, 2.35, 0.04]}
+        rotation={[0.1, 0, -0.15]}
+        shape={scmShape}
+        depth={0.03}
+        scale={[1.2, 1, 1]}
+        region="cervical"
+        label="Sternocleidomastoid"
+        conditions={cervical.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
       />
-      <LongBone
-        position={[0.4, 1.35, 0]}
-        length={0.6}
-        radiusTop={0.045}
-        radiusBottom={0.038}
-        rotation={[0, 0, -0.15]}
-        region="shoulder"
-        label="Right Humerus"
-        conditions={shoulder.conditions}
-        {...partProps}
+      {/* Sternocleidomastoid — right */}
+      <MuscleSheet
+        position={[0.06, 2.35, 0.04]}
+        rotation={[0.1, 0, 0.15]}
+        shape={scmShape}
+        depth={0.03}
+        scale={[1.2, 1, 1]}
+        region="cervical"
+        label="Sternocleidomastoid"
+        conditions={cervical.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
       />
 
-      {/* Elbow joint - interactive */}
-      <mesh position={[-0.46, 1.05, 0]} castShadow receiveShadow>
-        <sphereGeometry args={[0.05, 20, 20]} />
-        <meshPhysicalMaterial
-          color={selected === 'elbow' ? regionColors.elbow : (hovered === 'elbow' ? regionColors.elbow : '#e8dcc8')}
-          emissive={regionColors.elbow}
-          emissiveIntensity={selected === 'elbow' ? 0.25 : hovered === 'elbow' ? 0.12 : 0}
-          roughness={0.3}
-          clearcoat={0.8}
-          clearcoatRoughness={0.4}
-          transparent
-          opacity={0.92}
-        />
-      </mesh>
-      <mesh position={[0.46, 1.05, 0]} castShadow receiveShadow>
-        <sphereGeometry args={[0.05, 20, 20]} />
-        <meshPhysicalMaterial
-          color={selected === 'elbow' ? regionColors.elbow : (hovered === 'elbow' ? regionColors.elbow : '#e8dcc8')}
-          emissive={regionColors.elbow}
-          emissiveIntensity={selected === 'elbow' ? 0.25 : hovered === 'elbow' ? 0.12 : 0}
-          roughness={0.3}
-          clearcoat={0.8}
-          clearcoatRoughness={0.4}
-          transparent
-          opacity={0.92}
-        />
-      </mesh>
-
-      {/* Radius & Ulna (forearm) - interactive */}
-      <LongBone
-        position={[-0.5, 0.7, 0.02]}
-        length={0.5}
-        radiusTop={0.028}
-        radiusBottom={0.022}
-        rotation={[0, 0, 0.05]}
-        region="elbow"
-        label="Left Forearm"
-        conditions={elbow.conditions}
-        {...partProps}
-      />
-      <LongBone
-        position={[-0.46, 0.7, -0.02]}
-        length={0.5}
-        radiusTop={0.03}
-        radiusBottom={0.024}
-        rotation={[0, 0, 0.08]}
-        color="#e0d5bc"
-        interactive={false}
-      />
-      <LongBone
-        position={[0.5, 0.7, 0.02]}
-        length={0.5}
-        radiusTop={0.028}
-        radiusBottom={0.022}
-        rotation={[0, 0, -0.05]}
-        region="elbow"
-        label="Right Forearm"
-        conditions={elbow.conditions}
-        {...partProps}
-      />
-      <LongBone
-        position={[0.46, 0.7, -0.02]}
-        length={0.5}
-        radiusTop={0.03}
-        radiusBottom={0.024}
-        rotation={[0, 0, -0.08]}
-        color="#e0d5bc"
-        interactive={false}
+      {/* Upper trapezius (neck portion) */}
+      <MuscleSheet
+        position={[0, 2.15, -0.02]}
+        rotation={[0, 0, 0]}
+        shape={trapShape}
+        depth={0.04}
+        scale={[2, 1.5, 1]}
+        region="cervical"
+        label="Upper Trapezius"
+        conditions={cervical.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
       />
 
-      {/* Hands - interactive */}
-      <HandComplex side="left" position={[-0.52, 0.42, 0]} region="wrist-hand" label="Left Wrist & Hand" conditions={wristHand.conditions} {...partProps} />
-      <HandComplex side="right" position={[0.52, 0.42, 0]} region="wrist-hand" label="Right Wrist & Hand" conditions={wristHand.conditions} {...partProps} />
+      {/* Scalenes (deep neck — small muscles) */}
+      <MuscleBelly
+        position={[-0.04, 2.25, 0.02]}
+        rotation={[0, 0, -0.2]}
+        length={0.12}
+        radius={0.025}
+        taper={0.6}
+        color="#b85a40"
+        region="cervical"
+        label="Scalenes"
+        conditions={cervical.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      <MuscleBelly
+        position={[0.04, 2.25, 0.02]}
+        rotation={[0, 0, 0.2]}
+        length={0.12}
+        radius={0.025}
+        taper={0.6}
+        color="#b85a40"
+        region="cervical"
+        label="Scalenes"
+        conditions={cervical.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
 
-      {/* Pelvis */}
-      <Pelvis />
-
-      {/* Elbow joint interaction meshes need handlers */}
-      <ElbowJoint side="left" position={[-0.46, 1.05, 0]} region="elbow" label="Left Elbow" conditions={elbow.conditions} {...partProps} />
-      <ElbowJoint side="right" position={[0.46, 1.05, 0]} region="elbow" label="Right Elbow" conditions={elbow.conditions} {...partProps} />
+      {/* Suboccipital muscles */}
+      <MuscleBelly
+        position={[0, 2.5, -0.02]}
+        rotation={[0.3, 0, 0]}
+        length={0.06}
+        radius={0.02}
+        taper={0.5}
+        color="#a05030"
+        region="cervical"
+        label="Suboccipitals"
+        conditions={cervical.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
     </group>
   )
 }
 
-// ─── Elbow joint helper ─────────────────────────────────────────────────────
+// ─── Thoracic muscles ───────────────────────────────────────────────────────
 
-function ElbowJoint({
-  side,
-  position,
-  region,
-  label,
-  conditions,
+function ThoracicMuscles({
   hovered,
   selected,
   onHover,
   onSelect,
 }: {
-  side: 'left' | 'right'
-  position: [number, number, number]
-  region: BodyPartKey
-  label: string
-  conditions: { slug: string; label: string }[]
   hovered: BodyPartKey | null
   selected: BodyPartKey | null
   onHover: (key: BodyPartKey | null) => void
   onSelect: (key: BodyPartKey) => void
 }) {
-  const isHovered = hovered === region
-  const isSelected = selected === region
-  const color = regionColors[region] ?? '#8b5cf6'
+  const thoracic = REGIONS.find(r => r.slug === 'thoracic')!
 
-  const boneMat = useBoneMaterial({
-    color: isHovered || isSelected ? color : '#e8dcc8',
-    emissive: color,
-    emissiveIntensity: isSelected ? 0.25 : isHovered ? 0.12 : 0,
-  })
+  // Pectoralis major shape
+  const pecShape = useMemo(() => {
+    const s = new THREE.Shape()
+    s.moveTo(-0.18, 0)
+    s.bezierCurveTo(-0.15, 0.08, -0.05, 0.1, 0, 0.08)
+    s.bezierCurveTo(0.05, 0.1, 0.15, 0.08, 0.18, 0)
+    s.bezierCurveTo(0.15, -0.05, 0.1, -0.08, 0.05, -0.06)
+    s.bezierCurveTo(0, -0.04, -0.05, -0.04, -0.05, -0.06)
+    s.bezierCurveTo(-0.1, -0.08, -0.15, -0.05, -0.18, 0)
+    return s
+  }, [])
 
-  const handleClick = useCallback((e: ThreeEvent<MouseEvent>) => {
-    e.stopPropagation()
-    onSelect(region)
-  }, [region, onSelect])
+  // Mid-trapezius shape (broad diamond)
+  const midTrapShape = useMemo(() => {
+    const s = new THREE.Shape()
+    s.moveTo(-0.25, 0)
+    s.bezierCurveTo(-0.15, 0.12, 0, 0.15, 0.25, 0)
+    s.bezierCurveTo(0.15, -0.12, 0, -0.15, -0.25, 0)
+    return s
+  }, [])
 
-  const handlePointerOver = useCallback((e: ThreeEvent<PointerEvent>) => {
-    e.stopPropagation()
-    onHover(region)
-  }, [region, onHover])
-
-  const handlePointerOut = useCallback(() => {
-    onHover(null)
-  }, [onHover])
+  // Latissimus dorsi (thoracic portion)
+  const latShape = useMemo(() => {
+    const s = new THREE.Shape()
+    s.moveTo(-0.2, 0.05)
+    s.bezierCurveTo(-0.15, -0.08, -0.05, -0.12, 0, -0.1)
+    s.bezierCurveTo(0.05, -0.12, 0.15, -0.08, 0.2, 0.05)
+    s.bezierCurveTo(0.1, 0.08, 0, 0.06, 0, 0.04)
+    s.bezierCurveTo(-0.1, 0.06, -0.1, 0.08, -0.2, 0.05)
+    return s
+  }, [])
 
   return (
-    <mesh
-      position={position}
-      onClick={handleClick}
-      onPointerOver={handlePointerOver}
-      onPointerOut={handlePointerOut}
-      castShadow
-      receiveShadow
-      material={boneMat}
-    >
-      <sphereGeometry args={[0.055, 24, 24]} />
-      {(isHovered || isSelected) && (
-        <Html position={[0, 0.12, 0]} center distanceFactor={6} style={{ pointerEvents: 'none' }}>
-          <div className="whitespace-nowrap rounded-lg bg-surface-900/95 px-3 py-1.5 text-sm font-semibold text-white shadow-lg dark:bg-surface-50 dark:text-surface-900">
-            {label}
-            {conditions.length > 0 && (
-              <span className="ml-1.5 text-xs font-normal opacity-70">
-                ({conditions.length} {conditions.length === 1 ? 'condition' : 'conditions'})
-              </span>
-            )}
-          </div>
-        </Html>
-      )}
-    </mesh>
+    <group>
+      {/* Pectoralis major — left */}
+      <MuscleSheet
+        position={[-0.1, 1.85, 0.08]}
+        rotation={[0.1, 0.2, 0]}
+        shape={pecShape}
+        depth={0.05}
+        scale={[1.5, 1.3, 1]}
+        region="thoracic"
+        label="Pectoralis Major"
+        conditions={thoracic.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Pectoralis major — right */}
+      <MuscleSheet
+        position={[0.1, 1.85, 0.08]}
+        rotation={[0.1, -0.2, 0]}
+        shape={pecShape}
+        depth={0.05}
+        scale={[1.5, 1.3, 1]}
+        region="thoracic"
+        label="Pectoralis Major"
+        conditions={thoracic.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Middle trapezius */}
+      <MuscleSheet
+        position={[0, 1.75, -0.05]}
+        rotation={[-0.05, 0, 0]}
+        shape={midTrapShape}
+        depth={0.04}
+        scale={[1.8, 1.2, 1]}
+        region="thoracic"
+        label="Middle Trapezius"
+        conditions={thoracic.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Latissimus dorsi — left */}
+      <MuscleSheet
+        position={[-0.12, 1.5, -0.03]}
+        rotation={[-0.05, 0.3, 0.05]}
+        shape={latShape}
+        depth={0.035}
+        scale={[1.4, 1.8, 1]}
+        region="thoracic"
+        label="Latissimus Dorsi"
+        conditions={thoracic.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Latissimus dorsi — right */}
+      <MuscleSheet
+        position={[0.12, 1.5, -0.03]}
+        rotation={[-0.05, -0.3, -0.05]}
+        shape={latShape}
+        depth={0.035}
+        scale={[1.4, 1.8, 1]}
+        region="thoracic"
+        label="Latissimus Dorsi"
+        conditions={thoracic.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Erector spinae — left (paraspinal column) */}
+      <MuscleBelly
+        position={[-0.04, 1.65, -0.04]}
+        rotation={[0, 0, 0]}
+        length={0.5}
+        radius={0.035}
+        taper={0.8}
+        color="#a85640"
+        region="thoracic"
+        label="Erector Spinae"
+        conditions={thoracic.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Erector spinae — right */}
+      <MuscleBelly
+        position={[0.04, 1.65, -0.04]}
+        rotation={[0, 0, 0]}
+        length={0.5}
+        radius={0.035}
+        taper={0.8}
+        color="#a85640"
+        region="thoracic"
+        label="Erector Spinae"
+        conditions={thoracic.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Serratus anterior — left */}
+      {[0, 1, 2, 3].map(i => (
+        <MuscleBelly
+          key={`serratus-l-${i}`}
+          position={[-0.18, 1.7 - i * 0.06, 0.03]}
+          rotation={[0, 0.4, 0.1]}
+          length={0.07}
+          radius={0.02}
+          taper={0.6}
+          color="#b8604a"
+          interactive={false}
+        />
+      ))}
+      {/* Serratus anterior — right */}
+      {[0, 1, 2, 3].map(i => (
+        <MuscleBelly
+          key={`serratus-r-${i}`}
+          position={[0.18, 1.7 - i * 0.06, 0.03]}
+          rotation={[0, -0.4, -0.1]}
+          length={0.07}
+          radius={0.02}
+          taper={0.6}
+          color="#b8604a"
+          interactive={false}
+        />
+      ))}
+
+      {/* Rhomboids */}
+      <MuscleBelly
+        position={[-0.08, 1.7, -0.05]}
+        rotation={[0, 0.5, 0]}
+        length={0.1}
+        radius={0.03}
+        taper={0.7}
+        color="#a05035"
+        region="thoracic"
+        label="Rhomboids"
+        conditions={thoracic.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      <MuscleBelly
+        position={[0.08, 1.7, -0.05]}
+        rotation={[0, -0.5, 0]}
+        length={0.1}
+        radius={0.03}
+        taper={0.7}
+        color="#a05035"
+        region="thoracic"
+        label="Rhomboids"
+        conditions={thoracic.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+    </group>
   )
 }
 
-// ─── 3D Scene with cinematic lighting ───────────────────────────────────────
+// ─── Shoulder muscles ───────────────────────────────────────────────────────
+
+function ShoulderMuscles({
+  hovered,
+  selected,
+  onHover,
+  onSelect,
+}: {
+  hovered: BodyPartKey | null
+  selected: BodyPartKey | null
+  onHover: (key: BodyPartKey | null) => void
+  onSelect: (key: BodyPartKey) => void
+}) {
+  const shoulder = REGIONS.find(r => r.slug === 'shoulder')!
+
+  // Deltoid shape
+  const deltoidShape = useMemo(() => {
+    const s = new THREE.Shape()
+    s.moveTo(0, 0)
+    s.bezierCurveTo(0.08, 0.02, 0.1, -0.05, 0.08, -0.12)
+    s.bezierCurveTo(0.05, -0.15, -0.05, -0.15, -0.08, -0.12)
+    s.bezierCurveTo(-0.1, -0.05, -0.08, 0.02, 0, 0)
+    return s
+  }, [])
+
+  // Rotator cuff muscle shape (smaller, rounder)
+  const rcShape = useMemo(() => {
+    const s = new THREE.Shape()
+    s.moveTo(-0.04, 0)
+    s.bezierCurveTo(-0.03, 0.05, 0.03, 0.05, 0.04, 0)
+    s.bezierCurveTo(0.03, -0.04, -0.03, -0.04, -0.04, 0)
+    return s
+  }, [])
+
+  return (
+    <group>
+      {/* Deltoid — left */}
+      <MuscleSheet
+        position={[-0.28, 2.0, 0.02]}
+        rotation={[0.1, 0.3, -0.1]}
+        shape={deltoidShape}
+        depth={0.05}
+        scale={[2, 2.5, 1.5]}
+        region="shoulder"
+        label="Deltoid"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Deltoid — right */}
+      <MuscleSheet
+        position={[0.28, 2.0, 0.02]}
+        rotation={[0.1, -0.3, 0.1]}
+        shape={deltoidShape}
+        depth={0.05}
+        scale={[2, 2.5, 1.5]}
+        region="shoulder"
+        label="Deltoid"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Supraspinatus — left */}
+      <MuscleBelly
+        position={[-0.22, 2.05, -0.04]}
+        rotation={[0, 0.3, -0.2]}
+        length={0.08}
+        radius={0.025}
+        taper={0.7}
+        color="#a85540"
+        region="shoulder"
+        label="Supraspinatus"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Supraspinatus — right */}
+      <MuscleBelly
+        position={[0.22, 2.05, -0.04]}
+        rotation={[0, -0.3, 0.2]}
+        length={0.08}
+        radius={0.025}
+        taper={0.7}
+        color="#a85540"
+        region="shoulder"
+        label="Supraspinatus"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Infraspinatus — left */}
+      <MuscleSheet
+        position={[-0.2, 1.85, -0.05]}
+        rotation={[-0.1, 0.2, -0.1]}
+        shape={rcShape}
+        depth={0.025}
+        scale={[2.5, 2, 1]}
+        region="shoulder"
+        label="Infraspinatus"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Infraspinatus — right */}
+      <MuscleSheet
+        position={[0.2, 1.85, -0.05]}
+        rotation={[-0.1, -0.2, 0.1]}
+        shape={rcShape}
+        depth={0.025}
+        scale={[2.5, 2, 1]}
+        region="shoulder"
+        label="Infraspinatus"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Teres minor — left */}
+      <MuscleBelly
+        position={[-0.2, 1.72, -0.03]}
+        rotation={[0, 0.3, -0.1]}
+        length={0.06}
+        radius={0.02}
+        taper={0.6}
+        color="#9a4a35"
+        region="shoulder"
+        label="Teres Minor"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Teres minor — right */}
+      <MuscleBelly
+        position={[0.2, 1.72, -0.03]}
+        rotation={[0, -0.3, 0.1]}
+        length={0.06}
+        radius={0.02}
+        taper={0.6}
+        color="#9a4a35"
+        region="shoulder"
+        label="Teres Minor"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Teres major — left */}
+      <MuscleBelly
+        position={[-0.18, 1.68, -0.02]}
+        rotation={[0, 0.2, -0.15]}
+        length={0.09}
+        radius={0.03}
+        taper={0.6}
+        color="#b05a40"
+        region="shoulder"
+        label="Teres Major"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Teres major — right */}
+      <MuscleBelly
+        position={[0.18, 1.68, -0.02]}
+        rotation={[0, -0.2, 0.15]}
+        length={0.09}
+        radius={0.03}
+        taper={0.6}
+        color="#b05a40"
+        region="shoulder"
+        label="Teres Major"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Subscapularis — left */}
+      <MuscleSheet
+        position={[-0.16, 1.85, -0.06]}
+        rotation={[0, 0, 0]}
+        shape={rcShape}
+        depth={0.02}
+        scale={[2, 2.5, 1]}
+        color="#8a4530"
+        region="shoulder"
+        label="Subscapularis"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Subscapularis — right */}
+      <MuscleSheet
+        position={[0.16, 1.85, -0.06]}
+        rotation={[0, 0, 0]}
+        shape={rcShape}
+        depth={0.02}
+        scale={[2, 2.5, 1]}
+        color="#8a4530"
+        region="shoulder"
+        label="Subscapularis"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Biceps brachii — left (long + short head) */}
+      <MuscleBelly
+        position={[-0.36, 1.55, 0.04]}
+        rotation={[0, 0, 0.1]}
+        length={0.45
+        }
+        radius={0.04}
+        taper={0.7}
+        color="#c4654a"
+        region="shoulder"
+        label="Biceps Brachii"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Biceps brachii — right */}
+      <MuscleBelly
+        position={[0.36, 1.55, 0.04]}
+        rotation={[0, 0, -0.1]}
+        length={0.45}
+        radius={0.04}
+        taper={0.7}
+        color="#c4654a"
+        region="shoulder"
+        label="Biceps Brachii"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Triceps brachii — left (long head, visible from back) */}
+      <MuscleBelly
+        position={[-0.38, 1.55, -0.02]}
+        rotation={[0, 0, 0.12]}
+        length={0.5}
+        radius={0.045}
+        taper={0.65}
+        color="#b85a40"
+        region="shoulder"
+        label="Triceps Brachii"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Triceps brachii — right */}
+      <MuscleBelly
+        position={[0.38, 1.55, -0.02]}
+        rotation={[0, 0, -0.12]}
+        length={0.5}
+        radius={0.045}
+        taper={0.65}
+        color="#b85a40"
+        region="shoulder"
+        label="Triceps Brachii"
+        conditions={shoulder.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Coracobrachialis — left */}
+      <MuscleBelly
+        position={[-0.34, 1.65, 0.02]}
+        rotation={[0, 0, 0.08]}
+        length={0.12}
+        radius={0.02}
+        taper={0.6}
+        color="#a05035"
+        interactive={false}
+      />
+      {/* Coracobrachialis — right */}
+      <MuscleBelly
+        position={[0.34, 1.65, 0.02]}
+        rotation={[0, 0, -0.08]}
+        length={0.12}
+        radius={0.02}
+        taper={0.6}
+        color="#a05035"
+        interactive={false}
+      />
+    </group>
+  )
+}
+
+// ─── Elbow muscles ───────────────────────────────────────────────────────────
+
+function ElbowMuscles({
+  hovered,
+  selected,
+  onHover,
+  onSelect,
+}: {
+  hovered: BodyPartKey | null
+  selected: BodyPartKey | null
+  onHover: (key: BodyPartKey | null) => void
+  onSelect: (key: BodyPartKey) => void
+}) {
+  const elbow = REGIONS.find(r => r.slug === 'elbow')!
+
+  return (
+    <group>
+      {/* Brachialis — left */}
+      <MuscleBelly
+        position={[-0.38, 1.3, 0.03]}
+        rotation={[0, 0, 0.05]}
+        length={0.12}
+        radius={0.028}
+        taper={0.7}
+        color="#b05a40"
+        region="elbow"
+        label="Brachialis"
+        conditions={elbow.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Brachialis — right */}
+      <MuscleBelly
+        position={[0.38, 1.3, 0.03]}
+        rotation={[0, 0, -0.05]}
+        length={0.12}
+        radius={0.028}
+        taper={0.7}
+        color="#b05a40"
+        region="elbow"
+        label="Brachialis"
+        conditions={elbow.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Brachioradialis — left */}
+      <MuscleBelly
+        position={[-0.44, 1.1, 0.04]}
+        rotation={[0, 0, 0.15]}
+        length={0.22}
+        radius={0.03}
+        taper={0.6}
+        color="#c4654a"
+        region="elbow"
+        label="Brachioradialis"
+        conditions={elbow.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Brachioradialis — right */}
+      <MuscleBelly
+        position={[0.44, 1.1, 0.04]}
+        rotation={[0, 0, -0.15]}
+        length={0.22}
+        radius={0.03}
+        taper={0.6}
+        color="#c4654a"
+        region="elbow"
+        label="Brachioradialis"
+        conditions={elbow.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Pronator teres — left */}
+      <MuscleBelly
+        position={[-0.42, 1.0, 0.02]}
+        rotation={[0, 0, 0.2]}
+        length={0.1}
+        radius={0.025}
+        taper={0.6}
+        color="#a85540"
+        region="elbow"
+        label="Pronator Teres"
+        conditions={elbow.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Pronator teres — right */}
+      <MuscleBelly
+        position={[0.42, 1.0, 0.02]}
+        rotation={[0, 0, -0.2]}
+        length={0.1}
+        radius={0.025}
+        taper={0.6}
+        color="#a85540"
+        region="elbow"
+        label="Pronator Teres"
+        conditions={elbow.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Triceps tendon (olecranon area) */}
+      <MuscleBelly
+        position={[-0.4, 1.12, -0.03]}
+        rotation={[0, 0, 0.1]}
+        length={0.08}
+        radius={0.02}
+        taper={0.5}
+        color="#9a4a30"
+        region="elbow"
+        label="Triceps Tendon"
+        conditions={elbow.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      <MuscleBelly
+        position={[0.4, 1.12, -0.03]}
+        rotation={[0, 0, -0.1]}
+        length={0.08}
+        radius={0.02}
+        taper={0.5}
+        color="#9a4a30"
+        region="elbow"
+        label="Triceps Tendon"
+        conditions={elbow.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Extensor carpi radialis — left */}
+      <MuscleBelly
+        position={[-0.46, 1.05, 0.05]}
+        rotation={[0, 0, 0.18]}
+        length={0.2}
+        radius={0.022}
+        taper={0.55}
+        color="#bc5e45"
+        region="elbow"
+        label="Ext. Carpi Radialis"
+        conditions={elbow.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      <MuscleBelly
+        position={[0.46, 1.05, 0.05]}
+        rotation={[0, 0, -0.18]}
+        length={0.2}
+        radius={0.022}
+        taper={0.55}
+        color="#bc5e45"
+        region="elbow"
+        label="Ext. Carpi Radialis"
+        conditions={elbow.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Flexor carpi radialis — left */}
+      <MuscleBelly
+        position={[-0.44, 1.0, 0.0]}
+        rotation={[0, 0, 0.12]}
+        length={0.18}
+        radius={0.02}
+        taper={0.55}
+        color="#a85040"
+        region="elbow"
+        label="Flex. Carpi Radialis"
+        conditions={elbow.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      <MuscleBelly
+        position={[0.44, 1.0, 0.0]}
+        rotation={[0, 0, -0.12]}
+        length={0.18}
+        radius={0.02}
+        taper={0.55}
+        color="#a85040"
+        region="elbow"
+        label="Flex. Carpi Radialis"
+        conditions={elbow.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+    </group>
+  )
+}
+
+// ─── Wrist & Hand muscles ───────────────────────────────────────────────────
+
+function WristHandMuscles({
+  hovered,
+  selected,
+  onHover,
+  onSelect,
+}: {
+  hovered: BodyPartKey | null
+  selected: BodyPartKey | null
+  onHover: (key: BodyPartKey | null) => void
+  onSelect: (key: BodyPartKey) => void
+}) {
+  const wristHand = REGIONS.find(r => r.slug === 'wrist-hand')!
+
+  return (
+    <group>
+      {/* Thenar eminence (thumb base) — left */}
+      <MuscleBelly
+        position={[-0.5, 0.35, 0.04]}
+        rotation={[0, 0, 0.4]}
+        length={0.07}
+        radius={0.025}
+        taper={0.6}
+        color="#c4654a"
+        region="wrist-hand"
+        label="Thenar Eminence"
+        conditions={wristHand.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Thenar eminence — right */}
+      <MuscleBelly
+        position={[0.5, 0.35, 0.04]}
+        rotation={[0, 0, -0.4]}
+        length={0.07}
+        radius={0.025}
+        taper={0.6}
+        color="#c4654a"
+        region="wrist-hand"
+        label="Thenar Eminence"
+        conditions={wristHand.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Hypothenar eminence (pinky base) — left */}
+      <MuscleBelly
+        position={[-0.58, 0.32, 0.03]}
+        rotation={[0, 0, -0.3]}
+        length={0.06}
+        radius={0.02}
+        taper={0.6}
+        color="#a85540"
+        region="wrist-hand"
+        label="Hypothenar Eminence"
+        conditions={wristHand.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Hypothenar eminence — right */}
+      <MuscleBelly
+        position={[0.58, 0.32, 0.03]}
+        rotation={[0, 0, 0.3]}
+        length={0.06}
+        radius={0.02}
+        taper={0.6}
+        color="#a85540"
+        region="wrist-hand"
+        label="Hypothenar Eminence"
+        conditions={wristHand.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Flexor digitorum superficialis — left forearm */}
+      <MuscleBelly
+        position={[-0.46, 0.65, 0.0]}
+        rotation={[0, 0, 0.05]}
+        length={0.35}
+        radius={0.03}
+        taper={0.5}
+        color="#a85040"
+        region="wrist-hand"
+        label="Flexor Digitorum"
+        conditions={wristHand.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Flexor digitorum — right */}
+      <MuscleBelly
+        position={[0.46, 0.65, 0.0]}
+        rotation={[0, 0, -0.05]}
+        length={0.35}
+        radius={0.03}
+        taper={0.5}
+        color="#a85040"
+        region="wrist-hand"
+        label="Flexor Digitorum"
+        conditions={wristHand.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Extensor digitorum — left forearm */}
+      <MuscleBelly
+        position={[-0.48, 0.65, 0.04]}
+        rotation={[0, 0, 0.08]}
+        length={0.35}
+        radius={0.025}
+        taper={0.5}
+        color="#bc5e45"
+        region="wrist-hand"
+        label="Extensor Digitorum"
+        conditions={wristHand.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      {/* Extensor digitorum — right */}
+      <MuscleBelly
+        position={[0.48, 0.65, 0.04]}
+        rotation={[0, 0, -0.08]}
+        length={0.35}
+        radius={0.025}
+        taper={0.5}
+        color="#bc5e45"
+        region="wrist-hand"
+        label="Extensor Digitorum"
+        conditions={wristHand.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+
+      {/* Lumbricals (small hand muscles) — left */}
+      {[0, 1, 2, 3].map(i => (
+        <MuscleBelly
+          key={`lumbrical-l-${i}`}
+          position={[-0.52 - i * 0.015, 0.4 + i * 0.005, 0.02]}
+          rotation={[0, 0, 0.1 + i * 0.05]}
+          length={0.04}
+          radius={0.012}
+          taper={0.5}
+          color="#9a4a35"
+          interactive={false}
+        />
+      ))}
+      {/* Lumbricals — right */}
+      {[0, 1, 2, 3].map(i => (
+        <MuscleBelly
+          key={`lumbrical-r-${i}`}
+          position={[0.52 + i * 0.015, 0.4 + i * 0.005, 0.02]}
+          rotation={[0, 0, -0.1 - i * 0.05]}
+          length={0.04}
+          radius={0.012}
+          taper={0.5}
+          color="#9a4a35"
+          interactive={false}
+        />
+      ))}
+
+      {/* Flexor pollicis longus (thumb flexor) — left */}
+      <MuscleBelly
+        position={[-0.5, 0.6, -0.01]}
+        rotation={[0, 0, 0.15]}
+        length={0.3}
+        radius={0.018}
+        taper={0.5}
+        color="#a05035"
+        region="wrist-hand"
+        label="Flexor Pollicis Longus"
+        conditions={wristHand.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+      <MuscleBelly
+        position={[0.5, 0.6, -0.01]}
+        rotation={[0, 0, -0.15]}
+        length={0.3}
+        radius={0.018}
+        taper={0.5}
+        color="#a05035"
+        region="wrist-hand"
+        label="Flexor Pollicis Longus"
+        conditions={wristHand.conditions}
+        hovered={hovered}
+        selected={selected}
+        onHover={onHover}
+        onSelect={onSelect}
+      />
+    </group>
+  )
+}
+
+// ─── Head (simplified) ──────────────────────────────────────────────────────
+
+function Head() {
+  const skinMat = useMemo(() => new THREE.MeshPhysicalMaterial({
+    color: new THREE.Color('#d4a584'),
+    roughness: 0.65,
+    metalness: 0,
+    clearcoat: 0.1,
+    sheen: 0.2,
+    sheenColor: new THREE.Color('#e0b896'),
+    transparent: true,
+    opacity: 0.4,
+  }), [])
+
+  return (
+    <group position={[0, 2.7, 0]}>
+      <mesh castShadow receiveShadow material={skinMat}>
+        <sphereGeometry args={[0.2, 24, 24]} />
+      </mesh>
+    </group>
+  )
+}
+
+// ─── Full muscle body composition ──────────────────────────────────────────
+
+function MuscleBody({
+  hovered,
+  selected,
+  onHover,
+  onSelect,
+}: {
+  hovered: BodyPartKey | null
+  selected: BodyPartKey | null
+  onHover: (key: BodyPartKey | null) => void
+  onSelect: (key: BodyPartKey) => void
+}) {
+  return (
+    <group scale={1.15}>
+      <Head />
+      <NeckMuscles hovered={hovered} selected={selected} onHover={onHover} onSelect={onSelect} />
+      <ThoracicMuscles hovered={hovered} selected={selected} onHover={onHover} onSelect={onSelect} />
+      <ShoulderMuscles hovered={hovered} selected={selected} onHover={onHover} onSelect={onSelect} />
+      <ElbowMuscles hovered={hovered} selected={selected} onHover={onHover} onSelect={onSelect} />
+      <WristHandMuscles hovered={hovered} selected={selected} onHover={onHover} onSelect={onSelect} />
+    </group>
+  )
+}
+
+// ─── 3D Scene ───────────────────────────────────────────────────────────────
 
 function Scene({
   hovered,
@@ -983,13 +1444,13 @@ function Scene({
 }) {
   return (
     <>
-      {/* Studio lighting setup */}
-      <ambientLight intensity={0.15} color="#404060" />
+      {/* Studio lighting */}
+      <ambientLight intensity={0.25} color="#404060" />
 
-      {/* Key light - warm, from upper right */}
+      {/* Key light — warm */}
       <directionalLight
         position={[4, 8, 4]}
-        intensity={1.5}
+        intensity={1.3}
         color="#fff4e6"
         castShadow
         shadow-mapSize-width={2048}
@@ -1002,25 +1463,20 @@ function Scene({
         shadow-bias={-0.0001}
       />
 
-      {/* Fill light - cool, from lower left */}
-      <directionalLight position={[-3, 2, -4]} intensity={0.6} color="#8899ff" />
+      {/* Fill light — cool */}
+      <directionalLight position={[-3, 2, -4]} intensity={0.5} color="#8899ff" />
 
-      {/* Rim light - from behind */}
-      <directionalLight position={[0, 3, -6]} intensity={0.8} color="#aabbff" />
+      {/* Rim light */}
+      <directionalLight position={[0, 3, -6]} intensity={0.6} color="#aabbff" />
 
-      {/* Accent point lights for depth */}
-      <pointLight position={[2, 1.5, 3]} intensity={0.4} color="#ffcc88" distance={5} />
-      <pointLight position={[-2, 0.5, 2]} intensity={0.3} color="#88aaff" distance={4} />
-
-      {/* Environment for reflections — wrapped in Suspense in case HDR fails to load */}
-      <Suspense fallback={null}>
-        <Environment preset="studio" />
-      </Suspense>
+      {/* Accent lights */}
+      <pointLight position={[2, 1.5, 3]} intensity={0.3} color="#ffcc88" distance={5} />
+      <pointLight position={[-2, 0.5, 2]} intensity={0.2} color="#88aaff" distance={4} />
 
       {/* Ground contact shadows */}
       <ContactShadows
         position={[0, -0.7, 0]}
-        opacity={0.5}
+        opacity={0.4}
         scale={6}
         blur={2.5}
         far={4}
@@ -1030,17 +1486,10 @@ function Scene({
       {/* Ground plane */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.71, 0]} receiveShadow>
         <circleGeometry args={[4, 64]} />
-        <meshStandardMaterial
-          color="#0a0a12"
-          roughness={0.2}
-          metalness={0.8}
-          transparent
-          opacity={0.3}
-        />
+        <meshStandardMaterial color="#0a0a12" roughness={0.2} metalness={0.8} transparent opacity={0.3} />
       </mesh>
 
-      {/* Skeleton */}
-      <SkeletonBody hovered={hovered} selected={selected} onHover={onHover} onSelect={onSelect} />
+      <MuscleBody hovered={hovered} selected={selected} onHover={onHover} onSelect={onSelect} />
 
       <OrbitControls
         makeDefault
@@ -1054,23 +1503,6 @@ function Scene({
         enableDamping
         dampingFactor={0.05}
       />
-
-      {/* Post-processing for cinematic look */}
-      <EffectComposer multisampling={0} enableNormalPass={false}>
-        <Bloom
-          intensity={0.3}
-          luminanceThreshold={0.6}
-          luminanceSmoothing={0.9}
-          mipmapBlur
-        />
-        <DepthOfField
-          focusDistance={0.02}
-          focalLength={0.05}
-          bokehScale={2}
-        />
-        <Vignette eskil={false} offset={0.15} darkness={0.65} />
-        <SMAA />
-      </EffectComposer>
     </>
   )
 }
@@ -1128,7 +1560,7 @@ function RegionDetailPanel({ region, onClose }: { region: BodyPartKey; onClose: 
         </div>
       </div>
 
-      {/* Desktop: right sidebar panel */}
+      {/* Desktop: right sidebar */}
       <div className="absolute right-0 top-0 z-20 hidden h-full w-72 flex-col border-l border-surface-200 bg-white/95 shadow-2xl backdrop-blur-sm dark:border-surface-700 dark:bg-surface-900/95 lg:w-80 sm:flex">
         <div className="flex items-center gap-3 border-b border-surface-200 px-4 py-3 dark:border-surface-700" style={{ borderLeftColor: color, borderLeftWidth: 4 }}>
           <div className="flex-1">
@@ -1227,13 +1659,12 @@ export function InteractiveBodyModel() {
       {!selected && (
         <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2">
           <div className="rounded-lg bg-surface-900/60 px-3 py-1.5 text-[11px] text-white/80 backdrop-blur-sm dark:bg-surface-100/60 dark:text-surface-800 sm:text-xs">
-            🖱️ Drag to rotate · Scroll to zoom · Click a bone to explore
+            🖱️ Drag to rotate · Scroll to zoom · Click a muscle to explore
           </div>
         </div>
       )}
 
       {selected && <RegionDetailPanel region={selected} onClose={handleCloseDetail} />}
-      {/* Desktop: click backdrop to close (doesn't block on mobile) */}
       {selected && <div className="absolute inset-0 z-10 hidden sm:block" onClick={handleCloseDetail} />}
     </div>
   )
