@@ -1081,48 +1081,96 @@ function RegionDetailPanel({ region, onClose }: { region: BodyPartKey; onClose: 
   const color = regionColors[region]
 
   return (
-    <div className="absolute right-0 top-0 z-20 flex h-full w-full max-w-sm flex-col border-l border-surface-200 bg-white/95 shadow-2xl backdrop-blur-sm dark:border-surface-700 dark:bg-surface-900/95 sm:w-96">
-      <div className="flex items-center gap-3 border-b border-surface-200 px-4 py-4 dark:border-surface-700" style={{ borderLeftColor: color, borderLeftWidth: 4 }}>
-        <div className="flex-1">
-          <h2 className="text-lg font-bold text-surface-900 dark:text-surface-50">{regionData.label}</h2>
-          <p className="text-sm text-surface-500 dark:text-surface-400">{regionData.conditions.length} conditions</p>
+    <>
+      {/* Mobile: bottom sheet */}
+      <div className="absolute inset-x-0 bottom-0 z-20 max-h-[55%] overflow-hidden rounded-t-2xl border-t border-surface-200 bg-white/97 shadow-2xl backdrop-blur-md dark:border-surface-700 dark:bg-surface-900/97 sm:hidden">
+        <div className="flex items-center justify-between px-4 py-3" style={{ borderBottomColor: color, borderBottomWidth: 3 }}>
+          <div className="flex items-center gap-2">
+            <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: color }} />
+            <h2 className="text-base font-bold text-surface-900 dark:text-surface-50">{regionData.label}</h2>
+            <span className="text-xs text-surface-400 dark:text-surface-500">· {regionData.conditions.length} conditions</span>
+          </div>
+          <button onClick={onClose} className="rounded-lg p-1.5 text-surface-400 transition-colors hover:bg-surface-100 hover:text-surface-600 dark:hover:bg-surface-800 dark:hover:text-surface-200" aria-label="Close">
+            <X className="h-5 w-5" />
+          </button>
         </div>
-        <button onClick={onClose} className="rounded-lg p-1.5 text-surface-400 transition-colors hover:bg-surface-100 hover:text-surface-600 dark:hover:bg-surface-800 dark:hover:text-surface-200" aria-label="Close">
-          <X className="h-5 w-5" />
-        </button>
+        <div className="max-h-[40vh] overflow-y-auto px-3 pb-3 pt-2">
+          <ul className="space-y-1.5">
+            {regionData.conditions.map(condition => (
+              <li key={condition.slug}>
+                <Link
+                  href={`/${region}/${condition.slug}`}
+                  className="group flex items-center gap-2 rounded-lg border border-surface-200 bg-white px-3 py-2 shadow-sm transition-all hover:border-brand-300 hover:shadow-md dark:border-surface-700 dark:bg-surface-800 dark:hover:border-brand-600"
+                  style={{ borderLeftColor: color, borderLeftWidth: 3 }}
+                >
+                  <div className="flex-1 min-w-0">
+                    <p className="truncate text-sm font-medium text-surface-900 group-hover:text-brand-700 dark:text-surface-100 dark:group-hover:text-brand-400">{condition.label}</p>
+                    {condition.icd10 && (
+                      <p className="mt-0.5 font-mono text-xs text-surface-400 dark:text-surface-500">ICD-10: {condition.icd10}</p>
+                    )}
+                  </div>
+                  <ChevronRight className="h-4 w-4 flex-shrink-0 text-surface-300 group-hover:text-brand-500 dark:text-surface-600" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="border-t border-surface-200 px-3 py-2.5 dark:border-surface-700">
+          <Link
+            href={`/${region}`}
+            className="flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:opacity-90"
+            style={{ backgroundColor: color }}
+          >
+            <ExternalLink className="h-3.5 w-3.5" />
+            View all {regionData.label} conditions
+          </Link>
+        </div>
       </div>
-      <div className="flex-1 overflow-y-auto p-4">
-        <ul className="space-y-2">
-          {regionData.conditions.map(condition => (
-            <li key={condition.slug}>
-              <Link
-                href={`/${region}/${condition.slug}`}
-                className="group flex items-center gap-3 rounded-xl border border-surface-200 bg-white p-3 shadow-sm transition-all hover:border-brand-300 hover:shadow-md dark:border-surface-700 dark:bg-surface-800 dark:hover:border-brand-600"
-                style={{ borderLeftColor: color, borderLeftWidth: 3 }}
-              >
-                <div className="flex-1">
-                  <p className="font-medium text-surface-900 group-hover:text-brand-700 dark:text-surface-100 dark:group-hover:text-brand-400">{condition.label}</p>
-                  {condition.icd10 && (
-                    <p className="mt-0.5 font-mono text-xs text-surface-400 dark:text-surface-500">ICD-10: {condition.icd10}</p>
-                  )}
-                </div>
-                <ChevronRight className="h-4 w-4 text-surface-300 group-hover:text-brand-500 dark:text-surface-600" />
-              </Link>
-            </li>
-          ))}
-        </ul>
+
+      {/* Desktop: right sidebar panel */}
+      <div className="absolute right-0 top-0 z-20 hidden h-full w-72 flex-col border-l border-surface-200 bg-white/95 shadow-2xl backdrop-blur-sm dark:border-surface-700 dark:bg-surface-900/95 lg:w-80 sm:flex">
+        <div className="flex items-center gap-3 border-b border-surface-200 px-4 py-3 dark:border-surface-700" style={{ borderLeftColor: color, borderLeftWidth: 4 }}>
+          <div className="flex-1">
+            <h2 className="text-base font-bold text-surface-900 dark:text-surface-50">{regionData.label}</h2>
+            <p className="text-xs text-surface-500 dark:text-surface-400">{regionData.conditions.length} conditions</p>
+          </div>
+          <button onClick={onClose} className="rounded-lg p-1.5 text-surface-400 transition-colors hover:bg-surface-100 hover:text-surface-600 dark:hover:bg-surface-800 dark:hover:text-surface-200" aria-label="Close">
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto p-3">
+          <ul className="space-y-1.5">
+            {regionData.conditions.map(condition => (
+              <li key={condition.slug}>
+                <Link
+                  href={`/${region}/${condition.slug}`}
+                  className="group flex items-center gap-3 rounded-xl border border-surface-200 bg-white p-2.5 shadow-sm transition-all hover:border-brand-300 hover:shadow-md dark:border-surface-700 dark:bg-surface-800 dark:hover:border-brand-600"
+                  style={{ borderLeftColor: color, borderLeftWidth: 3 }}
+                >
+                  <div className="flex-1 min-w-0">
+                    <p className="truncate text-sm font-medium text-surface-900 group-hover:text-brand-700 dark:text-surface-100 dark:group-hover:text-brand-400">{condition.label}</p>
+                    {condition.icd10 && (
+                      <p className="mt-0.5 font-mono text-xs text-surface-400 dark:text-surface-500">ICD-10: {condition.icd10}</p>
+                    )}
+                  </div>
+                  <ChevronRight className="h-4 w-4 flex-shrink-0 text-surface-300 group-hover:text-brand-500 dark:text-surface-600" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="border-t border-surface-200 p-3 dark:border-surface-700">
+          <Link
+            href={`/${region}`}
+            className="flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:opacity-90"
+            style={{ backgroundColor: color }}
+          >
+            <ExternalLink className="h-4 w-4" />
+            View all {regionData.label} conditions
+          </Link>
+        </div>
       </div>
-      <div className="border-t border-surface-200 p-4 dark:border-surface-700">
-        <Link
-          href={`/${region}`}
-          className="flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:opacity-90"
-          style={{ backgroundColor: color }}
-        >
-          <ExternalLink className="h-4 w-4" />
-          View all {regionData.label} conditions
-        </Link>
-      </div>
-    </div>
+    </>
   )
 }
 
@@ -1148,7 +1196,7 @@ export function InteractiveBodyModel() {
   }, [])
 
   return (
-    <div className="relative h-[min(80vh,700px)] w-full sm:h-[min(85vh,800px)]">
+    <div className="relative h-[60vh] w-full sm:h-[70vh] lg:h-[75vh]">
       <Canvas
         shadows
         camera={{ position: [0, 1.5, 5], fov: 35 }}
@@ -1167,24 +1215,25 @@ export function InteractiveBodyModel() {
       </Canvas>
 
       {hovered && !selected && (
-        <div className="pointer-events-none absolute left-1/2 top-4 -translate-x-1/2">
-          <div className="rounded-full bg-surface-900/80 px-4 py-1.5 text-sm font-medium text-white shadow-lg dark:bg-surface-50/80 dark:text-surface-900">
+        <div className="pointer-events-none absolute left-1/2 top-3 -translate-x-1/2">
+          <div className="rounded-full bg-surface-900/80 px-3 py-1 text-xs font-medium text-white shadow-lg dark:bg-surface-50/80 dark:text-surface-900 sm:text-sm">
             {REGIONS.find(r => r.slug === hovered)?.label}
-            <span className="ml-1.5 text-xs opacity-70">— click to explore</span>
+            <span className="ml-1 opacity-70">— click to explore</span>
           </div>
         </div>
       )}
 
       {!selected && (
-        <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2">
-          <div className="rounded-lg bg-surface-900/60 px-4 py-2 text-xs text-white/80 backdrop-blur-sm dark:bg-surface-100/60 dark:text-surface-800">
+        <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2">
+          <div className="rounded-lg bg-surface-900/60 px-3 py-1.5 text-[11px] text-white/80 backdrop-blur-sm dark:bg-surface-100/60 dark:text-surface-800 sm:text-xs">
             🖱️ Drag to rotate · Scroll to zoom · Click a bone to explore
           </div>
         </div>
       )}
 
       {selected && <RegionDetailPanel region={selected} onClose={handleCloseDetail} />}
-      {selected && <div className="absolute inset-0 z-10" onClick={handleCloseDetail} />}
+      {/* Desktop: click backdrop to close (doesn't block on mobile) */}
+      {selected && <div className="absolute inset-0 z-10 hidden sm:block" onClick={handleCloseDetail} />}
     </div>
   )
 }
