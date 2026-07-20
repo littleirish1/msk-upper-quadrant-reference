@@ -7,6 +7,10 @@ export const regionSlugSchema = z.enum([
   'elbow',
   'wrist-hand',
   'lumbar',
+  'pelvis-sij',
+  'hip',
+  'knee',
+  'ankle-foot',
 ])
 
 export const sectionSlugSchema = z.enum([
@@ -166,6 +170,20 @@ export const outcomeMeasureRecordSchema = governedLearningRecordSchema.and(z.obj
   licenceOrUseRestrictions: z.string().min(1).optional(),
 }))
 
+export const regionContentBriefSchema = z.object({
+  contentId: contentIdSchema,
+  recordType: z.literal('region-content-brief'),
+  title: z.string().min(1),
+  region: regionSlugSchema,
+  status: z.enum(['planned', 'private']),
+  publicEligibility: z.literal(false),
+  clinicianReviewRequired: z.literal(true),
+  scope: z.string().min(1),
+  sourceRequirements: z.array(z.string().min(1)).min(1),
+  proposedContentTypes: z.array(z.string().min(1)).default([]),
+  notes: z.string().optional(),
+})
+
 export const caseFrontmatterSchema = sourceMetadataSchema.merge(z.object({
   title: z.string().min(1),
   region: regionSlugSchema,
@@ -226,3 +244,4 @@ export type ConditionFrontmatterSchema = z.infer<typeof conditionFrontmatterSche
 export type CaseFrontmatterSchema = z.infer<typeof caseFrontmatterSchema>
 export type SpecialTestRecord = z.infer<typeof specialTestRecordSchema>
 export type OutcomeMeasureRecord = z.infer<typeof outcomeMeasureRecordSchema>
+export type RegionContentBrief = z.infer<typeof regionContentBriefSchema>

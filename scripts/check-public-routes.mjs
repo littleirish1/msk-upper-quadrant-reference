@@ -3,6 +3,7 @@ import path from 'path'
 import {
   collectCaseFiles,
   getTaxonomyConditions,
+  getPlannedTaxonomyRegions,
   isPrivateStatus,
   readCaseFrontmatter,
 } from './lib/readMdxFrontmatter.mjs'
@@ -31,6 +32,7 @@ const requiredAnchors = [
 
 const findings = []
 const conditions = await readConditions()
+const plannedRegions = await getPlannedTaxonomyRegions()
 const conditionsByKey = new Map(conditions.map((condition) => [conditionKey(condition.region, condition.slug), condition]))
 
 if (!fs.existsSync(OUT_DIR)) {
@@ -45,6 +47,13 @@ for (const [route, file] of requiredRoutes) {
 
 if (fs.existsSync(path.join(OUT_DIR, 'ai-manager'))) {
   fail('Public export includes out/ai-manager, but Case Manager must remain local-only.')
+}
+
+for (const region of plannedRegions) {
+  const routeFile = path.join(OUT_DIR, region.slug, 'index.html')
+  if (fs.existsSync(routeFile)) {
+    fail(`Planned region was generated as a public route: /${region.slug}`)
+  }
 }
 
 const cases = await readCases()

@@ -6,10 +6,11 @@ import { loadSchemas } from './lib/readMdxFrontmatter.mjs'
 const ROOT = process.cwd()
 const findings = []
 const seenIds = new Map()
-const { specialTestRecordSchema, outcomeMeasureRecordSchema } = await loadSchemas()
+const { specialTestRecordSchema, outcomeMeasureRecordSchema, regionContentBriefSchema } = await loadSchemas()
 
 checkJsonDirectory('content/special-tests', specialTestRecordSchema)
 checkJsonDirectory('content/outcome-measures', outcomeMeasureRecordSchema)
+checkJsonDirectory('content/plans/regions', regionContentBriefSchema)
 
 const reportCheck = spawnSync(process.execPath, ['scripts/generate-upper-quadrant-matrix.mjs', '--check'], {
   cwd: ROOT,

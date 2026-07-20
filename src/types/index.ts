@@ -6,6 +6,11 @@ export type RegionSlug =
   | 'shoulder'
   | 'elbow'
   | 'wrist-hand'
+  | 'lumbar'
+  | 'pelvis-sij'
+  | 'hip'
+  | 'knee'
+  | 'ankle-foot'
 
 export type SectionSlug =
   | 'overview'
