@@ -18,6 +18,10 @@ const IGNORE_FILES = new Set([
   'ai-manager/guided-case-rules.md',
 ])
 
+const IGNORE_DIRS = new Set([
+  'ai-manager/private-cache',
+])
+
 const EXTENSIONS = new Set([
   '.md',
   '.mdx',
@@ -75,6 +79,8 @@ function walk(dir) {
     const fullPath = path.join(dir, entry.name)
 
     if (entry.isDirectory()) {
+      const relativeDir = toPosix(path.relative(ROOT, fullPath))
+      if (IGNORE_DIRS.has(relativeDir)) continue
       walk(fullPath)
       continue
     }
