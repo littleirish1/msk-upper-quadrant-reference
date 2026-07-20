@@ -49,9 +49,13 @@ npm run check:sources
 npm run check:secrets
 npm run check:frontmatter
 npm run check:generated-sources
+npm run check:platform-content
 npm run build
 npm run check:search
 npm run check:content-contracts
+npm run check:anatomy
+npm run check:learning
+npm run check:ai-manager
 npm run check:3d
 npm run check:links
 npm run check:no-leak
@@ -83,6 +87,7 @@ Public:
 - Region and condition pages.
 - Published guided cases using neutral public case slugs.
 - Demo/status pages intended for the public trial build.
+- Anatomy category navigation and the static learning demonstration.
 
 Not public:
 
@@ -91,6 +96,8 @@ Not public:
 - `ai-manager` local Case Manager tooling.
 - Imported source notes and unreviewed TODO material.
 - Local file paths, secrets, or admin-only details.
+- Private anatomy, learning, planned-region, test, and outcome-measure briefs.
+- Knowledge-manager inbox, reports, proposals, local configuration, or provider adapters.
 
 ## Content And Route Reality
 

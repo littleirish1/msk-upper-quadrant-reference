@@ -65,6 +65,7 @@ Static routes are generated from source files and taxonomy metadata:
 - Case routes come from published guided case files only.
 - Draft and archived cases are excluded.
 - `ai-manager` is never imported into the public app and must not appear in `out`.
+- Anatomy detail records, planned regions, and private learning examples do not generate public routes.
 
 Route and no-leak checks validate these invariants after build:
 
@@ -129,9 +130,13 @@ npm run check:sources
 npm run check:secrets
 npm run check:frontmatter
 npm run check:generated-sources
+npm run check:platform-content
 npm run build
 npm run check:search
 npm run check:content-contracts
+npm run check:anatomy
+npm run check:learning
+npm run check:ai-manager
 npm run check:3d
 npm run check:links
 npm run check:no-leak
@@ -150,7 +155,19 @@ The gate protects against:
 - diagnostic public case URL leakage,
 - broken or missing reveal controls,
 - draft/archived case routes,
-- accidental public `ai-manager` output.
+- accidental public `ai-manager` output,
+- duplicate or invalid Platform V2 content IDs,
+- unreviewed anatomy detail routes,
+- invalid learning step order or missing review metadata.
+
+## Platform V2 Foundations
+
+- `src/data/taxonomy.ts` is the canonical source for live and planned regions.
+- `src/lib/contentSchemas.ts` contains shared lifecycle, relationship, anatomy, and learning schemas.
+- `/anatomy` exposes reviewed category navigation; detail routes remain held until a record meets public requirements.
+- `/learning` hosts static client-side learning mechanics. Learner free text remains in memory and is neither transmitted nor persisted.
+- Private JSON briefs under `content/**/private` and `content/plans` validate future structures without becoming public content.
+- `ai-manager` is an offline proposal and ingestion framework. Provider mode is disabled and no public runtime imports it.
 
 ## Future Architecture Direction
 

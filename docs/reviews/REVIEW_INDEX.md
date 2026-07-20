@@ -12,6 +12,7 @@ This index records review continuity without inventing missing review documents.
 | 0006 | `0006-reasoning-checklists-conversation-review.md` | safe to commit; case-specific clinical answers remain future reviewed work |
 | 0007 | `0007-coordinated-hardening-review.md` | repository fixes implemented; human history/ref blockers and re-review remain open |
 | 0008 | `0008-foundation-integration-review.md` | local integration validated; independent review and remote update remain pending |
+| 0009 | `0009-platform-v2-implementation-review.md` | Platform V2 implemented locally; pending independent review |
 
 ## Current Open Risk Ledger
 
