@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { TextDecoder } from 'node:util'
 import { CREDENTIAL_RULES } from './lib/secretPatterns.mjs'
+import { scanSensitiveText } from '../ai-manager/scripts/sensitiveDataPolicy.mjs'
 import {
   RAW_LEGACY_PREFIX,
   SENSITIVE_DELETION_SUMMARY,
@@ -63,6 +64,16 @@ for (const file of collectFiles(packetDir)) {
   }
 
   scanCredentialRules(text, relative)
+
+  const sharedSections = relative === '05-filtered-full-diff.patch' || relative.endsWith('.patch')
+    ? splitPatchSections(text)
+    : [{ repositoryPath: relative, text }]
+  for (const section of sharedSections) {
+    for (const category of scanSensitiveText(section.text)) {
+      if (securityToolingPaths.has(section.repositoryPath) && category === 'credential-value') continue
+      fail(relative + ': governed sensitive-data pattern detected (' + category + ')')
+    }
+  }
 
   const lower = text.toLowerCase()
   if (sensitiveNames.some((term) => lower.includes(term.toLowerCase()))) {

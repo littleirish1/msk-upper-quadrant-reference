@@ -1,191 +1,242 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { TextDecoder } from 'node:util'
 import {
-  candidateReferenceRegistrySchema,
-  sourceIntakeManifestSchema,
-  sourceToContentGraphSchema,
-} from '../schemas/managerSchemas.mjs'
-import { CREDENTIAL_RULES } from '../../scripts/lib/secretPatterns.mjs'
+  candidateReferenceRegistryV2Schema,
+  classificationOverridesSchema,
+  clearanceLedgerSchema,
+  securityFalsePositiveDecisionsSchema,
+  sourceIntakeManifestV2Schema,
+  sourceIntakeRunManifestSchema,
+  sourceToContentGraphV2Schema,
+} from '../schemas/sourceIntakeSchemas.mjs'
+import { scanSensitiveText } from './sensitiveDataPolicy.mjs'
 
 const ROOT = process.cwd()
 const REPORT_DIR = path.join(ROOT, 'ai-manager', 'reports', 'source-intake-pilot')
-const MANIFEST_FILE = path.join(REPORT_DIR, 'source-manifest.json')
-const REFERENCES_FILE = path.join(REPORT_DIR, 'references', 'candidate-reference-registry.json')
-const GRAPH_FILE = path.join(REPORT_DIR, 'source-to-content-graph.json')
 const findings = []
 
-const manifest = validateJson(MANIFEST_FILE, sourceIntakeManifestSchema)
-const references = validateJson(REFERENCES_FILE, candidateReferenceRegistrySchema)
-const graph = validateJson(GRAPH_FILE, sourceToContentGraphSchema)
-
-if (manifest) validateManifest(manifest)
-if (manifest && references) validateReferences(manifest, references)
-if (manifest && graph) validateGraph(manifest, graph)
-validateTrackedReports()
-validatePrivateCacheIgnore()
-
-if (findings.length) {
-  console.error('Private source-intake validation failed.')
-  for (const finding of findings) console.error(`- ${finding}`)
-  process.exit(1)
+export function validateSourceIntake(reportDir = REPORT_DIR, options = {}) {
+  findings.length = 0
+  const manifest = validateJson(path.join(reportDir, 'source-manifest.json'), sourceIntakeManifestV2Schema)
+  const references = validateJson(path.join(reportDir, 'references', 'candidate-reference-registry.json'), candidateReferenceRegistryV2Schema)
+  const graph = validateJson(path.join(reportDir, 'source-to-content-graph.json'), sourceToContentGraphV2Schema)
+  const run = validateJson(path.join(reportDir, 'run-manifest.json'), sourceIntakeRunManifestSchema)
+  const clearance = validateJson(path.join(ROOT, 'ai-manager', 'config', 'source-clearance-ledger.json'), clearanceLedgerSchema)
+  const overrides = validateJson(path.join(ROOT, 'ai-manager', 'config', 'source-classification-overrides.json'), classificationOverridesSchema)
+  const securityDecisions = validateJson(path.join(ROOT, 'ai-manager', 'config', 'security-false-positive-decisions.json'), securityFalsePositiveDecisionsSchema)
+  if (manifest) validateManifest(manifest)
+  if (manifest && references) validateReferences(manifest, references)
+  if (manifest && graph) validateGraph(manifest, graph)
+  if (manifest && run && references && graph) validateRun(manifest, references, graph, run, reportDir)
+  if (manifest && clearance) validateClearance(manifest, clearance)
+  if (manifest && overrides) validateOverrides(manifest, overrides)
+  if (manifest && securityDecisions) validateSecurityDecisions(manifest, securityDecisions)
+  validateTrackedReports(reportDir)
+  validatePrivateCacheIgnore()
+  if (!options.quiet) reportResult(manifest, references, graph)
+  return [...findings]
 }
 
-const records = manifest.records
-console.log(
-  `Private source-intake validation passed. ` +
-  `${records.length} unique sources; ${manifest.summary.quarantinedSources} quarantined; ` +
-  `${references.records.length} candidate references; ${graph.nodes.length} blocked proposals; public eligibility: 0.`,
-)
-
 function validateJson(file, schema) {
-  if (!fs.existsSync(file)) {
-    findings.push(`missing required report: ${relative(file)}`)
-    return null
-  }
+  if (!fs.existsSync(file)) { findings.push(`missing required file: ${relative(file)}`); return null }
   let value
-  try {
-    value = JSON.parse(fs.readFileSync(file, 'utf8'))
-  } catch (error) {
-    findings.push(`${relative(file)} is not valid JSON: ${error.message}`)
-    return null
-  }
+  try { value = JSON.parse(fs.readFileSync(file, 'utf8')) }
+  catch (error) { findings.push(`${relative(file)} is invalid JSON: ${error.message}`); return null }
   const result = schema.safeParse(value)
   if (!result.success) {
-    for (const issue of result.error.issues) {
-      findings.push(`${relative(file)} ${issue.path.join('.')}: ${issue.message}`)
-    }
+    for (const issue of result.error.issues) findings.push(`${relative(file)} ${issue.path.join('.')}: ${issue.message}`)
     return null
   }
   return result.data
 }
 
 function validateManifest(value) {
-  const ids = new Set()
-  const checksums = new Map()
+  const ids = new Map()
+  const checksums = new Set()
   for (const record of value.records) {
-    if (ids.has(record.sourceId)) findings.push(`duplicate source ID: ${record.sourceId}`)
-    ids.add(record.sourceId)
-    const existing = checksums.get(record.checksum)
-    if (existing) findings.push(`duplicate checksum represented by separate source IDs: ${existing} and ${record.sourceId}`)
-    checksums.set(record.checksum, record.sourceId)
-    if (record.publicEligibility !== false) findings.push(`${record.sourceId} is incorrectly public eligible`)
-    if (record.sensitivity === 'quarantine' && record.reviewStatus !== 'quarantined') {
-      findings.push(`${record.sourceId} quarantine status is inconsistent`)
+    if (ids.has(record.sourceId) && ids.get(record.sourceId) !== record.checksum) findings.push(`display source-ID collision: ${record.sourceId}`)
+    ids.set(record.sourceId, record.checksum)
+    if (checksums.has(record.checksum)) findings.push(`duplicate full checksum represented twice: ${record.sourceId}`)
+    checksums.add(record.checksum)
+    if (!record.checksum.startsWith(`sha256:${record.sourceId.slice(4)}`)) findings.push(`${record.sourceId} does not match its checksum prefix`)
+    if (record.publicEligibility !== false) findings.push(`${record.sourceId} is public eligible`)
+    if (record.sensitivity === 'quarantined' && record.reviewStatus !== 'quarantined') findings.push(`${record.sourceId} quarantine state is inconsistent`)
+    if (record.sensitivity === 'restricted-pending-clearance' && record.clearanceScopes.length) findings.push(`${record.sourceId} has clearance scopes while restricted`)
+    for (const occurrence of record.occurrences) {
+      if (!isSafeLogicalPath(occurrence.logicalPath)) findings.push(`${record.sourceId} has unsafe occurrence path`)
     }
-    if (record.logicalPath.includes('..')) findings.push(`${record.sourceId} uses parent traversal in logical path`)
   }
-  if (value.summary.uniqueSources !== value.records.length) findings.push('manifest uniqueSources summary does not match records')
-  if (value.summary.quarantinedSources !== value.records.filter((record) => record.sensitivity === 'quarantine').length) {
-    findings.push('manifest quarantinedSources summary does not match records')
+  const expected = {
+    uniqueSources: value.records.length,
+    quarantinedSources: value.records.filter((item) => item.sensitivity === 'quarantined').length,
+    restrictedPendingClearanceSources: value.records.filter((item) => item.sensitivity === 'restricted-pending-clearance').length,
+    clearedSources: value.records.filter((item) => item.sensitivity === 'cleared-for-private-evidence-processing').length,
   }
+  for (const [key, count] of Object.entries(expected)) if (value.summary[key] !== count) findings.push(`manifest ${key} summary mismatch`)
 }
 
-function validateReferences(manifestValue, registry) {
+function validateReferences(manifest, registry) {
   const ids = new Set()
-  const sources = new Map(manifestValue.records.map((record) => [record.sourceId, record]))
-  const statuses = new Set([
-    'extracted-unverified', 'incomplete-citation', 'identifier-present-unverified',
-    'likely-duplicate', 'verified-later', 'unable-to-identify',
-  ])
-  const doiPattern = /^10\.\d{4,9}\/[-._;()/:A-Z0-9]+$/i
-  const pmidPattern = /^\d{6,9}$/
+  const sources = new Map(manifest.records.map((item) => [item.sourceId, item]))
   for (const record of registry.records) {
     if (ids.has(record.candidateReferenceId)) findings.push(`duplicate candidate reference ID: ${record.candidateReferenceId}`)
     ids.add(record.candidateReferenceId)
-    if (!sources.has(record.sourceId)) findings.push(`${record.candidateReferenceId} has unknown source ID`)
-    if (sources.get(record.sourceId)?.sensitivity === 'quarantine') {
-      findings.push(`${record.candidateReferenceId} uses quarantined source ${record.sourceId}`)
+    const source = sources.get(record.sourceId)
+    if (!source) findings.push(`${record.candidateReferenceId} uses unknown source`)
+    else {
+      if (source.checksum !== record.sourceChecksum) findings.push(`${record.candidateReferenceId} source checksum mismatch`)
+      if (!sourceAllowsScope(source, 'citation-extraction')) findings.push(`${record.candidateReferenceId} uses source unavailable for citation extraction`)
     }
-    if (!statuses.has(record.verificationStatus)) findings.push(`${record.candidateReferenceId} has invented verification status`)
-    if (record.verificationStatus === 'verified-later' && !record.verificationEvidence) {
-      findings.push(`${record.candidateReferenceId} is marked verified without evidence`)
-    }
-    if (record.doi && !doiPattern.test(record.doi)) findings.push(`${record.candidateReferenceId} has malformed DOI syntax`)
-    if (record.pmid && !pmidPattern.test(record.pmid)) findings.push(`${record.candidateReferenceId} has malformed PMID syntax`)
-    if (record.pageOrSlideNumber === null && !/document|embedded hyperlink/.test(record.location)) {
-      findings.push(`${record.candidateReferenceId} is missing available page or slide provenance`)
-    }
+    if (record.verificationEvidence !== null) findings.push(`${record.candidateReferenceId} claims verification evidence`)
+    if (record.citationText.length > 280) findings.push(`${record.candidateReferenceId} exceeds citation excerpt limit`)
+    if (record.doi && !/^10\.\d{4,9}\/[-._;()/:A-Z0-9]+$/i.test(record.doi)) findings.push(`${record.candidateReferenceId} has malformed DOI`)
+    if (record.pmid && !/^\d{6,9}$/.test(record.pmid)) findings.push(`${record.candidateReferenceId} has malformed PMID`)
+    if (record.pageOrSlideNumber === null && !/document|hyperlink/.test(record.location)) findings.push(`${record.candidateReferenceId} lacks available provenance`)
   }
 }
 
-function validateGraph(manifestValue, value) {
-  const sources = new Map(manifestValue.records.map((record) => [record.sourceId, record]))
-  const proposalIds = new Set()
-  for (const node of value.nodes) {
-    if (proposalIds.has(node.proposalId)) findings.push(`duplicate proposal ID: ${node.proposalId}`)
-    proposalIds.add(node.proposalId)
-    if (!node.sourceIds.length) findings.push(`${node.proposalId} has no source IDs`)
-    for (const sourceId of node.sourceIds) {
+function validateGraph(manifest, graph) {
+  const sources = new Map(manifest.records.map((item) => [item.sourceId, item]))
+  const proposals = new Set()
+  for (const node of graph.nodes) {
+    if (proposals.has(node.proposalId)) findings.push(`duplicate proposal ID: ${node.proposalId}`)
+    proposals.add(node.proposalId)
+    node.sourceIds.forEach((sourceId, index) => {
       const source = sources.get(sourceId)
-      if (!source) findings.push(`${node.proposalId} references unknown source ${sourceId}`)
-      if (source?.sensitivity === 'quarantine') findings.push(`${node.proposalId} uses quarantined source ${sourceId}`)
-    }
-    if (node.publicEligibility !== false) findings.push(`${node.proposalId} is incorrectly public eligible`)
-    if (node.teachingSourceCanEstablishPublicApproval !== false) findings.push(`${node.proposalId} lets teaching notes establish approval`)
-    if (node.visualLicenceStatus === 'unknown-review-required' && node.publicEligibility) {
-      findings.push(`${node.proposalId} publishes a visual with unknown copyright status`)
-    }
+      if (!source) findings.push(`${node.proposalId} uses unknown source`)
+      else {
+        if (source.checksum !== node.sourceChecksums[index]) findings.push(`${node.proposalId} source checksum mismatch`)
+        if (!sourceAllowsScope(source, 'private-proposal-support')) findings.push(`${node.proposalId} uses source unavailable for proposal support`)
+      }
+    })
   }
 }
 
-function validateTrackedReports() {
-  if (!fs.existsSync(REPORT_DIR)) return
-  const governedNames = readGovernedNames()
-  for (const file of collectFiles(REPORT_DIR)) {
+function validateRun(manifest, references, graph, run, reportDir) {
+  if (new Set([manifest.runId, references.runId, graph.runId, run.runId]).size !== 1) findings.push('run IDs are inconsistent')
+  if (manifest.sourceSetFingerprint !== run.sourceSetFingerprint) findings.push('run source-set fingerprint mismatch')
+  const actual = collectFiles(reportDir).map((file) => normalize(path.relative(reportDir, file))).sort()
+  const expected = [...run.expectedFiles].sort()
+  if (JSON.stringify(actual) !== JSON.stringify(expected)) findings.push('tracked report set differs from run manifest')
+}
+
+function validateClearance(manifest, ledger) {
+  const records = new Map(manifest.records.map((item) => [item.checksum, item]))
+  const seen = new Set()
+  for (const entry of ledger.entries) {
+    if (seen.has(entry.checksum)) findings.push('duplicate clearance checksum')
+    seen.add(entry.checksum)
+    const record = records.get(entry.checksum)
+    if (!record) findings.push('clearance ledger contains an unknown checksum')
+    else if (record.sourceId !== entry.sourceId) findings.push('clearance ledger source-ID mismatch')
+    if (entry.previousStatus === 'quarantined' && entry.decision === 'clear-for-private-evidence-processing') findings.push('quarantine was bypassed')
+  }
+}
+
+function validateOverrides(manifest, overrides) {
+  const records = new Map(manifest.records.map((item) => [item.checksum, item]))
+  const seen = new Set()
+  for (const entry of overrides.entries) {
+    if (seen.has(entry.checksum)) findings.push('duplicate classification override')
+    seen.add(entry.checksum)
+    const record = records.get(entry.checksum)
+    if (!record) findings.push('classification override contains an unknown checksum')
+    else if (record.sourceId !== entry.sourceId) findings.push('classification override source-ID mismatch')
+  }
+}
+
+function validateSecurityDecisions(manifest, decisions) {
+  const records = new Map(manifest.records.map((item) => [item.checksum, item]))
+  const seen = new Set()
+  for (const entry of decisions.entries) {
+    const key = `${entry.checksum}|${entry.detectorRuleId}`
+    if (seen.has(key)) findings.push('duplicate or contradictory security false-positive decision')
+    seen.add(key)
+    const record = records.get(entry.checksum)
+    if (!record) findings.push('security false-positive decision contains an unknown checksum')
+    else if (record.sourceId !== entry.sourceId) findings.push('security false-positive source-ID mismatch')
+    if (entry.decisionScope !== 'credential-stop-override-for-exact-checksum-only') findings.push('security false-positive decision has an invalid scope')
+  }
+}
+
+export function scanTrackedText(text, context = 'tracked report') {
+  const result = []
+  if (text.includes('\uFFFD')) result.push(`${context}: replacement character detected`)
+  const scrubbed = text.replace(/(?:sha256:)?[0-9a-f]{64}|(?:src|ref|run)-[0-9a-f]{12,64}|ref-[a-z0-9-]+/giu, '[machine-id]')
+  const categories = new Set([
+    ...scanSensitiveText(scrubbed),
+    ...scanSensitiveText(scrubbed.replaceAll('\\\\', '\\')),
+  ])
+  for (const category of categories) result.push(`${context}: ${category}`)
+  return result
+}
+
+export function sourceAllowsScope(source, scope) {
+  if (source.sensitivity === 'quarantined' || source.sensitivity === 'restricted-pending-clearance') return false
+  if (source.sensitivity === 'cleared-for-private-evidence-processing') return source.clearanceScopes.includes(scope)
+  return source.sensitivity === 'review-required'
+}
+
+function validateTrackedReports(reportDir) {
+  if (!fs.existsSync(reportDir)) { findings.push('tracked report directory is missing'); return }
+  const decoder = new TextDecoder('utf-8', { fatal: true })
+  for (const file of collectFiles(reportDir)) {
     const stat = fs.statSync(file)
-    if (stat.size > 2 * 1024 * 1024) findings.push(`${relative(file)} exceeds the 2 MiB tracked-report threshold`)
-    const buffer = fs.readFileSync(file)
-    if (buffer.includes(0)) findings.push(`${relative(file)} appears binary`)
-    const text = buffer.toString('utf8')
-    if (/\b[A-Za-z]:[\\/](?:Users|dev|home)[\\/]/i.test(text)) findings.push(`${relative(file)} contains a private absolute path`)
-    if (/\\\\[^\\\s]+\\[^\s]+/.test(text)) findings.push(`${relative(file)} contains a UNC path`)
-    for (const rule of CREDENTIAL_RULES.filter((item) => item.kind === 'credential-value')) {
-      rule.pattern.lastIndex = 0
-      if (rule.pattern.test(text)) findings.push(`${relative(file)} contains a ${rule.label}`)
-    }
-    for (const name of governedNames) {
-      if (text.toLowerCase().includes(name.toLowerCase())) {
-        findings.push(`${relative(file)} contains a governed sensitive name`)
-        break
+    if (stat.size > 3 * 1024 * 1024) findings.push(`${relative(file)} exceeds tracked-report size limit`)
+    const bytes = fs.readFileSync(file)
+    if (bytes.includes(0)) { findings.push(`${relative(file)} appears binary`); continue }
+    let text
+    try { text = decoder.decode(bytes) }
+    catch { findings.push(`${relative(file)} is not valid UTF-8`); continue }
+    if (file.endsWith('.json')) {
+      try {
+        for (const value of jsonStringValues(JSON.parse(text))) findings.push(...scanTrackedText(value, relative(file)))
+      } catch {
+        // Required JSON files receive a schema error; unexpected JSON is still rejected below.
+        findings.push(`${relative(file)} is invalid JSON`)
       }
+    } else {
+      findings.push(...scanTrackedText(text, relative(file)))
     }
-    if (/-----BEGIN [A-Z ]*PRIVATE KEY-----/.test(text)) findings.push(`${relative(file)} contains private key material`)
-    if (/^.{1200,}$/m.test(text)) findings.push(`${relative(file)} contains a source-body-like unbroken line`)
+    if (file.endsWith('.md')) {
+      if (text.split(/\r?\n/).some((line) => line.length > 900)) findings.push(`${relative(file)} has a source-body-like long line`)
+      if (/^(?:[A-Za-z][^\n]{80,}\n){8,}/m.test(text)) findings.push(`${relative(file)} has a source-body-like prose block`)
+    }
   }
 }
 
 function validatePrivateCacheIgnore() {
-  const ignoreFile = path.join(ROOT, '.gitignore')
-  if (!fs.existsSync(ignoreFile)) {
-    findings.push('.gitignore is missing')
+  const ignore = fs.readFileSync(path.join(ROOT, '.gitignore'), 'utf8').split(/\r?\n/).map((line) => normalize(line.trim()))
+  if (!ignore.includes('ai-manager/private-cache/')) findings.push('private-cache ignore rule is missing')
+  if (ignore.some((line) => line.startsWith('!ai-manager/private-cache/'))) findings.push('private-cache has a negating ignore rule')
+}
+
+function reportResult(manifest, references, graph) {
+  if (findings.length) {
+    console.error('Private source-intake validation failed.')
+    findings.forEach((item) => console.error(`- ${item}`))
+    process.exitCode = 1
     return
   }
-  const rules = fs.readFileSync(ignoreFile, 'utf8')
-    .split(/\r?\n/)
-    .map((line) => line.trim().replaceAll('\\', '/'))
-    .filter((line) => line && !line.startsWith('#'))
-  if (!rules.includes('ai-manager/private-cache/')) {
-    findings.push('ai-manager/private-cache ignore rule is missing')
-  }
-  if (rules.some((rule) => rule.startsWith('!ai-manager/private-cache/'))) {
-    findings.push('ai-manager/private-cache contains a negating ignore rule')
-  }
+  console.log(`Private source-intake validation passed. ${manifest.records.length} unique sources; ${manifest.summary.quarantinedSources} quarantined; ${manifest.summary.restrictedPendingClearanceSources} restricted pending clearance; ${references.records.length} candidate references; ${graph.nodes.length} blocked proposals; public eligibility: 0.`)
 }
 
-function readGovernedNames() {
-  const file = path.join(ROOT, 'ai-manager', 'content-hygiene-names.json')
-  if (!fs.existsSync(file)) return []
-  const value = JSON.parse(fs.readFileSync(file, 'utf8'))
-  return Object.values(value).flatMap((entry) => Array.isArray(entry) ? entry : []).filter(Boolean)
+function isSafeLogicalPath(value) {
+  const normalized = normalize(value)
+  return !normalized.startsWith('/') && !/^[A-Za-z]:/.test(normalized) && !normalized.split('/').includes('..') && scanSensitiveText(normalized).length === 0
 }
-
-function collectFiles(dir) {
-  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
-    const item = path.join(dir, entry.name)
-    return entry.isDirectory() ? collectFiles(item) : entry.isFile() ? [item] : []
-  }).sort()
+function collectFiles(dir) { return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => { const item = path.join(dir, entry.name); return entry.isDirectory() ? collectFiles(item) : entry.isFile() ? [item] : [] }).sort() }
+function jsonStringValues(value) {
+  if (typeof value === 'string') return [value]
+  if (Array.isArray(value)) return value.flatMap(jsonStringValues)
+  if (value && typeof value === 'object') return Object.values(value).flatMap(jsonStringValues)
+  return []
 }
-
-function relative(file) {
-  return path.relative(ROOT, file).split(path.sep).join('/')
+function normalize(value) { return value.replaceAll('\\', '/') }
+function relative(file) { return normalize(path.relative(ROOT, file)) }
+if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url))) {
+  const result = validateSourceIntake()
+  if (result.length) process.exit(1)
 }

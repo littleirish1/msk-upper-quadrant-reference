@@ -27,6 +27,7 @@
   "check:learning": "node scripts/check-learning-content.mjs",
   "check:ai-manager": "node scripts/check-ai-manager-boundary.mjs",
   "check:source-intake": "node ai-manager/scripts/validate-source-intake-pilot.mjs",
+  "test:source-intake": "python -m unittest discover -s ai-manager/tests -p test_source_intake_hardening.py && node ai-manager/scripts/test-source-intake-validation.mjs",
   "check:links": "node scripts/check-internal-links.mjs",
   "check:content-contract": "npm run check:content-contracts",
   "check:3d": "node scripts/check-3d-prototype.mjs",
