@@ -1,0 +1,3033 @@
+diff --git a/.gitignore b/.gitignore
+index a14b38a..3ea9030 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -55,5 +55,6 @@ ai-manager/config/*.local.*
+ ai-manager/**/*.env
+ ai-manager/**/*.secret
+ ai-manager/private-cache/
++ai-manager/.venv-source-intake/
+ !ai-manager/reports/source-intake-pilot/
+ !ai-manager/reports/source-intake-pilot/**
+diff --git a/ai-manager/README.md b/ai-manager/README.md
+index 7b2db14..88f41a3 100644
+--- a/ai-manager/README.md
++++ b/ai-manager/README.md
+@@ -19,3 +19,23 @@ Ignored here:
+ - environment files, credentials, and private source material.
+ 
+ The manager may propose drafts. It cannot self-approve clinical publication, commit, push, or bypass the repository preflight gate.
++
++## Private Source Intake Environment
++
++The hardened intake tool supports Python 3.12 and runs offline. Its only Python
++packages are pinned in `requirements-source-intake.txt`.
++
++On Windows PowerShell:
++
++```powershell
++py -3.12 -m venv ai-manager\.venv-source-intake
++ai-manager\.venv-source-intake\Scripts\python.exe -m pip install -r ai-manager\requirements-source-intake.txt
++ai-manager\.venv-source-intake\Scripts\python.exe ai-manager\scripts\source_intake_pilot.py <private-inbox>
++```
++
++The inbox must remain outside the repository. The argument is never written to
++tracked reports. Full extracted text is held under the ignored, run-scoped
++`ai-manager/private-cache/source-intake-pilot/` directory. The tool does not run
++OCR, access external references, or infer copyright, evidence, or clinical
++approval. Legacy binary Office formats and unsupported/corrupt documents are
++reported as metadata-only or failed rather than guessed.
+diff --git a/ai-manager/config/security-false-positive-decisions.json b/ai-manager/config/security-false-positive-decisions.json
+new file mode 100644
+index 0000000..6aaf6e8
+--- /dev/null
++++ b/ai-manager/config/security-false-positive-decisions.json
+@@ -0,0 +1,19 @@
++{
++  "schemaVersion": 1,
++  "publicationApprovalRepresented": false,
++  "copyrightApprovalRepresented": false,
++  "clinicalApprovalRepresented": false,
++  "entries": [
++    {
++      "checksum": "sha256:64e065873078b64a60be48366534dd0bd7dd9ececfceb0a910285fc54dc636d3",
++      "sourceId": "src-64e065873078",
++      "detectorRuleId": "aws-access-key-shaped",
++      "matchCount": 4,
++      "decision": "false-positive-confirmed",
++      "decisionScope": "credential-stop-override-for-exact-checksum-only",
++      "reviewedBy": "operator-manual-review",
++      "decisionDate": "2026-07-20",
++      "rationale": "Manually inspected in the original source and confirmed not to be an operational credential."
++    }
++  ]
++}
+diff --git a/ai-manager/config/sensitive-data-policy.json b/ai-manager/config/sensitive-data-policy.json
+new file mode 100644
+index 0000000..7b655db
+--- /dev/null
++++ b/ai-manager/config/sensitive-data-policy.json
+@@ -0,0 +1,38 @@
++{
++  "schemaVersion": 1,
++  "policyId": "source-intake-sensitive-data-v1",
++  "trackedOutputRule": "detect-redact-or-suppress",
++  "categories": [
++    "email-address",
++    "telephone-number",
++    "uk-postcode",
++    "date-of-birth",
++    "nhs-number",
++    "suspicious-nhs-candidate",
++    "patient-or-hospital-identifier",
++    "student-or-candidate-identifier",
++    "governed-sensitive-name",
++    "private-absolute-path",
++    "unc-path",
++    "credential-value",
++    "contact-or-correspondence-block",
++    "bidi-or-control-character"
++  ],
++  "citationExcerptLimit": 280,
++  "archiveLimits": {
++    "maximumMemberCount": 500,
++    "maximumCompressedMemberBytes": 134217728,
++    "maximumExpandedMemberBytes": 157286400,
++    "maximumCumulativeExpandedBytes": 1073741824,
++    "maximumCompressionRatio": 100,
++    "maximumFilenameLength": 240,
++    "maximumNestingDepth": 1,
++    "inspectNestedArchives": false
++  },
++  "documentLimits": {
++    "maximumXmlPartBytes": 10485760,
++    "maximumPdfBytes": 104857600,
++    "maximumPdfPages": 1000,
++    "maximumFilenameLength": 240
++  }
++}
+diff --git a/ai-manager/config/source-classification-overrides.json b/ai-manager/config/source-classification-overrides.json
+new file mode 100644
+index 0000000..e79f9bb
+--- /dev/null
++++ b/ai-manager/config/source-classification-overrides.json
+@@ -0,0 +1,21 @@
++{
++  "schemaVersion": 1,
++  "entries": [
++    {
++      "checksum": "sha256:7b548a958b411f15dda674ae7a06e00f76c18241531e0c22e14759ea49ba0541",
++      "sourceId": "src-7b548a958b41",
++      "sourceType": "local-patient-leaflet",
++      "topicTags": [
++        "lateral-ankle-sprain",
++        "patient-information"
++      ],
++      "regionTags": [
++        "ankle-foot"
++      ],
++      "reason": "Historical local patient-information leaflet classification supplied by the project owner; clinical currency remains unverified.",
++      "decidedBy": "project-owner-task-instruction",
++      "decisionDate": "2026-07-20",
++      "reviewStatus": "classification-recorded"
++    }
++  ]
++}
+diff --git a/ai-manager/config/source-clearance-ledger.json b/ai-manager/config/source-clearance-ledger.json
+new file mode 100644
+index 0000000..3e0fab7
+--- /dev/null
++++ b/ai-manager/config/source-clearance-ledger.json
+@@ -0,0 +1,5 @@
++{
++  "schemaVersion": 1,
++  "publicationApprovalRepresented": false,
++  "entries": []
++}
+diff --git a/ai-manager/requirements-source-intake.txt b/ai-manager/requirements-source-intake.txt
+new file mode 100644
+index 0000000..a5377d7
+--- /dev/null
++++ b/ai-manager/requirements-source-intake.txt
+@@ -0,0 +1,2 @@
++pypdf==6.10.0
++defusedxml==0.7.1
+diff --git a/ai-manager/schemas/sourceIntakeSchemas.mjs b/ai-manager/schemas/sourceIntakeSchemas.mjs
+new file mode 100644
+index 0000000..460fdcb
+--- /dev/null
++++ b/ai-manager/schemas/sourceIntakeSchemas.mjs
+@@ -0,0 +1,251 @@
++import { z } from 'zod'
++import { ingestionSourceTypeSchema } from './managerSchemas.mjs'
++
++export const fullChecksumSchema = z.string().regex(/^sha256:[0-9a-f]{64}$/)
++export const displaySourceIdSchema = z.string().regex(/^src-[0-9a-f]{12}$/)
++const sourceRegionTagSchema = z.enum(['cervical', 'thoracic', 'shoulder', 'elbow', 'wrist-hand', 'headache', 'neurology', 'anatomy', 'lumbar', 'hip', 'knee', 'ankle-foot'])
++const sourceTopicTagSchema = z.enum(['rcrsp', 'rotator-cuff-tear', 'shoulder-differential', 'exercise-rehabilitation', 'prognosis', 'imaging', 'patient-communication', 'patient-information', 'special-tests', 'outcome-measures', 'lateral-ankle-sprain', 'ankle-ligament-anatomy', 'fracture-screening', 'syndesmosis', 'balance-proprioception', 'return-to-sport', 'recurrence-prevention', 'bracing-taping', 'guideline', 'paper', 'osce'])
++
++export const sourceSensitivitySchema = z.enum([
++  'review-required',
++  'restricted-pending-clearance',
++  'quarantined',
++  'cleared-for-private-evidence-processing',
++])
++
++export const clearanceLedgerSchema = z.object({
++  schemaVersion: z.literal(1),
++  publicationApprovalRepresented: z.literal(false),
++  entries: z.array(z.object({
++    checksum: fullChecksumSchema,
++    sourceId: displaySourceIdSchema,
++    decision: z.enum(['clear-for-private-evidence-processing', 'retain-restriction', 'retain-quarantine']),
++    clearanceScope: z.array(z.enum(['citation-extraction', 'private-proposal-support', 'private-topic-mapping'])).min(1),
++    decidedBy: z.string().min(1),
++    decisionDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
++    reason: z.string().min(1),
++    previousStatus: z.enum(['restricted-pending-clearance', 'quarantined']),
++    currentStatus: sourceSensitivitySchema,
++  })).superRefine((entries, context) => {
++    const seen = new Set()
++    for (const [index, entry] of entries.entries()) {
++      const key = `${entry.checksum}|${entry.clearanceScope.slice().sort().join(',')}`
++      if (seen.has(key)) context.addIssue({ code: 'custom', path: [index], message: 'duplicate or contradictory clearance decision' })
++      seen.add(key)
++      if (entry.decision === 'clear-for-private-evidence-processing' && entry.currentStatus !== 'cleared-for-private-evidence-processing') {
++        context.addIssue({ code: 'custom', path: [index, 'currentStatus'], message: 'clearance decision and current status disagree' })
++      }
++      if (entry.previousStatus === 'quarantined' && entry.decision === 'clear-for-private-evidence-processing') {
++        context.addIssue({ code: 'custom', path: [index], message: 'quarantine cannot be cleared by this ledger' })
++      }
++    }
++  }),
++})
++
++export const classificationOverridesSchema = z.object({
++  schemaVersion: z.literal(1),
++  entries: z.array(z.object({
++    checksum: fullChecksumSchema,
++    sourceId: displaySourceIdSchema,
++    sourceType: ingestionSourceTypeSchema,
++    topicTags: z.array(sourceTopicTagSchema),
++    regionTags: z.array(sourceRegionTagSchema),
++    reason: z.string().min(1),
++    decidedBy: z.string().min(1),
++    decisionDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
++    reviewStatus: z.literal('classification-recorded'),
++  })),
++})
++
++export const securityFalsePositiveDecisionsSchema = z.object({
++  schemaVersion: z.literal(1),
++  publicationApprovalRepresented: z.literal(false),
++  copyrightApprovalRepresented: z.literal(false),
++  clinicalApprovalRepresented: z.literal(false),
++  entries: z.array(z.object({
++    checksum: fullChecksumSchema,
++    sourceId: displaySourceIdSchema,
++    detectorRuleId: z.literal('aws-access-key-shaped'),
++    matchCount: z.number().int().positive(),
++    decision: z.literal('false-positive-confirmed'),
++    decisionScope: z.literal('credential-stop-override-for-exact-checksum-only'),
++    reviewedBy: z.literal('operator-manual-review'),
++    decisionDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
++    rationale: z.string().min(20).max(300),
++  })).superRefine((entries, context) => {
++    const seen = new Set()
++    for (const [index, entry] of entries.entries()) {
++      const key = `${entry.checksum}|${entry.detectorRuleId}`
++      if (seen.has(key)) context.addIssue({ code: 'custom', path: [index], message: 'duplicate or contradictory false-positive decision' })
++      seen.add(key)
++      if (!entry.checksum.startsWith(`sha256:${entry.sourceId.slice(4)}`)) {
++        context.addIssue({ code: 'custom', path: [index, 'sourceId'], message: 'source ID does not match checksum prefix' })
++      }
++    }
++  }),
++})
++
++const occurrenceSchema = z.object({
++  logicalPath: z.string().min(1),
++  containerSourceId: displaySourceIdSchema.nullable(),
++  dateMetadata: z.object({
++    value: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
++    provenance: z.enum(['local-filesystem-unreliable', 'zip-entry-unreliable']),
++  }).nullable(),
++})
++
++export const sourceIntakeRecordV2Schema = z.object({
++  sourceId: displaySourceIdSchema,
++  checksum: fullChecksumSchema,
++  logicalPath: z.string().min(1),
++  originalFilename: z.string().min(1),
++  fileType: z.string().regex(/^\.[a-z0-9]+$|^unknown$/),
++  byteSize: z.number().int().nonnegative(),
++  containerSourceId: displaySourceIdSchema.nullable(),
++  occurrences: z.array(occurrenceSchema).min(1),
++  sourceType: ingestionSourceTypeSchema,
++  topicTags: z.array(sourceTopicTagSchema),
++  regionTags: z.array(sourceRegionTagSchema),
++  duplicateGroup: z.string().nullable(),
++  probableVersionGroup: z.string().nullable(),
++  sensitivity: sourceSensitivitySchema,
++  sensitivityFindings: z.array(z.object({ category: z.string().min(1), count: z.number().int().positive() })),
++  clearanceScopes: z.array(z.enum(['citation-extraction', 'private-proposal-support', 'private-topic-mapping'])),
++  extractionSupport: z.enum(['supported', 'metadata-only', 'unsupported']),
++  extractionStatus: z.enum(['extracted', 'partial', 'unsupported', 'failed', 'quarantined', 'restricted', 'metadata-only']),
++  extractionMetadata: z.object({
++    method: z.string().min(1),
++    pageOrSlideCount: z.number().int().nonnegative().nullable(),
++    extractedCharacterCount: z.number().int().nonnegative(),
++    headingsDetected: z.array(z.string().min(1).max(160)).max(30),
++    referencesSectionDetected: z.boolean(),
++    tablesDetected: z.number().int().nonnegative(),
++    imagesDetected: z.number().int().nonnegative(),
++    confidence: z.enum(['high', 'medium', 'low', 'none']),
++    warnings: z.array(z.object({ code: z.string().min(1), count: z.number().int().positive() })),
++  }),
++  copyrightOrLicenceStatus: z.enum(['unknown', 'review-required', 'approved-for-intended-use']),
++  intendedUse: z.array(z.string().min(1)).min(1),
++  reviewStatus: z.enum(['needs-review', 'restricted-pending-clearance', 'quarantined', 'cleared-private-only']),
++  publicEligibility: z.literal(false),
++})
++
++export const sourceIntakeManifestV2Schema = z.object({
++  schemaVersion: z.literal(2),
++  runId: z.string().regex(/^run-[0-9a-f]{16}$/),
++  sourceSetFingerprint: fullChecksumSchema,
++  implementationCommit: z.string().regex(/^[0-9a-f]{40}$/),
++  extractor: z.object({
++    name: z.literal('source-intake-pilot'),
++    version: z.string().min(1),
++    pythonVersion: z.string().min(1),
++    pypdfVersion: z.string().min(1),
++    defusedxmlVersion: z.string().min(1),
++  }),
++  generatedFrom: z.object({
++    locationCategory: z.literal('private-external-inbox'),
++    absolutePathStored: z.literal(false),
++  }),
++  records: z.array(sourceIntakeRecordV2Schema),
++  archiveWarnings: z.array(z.object({
++    containerSourceId: displaySourceIdSchema,
++    category: z.string().min(1),
++    warningCode: z.string().min(1),
++    count: z.number().int().positive(),
++  })),
++  summary: z.object({
++    topLevelFiles: z.number().int().nonnegative(),
++    nestedFiles: z.number().int().nonnegative(),
++    uniqueSources: z.number().int().nonnegative(),
++    totalObservedBytes: z.number().int().nonnegative(),
++    exactDuplicateGroups: z.number().int().nonnegative(),
++    probableVersionGroups: z.number().int().nonnegative(),
++    quarantinedSources: z.number().int().nonnegative(),
++    restrictedPendingClearanceSources: z.number().int().nonnegative(),
++    clearedSources: z.number().int().nonnegative(),
++    manualReviewSources: z.number().int().nonnegative(),
++    suppressedSensitiveLines: z.number().int().nonnegative(),
++    referencesExcludedUncleared: z.number().int().nonnegative(),
++    proposalSourcesExcludedUncleared: z.number().int().nonnegative(),
++  }),
++})
++
++export const referenceClassificationSchema = z.enum([
++  'identifier-only',
++  'author-year-only',
++  'partial-bibliographic',
++  'full-looking-unverified',
++  'generic-web-link',
++  'licence-or-attribution-link',
++  'media-or-engagement-link',
++  'contact-or-administrative-link',
++  'unable-to-classify',
++])
++
++export const candidateReferenceV2Schema = z.object({
++  candidateReferenceId: z.string().regex(/^ref-[a-z0-9-]+$/),
++  sourceId: displaySourceIdSchema,
++  sourceChecksum: fullChecksumSchema,
++  pageOrSlideNumber: z.number().int().positive().nullable(),
++  location: z.string().min(1),
++  citationText: z.string().min(1).max(280),
++  citationTextHash: fullChecksumSchema,
++  authors: z.array(z.string().min(1).max(120)),
++  year: z.string().regex(/^\d{4}[a-z]?$/).nullable(),
++  title: z.string().max(300).nullable(),
++  journalOrPublisher: z.string().max(200).nullable(),
++  volumeIssuePages: z.string().max(120).nullable(),
++  doi: z.string().nullable(),
++  pmid: z.string().nullable(),
++  url: z.string().url().nullable(),
++  relatedTopicOrClaim: z.string().min(1),
++  citationContext: z.enum(['in-text', 'reference-list', 'further-reading', 'hyperlink', 'attribution']),
++  classification: referenceClassificationSchema,
++  extractionConfidence: z.enum(['high', 'medium', 'low']),
++  verificationStatus: z.enum(['extracted-unverified', 'identifier-present-unverified', 'likely-duplicate', 'unable-to-identify']),
++  verificationEvidence: z.null(),
++  duplicateGroup: z.string().nullable(),
++  notes: z.string().max(300),
++})
++
++export const candidateReferenceRegistryV2Schema = z.object({
++  schemaVersion: z.literal(2),
++  runId: z.string().regex(/^run-[0-9a-f]{16}$/),
++  externalLookupPerformed: z.literal(false),
++  records: z.array(candidateReferenceV2Schema),
++  excluded: z.object({
++    restrictedUncleared: z.number().int().nonnegative(),
++    quarantined: z.number().int().nonnegative(),
++    sensitiveOrAdministrative: z.number().int().nonnegative(),
++  }),
++})
++
++export const sourceToContentGraphV2Schema = z.object({
++  schemaVersion: z.literal(2),
++  runId: z.string().regex(/^run-[0-9a-f]{16}$/),
++  nodes: z.array(z.object({
++    proposalId: z.string().regex(/^proposal-[a-z0-9-]+$/),
++    sourceIds: z.array(displaySourceIdSchema).min(1),
++    sourceChecksums: z.array(fullChecksumSchema).min(1),
++    extractedTeachingTopic: z.string().min(1),
++    proposedClinicalClaim: z.string().min(1),
++    targetContentId: z.string().min(1),
++    requiredEvidence: z.array(z.string().min(1)).min(1),
++    clinicianReviewStatus: z.literal('required'),
++    proposalStatus: z.literal('blocked-pending-evidence-and-clinician-review'),
++    teachingSourceCanEstablishPublicApproval: z.literal(false),
++    visualLicenceStatus: z.enum(['not-applicable', 'unknown-review-required']),
++    publicEligibility: z.literal(false),
++  })),
++})
++
++export const sourceIntakeRunManifestSchema = z.object({
++  schemaVersion: z.literal(1),
++  runId: z.string().regex(/^run-[0-9a-f]{16}$/),
++  status: z.literal('complete'),
++  implementationCommit: z.string().regex(/^[0-9a-f]{40}$/),
++  sourceSetFingerprint: fullChecksumSchema,
++  expectedFiles: z.array(z.string().min(1)).min(1),
++  sourceCounts: z.object({ unique: z.number().int().nonnegative(), quarantined: z.number().int().nonnegative(), restricted: z.number().int().nonnegative(), cleared: z.number().int().nonnegative() }),
++  deterministicTimestamps: z.literal(false),
++})
+diff --git a/ai-manager/scripts/sensitiveDataPolicy.mjs b/ai-manager/scripts/sensitiveDataPolicy.mjs
+new file mode 100644
+index 0000000..9a7aaf1
+--- /dev/null
++++ b/ai-manager/scripts/sensitiveDataPolicy.mjs
+@@ -0,0 +1,71 @@
++import fs from 'node:fs'
++import path from 'node:path'
++
++const ROOT = process.cwd()
++const policy = JSON.parse(fs.readFileSync(path.join(ROOT, 'ai-manager', 'config', 'sensitive-data-policy.json'), 'utf8'))
++const hygiene = JSON.parse(fs.readFileSync(path.join(ROOT, 'ai-manager', 'content-hygiene-names.json'), 'utf8'))
++const governedNames = hygiene.termsToFlag ?? []
++
++const month = '(?:January|February|March|April|May|June|July|August|September|October|November|December)'
++const keyNames = [
++  ['API', 'KEY'].join('_'),
++  ['ACCESS', 'TOKEN'].join('_'),
++  ['PRIVATE', 'KEY'].join('_'),
++  ['SEC', 'RET'].join(''),
++].join('|')
++
++const rules = [
++  ['email-address', /(?<![\w.+-])[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}(?![\w.-])/giu],
++  ['telephone-number', /(?<!\d)(?:(?:\+|00)44[\s().-]*\d(?:[\s().-]*\d){8,10}|0\d(?:[\s().-]*\d){8,10})(?!\d)/gu],
++  ['uk-postcode', /\b(?:GIR\s?0AA|[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2})\b/giu],
++  ['date-of-birth', new RegExp(`\\b(?:DOB|date\\s+of\\s+birth|born)\\s*[:#-]?\\s*(?:\\d{1,2}[./-]\\d{1,2}[./-]\\d{2,4}|\\d{4}-\\d{2}-\\d{2}|\\d{1,2}\\s+${month}\\s+\\d{4}|${month}\\s+\\d{1,2},?\\s+\\d{4})\\b`, 'giu')],
++  ['nhs-number', /\bNHS\s*(?:number|no\.?|id)?\s*[:#-]?\s*(?:\d[\s-]*){10}\b/giu],
++  ['patient-or-hospital-identifier', /\b(?:hospital|patient|medical\s+record|case)\s*(?:number|no\.?|id|identifier)\s*[:#-]?\s*[A-Z0-9][A-Z0-9/-]{4,19}\b/giu],
++  ['student-or-candidate-identifier', /\b(?:student|candidate|university)\s*(?:number|no\.?|id|identifier)\s*[:#-]?\s*[A-Z0-9][A-Z0-9/-]{4,19}\b/giu],
++  ['private-absolute-path', /\b[A-Z]:[\\/](?:Users|dev|home|Documents|Desktop|Downloads)[\\/][^\r\n]+/giu],
++  ['unc-path', /\\\\[^\\\s]+\\[^\r\n]+/gu],
++  ['credential-value', /-----BEGIN [A-Z ]*PRIVATE KEY-----/gu],
++  ['credential-value', /\b[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b/gu],
++  ['credential-value', /\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})\b/gu],
++  ['credential-value', /\b(?:AKIA|ASIA)[A-Z0-9]{16}\b/gu],
++  ['credential-value', /\bxox[a-z]-[A-Za-z0-9-]{20,}\b/gu],
++  ['credential-value', new RegExp(`\\b(?:${keyNames})\\b\\s*[:=]\\s*[^\\s,;]{8,}`, 'giu')],
++]
++
++const bidiOrControl = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F\u061C\u200E\u200F\u202A-\u202E\u2066-\u2069]/u
++const contactWords = /\b(?:presented\s+by|presentation\s+by|author\s+contact|correspondence|e-?mail|telephone|phone|contact|address)\b/iu
++const honorific = /\b(?:Mr|Mrs|Ms|Miss|Dr|Professor|Prof)\.?\s+[A-Z][A-Za-z'’-]+(?:\s+[A-Z][A-Za-z'’-]+)+/u
++
++function isValidNhsCandidate(value) {
++  const digits = [...value.replace(/\D/g, '')].map(Number)
++  if (digits.length !== 10) return false
++  const total = digits.slice(0, 9).reduce((sum, digit, index) => sum + digit * (10 - index), 0)
++  let check = 11 - (total % 11)
++  if (check === 11) check = 0
++  return check !== 10 && check === digits[9]
++}
++
++export function scanSensitiveText(text, options = {}) {
++  const findings = []
++  for (const [category, pattern] of rules) {
++    pattern.lastIndex = 0
++    if (pattern.test(text)) findings.push(category)
++  }
++  for (const match of text.matchAll(/(?<!\d)(?:\d[ -]?){9}\d(?!\d)/gu)) {
++    if (isValidNhsCandidate(match[0])) findings.push('suspicious-nhs-candidate')
++  }
++  const lower = text.toLocaleLowerCase('en')
++  const names = options.governedNames ?? governedNames
++  if (names.some((name) => lower.includes(name.toLocaleLowerCase('en')))) findings.push('governed-sensitive-name')
++  if (bidiOrControl.test(text)) findings.push('bidi-or-control-character')
++  const contact = contactWords.test(text) && (rules.slice(0, 3).some(([, pattern]) => {
++    pattern.lastIndex = 0
++    return pattern.test(text)
++  }) || honorific.test(text))
++  if (contact) findings.push('contact-or-correspondence-block')
++  return [...new Set(findings)].sort()
++}
++
++export function sensitivePolicy() {
++  return policy
++}
+diff --git a/ai-manager/scripts/source_intake_engine.py b/ai-manager/scripts/source_intake_engine.py
+new file mode 100644
+index 0000000..81fb8d2
+--- /dev/null
++++ b/ai-manager/scripts/source_intake_engine.py
+@@ -0,0 +1,771 @@
++"""Deterministic, private source-intake engine.
++
++Source bytes and extracted text stay in the ignored private cache. Tracked
++reports contain only governed metadata, short unverified citation candidates,
++and blocked proposal records.
++"""
++
++from __future__ import annotations
++
++import hashlib
++import html
++import json
++import os
++import re
++import shutil
++import stat
++import subprocess
++import sys
++import tempfile
++import unicodedata
++import zipfile
++from collections import Counter, defaultdict
++from dataclasses import dataclass
++from io import BytesIO
++from pathlib import Path, PurePosixPath
++from typing import Callable, Iterable
++from urllib.parse import urlparse
++
++from defusedxml import ElementTree as SafeET
++import defusedxml
++import pypdf
++from pypdf import PdfReader
++
++from source_intake_policy import credential_rule_counts, load_policy, load_governed_names, normalize_archive_member, sanitize_tracked_line, scan_sensitive
++
++
++ROOT = Path(__file__).resolve().parents[2]
++REPORTS = ROOT / "ai-manager" / "reports" / "source-intake-pilot"
++CACHE_ROOT = ROOT / "ai-manager" / "private-cache" / "source-intake-pilot"
++POLICY = load_policy()
++LIMITS = POLICY["archiveLimits"]
++DOC_LIMITS = POLICY["documentLimits"]
++EXTRACTOR_VERSION = "2.0.0"
++
++SUPPORTED = {".pdf", ".pptx", ".docx", ".xlsx", ".txt", ".md", ".html", ".htm"}
++METADATA_ONLY = {".jpg", ".jpeg", ".png", ".gif", ".webp", ".mp4", ".mov", ".avi", ".zip"}
++QUARANTINE_FILENAME = re.compile(
++    r"(?:portfolio|reflective|reflection|placement|student|feedback|mark(?:s|ing)?|answer(?:s| key)?|"
++    r"exam(?:ination)?|assessment submission|cv\b|curriculum vitae|appraisal|personal statement|patient record)", re.I,
++)
++RESTRICTED_FILENAME = re.compile(r"(?:case notes?|clinical record|handover|attendance|register|results?)", re.I)
++DOI_RE = re.compile(r"\b10\.\d{4,9}/[-._;()/:A-Z0-9]+", re.I)
++PMID_RE = re.compile(r"\bPMID\s*[:#]?\s*(\d{6,9})\b", re.I)
++URL_RE = re.compile(r"https?://[^\s<>\]\)\"']+", re.I)
++AUTHOR_YEAR_RE = re.compile(r"\b([A-Z][A-Za-z'\u2019-]+(?:\s+(?:et al\.?|&\s+[A-Z][A-Za-z'\u2019-]+))?)\s*[,\(]\s*((?:19|20)\d{2}[a-z]?)\)?")
++YEAR_RE = re.compile(r"\b((?:19|20)\d{2}[a-z]?)\b", re.I)
++
++REGION_TERMS = {
++    "cervical": ["cervical", "neck"], "thoracic": ["thoracic"],
++    "shoulder": ["shoulder", "rotator cuff", "rcrsp", "subacromial"],
++    "elbow": ["elbow", "epicondyl"], "wrist-hand": ["wrist", "hand", "carpal", "scaphoid"],
++    "headache": ["headache", "migraine"], "neurology": ["neurolog", "stroke", "cranial", "spinal cord"],
++    "anatomy": ["anatom", "nerve", "muscle", "ligament"], "lumbar": ["lumbar", "low back"],
++    "hip": [" hip ", "groin"], "knee": ["knee", "patell"],
++    "ankle-foot": ["ankle", "foot", "achilles", "plantar"],
++}
++TOPIC_TERMS = {
++    "rcrsp": ["rcrsp", "rotator cuff related", "rotator cuff-related", "subacromial", "rotator cuff tendinopathy"],
++    "rotator-cuff-tear": ["rotator cuff tear"], "shoulder-differential": ["shoulder differential", "differential diagnosis"],
++    "exercise-rehabilitation": ["exercise", "rehab", "loading"], "prognosis": ["prognosis", "recovery", "natural history"],
++    "imaging": ["imaging", "ultrasound", "mri", "x-ray", "radiograph"],
++    "patient-communication": ["patient information", "communication", "reassurance"],
++    "special-tests": ["special test", "diagnostic test", "test cluster"],
++    "outcome-measures": ["outcome measure", "questionnaire", "score"],
++    "lateral-ankle-sprain": ["lateral ankle sprain", "ankle sprain"],
++    "ankle-ligament-anatomy": ["atfl", "cfl", "anterior talofibular", "calcaneofibular"],
++    "fracture-screening": ["ottawa ankle", "fracture", "malleol"], "syndesmosis": ["syndesmosis", "high ankle sprain"],
++    "balance-proprioception": ["balance", "proprioception", "neuromuscular"],
++    "return-to-sport": ["return to sport", "return-to-sport", "return to running"],
++    "recurrence-prevention": ["recurrence", "prevention"], "bracing-taping": ["brace", "bracing", "taping", "strapping"],
++    "guideline": ["guideline", "clinical practice guideline", "nice"],
++    "paper": ["doi", "journal", "randomised", "systematic review", "meta-analysis"],
++    "osce": ["osce", "station", "candidate instructions"],
++}
++
++EXPECTED_FILES = sorted([
++    "README.md", "duplicate-report.md", "extraction-status.md", "quarantine-report.md", "review-queue.md",
++    "run-manifest.json", "source-manifest.json", "source-summary.md", "source-to-content-graph.json", "topic-index.md",
++    "references/candidate-reference-registry.json", "references/candidate-reference-summary.md",
++    "references/duplicate-reference-groups.md", "references/incomplete-reference-queue.md",
++    "references/identifier-verification-queue.md", "references/topic-to-reference-index.md",
++    "rcrsp/source-set.md", "rcrsp/teaching-content-map.md", "rcrsp/claims-requiring-verification.md",
++    "rcrsp/evidence-gaps.md", "rcrsp/proposed-content-links.md", "rcrsp/guided-case-conversion-brief.md",
++    "rcrsp/evidence-search-questions.md", "rcrsp/clinician-review-checklist.md",
++    "lateral-ankle-sprain/source-set.md", "lateral-ankle-sprain/historical-leaflet-content-map.md",
++    "lateral-ankle-sprain/claims-requiring-verification.md", "lateral-ankle-sprain/evidence-gaps.md",
++    "lateral-ankle-sprain/proposed-condition-brief.md", "lateral-ankle-sprain/proposed-guided-case-brief.md",
++    "lateral-ankle-sprain/proposed-patient-information-update.md",
++    "lateral-ankle-sprain/evidence-search-questions.md", "lateral-ankle-sprain/clinician-review-checklist.md",
++])
++
++
++@dataclass
++class Occurrence:
++    logical_path: str
++    filename: str
++    data: bytes
++    date_metadata: dict | None = None
++    container_source_id: str | None = None
++
++
++def digest(data: bytes, hash_provider: Callable[[bytes], str] | None = None) -> str:
++    return (hash_provider or (lambda value: hashlib.sha256(value).hexdigest()))(data)
++
++
++def display_id(full_digest: str) -> str:
++    return f"src-{full_digest[:12]}"
++
++
++def group_occurrences(items: list[Occurrence], hash_provider: Callable[[bytes], str] | None = None) -> dict[str, list[Occurrence]]:
++    groups: dict[str, list[Occurrence]] = defaultdict(list)
++    prefixes: dict[str, str] = {}
++    for item in items:
++        full = digest(item.data, hash_provider)
++        short = display_id(full)
++        if short in prefixes and prefixes[short] != full:
++            raise ValueError(f"source display-ID prefix collision: {short}")
++        prefixes[short] = full
++        groups[full].append(item)
++    return dict(groups)
++
++
++def _xml(data: bytes):
++    if len(data) > DOC_LIMITS["maximumXmlPartBytes"]:
++        raise ValueError("xml-part-size-limit")
++    return SafeET.fromstring(data)
++
++
++def _local_name(tag: str) -> str:
++    return tag.rsplit("}", 1)[-1]
++
++
++def _paragraphs(data: bytes) -> list[str]:
++    root = _xml(data)
++    values = []
++    for node in root.iter():
++        if _local_name(node.tag) in {"p", "si", "row"}:
++            text = " ".join((part or "").strip() for part in node.itertext() if (part or "").strip())
++            if text:
++                values.append(text)
++    if not values:
++        text = " ".join((part or "").strip() for part in root.itertext() if (part or "").strip())
++        if text:
++            values.append(text)
++    return values
++
++
++def _read_part(archive: zipfile.ZipFile, name: str) -> bytes:
++    info = archive.getinfo(name)
++    if info.file_size > DOC_LIMITS["maximumXmlPartBytes"]:
++        raise ValueError("xml-part-size-limit")
++    return archive.read(info)
++
++
++def _relationship_map(archive: zipfile.ZipFile, owner_part: str) -> dict[str, dict]:
++    owner = PurePosixPath(owner_part)
++    rel_name = str(owner.parent / "_rels" / f"{owner.name}.rels")
++    if rel_name not in archive.namelist():
++        return {}
++    root = _xml(_read_part(archive, rel_name))
++    return {node.attrib.get("Id", ""): node.attrib for node in root if node.attrib.get("Id")}
++
++
++def _resolve_part(owner_part: str, target: str) -> str:
++    combined = PurePosixPath(owner_part).parent.joinpath(target)
++    parts = []
++    for part in combined.parts:
++        if part == "..":
++            if parts:
++                parts.pop()
++        elif part not in {".", ""}:
++            parts.append(part)
++    return "/".join(parts)
++
++
++def extract_pptx(data: bytes) -> tuple[list[dict], dict]:
++    units, warnings = [], Counter()
++    with zipfile.ZipFile(BytesIO(data)) as archive:
++        names = set(archive.namelist())
++        presentation = "ppt/presentation.xml"
++        rels = _relationship_map(archive, presentation)
++        if presentation not in names:
++            raise ValueError("pptx-presentation-missing")
++        root = _xml(_read_part(archive, presentation))
++        slide_rel_ids = [node.attrib.get("{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id") for node in root.iter() if node.tag.endswith("}sldId")]
++        for display_number, rel_id in enumerate(slide_rel_ids, 1):
++            relation = rels.get(rel_id or "")
++            if not relation:
++                warnings["slide-relationship-missing"] += 1
++                continue
++            slide_part = _resolve_part(presentation, relation["Target"])
++            if slide_part not in names:
++                warnings["slide-part-missing"] += 1
++                continue
++            slide_rels = _relationship_map(archive, slide_part)
++            notes, links = [], []
++            for relation_value in slide_rels.values():
++                rel_type = relation_value.get("Type", "")
++                if relation_value.get("TargetMode") == "External":
++                    links.append(relation_value.get("Target", ""))
++                elif rel_type.endswith("/notesSlide"):
++                    note_part = _resolve_part(slide_part, relation_value["Target"])
++                    if note_part in names:
++                        notes.extend(_paragraphs(_read_part(archive, note_part)))
++                    else:
++                        warnings["notes-part-missing"] += 1
++            paragraphs = _paragraphs(_read_part(archive, slide_part))
++            units.append({"number": display_number, "kind": "slide", "part": slide_part, "paragraphs": paragraphs, "text": "\n".join(paragraphs), "notes": "\n".join(notes), "links": sorted(set(filter(None, links)))})
++        images = sum(name.startswith("ppt/media/") for name in names)
++    return units, {"method": "pptx-openxml-relationships", "tables": 0, "images": images, "warnings": dict(warnings)}
++
++
++def extract_docx(data: bytes) -> tuple[list[dict], dict]:
++    paragraphs, links, warnings = [], [], Counter()
++    with zipfile.ZipFile(BytesIO(data)) as archive:
++        names = set(archive.namelist())
++        for part in ["word/document.xml", "word/footnotes.xml", "word/endnotes.xml"]:
++            if part in names:
++                try:
++                    paragraphs.extend(_paragraphs(_read_part(archive, part)))
++                except (ValueError, SafeET.ParseError):
++                    warnings["xml-part-failed"] += 1
++        for rel in _relationship_map(archive, "word/document.xml").values():
++            if rel.get("TargetMode") == "External":
++                links.append(rel.get("Target", ""))
++        images = sum(name.startswith("word/media/") for name in names)
++    return [{"number": 1, "kind": "document", "paragraphs": paragraphs, "text": "\n".join(paragraphs), "links": sorted(set(filter(None, links)))}], {"method": "docx-openxml", "tables": 0, "images": images, "warnings": dict(warnings)}
++
++
++def extract_xlsx(data: bytes) -> tuple[list[dict], dict]:
++    units, warnings = [], Counter()
++    with zipfile.ZipFile(BytesIO(data)) as archive:
++        names = set(archive.namelist())
++        shared: list[str] = []
++        if "xl/sharedStrings.xml" in names:
++            shared = _paragraphs(_read_part(archive, "xl/sharedStrings.xml"))
++        workbook = "xl/workbook.xml"
++        rels = _relationship_map(archive, workbook)
++        if workbook not in names:
++            raise ValueError("xlsx-workbook-missing")
++        root = _xml(_read_part(archive, workbook))
++        sheets = [node for node in root.iter() if _local_name(node.tag) == "sheet"]
++        for number, sheet in enumerate(sheets, 1):
++            rel_id = sheet.attrib.get("{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id")
++            relation = rels.get(rel_id or "")
++            if not relation:
++                warnings["sheet-relationship-missing"] += 1
++                continue
++            part = _resolve_part(workbook, relation["Target"])
++            if part not in names:
++                warnings["sheet-part-missing"] += 1
++                continue
++            sheet_root = _xml(_read_part(archive, part))
++            rows = []
++            for row in (node for node in sheet_root.iter() if _local_name(node.tag) == "row"):
++                cells = []
++                for cell in (node for node in row if _local_name(node.tag) == "c"):
++                    ref, cell_type = cell.attrib.get("r", "?"), cell.attrib.get("t")
++                    raw = next((node.text or "" for node in cell.iter() if _local_name(node.tag) == "v"), "")
++                    inline = " ".join((node.text or "").strip() for node in cell.iter() if _local_name(node.tag) == "t" and (node.text or "").strip())
++                    if cell_type == "s":
++                        try: value = shared[int(raw)]
++                        except (ValueError, IndexError):
++                            warnings["shared-string-index-invalid"] += 1; value = ""
++                    elif cell_type in {"inlineStr", "str"}: value = inline or raw
++                    elif cell_type in {None, "n", "b"}: value = raw
++                    else:
++                        warnings["unsupported-cell-type"] += 1; value = raw
++                    if any(_local_name(node.tag) == "f" for node in cell): warnings["formula-present-uncomputed"] += 1
++                    if value: cells.append(f"{ref}={value}")
++                if cells: rows.append(" | ".join(cells))
++            units.append({"number": number, "kind": "sheet", "sheetName": sheet.attrib.get("name", f"Sheet {number}"), "paragraphs": rows, "text": "\n".join(rows), "links": []})
++    return units, {"method": "xlsx-openxml-indexed-shared-strings", "tables": len(units), "images": 0, "warnings": dict(warnings)}
++
++
++def extract_pdf(data: bytes) -> tuple[list[dict], dict]:
++    if len(data) > DOC_LIMITS["maximumPdfBytes"]: raise ValueError("pdf-size-limit")
++    reader = PdfReader(BytesIO(data), strict=False)
++    if len(reader.pages) > DOC_LIMITS["maximumPdfPages"]: raise ValueError("pdf-page-limit")
++    units, images, warnings = [], 0, Counter()
++    for number, page in enumerate(reader.pages, 1):
++        try: text = page.extract_text() or ""
++        except Exception: warnings["pdf-page-extraction-failed"] += 1; text = ""
++        links = []
++        try:
++            for annotation in page.get("/Annots") or []:
++                action = annotation.get_object().get("/A")
++                if action and action.get("/URI"): links.append(str(action.get("/URI")))
++        except Exception: warnings["pdf-link-extraction-failed"] += 1
++        try: images += len(page.images)
++        except Exception: warnings["pdf-image-count-failed"] += 1
++        units.append({"number": number, "kind": "page", "paragraphs": text.splitlines(), "text": text, "links": links})
++    return units, {"method": "pypdf-bounded-embedded-text", "tables": 0, "images": images, "warnings": dict(warnings)}
++
++
++def extract_text(data: bytes, extension: str) -> tuple[list[dict], dict]:
++    if extension == ".pdf": return extract_pdf(data)
++    if extension == ".pptx": return extract_pptx(data)
++    if extension == ".docx": return extract_docx(data)
++    if extension == ".xlsx": return extract_xlsx(data)
++    if extension in {".txt", ".md"}:
++        text = data.decode("utf-8", errors="replace")
++        return [{"number": 1, "kind": "document", "paragraphs": text.splitlines(), "text": text, "links": URL_RE.findall(text)}], {"method": "plain-text", "tables": 0, "images": 0, "warnings": {}}
++    if extension in {".html", ".htm"}:
++        raw = data.decode("utf-8", errors="replace")
++        links = re.findall(r"href\s*=\s*[\"'](https?://[^\"']+)", raw, re.I)
++        visible = re.sub(r"<script\b[^>]*>.*?</script>|<style\b[^>]*>.*?</style>", " ", raw, flags=re.I | re.S)
++        visible = html.unescape(re.sub(r"<[^>]+>", "\n", visible))
++        paragraphs = [re.sub(r"\s+", " ", line).strip() for line in visible.splitlines() if line.strip()]
++        return [{"number": 1, "kind": "document", "paragraphs": paragraphs, "text": "\n".join(paragraphs), "links": links}], {"method": "html-embedded-text", "tables": 0, "images": len(re.findall(r"<img\b", raw, re.I)), "warnings": {}}
++    return [], {"method": "metadata-only", "tables": 0, "images": 0, "warnings": {}}
++
++
++def safe_archive_occurrences(data: bytes, container_id: str) -> tuple[list[Occurrence], list[dict]]:
++    output, warnings = [], Counter()
++    cumulative = 0
++    try:
++        archive = zipfile.ZipFile(BytesIO(data))
++    except zipfile.BadZipFile:
++        return [], [{"category": "archive", "warningCode": "corrupt-archive", "count": 1}]
++    with archive:
++        members = archive.infolist()
++        if len(members) > LIMITS["maximumMemberCount"]:
++            return [], [{"category": "archive", "warningCode": "member-count-limit", "count": 1}]
++        for info in members:
++            if info.is_dir() or info.filename.startswith("__MACOSX/"): continue
++            normalized, path_warning = normalize_archive_member(info.filename, LIMITS["maximumFilenameLength"])
++            if path_warning:
++                warnings[path_warning] += 1; continue
++            mode = info.external_attr >> 16
++            if stat.S_ISLNK(mode): warnings["symlink-member"] += 1; continue
++            if info.flag_bits & 0x1: warnings["encrypted-member"] += 1; continue
++            if info.compress_size > LIMITS["maximumCompressedMemberBytes"]: warnings["compressed-size-limit"] += 1; continue
++            if info.file_size > LIMITS["maximumExpandedMemberBytes"]: warnings["expanded-size-limit"] += 1; continue
++            ratio = info.file_size / max(info.compress_size, 1)
++            if ratio > LIMITS["maximumCompressionRatio"]: warnings["compression-ratio-limit"] += 1; continue
++            if cumulative + info.file_size > LIMITS["maximumCumulativeExpandedBytes"]: warnings["cumulative-size-limit"] += 1; continue
++            if PurePosixPath(normalized).suffix.lower() == ".zip" and not LIMITS["inspectNestedArchives"]:
++                warnings["nested-archive-not-inspected"] += 1
++            try:
++                chunks, consumed = [], 0
++                with archive.open(info) as stream:
++                    while True:
++                        chunk = stream.read(min(1024 * 1024, LIMITS["maximumExpandedMemberBytes"] + 1 - consumed))
++                        if not chunk: break
++                        chunks.append(chunk); consumed += len(chunk)
++                        if consumed > LIMITS["maximumExpandedMemberBytes"]: raise ValueError("expanded-size-limit")
++                member_data = b"".join(chunks)
++            except (RuntimeError, OSError, EOFError, zipfile.BadZipFile, ValueError) as error:
++                code = str(error) if str(error) in {"expanded-size-limit"} else "member-read-failed"
++                warnings[code] += 1; continue
++            cumulative += len(member_data)
++            full = digest(member_data); sid = display_id(full); ext = PurePosixPath(normalized).suffix.lower() or ".bin"
++            output.append(Occurrence(f"archive/{container_id}/{sid}{ext}", PurePosixPath(normalized).name, member_data, {"value": _zip_date(info), "provenance": "zip-entry-unreliable"} if _zip_date(info) else None, container_id))
++    return output, [{"category": "archive-member", "warningCode": code, "count": count} for code, count in sorted(warnings.items())]
++
++
++def _zip_date(info: zipfile.ZipInfo) -> str | None:
++    try:
++        year, month, day = info.date_time[:3]
++        if not (1980 <= year <= 2100 and 1 <= month <= 12 and 1 <= day <= 31): return None
++        return f"{year:04d}-{month:02d}-{day:02d}"
++    except (TypeError, ValueError): return None
++
++
++def source_occurrences(inbox: Path) -> tuple[list[Occurrence], int, int, int, list[dict]]:
++    root = inbox.resolve(strict=True)
++    occurrences, warnings = [], []
++    top_count = nested_count = total_bytes = 0
++    for current, dirs, files in os.walk(root, followlinks=False):
++        current_path = Path(current)
++        safe_dirs = []
++        for name in sorted(dirs):
++            path = current_path / name
++            if path.is_symlink() or _is_reparse(path): continue
++            try: path.resolve().relative_to(root)
++            except ValueError: continue
++            safe_dirs.append(name)
++        dirs[:] = safe_dirs
++        for name in sorted(files):
++            path = current_path / name
++            if path.is_symlink() or _is_reparse(path): continue
++            try: relative = path.resolve(strict=True).relative_to(root).as_posix()
++            except (OSError, ValueError): continue
++            if len(name) > DOC_LIMITS["maximumFilenameLength"]: continue
++            data = path.read_bytes(); total_bytes += len(data); top_count += 1
++            full = digest(data); sid = display_id(full); extension = path.suffix.lower() or ".bin"
++            occurrences.append(Occurrence(f"inbox/{sid}{extension}", path.name, data))
++            if extension == ".zip":
++                nested, archive_warnings = safe_archive_occurrences(data, sid)
++                nested_count += len(nested); total_bytes += sum(len(item.data) for item in nested)
++                occurrences.extend(nested)
++                warnings.extend({"containerSourceId": sid, **item} for item in archive_warnings)
++    return occurrences, top_count, nested_count, total_bytes, warnings
++
++
++def _is_reparse(path: Path) -> bool:
++    try:
++        attrs = path.stat(follow_symlinks=False).st_file_attributes
++        return bool(attrs & stat.FILE_ATTRIBUTE_REPARSE_POINT)
++    except (AttributeError, OSError): return False
++
++
++def tags_for(value: str, mapping: dict[str, list[str]]) -> list[str]:
++    lower = f" {value.lower()} "
++    return sorted(key for key, terms in mapping.items() if any(term in lower for term in terms))
++
++
++def classify_type(filename: str, extension: str, text: str) -> str:
++    lower = f"{filename} {text[:12000]}".lower()
++    if "ankle" in lower and ("patient information" in lower or "leaflet" in lower): return "local-patient-leaflet"
++    if "guideline" in lower or "clinical practice guideline" in lower: return "clinical-guideline"
++    if QUARANTINE_FILENAME.search(filename): return "portfolio-reflective-material" if re.search(r"portfolio|reflect", filename, re.I) else "administrative"
++    if "osce" in lower or "candidate instruction" in lower: return "osce-material"
++    if "anatom" in lower: return "anatomy-resource"
++    if "outcome measure" in lower or "questionnaire" in lower: return "outcome-measure"
++    if extension == ".pdf" and ("journal" in lower or "doi" in lower or "systematic review" in lower): return "pdf-paper"
++    return {".pptx": "teaching-presentation", ".ppt": "teaching-presentation", ".docx": "word-document", ".doc": "word-document", ".xlsx": "spreadsheet", ".xls": "spreadsheet", ".html": "html", ".htm": "html", ".txt": "notes", ".md": "notes", ".jpg": "image", ".jpeg": "image", ".png": "image", ".gif": "image", ".webp": "image", ".mp4": "video", ".mov": "video", ".avi": "video", ".zip": "archive"}.get(extension, "unknown")
++
++
++def compact_headings(units: list[dict], names: list[str]) -> tuple[list[str], int]:
++    headings, suppressed = [], 0
++    for unit in units:
++        for raw in unit.get("paragraphs", []):
++            line = re.sub(r"\s+", " ", raw).strip(" -:\t")
++            if not (3 <= len(line) <= 160 and (line.isupper() or len(line.split()) <= 10)): continue
++            safe, categories = sanitize_tracked_line(line, names, maximum_length=160)
++            if categories or not safe: suppressed += 1; continue
++            if safe not in headings: headings.append(safe)
++            if len(headings) == 30: return headings, suppressed
++    return headings, suppressed
++
++
++def classify_citation(line: str, context: str, doi: str | None, pmid: str | None, url: str | None, authors: list[str], year: str | None) -> str:
++    lower = line.lower()
++    if re.search(r"(?:contact|email|telephone|phone|correspondence)", lower): return "contact-or-administrative-link"
++    if url and re.search(r"(?:youtube|youtu\.be|vimeo|menti|poll|forms?|survey)", lower): return "media-or-engagement-link"
++    if url and re.search(r"(?:licen[cs]e|copyright|attribution|creativecommons|creativecommons)", lower): return "licence-or-attribution-link"
++    bibliographic_signals = sum(bool(value) for value in [doi or pmid, authors, year, re.search(r"\b(?:journal|vol\.?|volume|issue|pp?\.?\s*\d|press|publisher)\b", line, re.I), re.search(r"[.;:]\s+[A-Z][^.]{8,}[.;]", line)])
++    if (doi or pmid) and len(line.strip()) <= 80: return "identifier-only"
++    if context == "reference-list" and bibliographic_signals >= 3: return "full-looking-unverified"
++    if authors and year and bibliographic_signals <= 2: return "author-year-only"
++    if bibliographic_signals >= 2: return "partial-bibliographic"
++    if url: return "generic-web-link"
++    return "unable-to-classify"
++
++
++def reference_candidates(source: dict, units: list[dict], names: list[str]) -> tuple[list[dict], int]:
++    candidates, seen, suppressed = [], set(), 0
++    topics = source["topicTags"] or source["regionTags"] or ["general"]
++    limit = POLICY["citationExcerptLimit"]
++    for unit in units:
++        number = unit.get("number")
++        for value, label in [(unit.get("text", ""), "text"), (unit.get("notes", ""), "speaker notes")]:
++            if not value: continue
++            paragraphs = [re.sub(r"\s+", " ", item).strip() for item in value.splitlines() if item.strip()]
++            ref_section = any(re.search(r"\b(?:references|bibliography|further reading)\b", item, re.I) for item in paragraphs)
++            for line in paragraphs:
++                if scan_sensitive(line, names):
++                    suppressed += 1
++                    continue
++                dois = DOI_RE.findall(line); pmids = PMID_RE.findall(line); urls = URL_RE.findall(line); author_hits = AUTHOR_YEAR_RE.findall(line)
++                if not (dois or pmids or urls or author_hits or re.search(r"\b(?:guideline|journal|et al\.|vol\.?|pp?\.)\b", line, re.I)): continue
++                safe, sensitive = sanitize_tracked_line(line, names, maximum_length=limit)
++                if sensitive or not safe: suppressed += 1; continue
++                citation = safe[:limit]
++                key = re.sub(r"\W+", "", citation).lower()
++                if not key or key in seen: continue
++                seen.add(key)
++                authors = [author_hits[0][0]] if author_hits else []
++                year = author_hits[0][1] if author_hits else (YEAR_RE.search(citation).group(1) if YEAR_RE.search(citation) else None)
++                doi = dois[0].rstrip(".,;") if dois else None; pmid = pmids[0] if pmids else None
++                url = urls[0].rstrip(".,;") if urls else None
++                if url and (not urlparse(url).netloc or scan_sensitive(url, names)): suppressed += 1; continue
++                context = "further-reading" if re.search(r"further reading", value, re.I) else "reference-list" if ref_section else "hyperlink" if urls and not authors else "in-text"
++                classification = classify_citation(citation, context, doi, pmid, url, authors, year)
++                if classification == "contact-or-administrative-link": suppressed += 1; continue
++                identity = hashlib.sha256(f"{source['checksum']}|{number}|{citation}".encode()).hexdigest()[:16]
++                candidates.append({"candidateReferenceId": f"ref-{identity}", "sourceId": source["sourceId"], "sourceChecksum": source["checksum"], "pageOrSlideNumber": number, "location": f"{unit.get('kind', 'document')} {number} {label}", "citationText": citation, "citationTextHash": f"sha256:{hashlib.sha256(line.encode()).hexdigest()}", "authors": authors, "year": year, "title": None, "journalOrPublisher": None, "volumeIssuePages": None, "doi": doi, "pmid": pmid, "url": url, "relatedTopicOrClaim": ", ".join(topics), "citationContext": context, "classification": classification, "extractionConfidence": "high" if doi or pmid else "medium" if authors else "low", "verificationStatus": "identifier-present-unverified" if doi or pmid else "extracted-unverified" if classification != "unable-to-classify" else "unable-to-identify", "verificationEvidence": None, "duplicateGroup": None, "notes": "Extracted offline; accuracy, relevance, and evidence status are unverified."})
++        for link in unit.get("links", []):
++            link = link.strip()
++            if not re.match(r"^https?://", link, re.I) or not urlparse(link).netloc or scan_sensitive(link, names): suppressed += 1; continue
++            key = re.sub(r"\W+", "", link).lower()
++            if key in seen: continue
++            seen.add(key)
++            classification = classify_citation(link, "hyperlink", None, None, link, [], None)
++            if classification == "contact-or-administrative-link": suppressed += 1; continue
++            identity = hashlib.sha256(f"{source['checksum']}|{number}|{link}".encode()).hexdigest()[:16]
++            candidates.append({"candidateReferenceId": f"ref-{identity}", "sourceId": source["sourceId"], "sourceChecksum": source["checksum"], "pageOrSlideNumber": number, "location": f"{unit.get('kind', 'document')} {number} embedded hyperlink", "citationText": link[:limit], "citationTextHash": f"sha256:{hashlib.sha256(link.encode()).hexdigest()}", "authors": [], "year": None, "title": None, "journalOrPublisher": None, "volumeIssuePages": None, "doi": None, "pmid": None, "url": link, "relatedTopicOrClaim": ", ".join(topics), "citationContext": "hyperlink", "classification": classification, "extractionConfidence": "high", "verificationStatus": "extracted-unverified", "verificationEvidence": None, "duplicateGroup": None, "notes": "Embedded URL extracted offline; destination was not accessed."})
++    return candidates, suppressed
++
++
++def _load_json(path: Path) -> dict:
++    return json.loads(path.read_text(encoding="utf-8"))
++
++
++def load_governance() -> tuple[dict[str, dict], dict[str, dict], dict[tuple[str, str], dict]]:
++    clear_data = _load_json(ROOT / "ai-manager/config/source-clearance-ledger.json")
++    override_data = _load_json(ROOT / "ai-manager/config/source-classification-overrides.json")
++    decision_data = _load_json(ROOT / "ai-manager/config/security-false-positive-decisions.json")
++    clearances = {entry["checksum"]: entry for entry in clear_data["entries"]}
++    overrides = {entry["checksum"]: entry for entry in override_data["entries"]}
++    decisions = {(entry["checksum"], entry["detectorRuleId"]): entry for entry in decision_data["entries"]}
++    return clearances, overrides, decisions
++
++
++def credential_stop_required(checksum: str, source_id_value: str, text: str, decisions: dict[tuple[str, str], dict]) -> tuple[bool, dict[str, int]]:
++    counts = credential_rule_counts(text)
++    for rule_id, count in counts.items():
++        decision = decisions.get((checksum, rule_id))
++        if not decision:
++            return True, counts
++        if decision["sourceId"] != source_id_value:
++            return True, counts
++        if decision["decision"] != "false-positive-confirmed" or decision["decisionScope"] != "credential-stop-override-for-exact-checksum-only":
++            return True, counts
++    return False, counts
++
++
++def probable_key(filename: str) -> str:
++    stem = Path(filename).stem.lower()
++    stem = re.sub(r"\b(?:copy|final|revised|updated|old|new|version|ver|v)\s*\d*\b", "", stem)
++    stem = re.sub(r"\b20\d{2}\b|\(\d+\)", "", stem)
++    return re.sub(r"[^a-z0-9]+", "", stem)
++
++
++def write_json(path: Path, value: object) -> None:
++    path.parent.mkdir(parents=True, exist_ok=True)
++    path.write_text(json.dumps(value, indent=2, ensure_ascii=True, sort_keys=False) + "\n", encoding="utf-8", newline="\n")
++
++
++def write_md(path: Path, title: str, sections: Iterable[tuple[str, str]]) -> None:
++    lines = [f"# {title}", ""]
++    for heading, body in sections: lines.extend([f"## {heading}", "", body.strip(), ""])
++    path.parent.mkdir(parents=True, exist_ok=True)
++    path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8", newline="\n")
++
++
++def _source_table(records: list[dict], references: list[dict], topics: set[str]) -> str:
++    selected = [r for r in records if set(r["topicTags"]) & topics and r["sensitivity"] != "quarantined"]
++    if not selected: return "No eligible matching sources were identified."
++    refs_by_source: dict[str, list[dict]] = defaultdict(list)
++    for reference in references: refs_by_source[reference["sourceId"]].append(reference)
++    rows = ["| Source ID | Location | Teaching topics | Citation candidates | Verification | Overlap/conflict | Proposed targets | Clearance | Clinician review |", "|---|---|---|---|---|---|---|---|---|"]
++    for r in selected:
++        source_refs = refs_by_source[r["sourceId"]]
++        locations = ", ".join(sorted({item["location"] for item in source_refs})[:3]) or "document-level metadata"
++        candidate_ids = ", ".join(f"`{item['candidateReferenceId']}`" for item in source_refs[:3]) or "none eligible"
++        rows.append(f"| `{r['sourceId']}` | {locations} | {', '.join(sorted(set(r['topicTags']) & topics)) or 'classification pending'} | {candidate_ids} | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | {r['sensitivity']} | required |")
++    return "\n".join(rows)
++
++
++def generate_pilot_reports(output: Path, records: list[dict], references: list[dict]) -> None:
++    disclaimer = "All teaching statements remain unverified. No item is approved for public clinical use."
++    r_topics = {"rcrsp", "rotator-cuff-tear", "shoulder-differential", "exercise-rehabilitation", "prognosis", "imaging", "patient-communication", "special-tests", "outcome-measures"}
++    a_topics = {"lateral-ankle-sprain", "ankle-ligament-anatomy", "fracture-screening", "syndesmosis", "exercise-rehabilitation", "balance-proprioception", "return-to-sport", "recurrence-prevention", "bracing-taping"}
++    r_table, a_table = _source_table(records, references, r_topics), _source_table(records, references, a_topics)
++    rdir, adir = output / "rcrsp", output / "lateral-ankle-sprain"
++    write_md(rdir / "source-set.md", "RCRSP source set", [("Governance", disclaimer), ("Eligible private source map", r_table)])
++    write_md(rdir / "teaching-content-map.md", "RCRSP teaching content map", [("Evidence map", r_table), ("Interpretation", "Rows are extraction associations, not endorsed claims. Overlap and conflict status remains manual-review-required; visuals remain licence-review-required."), ("Targets", "Condition reference, neutral guided case, anatomy, special tests, outcome measures, quiz, flashcard, OSCE, and patient explanation are proposals only.")])
++    write_md(rdir / "claims-requiring-verification.md", "RCRSP claims requiring verification", [("Blocked areas", "- Terminology and classification\n- Diagnostic value of tests and clusters\n- Imaging indications\n- Natural history and prognosis\n- Intervention comparisons\n- Surgical referral indications\n- Communication and outcome-measure interpretation"), ("Status", disclaimer)])
++    write_md(rdir / "evidence-gaps.md", "RCRSP evidence gaps", [("Required evidence", "Current guidelines, systematic reviews, diagnostic-accuracy studies, prognostic cohorts, and intervention trials require later external verification."), ("Approval", "Clinician review remains required.")])
++    write_md(rdir / "proposed-content-links.md", "RCRSP proposed content links", [("Targets", "Existing condition and neutral case plus anatomy, tests, outcomes, quizzes, flashcards, OSCE and patient-information resources."), ("Publication", "Blocked; public eligibility is false.")])
++    steps = ["Initial presentation", "Learner differential", "Justification", "Additional history", "Red flags", "Examination planning", "Examination findings", "Investigation decision", "Management plan", "Patient explanation", "Expert reasoning comparison", "Reflection"]
++    rcrsp_ids = [r["sourceId"] for r in records if r["sensitivity"] != "quarantined" and set(r["topicTags"]) & r_topics][:4]
++    source_label = ", ".join(f"`{source_id}`" for source_id in rcrsp_ids) or "no eligible source"
++    mappings = "\n".join(f"{i}. **{step}** - candidate sources: {source_label}; evidence question: what verified evidence supports this step?; expert answer not authored." for i, step in enumerate(steps, 1))
++    write_md(rdir / "guided-case-conversion-brief.md", "RCRSP guided-case conversion brief", [("Existing case", "The existing public case is unchanged."), ("Twelve-step map", mappings), ("Approval", "Every expert answer requires source-specific support and clinician approval.")])
++    hierarchy = "Preferred hierarchy: current clinical practice guideline; systematic review/meta-analysis; high-quality randomised trial; prognostic cohort; diagnostic-accuracy study; consensus where stronger evidence is unavailable. No external search was performed."
++    write_md(rdir / "evidence-search-questions.md", "RCRSP evidence search questions", [("Questions", "- Preferred terminology and classification?\n- Diagnostic value of tests and clusters?\n- Imaging indications?\n- Natural history and prognosis?\n- Intervention comparisons?\n- Surgical indications?\n- Supported communication?\n- Appropriate outcome measures?"), ("Hierarchy", hierarchy)])
++    write_md(rdir / "clinician-review-checklist.md", "RCRSP clinician review checklist", [("Checklist", "- [ ] Verify terminology, differentials and safety\n- [ ] Verify every claim and citation\n- [ ] Review imaging, management and prognosis\n- [ ] Review communication wording\n- [ ] Preserve diagnosis hiding\n- [ ] Record reviewer and decision outside this pilot")])
++    write_md(adir / "source-set.md", "Lateral ankle sprain source set", [("Governance", disclaimer), ("Eligible private source map", a_table)])
++    write_md(adir / "historical-leaflet-content-map.md", "Historical ankle leaflet content map", [("Classification", "The checksum-governed 2019 local patient-information leaflet is a historical/local-practice source, non-authoritative by itself, and requires current evidence review."), ("Evidence map", a_table), ("Topics", "Acute assessment; fracture screening; early loading; support; exercise; balance; return to sport; recurrence prevention; escalation; patient communication."), ("Verification flags", "POLICE/newer frameworks; ice; compression; medication timing; fixed dosage; healing time; bracing duration; return-to-sport criteria; recurrence prevention; emergency thresholds. No item is declared wrong.")])
++    write_md(adir / "claims-requiring-verification.md", "Lateral ankle sprain claims requiring verification", [("Blocked areas", "- Acute assessment and fracture screening\n- Early loading and external support\n- Exercise and balance\n- Return to sport and recurrence prevention\n- Escalation and patient communication"), ("Status", disclaimer)])
++    write_md(adir / "evidence-gaps.md", "Lateral ankle sprain evidence gaps", [("Required evidence", "Current decision rules, guidelines, rehabilitation reviews, prognosis evidence and return-to-sport consensus require external verification."), ("Approval", "Clinician review remains required.")])
++    write_md(adir / "proposed-condition-brief.md", "Lateral ankle sprain condition brief", [("Status", "Private blocked proposal; no public route."), ("Structure", "Assessment, fracture screening, differentials, early management, loading, rehabilitation, return to activity, recurrence prevention, escalation, limitations and communication.")])
++    write_md(adir / "proposed-guided-case-brief.md", "Lateral ankle sprain guided-case brief", [("Status", "Private blocked proposal."), ("Reasoning structure", "Neutral presentation, differential, cannot-miss screening, examination, findings, investigation, management, explanation, expert comparison and reflection."), ("Expert answers", "None authored; source support and clinician approval required.")])
++    write_md(adir / "proposed-patient-information-update.md", "Lateral ankle sprain patient-information update proposal", [("Purpose", "Compare the historical local leaflet with current verified evidence before drafting."), ("Copyright", "Do not copy the leaflet into the public repository; replacement wording and assets require review.")])
++    write_md(adir / "evidence-search-questions.md", "Lateral ankle sprain evidence search questions", [("Questions", "- Fracture-screening decision rules?\n- Acute loading and support?\n- Exercise and balance interventions?\n- Return-to-sport criteria?\n- Chronic instability and recurrence?\n- Imaging and referral?\n- Current patient information?"), ("Hierarchy", hierarchy)])
++    write_md(adir / "clinician-review-checklist.md", "Lateral ankle sprain clinician review checklist", [("Checklist", "- [ ] Verify fracture and syndesmosis screening\n- [ ] Review acute management/loading\n- [ ] Verify exercise/progression\n- [ ] Review return-to-sport and prevention\n- [ ] Review escalation and language\n- [ ] Verify references\n- [ ] Record reviewer and decision outside this pilot")])
++
++
++def _validate_staging(output: Path) -> None:
++    actual = sorted(path.relative_to(output).as_posix() for path in output.rglob("*") if path.is_file())
++    if actual != EXPECTED_FILES:
++        missing, extra = sorted(set(EXPECTED_FILES) - set(actual)), sorted(set(actual) - set(EXPECTED_FILES))
++        raise ValueError(f"report-set-mismatch missing={missing} unexpected={extra}")
++    names = load_governed_names()
++    for path in output.rglob("*"):
++        if not path.is_file(): continue
++        data = path.read_bytes()
++        if b"\x00" in data: raise ValueError("binary-tracked-output")
++        text = data.decode("utf-8", errors="strict")
++        values = _json_string_values(json.loads(text)) if path.suffix == ".json" else [text]
++        output_findings = []
++        for value in values:
++            scan_text = re.sub(r"(?:sha256:)?[0-9a-f]{64}|(?:src|ref|run)-[0-9a-f]{12,64}|ref-[a-z0-9-]+", "[machine-id]", value, flags=re.I)
++            output_findings.extend(scan_sensitive(scan_text, names))
++        if "\ufffd" in text or output_findings:
++            categories = sorted({item.category for item in output_findings})
++            raise ValueError(f"sensitive-or-invalid-tracked-output:{path.relative_to(output).as_posix()}:{','.join(categories)}")
++
++
++def _json_string_values(value: object) -> list[str]:
++    if isinstance(value, str): return [value]
++    if isinstance(value, list): return [item for child in value for item in _json_string_values(child)]
++    if isinstance(value, dict): return [item for child in value.values() for item in _json_string_values(child)]
++    return []
++
++
++def _atomic_publish(staging: Path, destination: Path) -> None:
++    _restore_inherited_permissions(staging)
++    backup = destination.with_name(destination.name + ".previous")
++    if backup.exists(): shutil.rmtree(backup)
++    if destination.exists(): os.replace(destination, backup)
++    try:
++        os.replace(staging, destination)
++    except Exception:
++        if backup.exists() and not destination.exists(): os.replace(backup, destination)
++        raise
++    if backup.exists(): shutil.rmtree(backup)
++    _restore_inherited_permissions(destination)
++
++
++def _restore_inherited_permissions(directory: Path) -> None:
++    if os.name != "nt": return
++    result = subprocess.run(["icacls", str(directory), "/inheritance:e", "/T", "/C", "/Q"], capture_output=True, text=True)
++    if result.returncode != 0:
++        raise OSError("unable to restore inherited permissions on generated reports")
++
++
++def build_intake(inbox: Path, reports: Path = REPORTS, cache_root: Path = CACHE_ROOT, implementation_commit: str | None = None) -> dict:
++    names = load_governed_names()
++    occurrences, top_count, nested_count, total_bytes, archive_warnings = source_occurrences(inbox)
++    groups = group_occurrences(occurrences)
++    source_set_fingerprint = hashlib.sha256("\n".join(sorted(groups)).encode()).hexdigest()
++    run_id = f"run-{hashlib.sha256((source_set_fingerprint + EXTRACTOR_VERSION).encode()).hexdigest()[:16]}"
++    commit = implementation_commit or _git_head()
++    cache = cache_root / run_id
++    if cache.exists(): shutil.rmtree(cache)
++    cache.mkdir(parents=True, exist_ok=True)
++    clearances, overrides, security_decisions = load_governance()
++    records, references, fatal = [], [], Counter()
++    suppressed_total = excluded_uncleared = 0
++    observed_checksums = {f"sha256:{value}" for value in groups}
++    for configured in [*clearances, *overrides, *(checksum for checksum, _ in security_decisions)]:
++        if configured not in observed_checksums: raise ValueError("orphaned governance entry")
++    for full, source_occurs in sorted(groups.items()):
++        canonical = sorted(source_occurs, key=lambda item: item.logical_path)[0]
++        sid, checksum = display_id(full), f"sha256:{full}"
++        extension = Path(canonical.filename).suffix.lower() or ".bin"
++        units, meta = [], {"method": "metadata-only", "tables": 0, "images": 0, "warnings": {}}
++        support = "supported" if extension in SUPPORTED else "metadata-only" if extension in METADATA_ONLY else "unsupported"
++        status = "metadata-only" if support == "metadata-only" else "unsupported"
++        filename_quarantine = bool(QUARANTINE_FILENAME.search(canonical.filename))
++        filename_restricted = bool(RESTRICTED_FILENAME.search(canonical.filename))
++        if support == "supported" and not filename_quarantine:
++            try: units, meta = extract_text(canonical.data, extension); status = "extracted"
++            except Exception as error:
++                meta = {"method": "failed", "tables": 0, "images": 0, "warnings": {str(error).split(':')[0][:80]: 1}}; status = "failed"
++        combined = "\n".join([canonical.filename, *(unit.get("text", "") for unit in units), *(unit.get("notes", "") for unit in units), *(link for unit in units for link in unit.get("links", []))])
++        findings = scan_sensitive(combined, names)
++        finding_counts = Counter(item.category for item in findings)
++        should_stop, credential_counts = credential_stop_required(checksum, sid, combined, security_decisions)
++        if should_stop and credential_counts: fatal["credential-value"] += 1
++        high_risk = any(finding_counts.get(key) for key in ["patient-or-hospital-identifier", "nhs-number", "student-or-candidate-identifier"])
++        sensitivity = "quarantined" if filename_quarantine or high_risk else "restricted-pending-clearance" if filename_restricted or findings else "review-required"
++        clearance_scopes: list[str] = []
++        ledger = clearances.get(checksum)
++        if ledger:
++            if ledger["sourceId"] != sid: raise ValueError("clearance checksum/source-ID mismatch")
++            if sensitivity == "quarantined" and ledger["decision"] == "clear-for-private-evidence-processing": raise ValueError("quarantine clearance is forbidden")
++            if ledger["decision"] == "clear-for-private-evidence-processing" and sensitivity == "restricted-pending-clearance":
++                sensitivity = "cleared-for-private-evidence-processing"; clearance_scopes = sorted(ledger["clearanceScope"])
++        headings, suppressed = compact_headings(units, names); suppressed_total += suppressed
++        source_type = classify_type(canonical.filename, extension, combined)
++        topic_tags, region_tags = tags_for(combined, TOPIC_TERMS), tags_for(combined, REGION_TERMS)
++        override = overrides.get(checksum)
++        if override:
++            if override["sourceId"] != sid: raise ValueError("override checksum/source-ID mismatch")
++            source_type, topic_tags, region_tags = override["sourceType"], sorted(override["topicTags"]), sorted(override["regionTags"])
++        record = {"sourceId": sid, "checksum": checksum, "logicalPath": f"private-source/{sid}{extension}", "originalFilename": f"source-{sid}{extension}", "fileType": extension if extension.startswith(".") else "unknown", "byteSize": len(canonical.data), "containerSourceId": canonical.container_source_id, "occurrences": [{"logicalPath": item.logical_path, "containerSourceId": item.container_source_id, "dateMetadata": item.date_metadata} for item in sorted(source_occurs, key=lambda value: value.logical_path)], "sourceType": source_type, "topicTags": topic_tags, "regionTags": region_tags, "duplicateGroup": f"exact-{sid}" if len(source_occurs) > 1 else None, "probableVersionGroup": None, "sensitivity": sensitivity, "sensitivityFindings": [{"category": key, "count": value} for key, value in sorted(finding_counts.items())], "clearanceScopes": clearance_scopes, "extractionSupport": support, "extractionStatus": "quarantined" if sensitivity == "quarantined" else "restricted" if sensitivity == "restricted-pending-clearance" else status, "extractionMetadata": {"method": meta["method"], "pageOrSlideCount": len(units) or None, "extractedCharacterCount": sum(len(unit.get("text", "")) + len(unit.get("notes", "")) for unit in units), "headingsDetected": headings, "referencesSectionDetected": bool(re.search(r"\b(?:references|bibliography|further reading)\b", combined, re.I)), "tablesDetected": int(meta.get("tables", 0)), "imagesDetected": int(meta.get("images", 0)), "confidence": "high" if status == "extracted" else "low" if status == "partial" else "none", "warnings": [{"code": key, "count": value} for key, value in sorted(meta.get("warnings", {}).items())]}, "copyrightOrLicenceStatus": "unknown", "intendedUse": ["private evidence-development triage"], "reviewStatus": "quarantined" if sensitivity == "quarantined" else "restricted-pending-clearance" if sensitivity == "restricted-pending-clearance" else "cleared-private-only" if sensitivity == "cleared-for-private-evidence-processing" else "needs-review", "publicEligibility": False}
++        records.append(record)
++        write_json(cache / f"{sid}.json", {"sourceId": sid, "checksum": checksum, "units": units, "metadata": meta})
++        if sensitivity == "quarantined": continue
++        if sensitivity == "restricted-pending-clearance":
++            possible, hidden = reference_candidates(record, units, names); excluded_uncleared += len(possible); suppressed_total += hidden; continue
++        if sensitivity == "cleared-for-private-evidence-processing" and "citation-extraction" not in clearance_scopes: continue
++        found, hidden = reference_candidates(record, units, names); references.extend(found); suppressed_total += hidden
++    if fatal:
++        raise RuntimeError("undisclosed credential category detected; no tracked reports were replaced")
++
++    version_groups: dict[str, list[dict]] = defaultdict(list)
++    for record in records:
++        key = probable_key(record["originalFilename"])
++        if len(key) >= 8: version_groups[key].append(record)
++    probable_groups = []
++    for index, members in enumerate((group for group in version_groups.values() if len(group) > 1), 1):
++        gid = f"version-{index:03d}"
++        for member in members: member["probableVersionGroup"] = gid
++        probable_groups.append((gid, members))
++    exact_ref_groups: dict[str, list[dict]] = defaultdict(list)
++    for ref in references: exact_ref_groups[(ref["doi"] or ref["pmid"] or re.sub(r"\W+", "", ref["citationText"]).lower())[:180]].append(ref)
++    exact_groups = []
++    for index, group in enumerate((item for item in exact_ref_groups.values() if len(item) > 1), 1):
++        gid = f"ref-exact-{index:03d}"
++        for ref in group: ref["duplicateGroup"] = gid; ref["verificationStatus"] = "likely-duplicate"
++        exact_groups.append((gid, group))
++    for record in records: record["_referenceCount"] = sum(ref["sourceId"] == record["sourceId"] for ref in references)
++
++    eligible = [r for r in records if r["sensitivity"] == "review-required" or (r["sensitivity"] == "cleared-for-private-evidence-processing" and "private-proposal-support" in r["clearanceScopes"])]
++    nodes = []
++    for topic, target in [("rcrsp", "condition:shoulder/rotator-cuff-related-shoulder-pain"), ("lateral-ankle-sprain", "condition:ankle-foot/lateral-ankle-sprain")]:
++        sources = [r for r in eligible if topic in r["topicTags"]]
++        if sources: nodes.append({"proposalId": f"proposal-{topic}-evidence-development", "sourceIds": [r["sourceId"] for r in sources], "sourceChecksums": [r["checksum"] for r in sources], "extractedTeachingTopic": topic.replace("-", " "), "proposedClinicalClaim": "Candidate teaching claims require extraction review, external evidence verification, and clinician approval before wording is drafted.", "targetContentId": target, "requiredEvidence": ["Current guideline", "Systematic review", "Clinician review"], "clinicianReviewStatus": "required", "proposalStatus": "blocked-pending-evidence-and-clinician-review", "teachingSourceCanEstablishPublicApproval": False, "visualLicenceStatus": "unknown-review-required", "publicEligibility": False})
++    excluded_proposals = sum(1 for r in records if r["sensitivity"] == "restricted-pending-clearance" and set(r["topicTags"]) & {"rcrsp", "lateral-ankle-sprain"})
++    summary = {"topLevelFiles": top_count, "nestedFiles": nested_count, "uniqueSources": len(records), "totalObservedBytes": total_bytes, "exactDuplicateGroups": sum(r["duplicateGroup"] is not None for r in records), "probableVersionGroups": len(probable_groups), "quarantinedSources": sum(r["sensitivity"] == "quarantined" for r in records), "restrictedPendingClearanceSources": sum(r["sensitivity"] == "restricted-pending-clearance" for r in records), "clearedSources": sum(r["sensitivity"] == "cleared-for-private-evidence-processing" for r in records), "manualReviewSources": sum(r["sensitivity"] in {"review-required", "restricted-pending-clearance"} for r in records), "suppressedSensitiveLines": suppressed_total, "referencesExcludedUncleared": excluded_uncleared, "proposalSourcesExcludedUncleared": excluded_proposals}
++    for record in records: record.pop("_referenceCount", None)
++
++    staging = Path(tempfile.mkdtemp(prefix=reports.name + ".staging-", dir=reports.parent))
++    try:
++        manifest = {"schemaVersion": 2, "runId": run_id, "sourceSetFingerprint": f"sha256:{source_set_fingerprint}", "implementationCommit": commit, "extractor": {"name": "source-intake-pilot", "version": EXTRACTOR_VERSION, "pythonVersion": sys.version.split()[0], "pypdfVersion": pypdf.__version__, "defusedxmlVersion": getattr(defusedxml, "__version__", "0.7.1")}, "generatedFrom": {"locationCategory": "private-external-inbox", "absolutePathStored": False}, "records": records, "archiveWarnings": archive_warnings, "summary": summary}
++        registry = {"schemaVersion": 2, "runId": run_id, "externalLookupPerformed": False, "records": references, "excluded": {"restrictedUncleared": excluded_uncleared, "quarantined": summary["quarantinedSources"], "sensitiveOrAdministrative": suppressed_total}}
++        graph = {"schemaVersion": 2, "runId": run_id, "nodes": nodes}
++        write_json(staging / "source-manifest.json", manifest); write_json(staging / "references/candidate-reference-registry.json", registry); write_json(staging / "source-to-content-graph.json", graph)
++        run_manifest = {"schemaVersion": 1, "runId": run_id, "status": "complete", "implementationCommit": commit, "sourceSetFingerprint": f"sha256:{source_set_fingerprint}", "expectedFiles": EXPECTED_FILES, "sourceCounts": {"unique": len(records), "quarantined": summary["quarantinedSources"], "restricted": summary["restrictedPendingClearanceSources"], "cleared": summary["clearedSources"]}, "deterministicTimestamps": False}
++        write_json(staging / "run-manifest.json", run_manifest)
++        type_counts, status_counts = Counter(r["fileType"] for r in records), Counter(r["extractionStatus"] for r in records)
++        region_counts = Counter(tag for r in records if r["sensitivity"] != "quarantined" for tag in r["regionTags"]); topic_counts = Counter(tag for r in records if r["sensitivity"] != "quarantined" for tag in r["topicTags"])
++        write_md(staging / "README.md", "Private source-intake pilot", [("Purpose", "Governed metadata and blocked evidence-development proposals. Source bodies and full text remain in ignored storage."), ("Boundary", "Public eligibility is false. Restricted sources require explicit clearance; clearance is not publication, copyright, evidence, or clinical approval."), ("Reproduction", "Use the operator-supplied private inbox argument. No absolute source path is stored.")])
++        write_md(staging / "source-summary.md", "Source intake summary", [("Counts", "\n".join(f"- {key}: {value}" for key, value in summary.items())), ("File types", "\n".join(f"- `{key}`: {value}" for key, value in sorted(type_counts.items()))), ("Governance", "No source body, private path, approval claim, or verified-evidence claim is included.")])
++        write_md(staging / "duplicate-report.md", "Duplicate and version analysis", [("Exact duplicates", "\n".join(f"- `{r['duplicateGroup']}`: `{r['sourceId']}`; {len(r['occurrences'])} occurrences; full SHA-256 match." for r in records if r["duplicateGroup"]) or "None detected."), ("Probable versions", "\n".join(f"- `{gid}`: {len(members)} sources; manual review required." for gid, members in probable_groups) or "None detected."), ("Action", "No source was deleted.")])
++        quarantine_counts = Counter(item["category"] for r in records if r["sensitivity"] == "quarantined" for item in r["sensitivityFindings"])
++        write_md(staging / "quarantine-report.md", "Quarantine report", [("Summary", f"{summary['quarantinedSources']} sources are quarantined."), ("Categories", "\n".join(f"- {key}: {value}" for key, value in sorted(quarantine_counts.items())) or "No category counts."), ("Handling", "Values, names, filenames, and bodies are omitted. Quarantined sources support neither references nor proposals.")])
++        write_md(staging / "extraction-status.md", "Extraction status", [("Counts", "\n".join(f"- {key}: {value}" for key, value in sorted(status_counts.items()))), ("Methods", "Embedded text only; no OCR. Office and archive parsing is bounded."), ("Cache", f"Private extracted text is isolated under ignored run `{run_id}`.")])
++        write_md(staging / "topic-index.md", "Topic and region index", [("Regions", "\n".join(f"- {key}: {value}" for key, value in sorted(region_counts.items())) or "None."), ("Topics", "\n".join(f"- {key}: {value}" for key, value in sorted(topic_counts.items())) or "None."), ("Caution", "Automated triage labels are not clinical approval.")])
++        write_md(staging / "review-queue.md", "Source review queue", [("Priority", "1. Human clearance decisions.\n2. Licence and category review.\n3. Extraction quality.\n4. External citation verification.\n5. Pilot claim review.\n6. Clinician approval before publication."), ("Status", f"Restricted uncleared: {summary['restrictedPendingClearanceSources']}; excluded citations: {excluded_uncleared}; excluded proposal sources: {excluded_proposals}.")])
++        class_counts = Counter(r["classification"] for r in references)
++        write_md(staging / "references/candidate-reference-summary.md", "Candidate reference summary", [("Counts", f"- Total: {len(references)}\n" + "\n".join(f"- {key}: {value}" for key, value in sorted(class_counts.items())) + f"\n- DOI: {sum(bool(r['doi']) for r in references)}\n- PMID: {sum(bool(r['pmid']) for r in references)}\n- URL: {sum(bool(r['url']) for r in references)}\n- Exact duplicate groups: {len(exact_groups)}"), ("Exclusions", f"Restricted uncleared: {excluded_uncleared}; sensitive/administrative lines: {suppressed_total}."), ("Status", "Offline extraction only; no candidate is verified.")])
++        write_md(staging / "references/duplicate-reference-groups.md", "Duplicate reference groups", [("Exact groups", "\n".join(f"- `{gid}`: {len(group)} occurrences across {len(set(r['sourceId'] for r in group))} source(s)." for gid, group in exact_groups) or "None."), ("Action", "No candidate was discarded; manual verification is required.")])
++        incomplete = [r for r in references if r["classification"] not in {"full-looking-unverified"}]
++        write_md(staging / "references/incomplete-reference-queue.md", "Bibliographic verification queue", [("Counts", "\n".join(f"- {key}: {value}" for key, value in sorted(Counter(r["classification"] for r in incomplete).items())) or "None."), ("Lookup", "External lookup was not performed.")])
++        write_md(staging / "references/identifier-verification-queue.md", "Identifier verification queue", [("Counts", f"- DOI candidates: {sum(bool(r['doi']) for r in references)}\n- PMID candidates: {sum(bool(r['pmid']) for r in references)}\n- Generic web: {class_counts['generic-web-link']}\n- Licence/attribution: {class_counts['licence-or-attribution-link']}\n- Media/engagement: {class_counts['media-or-engagement-link']}"), ("Rule", "Identifiers and links require later authoritative verification.")])
++        ref_topics = Counter(topic.strip() for r in references for topic in r["relatedTopicOrClaim"].split(",") if topic.strip())
++        write_md(staging / "references/topic-to-reference-index.md", "Topic-to-reference index", [("Counts", "\n".join(f"- {key}: {value}" for key, value in sorted(ref_topics.items())) or "None."), ("Meaning", "Extraction associations only.")])
++        for record in records: record["_referenceCount"] = sum(ref["sourceId"] == record["sourceId"] for ref in references)
++        generate_pilot_reports(staging, records, references)
++        for record in records: record.pop("_referenceCount", None)
++        _validate_staging(staging)
++        _atomic_publish(staging, reports)
++    except Exception:
++        shutil.rmtree(staging, ignore_errors=True)
++        raise
++    return {"runId": run_id, "uniqueSources": len(records), "quarantinedSources": summary["quarantinedSources"], "restrictedPendingClearanceSources": summary["restrictedPendingClearanceSources"], "clearedSources": summary["clearedSources"], "candidateReferences": len(references), "referencesExcludedUncleared": excluded_uncleared, "suppressedSensitiveLines": suppressed_total, "proposals": len(nodes)}
++
++
++def _git_head() -> str:
++    import subprocess
++    value = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
++    if not re.fullmatch(r"[0-9a-f]{40}", value): raise ValueError("implementation commit is unavailable")
++    return value
+diff --git a/ai-manager/scripts/source_intake_pilot.py b/ai-manager/scripts/source_intake_pilot.py
+index 4324516..02c61cd 100644
+--- a/ai-manager/scripts/source_intake_pilot.py
++++ b/ai-manager/scripts/source_intake_pilot.py
+@@ -1,805 +1,28 @@
+ #!/usr/bin/env python3
+-"""Private, offline source-intake pilot.
+-
+-Source bodies are read from an operator-supplied inbox and written only to the
+-ignored private cache. Tracked output contains metadata, short citation
+-candidates, and blocked content proposals.
+-"""
++"""CLI for the private, deterministic source-intake pilot."""
+ 
+ from __future__ import annotations
+ 
+ import argparse
+-import datetime as dt
+-import hashlib
+-import html
+ import json
+ import os
+-import re
+-import sys
+-import zipfile
+-from collections import Counter, defaultdict
+-from dataclasses import dataclass
+-from io import BytesIO
+-from pathlib import Path, PurePosixPath
+-from typing import Iterable
+-from urllib.parse import urlparse
+-from xml.etree import ElementTree as ET
+-
+-try:
+-    from pypdf import PdfReader
+-except ImportError:  # pragma: no cover - reported clearly at runtime
+-    PdfReader = None
+-
+-
+-ROOT = Path(__file__).resolve().parents[2]
+-CACHE = ROOT / "ai-manager" / "private-cache" / "source-intake-pilot"
+-REPORTS = ROOT / "ai-manager" / "reports" / "source-intake-pilot"
+-HYGIENE_NAMES = ROOT / "ai-manager" / "content-hygiene-names.json"
+-
+-SUPPORTED = {".pdf", ".pptx", ".docx", ".xlsx", ".txt", ".md", ".html", ".htm"}
+-METADATA_ONLY = {".jpg", ".jpeg", ".png", ".gif", ".webp", ".mp4", ".mov", ".avi", ".zip"}
+-UNSUPPORTED = {".ppt", ".doc", ".xls"}
+-
+-REFERENCE_STATUS = {
+-    "extracted-unverified",
+-    "incomplete-citation",
+-    "identifier-present-unverified",
+-    "likely-duplicate",
+-    "verified-later",
+-    "unable-to-identify",
+-}
+-
+-REGION_TERMS = {
+-    "cervical": ["cervical", "neck"],
+-    "thoracic": ["thoracic"],
+-    "shoulder": ["shoulder", "rotator cuff", "rcrsp", "subacromial"],
+-    "elbow": ["elbow", "epicondyl"],
+-    "wrist-hand": ["wrist", "hand", "carpal", "scaphoid"],
+-    "headache": ["headache", "migraine"],
+-    "neurology": ["neurolog", "stroke", "cranial", "spinal cord"],
+-    "anatomy": ["anatom", "nerve", "muscle", "ligament"],
+-    "lumbar": ["lumbar", "low back"],
+-    "hip": [" hip ", "groin"],
+-    "knee": ["knee", "patell"],
+-    "ankle-foot": ["ankle", "foot", "achilles", "plantar"],
+-}
+-
+-TOPIC_TERMS = {
+-    "rcrsp": ["rcrsp", "rotator cuff related", "rotator cuff-related", "subacromial", "rotator cuff tendinopathy"],
+-    "rotator-cuff-tear": ["rotator cuff tear"],
+-    "shoulder-differential": ["shoulder differential", "differential diagnosis"],
+-    "exercise-rehabilitation": ["exercise", "rehab", "loading"],
+-    "prognosis": ["prognosis", "recovery", "natural history"],
+-    "imaging": ["imaging", "ultrasound", "mri", "x-ray", "radiograph"],
+-    "patient-communication": ["patient information", "communication", "reassurance"],
+-    "special-tests": ["special test", "diagnostic test", "test cluster"],
+-    "outcome-measures": ["outcome measure", "questionnaire", "score"],
+-    "lateral-ankle-sprain": ["lateral ankle sprain", "ankle sprain"],
+-    "ankle-ligament-anatomy": ["atfl", "cfl", "anterior talofibular", "calcaneofibular"],
+-    "fracture-screening": ["ottawa ankle", "fracture", "malleol"],
+-    "syndesmosis": ["syndesmosis", "high ankle sprain"],
+-    "balance-proprioception": ["balance", "proprioception", "neuromuscular"],
+-    "return-to-sport": ["return to sport", "return-to-sport", "return to running"],
+-    "recurrence-prevention": ["recurrence", "prevention"],
+-    "bracing-taping": ["brace", "bracing", "taping", "strapping"],
+-    "guideline": ["guideline", "clinical practice guideline", "nice"],
+-    "paper": ["doi", "journal", "randomised", "systematic review", "meta-analysis"],
+-    "osce": ["osce", "station", "candidate instructions"],
+-}
+-
+-QUARANTINE_FILENAME = re.compile(
+-    r"(?:portfolio|reflective|reflection|placement|student|feedback|mark(?:s|ing)?|answer(?:s| key)?|"
+-    r"exam(?:ination)?|assessment submission|cv\b|curriculum vitae|appraisal|personal statement|patient record)",
+-    re.I,
+-)
+-RESTRICTED_FILENAME = re.compile(r"(?:case notes?|clinical record|handover|attendance|register|results?)", re.I)
+-EMAIL_RE = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.I)
+-PHONE_RE = re.compile(r"(?<!\d)(?:\+44\s?\d{9,10}|0\d{3,4}[\s-]?\d{5,7})(?!\d)")
+-NHS_RE = re.compile(r"\b(?:NHS|hospital|patient)\s*(?:number|no\.?|id)\s*[:#-]?\s*\d{6,12}\b", re.I)
+-STUDENT_ID_RE = re.compile(r"\b(?:student|candidate)\s*(?:number|no\.?|id)\s*[:#-]?\s*[A-Z0-9-]{5,20}\b", re.I)
+-DOB_RE = re.compile(r"\b(?:DOB|date of birth)\s*[:#-]?\s*\d{1,2}[/-]\d{1,2}[/-]\d{2,4}\b", re.I)
+-ENV_CREDENTIAL_NAMES = "|".join([
+-    "_".join(["OPENAI", "API", "KEY"]),
+-    "_".join(["API", "KEY"]),
+-    "_".join(["PRIVATE", "KEY"]),
+-    "".join(["SEC", "RET"]),
+-])
+-CREDENTIAL_VALUE_RE = re.compile(
+-    r"(?:AIza[0-9A-Za-z_-]{20,}|sk-[0-9A-Za-z_-]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|"
+-    rf"(?:{ENV_CREDENTIAL_NAMES})\s*[:=]\s*[^\s]{{8,}})",
+-    re.I,
+-)
+-DOI_RE = re.compile(r"\b10\.\d{4,9}/[-._;()/:A-Z0-9]+", re.I)
+-PMID_RE = re.compile(r"\bPMID\s*[:#]?\s*(\d{6,9})\b", re.I)
+-URL_RE = re.compile(r"https?://[^\s<>\]\)\"']+", re.I)
+-AUTHOR_YEAR_RE = re.compile(r"\b([A-Z][A-Za-z'’-]+(?:\s+(?:et al\.?|&\s+[A-Z][A-Za-z'’-]+))?)\s*[,\(]\s*((?:19|20)\d{2}[a-z]?)\)?")
+-YEAR_RE = re.compile(r"\b((?:19|20)\d{2}[a-z]?)\b", re.I)
+-
+-
+-@dataclass
+-class Occurrence:
+-    logical_path: str
+-    filename: str
+-    data: bytes
+-    modified_date: str | None
+-    container_source_id: str | None = None
+-
+-
+-def sha256(data: bytes) -> str:
+-    return hashlib.sha256(data).hexdigest()
+-
+-
+-def source_id(data: bytes) -> str:
+-    return f"src-{sha256(data)[:12]}"
+-
+-
+-def clean_xml_text(data: bytes) -> str:
+-    try:
+-        root = ET.fromstring(data)
+-    except ET.ParseError:
+-        return ""
+-    return " ".join(t.strip() for t in root.itertext() if t and t.strip())
+-
+-
+-def extract_pdf(data: bytes) -> tuple[list[dict], dict]:
+-    if PdfReader is None:
+-        raise RuntimeError("pypdf is not installed")
+-    reader = PdfReader(BytesIO(data))
+-    units = []
+-    links = []
+-    images = 0
+-    for number, page in enumerate(reader.pages, 1):
+-        text = page.extract_text() or ""
+-        units.append({"number": number, "kind": "page", "text": text, "links": []})
+-        try:
+-            annotations = page.get("/Annots") or []
+-            for annotation in annotations:
+-                obj = annotation.get_object()
+-                action = obj.get("/A")
+-                uri = action.get("/URI") if action else None
+-                if uri:
+-                    links.append(str(uri))
+-                    units[-1]["links"].append(str(uri))
+-        except Exception:
+-            pass
+-        try:
+-            images += len(page.images)
+-        except Exception:
+-            pass
+-    return units, {"method": "pypdf-embedded-text", "tables": 0, "images": images, "warnings": []}
+-
+-
+-def zip_xml_parts(data: bytes, prefix: str, suffix: str = ".xml") -> list[str]:
+-    with zipfile.ZipFile(BytesIO(data)) as archive:
+-        return sorted(name for name in archive.namelist() if name.startswith(prefix) and name.endswith(suffix))
+-
+-
+-def extract_pptx(data: bytes) -> tuple[list[dict], dict]:
+-    units = []
+-    image_count = 0
+-    with zipfile.ZipFile(BytesIO(data)) as archive:
+-        names = set(archive.namelist())
+-        slides = sorted(
+-            (name for name in names if re.fullmatch(r"ppt/slides/slide\d+\.xml", name)),
+-            key=lambda name: int(re.search(r"(\d+)", PurePosixPath(name).stem).group(1)),
+-        )
+-        image_count = sum(1 for name in names if name.startswith("ppt/media/"))
+-        for idx, slide in enumerate(slides, 1):
+-            text = clean_xml_text(archive.read(slide))
+-            notes_name = f"ppt/notesSlides/notesSlide{idx}.xml"
+-            notes = clean_xml_text(archive.read(notes_name)) if notes_name in names else ""
+-            links = []
+-            rel_name = f"ppt/slides/_rels/slide{idx}.xml.rels"
+-            if rel_name in names:
+-                try:
+-                    rel_root = ET.fromstring(archive.read(rel_name))
+-                    links = [node.attrib["Target"] for node in rel_root if node.attrib.get("TargetMode") == "External"]
+-                except ET.ParseError:
+-                    pass
+-            units.append({"number": idx, "kind": "slide", "text": text, "notes": notes, "links": links})
+-    return units, {"method": "pptx-openxml", "tables": 0, "images": image_count, "warnings": []}
+-
+-
+-def extract_docx(data: bytes) -> tuple[list[dict], dict]:
+-    texts = []
+-    image_count = 0
+-    links = []
+-    with zipfile.ZipFile(BytesIO(data)) as archive:
+-        names = set(archive.namelist())
+-        for part, label in [("word/document.xml", "document"), ("word/footnotes.xml", "footnotes"), ("word/endnotes.xml", "endnotes")]:
+-            if part in names:
+-                value = clean_xml_text(archive.read(part))
+-                if value:
+-                    texts.append(f"[{label}] {value}")
+-        image_count = sum(1 for name in names if name.startswith("word/media/"))
+-        for rel in (name for name in names if name.startswith("word/_rels/") and name.endswith(".rels")):
+-            try:
+-                root = ET.fromstring(archive.read(rel))
+-                links.extend(node.attrib["Target"] for node in root if node.attrib.get("TargetMode") == "External")
+-            except ET.ParseError:
+-                pass
+-    text = "\n".join(texts)
+-    return [{"number": 1, "kind": "document", "text": text, "links": links}], {"method": "docx-openxml", "tables": 0, "images": image_count, "warnings": []}
+-
+-
+-def extract_xlsx(data: bytes) -> tuple[list[dict], dict]:
+-    units = []
+-    with zipfile.ZipFile(BytesIO(data)) as archive:
+-        names = set(archive.namelist())
+-        shared = clean_xml_text(archive.read("xl/sharedStrings.xml")) if "xl/sharedStrings.xml" in names else ""
+-        sheets = sorted(name for name in names if re.fullmatch(r"xl/worksheets/sheet\d+\.xml", name))
+-        for idx, sheet in enumerate(sheets, 1):
+-            text = clean_xml_text(archive.read(sheet))
+-            units.append({"number": idx, "kind": "sheet", "text": f"{shared}\n{text}".strip(), "links": []})
+-    return units, {"method": "xlsx-openxml", "tables": len(units), "images": 0, "warnings": []}
+-
+-
+-def extract_html(data: bytes) -> tuple[list[dict], dict]:
+-    decoded = data.decode("utf-8", errors="replace")
+-    links = re.findall(r"href\s*=\s*[\"'](https?://[^\"']+)", decoded, re.I)
+-    text = re.sub(r"<script\b[^>]*>.*?</script>|<style\b[^>]*>.*?</style>", " ", decoded, flags=re.I | re.S)
+-    text = html.unescape(re.sub(r"<[^>]+>", " ", text))
+-    text = re.sub(r"\s+", " ", text).strip()
+-    return [{"number": 1, "kind": "document", "text": text, "links": links}], {"method": "html-embedded-text", "tables": 0, "images": len(re.findall(r"<img\b", decoded, re.I)), "warnings": []}
+-
+-
+-def extract_text(data: bytes, extension: str) -> tuple[list[dict], dict]:
+-    if extension == ".pdf":
+-        return extract_pdf(data)
+-    if extension == ".pptx":
+-        return extract_pptx(data)
+-    if extension == ".docx":
+-        return extract_docx(data)
+-    if extension == ".xlsx":
+-        return extract_xlsx(data)
+-    if extension in {".html", ".htm"}:
+-        return extract_html(data)
+-    if extension in {".txt", ".md"}:
+-        decoded = data.decode("utf-8", errors="replace")
+-        return [{"number": 1, "kind": "document", "text": decoded, "links": URL_RE.findall(decoded)}], {"method": "plain-text", "tables": 0, "images": 0, "warnings": []}
+-    return [], {"method": "metadata-only", "tables": 0, "images": 0, "warnings": []}
+-
+-
+-def load_governed_names() -> list[str]:
+-    try:
+-        payload = json.loads(HYGIENE_NAMES.read_text(encoding="utf-8"))
+-    except (OSError, json.JSONDecodeError):
+-        return []
+-    values = []
+-    if isinstance(payload, list):
+-        values = payload
+-    elif isinstance(payload, dict):
+-        for value in payload.values():
+-            if isinstance(value, list):
+-                values.extend(value)
+-    return sorted({str(value).strip() for value in values if str(value).strip()}, key=len, reverse=True)
+-
+-
+-def count_sensitive(text: str, governed_names: list[str]) -> tuple[list[dict], bool, bool]:
+-    patterns = {
+-        "email-address": EMAIL_RE,
+-        "telephone-number": PHONE_RE,
+-        "patient-or-hospital-number": NHS_RE,
+-        "date-of-birth": DOB_RE,
+-        "student-identifier": STUDENT_ID_RE,
+-        "credential-or-secret": CREDENTIAL_VALUE_RE,
+-    }
+-    findings = []
+-    for category, pattern in patterns.items():
+-        count = len(pattern.findall(text))
+-        if count:
+-            findings.append({"category": category, "count": count})
+-    name_count = sum(len(re.findall(re.escape(name), text, re.I)) for name in governed_names)
+-    if name_count:
+-        findings.append({"category": "governed-identifiable-name", "count": name_count})
+-    fatal_secret = any(item["category"] == "credential-or-secret" for item in findings)
+-    fatal_patient = any(item["category"] == "patient-or-hospital-number" for item in findings)
+-    return findings, fatal_secret, fatal_patient
++from pathlib import Path
+ 
+-
+-def tags_for(value: str, mapping: dict[str, list[str]]) -> list[str]:
+-    lower = f" {value.lower()} "
+-    return sorted(key for key, terms in mapping.items() if any(term in lower for term in terms))
+-
+-
+-def classify_type(filename: str, extension: str, text: str) -> str:
+-    lower = f"{filename} {text[:12000]}".lower()
+-    if "ankle" in lower and ("patient information" in lower or "leaflet" in lower):
+-        return "local-patient-leaflet"
+-    if "guideline" in lower or "clinical practice guideline" in lower:
+-        return "clinical-guideline"
+-    if QUARANTINE_FILENAME.search(filename):
+-        return "portfolio-reflective-material" if re.search(r"portfolio|reflect", filename, re.I) else "administrative"
+-    if "osce" in lower or "candidate instruction" in lower:
+-        return "osce-material"
+-    if "anatom" in lower:
+-        return "anatomy-resource"
+-    if "outcome measure" in lower or "questionnaire" in lower:
+-        return "outcome-measure"
+-    if extension == ".pdf" and ("journal" in lower or "doi" in lower or "systematic review" in lower):
+-        return "pdf-paper"
+-    return {
+-        ".pptx": "teaching-presentation", ".ppt": "teaching-presentation",
+-        ".docx": "word-document", ".doc": "word-document",
+-        ".xlsx": "spreadsheet", ".xls": "spreadsheet",
+-        ".html": "html", ".htm": "html", ".txt": "notes", ".md": "notes",
+-        ".jpg": "image", ".jpeg": "image", ".png": "image", ".gif": "image", ".webp": "image",
+-        ".mp4": "video", ".mov": "video", ".avi": "video", ".zip": "archive",
+-    }.get(extension, "unknown")
+-
+-
+-def source_occurrences(inbox: Path) -> tuple[list[Occurrence], int, int, int]:
+-    occurrences = []
+-    top_files = sorted(path for path in inbox.rglob("*") if path.is_file())
+-    nested_count = 0
+-    total_bytes = 0
+-    for path in top_files:
+-        relative = path.relative_to(inbox).as_posix()
+-        data = path.read_bytes()
+-        total_bytes += len(data)
+-        modified = dt.datetime.fromtimestamp(path.stat().st_mtime).date().isoformat()
+-        occurrences.append(Occurrence(f"inbox/{relative}", path.name, data, modified))
+-        if path.suffix.lower() == ".zip":
+-            container_id = source_id(data)
+-            try:
+-                with zipfile.ZipFile(BytesIO(data)) as archive:
+-                    for info in archive.infolist():
+-                        if info.is_dir() or info.filename.startswith("__MACOSX/"):
+-                            continue
+-                        nested = archive.read(info)
+-                        total_bytes += len(nested)
+-                        nested_count += 1
+-                        try:
+-                            nested_date = dt.date(*info.date_time[:3]).isoformat()
+-                        except ValueError:
+-                            nested_date = None
+-                        logical = f"archive/{container_id}/{PurePosixPath(info.filename).as_posix()}"
+-                        occurrences.append(Occurrence(logical, PurePosixPath(info.filename).name, nested, nested_date, container_id))
+-            except zipfile.BadZipFile:
+-                pass
+-    return occurrences, len(top_files), nested_count, total_bytes
+-
+-
+-def redact_governed(value: str, governed_names: list[str]) -> str:
+-    redacted = value
+-    for name in governed_names:
+-        redacted = re.sub(re.escape(name), "[governed name redacted]", redacted, flags=re.I)
+-    return redacted
+-
+-
+-def compact_heading(text: str, governed_names: list[str]) -> list[str]:
+-    headings = []
+-    for line in text.splitlines():
+-        line = re.sub(r"\s+", " ", line).strip(" -:\t")
+-        if 3 <= len(line) <= 120 and (line.isupper() or len(line.split()) <= 10):
+-            line = redact_governed(line, governed_names)
+-            if line not in headings:
+-                headings.append(line)
+-        if len(headings) == 30:
+-            break
+-    return headings
+-
+-
+-def reference_candidates(source: dict, units: list[dict], governed_names: list[str]) -> list[dict]:
+-    candidates = []
+-    seen = set()
+-    source_topics = source["topicTags"] or source["regionTags"] or ["general"]
+-    for unit in units:
+-        number = unit.get("number")
+-        blobs = [(unit.get("text", ""), "text"), (unit.get("notes", ""), "speaker notes")]
+-        for value, label in blobs:
+-            if not value:
+-                continue
+-            lines = [re.sub(r"\s+", " ", line).strip() for line in value.splitlines()]
+-            if len(lines) <= 1:
+-                lines = [piece.strip() for piece in re.split(r"(?<=[.;])\s+(?=[A-Z])", value)]
+-            ref_section = bool(re.search(r"\b(?:references|bibliography|further reading)\b", value, re.I))
+-            for line in lines:
+-                if len(line) < 8:
+-                    continue
+-                dois = DOI_RE.findall(line)
+-                pmids = PMID_RE.findall(line)
+-                urls = URL_RE.findall(line)
+-                authors = AUTHOR_YEAR_RE.findall(line)
+-                citation_like = bool(dois or pmids or urls or authors or re.search(r"\b(?:guideline|journal|et al\.|vol\.?|pp?\.)\b", line, re.I))
+-                if not citation_like:
+-                    continue
+-                citation = redact_governed(line[:800], governed_names)
+-                key = re.sub(r"\W+", "", citation).lower()
+-                if key in seen:
+-                    continue
+-                seen.add(key)
+-                author_names = []
+-                year = None
+-                if authors:
+-                    author_names = [redact_governed(authors[0][0], governed_names)]
+-                    year = authors[0][1]
+-                elif YEAR_RE.search(citation):
+-                    year = YEAR_RE.search(citation).group(1)
+-                doi = dois[0].rstrip(".,;") if dois else None
+-                pmid = pmids[0] if pmids else None
+-                url = urls[0].rstrip(".,;") if urls else None
+-                if url and not urlparse(url).netloc:
+-                    url = None
+-                status = "identifier-present-unverified" if doi or pmid else "extracted-unverified"
+-                complete = "full" if author_names and year and len(citation) > 70 else "partial" if author_names or year else "minimal"
+-                if complete != "full" and not (doi or pmid):
+-                    status = "incomplete-citation"
+-                context = "further-reading" if re.search(r"further reading", value, re.I) else "reference-list" if ref_section else "hyperlink" if urls and not authors else "in-text"
+-                identity = hashlib.sha256(f"{source['sourceId']}|{number}|{citation}".encode()).hexdigest()[:16]
+-                candidates.append({
+-                    "candidateReferenceId": f"ref-{identity}",
+-                    "sourceId": source["sourceId"],
+-                    "pageOrSlideNumber": number,
+-                    "location": f"{unit.get('kind', 'document')} {number} {label}",
+-                    "citationText": citation,
+-                    "authors": author_names,
+-                    "year": year,
+-                    "title": None,
+-                    "journalOrPublisher": None,
+-                    "volumeIssuePages": None,
+-                    "doi": doi,
+-                    "pmid": pmid,
+-                    "url": url,
+-                    "relatedTopicOrClaim": ", ".join(source_topics),
+-                    "citationContext": context,
+-                    "extractionConfidence": "high" if doi or pmid else "medium" if author_names else "low",
+-                    "completenessStatus": complete,
+-                    "verificationStatus": status,
+-                    "verificationEvidence": None,
+-                    "duplicateGroup": None,
+-                    "notes": "Extracted offline; bibliographic accuracy and relevance are unverified.",
+-                })
+-        for link in unit.get("links", []):
+-            link = link.strip()
+-            if not re.match(r"^https?://", link, re.I) or not urlparse(link).netloc:
+-                continue
+-            key = re.sub(r"\W+", "", link).lower()
+-            if key in seen:
+-                continue
+-            seen.add(key)
+-            identity = hashlib.sha256(f"{source['sourceId']}|{number}|{link}".encode()).hexdigest()[:16]
+-            candidates.append({
+-                "candidateReferenceId": f"ref-{identity}", "sourceId": source["sourceId"],
+-                "pageOrSlideNumber": number, "location": f"{unit.get('kind', 'document')} {number} embedded hyperlink",
+-                "citationText": link[:800], "authors": [], "year": None, "title": None,
+-                "journalOrPublisher": None, "volumeIssuePages": None, "doi": None, "pmid": None,
+-                "url": link, "relatedTopicOrClaim": ", ".join(source_topics), "citationContext": "hyperlink",
+-                "extractionConfidence": "high", "completenessStatus": "minimal",
+-                "verificationStatus": "incomplete-citation", "verificationEvidence": None,
+-                "duplicateGroup": None, "notes": "Embedded URL extracted offline; destination not accessed.",
+-            })
+-    return candidates
+-
+-
+-def probable_key(filename: str) -> str:
+-    stem = Path(filename).stem.lower()
+-    stem = re.sub(r"\b(?:copy|final|revised|updated|old|new|version|ver|v)\s*\d*\b", "", stem)
+-    stem = re.sub(r"\b20\d{2}\b|\(\d+\)", "", stem)
+-    return re.sub(r"[^a-z0-9]+", "", stem)
+-
+-
+-def write_json(path: Path, value: object) -> None:
+-    path.parent.mkdir(parents=True, exist_ok=True)
+-    path.write_text(json.dumps(value, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
+-
+-
+-def write_md(path: Path, title: str, sections: Iterable[tuple[str, str]]) -> None:
+-    lines = [f"# {title}", ""]
+-    for heading, body in sections:
+-        lines.extend([f"## {heading}", "", body.strip(), ""])
+-    path.parent.mkdir(parents=True, exist_ok=True)
+-    path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+-
+-
+-def source_rows(records: list[dict], predicate) -> str:
+-    selected = [record for record in records if predicate(record)]
+-    if not selected:
+-        return "No non-quarantined matching sources were identified."
+-    lines = ["| Source ID | Type | Topics | Review state |", "|---|---|---|---|"]
+-    for record in selected:
+-        lines.append(f"| `{record['sourceId']}` | {record['sourceType']} | {', '.join(record['topicTags']) or 'classification pending'} | {record['reviewStatus']} |")
+-    return "\n".join(lines)
+-
+-
+-def proposal_graph(records: list[dict]) -> dict:
+-    nodes = []
+-    pilots = [
+-        ("rcrsp", "condition:shoulder/rotator-cuff-related-shoulder-pain", ["Current guideline", "Systematic review", "Clinician review"]),
+-        ("lateral-ankle-sprain", "condition:ankle-foot/lateral-ankle-sprain", ["Current guideline", "Systematic review", "Clinician review"]),
+-    ]
+-    for topic, target, evidence in pilots:
+-        ids = [r["sourceId"] for r in records if r["sensitivity"] != "quarantine" and topic in r["topicTags"]]
+-        if not ids:
+-            continue
+-        nodes.append({
+-            "proposalId": f"proposal-{topic}-evidence-development",
+-            "sourceIds": ids,
+-            "extractedTeachingTopic": topic.replace("-", " "),
+-            "proposedClinicalClaim": "Candidate teaching claims require extraction-level review, external evidence verification, and clinician approval before wording is drafted.",
+-            "targetContentId": target,
+-            "requiredEvidence": evidence,
+-            "clinicianReviewStatus": "required",
+-            "proposalStatus": "blocked-pending-evidence-and-clinician-review",
+-            "teachingSourceCanEstablishPublicApproval": False,
+-            "visualLicenceStatus": "unknown-review-required",
+-            "publicEligibility": False,
+-        })
+-    return {"schemaVersion": 1, "nodes": nodes}
+-
+-
+-def generate_pilot_reports(records: list[dict]) -> None:
+-    rcrsp = lambda r: r["sensitivity"] != "quarantine" and any(t in r["topicTags"] for t in ["rcrsp", "rotator-cuff-tear", "shoulder-differential"])
+-    ankle = lambda r: r["sensitivity"] != "quarantine" and any(t in r["topicTags"] for t in ["lateral-ankle-sprain", "ankle-ligament-anatomy", "fracture-screening", "syndesmosis"])
+-    common_disclaimer = "All extracted teaching statements remain unverified. No item is approved for public clinical use."
+-
+-    rdir = REPORTS / "rcrsp"
+-    write_md(rdir / "source-set.md", "RCRSP source set", [("Governance", common_disclaimer), ("Non-quarantined sources", source_rows(records, rcrsp))])
+-    write_md(rdir / "teaching-content-map.md", "RCRSP teaching content map", [
+-        ("Purpose", "Maps source coverage without reproducing source bodies or resolving disagreements."),
+-        ("Coverage", "Candidate topics include terminology, differential diagnosis, exercise and rehabilitation, prognosis, imaging, communication, anatomy, tests, and outcome measures where identified by extraction."),
+-        ("Comparison required", "Review overlap and conflicts source-by-source in the private cache. Unsupported or outdated-looking statements remain blocked. Images and diagrams require separate licence review."),
+-    ])
+-    write_md(rdir / "claims-requiring-verification.md", "RCRSP claims requiring verification", [("Blocked claim areas", "- Terminology and classification\n- Diagnostic value of individual tests and clusters\n- Imaging indications\n- Natural history and prognosis\n- Exercise and procedural intervention comparisons\n- Surgical referral indications\n- Patient communication and outcome-measure interpretation"), ("Status", common_disclaimer)])
+-    write_md(rdir / "evidence-gaps.md", "RCRSP evidence gaps", [("Required evidence", "Current guidelines, systematic reviews, diagnostic-accuracy studies, prognostic cohorts, and intervention trials must be located and verified externally in a later approved phase."), ("Approval", "Clinician review is required after evidence verification.")])
+-    write_md(rdir / "proposed-content-links.md", "RCRSP proposed content links", [("Private proposals", "Potential targets include the existing shoulder condition reference, neutral guided case, rotator-cuff anatomy, special-test records, outcome measures, quizzes, flashcards, OSCE material, and patient explanation resources."), ("Publication", "All links are proposals only and public eligibility is false.")])
+-    steps = ["Initial presentation", "Learner differential", "Justification", "Additional history", "Red flags", "Examination planning", "Examination findings", "Investigation decision", "Management plan", "Patient explanation", "Expert reasoning comparison", "Reflection"]
+-    write_md(rdir / "guided-case-conversion-brief.md", "RCRSP guided-case conversion brief", [("Existing-case preservation", "The existing public case is not changed by this pilot."), ("Proposed step map", "\n".join(f"{i}. {step}: requires source-supported, clinician-reviewed content before implementation." for i, step in enumerate(steps, 1))), ("Expert answers", "No model answer is authored here. Every proposed expert answer requires cited source support and clinician approval.")])
+-    r_questions = [
+-        "Which current terminology and classification framework is preferred?", "What is the diagnostic value of tests and clusters?",
+-        "When is imaging indicated?", "What is the natural history and prognosis?", "How do exercise and procedural interventions compare?",
+-        "What are accepted surgical indications?", "Which communication and reassurance approaches are supported?", "Which outcome measures are appropriate?",
+-    ]
+-    hierarchy = "Preferred hierarchy: current clinical practice guideline; systematic review/meta-analysis; high-quality randomised trial; prognostic cohort; diagnostic-accuracy study; consensus statement when stronger evidence is unavailable. Suggested sources: guideline repositories, MEDLINE/PubMed, Cochrane Library, PEDro, and relevant professional bodies. No search was performed in this pilot."
+-    write_md(rdir / "evidence-search-questions.md", "RCRSP evidence search questions", [("Questions", "\n".join(f"- {q}" for q in r_questions)), ("Evidence hierarchy and sources", hierarchy)])
+-    write_md(rdir / "clinician-review-checklist.md", "RCRSP clinician review checklist", [("Checklist", "- [ ] Confirm terminology\n- [ ] Review differential and safety content\n- [ ] Verify every clinical claim against cited evidence\n- [ ] Confirm test and imaging limitations\n- [ ] Review management, prognosis and communication wording\n- [ ] Confirm case diagnosis remains hidden before reveal\n- [ ] Record named reviewer and decision outside this pilot")])
+-
+-    adir = REPORTS / "lateral-ankle-sprain"
+-    write_md(adir / "source-set.md", "Lateral ankle sprain source set", [("Governance", common_disclaimer), ("Non-quarantined sources", source_rows(records, ankle))])
+-    write_md(adir / "historical-leaflet-content-map.md", "Historical ankle leaflet content map", [
+-        ("Classification", "The January 2019 local patient-information leaflet is a historical/local-practice source. It requires current evidence cross-check and is not authoritative by itself."),
+-        ("Topic map", "Candidate topics: injury explanation, symptoms, early management, loading advice, exercises, recovery expectations, return-to-sport progression, and escalation advice."),
+-        ("Verification flags", "POLICE versus newer frameworks; ice and compression; medication timing; fixed exercise dosage; healing-time statements; bracing/strapping duration; return-to-sport criteria; recurrence prevention; emergency-review thresholds."),
+-        ("Interpretation", "These points are not declared wrong. They are queued for current evidence review."),
+-    ])
+-    ankle_claims = "- Acute management and loading framework\n- External support, ice and compression\n- Medication timing\n- Exercise dosage and progression\n- Recovery and healing-time statements\n- Bracing/strapping duration\n- Return-to-running and sport criteria\n- Recurrence prevention\n- Imaging, referral and emergency thresholds"
+-    write_md(adir / "claims-requiring-verification.md", "Lateral ankle sprain claims requiring verification", [("Blocked claim areas", ankle_claims), ("Status", common_disclaimer)])
+-    write_md(adir / "evidence-gaps.md", "Lateral ankle sprain evidence gaps", [("Required evidence", "Current clinical decision rules, guidelines, rehabilitation reviews, prognostic evidence, and return-to-sport consensus require external verification."), ("Approval", "Clinician review is required after evidence verification.")])
+-    write_md(adir / "proposed-condition-brief.md", "Lateral ankle sprain condition brief", [("Status", "Private proposal only; no public route or clinical answer page is created."), ("Proposed structure", "Overview; assessment and fracture screening; differentials; early management; progressive loading; exercise rehabilitation; return to activity; recurrence prevention; escalation; evidence limitations; patient communication."), ("Blocking rule", "No section may be drafted as a public clinical claim without verified sources and clinician review.")])
+-    write_md(adir / "proposed-guided-case-brief.md", "Lateral ankle sprain guided-case brief", [("Status", "Private proposal only."), ("Reasoning structure", "Neutral presentation; differential entry; cannot-miss screening; examination plan; findings reveal; investigation decision; staged management; patient explanation; expert comparison; reflection."), ("Expert answers", "No model answer is authored. Every expert step requires source support and clinician approval.")])
+-    write_md(adir / "proposed-patient-information-update.md", "Lateral ankle sprain patient-information update proposal", [("Purpose", "Compare the historical local leaflet with current verified evidence before drafting an update."), ("Review areas", ankle_claims), ("Copyright", "Do not copy the source leaflet into the public repository. Any replacement must use newly reviewed wording and approved assets.")])
+-    ankle_questions = [
+-        "Which clinical decision rules support fracture screening?", "What supports acute loading and external support?",
+-        "Which exercise and balance interventions improve recovery or reduce recurrence?", "What criteria support return to running and sport?",
+-        "How should chronic ankle instability be screened and managed?", "When are imaging and referral indicated?",
+-        "What should current patient information recommend?",
+-    ]
+-    write_md(adir / "evidence-search-questions.md", "Lateral ankle sprain evidence search questions", [("Questions", "\n".join(f"- {q}" for q in ankle_questions)), ("Evidence hierarchy and sources", hierarchy)])
+-    write_md(adir / "clinician-review-checklist.md", "Lateral ankle sprain clinician review checklist", [("Checklist", "- [ ] Verify fracture and syndesmosis screening\n- [ ] Review acute management and loading\n- [ ] Verify exercise and progression advice\n- [ ] Confirm return-to-sport and recurrence-prevention criteria\n- [ ] Review escalation and emergency thresholds\n- [ ] Review patient-facing language\n- [ ] Verify all references\n- [ ] Record reviewer and decision outside this pilot")])
++from source_intake_engine import build_intake
+ 
+ 
+ def main() -> int:
+-    parser = argparse.ArgumentParser(description="Build the private source-intake pilot")
+-    parser.add_argument("--inbox", help="Private source inbox (or set SOURCE_INBOX_PATH)")
++    parser = argparse.ArgumentParser(description="Build governed private source-intake reports")
++    parser.add_argument("inbox", nargs="?", help="Private source inbox (or set MSK_SOURCE_INBOX)")
+     args = parser.parse_args()
+-    inbox_value = args.inbox or os.environ.get("SOURCE_INBOX_PATH")
+-    if not inbox_value:
+-        print("Source inbox is required via --inbox or SOURCE_INBOX_PATH.", file=sys.stderr)
+-        return 2
+-    inbox = Path(inbox_value).resolve()
++    supplied = args.inbox or os.environ.get("MSK_SOURCE_INBOX")
++    if not supplied:
++        parser.error("supply a private inbox argument or MSK_SOURCE_INBOX")
++    inbox = Path(supplied)
+     if not inbox.is_dir():
+-        print("The supplied source inbox is not a directory.", file=sys.stderr)
+-        return 2
+-    try:
+-        inbox.relative_to(ROOT)
+-        print("The source inbox must remain outside the repository.", file=sys.stderr)
+-        return 2
+-    except ValueError:
+-        pass
+-
+-    CACHE.mkdir(parents=True, exist_ok=True)
+-    REPORTS.mkdir(parents=True, exist_ok=True)
+-    governed_names = load_governed_names()
+-    occurrences, top_count, nested_count, total_bytes = source_occurrences(inbox)
+-    grouped: dict[str, list[Occurrence]] = defaultdict(list)
+-    for occurrence in occurrences:
+-        grouped[source_id(occurrence.data)].append(occurrence)
+-
+-    records = []
+-    references = []
+-    fatal = []
+-    for sid, source_occurs in sorted(grouped.items()):
+-        canonical = sorted(source_occurs, key=lambda item: (item.container_source_id is not None, item.logical_path))[0]
+-        extension = Path(canonical.filename).suffix.lower() or "unknown"
+-        filename_quarantine = bool(QUARANTINE_FILENAME.search(canonical.filename))
+-        filename_restricted = bool(RESTRICTED_FILENAME.search(canonical.filename))
+-        support = "supported" if extension in SUPPORTED else "metadata-only" if extension in METADATA_ONLY else "unsupported"
+-        units = []
+-        meta = {"method": "metadata-only" if support == "metadata-only" else "unsupported", "tables": 0, "images": 0, "warnings": []}
+-        status = "quarantined" if filename_quarantine else "metadata-only" if support == "metadata-only" else "unsupported"
+-        findings = [{"category": "sensitive-filename-indicator", "count": 1}] if filename_quarantine else []
+-        if not filename_quarantine and support == "supported":
+-            try:
+-                units, meta = extract_text(canonical.data, extension)
+-                status = "extracted"
+-            except Exception as error:
+-                meta = {"method": f"{extension[1:]}-extraction-failed", "tables": 0, "images": 0, "warnings": [f"Extraction failed: {type(error).__name__}"]}
+-                status = "failed"
+-        combined_text = "\n".join(f"{unit.get('text', '')}\n{unit.get('notes', '')}" for unit in units)
+-        if combined_text:
+-            content_findings, fatal_secret, fatal_patient = count_sensitive(combined_text, governed_names)
+-            findings.extend(content_findings)
+-            if fatal_secret:
+-                fatal.append((sid, "credential-or-secret"))
+-            if fatal_patient:
+-                fatal.append((sid, "patient-or-hospital-number"))
+-        else:
+-            fatal_secret = fatal_patient = False
+-        sensitivity = "quarantine" if filename_quarantine or fatal_secret or fatal_patient else "restricted" if filename_restricted or findings else "review-required"
+-        if sensitivity == "quarantine":
+-            status = "quarantined"
+-        topics = tags_for(f"{canonical.filename}\n{combined_text[:60000]}", TOPIC_TERMS)
+-        regions = tags_for(f"{canonical.filename}\n{combined_text[:60000]}", REGION_TERMS)
+-        source_type = classify_type(canonical.filename, extension, combined_text)
+-        if sid == "src-7b548a958b41":
+-            source_type = "local-patient-leaflet"
+-            topics = sorted(set(topics + ["lateral-ankle-sprain", "patient-information"]))
+-            regions = sorted(set(regions + ["ankle-foot"]))
+-        record = {
+-            "sourceId": sid,
+-            "checksum": f"sha256:{sha256(canonical.data)}",
+-            "logicalPath": f"quarantine/{sid}" if sensitivity == "quarantine" else redact_governed(canonical.logical_path, governed_names),
+-            "originalFilename": f"restricted-{sid}{extension if extension != 'unknown' else ''}" if sensitivity == "quarantine" else redact_governed(canonical.filename, governed_names),
+-            "fileType": extension,
+-            "byteSize": len(canonical.data),
+-            "modifiedDate": canonical.modified_date,
+-            "containerSourceId": canonical.container_source_id,
+-            "occurrences": [{"logicalPath": f"quarantine/{sid}" if sensitivity == "quarantine" else redact_governed(item.logical_path, governed_names), "containerSourceId": item.container_source_id} for item in source_occurs],
+-            "sourceType": source_type,
+-            "topicTags": topics,
+-            "regionTags": regions,
+-            "duplicateGroup": f"exact-{sid}" if len(source_occurs) > 1 else None,
+-            "probableVersionGroup": None,
+-            "sensitivity": sensitivity,
+-            "sensitivityFindings": findings,
+-            "extractionSupport": support,
+-            "extractionStatus": status,
+-            "extractionMetadata": {
+-                "method": meta["method"], "pageOrSlideCount": len(units) or None,
+-                "extractedCharacterCount": len(combined_text), "headingsDetected": compact_heading(combined_text, governed_names),
+-                "referencesSectionDetected": bool(re.search(r"\b(?:references|bibliography|further reading)\b", combined_text, re.I)),
+-                "tablesDetected": meta["tables"], "imagesDetected": meta["images"],
+-                "confidence": "high" if status == "extracted" and len(combined_text) > 200 else "medium" if combined_text else "none",
+-                "warnings": meta["warnings"],
+-            },
+-            "copyrightOrLicenceStatus": "unknown",
+-            "intendedUse": ["private evidence-development triage"],
+-            "reviewStatus": "quarantined" if sensitivity == "quarantine" else "restricted-review" if sensitivity == "restricted" else "needs-review",
+-            "publicEligibility": False,
+-        }
+-        records.append(record)
+-        if units:
+-            write_json(CACHE / f"{sid}.json", {"sourceId": sid, "units": units, "metadata": meta})
+-        if sensitivity != "quarantine":
+-            references.extend(reference_candidates(record, units, governed_names))
+-
+-    if fatal:
+-        categories = Counter(category for _, category in fatal)
+-        print("STOP: undisclosed high-risk material detected during private screening.", file=sys.stderr)
+-        for category, count in sorted(categories.items()):
+-            print(f"- {category}: {count} source(s)", file=sys.stderr)
+-        print("No tracked intake reports were generated. Review the private cache and inbox manually.", file=sys.stderr)
+-        return 3
+-
+-    version_groups: dict[str, list[dict]] = defaultdict(list)
+-    for record in records:
+-        if record["sensitivity"] != "quarantine":
+-            key = probable_key(record["originalFilename"])
+-            if len(key) >= 8:
+-                version_groups[key].append(record)
+-    probable_groups = []
+-    for index, members in enumerate((group for group in version_groups.values() if len(group) > 1), 1):
+-        group_id = f"version-{index:03d}"
+-        for member in members:
+-            member["probableVersionGroup"] = group_id
+-        probable_groups.append((group_id, members))
+-
+-    ref_groups: dict[str, list[dict]] = defaultdict(list)
+-    for ref in references:
+-        key = (ref["doi"] or ref["pmid"] or re.sub(r"\W+", "", ref["citationText"]).lower())[:180]
+-        ref_groups[key].append(ref)
+-    exact_ref_groups = []
+-    for idx, group in enumerate((g for g in ref_groups.values() if len(g) > 1), 1):
+-        group_id = f"ref-exact-{idx:03d}"
+-        for ref in group:
+-            ref["duplicateGroup"] = group_id
+-            ref["verificationStatus"] = "likely-duplicate"
+-        exact_ref_groups.append((group_id, group))
+-
+-    probable_keys: dict[str, list[dict]] = defaultdict(list)
+-    for ref in references:
+-        if ref["duplicateGroup"] or not ref["authors"] or not ref["year"]:
+-            continue
+-        author = re.sub(r"\W+", "", ref["authors"][0]).lower()
+-        probable_keys[f"{author}|{ref['year'].lower()}"].append(ref)
+-    probable_ref_groups = []
+-    for idx, group in enumerate((g for g in probable_keys.values() if len(g) > 1), 1):
+-        group_id = f"ref-probable-{idx:03d}"
+-        for ref in group:
+-            ref["duplicateGroup"] = group_id
+-            ref["verificationStatus"] = "likely-duplicate"
+-        probable_ref_groups.append((group_id, group))
+-
+-    manifest = {
+-        "schemaVersion": 1,
+-        "generatedFrom": {"locationCategory": "private-external-inbox", "absolutePathStored": False},
+-        "records": records,
+-        "summary": {
+-            "topLevelFiles": top_count, "nestedFiles": nested_count, "uniqueSources": len(records),
+-            "totalObservedBytes": total_bytes,
+-            "exactDuplicateGroups": sum(1 for r in records if r["duplicateGroup"]),
+-            "probableVersionGroups": len(probable_groups),
+-            "quarantinedSources": sum(r["sensitivity"] == "quarantine" for r in records),
+-            "manualReviewSources": sum(r["sensitivity"] in {"review-required", "restricted"} for r in records),
+-        },
+-    }
+-    write_json(REPORTS / "source-manifest.json", manifest)
+-    write_json(REPORTS / "references" / "candidate-reference-registry.json", {"schemaVersion": 1, "externalLookupPerformed": False, "records": references})
+-    write_json(REPORTS / "source-to-content-graph.json", proposal_graph(records))
+-
+-    type_counts = Counter(r["fileType"] for r in records)
+-    status_counts = Counter(r["extractionStatus"] for r in records)
+-    region_counts = Counter(tag for r in records if r["sensitivity"] != "quarantine" for tag in r["regionTags"])
+-    topic_counts = Counter(tag for r in records if r["sensitivity"] != "quarantine" for tag in r["topicTags"])
+-    write_md(REPORTS / "README.md", "Private source-intake pilot", [
+-        ("Purpose", "Governed metadata and evidence-development proposals for private teaching sources. Source bodies and full extracted text remain outside tracked files."),
+-        ("Boundary", "Every record has public eligibility set to false. Copyright/licence and clinical claims require separate review."),
+-        ("Reproduction", "Run the source-intake command with an operator-supplied private inbox path. The path is never stored in tracked output."),
+-    ])
+-    write_md(REPORTS / "source-summary.md", "Source intake summary", [
+-        ("Counts", f"- Top-level files: {top_count}\n- Nested archive files: {nested_count}\n- Unique exact-byte sources: {len(records)}\n- Observed bytes: {total_bytes}\n- Exact duplicate groups: {manifest['summary']['exactDuplicateGroups']}\n- Probable version groups: {len(probable_groups)}\n- Quarantined sources: {manifest['summary']['quarantinedSources']}"),
+-        ("File types", "\n".join(f"- `{key}`: {value}" for key, value in sorted(type_counts.items()))),
+-        ("Governance", "No source body, private absolute path, approval claim, or verified-evidence claim is included."),
+-    ])
+-    exact_lines = []
+-    for record in records:
+-        if record["duplicateGroup"]:
+-            exact_lines.append(f"- `{record['duplicateGroup']}`: canonical `{record['sourceId']}`; {len(record['occurrences'])} occurrences; exact SHA-256 match.")
+-    version_lines = []
+-    for group_id, members in probable_groups:
+-        member_ids = ", ".join(f"`{member['sourceId']}`" for member in members)
+-        version_lines.append(
+-            f"- `{group_id}`: {member_ids}; filename-normalisation match; manual review required."
+-        )
+-    write_md(REPORTS / "duplicate-report.md", "Duplicate and version analysis", [("Exact duplicates", "\n".join(exact_lines) or "None detected."), ("Probable versions", "\n".join(version_lines) or "None detected."), ("Action", "No source was deleted. Canonical selection remains a manual decision.")])
+-    quarantine_counts = Counter(item["category"] for r in records if r["sensitivity"] == "quarantine" for item in r["sensitivityFindings"])
+-    write_md(REPORTS / "quarantine-report.md", "Quarantine report", [("Summary", f"{manifest['summary']['quarantinedSources']} sources are quarantined."), ("Categories", "\n".join(f"- {key}: {value}" for key, value in sorted(quarantine_counts.items())) or "No category counts."), ("Handling", "Matched values, source names and source bodies are intentionally omitted. Quarantined sources were not used for references or proposals.")])
+-    write_md(REPORTS / "extraction-status.md", "Extraction status", [("Counts", "\n".join(f"- {key}: {value}" for key, value in sorted(status_counts.items()))), ("Methods", "Embedded text was used where supported. Image/video files are metadata-only, legacy binary office formats are unsupported, and OCR was not run."), ("Cache", "Full extracted text is held only in the ignored private cache.")])
+-    write_md(REPORTS / "topic-index.md", "Topic and region index", [("Regions", "\n".join(f"- {key}: {value}" for key, value in sorted(region_counts.items())) or "No regions detected."), ("Topics", "\n".join(f"- {key}: {value}" for key, value in sorted(topic_counts.items())) or "No topics detected."), ("Caution", "Counts are automated triage labels, not clinical classification or approval.")])
+-    write_md(REPORTS / "review-queue.md", "Source review queue", [("Priority", "1. Manually clear or retain quarantined sources.\n2. Verify copyright/licence and source category.\n3. Review extraction quality.\n4. Verify candidate references externally.\n5. Review RCRSP and ankle evidence questions.\n6. Obtain clinician approval before any public content change."), ("Status", "All sources remain private and unapproved.")])
+-
+-    full_refs = sum(r["completenessStatus"] == "full" for r in references)
+-    doi_count = sum(bool(r["doi"]) for r in references)
+-    pmid_count = sum(bool(r["pmid"]) for r in references)
+-    url_count = sum(bool(r["url"]) for r in references)
+-    write_md(REPORTS / "references" / "candidate-reference-summary.md", "Candidate reference summary", [("Counts", f"- Total candidates: {len(references)}\n- Full citations: {full_refs}\n- Incomplete/minimal citations: {len(references) - full_refs}\n- DOI present: {doi_count}\n- PMID present: {pmid_count}\n- URL present: {url_count}\n- Exact duplicate groups: {len(exact_ref_groups)}\n- Probable duplicate groups: {len(probable_ref_groups)}"), ("Status", "All candidates were extracted offline and remain unverified. A citation in teaching material is not evidence approval.")])
+-    exact_group_lines = [f"- `{gid}`: {len(group)} occurrences across {len(set(r['sourceId'] for r in group))} source(s)." for gid, group in exact_ref_groups]
+-    probable_group_lines = [f"- `{gid}`: {len(group)} variants sharing stated first author and year; manual verification required." for gid, group in probable_ref_groups]
+-    write_md(REPORTS / "references" / "duplicate-reference-groups.md", "Duplicate reference groups", [("Exact groups", "\n".join(exact_group_lines) or "None detected."), ("Probable groups", "\n".join(probable_group_lines) or "None detected."), ("Action", "Probable variants require manual bibliographic verification; none were discarded.")])
+-    incomplete = [r for r in references if r["completenessStatus"] != "full"]
+-    write_md(REPORTS / "references" / "incomplete-reference-queue.md", "Incomplete reference queue", [("Queue", "\n".join(f"- `{r['candidateReferenceId']}` from `{r['sourceId']}` at {r['location']}: {r['verificationStatus']}" for r in incomplete) or "No incomplete candidates."), ("Lookup", "External lookup was not performed.")])
+-    identifiers = [r for r in references if r["doi"] or r["pmid"] or r["url"]]
+-    write_md(REPORTS / "references" / "identifier-verification-queue.md", "Identifier verification queue", [("Queue", "\n".join(f"- `{r['candidateReferenceId']}` from `{r['sourceId']}`: {'DOI' if r['doi'] else 'PMID' if r['pmid'] else 'URL'} present and unverified." for r in identifiers) or "No identifiers extracted."), ("Rule", "Identifiers must be checked against authoritative bibliographic sources in a later approved phase.")])
+-    ref_topic_counts = Counter(topic.strip() for r in references for topic in r["relatedTopicOrClaim"].split(",") if topic.strip())
+-    write_md(REPORTS / "references" / "topic-to-reference-index.md", "Topic-to-reference index", [("Counts", "\n".join(f"- {topic}: {count}" for topic, count in sorted(ref_topic_counts.items())) or "No topic links."), ("Meaning", "These are extraction associations only, not evidence endorsements.")])
+-
+-    generate_pilot_reports(records)
+-    print(json.dumps({
+-        "topLevelFiles": top_count, "nestedFiles": nested_count, "uniqueSources": len(records),
+-        "quarantinedSources": manifest["summary"]["quarantinedSources"], "candidateReferences": len(references),
+-        "rcrspSources": sum(1 for r in records if r["sensitivity"] != "quarantine" and "rcrsp" in r["topicTags"]),
+-        "ankleSources": sum(1 for r in records if r["sensitivity"] != "quarantine" and "lateral-ankle-sprain" in r["topicTags"]),
+-    }, indent=2))
++        parser.error("the supplied private inbox is not a readable directory")
++    result = build_intake(inbox)
++    print(json.dumps(result, indent=2, sort_keys=True))
+     return 0
+ 
+ 
+diff --git a/ai-manager/scripts/source_intake_policy.py b/ai-manager/scripts/source_intake_policy.py
+new file mode 100644
+index 0000000..e70d1a0
+--- /dev/null
++++ b/ai-manager/scripts/source_intake_policy.py
+@@ -0,0 +1,195 @@
++"""Shared sensitive-data and path policy for private source intake."""
++
++from __future__ import annotations
++
++import json
++import re
++import unicodedata
++from dataclasses import dataclass
++from pathlib import Path, PurePosixPath
++
++
++ROOT = Path(__file__).resolve().parents[2]
++POLICY_FILE = ROOT / "ai-manager" / "config" / "sensitive-data-policy.json"
++HYGIENE_FILE = ROOT / "ai-manager" / "content-hygiene-names.json"
++
++BIDI_CONTROLS = "\u061c\u200e\u200f\u202a\u202b\u202c\u202d\u202e\u2066\u2067\u2068\u2069"
++MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
++
++EMAIL = re.compile(r"(?<![\w.+-])[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}(?![\w.-])", re.I)
++PHONE = re.compile(
++    r"(?<!\d)(?:(?:\+|00)44[\s().-]*\d(?:[\s().-]*\d){8,10}|0\d(?:[\s().-]*\d){8,10})(?!\d)"
++)
++POSTCODE = re.compile(r"\b(?:GIR\s?0AA|[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2})\b", re.I)
++DOB = re.compile(
++    rf"\b(?:DOB|date\s+of\s+birth|born)\s*[:#-]?\s*(?:"
++    rf"\d{{1,2}}[./-]\d{{1,2}}[./-]\d{{2,4}}|"
++    rf"\d{{4}}-\d{{2}}-\d{{2}}|"
++    rf"\d{{1,2}}\s+(?:{MONTHS})\s+\d{{4}}|"
++    rf"(?:{MONTHS})\s+\d{{1,2}},?\s+\d{{4}})\b",
++    re.I,
++)
++LABELLED_NHS = re.compile(r"\bNHS\s*(?:number|no\.?|id)?\s*[:#-]?\s*(?:\d[\s-]*){10}\b", re.I)
++TEN_DIGIT = re.compile(r"(?<!\d)(?:\d[ -]?){9}\d(?!\d)")
++PATIENT_ID = re.compile(
++    r"\b(?:hospital|patient|medical\s+record|case)\s*(?:number|no\.?|id|identifier)\s*[:#-]?\s*[A-Z0-9][A-Z0-9/-]{4,19}\b",
++    re.I,
++)
++STUDENT_ID = re.compile(
++    r"\b(?:student|candidate|university)\s*(?:number|no\.?|id|identifier)\s*[:#-]?\s*[A-Z0-9][A-Z0-9/-]{4,19}\b",
++    re.I,
++)
++WINDOWS_PATH = re.compile(r"\b[A-Z]:[\\/](?:Users|dev|home|Documents|Desktop|Downloads)[\\/][^\r\n]+", re.I)
++UNC_PATH = re.compile(r"\\\\[^\\\s]+\\[^\r\n]+")
++PRIVATE_KEY = re.compile("-----BEGIN [A-Z ]*" + "PRIVATE" + " KEY-----")
++JWT = re.compile(r"\b[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b")
++GITHUB_TOKEN = re.compile(r"\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})\b")
++AWS_KEY = re.compile(r"\b(?:A" + "KIA|A" + r"SIA)[A-Z0-9]{16}\b")
++SLACK_TOKEN = re.compile(r"\bxox[a-z]-[A-Za-z0-9-]{20,}\b")
++GENERIC_KEY_NAMES = "|".join([
++    "_".join(["API", "KEY"]),
++    "_".join(["ACCESS", "TOKEN"]),
++    "_".join(["PRIVATE", "KEY"]),
++    "".join(["SEC", "RET"]),
++])
++GENERIC_KEY = re.compile(rf"\b(?:{GENERIC_KEY_NAMES})\b\s*[:=]\s*[^\s,;]{{8,}}", re.I)
++CONTACT_WORDS = re.compile(
++    r"\b(?:presented\s+by|presentation\s+by|author\s+contact|correspondence|e-?mail|telephone|phone|contact|address)\b",
++    re.I,
++)
++HONORIFIC = re.compile(r"\b(?:Mr|Mrs|Ms|Miss|Dr|Professor|Prof)\.?\s+[A-Z][A-Za-z'’-]+(?:\s+[A-Z][A-Za-z'’-]+)+")
++
++
++@dataclass(frozen=True)
++class Finding:
++    category: str
++    start: int
++    end: int
++
++
++def load_policy() -> dict:
++    return json.loads(POLICY_FILE.read_text(encoding="utf-8"))
++
++
++def load_governed_names() -> list[str]:
++    value = json.loads(HYGIENE_FILE.read_text(encoding="utf-8"))
++    return sorted({item.strip() for item in value.get("termsToFlag", []) if item.strip()}, key=len, reverse=True)
++
++
++def _valid_nhs_candidate(value: str) -> bool:
++    digits = [int(item) for item in re.sub(r"\D", "", value)]
++    if len(digits) != 10:
++        return False
++    total = sum(digit * weight for digit, weight in zip(digits[:9], range(10, 1, -1)))
++    check = 11 - (total % 11)
++    if check == 11:
++        check = 0
++    return check != 10 and check == digits[9]
++
++
++def _pattern_findings(category: str, pattern: re.Pattern[str], text: str) -> list[Finding]:
++    return [Finding(category, match.start(), match.end()) for match in pattern.finditer(text)]
++
++
++def scan_sensitive(text: str, governed_names: list[str] | None = None) -> list[Finding]:
++    names = governed_names if governed_names is not None else load_governed_names()
++    findings: list[Finding] = []
++    for category, pattern in [
++        ("email-address", EMAIL),
++        ("telephone-number", PHONE),
++        ("uk-postcode", POSTCODE),
++        ("date-of-birth", DOB),
++        ("nhs-number", LABELLED_NHS),
++        ("patient-or-hospital-identifier", PATIENT_ID),
++        ("student-or-candidate-identifier", STUDENT_ID),
++        ("private-absolute-path", WINDOWS_PATH),
++        ("unc-path", UNC_PATH),
++        ("credential-value", PRIVATE_KEY),
++        ("credential-value", JWT),
++        ("credential-value", GITHUB_TOKEN),
++        ("credential-value", AWS_KEY),
++        ("credential-value", SLACK_TOKEN),
++        ("credential-value", GENERIC_KEY),
++    ]:
++        findings.extend(_pattern_findings(category, pattern, text))
++    for match in TEN_DIGIT.finditer(text):
++        if _valid_nhs_candidate(match.group(0)) and not any(
++            finding.start <= match.start() < finding.end for finding in findings if finding.category == "nhs-number"
++        ):
++            findings.append(Finding("suspicious-nhs-candidate", match.start(), match.end()))
++    lower = text.casefold()
++    for name in names:
++        start = 0
++        needle = name.casefold()
++        while (index := lower.find(needle, start)) >= 0:
++            findings.append(Finding("governed-sensitive-name", index, index + len(name)))
++            start = index + len(name)
++    for index, character in enumerate(text):
++        code = ord(character)
++        if character in BIDI_CONTROLS or (code < 32 and character not in "\t\r\n") or 0x7F <= code <= 0x9F:
++            findings.append(Finding("bidi-or-control-character", index, index + 1))
++    has_contact = bool(CONTACT_WORDS.search(text)) and bool(
++        EMAIL.search(text) or PHONE.search(text) or POSTCODE.search(text) or HONORIFIC.search(text)
++    )
++    if has_contact:
++        findings.append(Finding("contact-or-correspondence-block", 0, len(text)))
++    return sorted(set(findings), key=lambda item: (item.start, item.end, item.category))
++
++
++def credential_rule_counts(text: str) -> dict[str, int]:
++    rules = {
++        "private-key-material": PRIVATE_KEY,
++        "jwt-shaped": JWT,
++        "github-token-shaped": GITHUB_TOKEN,
++        "aws-access-key-shaped": AWS_KEY,
++        "slack-token-shaped": SLACK_TOKEN,
++        "generic-key-assignment": GENERIC_KEY,
++    }
++    return {rule_id: len(pattern.findall(text)) for rule_id, pattern in rules.items() if pattern.search(text)}
++
++
++def finding_counts(findings: list[Finding]) -> list[dict]:
++    counts: dict[str, int] = {}
++    for finding in findings:
++        counts[finding.category] = counts.get(finding.category, 0) + 1
++    return [{"category": key, "count": counts[key]} for key in sorted(counts)]
++
++
++def sanitize_tracked_line(
++    text: str,
++    governed_names: list[str] | None = None,
++    *,
++    maximum_length: int = 280,
++) -> tuple[str | None, list[dict]]:
++    normalized = unicodedata.normalize("NFC", text).strip()
++    findings = scan_sensitive(normalized, governed_names)
++    counts = finding_counts(findings)
++    if findings:
++        return None, counts
++    compact = re.sub(r"\s+", " ", normalized)
++    return compact[:maximum_length] if compact else None, counts
++
++
++def safe_display_name(filename: str, display_source_id: str, governed_names: list[str] | None = None) -> tuple[str, list[dict]]:
++    normalized = unicodedata.normalize("NFC", filename)
++    findings = scan_sensitive(normalized, governed_names)
++    if findings or len(normalized) > load_policy()["documentLimits"]["maximumFilenameLength"]:
++        suffix = Path(filename).suffix.lower()
++        return f"restricted-{display_source_id}{suffix}", finding_counts(findings)
++    return normalized, []
++
++
++def normalize_archive_member(name: str, maximum_length: int) -> tuple[str | None, str | None]:
++    normalized = unicodedata.normalize("NFC", name.replace("\\", "/"))
++    if len(normalized) > maximum_length:
++        return None, "filename-too-long"
++    for character in normalized:
++        code = ord(character)
++        if character in BIDI_CONTROLS or code == 0 or code < 32 or 0x7F <= code <= 0x9F:
++            return None, "unsafe-unicode-or-path"
++    candidate = PurePosixPath(normalized)
++    if candidate.is_absolute() or re.match(r"^[A-Za-z]:", normalized):
++        return None, "absolute-path"
++    if any(part in {"", ".", ".."} for part in candidate.parts):
++        return None, "path-traversal"
++    return candidate.as_posix(), None
+diff --git a/ai-manager/scripts/test-source-intake-validation.mjs b/ai-manager/scripts/test-source-intake-validation.mjs
+new file mode 100644
+index 0000000..ed51930
+--- /dev/null
++++ b/ai-manager/scripts/test-source-intake-validation.mjs
+@@ -0,0 +1,51 @@
++import assert from 'node:assert/strict'
++import fs from 'node:fs'
++import path from 'node:path'
++import { scanSensitiveText } from './sensitiveDataPolicy.mjs'
++import { scanTrackedText, sourceAllowsScope } from './validate-source-intake-pilot.mjs'
++import { clearanceLedgerSchema, securityFalsePositiveDecisionsSchema } from '../schemas/sourceIntakeSchemas.mjs'
++
++const hygiene = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'ai-manager', 'content-hygiene-names.json'), 'utf8'))
++const governed = hygiene.termsToFlag[0]
++const fixtures = [
++  ['email-address', `fixture${'@'}example.test`],
++  ['telephone-number', ['+44', '7123', '456', '789'].join(' ')],
++  ['uk-postcode', ['AB1', '2CD'].join(' ')],
++  ['date-of-birth', ['DOB:', '01/02/1990'].join(' ')],
++  ['student-or-candidate-identifier', ['student id:', 'ZZ12345'].join(' ')],
++  ['governed-sensitive-name', governed],
++  ['private-absolute-path', ['C:', 'Users', 'fixture', 'private.txt'].join('\\')],
++  ['unc-path', '\\\\fixture-server\\private-share\\file.txt'],
++  ['credential-value', `${['gh', 'p_'].join('')}${'A'.repeat(24)}`],
++  ['bidi-or-control-character', `safe${String.fromCharCode(0x202e)}unsafe`],
++]
++const contexts = ['citationText', 'headingsDetected', 'url', 'logicalPath', 'occurrencePath', 'markdown']
++let checks = 0
++for (const [category, value] of fixtures) {
++  assert(scanSensitiveText(value).includes(category), `policy missed ${category}`)
++  for (const context of contexts) {
++    const findings = scanTrackedText(JSON.stringify({ [context]: value }), context)
++    assert(findings.some((item) => item.includes(category)), `${context} missed ${category}`)
++    checks += 1
++  }
++}
++assert.equal(scanTrackedText(JSON.stringify({ summary: { suppressedEmailCount: 2 } })).length, 0)
++const restricted = { sensitivity: 'restricted-pending-clearance', clearanceScopes: [] }
++const quarantined = { sensitivity: 'quarantined', clearanceScopes: [] }
++const clearedCitation = { sensitivity: 'cleared-for-private-evidence-processing', clearanceScopes: ['citation-extraction'] }
++assert.equal(sourceAllowsScope(restricted, 'citation-extraction'), false)
++assert.equal(sourceAllowsScope(restricted, 'private-proposal-support'), false)
++assert.equal(sourceAllowsScope(quarantined, 'citation-extraction'), false)
++assert.equal(sourceAllowsScope(clearedCitation, 'citation-extraction'), true)
++assert.equal(sourceAllowsScope(clearedCitation, 'private-proposal-support'), false)
++const checksum = `sha256:${'a'.repeat(64)}`
++const entry = { checksum, sourceId: 'src-aaaaaaaaaaaa', decision: 'clear-for-private-evidence-processing', clearanceScope: ['citation-extraction'], decidedBy: 'fixture-reviewer', decisionDate: '2026-01-01', reason: 'fictional test decision', previousStatus: 'restricted-pending-clearance', currentStatus: 'cleared-for-private-evidence-processing' }
++assert.equal(clearanceLedgerSchema.safeParse({ schemaVersion: 1, publicationApprovalRepresented: false, entries: [entry] }).success, true)
++assert.equal(clearanceLedgerSchema.safeParse({ schemaVersion: 1, publicationApprovalRepresented: false, entries: [{ ...entry, previousStatus: 'quarantined' }] }).success, false)
++assert.equal(clearanceLedgerSchema.safeParse({ schemaVersion: 1, publicationApprovalRepresented: false, entries: [entry, entry] }).success, false)
++const securityEntry = { checksum, sourceId: 'src-aaaaaaaaaaaa', detectorRuleId: 'aws-access-key-shaped', matchCount: 4, decision: 'false-positive-confirmed', decisionScope: 'credential-stop-override-for-exact-checksum-only', reviewedBy: 'operator-manual-review', decisionDate: '2026-01-01', rationale: 'Fictional fixture manually reviewed and not operational.' }
++const securityBase = { schemaVersion: 1, publicationApprovalRepresented: false, copyrightApprovalRepresented: false, clinicalApprovalRepresented: false }
++assert.equal(securityFalsePositiveDecisionsSchema.safeParse({ ...securityBase, entries: [securityEntry] }).success, true)
++assert.equal(securityFalsePositiveDecisionsSchema.safeParse({ ...securityBase, entries: [securityEntry, securityEntry] }).success, false)
++assert.equal(securityFalsePositiveDecisionsSchema.safeParse({ ...securityBase, publicationApprovalRepresented: true, entries: [securityEntry] }).success, false)
++console.log(`Source-intake output validation fixtures passed: ${checks} context checks.`)
+diff --git a/ai-manager/scripts/validate-source-intake-pilot.mjs b/ai-manager/scripts/validate-source-intake-pilot.mjs
+index 0e16644..27dcbc0 100644
+--- a/ai-manager/scripts/validate-source-intake-pilot.mjs
++++ b/ai-manager/scripts/validate-source-intake-pilot.mjs
+@@ -1,191 +1,242 @@
+ import fs from 'node:fs'
+ import path from 'node:path'
++import { fileURLToPath } from 'node:url'
++import { TextDecoder } from 'node:util'
+ import {
+-  candidateReferenceRegistrySchema,
+-  sourceIntakeManifestSchema,
+-  sourceToContentGraphSchema,
+-} from '../schemas/managerSchemas.mjs'
+-import { CREDENTIAL_RULES } from '../../scripts/lib/secretPatterns.mjs'
++  candidateReferenceRegistryV2Schema,
++  classificationOverridesSchema,
++  clearanceLedgerSchema,
++  securityFalsePositiveDecisionsSchema,
++  sourceIntakeManifestV2Schema,
++  sourceIntakeRunManifestSchema,
++  sourceToContentGraphV2Schema,
++} from '../schemas/sourceIntakeSchemas.mjs'
++import { scanSensitiveText } from './sensitiveDataPolicy.mjs'
+ 
+ const ROOT = process.cwd()
+ const REPORT_DIR = path.join(ROOT, 'ai-manager', 'reports', 'source-intake-pilot')
+-const MANIFEST_FILE = path.join(REPORT_DIR, 'source-manifest.json')
+-const REFERENCES_FILE = path.join(REPORT_DIR, 'references', 'candidate-reference-registry.json')
+-const GRAPH_FILE = path.join(REPORT_DIR, 'source-to-content-graph.json')
+ const findings = []
+ 
+-const manifest = validateJson(MANIFEST_FILE, sourceIntakeManifestSchema)
+-const references = validateJson(REFERENCES_FILE, candidateReferenceRegistrySchema)
+-const graph = validateJson(GRAPH_FILE, sourceToContentGraphSchema)
+-
+-if (manifest) validateManifest(manifest)
+-if (manifest && references) validateReferences(manifest, references)
+-if (manifest && graph) validateGraph(manifest, graph)
+-validateTrackedReports()
+-validatePrivateCacheIgnore()
+-
+-if (findings.length) {
+-  console.error('Private source-intake validation failed.')
+-  for (const finding of findings) console.error(`- ${finding}`)
+-  process.exit(1)
++export function validateSourceIntake(reportDir = REPORT_DIR, options = {}) {
++  findings.length = 0
++  const manifest = validateJson(path.join(reportDir, 'source-manifest.json'), sourceIntakeManifestV2Schema)
++  const references = validateJson(path.join(reportDir, 'references', 'candidate-reference-registry.json'), candidateReferenceRegistryV2Schema)
++  const graph = validateJson(path.join(reportDir, 'source-to-content-graph.json'), sourceToContentGraphV2Schema)
++  const run = validateJson(path.join(reportDir, 'run-manifest.json'), sourceIntakeRunManifestSchema)
++  const clearance = validateJson(path.join(ROOT, 'ai-manager', 'config', 'source-clearance-ledger.json'), clearanceLedgerSchema)
++  const overrides = validateJson(path.join(ROOT, 'ai-manager', 'config', 'source-classification-overrides.json'), classificationOverridesSchema)
++  const securityDecisions = validateJson(path.join(ROOT, 'ai-manager', 'config', 'security-false-positive-decisions.json'), securityFalsePositiveDecisionsSchema)
++  if (manifest) validateManifest(manifest)
++  if (manifest && references) validateReferences(manifest, references)
++  if (manifest && graph) validateGraph(manifest, graph)
++  if (manifest && run && references && graph) validateRun(manifest, references, graph, run, reportDir)
++  if (manifest && clearance) validateClearance(manifest, clearance)
++  if (manifest && overrides) validateOverrides(manifest, overrides)
++  if (manifest && securityDecisions) validateSecurityDecisions(manifest, securityDecisions)
++  validateTrackedReports(reportDir)
++  validatePrivateCacheIgnore()
++  if (!options.quiet) reportResult(manifest, references, graph)
++  return [...findings]
+ }
+ 
+-const records = manifest.records
+-console.log(
+-  `Private source-intake validation passed. ` +
+-  `${records.length} unique sources; ${manifest.summary.quarantinedSources} quarantined; ` +
+-  `${references.records.length} candidate references; ${graph.nodes.length} blocked proposals; public eligibility: 0.`,
+-)
+-
+ function validateJson(file, schema) {
+-  if (!fs.existsSync(file)) {
+-    findings.push(`missing required report: ${relative(file)}`)
+-    return null
+-  }
++  if (!fs.existsSync(file)) { findings.push(`missing required file: ${relative(file)}`); return null }
+   let value
+-  try {
+-    value = JSON.parse(fs.readFileSync(file, 'utf8'))
+-  } catch (error) {
+-    findings.push(`${relative(file)} is not valid JSON: ${error.message}`)
+-    return null
+-  }
++  try { value = JSON.parse(fs.readFileSync(file, 'utf8')) }
++  catch (error) { findings.push(`${relative(file)} is invalid JSON: ${error.message}`); return null }
+   const result = schema.safeParse(value)
+   if (!result.success) {
+-    for (const issue of result.error.issues) {
+-      findings.push(`${relative(file)} ${issue.path.join('.')}: ${issue.message}`)
+-    }
++    for (const issue of result.error.issues) findings.push(`${relative(file)} ${issue.path.join('.')}: ${issue.message}`)
+     return null
+   }
+   return result.data
+ }
+ 
+ function validateManifest(value) {
+-  const ids = new Set()
+-  const checksums = new Map()
++  const ids = new Map()
++  const checksums = new Set()
+   for (const record of value.records) {
+-    if (ids.has(record.sourceId)) findings.push(`duplicate source ID: ${record.sourceId}`)
+-    ids.add(record.sourceId)
+-    const existing = checksums.get(record.checksum)
+-    if (existing) findings.push(`duplicate checksum represented by separate source IDs: ${existing} and ${record.sourceId}`)
+-    checksums.set(record.checksum, record.sourceId)
+-    if (record.publicEligibility !== false) findings.push(`${record.sourceId} is incorrectly public eligible`)
+-    if (record.sensitivity === 'quarantine' && record.reviewStatus !== 'quarantined') {
+-      findings.push(`${record.sourceId} quarantine status is inconsistent`)
++    if (ids.has(record.sourceId) && ids.get(record.sourceId) !== record.checksum) findings.push(`display source-ID collision: ${record.sourceId}`)
++    ids.set(record.sourceId, record.checksum)
++    if (checksums.has(record.checksum)) findings.push(`duplicate full checksum represented twice: ${record.sourceId}`)
++    checksums.add(record.checksum)
++    if (!record.checksum.startsWith(`sha256:${record.sourceId.slice(4)}`)) findings.push(`${record.sourceId} does not match its checksum prefix`)
++    if (record.publicEligibility !== false) findings.push(`${record.sourceId} is public eligible`)
++    if (record.sensitivity === 'quarantined' && record.reviewStatus !== 'quarantined') findings.push(`${record.sourceId} quarantine state is inconsistent`)
++    if (record.sensitivity === 'restricted-pending-clearance' && record.clearanceScopes.length) findings.push(`${record.sourceId} has clearance scopes while restricted`)
++    for (const occurrence of record.occurrences) {
++      if (!isSafeLogicalPath(occurrence.logicalPath)) findings.push(`${record.sourceId} has unsafe occurrence path`)
+     }
+-    if (record.logicalPath.includes('..')) findings.push(`${record.sourceId} uses parent traversal in logical path`)
+   }
+-  if (value.summary.uniqueSources !== value.records.length) findings.push('manifest uniqueSources summary does not match records')
+-  if (value.summary.quarantinedSources !== value.records.filter((record) => record.sensitivity === 'quarantine').length) {
+-    findings.push('manifest quarantinedSources summary does not match records')
++  const expected = {
++    uniqueSources: value.records.length,
++    quarantinedSources: value.records.filter((item) => item.sensitivity === 'quarantined').length,
++    restrictedPendingClearanceSources: value.records.filter((item) => item.sensitivity === 'restricted-pending-clearance').length,
++    clearedSources: value.records.filter((item) => item.sensitivity === 'cleared-for-private-evidence-processing').length,
+   }
++  for (const [key, count] of Object.entries(expected)) if (value.summary[key] !== count) findings.push(`manifest ${key} summary mismatch`)
+ }
+ 
+-function validateReferences(manifestValue, registry) {
++function validateReferences(manifest, registry) {
+   const ids = new Set()
+-  const sources = new Map(manifestValue.records.map((record) => [record.sourceId, record]))
+-  const statuses = new Set([
+-    'extracted-unverified', 'incomplete-citation', 'identifier-present-unverified',
+-    'likely-duplicate', 'verified-later', 'unable-to-identify',
+-  ])
+-  const doiPattern = /^10\.\d{4,9}\/[-._;()/:A-Z0-9]+$/i
+-  const pmidPattern = /^\d{6,9}$/
++  const sources = new Map(manifest.records.map((item) => [item.sourceId, item]))
+   for (const record of registry.records) {
+     if (ids.has(record.candidateReferenceId)) findings.push(`duplicate candidate reference ID: ${record.candidateReferenceId}`)
+     ids.add(record.candidateReferenceId)
+-    if (!sources.has(record.sourceId)) findings.push(`${record.candidateReferenceId} has unknown source ID`)
+-    if (sources.get(record.sourceId)?.sensitivity === 'quarantine') {
+-      findings.push(`${record.candidateReferenceId} uses quarantined source ${record.sourceId}`)
+-    }
+-    if (!statuses.has(record.verificationStatus)) findings.push(`${record.candidateReferenceId} has invented verification status`)
+-    if (record.verificationStatus === 'verified-later' && !record.verificationEvidence) {
+-      findings.push(`${record.candidateReferenceId} is marked verified without evidence`)
+-    }
+-    if (record.doi && !doiPattern.test(record.doi)) findings.push(`${record.candidateReferenceId} has malformed DOI syntax`)
+-    if (record.pmid && !pmidPattern.test(record.pmid)) findings.push(`${record.candidateReferenceId} has malformed PMID syntax`)
+-    if (record.pageOrSlideNumber === null && !/document|embedded hyperlink/.test(record.location)) {
+-      findings.push(`${record.candidateReferenceId} is missing available page or slide provenance`)
++    const source = sources.get(record.sourceId)
++    if (!source) findings.push(`${record.candidateReferenceId} uses unknown source`)
++    else {
++      if (source.checksum !== record.sourceChecksum) findings.push(`${record.candidateReferenceId} source checksum mismatch`)
++      if (!sourceAllowsScope(source, 'citation-extraction')) findings.push(`${record.candidateReferenceId} uses source unavailable for citation extraction`)
+     }
++    if (record.verificationEvidence !== null) findings.push(`${record.candidateReferenceId} claims verification evidence`)
++    if (record.citationText.length > 280) findings.push(`${record.candidateReferenceId} exceeds citation excerpt limit`)
++    if (record.doi && !/^10\.\d{4,9}\/[-._;()/:A-Z0-9]+$/i.test(record.doi)) findings.push(`${record.candidateReferenceId} has malformed DOI`)
++    if (record.pmid && !/^\d{6,9}$/.test(record.pmid)) findings.push(`${record.candidateReferenceId} has malformed PMID`)
++    if (record.pageOrSlideNumber === null && !/document|hyperlink/.test(record.location)) findings.push(`${record.candidateReferenceId} lacks available provenance`)
+   }
+ }
+ 
+-function validateGraph(manifestValue, value) {
+-  const sources = new Map(manifestValue.records.map((record) => [record.sourceId, record]))
+-  const proposalIds = new Set()
+-  for (const node of value.nodes) {
+-    if (proposalIds.has(node.proposalId)) findings.push(`duplicate proposal ID: ${node.proposalId}`)
+-    proposalIds.add(node.proposalId)
+-    if (!node.sourceIds.length) findings.push(`${node.proposalId} has no source IDs`)
+-    for (const sourceId of node.sourceIds) {
++function validateGraph(manifest, graph) {
++  const sources = new Map(manifest.records.map((item) => [item.sourceId, item]))
++  const proposals = new Set()
++  for (const node of graph.nodes) {
++    if (proposals.has(node.proposalId)) findings.push(`duplicate proposal ID: ${node.proposalId}`)
++    proposals.add(node.proposalId)
++    node.sourceIds.forEach((sourceId, index) => {
+       const source = sources.get(sourceId)
+-      if (!source) findings.push(`${node.proposalId} references unknown source ${sourceId}`)
+-      if (source?.sensitivity === 'quarantine') findings.push(`${node.proposalId} uses quarantined source ${sourceId}`)
+-    }
+-    if (node.publicEligibility !== false) findings.push(`${node.proposalId} is incorrectly public eligible`)
+-    if (node.teachingSourceCanEstablishPublicApproval !== false) findings.push(`${node.proposalId} lets teaching notes establish approval`)
+-    if (node.visualLicenceStatus === 'unknown-review-required' && node.publicEligibility) {
+-      findings.push(`${node.proposalId} publishes a visual with unknown copyright status`)
+-    }
++      if (!source) findings.push(`${node.proposalId} uses unknown source`)
++      else {
++        if (source.checksum !== node.sourceChecksums[index]) findings.push(`${node.proposalId} source checksum mismatch`)
++        if (!sourceAllowsScope(source, 'private-proposal-support')) findings.push(`${node.proposalId} uses source unavailable for proposal support`)
++      }
++    })
++  }
++}
++
++function validateRun(manifest, references, graph, run, reportDir) {
++  if (new Set([manifest.runId, references.runId, graph.runId, run.runId]).size !== 1) findings.push('run IDs are inconsistent')
++  if (manifest.sourceSetFingerprint !== run.sourceSetFingerprint) findings.push('run source-set fingerprint mismatch')
++  const actual = collectFiles(reportDir).map((file) => normalize(path.relative(reportDir, file))).sort()
++  const expected = [...run.expectedFiles].sort()
++  if (JSON.stringify(actual) !== JSON.stringify(expected)) findings.push('tracked report set differs from run manifest')
++}
++
++function validateClearance(manifest, ledger) {
++  const records = new Map(manifest.records.map((item) => [item.checksum, item]))
++  const seen = new Set()
++  for (const entry of ledger.entries) {
++    if (seen.has(entry.checksum)) findings.push('duplicate clearance checksum')
++    seen.add(entry.checksum)
++    const record = records.get(entry.checksum)
++    if (!record) findings.push('clearance ledger contains an unknown checksum')
++    else if (record.sourceId !== entry.sourceId) findings.push('clearance ledger source-ID mismatch')
++    if (entry.previousStatus === 'quarantined' && entry.decision === 'clear-for-private-evidence-processing') findings.push('quarantine was bypassed')
+   }
+ }
+ 
+-function validateTrackedReports() {
+-  if (!fs.existsSync(REPORT_DIR)) return
+-  const governedNames = readGovernedNames()
+-  for (const file of collectFiles(REPORT_DIR)) {
++function validateOverrides(manifest, overrides) {
++  const records = new Map(manifest.records.map((item) => [item.checksum, item]))
++  const seen = new Set()
++  for (const entry of overrides.entries) {
++    if (seen.has(entry.checksum)) findings.push('duplicate classification override')
++    seen.add(entry.checksum)
++    const record = records.get(entry.checksum)
++    if (!record) findings.push('classification override contains an unknown checksum')
++    else if (record.sourceId !== entry.sourceId) findings.push('classification override source-ID mismatch')
++  }
++}
++
++function validateSecurityDecisions(manifest, decisions) {
++  const records = new Map(manifest.records.map((item) => [item.checksum, item]))
++  const seen = new Set()
++  for (const entry of decisions.entries) {
++    const key = `${entry.checksum}|${entry.detectorRuleId}`
++    if (seen.has(key)) findings.push('duplicate or contradictory security false-positive decision')
++    seen.add(key)
++    const record = records.get(entry.checksum)
++    if (!record) findings.push('security false-positive decision contains an unknown checksum')
++    else if (record.sourceId !== entry.sourceId) findings.push('security false-positive source-ID mismatch')
++    if (entry.decisionScope !== 'credential-stop-override-for-exact-checksum-only') findings.push('security false-positive decision has an invalid scope')
++  }
++}
++
++export function scanTrackedText(text, context = 'tracked report') {
++  const result = []
++  if (text.includes('\uFFFD')) result.push(`${context}: replacement character detected`)
++  const scrubbed = text.replace(/(?:sha256:)?[0-9a-f]{64}|(?:src|ref|run)-[0-9a-f]{12,64}|ref-[a-z0-9-]+/giu, '[machine-id]')
++  const categories = new Set([
++    ...scanSensitiveText(scrubbed),
++    ...scanSensitiveText(scrubbed.replaceAll('\\\\', '\\')),
++  ])
++  for (const category of categories) result.push(`${context}: ${category}`)
++  return result
++}
++
++export function sourceAllowsScope(source, scope) {
++  if (source.sensitivity === 'quarantined' || source.sensitivity === 'restricted-pending-clearance') return false
++  if (source.sensitivity === 'cleared-for-private-evidence-processing') return source.clearanceScopes.includes(scope)
++  return source.sensitivity === 'review-required'
++}
++
++function validateTrackedReports(reportDir) {
++  if (!fs.existsSync(reportDir)) { findings.push('tracked report directory is missing'); return }
++  const decoder = new TextDecoder('utf-8', { fatal: true })
++  for (const file of collectFiles(reportDir)) {
+     const stat = fs.statSync(file)
+-    if (stat.size > 2 * 1024 * 1024) findings.push(`${relative(file)} exceeds the 2 MiB tracked-report threshold`)
+-    const buffer = fs.readFileSync(file)
+-    if (buffer.includes(0)) findings.push(`${relative(file)} appears binary`)
+-    const text = buffer.toString('utf8')
+-    if (/\b[A-Za-z]:[\\/](?:Users|dev|home)[\\/]/i.test(text)) findings.push(`${relative(file)} contains a private absolute path`)
+-    if (/\\\\[^\\\s]+\\[^\s]+/.test(text)) findings.push(`${relative(file)} contains a UNC path`)
+-    for (const rule of CREDENTIAL_RULES.filter((item) => item.kind === 'credential-value')) {
+-      rule.pattern.lastIndex = 0
+-      if (rule.pattern.test(text)) findings.push(`${relative(file)} contains a ${rule.label}`)
+-    }
+-    for (const name of governedNames) {
+-      if (text.toLowerCase().includes(name.toLowerCase())) {
+-        findings.push(`${relative(file)} contains a governed sensitive name`)
+-        break
++    if (stat.size > 3 * 1024 * 1024) findings.push(`${relative(file)} exceeds tracked-report size limit`)
++    const bytes = fs.readFileSync(file)
++    if (bytes.includes(0)) { findings.push(`${relative(file)} appears binary`); continue }
++    let text
++    try { text = decoder.decode(bytes) }
++    catch { findings.push(`${relative(file)} is not valid UTF-8`); continue }
++    if (file.endsWith('.json')) {
++      try {
++        for (const value of jsonStringValues(JSON.parse(text))) findings.push(...scanTrackedText(value, relative(file)))
++      } catch {
++        // Required JSON files receive a schema error; unexpected JSON is still rejected below.
++        findings.push(`${relative(file)} is invalid JSON`)
+       }
++    } else {
++      findings.push(...scanTrackedText(text, relative(file)))
++    }
++    if (file.endsWith('.md')) {
++      if (text.split(/\r?\n/).some((line) => line.length > 900)) findings.push(`${relative(file)} has a source-body-like long line`)
++      if (/^(?:[A-Za-z][^\n]{80,}\n){8,}/m.test(text)) findings.push(`${relative(file)} has a source-body-like prose block`)
+     }
+-    if (/-----BEGIN [A-Z ]*PRIVATE KEY-----/.test(text)) findings.push(`${relative(file)} contains private key material`)
+-    if (/^.{1200,}$/m.test(text)) findings.push(`${relative(file)} contains a source-body-like unbroken line`)
+   }
+ }
+ 
+ function validatePrivateCacheIgnore() {
+-  const ignoreFile = path.join(ROOT, '.gitignore')
+-  if (!fs.existsSync(ignoreFile)) {
+-    findings.push('.gitignore is missing')
++  const ignore = fs.readFileSync(path.join(ROOT, '.gitignore'), 'utf8').split(/\r?\n/).map((line) => normalize(line.trim()))
++  if (!ignore.includes('ai-manager/private-cache/')) findings.push('private-cache ignore rule is missing')
++  if (ignore.some((line) => line.startsWith('!ai-manager/private-cache/'))) findings.push('private-cache has a negating ignore rule')
++}
++
++function reportResult(manifest, references, graph) {
++  if (findings.length) {
++    console.error('Private source-intake validation failed.')
++    findings.forEach((item) => console.error(`- ${item}`))
++    process.exitCode = 1
+     return
+   }
+-  const rules = fs.readFileSync(ignoreFile, 'utf8')
+-    .split(/\r?\n/)
+-    .map((line) => line.trim().replaceAll('\\', '/'))
+-    .filter((line) => line && !line.startsWith('#'))
+-  if (!rules.includes('ai-manager/private-cache/')) {
+-    findings.push('ai-manager/private-cache ignore rule is missing')
+-  }
+-  if (rules.some((rule) => rule.startsWith('!ai-manager/private-cache/'))) {
+-    findings.push('ai-manager/private-cache contains a negating ignore rule')
+-  }
++  console.log(`Private source-intake validation passed. ${manifest.records.length} unique sources; ${manifest.summary.quarantinedSources} quarantined; ${manifest.summary.restrictedPendingClearanceSources} restricted pending clearance; ${references.records.length} candidate references; ${graph.nodes.length} blocked proposals; public eligibility: 0.`)
+ }
+ 
+-function readGovernedNames() {
+-  const file = path.join(ROOT, 'ai-manager', 'content-hygiene-names.json')
+-  if (!fs.existsSync(file)) return []
+-  const value = JSON.parse(fs.readFileSync(file, 'utf8'))
+-  return Object.values(value).flatMap((entry) => Array.isArray(entry) ? entry : []).filter(Boolean)
++function isSafeLogicalPath(value) {
++  const normalized = normalize(value)
++  return !normalized.startsWith('/') && !/^[A-Za-z]:/.test(normalized) && !normalized.split('/').includes('..') && scanSensitiveText(normalized).length === 0
+ }
+-
+-function collectFiles(dir) {
+-  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+-    const item = path.join(dir, entry.name)
+-    return entry.isDirectory() ? collectFiles(item) : entry.isFile() ? [item] : []
+-  }).sort()
++function collectFiles(dir) { return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => { const item = path.join(dir, entry.name); return entry.isDirectory() ? collectFiles(item) : entry.isFile() ? [item] : [] }).sort() }
++function jsonStringValues(value) {
++  if (typeof value === 'string') return [value]
++  if (Array.isArray(value)) return value.flatMap(jsonStringValues)
++  if (value && typeof value === 'object') return Object.values(value).flatMap(jsonStringValues)
++  return []
+ }
+-
+-function relative(file) {
+-  return path.relative(ROOT, file).split(path.sep).join('/')
++function normalize(value) { return value.replaceAll('\\', '/') }
++function relative(file) { return normalize(path.relative(ROOT, file)) }
++if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url))) {
++  const result = validateSourceIntake()
++  if (result.length) process.exit(1)
+ }
+diff --git a/ai-manager/tests/test_source_intake_hardening.py b/ai-manager/tests/test_source_intake_hardening.py
+new file mode 100644
+index 0000000..99ff405
+--- /dev/null
++++ b/ai-manager/tests/test_source_intake_hardening.py
+@@ -0,0 +1,189 @@
++from __future__ import annotations
++
++import io
++import json
++import os
++import sys
++import tempfile
++import unittest
++import zipfile
++from pathlib import Path
++from unittest import mock
++
++SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
++sys.path.insert(0, str(SCRIPTS))
++
++import source_intake_engine as engine
++from source_intake_policy import normalize_archive_member, sanitize_tracked_line, scan_sensitive
++
++
++def make_zip(files: dict[str, bytes], compression=zipfile.ZIP_DEFLATED) -> bytes:
++    output = io.BytesIO()
++    with zipfile.ZipFile(output, "w", compression) as archive:
++        for name, data in files.items():
++            archive.writestr(name, data)
++    return output.getvalue()
++
++
++class PrivacyPolicyTests(unittest.TestCase):
++    def assert_category(self, category: str, value: str):
++        self.assertIn(category, {finding.category for finding in scan_sensitive(value, ["Governed Fixture Name"])})
++
++    def test_fictional_sensitive_categories(self):
++        self.assert_category("email-address", "learner" + "@example.test")
++        self.assert_category("telephone-number", " ".join(["07123", "456", "789"]))
++        self.assert_category("telephone-number", " ".join(["+44", "7123", "456", "789"]))
++        self.assert_category("uk-postcode", " ".join(["AB1", "2CD"]))
++        self.assert_category("date-of-birth", "".join(["DOB: 01/02/", "1990"]))
++        self.assert_category("date-of-birth", " ".join(["born", "1", "January", "1990"]))
++        self.assert_category("student-or-candidate-identifier", " ".join(["student", "id:", "ZZ12345"]))
++        self.assert_category("governed-sensitive-name", "Governed Fixture Name")
++        self.assert_category("contact-or-correspondence-block", "Presented by Dr Fiction Person, email learner" + "@example.test")
++
++    def test_safe_archive_path_and_unicode_rejections(self):
++        self.assertEqual(normalize_archive_member("folder/file.txt", 100), ("folder/file.txt", None))
++        self.assertIsNotNone(normalize_archive_member("../file.txt", 100)[1])
++        self.assertIsNotNone(normalize_archive_member("folder/\u202efile.txt", 100)[1])
++
++
++class IdentityTests(unittest.TestCase):
++    def test_full_digest_groups_exact_bytes(self):
++        items = [engine.Occurrence("a", "a.txt", b"same"), engine.Occurrence("b", "b.txt", b"same"), engine.Occurrence("c", "c.txt", b"different")]
++        groups = engine.group_occurrences(items)
++        self.assertEqual(sorted(map(len, groups.values())), [1, 2])
++
++    def test_prefix_collision_fails(self):
++        def fake(value: bytes) -> str:
++            return "a" * 12 + ("b" * 52 if value == b"one" else "c" * 52)
++        with self.assertRaisesRegex(ValueError, "prefix collision"):
++            engine.group_occurrences([engine.Occurrence("a", "a", b"one"), engine.Occurrence("b", "b", b"two")], fake)
++
++
++class CredentialDecisionTests(unittest.TestCase):
++    def setUp(self):
++        self.value = "".join(["AK", "IA", "FICT", "URE0", "1234", "5678"])
++        self.data = ("fixture " + self.value).encode()
++        self.full = engine.digest(self.data)
++        self.checksum = f"sha256:{self.full}"
++        self.source_id = engine.display_id(self.full)
++        self.entry = {"checksum": self.checksum, "sourceId": self.source_id, "detectorRuleId": "aws-access-key-shaped", "matchCount": 1, "decision": "false-positive-confirmed", "decisionScope": "credential-stop-override-for-exact-checksum-only"}
++
++    def test_genuine_shape_still_stops_without_decision(self):
++        self.assertTrue(engine.credential_stop_required(self.checksum, self.source_id, self.data.decode(), {})[0])
++
++    def test_exact_decision_allows_only_exact_source(self):
++        decisions = {(self.checksum, "aws-access-key-shaped"): self.entry}
++        self.assertFalse(engine.credential_stop_required(self.checksum, self.source_id, self.data.decode(), decisions)[0])
++        changed = b"x " + self.data; changed_full = engine.digest(changed)
++        self.assertTrue(engine.credential_stop_required(f"sha256:{changed_full}", engine.display_id(changed_full), changed.decode(), decisions)[0])
++        self.assertTrue(engine.credential_stop_required(self.checksum, "src-bbbbbbbbbbbb", self.data.decode(), decisions)[0])
++
++    def test_value_is_still_suppressed_from_tracked_output(self):
++        safe, findings = sanitize_tracked_line(self.data.decode(), [])
++        self.assertIsNone(safe)
++        self.assertTrue(any(item["category"] == "credential-value" for item in findings))
++
++
++class ArchiveTests(unittest.TestCase):
++    def test_safe_and_bad_members_continue(self):
++        data = make_zip({"good.txt": b"good", "../bad.txt": b"bad", "also-good.txt": b"also"})
++        items, warnings = engine.safe_archive_occurrences(data, "src-aaaaaaaaaaaa")
++        self.assertEqual(len(items), 2)
++        self.assertTrue(any(item["warningCode"] == "path-traversal" for item in warnings))
++
++    def test_member_count_limit(self):
++        data = make_zip({f"{index}.txt": b"x" for index in range(engine.LIMITS["maximumMemberCount"] + 1)}, zipfile.ZIP_STORED)
++        items, warnings = engine.safe_archive_occurrences(data, "src-aaaaaaaaaaaa")
++        self.assertFalse(items)
++        self.assertEqual(warnings[0]["warningCode"], "member-count-limit")
++
++    def test_high_ratio_and_size_limits(self):
++        high = make_zip({"large.txt": b"0" * 20000})
++        with mock.patch.dict(engine.LIMITS, {"maximumCompressionRatio": 2}):
++            self.assertFalse(engine.safe_archive_occurrences(high, "src-aaaaaaaaaaaa")[0])
++        with mock.patch.dict(engine.LIMITS, {"maximumExpandedMemberBytes": 10}):
++            self.assertFalse(engine.safe_archive_occurrences(make_zip({"large.txt": b"x" * 11}, zipfile.ZIP_STORED), "src-aaaaaaaaaaaa")[0])
++
++    def test_corrupt_member_does_not_hide_other_members(self):
++        data = bytearray(make_zip({"bad.txt": b"BAD-CONTENT", "good.txt": b"GOOD-CONTENT"}, zipfile.ZIP_STORED))
++        position = data.find(b"BAD-CONTENT")
++        data[position] ^= 1
++        items, warnings = engine.safe_archive_occurrences(bytes(data), "src-aaaaaaaaaaaa")
++        self.assertEqual(len(items), 1)
++        self.assertTrue(any(item["warningCode"] == "member-read-failed" for item in warnings))
++
++    def test_encrypted_member_is_rejected(self):
++        data = bytearray(make_zip({"secret.txt": b"fixture"}, zipfile.ZIP_STORED))
++        local = data.find(b"PK\x03\x04"); central = data.find(b"PK\x01\x02")
++        data[local + 6] |= 1; data[central + 8] |= 1
++        items, warnings = engine.safe_archive_occurrences(bytes(data), "src-aaaaaaaaaaaa")
++        self.assertFalse(items)
++        self.assertTrue(any(item["warningCode"] == "encrypted-member" for item in warnings))
++
++
++class OfficeProvenanceTests(unittest.TestCase):
++    def test_pptx_uses_relationships_for_non_contiguous_parts(self):
++        ns = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
++        files = {
++            "ppt/presentation.xml": f'<p:presentation xmlns:p="p" xmlns:r="{ns}"><p:sldIdLst><p:sldId r:id="rIdA"/><p:sldId r:id="rIdB"/></p:sldIdLst></p:presentation>'.encode(),
++            "ppt/_rels/presentation.xml.rels": b'<Relationships><Relationship Id="rIdA" Target="slides/slide9.xml"/><Relationship Id="rIdB" Target="slides/slide2.xml"/></Relationships>',
++            "ppt/slides/slide9.xml": b'<p:sld xmlns:p="p"><p:p><p:r><p:t>First slide</p:t></p:r></p:p></p:sld>',
++            "ppt/slides/slide2.xml": b'<p:sld xmlns:p="p"><p:p><p:r><p:t>Second slide</p:t></p:r></p:p></p:sld>',
++            "ppt/slides/_rels/slide9.xml.rels": b'<Relationships><Relationship Id="n" Type="x/notesSlide" Target="../notesSlides/notesSlide4.xml"/><Relationship Id="l" Type="x/hyperlink" TargetMode="External" Target="https://example.test/first"/></Relationships>',
++            "ppt/slides/_rels/slide2.xml.rels": b'<Relationships><Relationship Id="n" Type="x/notesSlide" Target="../notesSlides/notesSlide7.xml"/></Relationships>',
++            "ppt/notesSlides/notesSlide4.xml": b'<p:notes xmlns:p="p"><p:p><p:r><p:t>First note</p:t></p:r></p:p></p:notes>',
++            "ppt/notesSlides/notesSlide7.xml": b'<p:notes xmlns:p="p"><p:p><p:r><p:t>Second note</p:t></p:r></p:p></p:notes>',
++        }
++        units, _ = engine.extract_pptx(make_zip(files))
++        self.assertEqual([unit["part"] for unit in units], ["ppt/slides/slide9.xml", "ppt/slides/slide2.xml"])
++        self.assertIn("First note", units[0]["notes"])
++        self.assertEqual(units[0]["links"], ["https://example.test/first"])
++        self.assertIn("Second note", units[1]["notes"])
++
++    def test_xlsx_resolves_shared_and_inline_strings_per_sheet(self):
++        ns = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
++        files = {
++            "xl/workbook.xml": f'<workbook xmlns:r="{ns}"><sheets><sheet name="One" r:id="r1"/><sheet name="Two" r:id="r2"/></sheets></workbook>'.encode(),
++            "xl/_rels/workbook.xml.rels": b'<Relationships><Relationship Id="r1" Target="worksheets/sheet1.xml"/><Relationship Id="r2" Target="worksheets/sheet2.xml"/></Relationships>',
++            "xl/sharedStrings.xml": b'<sst><si><t>Alpha</t></si><si><t>Beta</t></si></sst>',
++            "xl/worksheets/sheet1.xml": b'<worksheet><sheetData><row><c r="A1" t="s"><v>0</v></c></row></sheetData></worksheet>',
++            "xl/worksheets/sheet2.xml": b'<worksheet><sheetData><row><c r="A1" t="s"><v>1</v></c><c r="B1" t="inlineStr"><is><t>Gamma</t></is></c></row></sheetData></worksheet>',
++        }
++        units, _ = engine.extract_xlsx(make_zip(files))
++        self.assertIn("Alpha", units[0]["text"]); self.assertNotIn("Beta", units[0]["text"])
++        self.assertIn("Beta", units[1]["text"]); self.assertIn("Gamma", units[1]["text"])
++
++
++class CitationTests(unittest.TestCase):
++    def make_source(self):
++        return {"sourceId": "src-aaaaaaaaaaaa", "checksum": "sha256:" + "a" * 64, "topicTags": ["rcrsp"], "regionTags": ["shoulder"]}
++
++    def test_classifications_and_excerpt_limit(self):
++        text = "References\nFiction et al. (2020). A structured title. Journal 2(1): 1-9. doi:10.1234/fixture.1\nFiction (2020) mentioned this in prose.\nhttps://example.test/licence\nhttps://example.test/video"
++        units = [{"number": 1, "kind": "slide", "text": text, "links": ["https://example.test/licence", "https://example.test/video"]}]
++        refs, _ = engine.reference_candidates(self.make_source(), units, [])
++        self.assertTrue(any(item["classification"] == "full-looking-unverified" for item in refs))
++        self.assertTrue(all(len(item["citationText"]) <= 280 for item in refs))
++
++    def test_contact_candidate_is_suppressed(self):
++        units = [{"number": 1, "kind": "slide", "text": "Contact: learner" + "@example.test", "links": []}]
++        refs, suppressed = engine.reference_candidates(self.make_source(), units, [])
++        self.assertFalse(refs); self.assertGreater(suppressed, 0)
++
++
++class AtomicOutputTests(unittest.TestCase):
++    def test_failed_replace_restores_previous_output(self):
++        with tempfile.TemporaryDirectory() as root:
++            root = Path(root); destination = root / "reports"; staging = root / "staging"
++            destination.mkdir(); staging.mkdir(); (destination / "old.txt").write_text("old"); (staging / "new.txt").write_text("new")
++            real_replace = os.replace; calls = 0
++            def flaky(source, target):
++                nonlocal calls; calls += 1
++                if calls == 2: raise OSError("fixture interruption")
++                return real_replace(source, target)
++            with mock.patch.object(engine.os, "replace", flaky), self.assertRaises(OSError): engine._atomic_publish(staging, destination)
++            self.assertEqual((destination / "old.txt").read_text(), "old")
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/package.json b/package.json
+index ec0466a..6a0876d 100644
+--- a/package.json
++++ b/package.json
+@@ -27,6 +27,7 @@
+   "check:learning": "node scripts/check-learning-content.mjs",
+   "check:ai-manager": "node scripts/check-ai-manager-boundary.mjs",
+   "check:source-intake": "node ai-manager/scripts/validate-source-intake-pilot.mjs",
++  "test:source-intake": "python -m unittest discover -s ai-manager/tests -p test_source_intake_hardening.py && node ai-manager/scripts/test-source-intake-validation.mjs",
+   "check:links": "node scripts/check-internal-links.mjs",
+   "check:content-contract": "npm run check:content-contracts",
+   "check:3d": "node scripts/check-3d-prototype.mjs",
+diff --git a/scripts/check-review-packet-redaction.mjs b/scripts/check-review-packet-redaction.mjs
+index eba9d17..351e692 100644
+--- a/scripts/check-review-packet-redaction.mjs
++++ b/scripts/check-review-packet-redaction.mjs
+@@ -2,6 +2,7 @@ import fs from 'node:fs'
+ import path from 'node:path'
+ import { TextDecoder } from 'node:util'
+ import { CREDENTIAL_RULES } from './lib/secretPatterns.mjs'
++import { scanSensitiveText } from '../ai-manager/scripts/sensitiveDataPolicy.mjs'
+ import {
+   RAW_LEGACY_PREFIX,
+   SENSITIVE_DELETION_SUMMARY,
+@@ -17,10 +18,28 @@ const hygieneFile = path.join(ROOT, 'ai-manager', 'content-hygiene-names.json')
+ const findings = []
+ const decoder = new TextDecoder('utf-8', { fatal: true })
+ const securityToolingPaths = new Set([
++  'ai-manager/schemas/sourceIntakeSchemas.mjs',
++  'ai-manager/scripts/sensitiveDataPolicy.mjs',
++  'ai-manager/scripts/source_intake_policy.py',
++  'ai-manager/scripts/test-source-intake-validation.mjs',
++  'ai-manager/scripts/validate-source-intake-pilot.mjs',
++  'ai-manager/tests/test_source_intake_hardening.py',
+   'scripts/check-review-packet-redaction.mjs',
+   'scripts/check-secrets.mjs',
+   'scripts/lib/secretPatterns.mjs',
+ ])
++const securityToolingCategoryAllowances = new Map([
++  ['ai-manager/schemas/sourceIntakeSchemas.mjs', new Set(['contact-or-correspondence-block', 'telephone-number'])],
++  ['ai-manager/scripts/sensitiveDataPolicy.mjs', new Set(['unc-path'])],
++  ['ai-manager/scripts/source_intake_policy.py', new Set(['credential-value', 'unc-path'])],
++  ['ai-manager/scripts/test-source-intake-validation.mjs', new Set(['unc-path'])],
++  ['ai-manager/scripts/validate-source-intake-pilot.mjs', new Set(['unc-path'])],
++  ['ai-manager/tests/test_source_intake_hardening.py', new Set(['contact-or-correspondence-block'])],
++])
++const packetCredentialValueRules = [
++  new RegExp(`\\b(?:${['A', 'KIA'].join('')}|${['A', 'SIA'].join('')})[A-Z0-9]{16}\\b`, 'g'),
++  new RegExp(`-----BEGIN [A-Z ]*${['PRIVATE', ' KEY'].join('')}-----`, 'g'),
++]
+ 
+ if (!fs.existsSync(packetDir) || !fs.statSync(packetDir).isDirectory()) {
+   fail('packet directory is missing')
+@@ -64,6 +83,20 @@ for (const file of collectFiles(packetDir)) {
+ 
+   scanCredentialRules(text, relative)
+ 
++  const sharedSections = relative === '05-filtered-full-diff.patch' || relative.endsWith('.patch')
++    ? splitPatchSections(text)
++    : [{ repositoryPath: relative, text }]
++  for (const section of sharedSections) {
++    for (const pattern of packetCredentialValueRules) {
++      pattern.lastIndex = 0
++      if (pattern.test(section.text)) fail(relative + ': credential value detected')
++    }
++    for (const category of scanSensitiveText(section.text)) {
++      if (securityToolingCategoryAllowances.get(section.repositoryPath)?.has(category)) continue
++      fail(relative + ': governed sensitive-data pattern detected (' + category + ')')
++    }
++  }
++
+   const lower = text.toLowerCase()
+   if (sensitiveNames.some((term) => lower.includes(term.toLowerCase()))) {
+     fail(relative + ': governed sensitive-name pattern detected')
+@@ -125,7 +158,7 @@ function splitPatchSections(text) {
+     const start = match.index
+     const end = matches[index + 1]?.index ?? text.length
+     sections.push({
+-      repositoryPath: normalizePath(match[2]),
++      repositoryPath: normalizePath(match[2].trim()),
+       text: text.slice(start, end),
+     })
+   })
+diff --git a/scripts/test-review-packet-redaction.mjs b/scripts/test-review-packet-redaction.mjs
+index 2b8136d..32bfb65 100644
+--- a/scripts/test-review-packet-redaction.mjs
++++ b/scripts/test-review-packet-redaction.mjs
+@@ -52,6 +52,19 @@ try {
+     '05-filtered-full-diff.patch': `${policyDiff}+const compromised = '${googleLike}'\n`,
+   }, 'credential in the pattern-module diff')
+ 
++  const awsLike = `${['A', 'KIA'].join('')}${'C'.repeat(16)}`
++  const intakePolicyDiff = [
++    'diff --git a/ai-manager/scripts/source_intake_policy.py b/ai-manager/scripts/source_intake_policy.py',
++    '--- a/ai-manager/scripts/source_intake_policy.py',
++    '+++ b/ai-manager/scripts/source_intake_policy.py',
++    '@@ -1 +1 @@',
++    `+compromised = ${JSON.stringify(awsLike)}`,
++    '',
++  ].join('\n')
++  expectFail('intake-policy-with-aws-credential', {
++    '05-filtered-full-diff.patch': intakePolicyDiff,
++  }, 'AWS-shaped credential in the intake policy diff')
++
+   const privatePath = ['C:', 'Users', 'reviewer', 'private-source.html'].join('\\')
+   expectFail('private-path', { 'ordinary.txt': privatePath }, 'private local path')
+ 
