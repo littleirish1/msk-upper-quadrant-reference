@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "nodes": [
+    {
+      "proposalId": "proposal-rcrsp-evidence-development",
+      "sourceIds": [
+        "src-1d9c1f58831f",
+        "src-227d37465f09",
+        "src-2898b0f60d92",
+        "src-28bf800aec87",
+        "src-3a59fafaf653",
+        "src-47a91c90d62c",
+        "src-5b00b3477b23",
+        "src-8b8eb8b85107",
+        "src-927fe641863c",
+        "src-a3bb6683deea",
+        "src-b225de0779c3",
+        "src-ea68e6706435"
+      ],
+      "extractedTeachingTopic": "rcrsp",
+      "proposedClinicalClaim": "Candidate teaching claims require extraction-level review, external evidence verification, and clinician approval before wording is drafted.",
+      "targetContentId": "condition:shoulder/rotator-cuff-related-shoulder-pain",
+      "requiredEvidence": [
+        "Current guideline",
+        "Systematic review",
+        "Clinician review"
+      ],
+      "clinicianReviewStatus": "required",
+      "proposalStatus": "blocked-pending-evidence-and-clinician-review",
+      "teachingSourceCanEstablishPublicApproval": false,
+      "visualLicenceStatus": "unknown-review-required",
+      "publicEligibility": false
+    },
+    {
+      "proposalId": "proposal-lateral-ankle-sprain-evidence-development",
+      "sourceIds": [
+        "src-7b548a958b41",
+        "src-bb7d6a064b81"
+      ],
+      "extractedTeachingTopic": "lateral ankle sprain",
+      "proposedClinicalClaim": "Candidate teaching claims require extraction-level review, external evidence verification, and clinician approval before wording is drafted.",
+      "targetContentId": "condition:ankle-foot/lateral-ankle-sprain",
+      "requiredEvidence": [
+        "Current guideline",
+        "Systematic review",
+        "Clinician review"
+      ],
+      "clinicianReviewStatus": "required",
+      "proposalStatus": "blocked-pending-evidence-and-clinician-review",
+      "teachingSourceCanEstablishPublicApproval": false,
+      "visualLicenceStatus": "unknown-review-required",
+      "publicEligibility": false
+    }
+  ]
+}
