@@ -52261,7 +52261,7 @@ index 7df4966..98337a4 100644
 @@ -5,6 +5,30 @@ export const checksumSchema = z.union([
    z.literal('pending'),
  ])
- 
+
 +export const ingestionSourceTypeSchema = z.enum([
 +  'pdf-paper',
 +  'clinical-guideline',
@@ -52309,7 +52309,7 @@ index 7df4966..98337a4 100644
 @@ -46,6 +62,123 @@ export const ingestionManifestSchema = z.object({
    identifiableMaterialCheck: z.enum(['not-checked', 'none-confirmed', 'restricted']),
  })
- 
+
 +export const sourceIntakeRecordSchema = z.object({
 +  sourceId: z.string().regex(/^src-[0-9a-f]{12}$/),
 +  checksum: z.string().regex(/^sha256:[0-9a-f]{64}$/),
@@ -53455,7 +53455,7 @@ index 64d3027..8055eff 100644
 @@ -18,6 +18,10 @@ const IGNORE_FILES = new Set([
    'ai-manager/guided-case-rules.md',
  ])
- 
+
 +const IGNORE_DIRS = new Set([
 +  'ai-manager/private-cache',
 +])
@@ -53465,7 +53465,7 @@ index 64d3027..8055eff 100644
    '.mdx',
 @@ -75,6 +79,8 @@ function walk(dir) {
      const fullPath = path.join(dir, entry.name)
- 
+
      if (entry.isDirectory()) {
 +      const relativeDir = toPosix(path.relative(ROOT, fullPath))
 +      if (IGNORE_DIRS.has(relativeDir)) continue
