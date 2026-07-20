@@ -23,8 +23,20 @@ npm install
 Before a deploy or demo:
 
 ```powershell
-npm run registry:sources
+npm run preflight
+```
+
+`preflight` checks generated tracker/registry currentness before the build. Do not
+pre-generate those files immediately before the gate, because that would mask stale
+committed output.
+
+When source metadata intentionally changes, regenerate in dependency order, review
+the diff, and then run the currentness gate:
+
+```powershell
 npm run tracker:legacy
+npm run registry:sources
+npm run check:generated-sources
 npm run preflight
 ```
 
@@ -36,8 +48,12 @@ npm run check:hygiene
 npm run check:sources
 npm run check:secrets
 npm run check:frontmatter
+npm run check:generated-sources
 npm run build
 npm run check:search
+npm run check:content-contracts
+npm run check:3d
+npm run check:links
 npm run check:no-leak
 npm run check:reveal
 npm run check:routes
@@ -131,11 +147,14 @@ These should return `False` for draft/private, diagnostic internal, and admin ro
 
 ## If Preflight Fails
 
-Do not bypass the failing check. Fix the first failing command and rerun:
+Do not bypass the failing check. Fix the first failing command and rerun `preflight`.
+If `check:generated-sources` reports stale output, deliberately regenerate and
+review only those outputs:
 
 ```powershell
-npm run registry:sources
 npm run tracker:legacy
+npm run registry:sources
+npm run check:generated-sources
 npm run preflight
 ```
 

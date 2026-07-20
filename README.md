@@ -37,8 +37,12 @@ npm run check:hygiene
 npm run check:sources
 npm run check:secrets
 npm run check:frontmatter
+npm run check:generated-sources
 npm run build
 npm run check:search
+npm run check:content-contracts
+npm run check:3d
+npm run check:links
 npm run check:no-leak
 npm run check:reveal
 npm run check:routes

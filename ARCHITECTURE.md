@@ -83,6 +83,7 @@ Imported and generated source state is metadata-driven:
 - Guided cases can reference source metadata with `sourceType`, `sourceId`, `sourcePath`, and `reviewStatus`.
 - `npm run registry:sources` generates `content/imports/source-registry.json`.
 - `npm run tracker:legacy` generates the migration tracker.
+- `npm run check:generated-sources` fails if either committed generated file is stale.
 - `npm run check:sources` validates source metadata for legacy-derived cases.
 
 Source files and frontmatter hold the truth. Generated trackers and registries should be refreshed from files rather than hand-maintained.
@@ -127,8 +128,12 @@ npm run check:hygiene
 npm run check:sources
 npm run check:secrets
 npm run check:frontmatter
+npm run check:generated-sources
 npm run build
 npm run check:search
+npm run check:content-contracts
+npm run check:3d
+npm run check:links
 npm run check:no-leak
 npm run check:reveal
 npm run check:routes

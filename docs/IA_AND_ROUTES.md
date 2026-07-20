@@ -74,3 +74,11 @@ Future roadmap UI may mention these areas as planned, coming later, or not yet l
 - No draft, private, or archived guided case appears in public output.
 - No planned expansion route is created without real content and taxonomy support.
 - `out/ai-manager` does not exist after build.
+
+## Experimental 3D Boundary
+
+- The interactive body map / 3D anatomy model is experimental, not currently live.
+- No public `/3d-model` route may exist while public eligibility is false.
+- No unverified GLB asset may be placed in `public/` or copied into `out/`.
+- Public eligibility requires verified provenance/licence, performance, accessibility, anatomical review, and clinical review.
+- Future body-map work stays outside the public route tree until all gates in `docs/3D_ASSET_PROVENANCE.md` pass.
