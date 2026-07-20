@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { CREDENTIAL_RULES } from './lib/secretPatterns.mjs'
 
 const ROOT = process.cwd()
 
@@ -8,10 +9,10 @@ const IGNORE_DIRS = new Set([
   '.next',
   'node_modules',
   'out',
-])
-
-const IGNORE_FILES = new Set([
-  'scripts/check-secrets.mjs',
+  'phase-hardening-review',
+  'phase-hardening-rereview',
+  'phase-hardening-rereview-v2',
+  'review-packet',
 ])
 
 const TEXT_EXTENSIONS = new Set([
@@ -34,33 +35,6 @@ const TEXT_EXTENSIONS = new Set([
 ])
 
 const MAX_FILE_BYTES = 2 * 1024 * 1024
-
-const rules = [
-  {
-    label: 'Google API key',
-    pattern: /AIza[0-9A-Za-z_-]{20,}/g,
-  },
-  {
-    label: 'OpenAI-style secret key',
-    pattern: /\bsk-[0-9A-Za-z_-]{20,}/g,
-  },
-  {
-    label: 'OpenAI API key environment token',
-    pattern: /OPENAI_API_KEY/g,
-  },
-  {
-    label: 'generic API key token',
-    pattern: /API_KEY/g,
-  },
-  {
-    label: 'private key token',
-    pattern: /PRIVATE_KEY/g,
-  },
-  {
-    label: 'generic secret token',
-    pattern: /SECRET/g,
-  },
-]
 
 const findings = []
 
@@ -96,7 +70,6 @@ function walk(dir) {
     }
 
     if (!entry.isFile()) continue
-    if (IGNORE_FILES.has(relativePath)) continue
     if (!shouldScanFile(fullPath, entry.name)) continue
 
     const stat = fs.statSync(fullPath)
@@ -111,7 +84,7 @@ function walk(dir) {
 
     const lines = text.split(/\r?\n/)
     lines.forEach((line, index) => {
-      for (const rule of rules) {
+      for (const rule of CREDENTIAL_RULES) {
         rule.pattern.lastIndex = 0
         if (rule.pattern.test(line)) {
           findings.push({

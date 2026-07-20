@@ -31,3 +31,14 @@ review-packet.zip
 
 # Local agent/tooling state
 .claude/
+
+# Local hardening review export
+phase-hardening-review/
+phase-hardening-review.zip
+
+# Local redacted hardening re-review export
+phase-hardening-rereview/
+phase-hardening-rereview.zip
+phase-hardening-rereview-v2/
+phase-hardening-rereview-v2.zip
+phase-hardening-rereview-v2.zip.sha256
