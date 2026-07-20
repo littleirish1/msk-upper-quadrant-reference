@@ -15,7 +15,7 @@ index 7b2db14..88f41a3 100644
 +++ b/ai-manager/README.md
 @@ -19,3 +19,23 @@ Ignored here:
  - environment files, credentials, and private source material.
- 
+
  The manager may propose drafts. It cannot self-approve clinical publication, commit, push, or bypass the repository preflight gate.
 +
 +## Private Source Intake Environment
@@ -1276,9 +1276,9 @@ index 4324516..02c61cd 100644
 -candidates, and blocked content proposals.
 -"""
 +"""CLI for the private, deterministic source-intake pilot."""
- 
+
  from __future__ import annotations
- 
+
  import argparse
 -import datetime as dt
 -import hashlib
@@ -1567,7 +1567,7 @@ index 4324516..02c61cd 100644
 -    fatal_patient = any(item["category"] == "patient-or-hospital-number" for item in findings)
 -    return findings, fatal_secret, fatal_patient
 +from pathlib import Path
- 
+
 -
 -def tags_for(value: str, mapping: dict[str, list[str]]) -> list[str]:
 -    lower = f" {value.lower()} "
@@ -1849,8 +1849,8 @@ index 4324516..02c61cd 100644
 -    write_md(adir / "evidence-search-questions.md", "Lateral ankle sprain evidence search questions", [("Questions", "\n".join(f"- {q}" for q in ankle_questions)), ("Evidence hierarchy and sources", hierarchy)])
 -    write_md(adir / "clinician-review-checklist.md", "Lateral ankle sprain clinician review checklist", [("Checklist", "- [ ] Verify fracture and syndesmosis screening\n- [ ] Review acute management and loading\n- [ ] Verify exercise and progression advice\n- [ ] Confirm return-to-sport and recurrence-prevention criteria\n- [ ] Review escalation and emergency thresholds\n- [ ] Review patient-facing language\n- [ ] Verify all references\n- [ ] Record reviewer and decision outside this pilot")])
 +from source_intake_engine import build_intake
- 
- 
+
+
  def main() -> int:
 -    parser = argparse.ArgumentParser(description="Build the private source-intake pilot")
 -    parser.add_argument("--inbox", help="Private source inbox (or set SOURCE_INBOX_PATH)")
@@ -2083,8 +2083,8 @@ index 4324516..02c61cd 100644
 +    result = build_intake(inbox)
 +    print(json.dumps(result, indent=2, sort_keys=True))
      return 0
- 
- 
+
+
 diff --git a/ai-manager/scripts/source_intake_policy.py b/ai-manager/scripts/source_intake_policy.py
 new file mode 100644
 index 0000000..e70d1a0
@@ -2367,14 +2367,14 @@ index 0e16644..27dcbc0 100644
 +  sourceToContentGraphV2Schema,
 +} from '../schemas/sourceIntakeSchemas.mjs'
 +import { scanSensitiveText } from './sensitiveDataPolicy.mjs'
- 
+
  const ROOT = process.cwd()
  const REPORT_DIR = path.join(ROOT, 'ai-manager', 'reports', 'source-intake-pilot')
 -const MANIFEST_FILE = path.join(REPORT_DIR, 'source-manifest.json')
 -const REFERENCES_FILE = path.join(REPORT_DIR, 'references', 'candidate-reference-registry.json')
 -const GRAPH_FILE = path.join(REPORT_DIR, 'source-to-content-graph.json')
  const findings = []
- 
+
 -const manifest = validateJson(MANIFEST_FILE, sourceIntakeManifestSchema)
 -const references = validateJson(REFERENCES_FILE, candidateReferenceRegistrySchema)
 -const graph = validateJson(GRAPH_FILE, sourceToContentGraphSchema)
@@ -2410,7 +2410,7 @@ index 0e16644..27dcbc0 100644
 +  if (!options.quiet) reportResult(manifest, references, graph)
 +  return [...findings]
  }
- 
+
 -const records = manifest.records
 -console.log(
 -  `Private source-intake validation passed. ` +
@@ -2443,7 +2443,7 @@ index 0e16644..27dcbc0 100644
    }
    return result.data
  }
- 
+
  function validateManifest(value) {
 -  const ids = new Set()
 -  const checksums = new Map()
@@ -2482,7 +2482,7 @@ index 0e16644..27dcbc0 100644
    }
 +  for (const [key, count] of Object.entries(expected)) if (value.summary[key] !== count) findings.push(`manifest ${key} summary mismatch`)
  }
- 
+
 -function validateReferences(manifestValue, registry) {
 +function validateReferences(manifest, registry) {
    const ids = new Set()
@@ -2522,7 +2522,7 @@ index 0e16644..27dcbc0 100644
 +    if (record.pageOrSlideNumber === null && !/document|hyperlink/.test(record.location)) findings.push(`${record.candidateReferenceId} lacks available provenance`)
    }
  }
- 
+
 -function validateGraph(manifestValue, value) {
 -  const sources = new Map(manifestValue.records.map((record) => [record.sourceId, record]))
 -  const proposalIds = new Set()
@@ -2576,7 +2576,7 @@ index 0e16644..27dcbc0 100644
 +    if (entry.previousStatus === 'quarantined' && entry.decision === 'clear-for-private-evidence-processing') findings.push('quarantine was bypassed')
    }
  }
- 
+
 -function validateTrackedReports() {
 -  if (!fs.existsSync(REPORT_DIR)) return
 -  const governedNames = readGovernedNames()
@@ -2668,7 +2668,7 @@ index 0e16644..27dcbc0 100644
 -    if (/^.{1200,}$/m.test(text)) findings.push(`${relative(file)} contains a source-body-like unbroken line`)
    }
  }
- 
+
  function validatePrivateCacheIgnore() {
 -  const ignoreFile = path.join(ROOT, '.gitignore')
 -  if (!fs.existsSync(ignoreFile)) {
@@ -2697,7 +2697,7 @@ index 0e16644..27dcbc0 100644
 -  }
 +  console.log(`Private source-intake validation passed. ${manifest.records.length} unique sources; ${manifest.summary.quarantinedSources} quarantined; ${manifest.summary.restrictedPendingClearanceSources} restricted pending clearance; ${references.records.length} candidate references; ${graph.nodes.length} blocked proposals; public eligibility: 0.`)
  }
- 
+
 -function readGovernedNames() {
 -  const file = path.join(ROOT, 'ai-manager', 'content-hygiene-names.json')
 -  if (!fs.existsSync(file)) return []
@@ -2974,13 +2974,13 @@ index eba9d17..351e692 100644
 +  new RegExp(`\\b(?:${['A', 'KIA'].join('')}|${['A', 'SIA'].join('')})[A-Z0-9]{16}\\b`, 'g'),
 +  new RegExp(`-----BEGIN [A-Z ]*${['PRIVATE', ' KEY'].join('')}-----`, 'g'),
 +]
- 
+
  if (!fs.existsSync(packetDir) || !fs.statSync(packetDir).isDirectory()) {
    fail('packet directory is missing')
 @@ -64,6 +83,20 @@ for (const file of collectFiles(packetDir)) {
- 
+
    scanCredentialRules(text, relative)
- 
+
 +  const sharedSections = relative === '05-filtered-full-diff.patch' || relative.endsWith('.patch')
 +    ? splitPatchSections(text)
 +    : [{ repositoryPath: relative, text }]
@@ -3014,7 +3014,7 @@ index 2b8136d..32bfb65 100644
 @@ -52,6 +52,19 @@ try {
      '05-filtered-full-diff.patch': `${policyDiff}+const compromised = '${googleLike}'\n`,
    }, 'credential in the pattern-module diff')
- 
+
 +  const awsLike = `${['A', 'KIA'].join('')}${'C'.repeat(16)}`
 +  const intakePolicyDiff = [
 +    'diff --git a/ai-manager/scripts/source_intake_policy.py b/ai-manager/scripts/source_intake_policy.py',
@@ -3030,4 +3030,3 @@ index 2b8136d..32bfb65 100644
 +
    const privatePath = ['C:', 'Users', 'reviewer', 'private-source.html'].join('\\')
    expectFail('private-path', { 'ordinary.txt': privatePath }, 'private local path')
- 

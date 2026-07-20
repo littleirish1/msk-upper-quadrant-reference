@@ -7,7 +7,7 @@ At line:1 char:1
 + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     + CategoryInfo          : NotSpecified: (.................:String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
- 
+
 ----------------------------------------------------------------------
 Ran 17 tests in 0.034s
 
@@ -126,9 +126,9 @@ Private source-intake validation passed. 133 unique sources; 10 quarantined; 42 
    Linting and checking validity of types ...
    Collecting page data ...
    Generating static pages (0/68) ...
-   Generating static pages (17/68) 
-   Generating static pages (34/68) 
-   Generating static pages (51/68) 
+   Generating static pages (17/68)
+   Generating static pages (34/68)
+   Generating static pages (51/68)
  ✓ Generating static pages (68/68)
    Finalizing page optimization ...
    Collecting build traces ...
@@ -247,15 +247,15 @@ Private case routes excluded: 3
 ## Git diff check
 Exit code: 0
 
-git : warning: in the working copy of 'content/imports/html-case-bank/migration-tracker.md', LF will be replaced by 
+git : warning: in the working copy of 'content/imports/html-case-bank/migration-tracker.md', LF will be replaced by
 CRLF the next time Git touches it
 At line:1 char:1
 + git diff --check 2>&1
 + ~~~~~~~~~~~~~~~~~~~~~
     + CategoryInfo          : NotSpecified: (warning: in the... Git touches it:String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
- 
-warning: in the working copy of 'content/imports/source-registry.json', LF will be replaced by CRLF the next time Git 
+
+warning: in the working copy of 'content/imports/source-registry.json', LF will be replaced by CRLF the next time Git
 touches it
 warning: in the working copy of 'public/search-index.json', LF will be replaced by CRLF the next time Git touches it
 
