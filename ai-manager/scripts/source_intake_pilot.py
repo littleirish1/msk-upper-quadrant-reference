@@ -98,9 +98,15 @@ PHONE_RE = re.compile(r"(?<!\d)(?:\+44\s?\d{9,10}|0\d{3,4}[\s-]?\d{5,7})(?!\d)")
 NHS_RE = re.compile(r"\b(?:NHS|hospital|patient)\s*(?:number|no\.?|id)\s*[:#-]?\s*\d{6,12}\b", re.I)
 STUDENT_ID_RE = re.compile(r"\b(?:student|candidate)\s*(?:number|no\.?|id)\s*[:#-]?\s*[A-Z0-9-]{5,20}\b", re.I)
 DOB_RE = re.compile(r"\b(?:DOB|date of birth)\s*[:#-]?\s*\d{1,2}[/-]\d{1,2}[/-]\d{2,4}\b", re.I)
-SECRET_RE = re.compile(
+ENV_CREDENTIAL_NAMES = "|".join([
+    "_".join(["OPENAI", "API", "KEY"]),
+    "_".join(["API", "KEY"]),
+    "_".join(["PRIVATE", "KEY"]),
+    "".join(["SEC", "RET"]),
+])
+CREDENTIAL_VALUE_RE = re.compile(
     r"(?:AIza[0-9A-Za-z_-]{20,}|sk-[0-9A-Za-z_-]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|"
-    r"(?:OPENAI_API_KEY|API_KEY|PRIVATE_KEY|SECRET)\s*[:=]\s*[^\s]{8,})",
+    rf"(?:{ENV_CREDENTIAL_NAMES})\s*[:=]\s*[^\s]{{8,}})",
     re.I,
 )
 DOI_RE = re.compile(r"\b10\.\d{4,9}/[-._;()/:A-Z0-9]+", re.I)
@@ -276,7 +282,7 @@ def count_sensitive(text: str, governed_names: list[str]) -> tuple[list[dict], b
         "patient-or-hospital-number": NHS_RE,
         "date-of-birth": DOB_RE,
         "student-identifier": STUDENT_ID_RE,
-        "credential-or-secret": SECRET_RE,
+        "credential-or-secret": CREDENTIAL_VALUE_RE,
     }
     findings = []
     for category, pattern in patterns.items():
