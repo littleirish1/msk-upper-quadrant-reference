@@ -1,0 +1,8 @@
+{
+  "sourceId": "intake.pending.example",
+  "checksum": "pending",
+  "rightsStatus": "unknown",
+  "identifiableMaterialCheck": "not-checked",
+  "intendedUse": ["private review"],
+  "reviewStatus": "not-started"
+}

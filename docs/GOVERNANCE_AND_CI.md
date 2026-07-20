@@ -92,6 +92,8 @@ The public learner site remains a static export:
 
 `ai-manager/` is local/private only and must never appear in `out/` or public navigation.
 
+`npm run check:ai-manager` validates tracked manager schemas and confirms that the private manager does not enter public source or export output. Intake, archive, reports, local configuration, environment files, and private source material remain ignored.
+
 ## Acceptance Criteria
 
 - Netlify runs `npm run preflight` and publishes `out`.
