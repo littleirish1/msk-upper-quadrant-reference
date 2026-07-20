@@ -22,6 +22,7 @@
   "check:frontmatter": "node scripts/check-frontmatter-schema.mjs",
   "check:search": "node scripts/check-search-index.mjs",
   "check:content-contracts": "node scripts/check-content-contracts.mjs",
+  "check:platform-content": "node scripts/check-platform-content.mjs",
   "check:links": "node scripts/check-internal-links.mjs",
   "check:content-contract": "npm run check:content-contracts",
   "check:3d": "node scripts/check-3d-prototype.mjs",
@@ -35,7 +36,8 @@
   "case:manager": "node ai-manager/case-manager/server.mjs",
   "manager:demo-report": "node scripts/generate-demo-report.mjs",
   "clean:build": "node scripts/clean-build.mjs",
-  "preflight": "npm run clean:build && npm run check:hygiene && npm run check:sources && npm run check:secrets && npm run check:frontmatter && npm run check:generated-sources && npm run build && npm run check:search && npm run check:content-contracts && npm run check:3d && npm run check:links && npm run check:no-leak && npm run check:reveal && npm run check:routes",
+  "report:upper-quadrant": "node scripts/generate-upper-quadrant-matrix.mjs",
+  "preflight": "npm run clean:build && npm run check:hygiene && npm run check:sources && npm run check:secrets && npm run check:frontmatter && npm run check:generated-sources && npm run check:platform-content && npm run build && npm run check:search && npm run check:content-contracts && npm run check:3d && npm run check:links && npm run check:no-leak && npm run check:reveal && npm run check:routes",
   "manager:status": "python ai-manager/project_status.py",
   "type-check": "tsc --noEmit",
   "export": "next build"
