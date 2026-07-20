@@ -1,0 +1,16 @@
+{
+  "contentId": "learning.decision-tree.assessment-escalation-example",
+  "recordType": "decision-tree",
+  "title": "Non-diagnostic assessment escalation example",
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "needs-review",
+  "sourceContentIds": [],
+  "references": [],
+  "startNodeId": "start",
+  "nodes": [
+    { "id": "start", "type": "decision", "text": "Have immediate safety concerns been identified?", "options": [{ "label": "Yes", "nextNodeId": "escalate" }, { "label": "No", "nextNodeId": "continue" }] },
+    { "id": "escalate", "type": "caution", "text": "Follow the reviewed local escalation pathway.", "options": [] },
+    { "id": "continue", "type": "information", "text": "Continue the structured assessment and keep safety under review.", "options": [] }
+  ]
+}

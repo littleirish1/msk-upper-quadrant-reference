@@ -1,0 +1,12 @@
+{
+  "contentId": "learning.flashcard.review-gate-example",
+  "recordType": "flashcard",
+  "title": "Review gate example",
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "needs-review",
+  "sourceContentIds": [],
+  "references": [],
+  "front": "What happens to unreviewed clinical learning content?",
+  "back": "It remains draft or private and is excluded from public routes and search."
+}

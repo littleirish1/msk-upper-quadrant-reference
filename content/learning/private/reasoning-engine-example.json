@@ -1,0 +1,24 @@
+{
+  "contentId": "learning.reasoning-engine.neutral-workflow-example",
+  "recordType": "reasoning-engine",
+  "title": "Neutral guided reasoning workflow example",
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "clinician-review-required",
+  "sourceContentIds": [],
+  "references": [],
+  "steps": [
+    { "id": "presentation", "type": "presentation", "title": "Initial presentation", "prompt": "Read the reviewed case presentation." },
+    { "id": "differential", "type": "differential", "title": "Differential", "prompt": "Record candidate explanations without confirming a diagnosis." },
+    { "id": "justification", "type": "justification", "title": "Justification", "prompt": "Record supporting and contradicting features." },
+    { "id": "history", "type": "history-reveal", "title": "Additional history", "prompt": "Reveal case-authored history when available." },
+    { "id": "red-flags", "type": "red-flags", "title": "Safety", "prompt": "Record safety considerations." },
+    { "id": "examination", "type": "examination", "title": "Examination", "prompt": "Plan an examination." },
+    { "id": "findings", "type": "findings-reveal", "title": "Findings", "prompt": "Reveal case-authored findings when available." },
+    { "id": "investigation", "type": "investigation", "title": "Investigations", "prompt": "Record an investigation decision and rationale." },
+    { "id": "management", "type": "management", "title": "Management", "prompt": "Record a proposed management plan." },
+    { "id": "communication", "type": "patient-explanation", "title": "Patient explanation", "prompt": "Draft a clear explanation." },
+    { "id": "comparison", "type": "expert-comparison", "title": "Expert comparison", "prompt": "Compare with reviewed case reasoning after reveal." },
+    { "id": "reflection", "type": "reflection", "title": "Reflection", "prompt": "Record what changed in your reasoning." }
+  ]
+}

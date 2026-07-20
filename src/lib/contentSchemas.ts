@@ -274,6 +274,88 @@ export const anatomyRecordSchema = z
     }
   })
 
+export const reasoningStepTypeSchema = z.enum([
+  'presentation',
+  'differential',
+  'justification',
+  'history-reveal',
+  'red-flags',
+  'examination',
+  'findings-reveal',
+  'investigation',
+  'management',
+  'patient-explanation',
+  'expert-comparison',
+  'reflection',
+])
+
+const learningRecordBaseShape = {
+  contentId: contentIdSchema,
+  title: z.string().min(1),
+  status: contentLifecycleStatusSchema,
+  publicEligibility: z.boolean(),
+  reviewStatus: platformReviewStatusSchema,
+  sourceContentIds: z.array(contentIdSchema).default([]),
+  references: z.array(citationSchema).default([]),
+}
+
+export const reasoningEngineRecordSchema = z.object({
+  ...learningRecordBaseShape,
+  recordType: z.literal('reasoning-engine'),
+  steps: z.array(z.object({
+    id: z.string().regex(/^[a-z0-9-]+$/),
+    type: reasoningStepTypeSchema,
+    title: z.string().min(1),
+    prompt: z.string().min(1),
+    revealText: z.string().min(1).optional(),
+  })).min(2),
+})
+
+export const quizQuestionRecordSchema = z.object({
+  ...learningRecordBaseShape,
+  recordType: z.literal('quiz-question'),
+  questionType: z.enum(['multiple-choice', 'short-answer']),
+  prompt: z.string().min(1),
+  options: z.array(z.string().min(1)).default([]),
+  answer: z.string().min(1),
+  explanation: z.string().min(1),
+})
+
+export const flashcardRecordSchema = z.object({
+  ...learningRecordBaseShape,
+  recordType: z.literal('flashcard'),
+  front: z.string().min(1),
+  back: z.string().min(1),
+})
+
+export const osceStationRecordSchema = z.object({
+  ...learningRecordBaseShape,
+  recordType: z.literal('osce-station'),
+  candidateInstructions: z.string().min(1),
+  examinerDomains: z.array(z.string().min(1)).min(1),
+  modelDiscussion: z.string().min(1),
+})
+
+export const vivaPromptRecordSchema = z.object({
+  ...learningRecordBaseShape,
+  recordType: z.literal('viva-prompt'),
+  prompts: z.array(z.string().min(1)).min(1),
+  expertNotes: z.string().min(1),
+})
+
+export const decisionTreeRecordSchema = z.object({
+  ...learningRecordBaseShape,
+  recordType: z.literal('decision-tree'),
+  startNodeId: z.string().min(1),
+  nodes: z.array(z.object({
+    id: z.string().min(1),
+    type: z.enum(['decision', 'information', 'caution', 'outcome']),
+    text: z.string().min(1),
+    options: z.array(z.object({ label: z.string().min(1), nextNodeId: z.string().min(1) })).default([]),
+    evidenceNote: z.string().min(1).optional(),
+  })).min(1),
+})
+
 export const caseFrontmatterSchema = sourceMetadataSchema.merge(z.object({
   title: z.string().min(1),
   region: regionSlugSchema,
@@ -337,3 +419,10 @@ export type OutcomeMeasureRecord = z.infer<typeof outcomeMeasureRecordSchema>
 export type RegionContentBrief = z.infer<typeof regionContentBriefSchema>
 export type AnatomyCategory = z.infer<typeof anatomyCategorySchema>
 export type AnatomyRecord = z.infer<typeof anatomyRecordSchema>
+export type ReasoningStepType = z.infer<typeof reasoningStepTypeSchema>
+export type ReasoningEngineRecord = z.infer<typeof reasoningEngineRecordSchema>
+export type QuizQuestionRecord = z.infer<typeof quizQuestionRecordSchema>
+export type FlashcardRecord = z.infer<typeof flashcardRecordSchema>
+export type OsceStationRecord = z.infer<typeof osceStationRecordSchema>
+export type VivaPromptRecord = z.infer<typeof vivaPromptRecordSchema>
+export type DecisionTreeRecord = z.infer<typeof decisionTreeRecordSchema>
