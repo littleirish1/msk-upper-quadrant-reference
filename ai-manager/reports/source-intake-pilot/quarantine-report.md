@@ -2,12 +2,12 @@
 
 ## Summary
 
-9 sources are quarantined.
+10 sources are quarantined.
 
 ## Categories
 
-- sensitive-filename-indicator: 9
+- student-or-candidate-identifier: 1
 
 ## Handling
 
-Matched values, source names and source bodies are intentionally omitted. Quarantined sources were not used for references or proposals.
+Values, names, filenames, and bodies are omitted. Quarantined sources support neither references nor proposals.

@@ -1,9 +1,9 @@
 # RCRSP proposed content links
 
-## Private proposals
+## Targets
 
-Potential targets include the existing shoulder condition reference, neutral guided case, rotator-cuff anatomy, special-test records, outcome measures, quizzes, flashcards, OSCE material, and patient explanation resources.
+Existing condition and neutral case plus anatomy, tests, outcomes, quizzes, flashcards, OSCE and patient-information resources.
 
 ## Publication
 
-All links are proposals only and public eligibility is false.
+Blocked; public eligibility is false.

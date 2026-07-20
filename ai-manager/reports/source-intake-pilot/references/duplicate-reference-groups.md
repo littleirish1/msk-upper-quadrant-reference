@@ -3,159 +3,61 @@
 ## Exact groups
 
 - `ref-exact-001`: 2 occurrences across 2 source(s).
-- `ref-exact-002`: 3 occurrences across 1 source(s).
-- `ref-exact-003`: 3 occurrences across 1 source(s).
-- `ref-exact-004`: 16 occurrences across 2 source(s).
-- `ref-exact-005`: 2 occurrences across 1 source(s).
-- `ref-exact-006`: 2 occurrences across 1 source(s).
+- `ref-exact-002`: 2 occurrences across 2 source(s).
+- `ref-exact-003`: 2 occurrences across 2 source(s).
+- `ref-exact-004`: 2 occurrences across 2 source(s).
+- `ref-exact-005`: 2 occurrences across 2 source(s).
+- `ref-exact-006`: 2 occurrences across 2 source(s).
 - `ref-exact-007`: 2 occurrences across 2 source(s).
 - `ref-exact-008`: 2 occurrences across 2 source(s).
 - `ref-exact-009`: 2 occurrences across 2 source(s).
-- `ref-exact-010`: 3 occurrences across 3 source(s).
+- `ref-exact-010`: 2 occurrences across 2 source(s).
 - `ref-exact-011`: 3 occurrences across 3 source(s).
-- `ref-exact-012`: 3 occurrences across 3 source(s).
-- `ref-exact-013`: 3 occurrences across 3 source(s).
-- `ref-exact-014`: 3 occurrences across 3 source(s).
-- `ref-exact-015`: 3 occurrences across 3 source(s).
-- `ref-exact-016`: 3 occurrences across 3 source(s).
-- `ref-exact-017`: 3 occurrences across 3 source(s).
-- `ref-exact-018`: 2 occurrences across 2 source(s).
-- `ref-exact-019`: 3 occurrences across 3 source(s).
-- `ref-exact-020`: 3 occurrences across 3 source(s).
-- `ref-exact-021`: 3 occurrences across 3 source(s).
-- `ref-exact-022`: 3 occurrences across 3 source(s).
+- `ref-exact-012`: 2 occurrences across 2 source(s).
+- `ref-exact-013`: 2 occurrences across 2 source(s).
+- `ref-exact-014`: 2 occurrences across 2 source(s).
+- `ref-exact-015`: 2 occurrences across 2 source(s).
+- `ref-exact-016`: 2 occurrences across 2 source(s).
+- `ref-exact-017`: 2 occurrences across 2 source(s).
+- `ref-exact-018`: 3 occurrences across 3 source(s).
+- `ref-exact-019`: 2 occurrences across 2 source(s).
+- `ref-exact-020`: 2 occurrences across 2 source(s).
+- `ref-exact-021`: 2 occurrences across 2 source(s).
+- `ref-exact-022`: 2 occurrences across 2 source(s).
 - `ref-exact-023`: 3 occurrences across 3 source(s).
-- `ref-exact-024`: 3 occurrences across 3 source(s).
-- `ref-exact-025`: 3 occurrences across 3 source(s).
-- `ref-exact-026`: 3 occurrences across 3 source(s).
+- `ref-exact-024`: 2 occurrences across 2 source(s).
+- `ref-exact-025`: 2 occurrences across 2 source(s).
+- `ref-exact-026`: 2 occurrences across 2 source(s).
 - `ref-exact-027`: 3 occurrences across 3 source(s).
-- `ref-exact-028`: 3 occurrences across 3 source(s).
-- `ref-exact-029`: 3 occurrences across 3 source(s).
-- `ref-exact-030`: 3 occurrences across 3 source(s).
-- `ref-exact-031`: 3 occurrences across 3 source(s).
-- `ref-exact-032`: 3 occurrences across 3 source(s).
-- `ref-exact-033`: 3 occurrences across 3 source(s).
-- `ref-exact-034`: 2 occurrences across 2 source(s).
-- `ref-exact-035`: 3 occurrences across 3 source(s).
-- `ref-exact-036`: 3 occurrences across 3 source(s).
+- `ref-exact-028`: 2 occurrences across 2 source(s).
+- `ref-exact-029`: 2 occurrences across 2 source(s).
+- `ref-exact-030`: 2 occurrences across 2 source(s).
+- `ref-exact-031`: 2 occurrences across 2 source(s).
+- `ref-exact-032`: 2 occurrences across 2 source(s).
+- `ref-exact-033`: 2 occurrences across 2 source(s).
+- `ref-exact-034`: 3 occurrences across 3 source(s).
+- `ref-exact-035`: 2 occurrences across 2 source(s).
+- `ref-exact-036`: 2 occurrences across 2 source(s).
 - `ref-exact-037`: 3 occurrences across 3 source(s).
-- `ref-exact-038`: 3 occurrences across 3 source(s).
-- `ref-exact-039`: 3 occurrences across 3 source(s).
+- `ref-exact-038`: 2 occurrences across 2 source(s).
+- `ref-exact-039`: 2 occurrences across 2 source(s).
 - `ref-exact-040`: 2 occurrences across 2 source(s).
 - `ref-exact-041`: 2 occurrences across 2 source(s).
-- `ref-exact-042`: 3 occurrences across 3 source(s).
-- `ref-exact-043`: 2 occurrences across 2 source(s).
-- `ref-exact-044`: 4 occurrences across 4 source(s).
-- `ref-exact-045`: 3 occurrences across 3 source(s).
+- `ref-exact-042`: 2 occurrences across 2 source(s).
+- `ref-exact-043`: 3 occurrences across 3 source(s).
+- `ref-exact-044`: 2 occurrences across 2 source(s).
+- `ref-exact-045`: 2 occurrences across 2 source(s).
 - `ref-exact-046`: 3 occurrences across 3 source(s).
 - `ref-exact-047`: 3 occurrences across 3 source(s).
-- `ref-exact-048`: 3 occurrences across 3 source(s).
+- `ref-exact-048`: 2 occurrences across 2 source(s).
 - `ref-exact-049`: 2 occurrences across 2 source(s).
-- `ref-exact-050`: 3 occurrences across 3 source(s).
-- `ref-exact-051`: 3 occurrences across 3 source(s).
-- `ref-exact-052`: 3 occurrences across 3 source(s).
-- `ref-exact-053`: 3 occurrences across 3 source(s).
-- `ref-exact-054`: 3 occurrences across 3 source(s).
-- `ref-exact-055`: 3 occurrences across 3 source(s).
-- `ref-exact-056`: 2 occurrences across 2 source(s).
-- `ref-exact-057`: 2 occurrences across 2 source(s).
-- `ref-exact-058`: 2 occurrences across 2 source(s).
-- `ref-exact-059`: 2 occurrences across 2 source(s).
-- `ref-exact-060`: 3 occurrences across 3 source(s).
-- `ref-exact-061`: 2 occurrences across 2 source(s).
-- `ref-exact-062`: 3 occurrences across 3 source(s).
-- `ref-exact-063`: 3 occurrences across 3 source(s).
-- `ref-exact-064`: 3 occurrences across 3 source(s).
-- `ref-exact-065`: 2 occurrences across 2 source(s).
-- `ref-exact-066`: 2 occurrences across 2 source(s).
-- `ref-exact-067`: 3 occurrences across 3 source(s).
-- `ref-exact-068`: 2 occurrences across 2 source(s).
-- `ref-exact-069`: 2 occurrences across 2 source(s).
-- `ref-exact-070`: 3 occurrences across 3 source(s).
-- `ref-exact-071`: 2 occurrences across 2 source(s).
-- `ref-exact-072`: 3 occurrences across 3 source(s).
-- `ref-exact-073`: 2 occurrences across 2 source(s).
-- `ref-exact-074`: 2 occurrences across 2 source(s).
-- `ref-exact-075`: 2 occurrences across 2 source(s).
-- `ref-exact-076`: 3 occurrences across 3 source(s).
-- `ref-exact-077`: 2 occurrences across 2 source(s).
-- `ref-exact-078`: 3 occurrences across 3 source(s).
-- `ref-exact-079`: 3 occurrences across 3 source(s).
-- `ref-exact-080`: 2 occurrences across 2 source(s).
-- `ref-exact-081`: 2 occurrences across 1 source(s).
-- `ref-exact-082`: 2 occurrences across 1 source(s).
-- `ref-exact-083`: 7 occurrences across 1 source(s).
-- `ref-exact-084`: 2 occurrences across 2 source(s).
-- `ref-exact-085`: 2 occurrences across 2 source(s).
-
-## Probable groups
-
-- `ref-probable-001`: 7 variants sharing stated first author and year; manual verification required.
-- `ref-probable-002`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-003`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-004`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-005`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-006`: 15 variants sharing stated first author and year; manual verification required.
-- `ref-probable-007`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-008`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-009`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-010`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-011`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-012`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-013`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-014`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-015`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-016`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-017`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-018`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-019`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-020`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-021`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-022`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-023`: 4 variants sharing stated first author and year; manual verification required.
-- `ref-probable-024`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-025`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-026`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-027`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-028`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-029`: 3 variants sharing stated first author and year; manual verification required.
-- `ref-probable-030`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-031`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-032`: 3 variants sharing stated first author and year; manual verification required.
-- `ref-probable-033`: 13 variants sharing stated first author and year; manual verification required.
-- `ref-probable-034`: 6 variants sharing stated first author and year; manual verification required.
-- `ref-probable-035`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-036`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-037`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-038`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-039`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-040`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-041`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-042`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-043`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-044`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-045`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-046`: 5 variants sharing stated first author and year; manual verification required.
-- `ref-probable-047`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-048`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-049`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-050`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-051`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-052`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-053`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-054`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-055`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-056`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-057`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-058`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-059`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-060`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-061`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-062`: 6 variants sharing stated first author and year; manual verification required.
-- `ref-probable-063`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-064`: 2 variants sharing stated first author and year; manual verification required.
-- `ref-probable-065`: 2 variants sharing stated first author and year; manual verification required.
+- `ref-exact-050`: 2 occurrences across 2 source(s).
+- `ref-exact-051`: 2 occurrences across 2 source(s).
+- `ref-exact-052`: 2 occurrences across 2 source(s).
+- `ref-exact-053`: 2 occurrences across 2 source(s).
+- `ref-exact-054`: 2 occurrences across 2 source(s).
+- `ref-exact-055`: 2 occurrences across 2 source(s).
 
 ## Action
 
-Probable variants require manual bibliographic verification; none were discarded.
+No candidate was discarded; manual verification is required.

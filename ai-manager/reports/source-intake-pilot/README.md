@@ -2,12 +2,12 @@
 
 ## Purpose
 
-Governed metadata and evidence-development proposals for private teaching sources. Source bodies and full extracted text remain outside tracked files.
+Governed metadata and blocked evidence-development proposals. Source bodies and full text remain in ignored storage.
 
 ## Boundary
 
-Every record has public eligibility set to false. Copyright/licence and clinical claims require separate review.
+Public eligibility is false. Restricted sources require explicit clearance; clearance is not publication, copyright, evidence, or clinical approval.
 
 ## Reproduction
 
-Run the source-intake command with an operator-supplied private inbox path. The path is never stored in tracked output.
+Use the operator-supplied private inbox argument. No absolute source path is stored.

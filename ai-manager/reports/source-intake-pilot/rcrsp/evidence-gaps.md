@@ -2,8 +2,8 @@
 
 ## Required evidence
 
-Current guidelines, systematic reviews, diagnostic-accuracy studies, prognostic cohorts, and intervention trials must be located and verified externally in a later approved phase.
+Current guidelines, systematic reviews, diagnostic-accuracy studies, prognostic cohorts, and intervention trials require later external verification.
 
 ## Approval
 
-Clinician review is required after evidence verification.
+Clinician review remains required.

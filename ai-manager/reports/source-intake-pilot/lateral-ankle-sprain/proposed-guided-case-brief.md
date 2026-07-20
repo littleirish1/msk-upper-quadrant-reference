@@ -2,12 +2,12 @@
 
 ## Status
 
-Private proposal only.
+Private blocked proposal.
 
 ## Reasoning structure
 
-Neutral presentation; differential entry; cannot-miss screening; examination plan; findings reveal; investigation decision; staged management; patient explanation; expert comparison; reflection.
+Neutral presentation, differential, cannot-miss screening, examination, findings, investigation, management, explanation, expert comparison and reflection.
 
 ## Expert answers
 
-No model answer is authored. Every expert step requires source support and clinician approval.
+None authored; source support and clinician approval required.

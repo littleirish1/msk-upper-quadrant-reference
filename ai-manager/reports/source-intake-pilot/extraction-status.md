@@ -2,14 +2,15 @@
 
 ## Counts
 
-- extracted: 110
+- extracted: 67
 - metadata-only: 14
-- quarantined: 9
+- quarantined: 10
+- restricted: 42
 
 ## Methods
 
-Embedded text was used where supported. Image/video files are metadata-only, legacy binary office formats are unsupported, and OCR was not run.
+Embedded text only; no OCR. Office and archive parsing is bounded.
 
 ## Cache
 
-Full extracted text is held only in the ignored private cache.
+Private extracted text is isolated under ignored run `run-ba38b10fbc3fa024`.

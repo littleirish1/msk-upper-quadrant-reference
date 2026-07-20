@@ -2,12 +2,8 @@
 
 ## Status
 
-Private proposal only; no public route or clinical answer page is created.
+Private blocked proposal; no public route.
 
-## Proposed structure
+## Structure
 
-Overview; assessment and fracture screening; differentials; early management; progressive loading; exercise rehabilitation; return to activity; recurrence prevention; escalation; evidence limitations; patient communication.
-
-## Blocking rule
-
-No section may be drafted as a public clinical claim without verified sources and clinician review.
+Assessment, fracture screening, differentials, early management, loading, rehabilitation, return to activity, recurrence prevention, escalation, limitations and communication.

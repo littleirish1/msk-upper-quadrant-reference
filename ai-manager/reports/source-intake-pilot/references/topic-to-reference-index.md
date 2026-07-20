@@ -2,32 +2,27 @@
 
 ## Counts
 
-- anatomy: 2
-- ankle-ligament-anatomy: 4
-- balance-proprioception: 875
-- bracing-taping: 722
-- cervical: 2
-- exercise-rehabilitation: 1579
-- fracture-screening: 842
-- general: 17
-- guideline: 1208
-- imaging: 994
+- ankle-ligament-anatomy: 6
+- balance-proprioception: 38
+- bracing-taping: 131
+- exercise-rehabilitation: 275
+- fracture-screening: 107
+- general: 15
+- guideline: 231
+- imaging: 81
 - lateral-ankle-sprain: 2
-- neurology: 2
-- osce: 88
-- outcome-measures: 1072
-- paper: 1653
-- patient-communication: 756
+- osce: 22
+- outcome-measures: 126
+- paper: 291
+- patient-communication: 221
 - patient-information: 2
-- prognosis: 742
-- rcrsp: 334
-- recurrence-prevention: 683
-- return-to-sport: 19
-- rotator-cuff-tear: 297
-- shoulder: 2
-- shoulder-differential: 279
-- special-tests: 436
+- prognosis: 67
+- rcrsp: 10
+- recurrence-prevention: 193
+- return-to-sport: 18
+- shoulder-differential: 11
+- special-tests: 43
 
 ## Meaning
 
-These are extraction associations only, not evidence endorsements.
+Extraction associations only.

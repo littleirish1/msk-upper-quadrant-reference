@@ -2,13 +2,13 @@
 
 ## Priority
 
-1. Manually clear or retain quarantined sources.
-2. Verify copyright/licence and source category.
-3. Review extraction quality.
-4. Verify candidate references externally.
-5. Review RCRSP and ankle evidence questions.
-6. Obtain clinician approval before any public content change.
+1. Human clearance decisions.
+2. Licence and category review.
+3. Extraction quality.
+4. External citation verification.
+5. Pilot claim review.
+6. Clinician approval before publication.
 
 ## Status
 
-All sources remain private and unapproved.
+Restricted uncleared: 42; excluded citations: 1164; excluded proposal sources: 5.

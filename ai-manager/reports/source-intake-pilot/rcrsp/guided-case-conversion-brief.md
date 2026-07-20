@@ -1,24 +1,24 @@
 # RCRSP guided-case conversion brief
 
-## Existing-case preservation
+## Existing case
 
-The existing public case is not changed by this pilot.
+The existing public case is unchanged.
 
-## Proposed step map
+## Twelve-step map
 
-1. Initial presentation: requires source-supported, clinician-reviewed content before implementation.
-2. Learner differential: requires source-supported, clinician-reviewed content before implementation.
-3. Justification: requires source-supported, clinician-reviewed content before implementation.
-4. Additional history: requires source-supported, clinician-reviewed content before implementation.
-5. Red flags: requires source-supported, clinician-reviewed content before implementation.
-6. Examination planning: requires source-supported, clinician-reviewed content before implementation.
-7. Examination findings: requires source-supported, clinician-reviewed content before implementation.
-8. Investigation decision: requires source-supported, clinician-reviewed content before implementation.
-9. Management plan: requires source-supported, clinician-reviewed content before implementation.
-10. Patient explanation: requires source-supported, clinician-reviewed content before implementation.
-11. Expert reasoning comparison: requires source-supported, clinician-reviewed content before implementation.
-12. Reflection: requires source-supported, clinician-reviewed content before implementation.
+1. **Initial presentation** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
+2. **Learner differential** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
+3. **Justification** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
+4. **Additional history** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
+5. **Red flags** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
+6. **Examination planning** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
+7. **Examination findings** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
+8. **Investigation decision** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
+9. **Management plan** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
+10. **Patient explanation** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
+11. **Expert reasoning comparison** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
+12. **Reflection** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
 
-## Expert answers
+## Approval
 
-No model answer is authored here. Every proposed expert answer requires cited source support and clinician approval.
+Every expert answer requires source-specific support and clinician approval.
