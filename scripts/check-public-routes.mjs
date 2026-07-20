@@ -18,6 +18,7 @@ const requiredRoutes = [
   ['/cases', path.join(OUT_DIR, 'cases', 'index.html')],
   ['/anatomy', path.join(OUT_DIR, 'anatomy', 'index.html')],
   ['/anatomy/peripheral-nerve', path.join(OUT_DIR, 'anatomy', 'peripheral-nerve', 'index.html')],
+  ['/learning', path.join(OUT_DIR, 'learning', 'index.html')],
   ['/demo', path.join(OUT_DIR, 'demo', 'index.html')],
   ['/future', path.join(OUT_DIR, 'future', 'index.html')],
   ['/red-flags', path.join(OUT_DIR, 'red-flags', 'index.html')],

@@ -35,6 +35,7 @@ export function Header() {
             { href: '/wrist-hand', label: 'Wrist & Hand' },
             { href: '/cases',      label: 'Cases' },
             { href: '/anatomy',    label: 'Anatomy' },
+            { href: '/learning',   label: 'Learning Lab' },
           ].map(({ href, label }) => (
             <Link
               key={href}
@@ -102,6 +103,7 @@ export function Header() {
               { href: '/wrist-hand', label: 'Wrist & Hand' },
               { href: '/cases',      label: 'Guided Cases' },
               { href: '/anatomy',    label: 'Anatomy Foundations' },
+              { href: '/learning',   label: 'Learning Lab' },
             ].map(({ href, label }) => (
               <li key={href}>
                 <Link
