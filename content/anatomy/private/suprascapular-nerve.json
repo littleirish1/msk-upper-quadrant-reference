@@ -1,0 +1,14 @@
+{
+  "contentId": "anatomy.peripheral-nerve.suprascapular-nerve",
+  "title": "Suprascapular nerve review brief",
+  "slug": "suprascapular-nerve",
+  "category": "peripheral-nerve",
+  "regions": ["shoulder"],
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "clinician-review-required",
+  "relationships": [],
+  "commonLesionSites": [],
+  "references": [],
+  "notes": "Course, examination, lesion patterns, and references require review before publication."
+}

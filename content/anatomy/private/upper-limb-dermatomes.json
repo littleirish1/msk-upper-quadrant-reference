@@ -1,0 +1,14 @@
+{
+  "contentId": "anatomy.dermatome.upper-limb-overview",
+  "title": "Upper-limb dermatomes review brief",
+  "slug": "upper-limb-overview",
+  "category": "dermatome",
+  "regions": ["cervical", "shoulder", "elbow", "wrist-hand"],
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "clinician-review-required",
+  "relationships": [],
+  "commonLesionSites": [],
+  "references": [],
+  "notes": "Distribution, variability, examination, and references require review before publication."
+}
