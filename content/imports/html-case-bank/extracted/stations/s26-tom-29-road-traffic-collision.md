@@ -1,6 +1,9 @@
 # Legacy Station Extract: Tom, 29 — Road Traffic Collision
 
-> Source: content/imports/html-case-bank/raw/index.html
+> Source ID: legacy-html-case-bank-v1
+> Source type: private-external-legacy-html
+> Approved SHA-256: 488282ca6ce682d5ee56f0c700b4392e1cf32d2b8625c0ed165f2db5b7483bb3
+> Extraction version: 1
 > Station ID: s26
 > Status: extracted-not-reviewed
 

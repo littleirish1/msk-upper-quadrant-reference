@@ -1,8 +1,21 @@
 import fs from 'fs'
 import path from 'path'
 import { spawnSync } from 'child_process'
+import {
+  readVerifiedLegacySource,
+  resolveLegacySourcePath,
+} from './lib/legacySourceProvenance.mjs'
 
 const ROOT = process.cwd()
+
+const sourceArg = process.argv[2] || process.env.LEGACY_HTML_SOURCE
+
+if (!sourceArg) {
+  console.error('Usage: node scripts/extract-all-legacy-stations.mjs <path-to-private-legacy-html>')
+  console.error('Alternatively set LEGACY_HTML_SOURCE.')
+  console.error('The raw legacy HTML is intentionally not stored in this repository.')
+  process.exit(1)
+}
 
 const INDEX_FILE = path.join(
   ROOT,
@@ -14,10 +27,19 @@ const INDEX_FILE = path.join(
 )
 
 const EXTRACT_SCRIPT = path.join(ROOT, 'scripts', 'extract-legacy-station.mjs')
+const sourceFile = resolveLegacySourcePath(sourceArg)
+
+try {
+  readVerifiedLegacySource(sourceFile)
+} catch (error) {
+  console.error(error.message)
+  process.exit(1)
+}
+
 
 if (!fs.existsSync(INDEX_FILE)) {
   console.error(`Station index not found: ${INDEX_FILE}`)
-  console.error('Run: node scripts/extract-legacy-html.mjs')
+  console.error('Run: node scripts/extract-legacy-html.mjs <path-to-private-legacy-html>')
   process.exit(1)
 }
 
@@ -47,7 +69,7 @@ for (const station of index.stations) {
 
   const result = spawnSync(
     process.execPath,
-    [EXTRACT_SCRIPT, station.id],
+    [EXTRACT_SCRIPT, station.id, sourceFile],
     {
       cwd: ROOT,
       stdio: 'inherit',

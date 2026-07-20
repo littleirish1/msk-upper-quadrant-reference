@@ -1,24 +1,24 @@
 import fs from 'fs'
 import path from 'path'
+import {
+  LEGACY_SOURCE_PROVENANCE,
+  readVerifiedLegacySource,
+  resolveLegacySourcePath,
+} from './lib/legacySourceProvenance.mjs'
 
 const ROOT = process.cwd()
 
 const stationId = process.argv[2]
+const sourceArg = process.argv[3] || process.env.LEGACY_HTML_SOURCE
 
-if (!stationId) {
-  console.error('Usage: node scripts/extract-legacy-station.mjs <station-id>')
-  console.error('Example: node scripts/extract-legacy-station.mjs s15')
+if (!stationId || !sourceArg) {
+  console.error('Usage: node scripts/extract-legacy-station.mjs <station-id> <path-to-private-legacy-html>')
+  console.error('Alternatively set LEGACY_HTML_SOURCE and pass only <station-id>.')
+  console.error('The raw legacy HTML is intentionally not stored in this repository.')
   process.exit(1)
 }
 
-const INPUT_FILE = path.join(
-  ROOT,
-  'content',
-  'imports',
-  'html-case-bank',
-  'raw',
-  'index.html'
-)
+const INPUT_FILE = resolveLegacySourcePath(sourceArg)
 
 const OUTPUT_DIR = path.join(
   ROOT,
@@ -29,14 +29,17 @@ const OUTPUT_DIR = path.join(
   'stations'
 )
 
-if (!fs.existsSync(INPUT_FILE)) {
-  console.error(`Legacy HTML not found: ${INPUT_FILE}`)
+let sourceBytes
+try {
+  sourceBytes = readVerifiedLegacySource(INPUT_FILE)
+} catch (error) {
+  console.error(error.message)
   process.exit(1)
 }
 
 fs.mkdirSync(OUTPUT_DIR, { recursive: true })
 
-const html = fs.readFileSync(INPUT_FILE, 'utf8')
+const html = sourceBytes.toString('utf8')
 
 const stationBlock = extractObjectBlockById(html, stationId)
 const scenarioBlock = extractScenarioBlockById(html, stationId)
@@ -56,8 +59,11 @@ const suggestedRegion = inferRegion(title)
 const output = [
   `# Legacy Station Extract: ${title}`,
   ``,
-  `> Source: content/imports/html-case-bank/raw/index.html`,
+  `> Source ID: ${LEGACY_SOURCE_PROVENANCE.sourceId}`,
+  `> Source type: ${LEGACY_SOURCE_PROVENANCE.sourceType}`,
+  `> Approved SHA-256: ${LEGACY_SOURCE_PROVENANCE.sha256}`,
   `> Station ID: ${stationId}`,
+  `> Extraction version: ${LEGACY_SOURCE_PROVENANCE.extractionVersion}`,
   `> Status: extracted-not-reviewed`,
   ``,
   `## Metadata`,
