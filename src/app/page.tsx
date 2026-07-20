@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { BookOpen, Brain, Columns, CircleDot, GitBranch, Hand, Search, ShieldAlert, Stethoscope } from 'lucide-react'
+import { BookOpen, Brain, Columns, CircleDot, GitBranch, Hand, Network, Search, ShieldAlert, Stethoscope } from 'lucide-react'
 import { REGIONS } from '@/data/taxonomy'
 import { BodyRegionRoadmap } from '@/components/ui/BodyRegionRoadmap'
 import { QuickFind } from '@/components/ui/QuickFind'
@@ -63,6 +63,13 @@ export default function HomePage() {
           >
             <ShieldAlert className="h-4 w-4" aria-hidden />
             Red Flags Quick Ref
+          </Link>
+          <Link
+            href="/anatomy"
+            className="inline-flex items-center gap-2 rounded-lg border-2 border-surface-200 bg-white px-5 py-2.5 text-sm font-semibold text-surface-700 shadow-sm transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-200"
+          >
+            <Network className="h-4 w-4" aria-hidden />
+            Anatomy Foundations
           </Link>
         </div>
       </section>

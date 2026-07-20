@@ -184,6 +184,96 @@ export const regionContentBriefSchema = z.object({
   notes: z.string().optional(),
 })
 
+export const anatomyCategorySchema = z.enum([
+  'bone',
+  'joint',
+  'muscle',
+  'tendon',
+  'ligament',
+  'peripheral-nerve',
+  'nerve-root',
+  'dermatome',
+  'myotome',
+  'spinal-tract',
+  'cranial-nerve',
+  'brain-region',
+  'blood-vessel',
+])
+
+const anatomyCommonShape = {
+  contentId: contentIdSchema,
+  title: z.string().min(1),
+  slug: z.string().regex(/^[a-z0-9-]+$/),
+  regions: z.array(regionSlugSchema).default([]),
+  status: contentLifecycleStatusSchema,
+  publicEligibility: z.boolean(),
+  reviewStatus: platformReviewStatusSchema,
+  overview: z.string().min(1).optional(),
+  innervation: z.string().min(1).optional(),
+  bloodSupply: z.string().min(1).optional(),
+  actionOrFunction: z.string().min(1).optional(),
+  course: z.string().min(1).optional(),
+  relationships: z.array(z.string().min(1)).default([]),
+  commonLesionSites: z.array(z.string().min(1)).default([]),
+  examination: z.string().min(1).optional(),
+  clinicalRelevance: z.string().min(1).optional(),
+  relatedContent: relatedContentSchema.optional(),
+  references: z.array(citationSchema).default([]),
+  notes: z.string().optional(),
+}
+
+const anatomyGeneralRecordSchema = z.object({
+  ...anatomyCommonShape,
+  category: z.enum([
+    'bone',
+    'joint',
+    'tendon',
+    'ligament',
+    'peripheral-nerve',
+    'nerve-root',
+    'dermatome',
+    'myotome',
+    'spinal-tract',
+    'brain-region',
+    'blood-vessel',
+  ]),
+})
+
+const anatomyMuscleRecordSchema = z.object({
+  ...anatomyCommonShape,
+  category: z.literal('muscle'),
+  origin: z.string().min(1).optional(),
+  insertion: z.string().min(1).optional(),
+})
+
+const cranialNerveRecordSchema = z.object({
+  ...anatomyCommonShape,
+  category: z.literal('cranial-nerve'),
+  nerveNumber: z.number().int().min(1).max(12),
+  modality: z.array(z.string().min(1)).default([]),
+  nucleiOrOrigin: z.string().min(1).optional(),
+  functions: z.array(z.string().min(1)).default([]),
+  bedsideTesting: z.array(z.string().min(1)).default([]),
+  abnormalFindings: z.array(z.string().min(1)).default([]),
+  lesionLocalisation: z.string().min(1).optional(),
+  cautions: z.array(z.string().min(1)).default([]),
+})
+
+export const anatomyRecordSchema = z
+  .discriminatedUnion('category', [
+    anatomyGeneralRecordSchema,
+    anatomyMuscleRecordSchema,
+    cranialNerveRecordSchema,
+  ])
+  .superRefine((data, context) => {
+    if (data.publicEligibility && data.status !== 'published') {
+      context.addIssue({ code: 'custom', path: ['publicEligibility'], message: 'public anatomy requires published status' })
+    }
+    if (data.publicEligibility && data.reviewStatus !== 'reviewed') {
+      context.addIssue({ code: 'custom', path: ['reviewStatus'], message: 'public anatomy requires reviewed status' })
+    }
+  })
+
 export const caseFrontmatterSchema = sourceMetadataSchema.merge(z.object({
   title: z.string().min(1),
   region: regionSlugSchema,
@@ -245,3 +335,5 @@ export type CaseFrontmatterSchema = z.infer<typeof caseFrontmatterSchema>
 export type SpecialTestRecord = z.infer<typeof specialTestRecordSchema>
 export type OutcomeMeasureRecord = z.infer<typeof outcomeMeasureRecordSchema>
 export type RegionContentBrief = z.infer<typeof regionContentBriefSchema>
+export type AnatomyCategory = z.infer<typeof anatomyCategorySchema>
+export type AnatomyRecord = z.infer<typeof anatomyRecordSchema>
