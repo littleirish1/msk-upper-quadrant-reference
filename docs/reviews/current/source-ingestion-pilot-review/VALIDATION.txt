@@ -1,0 +1,239 @@
+﻿Private source-ingestion pilot validation
+
+npm ci: BLOCKED by this Windows environment after three bounded silent timeouts; no installer was left running. Validation used exact installed Next 14.2.35, @next/env 14.2.35, and @next/swc-win32-x64-msvc 14.2.33 artifacts.
+
+=== npm run type-check ===
+
+> msk-upper-quadrant-reference@0.1.0 type-check
+> tsc --noEmit
+
+exit code: 0
+
+=== npm run check:source-intake ===
+
+> msk-upper-quadrant-reference@0.1.0 check:source-intake
+> node ai-manager/scripts/validate-source-intake-pilot.mjs
+
+Private source-intake validation passed. 133 unique sources; 9 quarantined; 1720 candidate references; 2 blocked proposals; public eligibility: 0.
+exit code: 0
+
+=== npm run preflight ===
+
+> msk-upper-quadrant-reference@0.1.0 preflight
+> npm run clean:build && npm run check:hygiene && npm run check:sources && npm run check:secrets && npm run check:frontmatter && npm run check:generated-sources && npm run check:platform-content && npm run check:source-intake && npm run build && npm run check:search && npm run check:content-contracts && npm run check:anatomy && npm run check:learning && npm run check:ai-manager && npm run check:3d && npm run check:links && npm run check:no-leak && npm run check:reveal && npm run check:routes
+
+
+> msk-upper-quadrant-reference@0.1.0 clean:build
+> node scripts/clean-build.mjs
+
+Removed .next
+Removed out
+
+> msk-upper-quadrant-reference@0.1.0 check:hygiene
+> node scripts/check-content-hygiene.mjs
+
+Content hygiene check passed. No flagged names found.
+
+> msk-upper-quadrant-reference@0.1.0 check:sources
+> node scripts/check-case-source-integrity.mjs
+
+Case source integrity check passed.
+
+> msk-upper-quadrant-reference@0.1.0 check:secrets
+> node scripts/check-secrets.mjs
+
+Secret scan passed. No forbidden secret patterns found.
+
+> msk-upper-quadrant-reference@0.1.0 check:frontmatter
+> node scripts/check-frontmatter-schema.mjs
+
+Frontmatter schema check passed.
+Condition files validated: 33
+Guided case files validated: 9
+
+> msk-upper-quadrant-reference@0.1.0 check:generated-sources
+> node scripts/check-generated-source-metadata.mjs
+
+Wrote migration tracker: content\imports\html-case-bank\migration-tracker.md
+Stations scanned: 47
+Legacy-derived cases scanned: 6
+converted: 3
+draft-created: 3
+pending-review: 41
+Unmatched legacy-derived cases: 0
+Wrote source registry: content/imports/source-registry.json
+Sources: 47
+Legacy HTML case bank: 47
+Pending review: 41
+Draft created: 3
+Converted: 3
+Archived: 0
+Linked cases: 6
+Unlinked cases: 3
+Unlinked cases:
+- content/cases/cervical/cervical-radiculopathy-case-01.mdx
+- content/cases/shoulder/adhesive-capsulitis-case-01.mdx
+- content/cases/shoulder/rcrsp-case-01.mdx
+Generated source metadata currentness check passed.
+- current: content/imports/html-case-bank/migration-tracker.md
+- current: content/imports/source-registry.json
+Original target bytes were restored after comparison.
+
+> msk-upper-quadrant-reference@0.1.0 check:platform-content
+> node scripts/check-platform-content.mjs
+
+Upper-quadrant completion matrix current: 33 conditions, 9 cases.
+Platform content check passed. Stable IDs checked: 7.
+
+> msk-upper-quadrant-reference@0.1.0 check:source-intake
+> node ai-manager/scripts/validate-source-intake-pilot.mjs
+
+Private source-intake validation passed. 133 unique sources; 9 quarantined; 1720 candidate references; 2 blocked proposals; public eligibility: 0.
+
+> msk-upper-quadrant-reference@0.1.0 prebuild
+> npm run build:search
+
+
+> msk-upper-quadrant-reference@0.1.0 build:search
+> node scripts/build-search-index.mjs
+
+✓ Search index built: 33 entries → [repository-root]\public\search-index.json
+
+> msk-upper-quadrant-reference@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.35
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/68) ...
+   Generating static pages (17/68) 
+   Generating static pages (34/68) 
+   Generating static pages (51/68) 
+ ✓ Generating static pages (68/68)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                                          Size     First Load JS
+┌ ○ /                                                                3.52 kB        99.7 kB
+├ ○ /_not-found                                                      873 B          88.3 kB
+├ ● /[region]                                                        2.38 kB         106 kB
+├   ├ /cervical
+├   ├ /thoracic
+├   ├ /shoulder
+├   └ [+2 more paths]
+├ ● /[region]/[condition]                                            4.22 kB         108 kB
+├   ├ /cervical/cervical-radiculopathy
+├   ├ /cervical/cervical-myelopathy
+├   ├ /cervical/mechanical-neck-pain
+├   └ [+30 more paths]
+├ ○ /anatomy                                                         189 B          96.4 kB
+├ ● /anatomy/[category]                                              189 B          96.4 kB
+├   ├ /anatomy/muscle
+├   ├ /anatomy/bone
+├   ├ /anatomy/joint
+├   └ [+10 more paths]
+├ ○ /cases                                                           189 B          96.4 kB
+├ ● /cases/[region]/[caseSlug]                                       9.02 kB         112 kB
+├   ├ /cases/cervical/case-01-neck-arm-symptoms
+├   ├ /cases/cervical/case-02-hand-clumsiness-heavy-legs
+├   ├ /cases/elbow/case-03-sudden-anterior-elbow-pain-after-lifting
+├   └ [+3 more paths]
+├ ○ /demo                                                            189 B          96.4 kB
+├ ○ /future                                                          189 B          96.4 kB
+├ ○ /learning                                                        5.55 kB          93 kB
+├ ○ /red-flags                                                       189 B          96.4 kB
+└ ○ /search                                                          1.72 kB         105 kB
++ First Load JS shared by all                                        87.5 kB
+  ├ chunks/117-41a35807c9fc0121.js                                   31.9 kB
+  ├ chunks/fd9d1056-866aaa86d30dac83.js                              53.6 kB
+  └ other shared chunks (total)                                      1.91 kB
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses getStaticProps)
+
+
+> msk-upper-quadrant-reference@0.1.0 check:search
+> node scripts/check-search-index.mjs
+
+Search index check passed.
+
+> msk-upper-quadrant-reference@0.1.0 check:content-contracts
+> node scripts/check-content-contracts.mjs
+
+Published case contracts checked: 6
+Private case exclusions checked: 3
+Content contract check passed.
+Deterministic assertions passed: 11
+
+> msk-upper-quadrant-reference@0.1.0 check:anatomy
+> node scripts/check-anatomy-content.mjs
+
+Anatomy content check passed. Records: 9; public detail records: 0.
+
+> msk-upper-quadrant-reference@0.1.0 check:learning
+> node scripts/check-learning-content.mjs
+
+Learning content check passed. Private schema examples: 6; duplicate IDs: 0.
+
+> msk-upper-quadrant-reference@0.1.0 check:ai-manager
+> node scripts/check-ai-manager-boundary.mjs
+
+AI knowledge-manager validation passed. Pending local intake manifests: 0. Provider mode: disabled.
+AI manager boundary check passed. Public ai-manager files: 0; provider mode: disabled; network required: false.
+
+> msk-upper-quadrant-reference@0.1.0 check:3d
+> node scripts/check-3d-prototype.mjs
+
+3D prototype check passed.
+Public /3d-model route absent.
+Public and exported GLB assets: 0
+Ancestor-based region and layer classification tests passed.
+External HDR/environment references: 0
+
+> msk-upper-quadrant-reference@0.1.0 check:links
+> node scripts/check-internal-links.mjs
+
+Internal link check passed.
+Generated HTML files checked: 67
+Internal links checked: 2768
+Private case routes protected: 3
+
+> msk-upper-quadrant-reference@0.1.0 check:no-leak
+> node scripts/check-no-diagnosis-leak.mjs
+
+Diagnosis no-leak check passed.
+Published case routes checked: 6
+Private case routes excluded: 3
+Live condition pages checked: 33
+
+> msk-upper-quadrant-reference@0.1.0 check:reveal
+> node scripts/check-reveal-smoke.mjs
+
+Reveal smoke check passed.
+Published case pages checked: 6
+RevealAnswer blocks checked: 43
+Private case routes excluded: 3
+RevealAnswer renderer uses native closed details/summary.
+
+> msk-upper-quadrant-reference@0.1.0 check:routes
+> node scripts/check-public-routes.mjs
+
+Public route smoke check passed.
+Published case routes: 6
+Published cases discoverable from /cases: 6
+Private case routes excluded: 3
+exit code: 0
+
+=== git diff --check ===
+warning: in the working copy of 'content/imports/html-case-bank/migration-tracker.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'content/imports/source-registry.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'public/search-index.json', LF will be replaced by CRLF the next time Git touches it
+exit code: 0
+
+=== git status --short --branch ===
+## feature/private-source-ingestion-pilot
+?? docs/reviews/current/
