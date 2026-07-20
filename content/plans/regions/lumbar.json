@@ -1,0 +1,12 @@
+{
+  "contentId": "region-brief.lumbar.foundation",
+  "recordType": "region-content-brief",
+  "title": "Lumbar spine content brief",
+  "region": "lumbar",
+  "status": "planned",
+  "publicEligibility": false,
+  "clinicianReviewRequired": true,
+  "scope": "Define a reviewed lumbar clinical reasoning module before any public condition routes are created.",
+  "sourceRequirements": ["Approved guidelines", "Verified evidence summaries", "Clinician-reviewed local pathways"],
+  "proposedContentTypes": ["region framework", "condition pages", "guided cases", "red-flag pathways"]
+}
