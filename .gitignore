@@ -54,3 +54,6 @@ ai-manager/config/local.*
 ai-manager/config/*.local.*
 ai-manager/**/*.env
 ai-manager/**/*.secret
+ai-manager/private-cache/
+!ai-manager/reports/source-intake-pilot/
+!ai-manager/reports/source-intake-pilot/**
