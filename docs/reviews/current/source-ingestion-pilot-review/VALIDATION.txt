@@ -228,12 +228,14 @@ Published cases discoverable from /cases: 6
 Private case routes excluded: 3
 exit code: 0
 
-=== git diff --check ===
-warning: in the working copy of 'content/imports/html-case-bank/migration-tracker.md', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'content/imports/source-registry.json', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'public/search-index.json', LF will be replaced by CRLF the next time Git touches it
+=== git diff --check 716dec2...e6e690b ===
 exit code: 0
 
 === git status --short --branch ===
 ## feature/private-source-ingestion-pilot
-?? docs/reviews/current/
+ M docs/reviews/current/source-ingestion-pilot-review/CLINICAL_SAFETY_REPORT.md
+ M docs/reviews/current/source-ingestion-pilot-review/DIFF_STAT.txt
+ M docs/reviews/current/source-ingestion-pilot-review/IMPLEMENTATION.patch
+ M docs/reviews/current/source-ingestion-pilot-review/REVIEW_CLAIM.md
+ M docs/reviews/current/source-ingestion-pilot-review/VALIDATION.txt
+?? docs/reviews/current/platform-v2-independent-review/

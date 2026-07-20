@@ -21,8 +21,8 @@
  .../source-intake-pilot/rcrsp/source-set.md        |    47 +
  .../rcrsp/teaching-content-map.md                  |    13 +
  .../references/candidate-reference-registry.json   | 40776 +++++++++++++++++++
- .../references/candidate-reference-summary.md      |    15 +
- .../references/duplicate-reference-groups.md       |    93 +
+ .../references/candidate-reference-summary.md      |    16 +
+ .../references/duplicate-reference-groups.md       |   161 +
  .../references/identifier-verification-queue.md    |   735 +
  .../references/incomplete-reference-queue.md       |  1348 +
  .../references/topic-to-reference-index.md         |    33 +
@@ -32,8 +32,8 @@
  .../source-to-content-graph.json                   |    55 +
  .../reports/source-intake-pilot/topic-index.md     |    43 +
  ai-manager/schemas/managerSchemas.mjs              |   151 +-
- ai-manager/scripts/source_intake_pilot.py          |   791 +
+ ai-manager/scripts/source_intake_pilot.py          |   807 +
  .../scripts/validate-source-intake-pilot.mjs       |   191 +
  package.json                                       |     4 +-
  scripts/check-content-hygiene.mjs                  |     6 +
- 38 files changed, 53189 insertions(+), 10 deletions(-)
+ 38 files changed, 53274 insertions(+), 10 deletions(-)

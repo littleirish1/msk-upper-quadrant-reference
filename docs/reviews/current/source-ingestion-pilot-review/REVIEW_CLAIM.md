@@ -3,7 +3,7 @@
 ## Review range
 
 - Base: `716dec2c96e9378cc323e5e6f44496956c4bd696`
-- Implementation head: `499f799`
+- Implementation head: `e6e690b`
 - Branch: `feature/private-source-ingestion-pilot`
 - Verdict: **Pending independent review**
 

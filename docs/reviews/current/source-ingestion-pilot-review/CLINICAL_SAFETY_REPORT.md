@@ -19,7 +19,8 @@ Both require external evidence verification and clinician review. Both have publ
 - DOI strings present and unverified: 165
 - PMID values present and unverified: 3
 - URLs present and unverified: 623
-- Candidate duplicate groups: 85
+- Exact candidate duplicate groups: 85
+- Probable candidate duplicate groups: 65
 - External lookups completed: 0
 
 No DOI, PMID, URL, author, approval, or evidence claim was invented. Candidate citation text is retained as short source-provenanced metadata and remains unverified.
