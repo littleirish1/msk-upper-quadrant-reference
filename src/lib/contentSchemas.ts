@@ -88,7 +88,37 @@ export const caseFrontmatterSchema = sourceMetadataSchema.merge(z.object({
   learningFocus: z.array(z.string().min(1)).default([]),
   status: caseStatusSchema,
   publicSlug: z.string().regex(/^[a-z0-9-]+$/).optional(),
-}).passthrough())
+}).passthrough()).superRefine((data, context) => {
+  const hasSourceFields = Boolean(data.sourceId || data.sourcePath || data.reviewStatus)
+
+  if (hasSourceFields && !data.sourceType) {
+    context.addIssue({
+      code: 'custom',
+      path: ['sourceType'],
+      message: 'sourceType is required when source metadata is present',
+    })
+  }
+
+  if (data.sourceType === 'legacy-html-case-bank') {
+    for (const field of ['sourceId', 'sourcePath', 'reviewStatus'] as const) {
+      if (!data[field]) {
+        context.addIssue({
+          code: 'custom',
+          path: [field],
+          message: field + ' is required for legacy-html-case-bank cases',
+        })
+      }
+    }
+
+    if (data.status === 'published' && data.reviewStatus !== 'reviewed') {
+      context.addIssue({
+        code: 'custom',
+        path: ['reviewStatus'],
+        message: 'published legacy-derived cases require reviewStatus reviewed',
+      })
+    }
+  }
+})
 
 export type RegionSlug = z.infer<typeof regionSlugSchema>
 export type SectionSlug = z.infer<typeof sectionSlugSchema>
