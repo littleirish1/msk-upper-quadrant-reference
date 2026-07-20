@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import { BookOpen, Brain, Columns, CircleDot, GitBranch, Hand, Search, ShieldAlert, Stethoscope, RotateCw } from 'lucide-react'
+import { BookOpen, Brain, Columns, CircleDot, GitBranch, Hand, Search, ShieldAlert, Stethoscope } from 'lucide-react'
 import { REGIONS } from '@/data/taxonomy'
 import { BodyRegionRoadmap } from '@/components/ui/BodyRegionRoadmap'
 import { QuickFind } from '@/components/ui/QuickFind'
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<string, React.ElementType> = {
   Brain, Columns, CircleDot, GitBranch, Hand,
 }
 
@@ -49,13 +49,6 @@ export default function HomePage() {
           >
             <Search className="h-4 w-4" aria-hidden />
             Full Search
-          </Link>
-          <Link
-            href="/3d-model"
-            className="inline-flex items-center gap-2 rounded-lg border-2 border-brand-300 bg-brand-50 px-5 py-2.5 text-sm font-semibold text-brand-700 shadow-sm transition-colors hover:bg-brand-100 dark:border-brand-700 dark:bg-brand-950 dark:text-brand-300 dark:hover:bg-brand-900"
-          >
-            <RotateCw className="h-4 w-4" aria-hidden />
-            3D Body Model
           </Link>
           <Link
             href="/cases"
