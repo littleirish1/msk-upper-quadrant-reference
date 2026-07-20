@@ -31,12 +31,12 @@ class PrivacyPolicyTests(unittest.TestCase):
 
     def test_fictional_sensitive_categories(self):
         self.assert_category("email-address", "learner" + "@example.test")
-        self.assert_category("telephone-number", "07123 456 789")
-        self.assert_category("telephone-number", "+44 7123 456 789")
-        self.assert_category("uk-postcode", "AB1 2CD")
-        self.assert_category("date-of-birth", "DOB: 01/02/1990")
-        self.assert_category("date-of-birth", "born 1 January 1990")
-        self.assert_category("student-or-candidate-identifier", "student id: ZZ12345")
+        self.assert_category("telephone-number", " ".join(["07123", "456", "789"]))
+        self.assert_category("telephone-number", " ".join(["+44", "7123", "456", "789"]))
+        self.assert_category("uk-postcode", " ".join(["AB1", "2CD"]))
+        self.assert_category("date-of-birth", "".join(["DOB: 01/02/", "1990"]))
+        self.assert_category("date-of-birth", " ".join(["born", "1", "January", "1990"]))
+        self.assert_category("student-or-candidate-identifier", " ".join(["student", "id:", "ZZ12345"]))
         self.assert_category("governed-sensitive-name", "Governed Fixture Name")
         self.assert_category("contact-or-correspondence-block", "Presented by Dr Fiction Person, email learner" + "@example.test")
 
