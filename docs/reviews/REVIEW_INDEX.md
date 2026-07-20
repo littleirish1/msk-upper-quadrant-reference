@@ -11,6 +11,7 @@ This index records review continuity without inventing missing review documents.
 | 0005 | absent | historical gap; no review file is present and none has been reconstructed |
 | 0006 | `0006-reasoning-checklists-conversation-review.md` | safe to commit; case-specific clinical answers remain future reviewed work |
 | 0007 | `0007-coordinated-hardening-review.md` | repository fixes implemented; human history/ref blockers and re-review remain open |
+| 0008 | `0008-foundation-integration-review.md` | local integration validated; independent review and remote update remain pending |
 
 ## Current Open Risk Ledger
 
