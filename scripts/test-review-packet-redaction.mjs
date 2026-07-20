@@ -52,6 +52,19 @@ try {
     '05-filtered-full-diff.patch': `${policyDiff}+const compromised = '${googleLike}'\n`,
   }, 'credential in the pattern-module diff')
 
+  const awsLike = `${['A', 'KIA'].join('')}${'C'.repeat(16)}`
+  const intakePolicyDiff = [
+    'diff --git a/ai-manager/scripts/source_intake_policy.py b/ai-manager/scripts/source_intake_policy.py',
+    '--- a/ai-manager/scripts/source_intake_policy.py',
+    '+++ b/ai-manager/scripts/source_intake_policy.py',
+    '@@ -1 +1 @@',
+    `+compromised = ${JSON.stringify(awsLike)}`,
+    '',
+  ].join('\n')
+  expectFail('intake-policy-with-aws-credential', {
+    '05-filtered-full-diff.patch': intakePolicyDiff,
+  }, 'AWS-shaped credential in the intake policy diff')
+
   const privatePath = ['C:', 'Users', 'reviewer', 'private-source.html'].join('\\')
   expectFail('private-path', { 'ordinary.txt': privatePath }, 'private local path')
 

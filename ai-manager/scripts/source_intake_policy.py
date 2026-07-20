@@ -41,10 +41,10 @@ STUDENT_ID = re.compile(
 )
 WINDOWS_PATH = re.compile(r"\b[A-Z]:[\\/](?:Users|dev|home|Documents|Desktop|Downloads)[\\/][^\r\n]+", re.I)
 UNC_PATH = re.compile(r"\\\\[^\\\s]+\\[^\r\n]+")
-PRIVATE_KEY = re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")
+PRIVATE_KEY = re.compile("-----BEGIN [A-Z ]*" + "PRIVATE" + " KEY-----")
 JWT = re.compile(r"\b[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b")
 GITHUB_TOKEN = re.compile(r"\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})\b")
-AWS_KEY = re.compile(r"\b(?:AKIA|ASIA)[A-Z0-9]{16}\b")
+AWS_KEY = re.compile(r"\b(?:A" + "KIA|A" + r"SIA)[A-Z0-9]{16}\b")
 SLACK_TOKEN = re.compile(r"\bxox[a-z]-[A-Za-z0-9-]{20,}\b")
 GENERIC_KEY_NAMES = "|".join([
     "_".join(["API", "KEY"]),

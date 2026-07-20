@@ -18,10 +18,28 @@ const hygieneFile = path.join(ROOT, 'ai-manager', 'content-hygiene-names.json')
 const findings = []
 const decoder = new TextDecoder('utf-8', { fatal: true })
 const securityToolingPaths = new Set([
+  'ai-manager/schemas/sourceIntakeSchemas.mjs',
+  'ai-manager/scripts/sensitiveDataPolicy.mjs',
+  'ai-manager/scripts/source_intake_policy.py',
+  'ai-manager/scripts/test-source-intake-validation.mjs',
+  'ai-manager/scripts/validate-source-intake-pilot.mjs',
+  'ai-manager/tests/test_source_intake_hardening.py',
   'scripts/check-review-packet-redaction.mjs',
   'scripts/check-secrets.mjs',
   'scripts/lib/secretPatterns.mjs',
 ])
+const securityToolingCategoryAllowances = new Map([
+  ['ai-manager/schemas/sourceIntakeSchemas.mjs', new Set(['contact-or-correspondence-block', 'telephone-number'])],
+  ['ai-manager/scripts/sensitiveDataPolicy.mjs', new Set(['unc-path'])],
+  ['ai-manager/scripts/source_intake_policy.py', new Set(['credential-value', 'unc-path'])],
+  ['ai-manager/scripts/test-source-intake-validation.mjs', new Set(['unc-path'])],
+  ['ai-manager/scripts/validate-source-intake-pilot.mjs', new Set(['unc-path'])],
+  ['ai-manager/tests/test_source_intake_hardening.py', new Set(['contact-or-correspondence-block'])],
+])
+const packetCredentialValueRules = [
+  new RegExp(`\\b(?:${['A', 'KIA'].join('')}|${['A', 'SIA'].join('')})[A-Z0-9]{16}\\b`, 'g'),
+  new RegExp(`-----BEGIN [A-Z ]*${['PRIVATE', ' KEY'].join('')}-----`, 'g'),
+]
 
 if (!fs.existsSync(packetDir) || !fs.statSync(packetDir).isDirectory()) {
   fail('packet directory is missing')
@@ -69,8 +87,12 @@ for (const file of collectFiles(packetDir)) {
     ? splitPatchSections(text)
     : [{ repositoryPath: relative, text }]
   for (const section of sharedSections) {
+    for (const pattern of packetCredentialValueRules) {
+      pattern.lastIndex = 0
+      if (pattern.test(section.text)) fail(relative + ': credential value detected')
+    }
     for (const category of scanSensitiveText(section.text)) {
-      if (securityToolingPaths.has(section.repositoryPath) && category === 'credential-value') continue
+      if (securityToolingCategoryAllowances.get(section.repositoryPath)?.has(category)) continue
       fail(relative + ': governed sensitive-data pattern detected (' + category + ')')
     }
   }
@@ -136,7 +158,7 @@ function splitPatchSections(text) {
     const start = match.index
     const end = matches[index + 1]?.index ?? text.length
     sections.push({
-      repositoryPath: normalizePath(match[2]),
+      repositoryPath: normalizePath(match[2].trim()),
       text: text.slice(start, end),
     })
   })
