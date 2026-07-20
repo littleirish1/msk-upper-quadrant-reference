@@ -22,9 +22,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-001",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -93,7 +93,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-001",
+      "duplicateGroup": "ref-exact-001",
       "notes": "Embedded URL extracted offline; destination not accessed."
     },
     {
@@ -185,9 +185,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-001",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -210,9 +210,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-001",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -235,9 +235,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-001",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -260,9 +260,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-001",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -308,9 +308,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-001",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -356,9 +356,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-001",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -636,7 +636,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-002",
+      "duplicateGroup": "ref-exact-002",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -705,7 +705,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-002",
+      "duplicateGroup": "ref-exact-002",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -981,7 +981,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-002",
+      "duplicateGroup": "ref-exact-002",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -1474,9 +1474,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-002",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -1708,7 +1708,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-003",
+      "duplicateGroup": "ref-exact-003",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -1892,7 +1892,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-003",
+      "duplicateGroup": "ref-exact-003",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -1984,7 +1984,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-003",
+      "duplicateGroup": "ref-exact-003",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -2933,7 +2933,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -2979,7 +2979,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -3094,7 +3094,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -3646,7 +3646,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -3922,7 +3922,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-005",
+      "duplicateGroup": "ref-exact-005",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -4014,7 +4014,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -4083,7 +4083,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -5003,7 +5003,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -5049,7 +5049,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-006",
+      "duplicateGroup": "ref-exact-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -5877,7 +5877,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -5923,7 +5923,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-005",
+      "duplicateGroup": "ref-exact-005",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -5992,7 +5992,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-006",
+      "duplicateGroup": "ref-exact-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -6061,9 +6061,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-003",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -6502,9 +6502,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -6667,9 +6667,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-003",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -6692,9 +6692,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-005",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -6767,9 +6767,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-005",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -7696,7 +7696,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-007",
+      "duplicateGroup": "ref-exact-007",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -7719,9 +7719,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -7813,7 +7813,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-001",
+      "duplicateGroup": "ref-exact-001",
       "notes": "Embedded URL extracted offline; destination not accessed."
     },
     {
@@ -7836,9 +7836,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -7861,9 +7861,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -7886,9 +7886,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -7911,9 +7911,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -7936,9 +7936,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -7961,9 +7961,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -7986,9 +7986,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -8011,9 +8011,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -8036,9 +8036,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -8061,9 +8061,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -8261,9 +8261,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-007",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -8286,9 +8286,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-008",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -8486,9 +8486,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -8686,9 +8686,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-009",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -8986,9 +8986,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-008",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -9011,9 +9011,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -9236,9 +9236,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-009",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -9261,9 +9261,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-007",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -9311,9 +9311,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-010",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -9336,9 +9336,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-010",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -9636,9 +9636,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -9686,9 +9686,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-006",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10522,7 +10522,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-008",
+      "duplicateGroup": "ref-exact-008",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10662,7 +10662,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-009",
+      "duplicateGroup": "ref-exact-009",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10687,7 +10687,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-010",
+      "duplicateGroup": "ref-exact-010",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10712,7 +10712,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-011",
+      "duplicateGroup": "ref-exact-011",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10737,7 +10737,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-012",
+      "duplicateGroup": "ref-exact-012",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10762,7 +10762,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-013",
+      "duplicateGroup": "ref-exact-013",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10787,7 +10787,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-014",
+      "duplicateGroup": "ref-exact-014",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10812,7 +10812,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-015",
+      "duplicateGroup": "ref-exact-015",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10837,7 +10837,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-016",
+      "duplicateGroup": "ref-exact-016",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10862,7 +10862,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-017",
+      "duplicateGroup": "ref-exact-017",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10887,7 +10887,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-018",
+      "duplicateGroup": "ref-exact-018",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10912,7 +10912,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-019",
+      "duplicateGroup": "ref-exact-019",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10937,7 +10937,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-020",
+      "duplicateGroup": "ref-exact-020",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10962,7 +10962,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-021",
+      "duplicateGroup": "ref-exact-021",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -10987,7 +10987,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-022",
+      "duplicateGroup": "ref-exact-022",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11012,7 +11012,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-023",
+      "duplicateGroup": "ref-exact-023",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11037,7 +11037,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-024",
+      "duplicateGroup": "ref-exact-024",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11062,7 +11062,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-025",
+      "duplicateGroup": "ref-exact-025",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11087,7 +11087,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-026",
+      "duplicateGroup": "ref-exact-026",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11112,7 +11112,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-027",
+      "duplicateGroup": "ref-exact-027",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11137,7 +11137,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-028",
+      "duplicateGroup": "ref-exact-028",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11162,7 +11162,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-029",
+      "duplicateGroup": "ref-exact-029",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11187,7 +11187,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-030",
+      "duplicateGroup": "ref-exact-030",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11212,7 +11212,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-031",
+      "duplicateGroup": "ref-exact-031",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11237,7 +11237,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-032",
+      "duplicateGroup": "ref-exact-032",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11262,7 +11262,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-033",
+      "duplicateGroup": "ref-exact-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11287,7 +11287,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-034",
+      "duplicateGroup": "ref-exact-034",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11312,7 +11312,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-035",
+      "duplicateGroup": "ref-exact-035",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11337,7 +11337,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-036",
+      "duplicateGroup": "ref-exact-036",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11362,7 +11362,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-037",
+      "duplicateGroup": "ref-exact-037",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11387,7 +11387,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-038",
+      "duplicateGroup": "ref-exact-038",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11412,7 +11412,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-039",
+      "duplicateGroup": "ref-exact-039",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11437,7 +11437,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-040",
+      "duplicateGroup": "ref-exact-040",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11462,7 +11462,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-041",
+      "duplicateGroup": "ref-exact-041",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11487,7 +11487,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-042",
+      "duplicateGroup": "ref-exact-042",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11510,9 +11510,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-011",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11535,9 +11535,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-012",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11562,7 +11562,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-043",
+      "duplicateGroup": "ref-exact-043",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11587,7 +11587,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-044",
+      "duplicateGroup": "ref-exact-044",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11610,7 +11610,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-045",
+      "duplicateGroup": "ref-exact-045",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11633,7 +11633,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-046",
+      "duplicateGroup": "ref-exact-046",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11656,7 +11656,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-047",
+      "duplicateGroup": "ref-exact-047",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11681,7 +11681,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-048",
+      "duplicateGroup": "ref-exact-048",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11704,7 +11704,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-049",
+      "duplicateGroup": "ref-exact-049",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11729,7 +11729,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-050",
+      "duplicateGroup": "ref-exact-050",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11752,7 +11752,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-051",
+      "duplicateGroup": "ref-exact-051",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11775,7 +11775,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-052",
+      "duplicateGroup": "ref-exact-052",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11798,7 +11798,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-053",
+      "duplicateGroup": "ref-exact-053",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11821,7 +11821,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-054",
+      "duplicateGroup": "ref-exact-054",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11844,7 +11844,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-055",
+      "duplicateGroup": "ref-exact-055",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11869,7 +11869,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-056",
+      "duplicateGroup": "ref-exact-056",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11892,7 +11892,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-057",
+      "duplicateGroup": "ref-exact-057",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11915,7 +11915,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-058",
+      "duplicateGroup": "ref-exact-058",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11938,7 +11938,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-059",
+      "duplicateGroup": "ref-exact-059",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -11963,7 +11963,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-060",
+      "duplicateGroup": "ref-exact-060",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12009,7 +12009,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-061",
+      "duplicateGroup": "ref-exact-061",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12032,7 +12032,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-062",
+      "duplicateGroup": "ref-exact-062",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12055,7 +12055,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-063",
+      "duplicateGroup": "ref-exact-063",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12078,7 +12078,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-064",
+      "duplicateGroup": "ref-exact-064",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12101,7 +12101,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-065",
+      "duplicateGroup": "ref-exact-065",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12124,7 +12124,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-066",
+      "duplicateGroup": "ref-exact-066",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12147,7 +12147,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-067",
+      "duplicateGroup": "ref-exact-067",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12170,7 +12170,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-068",
+      "duplicateGroup": "ref-exact-068",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12193,7 +12193,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-069",
+      "duplicateGroup": "ref-exact-069",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12216,7 +12216,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-070",
+      "duplicateGroup": "ref-exact-070",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12239,7 +12239,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-071",
+      "duplicateGroup": "ref-exact-071",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12264,7 +12264,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-072",
+      "duplicateGroup": "ref-exact-072",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12287,7 +12287,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-073",
+      "duplicateGroup": "ref-exact-073",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12310,7 +12310,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-074",
+      "duplicateGroup": "ref-exact-074",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12333,7 +12333,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-075",
+      "duplicateGroup": "ref-exact-075",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12356,7 +12356,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-076",
+      "duplicateGroup": "ref-exact-076",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12379,7 +12379,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-077",
+      "duplicateGroup": "ref-exact-077",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12402,9 +12402,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-013",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12427,7 +12427,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-078",
+      "duplicateGroup": "ref-exact-078",
       "notes": "Embedded URL extracted offline; destination not accessed."
     },
     {
@@ -12450,7 +12450,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-079",
+      "duplicateGroup": "ref-exact-079",
       "notes": "Embedded URL extracted offline; destination not accessed."
     },
     {
@@ -12519,9 +12519,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-014",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12544,9 +12544,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-014",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -12711,9 +12711,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13223,9 +13223,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-015",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13294,9 +13294,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-015",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13344,7 +13344,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-009",
+      "duplicateGroup": "ref-exact-009",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13369,7 +13369,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-010",
+      "duplicateGroup": "ref-exact-010",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13394,7 +13394,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-011",
+      "duplicateGroup": "ref-exact-011",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13419,7 +13419,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-012",
+      "duplicateGroup": "ref-exact-012",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13444,7 +13444,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-013",
+      "duplicateGroup": "ref-exact-013",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13469,7 +13469,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-014",
+      "duplicateGroup": "ref-exact-014",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13494,7 +13494,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-015",
+      "duplicateGroup": "ref-exact-015",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13519,7 +13519,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-016",
+      "duplicateGroup": "ref-exact-016",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13544,7 +13544,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-017",
+      "duplicateGroup": "ref-exact-017",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13567,9 +13567,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-016",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13594,7 +13594,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-019",
+      "duplicateGroup": "ref-exact-019",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13619,7 +13619,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-020",
+      "duplicateGroup": "ref-exact-020",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13644,7 +13644,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-021",
+      "duplicateGroup": "ref-exact-021",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13669,7 +13669,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-022",
+      "duplicateGroup": "ref-exact-022",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13694,7 +13694,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-023",
+      "duplicateGroup": "ref-exact-023",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13719,7 +13719,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-024",
+      "duplicateGroup": "ref-exact-024",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13744,7 +13744,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-025",
+      "duplicateGroup": "ref-exact-025",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13769,7 +13769,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-026",
+      "duplicateGroup": "ref-exact-026",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13794,7 +13794,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-027",
+      "duplicateGroup": "ref-exact-027",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13819,7 +13819,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-028",
+      "duplicateGroup": "ref-exact-028",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13844,7 +13844,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-029",
+      "duplicateGroup": "ref-exact-029",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13869,7 +13869,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-030",
+      "duplicateGroup": "ref-exact-030",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13894,7 +13894,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-031",
+      "duplicateGroup": "ref-exact-031",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13919,7 +13919,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-032",
+      "duplicateGroup": "ref-exact-032",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13944,7 +13944,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-033",
+      "duplicateGroup": "ref-exact-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13969,7 +13969,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-034",
+      "duplicateGroup": "ref-exact-034",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -13994,7 +13994,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-035",
+      "duplicateGroup": "ref-exact-035",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14019,7 +14019,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-036",
+      "duplicateGroup": "ref-exact-036",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14044,7 +14044,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-037",
+      "duplicateGroup": "ref-exact-037",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14069,7 +14069,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-038",
+      "duplicateGroup": "ref-exact-038",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14094,7 +14094,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-039",
+      "duplicateGroup": "ref-exact-039",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14119,7 +14119,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-040",
+      "duplicateGroup": "ref-exact-040",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14144,7 +14144,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-041",
+      "duplicateGroup": "ref-exact-041",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14242,9 +14242,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-017",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14292,9 +14292,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-018",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14317,9 +14317,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-019",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14367,9 +14367,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-020",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14467,9 +14467,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-021",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14492,9 +14492,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-022",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14517,9 +14517,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-023",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14592,9 +14592,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-024",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14742,9 +14742,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-023",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14767,9 +14767,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-025",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14792,9 +14792,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-026",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14842,9 +14842,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-027",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -14967,9 +14967,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-023",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15019,7 +15019,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-042",
+      "duplicateGroup": "ref-exact-042",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15267,9 +15267,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-023",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15344,7 +15344,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-044",
+      "duplicateGroup": "ref-exact-044",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15367,7 +15367,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-045",
+      "duplicateGroup": "ref-exact-045",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15390,7 +15390,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-046",
+      "duplicateGroup": "ref-exact-046",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15413,7 +15413,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-047",
+      "duplicateGroup": "ref-exact-047",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15438,7 +15438,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-048",
+      "duplicateGroup": "ref-exact-048",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15463,7 +15463,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-050",
+      "duplicateGroup": "ref-exact-050",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15486,7 +15486,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-051",
+      "duplicateGroup": "ref-exact-051",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15509,7 +15509,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-052",
+      "duplicateGroup": "ref-exact-052",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15532,7 +15532,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-053",
+      "duplicateGroup": "ref-exact-053",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15555,7 +15555,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-054",
+      "duplicateGroup": "ref-exact-054",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15578,7 +15578,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-055",
+      "duplicateGroup": "ref-exact-055",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15601,9 +15601,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-028",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15697,7 +15697,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-060",
+      "duplicateGroup": "ref-exact-060",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15766,7 +15766,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-062",
+      "duplicateGroup": "ref-exact-062",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15789,7 +15789,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-063",
+      "duplicateGroup": "ref-exact-063",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15812,7 +15812,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-064",
+      "duplicateGroup": "ref-exact-064",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15881,9 +15881,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-029",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -15906,9 +15906,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-021",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -16163,9 +16163,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-029",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -16326,9 +16326,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-022",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -16558,9 +16558,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-029",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -16606,9 +16606,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-025",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -16631,9 +16631,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-027",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -16984,9 +16984,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-026",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -17032,9 +17032,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-024",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -17080,9 +17080,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-018",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -17243,7 +17243,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-070",
+      "duplicateGroup": "ref-exact-070",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -17291,7 +17291,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-072",
+      "duplicateGroup": "ref-exact-072",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -17452,9 +17452,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-017",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -17500,9 +17500,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-019",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -18150,7 +18150,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-080",
+      "duplicateGroup": "ref-exact-080",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -18221,7 +18221,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-081",
+      "duplicateGroup": "ref-exact-081",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -18503,9 +18503,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-030",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -18551,9 +18551,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-030",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -19105,7 +19105,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-081",
+      "duplicateGroup": "ref-exact-081",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -19659,7 +19659,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -19935,7 +19935,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -20004,7 +20004,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -20096,7 +20096,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -20119,7 +20119,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -20326,7 +20326,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -20372,7 +20372,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -20441,7 +20441,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-008",
+      "duplicateGroup": "ref-exact-008",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -20694,7 +20694,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-004",
+      "duplicateGroup": "ref-exact-004",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -20861,7 +20861,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-044",
+      "duplicateGroup": "ref-exact-044",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21028,9 +21028,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-028",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21053,9 +21053,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-031",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21078,9 +21078,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-032",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21103,9 +21103,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-032",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21128,7 +21128,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-076",
+      "duplicateGroup": "ref-exact-076",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21151,7 +21151,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-067",
+      "duplicateGroup": "ref-exact-067",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21268,7 +21268,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-078",
+      "duplicateGroup": "ref-exact-078",
       "notes": "Embedded URL extracted offline; destination not accessed."
     },
     {
@@ -21314,7 +21314,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-079",
+      "duplicateGroup": "ref-exact-079",
       "notes": "Embedded URL extracted offline; destination not accessed."
     },
     {
@@ -21429,9 +21429,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "high",
       "completenessStatus": "partial",
-      "verificationStatus": "identifier-present-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21479,9 +21479,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-034",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21504,9 +21504,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-035",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21577,9 +21577,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-035",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21602,9 +21602,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-036",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21627,9 +21627,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21652,9 +21652,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21677,9 +21677,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21702,9 +21702,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21752,9 +21752,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21777,9 +21777,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-034",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21802,9 +21802,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21827,9 +21827,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21852,9 +21852,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21902,9 +21902,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-037",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -21952,9 +21952,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-036",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -22027,9 +22027,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -22052,9 +22052,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-034",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -22077,9 +22077,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-034",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -22102,9 +22102,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-034",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -22127,9 +22127,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-034",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -22152,9 +22152,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -22177,9 +22177,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-037",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -22227,9 +22227,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -22252,9 +22252,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -22419,9 +22419,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-038",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -22444,9 +22444,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-038",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -22983,7 +22983,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-080",
+      "duplicateGroup": "ref-exact-080",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -23029,7 +23029,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-007",
+      "duplicateGroup": "ref-exact-007",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -23744,7 +23744,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-082",
+      "duplicateGroup": "ref-exact-082",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -23767,7 +23767,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-082",
+      "duplicateGroup": "ref-exact-082",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -24452,9 +24452,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-039",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -24552,9 +24552,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-040",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -24852,9 +24852,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-041",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -24902,9 +24902,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-041",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -24927,9 +24927,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-042",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25177,9 +25177,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-042",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25302,9 +25302,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-043",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25327,9 +25327,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-044",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25352,9 +25352,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-045",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25377,9 +25377,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-046",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25502,9 +25502,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-039",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25527,9 +25527,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-043",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25552,9 +25552,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-046",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25577,9 +25577,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-046",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25602,9 +25602,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-046",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25677,9 +25677,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-047",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25702,9 +25702,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-048",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25802,9 +25802,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-044",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -25902,9 +25902,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-045",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -26252,9 +26252,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-040",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -26427,9 +26427,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-047",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -26452,9 +26452,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-048",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -26527,9 +26527,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-046",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -30294,7 +30294,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-083",
+      "duplicateGroup": "ref-exact-083",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -30317,7 +30317,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-083",
+      "duplicateGroup": "ref-exact-083",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -30363,7 +30363,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-083",
+      "duplicateGroup": "ref-exact-083",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -30409,7 +30409,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-083",
+      "duplicateGroup": "ref-exact-083",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -30480,7 +30480,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-083",
+      "duplicateGroup": "ref-exact-083",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -30526,7 +30526,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-083",
+      "duplicateGroup": "ref-exact-083",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -30572,7 +30572,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-083",
+      "duplicateGroup": "ref-exact-083",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -31539,9 +31539,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-049",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -31564,9 +31564,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-049",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -31729,9 +31729,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-020",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -31754,9 +31754,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-016",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -31829,9 +31829,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-050",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -31854,9 +31854,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-050",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -31879,9 +31879,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-051",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -31904,9 +31904,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-051",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -31929,9 +31929,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-052",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -31979,9 +31979,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-031",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32004,9 +32004,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-053",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32029,9 +32029,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-053",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32079,9 +32079,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-032",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32131,7 +32131,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-084",
+      "duplicateGroup": "ref-exact-084",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32179,9 +32179,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-054",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32206,7 +32206,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-085",
+      "duplicateGroup": "ref-exact-085",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32229,9 +32229,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-055",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32254,9 +32254,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-056",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32279,9 +32279,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-057",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32429,9 +32429,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-058",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32529,9 +32529,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-058",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32679,9 +32679,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-059",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32779,9 +32779,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-059",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32804,9 +32804,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-060",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32829,9 +32829,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-061",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -32854,9 +32854,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-061",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -33086,9 +33086,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-060",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -33341,9 +33341,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-062",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -33366,9 +33366,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-062",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -33391,9 +33391,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-062",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -33591,9 +33591,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-063",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -33666,9 +33666,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-064",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -33791,9 +33791,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-063",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -33816,9 +33816,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-064",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -33916,9 +33916,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-062",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -33941,9 +33941,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-062",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -34198,9 +34198,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-062",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -35021,9 +35021,9 @@
       "citationContext": "reference-list",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-002",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -35167,7 +35167,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-084",
+      "duplicateGroup": "ref-exact-084",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -35190,9 +35190,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-054",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -35217,7 +35217,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-085",
+      "duplicateGroup": "ref-exact-085",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -35240,9 +35240,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-055",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -35265,9 +35265,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-056",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -35290,9 +35290,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-057",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -35958,9 +35958,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-065",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -35983,9 +35983,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "partial",
-      "verificationStatus": "incomplete-citation",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-065",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36497,7 +36497,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-010",
+      "duplicateGroup": "ref-exact-010",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36522,7 +36522,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-011",
+      "duplicateGroup": "ref-exact-011",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36547,7 +36547,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-012",
+      "duplicateGroup": "ref-exact-012",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36572,7 +36572,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-013",
+      "duplicateGroup": "ref-exact-013",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36597,7 +36597,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-014",
+      "duplicateGroup": "ref-exact-014",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36622,7 +36622,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-015",
+      "duplicateGroup": "ref-exact-015",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36647,7 +36647,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-016",
+      "duplicateGroup": "ref-exact-016",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36672,7 +36672,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-017",
+      "duplicateGroup": "ref-exact-017",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36697,7 +36697,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-018",
+      "duplicateGroup": "ref-exact-018",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36722,7 +36722,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-019",
+      "duplicateGroup": "ref-exact-019",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36747,7 +36747,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-020",
+      "duplicateGroup": "ref-exact-020",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36772,7 +36772,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-021",
+      "duplicateGroup": "ref-exact-021",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36797,7 +36797,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-022",
+      "duplicateGroup": "ref-exact-022",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36822,7 +36822,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-023",
+      "duplicateGroup": "ref-exact-023",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36847,7 +36847,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-024",
+      "duplicateGroup": "ref-exact-024",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36872,7 +36872,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-025",
+      "duplicateGroup": "ref-exact-025",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36897,7 +36897,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-026",
+      "duplicateGroup": "ref-exact-026",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36922,7 +36922,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-027",
+      "duplicateGroup": "ref-exact-027",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36947,7 +36947,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-028",
+      "duplicateGroup": "ref-exact-028",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36972,7 +36972,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-029",
+      "duplicateGroup": "ref-exact-029",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -36997,7 +36997,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-030",
+      "duplicateGroup": "ref-exact-030",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37022,7 +37022,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-031",
+      "duplicateGroup": "ref-exact-031",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37047,7 +37047,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-032",
+      "duplicateGroup": "ref-exact-032",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37072,7 +37072,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-033",
+      "duplicateGroup": "ref-exact-033",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37122,7 +37122,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-035",
+      "duplicateGroup": "ref-exact-035",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37147,7 +37147,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-036",
+      "duplicateGroup": "ref-exact-036",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37172,7 +37172,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-037",
+      "duplicateGroup": "ref-exact-037",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37197,7 +37197,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-038",
+      "duplicateGroup": "ref-exact-038",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37222,7 +37222,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-039",
+      "duplicateGroup": "ref-exact-039",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37270,9 +37270,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-052",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37297,7 +37297,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-042",
+      "duplicateGroup": "ref-exact-042",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37345,9 +37345,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-011",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37370,9 +37370,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-012",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37397,7 +37397,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-043",
+      "duplicateGroup": "ref-exact-043",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37422,7 +37422,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-044",
+      "duplicateGroup": "ref-exact-044",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37445,7 +37445,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-045",
+      "duplicateGroup": "ref-exact-045",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37468,7 +37468,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-046",
+      "duplicateGroup": "ref-exact-046",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37491,7 +37491,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-047",
+      "duplicateGroup": "ref-exact-047",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37514,7 +37514,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-049",
+      "duplicateGroup": "ref-exact-049",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37539,7 +37539,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-048",
+      "duplicateGroup": "ref-exact-048",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37564,7 +37564,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-050",
+      "duplicateGroup": "ref-exact-050",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37587,7 +37587,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-051",
+      "duplicateGroup": "ref-exact-051",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37610,7 +37610,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-052",
+      "duplicateGroup": "ref-exact-052",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37633,7 +37633,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-053",
+      "duplicateGroup": "ref-exact-053",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37656,7 +37656,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-054",
+      "duplicateGroup": "ref-exact-054",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37679,7 +37679,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-055",
+      "duplicateGroup": "ref-exact-055",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37704,7 +37704,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-056",
+      "duplicateGroup": "ref-exact-056",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37727,7 +37727,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-057",
+      "duplicateGroup": "ref-exact-057",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37750,7 +37750,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-058",
+      "duplicateGroup": "ref-exact-058",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37773,7 +37773,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-059",
+      "duplicateGroup": "ref-exact-059",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37796,7 +37796,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-077",
+      "duplicateGroup": "ref-exact-077",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37821,7 +37821,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-060",
+      "duplicateGroup": "ref-exact-060",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37844,9 +37844,9 @@
       "citationContext": "in-text",
       "extractionConfidence": "medium",
       "completenessStatus": "full",
-      "verificationStatus": "extracted-unverified",
+      "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": null,
+      "duplicateGroup": "ref-probable-013",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37869,7 +37869,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-074",
+      "duplicateGroup": "ref-exact-074",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37892,7 +37892,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-076",
+      "duplicateGroup": "ref-exact-076",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37915,7 +37915,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-061",
+      "duplicateGroup": "ref-exact-061",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37938,7 +37938,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-062",
+      "duplicateGroup": "ref-exact-062",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37961,7 +37961,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-063",
+      "duplicateGroup": "ref-exact-063",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -37984,7 +37984,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-064",
+      "duplicateGroup": "ref-exact-064",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -38007,7 +38007,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-065",
+      "duplicateGroup": "ref-exact-065",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -38030,7 +38030,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-066",
+      "duplicateGroup": "ref-exact-066",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -38053,7 +38053,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-067",
+      "duplicateGroup": "ref-exact-067",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -38076,7 +38076,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-068",
+      "duplicateGroup": "ref-exact-068",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -38099,7 +38099,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-075",
+      "duplicateGroup": "ref-exact-075",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -38122,7 +38122,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-069",
+      "duplicateGroup": "ref-exact-069",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -38145,7 +38145,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-073",
+      "duplicateGroup": "ref-exact-073",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -38168,7 +38168,7 @@
       "completenessStatus": "partial",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-070",
+      "duplicateGroup": "ref-exact-070",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -38191,7 +38191,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-071",
+      "duplicateGroup": "ref-exact-071",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -38216,7 +38216,7 @@
       "completenessStatus": "full",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-072",
+      "duplicateGroup": "ref-exact-072",
       "notes": "Extracted offline; bibliographic accuracy and relevance are unverified."
     },
     {
@@ -38239,7 +38239,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-079",
+      "duplicateGroup": "ref-exact-079",
       "notes": "Embedded URL extracted offline; destination not accessed."
     },
     {
@@ -38262,7 +38262,7 @@
       "completenessStatus": "minimal",
       "verificationStatus": "likely-duplicate",
       "verificationEvidence": null,
-      "duplicateGroup": "ref-duplicate-078",
+      "duplicateGroup": "ref-exact-078",
       "notes": "Embedded URL extracted offline; destination not accessed."
     },
     {

@@ -8,7 +8,8 @@
 - DOI present: 165
 - PMID present: 3
 - URL present: 623
-- Exact/probable duplicate groups: 85
+- Exact duplicate groups: 85
+- Probable duplicate groups: 65
 
 ## Status
 

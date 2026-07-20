@@ -708,13 +708,27 @@ def main() -> int:
     for ref in references:
         key = (ref["doi"] or ref["pmid"] or re.sub(r"\W+", "", ref["citationText"]).lower())[:180]
         ref_groups[key].append(ref)
-    duplicate_ref_groups = []
+    exact_ref_groups = []
     for idx, group in enumerate((g for g in ref_groups.values() if len(g) > 1), 1):
-        group_id = f"ref-duplicate-{idx:03d}"
+        group_id = f"ref-exact-{idx:03d}"
         for ref in group:
             ref["duplicateGroup"] = group_id
             ref["verificationStatus"] = "likely-duplicate"
-        duplicate_ref_groups.append((group_id, group))
+        exact_ref_groups.append((group_id, group))
+
+    probable_keys: dict[str, list[dict]] = defaultdict(list)
+    for ref in references:
+        if ref["duplicateGroup"] or not ref["authors"] or not ref["year"]:
+            continue
+        author = re.sub(r"\W+", "", ref["authors"][0]).lower()
+        probable_keys[f"{author}|{ref['year'].lower()}"].append(ref)
+    probable_ref_groups = []
+    for idx, group in enumerate((g for g in probable_keys.values() if len(g) > 1), 1):
+        group_id = f"ref-probable-{idx:03d}"
+        for ref in group:
+            ref["duplicateGroup"] = group_id
+            ref["verificationStatus"] = "likely-duplicate"
+        probable_ref_groups.append((group_id, group))
 
     manifest = {
         "schemaVersion": 1,
@@ -768,8 +782,10 @@ def main() -> int:
     doi_count = sum(bool(r["doi"]) for r in references)
     pmid_count = sum(bool(r["pmid"]) for r in references)
     url_count = sum(bool(r["url"]) for r in references)
-    write_md(REPORTS / "references" / "candidate-reference-summary.md", "Candidate reference summary", [("Counts", f"- Total candidates: {len(references)}\n- Full citations: {full_refs}\n- Incomplete/minimal citations: {len(references) - full_refs}\n- DOI present: {doi_count}\n- PMID present: {pmid_count}\n- URL present: {url_count}\n- Exact/probable duplicate groups: {len(duplicate_ref_groups)}"), ("Status", "All candidates were extracted offline and remain unverified. A citation in teaching material is not evidence approval.")])
-    write_md(REPORTS / "references" / "duplicate-reference-groups.md", "Duplicate reference groups", [("Groups", "\n".join(f"- `{gid}`: {len(group)} variants across {len(set(r['sourceId'] for r in group))} source(s)." for gid, group in duplicate_ref_groups) or "None detected."), ("Action", "Probable variants require manual bibliographic verification; none were discarded.")])
+    write_md(REPORTS / "references" / "candidate-reference-summary.md", "Candidate reference summary", [("Counts", f"- Total candidates: {len(references)}\n- Full citations: {full_refs}\n- Incomplete/minimal citations: {len(references) - full_refs}\n- DOI present: {doi_count}\n- PMID present: {pmid_count}\n- URL present: {url_count}\n- Exact duplicate groups: {len(exact_ref_groups)}\n- Probable duplicate groups: {len(probable_ref_groups)}"), ("Status", "All candidates were extracted offline and remain unverified. A citation in teaching material is not evidence approval.")])
+    exact_group_lines = [f"- `{gid}`: {len(group)} occurrences across {len(set(r['sourceId'] for r in group))} source(s)." for gid, group in exact_ref_groups]
+    probable_group_lines = [f"- `{gid}`: {len(group)} variants sharing stated first author and year; manual verification required." for gid, group in probable_ref_groups]
+    write_md(REPORTS / "references" / "duplicate-reference-groups.md", "Duplicate reference groups", [("Exact groups", "\n".join(exact_group_lines) or "None detected."), ("Probable groups", "\n".join(probable_group_lines) or "None detected."), ("Action", "Probable variants require manual bibliographic verification; none were discarded.")])
     incomplete = [r for r in references if r["completenessStatus"] != "full"]
     write_md(REPORTS / "references" / "incomplete-reference-queue.md", "Incomplete reference queue", [("Queue", "\n".join(f"- `{r['candidateReferenceId']}` from `{r['sourceId']}` at {r['location']}: {r['verificationStatus']}" for r in incomplete) or "No incomplete candidates."), ("Lookup", "External lookup was not performed.")])
     identifiers = [r for r in references if r["doi"] or r["pmid"] or r["url"]]
