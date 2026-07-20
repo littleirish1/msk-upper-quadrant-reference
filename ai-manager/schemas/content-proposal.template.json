@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "proposalId": "proposal.pending.example",
+  "targetContentId": "condition.region.slug",
+  "reasonForChange": "Describe the reviewed maintenance need.",
+  "existingText": "",
+  "proposedText": "Draft text pending source and clinical review.",
+  "supportingSourceIds": ["source.pending.example"],
+  "confidence": "low",
+  "limitations": ["Citation and clinical review are incomplete."],
+  "clinicalRisk": "moderate",
+  "status": "draft",
+  "reviewer": null,
+  "decision": "pending",
+  "finalDiffPath": null
+}

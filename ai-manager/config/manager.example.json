@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "projectPathSource": "PROJECT_PATH",
+  "providerMode": "disabled",
+  "networkRequired": false,
+  "publicOutputAllowed": false,
+  "autonomousCommitAllowed": false,
+  "autonomousPushAllowed": false
+}

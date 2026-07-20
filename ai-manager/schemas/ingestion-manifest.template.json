@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "sourceId": "intake.pending.example",
+  "sourceType": "notes",
+  "originalFilename": "source-document.ext",
+  "checksum": "pending",
+  "receivedDate": null,
+  "sourceLocationCategory": "approved-local-inbox",
+  "copyrightOrLicenceStatus": "unknown",
+  "intendedUse": ["review for possible educational use"],
+  "relatedContentIds": [],
+  "extractionStatus": "pending",
+  "evidenceType": null,
+  "clinicianReviewState": "not-started",
+  "archiveState": "active",
+  "identifiableMaterialCheck": "not-checked"
+}

@@ -42,3 +42,15 @@ phase-hardening-rereview.zip
 phase-hardening-rereview-v2/
 phase-hardening-rereview-v2.zip
 phase-hardening-rereview-v2.zip.sha256
+
+# Private AI knowledge-manager state
+ai-manager/inbox/**
+!ai-manager/inbox/README.md
+ai-manager/archive/**
+!ai-manager/archive/README.md
+ai-manager/reports/**
+!ai-manager/reports/README.md
+ai-manager/config/local.*
+ai-manager/config/*.local.*
+ai-manager/**/*.env
+ai-manager/**/*.secret
