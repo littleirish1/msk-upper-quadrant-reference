@@ -1,0 +1,21 @@
+{
+  "contentId": "special-test.cervical.radiculopathy-test-cluster",
+  "recordType": "special-test",
+  "title": "Cervical radiculopathy test cluster extraction brief",
+  "region": "cervical",
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "clinician-review-required",
+  "sourceContentIds": [
+    "condition.cervical.cervical-radiculopathy"
+  ],
+  "relatedContent": {
+    "conditions": [
+      "condition.cervical.cervical-radiculopathy"
+    ]
+  },
+  "references": [],
+  "diagnosticAccuracy": [],
+  "contraindicationsOrCautions": [],
+  "notes": "Structured extraction, citation verification, and clinician review are required before publication."
+}
