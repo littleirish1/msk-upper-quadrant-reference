@@ -73,6 +73,8 @@ The public site must remain static and dumb:
 - no vector stores
 - no answer storage
 - no learner analytics
+- no persisted learner free text by default
+- no diagnostic recommendation or unvalidated competence score
 
 ## Current Status
 

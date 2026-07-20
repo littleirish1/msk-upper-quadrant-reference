@@ -39,6 +39,13 @@ Rules:
 - Case routes and visible case labels must stay neutral and must not reveal the linked diagnosis before reveal.
 - The route smoke check must confirm published cases are discoverable and private cases are excluded.
 
+## Foundation Learning Routes
+
+- `/anatomy` and `/anatomy/[category]` provide useful foundation navigation.
+- Anatomy detail routes are held until a reviewed public record exists.
+- `/learning` demonstrates static, non-clinical learning mechanics.
+- Private learning schema examples do not create routes or search entries.
+
 ## Condition Pages
 
 Diagnosis names are allowed in the condition reference library. For example, condition pages may use diagnostic names in page titles, body text, search results, and region navigation.
