@@ -1,108 +1,131 @@
 # RCRSP teaching content map
 
-## Evidence map
+## Eligible private evidence sources
 
-| Source ID | Location | Teaching topics | Citation candidates | Verification | Overlap/conflict | Proposed targets | Clearance | Clinician review |
-|---|---|---|---|---|---|---|---|---|
-| `src-07f5bc8680f6` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, patient-communication, prognosis, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-0888e69b07a0` | slide 19 text, slide 3 text, slide 39 embedded hyperlink | exercise-rehabilitation, imaging, outcome-measures, patient-communication, prognosis | `ref-41cf45c41c81f0b2`, `ref-0d567f07c2757341`, `ref-83af6c1fa64bb668` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-09b692096c1a` | document-level metadata | imaging | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-09c409d4ae26` | document-level metadata | exercise-rehabilitation, prognosis, shoulder-differential, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-0b5b2e3de9c6` | document-level metadata | exercise-rehabilitation, imaging, rotator-cuff-tear, shoulder-differential | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-0baeb171e0a8` | document 1 text | outcome-measures, special-tests | `ref-8d660310b5fb435c`, `ref-b5f82388225b900d`, `ref-012d2c6e883f5513` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-0bbca1aa3008` | document-level metadata | prognosis, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-0ebd0fa64610` | document-level metadata | exercise-rehabilitation, shoulder-differential | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-148a81693adf` | document-level metadata | exercise-rehabilitation, outcome-measures | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-160730f35851` | document-level metadata | exercise-rehabilitation, imaging, prognosis | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-1be4e951b83a` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, prognosis, shoulder-differential, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-1d9c1f58831f` | document-level metadata | exercise-rehabilitation, imaging, prognosis, rcrsp, shoulder-differential | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-227d37465f09` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, patient-communication, prognosis, rcrsp, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-22f88688e874` | document 1 text | outcome-measures, special-tests | `ref-16cb3d41c41e61d2`, `ref-2fc675c4abdb2fff` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-25d75727786c` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-2898b0f60d92` | document-level metadata | exercise-rehabilitation, rcrsp, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-28bf800aec87` | document-level metadata | exercise-rehabilitation, imaging, prognosis, rcrsp, rotator-cuff-tear | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-298205cbb035` | document-level metadata | outcome-measures | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-2e281aec0176` | document 1 embedded hyperlink, document 1 text | exercise-rehabilitation, imaging, outcome-measures, patient-communication, prognosis | `ref-7957597bce658da7`, `ref-44441ce1a9abeed4`, `ref-6d523b93d0dea4f7` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-2fd0579fb461` | document-level metadata | exercise-rehabilitation, outcome-measures | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-326b9f4b3a5a` | document-level metadata | imaging, patient-communication, prognosis, shoulder-differential, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-3284391ffeff` | document-level metadata | imaging, patient-communication, shoulder-differential | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-32ba0e9d7de4` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, patient-communication, prognosis, shoulder-differential, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-36656c8c2ce4` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, patient-communication, prognosis | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-37c9c7410178` | document-level metadata | exercise-rehabilitation, patient-communication, prognosis, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-3a59fafaf653` | page 22 text | imaging, outcome-measures, rcrsp | `ref-a79ae0fbebef57d1`, `ref-edc113eec20e156c` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-3a68dd24c7ec` | document 1 text | outcome-measures, special-tests | `ref-55b077d6988ce3be`, `ref-468172eb2ae8539b`, `ref-b68ef225abb20b79` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-3a8ea716ddf1` | page 15 text, page 16 embedded hyperlink, page 16 text | exercise-rehabilitation, imaging, prognosis | `ref-46968387711c126c`, `ref-32fcc74c65f117ac`, `ref-98afacfbb55540ff` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-3f3d115dd533` | document-level metadata | exercise-rehabilitation, imaging, shoulder-differential, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-415ca217bf86` | document-level metadata | exercise-rehabilitation, outcome-measures, prognosis | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-47a91c90d62c` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, prognosis, rcrsp | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-4c451faf9623` | page 10 embedded hyperlink, page 12 embedded hyperlink, page 12 text | imaging, outcome-measures | `ref-f1165340f0347899`, `ref-5ca9c48ec7dbb7aa`, `ref-51ba978fdb8ad10e` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-4f1c254a624d` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-51837a0792aa` | document 1 text | outcome-measures, special-tests | `ref-f5cbc3b09c5d47ac`, `ref-32950df30491cb19`, `ref-160d86d280663d8b` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-51a3a1f28f6f` | document 1 embedded hyperlink, document 1 text | exercise-rehabilitation, patient-communication | `ref-694d9495ab82bafa`, `ref-44dea4a0aade5b8e`, `ref-47d9a2217a522df6` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-540e33995304` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, shoulder-differential | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-58994b80ad84` | page 15 text | shoulder-differential | `ref-7dc7469818a07075` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-5b00b3477b23` | document-level metadata | exercise-rehabilitation, rcrsp, rotator-cuff-tear, shoulder-differential, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-5d2d2d72b934` | document 1 text | outcome-measures, special-tests | `ref-ca9afbe60eb0d378`, `ref-355e6ca04112edce`, `ref-de02578a22492384` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-6221e6c4bf73` | document-level metadata | patient-communication | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-64e065873078` | document-level metadata | exercise-rehabilitation, outcome-measures, patient-communication | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-6628ea45ae88` | document-level metadata | exercise-rehabilitation, shoulder-differential | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-6654b0733e20` | document-level metadata | exercise-rehabilitation, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-69eb7ec6cbd4` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, patient-communication, prognosis | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-6a5ccbcd64cd` | document-level metadata | exercise-rehabilitation, prognosis | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-6d3c2846b980` | document 1 text | exercise-rehabilitation, outcome-measures, patient-communication | `ref-28d10955daad72d0`, `ref-8c253b0658a3f0a4` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-716e011167a5` | document-level metadata | imaging, prognosis | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-752d08fa2c01` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, prognosis, rotator-cuff-tear | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-795e597d9b57` | document-level metadata | prognosis | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-7a3e06799504` | document-level metadata | exercise-rehabilitation, imaging, prognosis | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-7b50a5680afc` | document 1 embedded hyperlink, document 1 text | exercise-rehabilitation | `ref-bb7e8938d4dea1e8`, `ref-cec3cf2213ef7778`, `ref-42dd1b97f42eaaba` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-7bb5b3c4e8b8` | document-level metadata | imaging, outcome-measures | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-823706ecfd6d` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, prognosis, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-8771194fd4d3` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-8a9755b45f01` | document-level metadata | exercise-rehabilitation, outcome-measures, patient-communication, prognosis, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-8b8eb8b85107` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, prognosis, rcrsp, rotator-cuff-tear, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-927fe641863c` | document-level metadata | exercise-rehabilitation, rcrsp, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-93d80440c7da` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, prognosis, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-9b7953998a8a` | document-level metadata | imaging, prognosis | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-9ccd0b23e2a5` | document-level metadata | exercise-rehabilitation, shoulder-differential | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-9cd8b7a7ccde` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-9de370e8c691` | document-level metadata | imaging | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-9e66d669f055` | document-level metadata | exercise-rehabilitation, shoulder-differential | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-a048fa07c89b` | document-level metadata | imaging, shoulder-differential, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-a3bb6683deea` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, prognosis, rcrsp, rotator-cuff-tear, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-a3cce692af05` | document-level metadata | exercise-rehabilitation, imaging, prognosis, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-a6507975c8c1` | document 1 text | outcome-measures, special-tests | `ref-1f6ded7ffb2bb2e1`, `ref-dbf5b376c231604d`, `ref-3b457bb30d00d800` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-a65f4d701e56` | slide 10 text, slide 2 text, slide 4 embedded hyperlink | exercise-rehabilitation, patient-communication | `ref-d69bf10a4455e1cc`, `ref-d1a83dd19ff1b070`, `ref-18fc6ea9e34b955a` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-ad530073b607` | document-level metadata | imaging, patient-communication, shoulder-differential, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-af1e2c232e51` | document-level metadata | exercise-rehabilitation, imaging, prognosis, shoulder-differential, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-b091195dfec4` | document 1 text | exercise-rehabilitation, patient-communication | `ref-9d0ae8e28b048033`, `ref-fa4cfb0cf81a91ed`, `ref-bb63126f584d075b` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-b0b33d1db7d4` | document-level metadata | exercise-rehabilitation, outcome-measures | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-b225de0779c3` | document-level metadata | rcrsp, shoulder-differential | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-bb7d6a064b81` | document-level metadata | exercise-rehabilitation, shoulder-differential | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-c381c7d2c296` | document 1 embedded hyperlink, document 1 text | exercise-rehabilitation, patient-communication, prognosis | `ref-4d18acfae5320de3`, `ref-a9efc9bb7cd46564`, `ref-eac0384df203a8c8` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-c58344631011` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-cd9d261f9f51` | document-level metadata | exercise-rehabilitation, prognosis | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-ce1d48dc87b0` | document-level metadata | exercise-rehabilitation, outcome-measures, patient-communication, prognosis | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-cf5c72f86535` | document 1 text | exercise-rehabilitation, patient-communication | `ref-b2013b0e627e15fa`, `ref-b1c11d4b1b2ee698`, `ref-f965f66b2de60751` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-d0beb2e2aa17` | slide 10 text, slide 12 text, slide 6 speaker notes | exercise-rehabilitation, imaging, outcome-measures, prognosis, shoulder-differential, special-tests | `ref-c8eb15b8f3372537`, `ref-583cd3be9b3b9b18`, `ref-45a65e125cd5b4ba` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-d107e5808bde` | document 1 embedded hyperlink, document 1 text | exercise-rehabilitation, outcome-measures, patient-communication | `ref-38e8d8c451c4eb09`, `ref-d01e1cb3d429169d`, `ref-8c59fcdea89483db` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-d2eaf8b30243` | document 1 embedded hyperlink, document 1 text | exercise-rehabilitation, patient-communication | `ref-9d49ba552f9b2bef`, `ref-1c67adbffd77c09f`, `ref-11a37ff029d75221` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-d9f2efff9eb7` | document-level metadata | exercise-rehabilitation, shoulder-differential | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-e20cf0d1a208` | document-level metadata | exercise-rehabilitation, outcome-measures, patient-communication, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-e5eab65f5f60` | document-level metadata | exercise-rehabilitation, imaging, prognosis, shoulder-differential, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-e66ad29a3b2e` | document-level metadata | imaging, shoulder-differential | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-ea68e6706435` | slide 11 text, slide 6 speaker notes, slide 7 speaker notes | exercise-rehabilitation, imaging, outcome-measures, prognosis, rcrsp, special-tests | `ref-122669200841ec8c`, `ref-f31dbbf79613b342`, `ref-1b974a207ea982fd` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-efb144f89832` | document-level metadata | imaging, shoulder-differential | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-f2de4d6ff8be` | document-level metadata | exercise-rehabilitation, imaging, prognosis | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-f30d285f6a6b` | document 1 embedded hyperlink, document 1 text | exercise-rehabilitation, patient-communication | `ref-854824ac6ae6c167`, `ref-10393733ca2e0b97`, `ref-228af6d77c150fdb` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-f31be2ada69b` | document-level metadata | exercise-rehabilitation, shoulder-differential, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-f537517c78fd` | page 1 text | exercise-rehabilitation, outcome-measures, prognosis | `ref-58037be117ed4c60` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-f97ba76b4927` | document-level metadata | exercise-rehabilitation, imaging, rotator-cuff-tear, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-fd570850eb57` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
+<!-- source-list role=eligible scope=private-topic-mapping -->
+- none
+<!-- /source-list -->
+
+## Identified but review required
+
+<!-- source-list role=review-required scope=private-topic-mapping -->
+- sourceId=src-0888e69b07a0; governance=review-required; extraction=extracted
+- sourceId=src-09b692096c1a; governance=review-required; extraction=extracted
+- sourceId=src-09c409d4ae26; governance=review-required; extraction=extracted
+- sourceId=src-0b5b2e3de9c6; governance=review-required; extraction=extracted
+- sourceId=src-0baeb171e0a8; governance=review-required; extraction=extracted
+- sourceId=src-0bbca1aa3008; governance=review-required; extraction=extracted
+- sourceId=src-0ebd0fa64610; governance=review-required; extraction=extracted
+- sourceId=src-1d9c1f58831f; governance=review-required; extraction=extracted
+- sourceId=src-22f88688e874; governance=review-required; extraction=extracted
+- sourceId=src-25d75727786c; governance=review-required; extraction=extracted
+- sourceId=src-2898b0f60d92; governance=review-required; extraction=extracted
+- sourceId=src-28bf800aec87; governance=review-required; extraction=extracted
+- sourceId=src-298205cbb035; governance=review-required; extraction=extracted
+- sourceId=src-2e281aec0176; governance=review-required; extraction=extracted
+- sourceId=src-3284391ffeff; governance=review-required; extraction=extracted
+- sourceId=src-37c9c7410178; governance=review-required; extraction=extracted
+- sourceId=src-3a59fafaf653; governance=review-required; extraction=extracted
+- sourceId=src-3a68dd24c7ec; governance=review-required; extraction=extracted
+- sourceId=src-3a8ea716ddf1; governance=review-required; extraction=extracted
+- sourceId=src-3f3d115dd533; governance=review-required; extraction=extracted
+- sourceId=src-4c451faf9623; governance=review-required; extraction=extracted
+- sourceId=src-51837a0792aa; governance=review-required; extraction=extracted
+- sourceId=src-51a3a1f28f6f; governance=review-required; extraction=extracted
+- sourceId=src-58994b80ad84; governance=review-required; extraction=extracted
+- sourceId=src-5b00b3477b23; governance=review-required; extraction=extracted
+- sourceId=src-5d2d2d72b934; governance=review-required; extraction=extracted
+- sourceId=src-6221e6c4bf73; governance=review-required; extraction=extracted
+- sourceId=src-6628ea45ae88; governance=review-required; extraction=extracted
+- sourceId=src-6d3c2846b980; governance=review-required; extraction=extracted
+- sourceId=src-795e597d9b57; governance=review-required; extraction=extracted
+- sourceId=src-7b50a5680afc; governance=review-required; extraction=extracted
+- sourceId=src-7bb5b3c4e8b8; governance=review-required; extraction=extracted
+- sourceId=src-8771194fd4d3; governance=review-required; extraction=extracted
+- sourceId=src-9b7953998a8a; governance=review-required; extraction=extracted
+- sourceId=src-9ccd0b23e2a5; governance=review-required; extraction=extracted
+- sourceId=src-9cd8b7a7ccde; governance=review-required; extraction=extracted
+- sourceId=src-9e66d669f055; governance=review-required; extraction=extracted
+- sourceId=src-a3cce692af05; governance=review-required; extraction=extracted
+- sourceId=src-a6507975c8c1; governance=review-required; extraction=extracted
+- sourceId=src-a65f4d701e56; governance=review-required; extraction=extracted
+- sourceId=src-af1e2c232e51; governance=review-required; extraction=extracted
+- sourceId=src-b091195dfec4; governance=review-required; extraction=extracted
+- sourceId=src-b225de0779c3; governance=review-required; extraction=extracted
+- sourceId=src-bb7d6a064b81; governance=review-required; extraction=extracted
+- sourceId=src-c381c7d2c296; governance=review-required; extraction=extracted
+- sourceId=src-ce1d48dc87b0; governance=review-required; extraction=extracted
+- sourceId=src-cf5c72f86535; governance=review-required; extraction=extracted
+- sourceId=src-d0beb2e2aa17; governance=review-required; extraction=extracted
+- sourceId=src-d107e5808bde; governance=review-required; extraction=extracted
+- sourceId=src-d2eaf8b30243; governance=review-required; extraction=extracted
+- sourceId=src-d9f2efff9eb7; governance=review-required; extraction=extracted
+- sourceId=src-ea68e6706435; governance=review-required; extraction=extracted
+- sourceId=src-f30d285f6a6b; governance=review-required; extraction=extracted
+- sourceId=src-f31be2ada69b; governance=review-required; extraction=extracted
+- sourceId=src-f537517c78fd; governance=review-required; extraction=extracted
+<!-- /source-list -->
+
+## Identified but restricted pending clearance
+
+<!-- source-list role=restricted scope=private-topic-mapping -->
+- sourceId=src-07f5bc8680f6; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-148a81693adf; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-160730f35851; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-1be4e951b83a; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-227d37465f09; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-2fd0579fb461; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-326b9f4b3a5a; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-32ba0e9d7de4; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-36656c8c2ce4; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-415ca217bf86; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-47a91c90d62c; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-4f1c254a624d; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-540e33995304; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-64e065873078; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-6654b0733e20; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-69eb7ec6cbd4; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-6a5ccbcd64cd; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-716e011167a5; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-752d08fa2c01; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-7a3e06799504; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-823706ecfd6d; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-8a9755b45f01; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-8b8eb8b85107; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-927fe641863c; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-93d80440c7da; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-9de370e8c691; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-a048fa07c89b; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-a3bb6683deea; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-ad530073b607; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-b0b33d1db7d4; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-c58344631011; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-cd9d261f9f51; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-e20cf0d1a208; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-e5eab65f5f60; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-e66ad29a3b2e; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-efb144f89832; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-f2de4d6ff8be; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-f97ba76b4927; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-fd570850eb57; governance=restricted-pending-clearance; extraction=restricted
+<!-- /source-list -->
+
+## Quarantined and excluded
+
+<!-- source-list role=quarantined scope=private-topic-mapping -->
+- sourceId=src-b4b1a43cdb42; governance=quarantined; extraction=quarantined
+<!-- /source-list -->
+
+## Metadata-only or extraction unavailable
+
+<!-- source-list role=metadata-only scope=private-topic-mapping -->
+- none
+<!-- /source-list -->
 
 ## Interpretation
 
-Rows are extraction associations, not endorsed claims. Overlap and conflict status remains manual-review-required; visuals remain licence-review-required.
+These are extraction associations grouped by governance state, not endorsed claims. Only explicitly eligible sources may later support private evidence work.
 
 ## Targets
 
-Condition reference, neutral guided case, anatomy, special tests, outcome measures, quiz, flashcard, OSCE, and patient explanation are proposals only.
+Condition reference, neutral guided case, anatomy, special tests, outcome measures, quiz, flashcard, OSCE, and patient explanation are blocked proposals only.

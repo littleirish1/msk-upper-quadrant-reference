@@ -11,4 +11,4 @@
 
 ## Status
 
-Restricted uncleared: 42; excluded citations: 1164; excluded proposal sources: 5.
+Restricted uncleared: 42; excluded citations: 1519; excluded proposal sources: 14.

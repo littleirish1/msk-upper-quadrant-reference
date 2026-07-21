@@ -4,21 +4,27 @@
 
 The existing public case is unchanged.
 
+## Eligible source support
+
+<!-- source-list role=eligible scope=private-proposal-support -->
+- none
+<!-- /source-list -->
+
 ## Twelve-step map
 
-1. **Initial presentation** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
-2. **Learner differential** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
-3. **Justification** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
-4. **Additional history** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
-5. **Red flags** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
-6. **Examination planning** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
-7. **Examination findings** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
-8. **Investigation decision** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
-9. **Management plan** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
-10. **Patient explanation** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
-11. **Expert reasoning comparison** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
-12. **Reflection** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
+1. **Initial presentation** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
+2. **Learner differential** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
+3. **Justification** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
+4. **Additional history** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
+5. **Red flags** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
+6. **Examination planning** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
+7. **Examination findings** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
+8. **Investigation decision** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
+9. **Management plan** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
+10. **Patient explanation** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
+11. **Expert reasoning comparison** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
+12. **Reflection** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
 
 ## Approval
 
-Every expert answer requires source-specific support and clinician approval.
+Every expert answer requires verified source-specific support and clinician approval.

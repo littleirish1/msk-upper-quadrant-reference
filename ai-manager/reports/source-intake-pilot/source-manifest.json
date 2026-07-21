@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "runId": "run-ba38b10fbc3fa024",
   "sourceSetFingerprint": "sha256:9bbe25de66197be5a79f0d84aa30d2b1c97df98f2bdb457515c9fce07f4bcea5",
-  "implementationCommit": "54f78771102ab9a8f552968101d21dc1be92866c",
+  "implementationCommit": "54f5ca1be430df505fab5bc3f434044deca42b2c",
   "extractor": {
     "name": "source-intake-pilot",
     "version": "2.0.0",
@@ -10234,7 +10234,7 @@
     "clearedSources": 0,
     "manualReviewSources": 123,
     "suppressedSensitiveLines": 236,
-    "referencesExcludedUncleared": 1164,
-    "proposalSourcesExcludedUncleared": 5
+    "referencesExcludedUncleared": 1519,
+    "proposalSourcesExcludedUncleared": 14
   }
 }

@@ -2,23 +2,16 @@
 
 ## Counts
 
-- Total: 355
-- author-year-only: 68
-- full-looking-unverified: 27
-- generic-web-link: 58
-- identifier-only: 3
-- licence-or-attribution-link: 1
-- media-or-engagement-link: 32
-- partial-bibliographic: 153
-- unable-to-classify: 13
-- DOI: 8
+- Total: 0
+
+- DOI: 0
 - PMID: 0
-- URL: 125
-- Exact duplicate groups: 55
+- URL: 0
+- Exact duplicate groups: 0
 
 ## Exclusions
 
-Restricted uncleared: 1164; sensitive/administrative lines: 236.
+Restricted uncleared: 1519; sensitive/administrative lines: 236.
 
 ## Status
 

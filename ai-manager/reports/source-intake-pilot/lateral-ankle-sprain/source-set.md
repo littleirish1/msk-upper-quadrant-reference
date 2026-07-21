@@ -4,89 +4,112 @@
 
 All teaching statements remain unverified. No item is approved for public clinical use.
 
-## Eligible private source map
+## Eligible private evidence sources
 
-| Source ID | Location | Teaching topics | Citation candidates | Verification | Overlap/conflict | Proposed targets | Clearance | Clinician review |
-|---|---|---|---|---|---|---|---|---|
-| `src-07f5bc8680f6` | document-level metadata | balance-proprioception, bracing-taping, exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-0888e69b07a0` | slide 19 text, slide 3 text, slide 39 embedded hyperlink | balance-proprioception, exercise-rehabilitation, fracture-screening | `ref-41cf45c41c81f0b2`, `ref-0d567f07c2757341`, `ref-83af6c1fa64bb668` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-09b692096c1a` | document-level metadata | balance-proprioception, bracing-taping, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-09c409d4ae26` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-0b5b2e3de9c6` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-0baeb171e0a8` | document 1 text | ankle-ligament-anatomy, balance-proprioception, fracture-screening | `ref-8d660310b5fb435c`, `ref-b5f82388225b900d`, `ref-012d2c6e883f5513` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-0bbca1aa3008` | document-level metadata | fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-0ebd0fa64610` | document-level metadata | ankle-ligament-anatomy, balance-proprioception, bracing-taping, exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-148a81693adf` | document-level metadata | balance-proprioception, bracing-taping, exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-160730f35851` | document-level metadata | balance-proprioception, exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-1be4e951b83a` | document-level metadata | exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-1d9c1f58831f` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-227d37465f09` | document-level metadata | balance-proprioception, bracing-taping, exercise-rehabilitation, recurrence-prevention | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-25d75727786c` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-2898b0f60d92` | document-level metadata | balance-proprioception, exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-28bf800aec87` | document-level metadata | exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-2e281aec0176` | document 1 embedded hyperlink, document 1 text | ankle-ligament-anatomy, balance-proprioception, exercise-rehabilitation, fracture-screening | `ref-7957597bce658da7`, `ref-44441ce1a9abeed4`, `ref-6d523b93d0dea4f7` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-2fd0579fb461` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-32ba0e9d7de4` | document-level metadata | balance-proprioception, exercise-rehabilitation, fracture-screening, recurrence-prevention | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-36656c8c2ce4` | document-level metadata | balance-proprioception, bracing-taping, exercise-rehabilitation, recurrence-prevention | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-37c9c7410178` | document-level metadata | bracing-taping, exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-3a59fafaf653` | page 22 text | balance-proprioception | `ref-a79ae0fbebef57d1`, `ref-edc113eec20e156c` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-3a8ea716ddf1` | page 15 text, page 16 embedded hyperlink, page 16 text | exercise-rehabilitation, fracture-screening, recurrence-prevention | `ref-46968387711c126c`, `ref-32fcc74c65f117ac`, `ref-98afacfbb55540ff` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-3f3d115dd533` | document-level metadata | exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-415ca217bf86` | document-level metadata | balance-proprioception, exercise-rehabilitation, fracture-screening, recurrence-prevention | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-47a91c90d62c` | document-level metadata | balance-proprioception, exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-4c451faf9623` | page 10 embedded hyperlink, page 12 embedded hyperlink, page 12 text | fracture-screening, recurrence-prevention | `ref-f1165340f0347899`, `ref-5ca9c48ec7dbb7aa`, `ref-51ba978fdb8ad10e` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-4f1c254a624d` | document-level metadata | balance-proprioception, exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-51a3a1f28f6f` | document 1 embedded hyperlink, document 1 text | bracing-taping, exercise-rehabilitation, recurrence-prevention | `ref-694d9495ab82bafa`, `ref-44dea4a0aade5b8e`, `ref-47d9a2217a522df6` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-540e33995304` | document-level metadata | balance-proprioception, exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-5b00b3477b23` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-64e065873078` | document-level metadata | balance-proprioception, bracing-taping, exercise-rehabilitation, recurrence-prevention | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-6628ea45ae88` | document-level metadata | exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-6654b0733e20` | document-level metadata | exercise-rehabilitation, return-to-sport | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-69eb7ec6cbd4` | document-level metadata | balance-proprioception, bracing-taping, exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-6a5ccbcd64cd` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-6d3c2846b980` | document 1 text | exercise-rehabilitation, fracture-screening | `ref-28d10955daad72d0`, `ref-8c253b0658a3f0a4` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-716e011167a5` | document-level metadata | balance-proprioception | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-752d08fa2c01` | document-level metadata | balance-proprioception, exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-795e597d9b57` | document-level metadata | fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-7a3e06799504` | document-level metadata | balance-proprioception, exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-7b50a5680afc` | document 1 embedded hyperlink, document 1 text | bracing-taping, exercise-rehabilitation | `ref-bb7e8938d4dea1e8`, `ref-cec3cf2213ef7778`, `ref-42dd1b97f42eaaba` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-7b548a958b41` | page 1 text, page 4 text | lateral-ankle-sprain | `ref-0f5c91eb655befcb`, `ref-893dc7ebd703c874` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-7bb5b3c4e8b8` | document-level metadata | bracing-taping, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-823706ecfd6d` | document-level metadata | balance-proprioception, exercise-rehabilitation, recurrence-prevention | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-8771194fd4d3` | document-level metadata | balance-proprioception, exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-8a9755b45f01` | document-level metadata | balance-proprioception, exercise-rehabilitation, recurrence-prevention | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-8b8eb8b85107` | document-level metadata | exercise-rehabilitation, fracture-screening, recurrence-prevention | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-912d29c79c32` | document-level metadata | fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-927fe641863c` | document-level metadata | balance-proprioception, exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-93d80440c7da` | document-level metadata | bracing-taping, exercise-rehabilitation, fracture-screening, recurrence-prevention | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-9ccd0b23e2a5` | document-level metadata | exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-9cd8b7a7ccde` | document-level metadata | balance-proprioception, exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-9de370e8c691` | document-level metadata | fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-9e66d669f055` | document-level metadata | balance-proprioception, exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-a048fa07c89b` | document-level metadata | balance-proprioception | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-a3bb6683deea` | document-level metadata | bracing-taping, exercise-rehabilitation, fracture-screening, recurrence-prevention | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-a3cce692af05` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-a65f4d701e56` | slide 10 text, slide 2 text, slide 4 embedded hyperlink | exercise-rehabilitation | `ref-d69bf10a4455e1cc`, `ref-d1a83dd19ff1b070`, `ref-18fc6ea9e34b955a` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-af1e2c232e51` | document-level metadata | balance-proprioception, exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-b091195dfec4` | document 1 text | exercise-rehabilitation | `ref-9d0ae8e28b048033`, `ref-fa4cfb0cf81a91ed`, `ref-bb63126f584d075b` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-b0b33d1db7d4` | document-level metadata | exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-bb7d6a064b81` | document-level metadata | exercise-rehabilitation, lateral-ankle-sprain | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-c381c7d2c296` | document 1 embedded hyperlink, document 1 text | exercise-rehabilitation, recurrence-prevention | `ref-4d18acfae5320de3`, `ref-a9efc9bb7cd46564`, `ref-eac0384df203a8c8` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-c58344631011` | document-level metadata | balance-proprioception, exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-cd9d261f9f51` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-ce1d48dc87b0` | document-level metadata | exercise-rehabilitation, recurrence-prevention | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-cf5c72f86535` | document 1 text | bracing-taping, exercise-rehabilitation, recurrence-prevention | `ref-b2013b0e627e15fa`, `ref-b1c11d4b1b2ee698`, `ref-f965f66b2de60751` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-d0beb2e2aa17` | slide 10 text, slide 12 text, slide 6 speaker notes | balance-proprioception, exercise-rehabilitation, fracture-screening, recurrence-prevention, return-to-sport | `ref-c8eb15b8f3372537`, `ref-583cd3be9b3b9b18`, `ref-45a65e125cd5b4ba` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-d107e5808bde` | document 1 embedded hyperlink, document 1 text | exercise-rehabilitation, fracture-screening | `ref-38e8d8c451c4eb09`, `ref-d01e1cb3d429169d`, `ref-8c59fcdea89483db` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-d2eaf8b30243` | document 1 embedded hyperlink, document 1 text | exercise-rehabilitation | `ref-9d49ba552f9b2bef`, `ref-1c67adbffd77c09f`, `ref-11a37ff029d75221` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-d9f2efff9eb7` | document-level metadata | balance-proprioception, exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-e20cf0d1a208` | document-level metadata | balance-proprioception, exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-e5eab65f5f60` | document-level metadata | exercise-rehabilitation, fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-e66ad29a3b2e` | document-level metadata | fracture-screening | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-ea68e6706435` | slide 11 text, slide 6 speaker notes, slide 7 speaker notes | balance-proprioception, exercise-rehabilitation, recurrence-prevention, return-to-sport | `ref-122669200841ec8c`, `ref-f31dbbf79613b342`, `ref-1b974a207ea982fd` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-f2de4d6ff8be` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-f30d285f6a6b` | document 1 embedded hyperlink, document 1 text | bracing-taping, exercise-rehabilitation, recurrence-prevention | `ref-854824ac6ae6c167`, `ref-10393733ca2e0b97`, `ref-228af6d77c150fdb` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-f31be2ada69b` | document-level metadata | balance-proprioception, bracing-taping, exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-f537517c78fd` | page 1 text | exercise-rehabilitation, fracture-screening | `ref-58037be117ed4c60` | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | review-required | required |
-| `src-f97ba76b4927` | document-level metadata | exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
-| `src-fd570850eb57` | document-level metadata | balance-proprioception, exercise-rehabilitation, fracture-screening, recurrence-prevention | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
+<!-- source-list role=eligible scope=private-topic-mapping -->
+- none
+<!-- /source-list -->
+
+## Identified but review required
+
+<!-- source-list role=review-required scope=private-topic-mapping -->
+- sourceId=src-0888e69b07a0; governance=review-required; extraction=extracted
+- sourceId=src-09b692096c1a; governance=review-required; extraction=extracted
+- sourceId=src-09c409d4ae26; governance=review-required; extraction=extracted
+- sourceId=src-0b5b2e3de9c6; governance=review-required; extraction=extracted
+- sourceId=src-0baeb171e0a8; governance=review-required; extraction=extracted
+- sourceId=src-0bbca1aa3008; governance=review-required; extraction=extracted
+- sourceId=src-0ebd0fa64610; governance=review-required; extraction=extracted
+- sourceId=src-1d9c1f58831f; governance=review-required; extraction=extracted
+- sourceId=src-25d75727786c; governance=review-required; extraction=extracted
+- sourceId=src-2898b0f60d92; governance=review-required; extraction=extracted
+- sourceId=src-28bf800aec87; governance=review-required; extraction=extracted
+- sourceId=src-2e281aec0176; governance=review-required; extraction=extracted
+- sourceId=src-37c9c7410178; governance=review-required; extraction=extracted
+- sourceId=src-3a59fafaf653; governance=review-required; extraction=extracted
+- sourceId=src-3a8ea716ddf1; governance=review-required; extraction=extracted
+- sourceId=src-3f3d115dd533; governance=review-required; extraction=extracted
+- sourceId=src-4c451faf9623; governance=review-required; extraction=extracted
+- sourceId=src-51a3a1f28f6f; governance=review-required; extraction=extracted
+- sourceId=src-5b00b3477b23; governance=review-required; extraction=extracted
+- sourceId=src-6628ea45ae88; governance=review-required; extraction=extracted
+- sourceId=src-6d3c2846b980; governance=review-required; extraction=extracted
+- sourceId=src-795e597d9b57; governance=review-required; extraction=extracted
+- sourceId=src-7b50a5680afc; governance=review-required; extraction=extracted
+- sourceId=src-7b548a958b41; governance=review-required; extraction=extracted
+- sourceId=src-7bb5b3c4e8b8; governance=review-required; extraction=extracted
+- sourceId=src-8771194fd4d3; governance=review-required; extraction=extracted
+- sourceId=src-9ccd0b23e2a5; governance=review-required; extraction=extracted
+- sourceId=src-9cd8b7a7ccde; governance=review-required; extraction=extracted
+- sourceId=src-9e66d669f055; governance=review-required; extraction=extracted
+- sourceId=src-a3cce692af05; governance=review-required; extraction=extracted
+- sourceId=src-a65f4d701e56; governance=review-required; extraction=extracted
+- sourceId=src-af1e2c232e51; governance=review-required; extraction=extracted
+- sourceId=src-b091195dfec4; governance=review-required; extraction=extracted
+- sourceId=src-bb7d6a064b81; governance=review-required; extraction=extracted
+- sourceId=src-c381c7d2c296; governance=review-required; extraction=extracted
+- sourceId=src-ce1d48dc87b0; governance=review-required; extraction=extracted
+- sourceId=src-cf5c72f86535; governance=review-required; extraction=extracted
+- sourceId=src-d0beb2e2aa17; governance=review-required; extraction=extracted
+- sourceId=src-d107e5808bde; governance=review-required; extraction=extracted
+- sourceId=src-d2eaf8b30243; governance=review-required; extraction=extracted
+- sourceId=src-d9f2efff9eb7; governance=review-required; extraction=extracted
+- sourceId=src-ea68e6706435; governance=review-required; extraction=extracted
+- sourceId=src-f30d285f6a6b; governance=review-required; extraction=extracted
+- sourceId=src-f31be2ada69b; governance=review-required; extraction=extracted
+- sourceId=src-f537517c78fd; governance=review-required; extraction=extracted
+<!-- /source-list -->
+
+## Identified but restricted pending clearance
+
+<!-- source-list role=restricted scope=private-topic-mapping -->
+- sourceId=src-07f5bc8680f6; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-148a81693adf; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-160730f35851; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-1be4e951b83a; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-227d37465f09; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-2fd0579fb461; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-32ba0e9d7de4; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-36656c8c2ce4; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-415ca217bf86; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-47a91c90d62c; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-4f1c254a624d; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-540e33995304; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-64e065873078; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-6654b0733e20; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-69eb7ec6cbd4; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-6a5ccbcd64cd; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-716e011167a5; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-752d08fa2c01; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-7a3e06799504; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-823706ecfd6d; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-8a9755b45f01; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-8b8eb8b85107; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-912d29c79c32; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-927fe641863c; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-93d80440c7da; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-9de370e8c691; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-a048fa07c89b; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-a3bb6683deea; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-b0b33d1db7d4; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-c58344631011; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-cd9d261f9f51; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-e20cf0d1a208; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-e5eab65f5f60; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-e66ad29a3b2e; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-f2de4d6ff8be; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-f97ba76b4927; governance=restricted-pending-clearance; extraction=restricted
+- sourceId=src-fd570850eb57; governance=restricted-pending-clearance; extraction=restricted
+<!-- /source-list -->
+
+## Quarantined and excluded
+
+<!-- source-list role=quarantined scope=private-topic-mapping -->
+- sourceId=src-b4b1a43cdb42; governance=quarantined; extraction=quarantined
+<!-- /source-list -->
+
+## Metadata-only or extraction unavailable
+
+<!-- source-list role=metadata-only scope=private-topic-mapping -->
+- none
+<!-- /source-list -->

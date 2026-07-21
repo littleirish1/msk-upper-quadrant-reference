@@ -4,24 +4,8 @@
   "nodes": [
     {
       "proposalId": "proposal-rcrsp-evidence-development",
-      "sourceIds": [
-        "src-1d9c1f58831f",
-        "src-2898b0f60d92",
-        "src-28bf800aec87",
-        "src-3a59fafaf653",
-        "src-5b00b3477b23",
-        "src-b225de0779c3",
-        "src-ea68e6706435"
-      ],
-      "sourceChecksums": [
-        "sha256:1d9c1f58831ff6e3e9e71716f146fd279720c11983b1620766f25e82e9c00308",
-        "sha256:2898b0f60d92a7c950bef32e30fd2fe1d0ed80e8b0bfebbe2931d8a558f6c73a",
-        "sha256:28bf800aec870d14217caab3f52fb613cb4ee1d8d57fda3c21bc05baf5202dd3",
-        "sha256:3a59fafaf653e401ef945735cab706e5f5ab5702e237b131dfa5587bf236655c",
-        "sha256:5b00b3477b23817553a92a59ad72d481a85bd55a8d66f01253b9fdf812bc72e0",
-        "sha256:b225de0779c3176b4af130b47dbafb7aa072559714ebf274b771dc001f37deb5",
-        "sha256:ea68e670643531665d3c631c28532db857441b4b365729c63d6d8d9ca804de8d"
-      ],
+      "sourceIds": [],
+      "sourceChecksums": [],
       "extractedTeachingTopic": "rcrsp",
       "proposedClinicalClaim": "Candidate teaching claims require extraction review, external evidence verification, and clinician approval before wording is drafted.",
       "targetContentId": "condition:shoulder/rotator-cuff-related-shoulder-pain",
@@ -38,14 +22,8 @@
     },
     {
       "proposalId": "proposal-lateral-ankle-sprain-evidence-development",
-      "sourceIds": [
-        "src-7b548a958b41",
-        "src-bb7d6a064b81"
-      ],
-      "sourceChecksums": [
-        "sha256:7b548a958b411f15dda674ae7a06e00f76c18241531e0c22e14759ea49ba0541",
-        "sha256:bb7d6a064b8134b268a1f13a0a7b6eb8c8aae9d0d56c6e0f6c6c26278257a6e5"
-      ],
+      "sourceIds": [],
+      "sourceChecksums": [],
       "extractedTeachingTopic": "lateral ankle sprain",
       "proposedClinicalClaim": "Candidate teaching claims require extraction review, external evidence verification, and clinician approval before wording is drafted.",
       "targetContentId": "condition:ankle-foot/lateral-ankle-sprain",

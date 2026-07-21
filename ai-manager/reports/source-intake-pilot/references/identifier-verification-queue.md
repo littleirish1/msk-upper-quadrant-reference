@@ -2,11 +2,11 @@
 
 ## Counts
 
-- DOI candidates: 8
+- DOI candidates: 0
 - PMID candidates: 0
-- Generic web: 58
-- Licence/attribution: 1
-- Media/engagement: 32
+- Generic web: 0
+- Licence/attribution: 0
+- Media/engagement: 0
 
 ## Rule
 
