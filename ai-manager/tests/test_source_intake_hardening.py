@@ -140,18 +140,19 @@ class OfficeProvenanceTests(unittest.TestCase):
         self.assertEqual(units[0]["links"], ["https://example.test/first"])
         self.assertIn("Second note", units[1]["notes"])
 
-    def test_xlsx_resolves_shared_and_inline_strings_per_sheet(self):
+    def test_xlsx_preserves_shared_string_positions_and_cell_types(self):
         ns = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
         files = {
             "xl/workbook.xml": f'<workbook xmlns:r="{ns}"><sheets><sheet name="One" r:id="r1"/><sheet name="Two" r:id="r2"/></sheets></workbook>'.encode(),
             "xl/_rels/workbook.xml.rels": b'<Relationships><Relationship Id="r1" Target="worksheets/sheet1.xml"/><Relationship Id="r2" Target="worksheets/sheet2.xml"/></Relationships>',
-            "xl/sharedStrings.xml": b'<sst><si><t>Alpha</t></si><si><t>Beta</t></si></sst>',
-            "xl/worksheets/sheet1.xml": b'<worksheet><sheetData><row><c r="A1" t="s"><v>0</v></c></row></sheetData></worksheet>',
-            "xl/worksheets/sheet2.xml": b'<worksheet><sheetData><row><c r="A1" t="s"><v>1</v></c><c r="B1" t="inlineStr"><is><t>Gamma</t></is></c></row></sheetData></worksheet>',
+            "xl/sharedStrings.xml": b'<sst><si><t></t></si><si><t>Alpha</t></si><si><t xml:space="preserve">  </t></si><si><r><t>Rich</t></r><r><t>&amp;Text</t></r></si><si><t>Omega</t></si></sst>',
+            "xl/worksheets/sheet1.xml": b'<worksheet><sheetData><row><c r="A1" t="s"><v>0</v></c><c r="B1" t="s"><v>1</v></c><c r="C1" t="s"><v>2</v></c></row></sheetData></worksheet>',
+            "xl/worksheets/sheet2.xml": b'<worksheet><sheetData><row><c r="A1" t="s"><v>3</v></c><c r="B1" t="s"><v>4</v></c><c r="C1" t="inlineStr"><is><r><t>Inline</t></r><r><t>Text</t></r></is></c><c r="D1" t="s"><v>99</v></c></row></sheetData></worksheet>',
         }
-        units, _ = engine.extract_xlsx(make_zip(files))
-        self.assertIn("Alpha", units[0]["text"]); self.assertNotIn("Beta", units[0]["text"])
-        self.assertIn("Beta", units[1]["text"]); self.assertIn("Gamma", units[1]["text"])
+        units, metadata = engine.extract_xlsx(make_zip(files))
+        self.assertEqual(units[0]["text"], "A1= | B1=Alpha | C1=  ")
+        self.assertEqual(units[1]["text"], "A1=Rich&Text | B1=Omega | C1=InlineText")
+        self.assertEqual(metadata["warnings"], {"shared-string-index-invalid": 1})
 
 
 class CitationTests(unittest.TestCase):

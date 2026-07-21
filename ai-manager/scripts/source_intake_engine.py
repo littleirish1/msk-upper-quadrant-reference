@@ -237,13 +237,26 @@ def extract_docx(data: bytes) -> tuple[list[dict], dict]:
     return [{"number": 1, "kind": "document", "paragraphs": paragraphs, "text": "\n".join(paragraphs), "links": sorted(set(filter(None, links)))}], {"method": "docx-openxml", "tables": 0, "images": images, "warnings": dict(warnings)}
 
 
+def _xlsx_shared_strings(data: bytes) -> list[str]:
+    root = _xml(data)
+    return [
+        "".join(node.text or "" for node in item.iter() if _local_name(node.tag) == "t")
+        for item in root.iter()
+        if _local_name(item.tag) == "si"
+    ]
+
+
+def _xlsx_inline_string(cell) -> str:
+    return "".join(node.text or "" for node in cell.iter() if _local_name(node.tag) == "t")
+
+
 def extract_xlsx(data: bytes) -> tuple[list[dict], dict]:
     units, warnings = [], Counter()
     with zipfile.ZipFile(BytesIO(data)) as archive:
         names = set(archive.namelist())
         shared: list[str] = []
         if "xl/sharedStrings.xml" in names:
-            shared = _paragraphs(_read_part(archive, "xl/sharedStrings.xml"))
+            shared = _xlsx_shared_strings(_read_part(archive, "xl/sharedStrings.xml"))
         workbook = "xl/workbook.xml"
         rels = _relationship_map(archive, workbook)
         if workbook not in names:
@@ -267,17 +280,20 @@ def extract_xlsx(data: bytes) -> tuple[list[dict], dict]:
                 for cell in (node for node in row if _local_name(node.tag) == "c"):
                     ref, cell_type = cell.attrib.get("r", "?"), cell.attrib.get("t")
                     raw = next((node.text or "" for node in cell.iter() if _local_name(node.tag) == "v"), "")
-                    inline = " ".join((node.text or "").strip() for node in cell.iter() if _local_name(node.tag) == "t" and (node.text or "").strip())
+                    inline = _xlsx_inline_string(cell)
+                    resolved = False
                     if cell_type == "s":
-                        try: value = shared[int(raw)]
+                        try:
+                            value = shared[int(raw)]
+                            resolved = True
                         except (ValueError, IndexError):
                             warnings["shared-string-index-invalid"] += 1; value = ""
-                    elif cell_type in {"inlineStr", "str"}: value = inline or raw
+                    elif cell_type in {"inlineStr", "str"}: value = inline or raw; resolved = True
                     elif cell_type in {None, "n", "b"}: value = raw
                     else:
                         warnings["unsupported-cell-type"] += 1; value = raw
                     if any(_local_name(node.tag) == "f" for node in cell): warnings["formula-present-uncomputed"] += 1
-                    if value: cells.append(f"{ref}={value}")
+                    if value or resolved: cells.append(f"{ref}={value}")
                 if cells: rows.append(" | ".join(cells))
             units.append({"number": number, "kind": "sheet", "sheetName": sheet.attrib.get("name", f"Sheet {number}"), "paragraphs": rows, "text": "\n".join(rows), "links": []})
     return units, {"method": "xlsx-openxml-indexed-shared-strings", "tables": len(units), "images": 0, "warnings": dict(warnings)}
