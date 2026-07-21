@@ -1,0 +1,5 @@
+* 9910d21 (HEAD -> fix/source-ingestion-final-review-corrections) Harden final source review packet scanning
+* 49cdac9 Regenerate governed source-intake reports
+* 54f5ca1 Validate source governance in Markdown reports
+* 1fbca27 Enforce source eligibility across generated briefs
+* 1798f77 Preserve positional XLSX shared strings

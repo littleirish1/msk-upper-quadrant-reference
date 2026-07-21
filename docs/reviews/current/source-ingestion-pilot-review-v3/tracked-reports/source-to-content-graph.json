@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 2,
+  "runId": "run-ba38b10fbc3fa024",
+  "nodes": [
+    {
+      "proposalId": "proposal-rcrsp-evidence-development",
+      "sourceIds": [],
+      "sourceChecksums": [],
+      "extractedTeachingTopic": "rcrsp",
+      "proposedClinicalClaim": "Candidate teaching claims require extraction review, external evidence verification, and clinician approval before wording is drafted.",
+      "targetContentId": "condition:shoulder/rotator-cuff-related-shoulder-pain",
+      "requiredEvidence": [
+        "Current guideline",
+        "Systematic review",
+        "Clinician review"
+      ],
+      "clinicianReviewStatus": "required",
+      "proposalStatus": "blocked-pending-evidence-and-clinician-review",
+      "teachingSourceCanEstablishPublicApproval": false,
+      "visualLicenceStatus": "unknown-review-required",
+      "publicEligibility": false
+    },
+    {
+      "proposalId": "proposal-lateral-ankle-sprain-evidence-development",
+      "sourceIds": [],
+      "sourceChecksums": [],
+      "extractedTeachingTopic": "lateral ankle sprain",
+      "proposedClinicalClaim": "Candidate teaching claims require extraction review, external evidence verification, and clinician approval before wording is drafted.",
+      "targetContentId": "condition:ankle-foot/lateral-ankle-sprain",
+      "requiredEvidence": [
+        "Current guideline",
+        "Systematic review",
+        "Clinician review"
+      ],
+      "clinicianReviewStatus": "required",
+      "proposalStatus": "blocked-pending-evidence-and-clinician-review",
+      "teachingSourceCanEstablishPublicApproval": false,
+      "visualLicenceStatus": "unknown-review-required",
+      "publicEligibility": false
+    }
+  ]
+}
