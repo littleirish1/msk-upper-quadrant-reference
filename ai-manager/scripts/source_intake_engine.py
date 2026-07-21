@@ -562,41 +562,72 @@ def write_md(path: Path, title: str, sections: Iterable[tuple[str, str]]) -> Non
     path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8", newline="\n")
 
 
-def _source_table(records: list[dict], references: list[dict], topics: set[str]) -> str:
-    selected = [r for r in records if set(r["topicTags"]) & topics and r["sensitivity"] != "quarantined"]
-    if not selected: return "No eligible matching sources were identified."
-    refs_by_source: dict[str, list[dict]] = defaultdict(list)
-    for reference in references: refs_by_source[reference["sourceId"]].append(reference)
-    rows = ["| Source ID | Location | Teaching topics | Citation candidates | Verification | Overlap/conflict | Proposed targets | Clearance | Clinician review |", "|---|---|---|---|---|---|---|---|---|"]
-    for r in selected:
-        source_refs = refs_by_source[r["sourceId"]]
-        locations = ", ".join(sorted({item["location"] for item in source_refs})[:3]) or "document-level metadata"
-        candidate_ids = ", ".join(f"`{item['candidateReferenceId']}`" for item in source_refs[:3]) or "none eligible"
-        rows.append(f"| `{r['sourceId']}` | {locations} | {', '.join(sorted(set(r['topicTags']) & topics)) or 'classification pending'} | {candidate_ids} | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | {r['sensitivity']} | required |")
-    return "\n".join(rows)
+def source_allows_private_evidence(source: dict, scope: str) -> bool:
+    if source.get("sensitivity") != "cleared-for-private-evidence-processing":
+        return False
+    if scope not in source.get("clearanceScopes", []):
+        return False
+    return source.get("extractionStatus") in {"extracted", "partial"}
+
+
+def _source_list(records: list[dict], topics: set[str] | None, role: str, scope: str) -> str:
+    matching = records if topics is None else [record for record in records if set(record["topicTags"]) & topics]
+    if role == "eligible":
+        selected = [record for record in matching if source_allows_private_evidence(record, scope)]
+    elif role == "restricted":
+        selected = [record for record in matching if record["sensitivity"] == "restricted-pending-clearance"]
+    elif role == "quarantined":
+        selected = [record for record in matching if record["sensitivity"] == "quarantined"]
+    elif role == "review-required":
+        selected = [record for record in matching if record["sensitivity"] == "review-required"]
+    elif role == "metadata-only":
+        selected = [record for record in matching if record["extractionStatus"] in {"failed", "metadata-only", "unsupported"}]
+    else:
+        raise ValueError(f"unknown source-list role: {role}")
+    lines = [f"<!-- source-list role={role} scope={scope} -->"]
+    if selected:
+        lines.extend(
+            f"- sourceId={record['sourceId']}; governance={record['sensitivity']}; extraction={record['extractionStatus']}"
+            for record in sorted(selected, key=lambda item: item["sourceId"])
+        )
+    else:
+        lines.append("- none")
+    lines.append("<!-- /source-list -->")
+    return "\n".join(lines)
+
+
+def _pilot_source_sections(records: list[dict], topics: set[str]) -> list[tuple[str, str]]:
+    scope = "private-topic-mapping"
+    return [
+        ("Eligible private evidence sources", _source_list(records, topics, "eligible", scope)),
+        ("Identified but review required", _source_list(records, topics, "review-required", scope)),
+        ("Identified but restricted pending clearance", _source_list(records, topics, "restricted", scope)),
+        ("Quarantined and excluded", _source_list(records, topics, "quarantined", scope)),
+        ("Metadata-only or extraction unavailable", _source_list(records, topics, "metadata-only", scope)),
+    ]
 
 
 def generate_pilot_reports(output: Path, records: list[dict], references: list[dict]) -> None:
     disclaimer = "All teaching statements remain unverified. No item is approved for public clinical use."
     r_topics = {"rcrsp", "rotator-cuff-tear", "shoulder-differential", "exercise-rehabilitation", "prognosis", "imaging", "patient-communication", "special-tests", "outcome-measures"}
     a_topics = {"lateral-ankle-sprain", "ankle-ligament-anatomy", "fracture-screening", "syndesmosis", "exercise-rehabilitation", "balance-proprioception", "return-to-sport", "recurrence-prevention", "bracing-taping"}
-    r_table, a_table = _source_table(records, references, r_topics), _source_table(records, references, a_topics)
+    r_sections, a_sections = _pilot_source_sections(records, r_topics), _pilot_source_sections(records, a_topics)
     rdir, adir = output / "rcrsp", output / "lateral-ankle-sprain"
-    write_md(rdir / "source-set.md", "RCRSP source set", [("Governance", disclaimer), ("Eligible private source map", r_table)])
-    write_md(rdir / "teaching-content-map.md", "RCRSP teaching content map", [("Evidence map", r_table), ("Interpretation", "Rows are extraction associations, not endorsed claims. Overlap and conflict status remains manual-review-required; visuals remain licence-review-required."), ("Targets", "Condition reference, neutral guided case, anatomy, special tests, outcome measures, quiz, flashcard, OSCE, and patient explanation are proposals only.")])
+    write_md(rdir / "source-set.md", "RCRSP source set", [("Governance", disclaimer), *r_sections])
+    write_md(rdir / "teaching-content-map.md", "RCRSP teaching content map", [*r_sections, ("Interpretation", "These are extraction associations grouped by governance state, not endorsed claims. Only explicitly eligible sources may later support private evidence work."), ("Targets", "Condition reference, neutral guided case, anatomy, special tests, outcome measures, quiz, flashcard, OSCE, and patient explanation are blocked proposals only.")])
     write_md(rdir / "claims-requiring-verification.md", "RCRSP claims requiring verification", [("Blocked areas", "- Terminology and classification\n- Diagnostic value of tests and clusters\n- Imaging indications\n- Natural history and prognosis\n- Intervention comparisons\n- Surgical referral indications\n- Communication and outcome-measure interpretation"), ("Status", disclaimer)])
     write_md(rdir / "evidence-gaps.md", "RCRSP evidence gaps", [("Required evidence", "Current guidelines, systematic reviews, diagnostic-accuracy studies, prognostic cohorts, and intervention trials require later external verification."), ("Approval", "Clinician review remains required.")])
     write_md(rdir / "proposed-content-links.md", "RCRSP proposed content links", [("Targets", "Existing condition and neutral case plus anatomy, tests, outcomes, quizzes, flashcards, OSCE and patient-information resources."), ("Publication", "Blocked; public eligibility is false.")])
     steps = ["Initial presentation", "Learner differential", "Justification", "Additional history", "Red flags", "Examination planning", "Examination findings", "Investigation decision", "Management plan", "Patient explanation", "Expert reasoning comparison", "Reflection"]
-    rcrsp_ids = [r["sourceId"] for r in records if r["sensitivity"] != "quarantined" and set(r["topicTags"]) & r_topics][:4]
-    source_label = ", ".join(f"`{source_id}`" for source_id in rcrsp_ids) or "no eligible source"
-    mappings = "\n".join(f"{i}. **{step}** - candidate sources: {source_label}; evidence question: what verified evidence supports this step?; expert answer not authored." for i, step in enumerate(steps, 1))
-    write_md(rdir / "guided-case-conversion-brief.md", "RCRSP guided-case conversion brief", [("Existing case", "The existing public case is unchanged."), ("Twelve-step map", mappings), ("Approval", "Every expert answer requires source-specific support and clinician approval.")])
+    rcrsp_ids = [r["sourceId"] for r in records if source_allows_private_evidence(r, "private-proposal-support") and set(r["topicTags"]) & r_topics][:4]
+    source_label = ", ".join(f"`{source_id}`" for source_id in rcrsp_ids) or "none; no source is cleared for private proposal support"
+    mappings = "\n".join(f"{i}. **{step}** - eligible source support: {source_label}; evidence question: what verified evidence supports this step?; expert answer not authored." for i, step in enumerate(steps, 1))
+    write_md(rdir / "guided-case-conversion-brief.md", "RCRSP guided-case conversion brief", [("Existing case", "The existing public case is unchanged."), ("Eligible source support", _source_list(records, r_topics, "eligible", "private-proposal-support")), ("Twelve-step map", mappings), ("Approval", "Every expert answer requires verified source-specific support and clinician approval.")])
     hierarchy = "Preferred hierarchy: current clinical practice guideline; systematic review/meta-analysis; high-quality randomised trial; prognostic cohort; diagnostic-accuracy study; consensus where stronger evidence is unavailable. No external search was performed."
     write_md(rdir / "evidence-search-questions.md", "RCRSP evidence search questions", [("Questions", "- Preferred terminology and classification?\n- Diagnostic value of tests and clusters?\n- Imaging indications?\n- Natural history and prognosis?\n- Intervention comparisons?\n- Surgical indications?\n- Supported communication?\n- Appropriate outcome measures?"), ("Hierarchy", hierarchy)])
     write_md(rdir / "clinician-review-checklist.md", "RCRSP clinician review checklist", [("Checklist", "- [ ] Verify terminology, differentials and safety\n- [ ] Verify every claim and citation\n- [ ] Review imaging, management and prognosis\n- [ ] Review communication wording\n- [ ] Preserve diagnosis hiding\n- [ ] Record reviewer and decision outside this pilot")])
-    write_md(adir / "source-set.md", "Lateral ankle sprain source set", [("Governance", disclaimer), ("Eligible private source map", a_table)])
-    write_md(adir / "historical-leaflet-content-map.md", "Historical ankle leaflet content map", [("Classification", "The checksum-governed 2019 local patient-information leaflet is a historical/local-practice source, non-authoritative by itself, and requires current evidence review."), ("Evidence map", a_table), ("Topics", "Acute assessment; fracture screening; early loading; support; exercise; balance; return to sport; recurrence prevention; escalation; patient communication."), ("Verification flags", "POLICE/newer frameworks; ice; compression; medication timing; fixed dosage; healing time; bracing duration; return-to-sport criteria; recurrence prevention; emergency thresholds. No item is declared wrong.")])
+    write_md(adir / "source-set.md", "Lateral ankle sprain source set", [("Governance", disclaimer), *a_sections])
+    write_md(adir / "historical-leaflet-content-map.md", "Historical ankle leaflet content map", [("Classification", "The checksum-governed historical local patient-information leaflet remains non-authoritative by itself and requires current evidence review."), *a_sections, ("Topics", "Acute assessment; fracture screening; early loading; support; exercise; balance; return to sport; recurrence prevention; escalation; patient communication."), ("Verification flags", "Acute-management frameworks; ice; compression; medication timing; fixed dosage; healing time; bracing duration; return-to-sport criteria; recurrence prevention; emergency thresholds. No item is declared wrong.")])
     write_md(adir / "claims-requiring-verification.md", "Lateral ankle sprain claims requiring verification", [("Blocked areas", "- Acute assessment and fracture screening\n- Early loading and external support\n- Exercise and balance\n- Return to sport and recurrence prevention\n- Escalation and patient communication"), ("Status", disclaimer)])
     write_md(adir / "evidence-gaps.md", "Lateral ankle sprain evidence gaps", [("Required evidence", "Current decision rules, guidelines, rehabilitation reviews, prognosis evidence and return-to-sport consensus require external verification."), ("Approval", "Clinician review remains required.")])
     write_md(adir / "proposed-condition-brief.md", "Lateral ankle sprain condition brief", [("Status", "Private blocked proposal; no public route."), ("Structure", "Assessment, fracture screening, differentials, early management, loading, rehabilitation, return to activity, recurrence prevention, escalation, limitations and communication.")])
@@ -709,10 +740,11 @@ def build_intake(inbox: Path, reports: Path = REPORTS, cache_root: Path = CACHE_
         records.append(record)
         write_json(cache / f"{sid}.json", {"sourceId": sid, "checksum": checksum, "units": units, "metadata": meta})
         if sensitivity == "quarantined": continue
-        if sensitivity == "restricted-pending-clearance":
-            possible, hidden = reference_candidates(record, units, names); excluded_uncleared += len(possible); suppressed_total += hidden; continue
-        if sensitivity == "cleared-for-private-evidence-processing" and "citation-extraction" not in clearance_scopes: continue
-        found, hidden = reference_candidates(record, units, names); references.extend(found); suppressed_total += hidden
+        found, hidden = reference_candidates(record, units, names); suppressed_total += hidden
+        if source_allows_private_evidence(record, "citation-extraction"):
+            references.extend(found)
+        else:
+            excluded_uncleared += len(found)
     if fatal:
         raise RuntimeError("undisclosed credential category detected; no tracked reports were replaced")
 
@@ -734,12 +766,11 @@ def build_intake(inbox: Path, reports: Path = REPORTS, cache_root: Path = CACHE_
         exact_groups.append((gid, group))
     for record in records: record["_referenceCount"] = sum(ref["sourceId"] == record["sourceId"] for ref in references)
 
-    eligible = [r for r in records if r["sensitivity"] == "review-required" or (r["sensitivity"] == "cleared-for-private-evidence-processing" and "private-proposal-support" in r["clearanceScopes"])]
     nodes = []
     for topic, target in [("rcrsp", "condition:shoulder/rotator-cuff-related-shoulder-pain"), ("lateral-ankle-sprain", "condition:ankle-foot/lateral-ankle-sprain")]:
-        sources = [r for r in eligible if topic in r["topicTags"]]
-        if sources: nodes.append({"proposalId": f"proposal-{topic}-evidence-development", "sourceIds": [r["sourceId"] for r in sources], "sourceChecksums": [r["checksum"] for r in sources], "extractedTeachingTopic": topic.replace("-", " "), "proposedClinicalClaim": "Candidate teaching claims require extraction review, external evidence verification, and clinician approval before wording is drafted.", "targetContentId": target, "requiredEvidence": ["Current guideline", "Systematic review", "Clinician review"], "clinicianReviewStatus": "required", "proposalStatus": "blocked-pending-evidence-and-clinician-review", "teachingSourceCanEstablishPublicApproval": False, "visualLicenceStatus": "unknown-review-required", "publicEligibility": False})
-    excluded_proposals = sum(1 for r in records if r["sensitivity"] == "restricted-pending-clearance" and set(r["topicTags"]) & {"rcrsp", "lateral-ankle-sprain"})
+        sources = [r for r in records if topic in r["topicTags"] and source_allows_private_evidence(r, "private-proposal-support")]
+        nodes.append({"proposalId": f"proposal-{topic}-evidence-development", "sourceIds": [r["sourceId"] for r in sources], "sourceChecksums": [r["checksum"] for r in sources], "extractedTeachingTopic": topic.replace("-", " "), "proposedClinicalClaim": "Candidate teaching claims require extraction review, external evidence verification, and clinician approval before wording is drafted.", "targetContentId": target, "requiredEvidence": ["Current guideline", "Systematic review", "Clinician review"], "clinicianReviewStatus": "required", "proposalStatus": "blocked-pending-evidence-and-clinician-review", "teachingSourceCanEstablishPublicApproval": False, "visualLicenceStatus": "unknown-review-required", "publicEligibility": False})
+    excluded_proposals = sum(1 for r in records if set(r["topicTags"]) & {"rcrsp", "lateral-ankle-sprain"} and not source_allows_private_evidence(r, "private-proposal-support"))
     summary = {"topLevelFiles": top_count, "nestedFiles": nested_count, "uniqueSources": len(records), "totalObservedBytes": total_bytes, "exactDuplicateGroups": sum(r["duplicateGroup"] is not None for r in records), "probableVersionGroups": len(probable_groups), "quarantinedSources": sum(r["sensitivity"] == "quarantined" for r in records), "restrictedPendingClearanceSources": sum(r["sensitivity"] == "restricted-pending-clearance" for r in records), "clearedSources": sum(r["sensitivity"] == "cleared-for-private-evidence-processing" for r in records), "manualReviewSources": sum(r["sensitivity"] in {"review-required", "restricted-pending-clearance"} for r in records), "suppressedSensitiveLines": suppressed_total, "referencesExcludedUncleared": excluded_uncleared, "proposalSourcesExcludedUncleared": excluded_proposals}
     for record in records: record.pop("_referenceCount", None)
 
@@ -754,7 +785,14 @@ def build_intake(inbox: Path, reports: Path = REPORTS, cache_root: Path = CACHE_
         type_counts, status_counts = Counter(r["fileType"] for r in records), Counter(r["extractionStatus"] for r in records)
         region_counts = Counter(tag for r in records if r["sensitivity"] != "quarantined" for tag in r["regionTags"]); topic_counts = Counter(tag for r in records if r["sensitivity"] != "quarantined" for tag in r["topicTags"])
         write_md(staging / "README.md", "Private source-intake pilot", [("Purpose", "Governed metadata and blocked evidence-development proposals. Source bodies and full text remain in ignored storage."), ("Boundary", "Public eligibility is false. Restricted sources require explicit clearance; clearance is not publication, copyright, evidence, or clinical approval."), ("Reproduction", "Use the operator-supplied private inbox argument. No absolute source path is stored.")])
-        write_md(staging / "source-summary.md", "Source intake summary", [("Counts", "\n".join(f"- {key}: {value}" for key, value in summary.items())), ("File types", "\n".join(f"- `{key}`: {value}" for key, value in sorted(type_counts.items()))), ("Governance", "No source body, private path, approval claim, or verified-evidence claim is included.")])
+        inventory_sections = [
+            ("Eligible private evidence inventory", _source_list(records, None, "eligible", "private-topic-mapping")),
+            ("Review-required inventory", _source_list(records, None, "review-required", "private-topic-mapping")),
+            ("Restricted inventory", _source_list(records, None, "restricted", "private-topic-mapping")),
+            ("Quarantine inventory", _source_list(records, None, "quarantined", "private-topic-mapping")),
+            ("Metadata-only inventory", _source_list(records, None, "metadata-only", "private-topic-mapping")),
+        ]
+        write_md(staging / "source-summary.md", "Source intake summary", [("Counts", "\n".join(f"- {key}: {value}" for key, value in summary.items())), ("File types", "\n".join(f"- `{key}`: {value}" for key, value in sorted(type_counts.items()))), *inventory_sections, ("Governance", "No source body, private path, approval claim, or verified-evidence claim is included.")])
         write_md(staging / "duplicate-report.md", "Duplicate and version analysis", [("Exact duplicates", "\n".join(f"- `{r['duplicateGroup']}`: `{r['sourceId']}`; {len(r['occurrences'])} occurrences; full SHA-256 match." for r in records if r["duplicateGroup"]) or "None detected."), ("Probable versions", "\n".join(f"- `{gid}`: {len(members)} sources; manual review required." for gid, members in probable_groups) or "None detected."), ("Action", "No source was deleted.")])
         quarantine_counts = Counter(item["category"] for r in records if r["sensitivity"] == "quarantined" for item in r["sensitivityFindings"])
         write_md(staging / "quarantine-report.md", "Quarantine report", [("Summary", f"{summary['quarantinedSources']} sources are quarantined."), ("Categories", "\n".join(f"- {key}: {value}" for key, value in sorted(quarantine_counts.items())) or "No category counts."), ("Handling", "Values, names, filenames, and bodies are omitted. Quarantined sources support neither references nor proposals.")])

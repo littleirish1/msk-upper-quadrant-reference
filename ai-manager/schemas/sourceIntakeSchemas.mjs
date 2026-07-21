@@ -225,8 +225,8 @@ export const sourceToContentGraphV2Schema = z.object({
   runId: z.string().regex(/^run-[0-9a-f]{16}$/),
   nodes: z.array(z.object({
     proposalId: z.string().regex(/^proposal-[a-z0-9-]+$/),
-    sourceIds: z.array(displaySourceIdSchema).min(1),
-    sourceChecksums: z.array(fullChecksumSchema).min(1),
+    sourceIds: z.array(displaySourceIdSchema),
+    sourceChecksums: z.array(fullChecksumSchema),
     extractedTeachingTopic: z.string().min(1),
     proposedClinicalClaim: z.string().min(1),
     targetContentId: z.string().min(1),
