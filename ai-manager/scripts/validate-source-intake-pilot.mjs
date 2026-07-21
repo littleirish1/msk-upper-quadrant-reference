@@ -30,6 +30,7 @@ export function validateSourceIntake(reportDir = REPORT_DIR, options = {}) {
   if (manifest && references) validateReferences(manifest, references)
   if (manifest && graph) validateGraph(manifest, graph)
   if (manifest && run && references && graph) validateRun(manifest, references, graph, run, reportDir)
+  if (manifest && graph) validateMarkdownReports(reportDir, manifest, graph)
   if (manifest && clearance) validateClearance(manifest, clearance)
   if (manifest && overrides) validateOverrides(manifest, overrides)
   if (manifest && securityDecisions) validateSecurityDecisions(manifest, securityDecisions)
@@ -174,9 +175,79 @@ export function scanTrackedText(text, context = 'tracked report') {
 }
 
 export function sourceAllowsScope(source, scope) {
-  if (source.sensitivity === 'quarantined' || source.sensitivity === 'restricted-pending-clearance') return false
-  if (source.sensitivity === 'cleared-for-private-evidence-processing') return source.clearanceScopes.includes(scope)
-  return source.sensitivity === 'review-required'
+  return source.sensitivity === 'cleared-for-private-evidence-processing'
+    && source.clearanceScopes.includes(scope)
+    && ['extracted', 'partial'].includes(source.extractionStatus)
+}
+
+const sourceListPattern = /<!-- source-list role=([a-z-]+) scope=([a-z-]+) -->\s*([\s\S]*?)<!-- \/source-list -->/g
+const sourceEntryPattern = /^- sourceId=(src-[0-9a-f]{12}); governance=([a-z-]+); extraction=([a-z-]+)$/
+
+export function validateMarkdownGovernance(text, records, context = 'markdown') {
+  const localFindings = []
+  const sources = new Map(records.map((item) => [item.sourceId, item]))
+  const blocks = []
+  for (const sourceId of text.match(/src-[0-9a-f]{12}/g) ?? []) {
+    if (!sources.has(sourceId)) localFindings.push(`${context}: unknown source ID ${sourceId}`)
+  }
+  for (const match of text.matchAll(sourceListPattern)) {
+    const [, role, scope, body] = match
+    const ids = []
+    const lines = body.trim().split(/\r?\n/).filter(Boolean)
+    if (lines.length === 1 && lines[0] === '- none') {
+      blocks.push({ role, scope, ids })
+      continue
+    }
+    for (const line of lines) {
+      const entry = sourceEntryPattern.exec(line)
+      if (!entry) { localFindings.push(`${context}: malformed ${role} source-list entry`); continue }
+      const [, sourceId, governance, extraction] = entry
+      const source = sources.get(sourceId)
+      ids.push(sourceId)
+      if (!source) continue
+      if (source.sensitivity !== governance) localFindings.push(`${context}: status mismatch for ${sourceId}`)
+      if (source.extractionStatus !== extraction) localFindings.push(`${context}: extraction-status mismatch for ${sourceId}`)
+      if (role === 'eligible' && !sourceAllowsScope(source, scope)) localFindings.push(`${context}: ineligible source ${sourceId} in eligible list`)
+      if (role === 'restricted' && source.sensitivity !== 'restricted-pending-clearance') localFindings.push(`${context}: non-restricted source ${sourceId} in restricted list`)
+      if (role === 'quarantined' && source.sensitivity !== 'quarantined') localFindings.push(`${context}: non-quarantined source ${sourceId} in quarantine list`)
+      if (role === 'review-required' && source.sensitivity !== 'review-required') localFindings.push(`${context}: governance mismatch in review-required list for ${sourceId}`)
+      if (role === 'metadata-only' && !['failed', 'metadata-only', 'unsupported'].includes(source.extractionStatus)) localFindings.push(`${context}: extracted source ${sourceId} in metadata-only list`)
+      if (!['eligible', 'restricted', 'quarantined', 'review-required', 'metadata-only'].includes(role)) localFindings.push(`${context}: unknown source-list role ${role}`)
+    }
+    blocks.push({ role, scope, ids })
+  }
+  if (/\b(?:publication|clinical)\s+(?:status\s*[:=]\s*)?approved\b/i.test(text) || /\bpublicEligibility\s*[:=]\s*true\b/i.test(text)) {
+    localFindings.push(`${context}: positive public or clinical approval wording`)
+  }
+  return { findings: [...new Set(localFindings)], blocks }
+}
+
+function validateMarkdownReports(reportDir, manifest, graph) {
+  const markdown = collectFiles(reportDir).filter((file) => file.endsWith('.md'))
+  for (const file of markdown) {
+    const result = validateMarkdownGovernance(fs.readFileSync(file, 'utf8'), manifest.records, relative(file))
+    findings.push(...result.findings)
+  }
+
+  const summaryFile = path.join(reportDir, 'source-summary.md')
+  const summary = validateMarkdownGovernance(fs.readFileSync(summaryFile, 'utf8'), manifest.records, relative(summaryFile))
+  const expectedByRole = new Map([
+    ['eligible', manifest.records.filter((item) => sourceAllowsScope(item, 'private-topic-mapping')).map((item) => item.sourceId).sort()],
+    ['review-required', manifest.records.filter((item) => item.sensitivity === 'review-required').map((item) => item.sourceId).sort()],
+    ['restricted', manifest.records.filter((item) => item.sensitivity === 'restricted-pending-clearance').map((item) => item.sourceId).sort()],
+    ['quarantined', manifest.records.filter((item) => item.sensitivity === 'quarantined').map((item) => item.sourceId).sort()],
+  ])
+  for (const [role, expected] of expectedByRole) {
+    const blocks = summary.blocks.filter((item) => item.role === role)
+    if (blocks.length !== 1) { findings.push(`source-summary must contain one ${role} inventory`); continue }
+    if (JSON.stringify([...blocks[0].ids].sort()) !== JSON.stringify(expected)) findings.push(`source-summary ${role} inventory mismatch`)
+  }
+
+  for (const node of graph.nodes) {
+    const topic = node.proposalId.includes('lateral-ankle-sprain') ? 'lateral-ankle-sprain' : 'rcrsp'
+    const expected = manifest.records.filter((item) => item.topicTags.includes(topic) && sourceAllowsScope(item, 'private-proposal-support')).map((item) => item.sourceId).sort()
+    if (JSON.stringify([...node.sourceIds].sort()) !== JSON.stringify(expected)) findings.push(`${node.proposalId} support count does not reconcile with eligibility`)
+  }
 }
 
 function validateTrackedReports(reportDir) {

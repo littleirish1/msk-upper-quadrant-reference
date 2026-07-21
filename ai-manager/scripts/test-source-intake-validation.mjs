@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import path from 'node:path'
 import { scanSensitiveText } from './sensitiveDataPolicy.mjs'
-import { scanTrackedText, sourceAllowsScope } from './validate-source-intake-pilot.mjs'
+import { scanTrackedText, sourceAllowsScope, validateMarkdownGovernance } from './validate-source-intake-pilot.mjs'
 import { clearanceLedgerSchema, securityFalsePositiveDecisionsSchema } from '../schemas/sourceIntakeSchemas.mjs'
 
 const hygiene = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'ai-manager', 'content-hygiene-names.json'), 'utf8'))
@@ -30,9 +30,9 @@ for (const [category, value] of fixtures) {
   }
 }
 assert.equal(scanTrackedText(JSON.stringify({ summary: { suppressedEmailCount: 2 } })).length, 0)
-const restricted = { sensitivity: 'restricted-pending-clearance', clearanceScopes: [] }
-const quarantined = { sensitivity: 'quarantined', clearanceScopes: [] }
-const clearedCitation = { sensitivity: 'cleared-for-private-evidence-processing', clearanceScopes: ['citation-extraction'] }
+const restricted = { sourceId: 'src-bbbbbbbbbbbb', sensitivity: 'restricted-pending-clearance', clearanceScopes: [], extractionStatus: 'restricted' }
+const quarantined = { sourceId: 'src-cccccccccccc', sensitivity: 'quarantined', clearanceScopes: [], extractionStatus: 'quarantined' }
+const clearedCitation = { sourceId: 'src-dddddddddddd', sensitivity: 'cleared-for-private-evidence-processing', clearanceScopes: ['citation-extraction'], extractionStatus: 'extracted' }
 assert.equal(sourceAllowsScope(restricted, 'citation-extraction'), false)
 assert.equal(sourceAllowsScope(restricted, 'private-proposal-support'), false)
 assert.equal(sourceAllowsScope(quarantined, 'citation-extraction'), false)
@@ -48,4 +48,15 @@ const securityBase = { schemaVersion: 1, publicationApprovalRepresented: false, 
 assert.equal(securityFalsePositiveDecisionsSchema.safeParse({ ...securityBase, entries: [securityEntry] }).success, true)
 assert.equal(securityFalsePositiveDecisionsSchema.safeParse({ ...securityBase, entries: [securityEntry, securityEntry] }).success, false)
 assert.equal(securityFalsePositiveDecisionsSchema.safeParse({ ...securityBase, publicationApprovalRepresented: true, entries: [securityEntry] }).success, false)
+
+const marker = (role, scope, line) => `<!-- source-list role=${role} scope=${scope} -->\n${line}\n<!-- /source-list -->`
+const restrictedLine = `- sourceId=${restricted.sourceId}; governance=${restricted.sensitivity}; extraction=${restricted.extractionStatus}`
+const quarantinedLine = `- sourceId=${quarantined.sourceId}; governance=${quarantined.sensitivity}; extraction=${quarantined.extractionStatus}`
+assert(validateMarkdownGovernance(marker('eligible', 'citation-extraction', restrictedLine), [restricted]).findings.some((item) => item.includes('ineligible source')))
+assert.equal(validateMarkdownGovernance(marker('restricted', 'citation-extraction', restrictedLine), [restricted]).findings.length, 0)
+assert(validateMarkdownGovernance(marker('eligible', 'citation-extraction', quarantinedLine), [quarantined]).findings.some((item) => item.includes('ineligible source')))
+assert(validateMarkdownGovernance(marker('restricted', 'citation-extraction', '- sourceId=src-eeeeeeeeeeee; governance=restricted-pending-clearance; extraction=restricted'), [restricted]).findings.some((item) => item.includes('unknown source ID')))
+assert(validateMarkdownGovernance(marker('restricted', 'citation-extraction', `- sourceId=${restricted.sourceId}; governance=review-required; extraction=restricted`), [restricted]).findings.some((item) => item.includes('status mismatch')))
+assert.equal(validateMarkdownGovernance(marker('eligible', 'citation-extraction', '- none'), [restricted]).findings.length, 0)
+assert.equal(sourceAllowsScope({ ...restricted, securityFalsePositiveDecision: 'false-positive-confirmed' }, 'citation-extraction'), false)
 console.log(`Source-intake output validation fixtures passed: ${checks} context checks.`)
