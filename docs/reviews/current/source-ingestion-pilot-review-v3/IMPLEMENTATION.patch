@@ -1,11 +1,11 @@
 diff --git a/ai-manager/reports/source-intake-pilot/lateral-ankle-sprain/historical-leaflet-content-map.md b/ai-manager/reports/source-intake-pilot/lateral-ankle-sprain/historical-leaflet-content-map.md
-index 8513c97..8c1d71a 100644
+index 8513c975fc4b2340a971d11b475951393abfb158..8c1d71a46a24b049f08bf5e0b13e8e24ca3fa4f6 100644
 --- a/ai-manager/reports/source-intake-pilot/lateral-ankle-sprain/historical-leaflet-content-map.md
 +++ b/ai-manager/reports/source-intake-pilot/lateral-ankle-sprain/historical-leaflet-content-map.md
 @@ -2,94 +2,117 @@
-
+ 
  ## Classification
-
+ 
 -The checksum-governed 2019 local patient-information leaflet is a historical/local-practice source, non-authoritative by itself, and requires current evidence review.
 -
 -## Evidence map
@@ -205,26 +205,26 @@ index 8513c97..8c1d71a 100644
 +<!-- source-list role=metadata-only scope=private-topic-mapping -->
 +- none
 +<!-- /source-list -->
-
+ 
  ## Topics
-
+ 
 @@ -97,4 +120,4 @@ Acute assessment; fracture screening; early loading; support; exercise; balance;
-
+ 
  ## Verification flags
-
+ 
 -POLICE/newer frameworks; ice; compression; medication timing; fixed dosage; healing time; bracing duration; return-to-sport criteria; recurrence prevention; emergency thresholds. No item is declared wrong.
 +Acute-management frameworks; ice; compression; medication timing; fixed dosage; healing time; bracing duration; return-to-sport criteria; recurrence prevention; emergency thresholds. No item is declared wrong.
 diff --git a/ai-manager/reports/source-intake-pilot/lateral-ankle-sprain/source-set.md b/ai-manager/reports/source-intake-pilot/lateral-ankle-sprain/source-set.md
-index a41c56c..2dd02c2 100644
+index a41c56ca98e6f45109caeb8eae81246ada218011..2dd02c2b6e6d7f3b8ae9dbdd2fc8d354e7d731e2 100644
 --- a/ai-manager/reports/source-intake-pilot/lateral-ankle-sprain/source-set.md
 +++ b/ai-manager/reports/source-intake-pilot/lateral-ankle-sprain/source-set.md
 @@ -4,89 +4,112 @@
-
+ 
  All teaching statements remain unverified. No item is approved for public clinical use.
-
+ 
 -## Eligible private source map
 +## Eligible private evidence sources
-
+ 
 -| Source ID | Location | Teaching topics | Citation candidates | Verification | Overlap/conflict | Proposed targets | Clearance | Clinician review |
 -|---|---|---|---|---|---|---|---|---|
 -| `src-07f5bc8680f6` | document-level metadata | balance-proprioception, bracing-taping, exercise-rehabilitation | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
@@ -417,13 +417,13 @@ index a41c56c..2dd02c2 100644
 +- none
 +<!-- /source-list -->
 diff --git a/ai-manager/reports/source-intake-pilot/rcrsp/guided-case-conversion-brief.md b/ai-manager/reports/source-intake-pilot/rcrsp/guided-case-conversion-brief.md
-index b6e9afc..77fe543 100644
+index b6e9afcfaf86c1df121d9f33a84883f94ef19c73..77fe543cd02806cd885cdd0d0221ab617c99d5d6 100644
 --- a/ai-manager/reports/source-intake-pilot/rcrsp/guided-case-conversion-brief.md
 +++ b/ai-manager/reports/source-intake-pilot/rcrsp/guided-case-conversion-brief.md
 @@ -4,21 +4,27 @@
-
+ 
  The existing public case is unchanged.
-
+ 
 +## Eligible source support
 +
 +<!-- source-list role=eligible scope=private-proposal-support -->
@@ -431,7 +431,7 @@ index b6e9afc..77fe543 100644
 +<!-- /source-list -->
 +
  ## Twelve-step map
-
+ 
 -1. **Initial presentation** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
 -2. **Learner differential** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
 -3. **Justification** - candidate sources: `src-07f5bc8680f6`, `src-0888e69b07a0`, `src-09b692096c1a`, `src-09c409d4ae26`; evidence question: what verified evidence supports this step?; expert answer not authored.
@@ -456,22 +456,22 @@ index b6e9afc..77fe543 100644
 +10. **Patient explanation** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
 +11. **Expert reasoning comparison** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
 +12. **Reflection** - eligible source support: none; no source is cleared for private proposal support; evidence question: what verified evidence supports this step?; expert answer not authored.
-
+ 
  ## Approval
-
+ 
 -Every expert answer requires source-specific support and clinician approval.
 +Every expert answer requires verified source-specific support and clinician approval.
 diff --git a/ai-manager/reports/source-intake-pilot/rcrsp/source-set.md b/ai-manager/reports/source-intake-pilot/rcrsp/source-set.md
-index cb4545b..41b9d5f 100644
+index cb4545b79bd27dfbf1396a05b59cc1d3b13f598a..41b9d5ff9e2d75607e111fd8f44c19bbe6e84d38 100644
 --- a/ai-manager/reports/source-intake-pilot/rcrsp/source-set.md
 +++ b/ai-manager/reports/source-intake-pilot/rcrsp/source-set.md
 @@ -4,101 +4,124 @@
-
+ 
  All teaching statements remain unverified. No item is approved for public clinical use.
-
+ 
 -## Eligible private source map
 +## Eligible private evidence sources
-
+ 
 -| Source ID | Location | Teaching topics | Citation candidates | Verification | Overlap/conflict | Proposed targets | Clearance | Clinician review |
 -|---|---|---|---|---|---|---|---|---|
 -| `src-07f5bc8680f6` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, patient-communication, prognosis, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
@@ -688,15 +688,15 @@ index cb4545b..41b9d5f 100644
 +- none
 +<!-- /source-list -->
 diff --git a/ai-manager/reports/source-intake-pilot/rcrsp/teaching-content-map.md b/ai-manager/reports/source-intake-pilot/rcrsp/teaching-content-map.md
-index 7163d2f..33f6366 100644
+index 7163d2fbfdf4e6b8dd7385e136d1ee63d2a349c7..33f6366f84ed9651e434cd59773d94c8e439419b 100644
 --- a/ai-manager/reports/source-intake-pilot/rcrsp/teaching-content-map.md
 +++ b/ai-manager/reports/source-intake-pilot/rcrsp/teaching-content-map.md
 @@ -1,108 +1,131 @@
  # RCRSP teaching content map
-
+ 
 -## Evidence map
 +## Eligible private evidence sources
-
+ 
 -| Source ID | Location | Teaching topics | Citation candidates | Verification | Overlap/conflict | Proposed targets | Clearance | Clinician review |
 -|---|---|---|---|---|---|---|---|---|
 -| `src-07f5bc8680f6` | document-level metadata | exercise-rehabilitation, imaging, outcome-measures, patient-communication, prognosis, special-tests | none eligible | external evidence verification required | manual comparison required | condition/case/anatomy/learning proposal | restricted-pending-clearance | required |
@@ -912,18 +912,18 @@ index 7163d2f..33f6366 100644
 +<!-- source-list role=metadata-only scope=private-topic-mapping -->
 +- none
 +<!-- /source-list -->
-
+ 
  ## Interpretation
-
+ 
 -Rows are extraction associations, not endorsed claims. Overlap and conflict status remains manual-review-required; visuals remain licence-review-required.
 +These are extraction associations grouped by governance state, not endorsed claims. Only explicitly eligible sources may later support private evidence work.
-
+ 
  ## Targets
-
+ 
 -Condition reference, neutral guided case, anatomy, special tests, outcome measures, quiz, flashcard, OSCE, and patient explanation are proposals only.
 +Condition reference, neutral guided case, anatomy, special tests, outcome measures, quiz, flashcard, OSCE, and patient explanation are blocked proposals only.
 diff --git a/ai-manager/reports/source-intake-pilot/references/candidate-reference-registry.json b/ai-manager/reports/source-intake-pilot/references/candidate-reference-registry.json
-index ed6bfc9..d33ade4 100644
+index ed6bfc94a09e2213165938d1b900c443bb16b3fc..d33ade40fd87b1fa88951cea5fcda21e70f643f0 100644
 --- a/ai-manager/reports/source-intake-pilot/references/candidate-reference-registry.json
 +++ b/ai-manager/reports/source-intake-pilot/references/candidate-reference-registry.json
 @@ -2,9129 +2,9 @@
@@ -10059,13 +10059,13 @@ index ed6bfc9..d33ade4 100644
      "sensitiveOrAdministrative": 236
    }
 diff --git a/ai-manager/reports/source-intake-pilot/references/candidate-reference-summary.md b/ai-manager/reports/source-intake-pilot/references/candidate-reference-summary.md
-index ce49f8d..f883b5f 100644
+index ce49f8d605ab1dc10a8a9e748db569066c701d27..f883b5f3897a5290f3edd624687827e0be578db8 100644
 --- a/ai-manager/reports/source-intake-pilot/references/candidate-reference-summary.md
 +++ b/ai-manager/reports/source-intake-pilot/references/candidate-reference-summary.md
 @@ -2,23 +2,16 @@
-
+ 
  ## Counts
-
+ 
 -- Total: 355
 -- author-year-only: 68
 -- full-looking-unverified: 27
@@ -10084,22 +10084,22 @@ index ce49f8d..f883b5f 100644
 -- Exact duplicate groups: 55
 +- URL: 0
 +- Exact duplicate groups: 0
-
+ 
  ## Exclusions
-
+ 
 -Restricted uncleared: 1164; sensitive/administrative lines: 236.
 +Restricted uncleared: 1519; sensitive/administrative lines: 236.
-
+ 
  ## Status
-
+ 
 diff --git a/ai-manager/reports/source-intake-pilot/references/duplicate-reference-groups.md b/ai-manager/reports/source-intake-pilot/references/duplicate-reference-groups.md
-index 1a6d3a7..b117a97 100644
+index 1a6d3a750e35524ea7da41c969451eb3f5e0c0b3..b117a976e9c57f587355df286c5953f8c0b51e77 100644
 --- a/ai-manager/reports/source-intake-pilot/references/duplicate-reference-groups.md
 +++ b/ai-manager/reports/source-intake-pilot/references/duplicate-reference-groups.md
 @@ -2,61 +2,7 @@
-
+ 
  ## Exact groups
-
+ 
 -- `ref-exact-001`: 2 occurrences across 2 source(s).
 -- `ref-exact-002`: 2 occurrences across 2 source(s).
 -- `ref-exact-003`: 2 occurrences across 2 source(s).
@@ -10156,17 +10156,17 @@ index 1a6d3a7..b117a97 100644
 -- `ref-exact-054`: 2 occurrences across 2 source(s).
 -- `ref-exact-055`: 2 occurrences across 2 source(s).
 +None.
-
+ 
  ## Action
-
+ 
 diff --git a/ai-manager/reports/source-intake-pilot/references/identifier-verification-queue.md b/ai-manager/reports/source-intake-pilot/references/identifier-verification-queue.md
-index 700aea2..1e78076 100644
+index 700aea25fc9b8d05a671c83f179b3097f2a16875..1e780760e879c39dce798f903eaed0832c1a8cbb 100644
 --- a/ai-manager/reports/source-intake-pilot/references/identifier-verification-queue.md
 +++ b/ai-manager/reports/source-intake-pilot/references/identifier-verification-queue.md
 @@ -2,11 +2,11 @@
-
+ 
  ## Counts
-
+ 
 -- DOI candidates: 8
 +- DOI candidates: 0
  - PMID candidates: 0
@@ -10176,17 +10176,17 @@ index 700aea2..1e78076 100644
 +- Generic web: 0
 +- Licence/attribution: 0
 +- Media/engagement: 0
-
+ 
  ## Rule
-
+ 
 diff --git a/ai-manager/reports/source-intake-pilot/references/incomplete-reference-queue.md b/ai-manager/reports/source-intake-pilot/references/incomplete-reference-queue.md
-index b97713e..3e798b2 100644
+index b97713e4f7d5c60f851e53559e62a8d1ba39fc4f..3e798b253c4f94d3f4ee56968bc2aec9715c018a 100644
 --- a/ai-manager/reports/source-intake-pilot/references/incomplete-reference-queue.md
 +++ b/ai-manager/reports/source-intake-pilot/references/incomplete-reference-queue.md
 @@ -2,13 +2,7 @@
-
+ 
  ## Counts
-
+ 
 -- author-year-only: 68
 -- generic-web-link: 58
 -- identifier-only: 3
@@ -10195,17 +10195,17 @@ index b97713e..3e798b2 100644
 -- partial-bibliographic: 153
 -- unable-to-classify: 13
 +None.
-
+ 
  ## Lookup
-
+ 
 diff --git a/ai-manager/reports/source-intake-pilot/references/topic-to-reference-index.md b/ai-manager/reports/source-intake-pilot/references/topic-to-reference-index.md
-index 8407218..9edabf9 100644
+index 8407218ecb5cfb33e54b2a42542c99ee77c31dc2..9edabf9e4c65a52209401b7192a2c81778afe875 100644
 --- a/ai-manager/reports/source-intake-pilot/references/topic-to-reference-index.md
 +++ b/ai-manager/reports/source-intake-pilot/references/topic-to-reference-index.md
 @@ -2,26 +2,7 @@
-
+ 
  ## Counts
-
+ 
 -- ankle-ligament-anatomy: 6
 -- balance-proprioception: 38
 -- bracing-taping: 131
@@ -10227,21 +10227,21 @@ index 8407218..9edabf9 100644
 -- shoulder-differential: 11
 -- special-tests: 43
 +None.
-
+ 
  ## Meaning
-
+ 
 diff --git a/ai-manager/reports/source-intake-pilot/review-queue.md b/ai-manager/reports/source-intake-pilot/review-queue.md
-index c2b146d..c839be7 100644
+index c2b146d54f8f8529a2ccc92aad60a691b0a841ff..c839be733112a177afa895d7e82abdd9af8a8d6d 100644
 --- a/ai-manager/reports/source-intake-pilot/review-queue.md
 +++ b/ai-manager/reports/source-intake-pilot/review-queue.md
 @@ -11,4 +11,4 @@
-
+ 
  ## Status
-
+ 
 -Restricted uncleared: 42; excluded citations: 1164; excluded proposal sources: 5.
 +Restricted uncleared: 42; excluded citations: 1519; excluded proposal sources: 14.
 diff --git a/ai-manager/reports/source-intake-pilot/run-manifest.json b/ai-manager/reports/source-intake-pilot/run-manifest.json
-index 6d03edc..b4ab00f 100644
+index 6d03edc66ff2b2c22907877619d45e3f8c46cc00..b4ab00f55536153e696d498d87127ff7c45e9fc9 100644
 --- a/ai-manager/reports/source-intake-pilot/run-manifest.json
 +++ b/ai-manager/reports/source-intake-pilot/run-manifest.json
 @@ -2,7 +2,7 @@
@@ -10254,7 +10254,7 @@ index 6d03edc..b4ab00f 100644
    "expectedFiles": [
      "README.md",
 diff --git a/ai-manager/reports/source-intake-pilot/source-manifest.json b/ai-manager/reports/source-intake-pilot/source-manifest.json
-index bbb30ab..7077eee 100644
+index bbb30abcbceb28f49ed6b5330061bf29183d21a6..7077eeefae006968e2143ff56841adf6f12474ee 100644
 --- a/ai-manager/reports/source-intake-pilot/source-manifest.json
 +++ b/ai-manager/reports/source-intake-pilot/source-manifest.json
 @@ -2,7 +2,7 @@
@@ -10277,7 +10277,7 @@ index bbb30ab..7077eee 100644
    }
  }
 diff --git a/ai-manager/reports/source-intake-pilot/source-summary.md b/ai-manager/reports/source-intake-pilot/source-summary.md
-index c3693cd..a7c5049 100644
+index c3693cd0103eba7bdedcfab9dd892255af72cfc7..a7c5049562b12a4cd1725e71f11d3d4a54f0a4dd 100644
 --- a/ai-manager/reports/source-intake-pilot/source-summary.md
 +++ b/ai-manager/reports/source-intake-pilot/source-summary.md
 @@ -13,8 +13,8 @@
@@ -10288,13 +10288,13 @@ index c3693cd..a7c5049 100644
 -- proposalSourcesExcludedUncleared: 5
 +- referencesExcludedUncleared: 1519
 +- proposalSourcesExcludedUncleared: 14
-
+ 
  ## File types
-
+ 
 @@ -27,6 +27,179 @@
  - `.pptx`: 6
  - `.zip`: 6
-
+ 
 +## Eligible private evidence inventory
 +
 +<!-- source-list role=eligible scope=private-topic-mapping -->
@@ -10469,10 +10469,10 @@ index c3693cd..a7c5049 100644
 +<!-- /source-list -->
 +
  ## Governance
-
+ 
  No source body, private path, approval claim, or verified-evidence claim is included.
 diff --git a/ai-manager/reports/source-intake-pilot/source-to-content-graph.json b/ai-manager/reports/source-intake-pilot/source-to-content-graph.json
-index 309345c..37e783c 100644
+index 309345c706468c834259184c1c404b1233647607..37e783cfdd06855859b4e506d90d6e86aba39a75 100644
 --- a/ai-manager/reports/source-intake-pilot/source-to-content-graph.json
 +++ b/ai-manager/reports/source-intake-pilot/source-to-content-graph.json
 @@ -4,24 +4,8 @@
@@ -10520,7 +10520,7 @@ index 309345c..37e783c 100644
        "proposedClinicalClaim": "Candidate teaching claims require extraction review, external evidence verification, and clinician approval before wording is drafted.",
        "targetContentId": "condition:ankle-foot/lateral-ankle-sprain",
 diff --git a/ai-manager/schemas/sourceIntakeSchemas.mjs b/ai-manager/schemas/sourceIntakeSchemas.mjs
-index 460fdcb..17633f5 100644
+index 460fdcb43879e87f29393d386c4fc40eb0b9d3a4..17633f542287e8021265a246610ebfb6881e4edf 100644
 --- a/ai-manager/schemas/sourceIntakeSchemas.mjs
 +++ b/ai-manager/schemas/sourceIntakeSchemas.mjs
 @@ -225,8 +225,8 @@ export const sourceToContentGraphV2Schema = z.object({
@@ -10535,13 +10535,13 @@ index 460fdcb..17633f5 100644
      proposedClinicalClaim: z.string().min(1),
      targetContentId: z.string().min(1),
 diff --git a/ai-manager/scripts/source_intake_engine.py b/ai-manager/scripts/source_intake_engine.py
-index 81fb8d2..45b116c 100644
+index 81fb8d2c260c7af8dccc9c6a674c05b3f52d2fde..45b116cd601f66cae8f1fc9d4e750a4453c68962 100644
 --- a/ai-manager/scripts/source_intake_engine.py
 +++ b/ai-manager/scripts/source_intake_engine.py
 @@ -237,13 +237,26 @@ def extract_docx(data: bytes) -> tuple[list[dict], dict]:
      return [{"number": 1, "kind": "document", "paragraphs": paragraphs, "text": "\n".join(paragraphs), "links": sorted(set(filter(None, links)))}], {"method": "docx-openxml", "tables": 0, "images": images, "warnings": dict(warnings)}
-
-
+ 
+ 
 +def _xlsx_shared_strings(data: bytes) -> list[str]:
 +    root = _xml(data)
 +    return [
@@ -10593,8 +10593,8 @@ index 81fb8d2..45b116c 100644
      return units, {"method": "xlsx-openxml-indexed-shared-strings", "tables": len(units), "images": 0, "warnings": dict(warnings)}
 @@ -546,41 +562,72 @@ def write_md(path: Path, title: str, sections: Iterable[tuple[str, str]]) -> Non
      path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8", newline="\n")
-
-
+ 
+ 
 -def _source_table(records: list[dict], references: list[dict], topics: set[str]) -> str:
 -    selected = [r for r in records if set(r["topicTags"]) & topics and r["sensitivity"] != "quarantined"]
 -    if not selected: return "No eligible matching sources were identified."
@@ -10650,8 +10650,8 @@ index 81fb8d2..45b116c 100644
 +        ("Quarantined and excluded", _source_list(records, topics, "quarantined", scope)),
 +        ("Metadata-only or extraction unavailable", _source_list(records, topics, "metadata-only", scope)),
 +    ]
-
-
+ 
+ 
  def generate_pilot_reports(output: Path, records: list[dict], references: list[dict]) -> None:
      disclaimer = "All teaching statements remain unverified. No item is approved for public clinical use."
      r_topics = {"rcrsp", "rotator-cuff-tear", "shoulder-differential", "exercise-rehabilitation", "prognosis", "imaging", "patient-communication", "special-tests", "outcome-measures"}
@@ -10700,11 +10700,11 @@ index 81fb8d2..45b116c 100644
 +            excluded_uncleared += len(found)
      if fatal:
          raise RuntimeError("undisclosed credential category detected; no tracked reports were replaced")
-
+ 
 @@ -718,12 +766,11 @@ def build_intake(inbox: Path, reports: Path = REPORTS, cache_root: Path = CACHE_
          exact_groups.append((gid, group))
      for record in records: record["_referenceCount"] = sum(ref["sourceId"] == record["sourceId"] for ref in references)
-
+ 
 -    eligible = [r for r in records if r["sensitivity"] == "review-required" or (r["sensitivity"] == "cleared-for-private-evidence-processing" and "private-proposal-support" in r["clearanceScopes"])]
      nodes = []
      for topic, target in [("rcrsp", "condition:shoulder/rotator-cuff-related-shoulder-pain"), ("lateral-ankle-sprain", "condition:ankle-foot/lateral-ankle-sprain")]:
@@ -10716,7 +10716,7 @@ index 81fb8d2..45b116c 100644
 +    excluded_proposals = sum(1 for r in records if set(r["topicTags"]) & {"rcrsp", "lateral-ankle-sprain"} and not source_allows_private_evidence(r, "private-proposal-support"))
      summary = {"topLevelFiles": top_count, "nestedFiles": nested_count, "uniqueSources": len(records), "totalObservedBytes": total_bytes, "exactDuplicateGroups": sum(r["duplicateGroup"] is not None for r in records), "probableVersionGroups": len(probable_groups), "quarantinedSources": sum(r["sensitivity"] == "quarantined" for r in records), "restrictedPendingClearanceSources": sum(r["sensitivity"] == "restricted-pending-clearance" for r in records), "clearedSources": sum(r["sensitivity"] == "cleared-for-private-evidence-processing" for r in records), "manualReviewSources": sum(r["sensitivity"] in {"review-required", "restricted-pending-clearance"} for r in records), "suppressedSensitiveLines": suppressed_total, "referencesExcludedUncleared": excluded_uncleared, "proposalSourcesExcludedUncleared": excluded_proposals}
      for record in records: record.pop("_referenceCount", None)
-
+ 
 @@ -738,7 +785,14 @@ def build_intake(inbox: Path, reports: Path = REPORTS, cache_root: Path = CACHE_
          type_counts, status_counts = Counter(r["fileType"] for r in records), Counter(r["extractionStatus"] for r in records)
          region_counts = Counter(tag for r in records if r["sensitivity"] != "quarantined" for tag in r["regionTags"]); topic_counts = Counter(tag for r in records if r["sensitivity"] != "quarantined" for tag in r["topicTags"])
@@ -10734,7 +10734,7 @@ index 81fb8d2..45b116c 100644
          quarantine_counts = Counter(item["category"] for r in records if r["sensitivity"] == "quarantined" for item in r["sensitivityFindings"])
          write_md(staging / "quarantine-report.md", "Quarantine report", [("Summary", f"{summary['quarantinedSources']} sources are quarantined."), ("Categories", "\n".join(f"- {key}: {value}" for key, value in sorted(quarantine_counts.items())) or "No category counts."), ("Handling", "Values, names, filenames, and bodies are omitted. Quarantined sources support neither references nor proposals.")])
 diff --git a/ai-manager/scripts/test-source-intake-validation.mjs b/ai-manager/scripts/test-source-intake-validation.mjs
-index ed51930..e8c8e79 100644
+index ed5193030c00b7d1ffbe05d10d700801d3df99c1..e8c8e79200f86bf77d485d24a0c80b21e9f6ee36 100644
 --- a/ai-manager/scripts/test-source-intake-validation.mjs
 +++ b/ai-manager/scripts/test-source-intake-validation.mjs
 @@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
@@ -10744,7 +10744,7 @@ index ed51930..e8c8e79 100644
 -import { scanTrackedText, sourceAllowsScope } from './validate-source-intake-pilot.mjs'
 +import { scanTrackedText, sourceAllowsScope, validateMarkdownGovernance } from './validate-source-intake-pilot.mjs'
  import { clearanceLedgerSchema, securityFalsePositiveDecisionsSchema } from '../schemas/sourceIntakeSchemas.mjs'
-
+ 
  const hygiene = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'ai-manager', 'content-hygiene-names.json'), 'utf8'))
 @@ -30,9 +30,9 @@ for (const [category, value] of fixtures) {
    }
@@ -10776,7 +10776,7 @@ index ed51930..e8c8e79 100644
 +assert.equal(sourceAllowsScope({ ...restricted, securityFalsePositiveDecision: 'false-positive-confirmed' }, 'citation-extraction'), false)
  console.log(`Source-intake output validation fixtures passed: ${checks} context checks.`)
 diff --git a/ai-manager/scripts/validate-source-intake-pilot.mjs b/ai-manager/scripts/validate-source-intake-pilot.mjs
-index 27dcbc0..bb458df 100644
+index 27dcbc076a52facf883befc3a3210bd77f3d45cd..bb458df92fc4e41ce0377f8bf6c955186c00de88 100644
 --- a/ai-manager/scripts/validate-source-intake-pilot.mjs
 +++ b/ai-manager/scripts/validate-source-intake-pilot.mjs
 @@ -30,6 +30,7 @@ export function validateSourceIntake(reportDir = REPORT_DIR, options = {}) {
@@ -10789,7 +10789,7 @@ index 27dcbc0..bb458df 100644
    if (manifest && securityDecisions) validateSecurityDecisions(manifest, securityDecisions)
 @@ -174,9 +175,79 @@ export function scanTrackedText(text, context = 'tracked report') {
  }
-
+ 
  export function sourceAllowsScope(source, scope) {
 -  if (source.sensitivity === 'quarantined' || source.sensitivity === 'restricted-pending-clearance') return false
 -  if (source.sensitivity === 'cleared-for-private-evidence-processing') return source.clearanceScopes.includes(scope)
@@ -10868,16 +10868,16 @@ index 27dcbc0..bb458df 100644
 +    if (JSON.stringify([...node.sourceIds].sort()) !== JSON.stringify(expected)) findings.push(`${node.proposalId} support count does not reconcile with eligibility`)
 +  }
  }
-
+ 
  function validateTrackedReports(reportDir) {
 diff --git a/ai-manager/tests/test_source_intake_hardening.py b/ai-manager/tests/test_source_intake_hardening.py
-index 99ff405..204d573 100644
+index 99ff405e24417cdcd382312798e5811a883926ba..204d57354e936e60a04ea284e2346797085877eb 100644
 --- a/ai-manager/tests/test_source_intake_hardening.py
 +++ b/ai-manager/tests/test_source_intake_hardening.py
 @@ -140,18 +140,19 @@ class OfficeProvenanceTests(unittest.TestCase):
          self.assertEqual(units[0]["links"], ["https://example.test/first"])
          self.assertIn("Second note", units[1]["notes"])
-
+ 
 -    def test_xlsx_resolves_shared_and_inline_strings_per_sheet(self):
 +    def test_xlsx_preserves_shared_string_positions_and_cell_types(self):
          ns = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
@@ -10898,11 +10898,11 @@ index 99ff405..204d573 100644
 +        self.assertEqual(units[0]["text"], "A1= | B1=Alpha | C1=  ")
 +        self.assertEqual(units[1]["text"], "A1=Rich&Text | B1=Omega | C1=InlineText")
 +        self.assertEqual(metadata["warnings"], {"shared-string-index-invalid": 1})
-
-
+ 
+ 
  class CitationTests(unittest.TestCase):
 diff --git a/package.json b/package.json
-index 6a0876d..1aee66e 100644
+index 6a0876d2c0c454b43aab313125c7d73141e7c892..1aee66e86098a3b6c1bb30252d27e751cfebe56b 100644
 --- a/package.json
 +++ b/package.json
 @@ -27,11 +27,12 @@
@@ -10920,7 +10920,7 @@ index 6a0876d..1aee66e 100644
    "export:review-packet": "node scripts/export-redacted-review-packet.mjs",
    "check:no-leak": "node scripts/check-no-diagnosis-leak.mjs",
 diff --git a/scripts/check-review-packet-redaction.mjs b/scripts/check-review-packet-redaction.mjs
-index 351e692..49ac5aa 100644
+index 351e6923379375ca2b6068dc3d23a3507af4be36..49ac5aa9d608a7faf3243030b260c7a8b35ddb62 100644
 --- a/scripts/check-review-packet-redaction.mjs
 +++ b/scripts/check-review-packet-redaction.mjs
 @@ -33,7 +33,7 @@ const securityToolingCategoryAllowances = new Map([
@@ -10947,7 +10947,7 @@ index 351e692..49ac5aa 100644
 @@ -166,6 +168,34 @@ function splitPatchSections(text) {
    return sections
  }
-
+ 
 +function isGeneratedReportEvidence(packetPath, repositoryPath) {
 +  return packetPath.startsWith('tracked-reports/')
 +    || repositoryPath?.startsWith('ai-manager/reports/source-intake-pilot/')
@@ -10980,13 +10980,13 @@ index 351e692..49ac5aa 100644
    const files = []
    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
 diff --git a/scripts/test-review-packet-redaction.mjs b/scripts/test-review-packet-redaction.mjs
-index 32bfb65..60d7ee5 100644
+index 32bfb65fcb6f14a05d8538d3ffbfd00729ded999..60d7ee5cb16a8d858feeade94358a8c5c899c81d 100644
 --- a/scripts/test-review-packet-redaction.mjs
 +++ b/scripts/test-review-packet-redaction.mjs
 @@ -77,6 +77,21 @@ try {
      'public/models/test.glb': Buffer.from([0x67, 0x6c, 0x54, 0x46, 0x00, 0x01]),
    }, 'GLB binary')
-
+ 
 +  expectPass('governed-report-machine-identifiers', {
 +    'tracked-reports/source-manifest.json': JSON.stringify({
 +      sourceId: `src-${'1'.repeat(12)}`,
