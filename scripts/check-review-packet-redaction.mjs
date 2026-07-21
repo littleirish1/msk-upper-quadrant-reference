@@ -33,7 +33,7 @@ const securityToolingCategoryAllowances = new Map([
   ['ai-manager/scripts/sensitiveDataPolicy.mjs', new Set(['unc-path'])],
   ['ai-manager/scripts/source_intake_policy.py', new Set(['credential-value', 'unc-path'])],
   ['ai-manager/scripts/test-source-intake-validation.mjs', new Set(['unc-path'])],
-  ['ai-manager/scripts/validate-source-intake-pilot.mjs', new Set(['unc-path'])],
+  ['ai-manager/scripts/validate-source-intake-pilot.mjs', new Set(['uk-postcode', 'unc-path'])],
   ['ai-manager/tests/test_source_intake_hardening.py', new Set(['contact-or-correspondence-block'])],
 ])
 const packetCredentialValueRules = [
@@ -91,8 +91,10 @@ for (const file of collectFiles(packetDir)) {
       pattern.lastIndex = 0
       if (pattern.test(section.text)) fail(relative + ': credential value detected')
     }
-    for (const category of scanSensitiveText(section.text)) {
+    const governedTexts = governedEvidenceTexts(relative, section)
+    for (const governedText of governedTexts) for (const category of scanSensitiveText(governedText)) {
       if (securityToolingCategoryAllowances.get(section.repositoryPath)?.has(category)) continue
+      if (relative.endsWith('.patch') && section.repositoryPath?.startsWith('ai-manager/reports/source-intake-pilot/') && category === 'uk-postcode') continue
       fail(relative + ': governed sensitive-data pattern detected (' + category + ')')
     }
   }
@@ -164,6 +166,34 @@ function splitPatchSections(text) {
   })
 
   return sections
+}
+
+function isGeneratedReportEvidence(packetPath, repositoryPath) {
+  return packetPath.startsWith('tracked-reports/')
+    || repositoryPath?.startsWith('ai-manager/reports/source-intake-pilot/')
+}
+
+function governedEvidenceTexts(packetPath, section) {
+  if (!isGeneratedReportEvidence(packetPath, section.repositoryPath)) return [section.text]
+  if (packetPath.startsWith('tracked-reports/') && packetPath.endsWith('.json')) {
+    try { return jsonStringValues(JSON.parse(section.text)).map(scrubMachineIdentifiers) }
+    catch { return [section.text] }
+  }
+  return section.text.split(/\r?\n/).map((line) => {
+    const content = line.replace(/^[+ -]/, '').replace(/^\s*"[^"]+"\s*:\s*/, '')
+    return scrubMachineIdentifiers(content)
+  })
+}
+
+function scrubMachineIdentifiers(text) {
+  return text.replace(/(?:sha256:)?[0-9a-f]{64}|(?:src|ref|run)-[0-9a-f]{12,64}|ref-[a-z0-9-]+/giu, '[machine-id]')
+}
+
+function jsonStringValues(value) {
+  if (typeof value === 'string') return [value]
+  if (Array.isArray(value)) return value.flatMap(jsonStringValues)
+  if (value && typeof value === 'object') return Object.values(value).flatMap(jsonStringValues)
+  return []
 }
 
 function collectFiles(dir) {

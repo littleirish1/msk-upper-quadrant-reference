@@ -77,6 +77,21 @@ try {
     'public/models/test.glb': Buffer.from([0x67, 0x6c, 0x54, 0x46, 0x00, 0x01]),
   }, 'GLB binary')
 
+  expectPass('governed-report-machine-identifiers', {
+    'tracked-reports/source-manifest.json': JSON.stringify({
+      sourceId: `src-${'1'.repeat(12)}`,
+      checksum: `sha256:${'2'.repeat(64)}`,
+      status: 'restricted-pending-clearance',
+    }),
+  })
+
+  expectFail('governed-report-sensitive-value', {
+    'tracked-reports/source-manifest.json': JSON.stringify({
+      sourceId: `src-${'3'.repeat(12)}`,
+      contact: ['+44', '7123', '456', '789'].join(' '),
+    }),
+  }, 'sensitive value in governed report snapshot')
+
   console.log('Review packet redaction regression tests passed.')
   console.log(`Deterministic scenarios checked: ${checks}`)
 } finally {
