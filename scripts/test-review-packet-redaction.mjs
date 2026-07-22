@@ -92,6 +92,106 @@ try {
     }),
   }, 'sensitive value in governed report snapshot')
 
+  const telephoneShape = ['07123', '456789'].join('')
+  const gitObjectWithTelephoneShape = `${'a'.repeat(10)}${telephoneShape}${'b'.repeat(19)}`
+  const cleanGitObject = 'c'.repeat(40)
+  const shortGitObjectWithTelephoneShape = `${'a'.repeat(10)}${telephoneShape}${'b'.repeat(18)}`
+  const longGitObjectWithTelephoneShape = `${'a'.repeat(10)}${telephoneShape}${'b'.repeat(20)}`
+  const abbreviatedGitObjectWithTelephoneShape = `${'a'.repeat(7)}${telephoneShape}`
+
+  expectPass('commit-graph-commit-git-object', {
+    'COMMIT_GRAPH.txt': commitGraph([
+      `1. Commit: ${gitObjectWithTelephoneShape}`,
+      `   Parent: ${cleanGitObject}`,
+      '   Subject: Synthetic regression fixture',
+      '   Role: scanner test',
+    ]),
+  })
+
+  expectPass('commit-graph-parent-git-object', {
+    'COMMIT_GRAPH.txt': commitGraph([
+      `1. Commit: ${cleanGitObject}`,
+      `   Parent: ${gitObjectWithTelephoneShape}`,
+      '   Subject: Synthetic regression fixture',
+      '   Role: scanner test',
+    ]),
+  })
+
+  expectFail('commit-graph-telephone-before-commit', {
+    'COMMIT_GRAPH.txt': commitGraph([
+      telephoneShape,
+      `1. Commit: ${cleanGitObject}`,
+    ]),
+  }, 'telephone-shaped value before a Commit field')
+
+  expectFail('commit-graph-telephone-after-parent', {
+    'COMMIT_GRAPH.txt': commitGraph([
+      `   Parent: ${cleanGitObject}`,
+      telephoneShape,
+    ]),
+  }, 'telephone-shaped value after a Parent field')
+
+  expectFail('commit-graph-telephone-on-other-line', {
+    'COMMIT_GRAPH.txt': commitGraph([
+      `1. Commit: ${gitObjectWithTelephoneShape}`,
+      `   Parent: ${cleanGitObject}`,
+      `Note: ${telephoneShape}`,
+    ]),
+  }, 'telephone-shaped value on another COMMIT_GRAPH line')
+
+  expectFail('commit-graph-short-git-object', {
+    'COMMIT_GRAPH.txt': commitGraph([
+      `1. Commit: ${shortGitObjectWithTelephoneShape}`,
+    ]),
+  }, '39-character hexadecimal value in a Commit field')
+
+  expectFail('commit-graph-long-git-object', {
+    'COMMIT_GRAPH.txt': commitGraph([
+      `   Parent: ${longGitObjectWithTelephoneShape}`,
+    ]),
+  }, '41-character hexadecimal value in a Parent field')
+
+  expectFail('commit-graph-abbreviated-git-object', {
+    'COMMIT_GRAPH.txt': commitGraph([
+      `1. Commit: ${abbreviatedGitObjectWithTelephoneShape}`,
+    ]),
+  }, 'abbreviated SHA in a Commit field')
+
+  expectFail('commit-graph-prose-git-object', {
+    'COMMIT_GRAPH.txt': commitGraph([
+      `See arbitrary prose token ${gitObjectWithTelephoneShape}.`,
+    ]),
+  }, '40-character hexadecimal value in arbitrary prose')
+
+  expectFail('commit-graph-malformed-field', {
+    'COMMIT_GRAPH.txt': commitGraph([
+      `1. Commit : ${gitObjectWithTelephoneShape}`,
+      `   Parent: ${gitObjectWithTelephoneShape} trailing`,
+    ]),
+  }, 'malformed Commit or Parent field')
+
+  expectFail('ordinary-email-address', {
+    'ordinary.txt': ['reviewer', '@', 'example.test'].join(''),
+  }, 'email address')
+
+  expectFail('ordinary-nhs-number', {
+    'ordinary.txt': ['NHS number: ', '123', ' ', '456', ' ', '7890'].join(''),
+  }, 'NHS number')
+
+  expectFail('ordinary-postcode', {
+    'ordinary.txt': ['BT', '1 1AA'].join(''),
+  }, 'UK postcode')
+
+  expectFail('ordinary-patient-identifier', {
+    'ordinary.txt': ['patient id: ', 'CASE-12345'].join(''),
+  }, 'patient identifier')
+
+  expectFail('commit-graph-adjacent-telephone-outside-git-object', {
+    'COMMIT_GRAPH.txt': commitGraph([
+      `1. Commit: ${cleanGitObject}${telephoneShape}`,
+    ]),
+  }, 'telephone-shaped value immediately adjacent to a Git object field')
+
   console.log('Review packet redaction regression tests passed.')
   console.log(`Deterministic scenarios checked: ${checks}`)
 } finally {
@@ -129,4 +229,16 @@ function runCase(name, files) {
     encoding: 'utf8',
     shell: false,
   })
+}
+
+function commitGraph(lines) {
+  return [
+    'Commit history evidence for source-ingestion review-v3',
+    '',
+    'Range shown:',
+    'Synthetic regression fixture.',
+    '',
+    ...lines,
+    '',
+  ].join('\n')
 }

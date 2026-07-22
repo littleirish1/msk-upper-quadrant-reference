@@ -17,6 +17,8 @@ const packetDir = path.resolve(ROOT, packetArg)
 const hygieneFile = path.join(ROOT, 'ai-manager', 'content-hygiene-names.json')
 const findings = []
 const decoder = new TextDecoder('utf-8', { fatal: true })
+const COMMIT_GRAPH_PACKET_PATH = 'COMMIT_GRAPH.txt'
+const GIT_OBJECT_ID_TELEPHONE_SCAN_PLACEHOLDER = '[validated-git-object-id]'
 const securityToolingPaths = new Set([
   'ai-manager/schemas/sourceIntakeSchemas.mjs',
   'ai-manager/scripts/sensitiveDataPolicy.mjs',
@@ -92,7 +94,7 @@ for (const file of collectFiles(packetDir)) {
       if (pattern.test(section.text)) fail(relative + ': credential value detected')
     }
     const governedTexts = governedEvidenceTexts(relative, section)
-    for (const governedText of governedTexts) for (const category of scanSensitiveText(governedText)) {
+    for (const governedText of governedTexts) for (const category of scanReviewPacketSensitiveText(governedText, relative)) {
       if (securityToolingCategoryAllowances.get(section.repositoryPath)?.has(category)) continue
       if (relative.endsWith('.patch') && section.repositoryPath?.startsWith('ai-manager/reports/source-intake-pilot/') && category === 'uk-postcode') continue
       fail(relative + ': governed sensitive-data pattern detected (' + category + ')')
@@ -183,6 +185,46 @@ function governedEvidenceTexts(packetPath, section) {
     const content = line.replace(/^[+ -]/, '').replace(/^\s*"[^"]+"\s*:\s*/, '')
     return scrubMachineIdentifiers(content)
   })
+}
+
+function scanReviewPacketSensitiveText(text, relative) {
+  const originalCategories = scanSensitiveText(text)
+  if (relative !== COMMIT_GRAPH_PACKET_PATH || !originalCategories.includes('telephone-number')) {
+    return originalCategories
+  }
+
+  const telephoneScanText = scrubCommitGraphGitObjectFields(text)
+  if (telephoneScanText === text) return originalCategories
+
+  const categories = new Set(scanSensitiveText(telephoneScanText))
+  for (const category of originalCategories) {
+    if (category !== 'telephone-number') categories.add(category)
+  }
+  return [...categories].sort()
+}
+
+function scrubCommitGraphGitObjectFields(text) {
+  const parts = text.split(/(\r?\n)/u)
+  let changed = false
+
+  for (let index = 0; index < parts.length; index += 2) {
+    const parsed = parseCommitGraphGitObjectLine(parts[index])
+    if (!parsed) continue
+    parts[index] = parsed.prefix + GIT_OBJECT_ID_TELEPHONE_SCAN_PLACEHOLDER
+    changed = true
+  }
+
+  return changed ? parts.join('') : text
+}
+
+function parseCommitGraphGitObjectLine(line) {
+  const commit = /^(\d+\. Commit: )([0-9a-f]{40})$/u.exec(line)
+  if (commit) return { prefix: commit[1] }
+
+  const parent = /^(\s{3}Parent: )([0-9a-f]{40})$/u.exec(line)
+  if (parent) return { prefix: parent[1] }
+
+  return null
 }
 
 function scrubMachineIdentifiers(text) {

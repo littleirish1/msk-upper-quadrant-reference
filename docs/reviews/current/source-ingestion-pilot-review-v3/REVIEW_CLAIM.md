@@ -8,6 +8,16 @@
 - Current packet-correction commit: not embedded in the packet before commit; the reviewer must verify externally that the final correction commit changes only review-v3 evidence files.
 - Verdict: **Pending focused independent packet re-review**
 
+## Raw implementation patch generation
+
+`IMPLEMENTATION.patch` is the exact raw output of:
+
+```sh
+git diff --binary --full-index 63cdfec7f9dba987bb0ff3a8652830dbc7b7e2ba..9910d21ff7ab67ee1943b817ae4b9fe1d5d6d307
+```
+
+Git's raw output must be written without trimming, text normalisation, or Markdown processing.
+
 Review-v2 declared `706556b79b8a7856e8c60694b0bb759bfa20f5fd` while the supplied repository HEAD was `63cdfec7f9dba987bb0ff3a8652830dbc7b7e2ba`. Evidence commits `324cb0b` and `63cdfec` were therefore outside that packet's declared implementation snapshot, so review-v2 cannot certify the final state.
 
 This packet certifies the source-ingestion implementation at the certified implementation HEAD above. It covers positional XLSX shared strings, strict private-evidence eligibility, structured Markdown governance validation, and regenerated governed reports. The original review-v3 evidence commit is administrative and is not part of the implementation range.
