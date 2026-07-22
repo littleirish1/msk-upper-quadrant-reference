@@ -7,6 +7,9 @@ import {
   type CaseFrontmatterSchema,
   type ConditionFrontmatterSchema,
 } from './contentSchemas'
+import { extractExcerpt, parseSections, sanitizeMdxContent } from './mdxParsing'
+
+export { extractExcerpt, parseSections, sanitizeMdxContent } from './mdxParsing'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content')
 
@@ -53,6 +56,14 @@ export interface ConditionContent {
   sections: Array<{ heading: string; slug: string; content: string }>
 }
 
+export function parseConditionDocument(raw: string, filePath: string): ConditionContent {
+  const { content: rawContent, data } = matter(raw)
+  const frontmatter = parseConditionFrontmatter(filePath, data)
+  const content = sanitizeMdxContent(rawContent)
+
+  return { content, frontmatter, sections: parseSections(content) }
+}
+
 /**
  * Loads a single MDX file from content/{region}/{condition}.mdx
  * Parses sections by splitting on ## headings.
@@ -67,92 +78,7 @@ export async function getConditionContent(
     return null
   }
 
-  const raw = fs.readFileSync(filePath, 'utf-8')
-  const { content: rawContent, data } = matter(raw)
-  const frontmatter = parseConditionFrontmatter(filePath, data)
-
-  // Sanitize content for MDX parsing:
-  // Replace bare < and > that aren't MDX/HTML tags to avoid parser errors
-  // e.g. "<45 years", ">90%", "p<0.05" in medical text
-  const content = sanitizeMdxContent(rawContent)
-
-  const sections = parseSections(content)
-
-  return {
-    content,
-    frontmatter,
-    sections,
-  }
-}
-
-/**
- * Sanitize MDX content to prevent parse errors from medical notation.
- * Escapes bare < and > that appear before digits or in mathematical contexts.
- */
-function sanitizeMdxContent(content: string): string {
-  // Replace < and > that appear before/after digits or mathematical notation
-  // but NOT HTML/JSX tags (which are wrapped in <Component> patterns)
-  return content
-    // <digit or <space+digit => &lt;digit (e.g. <45 years, < 60°)
-    .replace(/<(\d)/g, '&lt;$1')
-    .replace(/<(\s+\d)/g, '&lt;$1')
-    // >digit patterns (e.g. >90%, > 2 weeks)
-    .replace(/>(\d)/g, '&gt;$1')
-    .replace(/>(\s+\d)/g, '&gt;$1')
-    // p-values: p<0.05, p>0.01
-    .replace(/([pP])\s*<\s*(\d)/g, '$1 &lt; $2')
-    .replace(/([pP])\s*>\s*(\d)/g, '$1 &gt; $2')
-}
-
-/**
- * Split MDX content on ## headings into named sections.
- */
-function parseSections(content: string): Array<{ heading: string; slug: string; content: string }> {
-  // Split on lines that start with exactly "## " (H2)
-  const lines = content.split('\n')
-  const sections: Array<{ heading: string; slug: string; content: string }> = []
-
-  let currentHeading = ''
-  let currentSlug = ''
-  let currentLines: string[] = []
-  let inSection = false
-
-  for (const line of lines) {
-    if (line.match(/^## /)) {
-      if (inSection) {
-        sections.push({
-          heading: currentHeading,
-          slug: currentSlug,
-          content: currentLines.join('\n').trim(),
-        })
-      }
-      currentHeading = line.replace(/^## /, '').trim()
-      currentSlug = slugify(currentHeading)
-      currentLines = []
-      inSection = true
-    } else if (inSection) {
-      currentLines.push(line)
-    }
-  }
-
-  if (inSection && currentHeading) {
-    sections.push({
-      heading: currentHeading,
-      slug: currentSlug,
-      content: currentLines.join('\n').trim(),
-    })
-  }
-
-  return sections
-}
-
-function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .trim()
-    .replace(/[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~]/g, '')
-    .replace(/\s/g, '-')
-    .trim()
+  return parseConditionDocument(fs.readFileSync(filePath, 'utf-8'), filePath)
 }
 
 /**
@@ -180,22 +106,6 @@ export function getAllMdxPaths(): Array<{ region: string; condition: string }> {
   }
 
   return results
-}
-
-/**
- * Build a plain-text excerpt from MDX content (strips JSX/markdown syntax).
- */
-export function extractExcerpt(mdx: string, maxLength = 200): string {
-  return stripFirstHeading(mdx.replace(/---[\s\S]*?---/, '').trimStart())
-    .replace(/<[^>]+>/g, '')
-    .replace(/[#*`[\]]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .slice(0, maxLength)
-}
-
-function stripFirstHeading(mdx: string): string {
-  return mdx.replace(/^# .*(?:\r?\n)+/, '')
 }
 
 const CASE_LEARNER_LABELS: Record<string, string> = {
@@ -229,6 +139,20 @@ export interface CaseContent {
   publicSlug: string
 }
 
+export function parseCaseDocument(raw: string, filePath: string, caseSlug: string, region: string): CaseContent {
+  const { content: rawContent, data } = matter(raw)
+  const frontmatter = parseCaseFrontmatter(filePath, data)
+  const content = sanitizeMdxContent(rawContent)
+
+  return {
+    content,
+    frontmatter,
+    sections: parseSections(content),
+    caseSlug,
+    publicSlug: getCasePublicSlug(caseSlug, frontmatter, region),
+  }
+}
+
 /**
  * Loads a guided case from content/cases/{region}/{caseSlug}.mdx
  */
@@ -242,20 +166,7 @@ export async function getCaseContent(
     return null
   }
 
-  const raw = fs.readFileSync(filePath, 'utf-8')
-  const { content: rawContent, data } = matter(raw)
-  const frontmatter = parseCaseFrontmatter(filePath, data)
-
-  const content = sanitizeMdxContent(rawContent)
-  const sections = parseSections(content)
-
-  return {
-    content,
-    frontmatter,
-    sections,
-    caseSlug,
-    publicSlug: getCasePublicSlug(caseSlug, frontmatter, region),
-  }
+  return parseCaseDocument(fs.readFileSync(filePath, 'utf-8'), filePath, caseSlug, region)
 }
 
 export function resolveCaseSlugFromPublicSlug(region: string, publicSlug: string): string | null {
