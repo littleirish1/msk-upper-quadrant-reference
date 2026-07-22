@@ -1,0 +1,20 @@
+{
+  "contentId": "anatomy.cranial-nerve.cranial-nerve-01-review-template",
+  "title": "Cranial nerve I review template",
+  "slug": "cranial-nerve-01-review-template",
+  "category": "cranial-nerve",
+  "nerveNumber": 1,
+  "regions": [],
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "clinician-review-required",
+  "modality": [],
+  "functions": [],
+  "bedsideTesting": [],
+  "abnormalFindings": [],
+  "cautions": [],
+  "relationships": [],
+  "commonLesionSites": [],
+  "references": [],
+  "notes": "Representative schema record only. Clinical detail and references are deliberately unauthored."
+}

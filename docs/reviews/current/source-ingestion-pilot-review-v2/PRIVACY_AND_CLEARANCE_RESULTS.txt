@@ -1,0 +1,12 @@
+Privacy and clearance results
+
+- Sensitive-value findings in tracked reports: 0
+- Private absolute paths in tracked reports: 0
+- Suppressed sensitive lines: 236
+- Quarantined sources: 10
+- Restricted pending clearance: 42
+- Cleared sources: 0
+- References excluded from uncleared sources: 1164
+- Proposal-source contributions excluded from uncleared sources: 5
+- Checksum-scoped false-positive decisions: 1
+- Credential values stored in decision record: 0

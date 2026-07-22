@@ -3,6 +3,7 @@ import path from 'path'
 import {
   collectCaseFiles,
   getTaxonomyConditions,
+  getPlannedTaxonomyRegions,
   isPrivateStatus,
   readCaseFrontmatter,
 } from './lib/readMdxFrontmatter.mjs'
@@ -15,6 +16,9 @@ const BASE_PATH = '/msk-upper-quadrant-reference'
 const requiredRoutes = [
   ['/', path.join(OUT_DIR, 'index.html')],
   ['/cases', path.join(OUT_DIR, 'cases', 'index.html')],
+  ['/anatomy', path.join(OUT_DIR, 'anatomy', 'index.html')],
+  ['/anatomy/peripheral-nerve', path.join(OUT_DIR, 'anatomy', 'peripheral-nerve', 'index.html')],
+  ['/learning', path.join(OUT_DIR, 'learning', 'index.html')],
   ['/demo', path.join(OUT_DIR, 'demo', 'index.html')],
   ['/future', path.join(OUT_DIR, 'future', 'index.html')],
   ['/red-flags', path.join(OUT_DIR, 'red-flags', 'index.html')],
@@ -31,6 +35,7 @@ const requiredAnchors = [
 
 const findings = []
 const conditions = await readConditions()
+const plannedRegions = await getPlannedTaxonomyRegions()
 const conditionsByKey = new Map(conditions.map((condition) => [conditionKey(condition.region, condition.slug), condition]))
 
 if (!fs.existsSync(OUT_DIR)) {
@@ -45,6 +50,19 @@ for (const [route, file] of requiredRoutes) {
 
 if (fs.existsSync(path.join(OUT_DIR, 'ai-manager'))) {
   fail('Public export includes out/ai-manager, but Case Manager must remain local-only.')
+}
+
+const publicAnatomyDetailPages = collectIndexFiles(path.join(OUT_DIR, 'anatomy'))
+  .filter((file) => path.relative(path.join(OUT_DIR, 'anatomy'), file).split(path.sep).length === 3)
+if (publicAnatomyDetailPages.length > 0) {
+  fail('Unreviewed anatomy detail routes were generated.')
+}
+
+for (const region of plannedRegions) {
+  const routeFile = path.join(OUT_DIR, region.slug, 'index.html')
+  if (fs.existsSync(routeFile)) {
+    fail(`Planned region was generated as a public route: /${region.slug}`)
+  }
 }
 
 const cases = await readCases()
@@ -241,6 +259,14 @@ function conditionKey(region, condition) {
 
 function fail(message) {
   findings.push(message)
+}
+
+function collectIndexFiles(dir) {
+  if (!fs.existsSync(dir)) return []
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const item = path.join(dir, entry.name)
+    return entry.isDirectory() ? collectIndexFiles(item) : entry.isFile() && entry.name === 'index.html' ? [item] : []
+  })
 }
 
 function toPosix(value) {

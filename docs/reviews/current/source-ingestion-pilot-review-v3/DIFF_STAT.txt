@@ -1,0 +1,25 @@
+ .../historical-leaflet-content-map.md              |  201 +-
+ .../lateral-ankle-sprain/source-set.md             |  193 +-
+ .../rcrsp/guided-case-conversion-brief.md          |   32 +-
+ .../source-intake-pilot/rcrsp/source-set.md        |  217 +-
+ .../rcrsp/teaching-content-map.md                  |  221 +-
+ .../references/candidate-reference-registry.json   | 9124 +-------------------
+ .../references/candidate-reference-summary.md      |   19 +-
+ .../references/duplicate-reference-groups.md       |   56 +-
+ .../references/identifier-verification-queue.md    |    8 +-
+ .../references/incomplete-reference-queue.md       |    8 +-
+ .../references/topic-to-reference-index.md         |   21 +-
+ .../reports/source-intake-pilot/review-queue.md    |    2 +-
+ .../reports/source-intake-pilot/run-manifest.json  |    2 +-
+ .../source-intake-pilot/source-manifest.json       |    6 +-
+ .../reports/source-intake-pilot/source-summary.md  |  177 +-
+ .../source-to-content-graph.json                   |   30 +-
+ ai-manager/schemas/sourceIntakeSchemas.mjs         |    4 +-
+ ai-manager/scripts/source_intake_engine.py         |  124 +-
+ .../scripts/test-source-intake-validation.mjs      |   19 +-
+ .../scripts/validate-source-intake-pilot.mjs       |   77 +-
+ ai-manager/tests/test_source_intake_hardening.py   |   15 +-
+ package.json                                       |    3 +-
+ scripts/check-review-packet-redaction.mjs          |   34 +-
+ scripts/test-review-packet-redaction.mjs           |   15 +
+ 24 files changed, 917 insertions(+), 9691 deletions(-)

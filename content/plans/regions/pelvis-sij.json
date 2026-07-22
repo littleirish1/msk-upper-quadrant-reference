@@ -1,0 +1,12 @@
+{
+  "contentId": "region-brief.pelvis-sij.foundation",
+  "recordType": "region-content-brief",
+  "title": "Pelvis and SIJ content brief",
+  "region": "pelvis-sij",
+  "status": "planned",
+  "publicEligibility": false,
+  "clinicianReviewRequired": true,
+  "scope": "Define a reviewed pelvis and SIJ clinical reasoning module before any public condition routes are created.",
+  "sourceRequirements": ["Approved guidelines", "Verified evidence summaries", "Clinician-reviewed local pathways"],
+  "proposedContentTypes": ["region framework", "condition pages", "guided cases"]
+}

@@ -1,0 +1,14 @@
+{
+  "contentId": "anatomy.myotome.upper-limb-overview",
+  "title": "Upper-limb myotomes review brief",
+  "slug": "upper-limb-overview",
+  "category": "myotome",
+  "regions": ["cervical", "shoulder", "elbow", "wrist-hand"],
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "clinician-review-required",
+  "relationships": [],
+  "commonLesionSites": [],
+  "references": [],
+  "notes": "Actions, variability, examination, and references require review before publication."
+}

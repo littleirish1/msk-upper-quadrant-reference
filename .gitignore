@@ -31,3 +31,30 @@ review-packet.zip
 
 # Local agent/tooling state
 .claude/
+
+# Local hardening review export
+phase-hardening-review/
+phase-hardening-review.zip
+
+# Local redacted hardening re-review export
+phase-hardening-rereview/
+phase-hardening-rereview.zip
+phase-hardening-rereview-v2/
+phase-hardening-rereview-v2.zip
+phase-hardening-rereview-v2.zip.sha256
+
+# Private AI knowledge-manager state
+ai-manager/inbox/**
+!ai-manager/inbox/README.md
+ai-manager/archive/**
+!ai-manager/archive/README.md
+ai-manager/reports/**
+!ai-manager/reports/README.md
+ai-manager/config/local.*
+ai-manager/config/*.local.*
+ai-manager/**/*.env
+ai-manager/**/*.secret
+ai-manager/private-cache/
+ai-manager/.venv-source-intake/
+!ai-manager/reports/source-intake-pilot/
+!ai-manager/reports/source-intake-pilot/**

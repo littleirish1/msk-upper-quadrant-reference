@@ -1,0 +1,9 @@
+Deterministic double-ingestion comparison
+
+- Run ID: run-ba38b10fbc3fa024
+- Source-set fingerprint: sha256:9bbe25de66197be5a79f0d84aa30d2b1c97df98f2bdb457515c9fce07f4bcea5
+- Report files compared: 33
+- Changed files: 0
+- Missing files: 0
+- New files: 0
+- Result: byte-for-byte identical

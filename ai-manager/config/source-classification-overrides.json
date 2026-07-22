@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "checksum": "sha256:7b548a958b411f15dda674ae7a06e00f76c18241531e0c22e14759ea49ba0541",
+      "sourceId": "src-7b548a958b41",
+      "sourceType": "local-patient-leaflet",
+      "topicTags": [
+        "lateral-ankle-sprain",
+        "patient-information"
+      ],
+      "regionTags": [
+        "ankle-foot"
+      ],
+      "reason": "Historical local patient-information leaflet classification supplied by the project owner; clinical currency remains unverified.",
+      "decidedBy": "project-owner-task-instruction",
+      "decisionDate": "2026-07-20",
+      "reviewStatus": "classification-recorded"
+    }
+  ]
+}

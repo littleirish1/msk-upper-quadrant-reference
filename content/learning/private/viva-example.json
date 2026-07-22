@@ -1,0 +1,12 @@
+{
+  "contentId": "learning.viva.neutral-prompt-example",
+  "recordType": "viva-prompt",
+  "title": "Neutral viva workflow example",
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "clinician-review-required",
+  "sourceContentIds": [],
+  "references": [],
+  "prompts": ["Summarise the problem representation.", "Explain what would change your level of concern.", "Describe what evidence you would need before committing to a plan."],
+  "expertNotes": "Case-specific expert notes require source verification and clinician review."
+}

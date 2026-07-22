@@ -1,0 +1,15 @@
+{
+  "contentId": "learning.quiz.reveal-safety-example",
+  "recordType": "quiz-question",
+  "title": "Reveal safety example",
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "needs-review",
+  "sourceContentIds": [],
+  "references": [],
+  "questionType": "multiple-choice",
+  "prompt": "When should a guided case confirm its linked condition?",
+  "options": ["Before the presentation", "After the learner reveal", "In the route slug"],
+  "answer": "After the learner reveal",
+  "explanation": "The diagnosis-hidden contract keeps the linked condition out of the pre-reveal experience."
+}

@@ -1,0 +1,42 @@
+Commit history evidence for source-ingestion review-v3
+
+Range shown:
+Starting implementation base through original review-v3 evidence commit, in the ordered list below.
+
+Decoration policy:
+No HEAD, local branch, or remote branch decorations are included.
+
+1. Commit: 63cdfec7f9dba987bb0ff3a8652830dbc7b7e2ba
+   Parent: 324cb0b69fc782d8c94e9b32507f04270546474c
+   Subject: Normalize source intake review evidence
+   Role: starting implementation base
+
+2. Commit: 1798f7720798d66aa5bf0e14731a50b59b91f992
+   Parent: 63cdfec7f9dba987bb0ff3a8652830dbc7b7e2ba
+   Subject: Preserve positional XLSX shared strings
+   Role: implementation correction
+
+3. Commit: 1fbca27b935f5850fb8f96955b6fcc2f3c57acc3
+   Parent: 1798f7720798d66aa5bf0e14731a50b59b91f992
+   Subject: Enforce source eligibility across generated briefs
+   Role: implementation correction
+
+4. Commit: 54f5ca1be430df505fab5bc3f434044deca42b2c
+   Parent: 1fbca27b935f5850fb8f96955b6fcc2f3c57acc3
+   Subject: Validate source governance in Markdown reports
+   Role: implementation correction
+
+5. Commit: 49cdac9dfef45beecc13d70e81559f362eb15b66
+   Parent: 54f5ca1be430df505fab5bc3f434044deca42b2c
+   Subject: Regenerate governed source-intake reports
+   Role: implementation correction
+
+6. Commit: 9910d21ff7ab67ee1943b817ae4b9fe1d5d6d307
+   Parent: 49cdac9dfef45beecc13d70e81559f362eb15b66
+   Subject: Harden final source review packet scanning
+   Role: certified implementation HEAD
+
+7. Commit: 1146098c9f89730bd0a04be70d6b2bdcbdb2b33b
+   Parent: 9910d21ff7ab67ee1943b817ae4b9fe1d5d6d307
+   Subject: Add final source ingestion review-v3 evidence
+   Role: evidence-only commit

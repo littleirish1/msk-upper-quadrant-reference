@@ -50,6 +50,14 @@ export async function getTaxonomyRegions() {
   return REGIONS
 }
 
+export async function getPlannedTaxonomyRegions() {
+  const { PLANNED_REGIONS } = await loadTaxonomy()
+  if (!Array.isArray(PLANNED_REGIONS)) {
+    throw new Error('PLANNED_REGIONS must be exported from src/data/taxonomy.ts')
+  }
+  return PLANNED_REGIONS
+}
+
 export async function getTaxonomyConditions() {
   const regions = await getTaxonomyRegions()
   return regions

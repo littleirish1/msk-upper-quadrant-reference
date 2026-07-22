@@ -1,0 +1,10 @@
+Markdown governance regression results
+
+- Restricted ID in eligible list fails: passed
+- Restricted ID in pending-clearance list passes: passed
+- Quarantined ID in support list fails: passed
+- Unknown source ID fails: passed
+- Status mismatch fails: passed
+- Empty eligible list with zero cleared sources passes: passed
+- Credential false-positive decision does not confer eligibility: passed
+- Current tracked Markdown reports validated: passed

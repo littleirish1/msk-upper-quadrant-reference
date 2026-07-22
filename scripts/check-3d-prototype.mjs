@@ -1,12 +1,19 @@
+import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { classifyLayer, classifyRegion } from '../experimental/3d-model/classification.mjs'
 
 const ROOT = process.cwd()
 const SOURCE_EXTENSIONS = new Set(['.js', '.jsx', '.json', '.md', '.mdx', '.mjs', '.toml', '.ts', '.tsx', '.xml', '.yaml', '.yml'])
 const EXTENSIONLESS_CONFIGS = new Set(['_headers', '_redirects'])
 const MODEL_EXTENSIONS = new Set(['.bin', '.drc', '.glb', '.gltf'])
-const CHECKER_FILES = new Set(['scripts/check-3d-prototype.mjs', 'scripts/test-3d-boundary.mjs'])
+const CHECKER_FILES = new Set([
+  'scripts/check-3d-prototype.mjs',
+  'scripts/check-internal-links.mjs',
+  'scripts/test-3d-boundary.mjs',
+])
+const PROVENANCE_FILE = 'docs/3D_ASSET_PROVENANCE.md'
 
 export function scanPublic3dBoundary(root) {
   const findings = []
@@ -106,6 +113,7 @@ function normalize(value) {
 
 function run() {
   const result = scanPublic3dBoundary(ROOT)
+  result.findings.push(...checkExperimentalScaffold(ROOT))
   if (result.findings.length > 0) {
     console.error('3D public-boundary check failed.')
     for (const finding of result.findings) console.error(`- ${finding}`)
@@ -118,6 +126,58 @@ function run() {
   console.log('Public/exported GLTF assets: 0')
   console.log('Public/exported Draco payloads: 0')
   console.log('Public 3D route references: 0')
+  console.log('Experimental classification and provenance checks passed.')
+}
+
+function checkExperimentalScaffold(root) {
+  const findings = []
+
+  try {
+    const spineGroup = node('Thoracic Vertebrae')
+    const handGroup = node('Hand Region')
+    const muscleGroup = node('Flexor Muscle Layer')
+    const nerveGroup = node('Median Nerve', muscleGroup)
+    const explicitLayerGroup = node('Layer_04', null, { layer: 'vessel' })
+
+    assert.equal(classifyRegion(node('Mesh_003', spineGroup)), 'spine')
+    assert.equal(classifyRegion(node('Mesh_001', handGroup)), 'hand')
+    assert.equal(classifyRegion(node('Unknown')), 'unknown')
+    assert.equal(classifyLayer(node('Mesh_002', nerveGroup)), 'nerve')
+    assert.equal(classifyLayer(node('Mesh_004', explicitLayerGroup)), 'vessel')
+    assert.equal(classifyLayer(node('Unknown')), 'other')
+  } catch (error) {
+    findings.push(`Experimental ancestor classification failed: ${error.message}`)
+  }
+
+  for (const relative of ['src', 'experimental/3d-model']) {
+    for (const file of collectFiles(path.join(root, relative))) {
+      if (!SOURCE_EXTENSIONS.has(path.extname(file).toLowerCase())) continue
+      const source = fs.readFileSync(file, 'utf8')
+      const filePath = normalize(path.relative(root, file))
+      if (/<Environment\b[^>]*\bpreset=/i.test(source)) {
+        findings.push(`External environment preset found: ${filePath}`)
+      }
+      if (/https?:\/\/[^\s'"]+\.(?:hdr|exr)(?:[?#][^\s'"]*)?/i.test(source)) {
+        findings.push(`External HDR/EXR URL found: ${filePath}`)
+      }
+    }
+  }
+
+  const provenancePath = path.join(root, PROVENANCE_FILE)
+  if (!fs.existsSync(provenancePath)) {
+    findings.push(`Missing private 3D provenance record: ${PROVENANCE_FILE}`)
+  } else {
+    const provenance = fs.readFileSync(provenancePath, 'utf8')
+    if ((provenance.match(/\| false \|/g)?.length ?? 0) < 4) {
+      findings.push('Every inventoried 3D asset must remain explicitly ineligible for public use.')
+    }
+  }
+
+  return findings
+}
+
+function node(name, parent = null, userData = {}) {
+  return { name, parent, userData }
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) run()

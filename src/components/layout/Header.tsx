@@ -28,17 +28,19 @@ export function Header() {
         {/* Desktop nav */}
         <nav className="ml-8 hidden items-center gap-1 lg:flex" aria-label="Primary">
           {[
-            { href: '/cervical',   label: 'Cervical' },
+            { href: '/cervical',    label: 'Cervical' },
             { href: '/thoracic',   label: 'Thoracic' },
             { href: '/shoulder',   label: 'Shoulder' },
             { href: '/elbow',      label: 'Elbow' },
             { href: '/wrist-hand', label: 'Wrist & Hand' },
             { href: '/cases',      label: 'Cases' },
+            { href: '/anatomy',    label: 'Anatomy' },
+            { href: '/learning',   label: 'Learning Lab' },
           ].map(({ href, label }) => (
             <Link
               key={href}
               href={href}
-              className="flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-surface-700 transition-colors hover:bg-surface-100 hover:text-brand-600 dark:text-surface-300 dark:hover:bg-surface-800 dark:hover:text-brand-400"
+              className="rounded-md px-3 py-1.5 text-sm font-medium text-surface-700 transition-colors hover:bg-surface-100 hover:text-brand-600 dark:text-surface-300 dark:hover:bg-surface-800 dark:hover:text-brand-400"
             >
               {label}
             </Link>
@@ -99,12 +101,14 @@ export function Header() {
               { href: '/shoulder',   label: 'Shoulder' },
               { href: '/elbow',      label: 'Elbow' },
               { href: '/wrist-hand', label: 'Wrist & Hand' },
-            { href: '/cases',      label: 'Guided Cases' },
+              { href: '/cases',      label: 'Guided Cases' },
+              { href: '/anatomy',    label: 'Anatomy Foundations' },
+              { href: '/learning',   label: 'Learning Lab' },
             ].map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={href}
-                  className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-surface-700 hover:bg-surface-100 dark:text-surface-300 dark:hover:bg-surface-800"
+                  className="block rounded-md px-3 py-2 text-sm font-medium text-surface-700 hover:bg-surface-100 dark:text-surface-300 dark:hover:bg-surface-800"
                   onClick={() => setMobileOpen(false)}
                 >
                   {label}

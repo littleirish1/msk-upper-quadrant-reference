@@ -1,0 +1,19 @@
+{
+  "contentId": "outcome-measure.cervical.neck-disability-index",
+  "recordType": "outcome-measure",
+  "title": "Neck Disability Index extraction brief",
+  "region": "cervical",
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "clinician-review-required",
+  "sourceContentIds": [
+    "condition.cervical.cervical-radiculopathy"
+  ],
+  "relatedContent": {
+    "conditions": [
+      "condition.cervical.cervical-radiculopathy"
+    ]
+  },
+  "references": [],
+  "notes": "Scoring, interpretation, measurement properties, licence terms, and citations require verification before publication."
+}

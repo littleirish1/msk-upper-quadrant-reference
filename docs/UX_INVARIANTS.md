@@ -73,6 +73,8 @@ The public site must remain static and dumb:
 - no vector stores
 - no answer storage
 - no learner analytics
+- no persisted learner free text by default
+- no diagnostic recommendation or unvalidated competence score
 
 ## Current Status
 
@@ -83,3 +85,9 @@ The public site must remain static and dumb:
 ## Review Rule
 
 No clinical content changes should be included inside UI-only diffs. If clinical wording or case facts need to change, use a separate clinically reviewed content task.
+
+## Experimental 3D UX Boundary
+
+Interactive body mapping remains experimental. It must not become a public route until asset provenance, mobile performance, keyboard/screen-reader accessibility, reduced-motion behaviour, WebGL fallback, anatomical review, and clinical review are complete.
+
+A future 3D experience must be clearly educational and must not imply diagnostic use.

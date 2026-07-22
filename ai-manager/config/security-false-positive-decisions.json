@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "publicationApprovalRepresented": false,
+  "copyrightApprovalRepresented": false,
+  "clinicalApprovalRepresented": false,
+  "entries": [
+    {
+      "checksum": "sha256:64e065873078b64a60be48366534dd0bd7dd9ececfceb0a910285fc54dc636d3",
+      "sourceId": "src-64e065873078",
+      "detectorRuleId": "aws-access-key-shaped",
+      "matchCount": 4,
+      "decision": "false-positive-confirmed",
+      "decisionScope": "credential-stop-override-for-exact-checksum-only",
+      "reviewedBy": "operator-manual-review",
+      "decisionDate": "2026-07-20",
+      "rationale": "Manually inspected in the original source and confirmed not to be an operational credential."
+    }
+  ]
+}

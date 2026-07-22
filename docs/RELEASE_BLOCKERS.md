@@ -10,9 +10,12 @@ An AIza-style Google credential was found in imported legacy HTML material under
 
 Repo-side action is complete:
 
-- The imported legacy HTML now contains a redacted placeholder instead of the credential.
+- The credential was redacted before repository-side validation.
+- The raw imported HTML copy has now been removed after verifying that all 47 indexed
+  stations are represented in the extracted station files, source registry, and tracker.
 - A repo-side scan is part of preflight and blocks known credential patterns and forbidden credential variable tokens.
-- Future source imports must be scanned before commit.
+- Future source imports must remain in approved private storage and be secret-scanned
+  before commit.
 
 Required external action:
 

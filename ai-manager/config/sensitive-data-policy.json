@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "policyId": "source-intake-sensitive-data-v1",
+  "trackedOutputRule": "detect-redact-or-suppress",
+  "categories": [
+    "email-address",
+    "telephone-number",
+    "uk-postcode",
+    "date-of-birth",
+    "nhs-number",
+    "suspicious-nhs-candidate",
+    "patient-or-hospital-identifier",
+    "student-or-candidate-identifier",
+    "governed-sensitive-name",
+    "private-absolute-path",
+    "unc-path",
+    "credential-value",
+    "contact-or-correspondence-block",
+    "bidi-or-control-character"
+  ],
+  "citationExcerptLimit": 280,
+  "archiveLimits": {
+    "maximumMemberCount": 500,
+    "maximumCompressedMemberBytes": 134217728,
+    "maximumExpandedMemberBytes": 157286400,
+    "maximumCumulativeExpandedBytes": 1073741824,
+    "maximumCompressionRatio": 100,
+    "maximumFilenameLength": 240,
+    "maximumNestingDepth": 1,
+    "inspectNestedArchives": false
+  },
+  "documentLimits": {
+    "maximumXmlPartBytes": 10485760,
+    "maximumPdfBytes": 104857600,
+    "maximumPdfPages": 1000,
+    "maximumFilenameLength": 240
+  }
+}

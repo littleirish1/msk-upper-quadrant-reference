@@ -1,19 +1,11 @@
 import Link from 'next/link'
 import { CheckCircle2, Clock3, MapPinned } from 'lucide-react'
+import { PLANNED_REGIONS, REGIONS } from '@/data/taxonomy'
 
-const liveRegions = [
-  { label: 'Cervical', href: '/cervical' },
-  { label: 'Thoracic', href: '/thoracic' },
-  { label: 'Shoulder', href: '/shoulder' },
-  { label: 'Elbow', href: '/elbow' },
-  { label: 'Wrist/Hand', href: '/wrist-hand' },
-]
+const liveRegions = REGIONS.map((region) => ({ label: region.label, href: `/${region.slug}` }))
 
 const plannedMskRegions = [
-  'Lumbar spine',
-  'Hip',
-  'Knee',
-  'Ankle/Foot',
+  ...PLANNED_REGIONS.map((region) => region.label),
   'Broader spine',
   'Paediatrics',
   'Interactive body-region map',

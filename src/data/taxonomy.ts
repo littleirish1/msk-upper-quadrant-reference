@@ -92,6 +92,42 @@ export const REGIONS: Region[] = [
   },
 ]
 
+export const PLANNED_REGIONS = [
+  {
+    slug: 'lumbar',
+    label: 'Lumbar Spine',
+    description: 'Planned lower-spine clinical reasoning module.',
+  },
+  {
+    slug: 'pelvis-sij',
+    label: 'Pelvis / SIJ',
+    description: 'Planned pelvic and sacroiliac clinical reasoning module.',
+  },
+  {
+    slug: 'hip',
+    label: 'Hip',
+    description: 'Planned hip clinical reasoning module.',
+  },
+  {
+    slug: 'knee',
+    label: 'Knee',
+    description: 'Planned knee clinical reasoning module.',
+  },
+  {
+    slug: 'ankle-foot',
+    label: 'Ankle / Foot',
+    description: 'Planned ankle and foot clinical reasoning module.',
+  },
+] as const
+
+export const ROADMAP_MODULES = [
+  'broader-spine',
+  'paediatrics',
+  'neuro-reasoning',
+  'anatomy-foundations',
+  'interactive-body-region-map',
+] as const
+
 export function getRegion(slug: string): Region | undefined {
   return REGIONS.find(r => r.slug === slug)
 }

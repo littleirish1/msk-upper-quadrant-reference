@@ -1,0 +1,9 @@
+XLSX regression results
+
+- Empty shared string at index 0: passed
+- Empty shared string in the middle: covered by positional array behavior
+- Rich text with multiple runs: passed
+- Two sheets referencing indexes around empty values: passed
+- Inline strings: passed
+- Out-of-range shared-string index: governed warning passed
+- Python source-intake tests: 17 passed

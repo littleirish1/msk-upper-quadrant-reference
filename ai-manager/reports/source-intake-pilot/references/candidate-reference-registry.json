@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 2,
+  "runId": "run-ba38b10fbc3fa024",
+  "externalLookupPerformed": false,
+  "records": [],
+  "excluded": {
+    "restrictedUncleared": 1519,
+    "quarantined": 10,
+    "sensitiveOrAdministrative": 236
+  }
+}

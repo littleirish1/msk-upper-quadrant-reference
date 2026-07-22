@@ -1,0 +1,4 @@
+* 706556b (HEAD -> fix/source-ingestion-pilot-hardening) Make source intake review evidence scannable
+* 78aa599 Keep privacy fixtures review-safe
+* a0aa195 Regenerate governed source intake evidence
+* 54f7877 Harden private source ingestion controls

@@ -1,0 +1,13 @@
+{
+  "contentId": "learning.osce.neutral-station-example",
+  "recordType": "osce-station",
+  "title": "Neutral station workflow example",
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "clinician-review-required",
+  "sourceContentIds": [],
+  "references": [],
+  "candidateInstructions": "Use a reviewed guided case to demonstrate a structured history and explain your reasoning.",
+  "examinerDomains": ["structure", "safety", "reasoning", "communication"],
+  "modelDiscussion": "A case-specific model discussion must be authored from reviewed content before publication."
+}

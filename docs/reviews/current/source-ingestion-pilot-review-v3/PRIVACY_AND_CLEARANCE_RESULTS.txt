@@ -1,0 +1,14 @@
+Privacy and clearance results
+
+- Sensitive findings in tracked reports: 0
+- Private absolute paths in tracked reports: 0
+- Suppressed sensitive lines: 236
+- Quarantined sources: 10
+- Restricted pending clearance: 42
+- Cleared sources: 0
+- Candidate references: 0
+- References excluded as uncleared: 1519
+- Proposal-source contributions excluded: 14
+- Proposal support source IDs: 0
+- Public eligibility: 0
+- External reference verification: 0

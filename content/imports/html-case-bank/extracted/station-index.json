@@ -1,5 +1,12 @@
 {
-  "source": "content/imports/html-case-bank/raw/index.html",
+  "sourceId": "legacy-html-case-bank-v1",
+  "sourceType": "private-external-legacy-html",
+  "stationCount": 47,
+  "gitBlobId": "4b107b93aee91d7f012d97aa42e6b8b7d19a638b",
+  "sha256": "488282ca6ce682d5ee56f0c700b4392e1cf32d2b8625c0ed165f2db5b7483bb3",
+  "publicEligibility": false,
+  "repositoryRawCopyRemoved": true,
+  "extractionVersion": 1,
   "extractedAt": "2026-06-04T17:40:25.313Z",
   "count": 47,
   "stations": [

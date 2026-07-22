@@ -1,0 +1,14 @@
+{
+  "contentId": "anatomy.peripheral-nerve.median-nerve",
+  "title": "Median nerve review brief",
+  "slug": "median-nerve",
+  "category": "peripheral-nerve",
+  "regions": ["elbow", "wrist-hand"],
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "clinician-review-required",
+  "relationships": [],
+  "commonLesionSites": [],
+  "references": [],
+  "notes": "Course, examination, lesion patterns, and references require review before publication."
+}

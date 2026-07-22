@@ -9,6 +9,8 @@ Static learner site and local source-management tooling for a physiotherapy clin
 - Guided case MDX files under `content/cases/{region}/{case}.mdx`.
 - Local-only Case Manager tooling under `ai-manager/`.
 - Metadata-driven source registry, migration tracker, route checks, source checks, hygiene checks, and secret scanning.
+- Public anatomy-category navigation and static learning-tool demonstrations.
+- Private, review-first anatomy, lower-region, learning-content, and source-ingestion foundations.
 
 The public site is deliberately static. Draft cases, archived cases, imported source notes, and `ai-manager` are not exposed as public routes.
 
@@ -37,8 +39,16 @@ npm run check:hygiene
 npm run check:sources
 npm run check:secrets
 npm run check:frontmatter
+npm run check:generated-sources
+npm run check:platform-content
 npm run build
 npm run check:search
+npm run check:content-contracts
+npm run check:anatomy
+npm run check:learning
+npm run check:ai-manager
+npm run check:3d
+npm run check:links
 npm run check:no-leak
 npm run check:reveal
 npm run check:routes
@@ -73,6 +83,15 @@ content/cases/{region}/{internal-case-slug}.mdx
 ```
 
 Published cases can define a neutral `publicSlug` so learner-facing routes do not reveal the diagnosis before the reveal step. Draft and archived cases are excluded from static route generation.
+
+## Platform V2 Boundaries
+
+- `/anatomy` and its category pages are public navigation foundations; anatomy detail records remain private until reviewed.
+- `/learning` demonstrates deterministic, static learning interactions without AI, accounts, persistence, or analytics.
+- Lower-quadrant regions are governed roadmap entries and do not create public routes yet.
+- `ai-manager` contains local-only schemas and workflows and is checked to remain absent from `out`.
+
+See `docs/product/PLATFORM_V2_OVERVIEW.md` for the implemented, representative, private, and roadmap status of each area.
 
 ## Adding Or Updating A Condition
 
@@ -124,6 +143,9 @@ content/
   elbow/*.mdx
   wrist-hand/*.mdx
   cases/{region}/*.mdx           # Guided cases
+  anatomy/private/*.json         # Private anatomy review briefs
+  learning/private/*.json        # Private learning schema examples
+  plans/regions/*.json           # Planned region briefs, not public routes
   imports/                       # Imported source material and registries
 ai-manager/                      # Local-only admin/source tooling
 scripts/                         # Registry, tracker, safety, and route checks

@@ -1,0 +1,15 @@
+{
+  "contentId": "anatomy.muscle.rotator-cuff-group",
+  "title": "Rotator cuff muscle group review brief",
+  "slug": "rotator-cuff-group",
+  "category": "muscle",
+  "regions": ["shoulder"],
+  "status": "private",
+  "publicEligibility": false,
+  "reviewStatus": "clinician-review-required",
+  "relationships": [],
+  "commonLesionSites": [],
+  "references": [],
+  "relatedContent": { "conditions": ["condition.shoulder.rotator-cuff-tendinopathy"] },
+  "notes": "Anatomy detail, references, visual assets, and clinical links require review before publication."
+}
