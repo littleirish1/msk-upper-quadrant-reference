@@ -37,6 +37,7 @@ npm run check:sources
 npm run check:secrets
 npm run check:frontmatter
 npm run build
+npm run check:3d
 npm run check:search
 npm run check:no-leak
 npm run check:reveal
@@ -59,6 +60,19 @@ The app uses `output: 'export'` in `next.config.mjs`, so `next build` writes sta
 
 GitHub Pages is not the deployment target. Any GitHub workflow should be validation-only and should run `npm run preflight`, not a separate deploy command.
 
+### Production Branch And Contributor Controls
+
+The approved production branch must be selected deliberately in the Netlify UI.
+Repository files do not control that setting. Feature branches must not be used as
+production, and a deployment must stop if `check:3d` or another preflight check
+fails. The commit author must also map to a contributor identity recognised by the
+site's current Netlify plan.
+
+Keep the repository private: review packets, local source-management tooling, and
+other governance material are not public product content. Confirm the selected
+branch, contributor identity, and complete preflight result before triggering a
+production deploy.
+
 ## Public Surface
 
 Public:
@@ -74,6 +88,7 @@ Not public:
 - Archived cases.
 - `ai-manager` local Case Manager tooling.
 - Imported source notes and unreviewed TODO material.
+- Experimental 3D routes and model assets that have not passed provenance review.
 - Local file paths, secrets, or admin-only details.
 
 ## Content And Route Reality

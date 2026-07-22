@@ -2,11 +2,10 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Brain, Columns, CircleDot, GitBranch, Hand, RotateCw } from 'lucide-react'
+import { Brain, Columns, CircleDot, GitBranch, Hand } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const regions = [
-  { slug: '3d-model',  label: '3D',     icon: RotateCw },
   { slug: 'cervical',  label: 'Cervical', icon: Brain },
   { slug: 'thoracic',  label: 'Thoracic', icon: Columns },
   { slug: 'shoulder',  label: 'Shoulder', icon: CircleDot },
