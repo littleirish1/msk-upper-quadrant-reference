@@ -73,7 +73,7 @@ cases.sort((a, b) => a.region.localeCompare(b.region) || a.slug.localeCompare(b.
 const output = render(rows, cases)
 
 if (CHECK_ONLY) {
-  if (!fs.existsSync(OUTPUT) || fs.readFileSync(OUTPUT, 'utf8') !== output) {
+  if (!fs.existsSync(OUTPUT) || normalizeLineEndings(fs.readFileSync(OUTPUT, 'utf8')) !== output) {
     console.error('Upper-quadrant completion matrix is stale. Run npm run report:upper-quadrant.')
     process.exit(1)
   }
@@ -82,6 +82,10 @@ if (CHECK_ONLY) {
   fs.mkdirSync(path.dirname(OUTPUT), { recursive: true })
   fs.writeFileSync(OUTPUT, output)
   console.log(`Wrote ${relativePath(OUTPUT)}: ${rows.length} conditions, ${cases.length} cases.`)
+}
+
+function normalizeLineEndings(value) {
+  return value.replace(/\r\n?/g, '\n')
 }
 
 function render(conditionRows, caseRows) {
