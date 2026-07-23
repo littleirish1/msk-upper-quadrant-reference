@@ -36,6 +36,7 @@ export interface Condition {
   region: RegionSlug
   icd10?: string               // ICD-10 code for reference
   tags?: string[]
+  aliases?: string[]
 }
 
 // ─── MDX frontmatter ──────────────────────────────────────────────────────────
@@ -75,12 +76,53 @@ export interface Citation {
 export interface SearchIndexEntry {
   id: string                   // `${region}/${condition}`
   title: string
+  aliases: string[]
   region: string
+  regionLabel: string
+  category: 'condition'
   condition: string
   section: string              // kept for compat, may be empty string
-  content: string              // plain text excerpt for indexing
+  keywords: string[]
+  summary: string
+  headings: string[]
+  content: string              // learner-facing plain text for indexing
   href: string
+  status: 'published'
+  publicEligibility: true
 }
+
+export type SearchMatchField =
+  | 'title'
+  | 'alias'
+  | 'region'
+  | 'category'
+  | 'keyword'
+  | 'summary'
+  | 'heading'
+  | 'body'
+
+export type SearchMatchType = 'exact' | 'phrase' | 'prefix' | 'token'
+
+export interface SearchMatchEvidence {
+  field: SearchMatchField
+  matchType: SearchMatchType
+  matchedTokens: string[]
+  score: number
+}
+
+export interface SearchResult {
+  entry: SearchIndexEntry
+  score: number
+  matchedTokens: string[]
+  evidence: SearchMatchEvidence[]
+  snippet: string
+}
+
+export type SearchResponse =
+  | { state: 'empty'; query: string; normalizedQuery: ''; results: [] }
+  | { state: 'too-short'; query: string; normalizedQuery: string; results: [] }
+  | { state: 'no-results'; query: string; normalizedQuery: string; results: [] }
+  | { state: 'results'; query: string; normalizedQuery: string; results: SearchResult[] }
 
 // ─── Special tests table ──────────────────────────────────────────────────────
 

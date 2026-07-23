@@ -1,37 +1,40 @@
-/**
- * Client-side search using FlexSearch.
- * The index is pre-built at build time and serialised to /public/search-index.json.
- */
 import type { SearchIndexEntry } from '@/types'
+import { parseSearchIndex } from './searchEngine'
 
-let cachedIndex: SearchIndexEntry[] | null = null
+export {
+  MIN_SEARCH_QUERY_LENGTH,
+  SEARCH_RANKING,
+  normalizeSearchText,
+  parseSearchIndex,
+  searchEntries,
+  tokenizeSearchText,
+} from './searchEngine'
 
-export async function loadSearchIndex(): Promise<SearchIndexEntry[]> {
-  if (cachedIndex) return cachedIndex
+let cachedIndexPromise: Promise<SearchIndexEntry[]> | null = null
 
-  const res = await fetch('/search-index.json')
-  if (!res.ok) throw new Error('Failed to load search index')
-
-  cachedIndex = await res.json()
-  return cachedIndex!
+export function resolveSearchIndexUrl(pathname: string): string {
+  const normalizedPath = pathname.replace(/\/+$/, '')
+  const routeSuffix = '/search'
+  const routeIndex = normalizedPath.lastIndexOf(routeSuffix)
+  const basePath = routeIndex >= 0 && routeIndex + routeSuffix.length === normalizedPath.length
+    ? normalizedPath.slice(0, routeIndex)
+    : ''
+  return `${basePath}/search-index.json`
 }
 
-export function searchEntries(
-  entries: SearchIndexEntry[],
-  query: string,
-  limit = 20
-): SearchIndexEntry[] {
-  if (!query.trim()) return []
-
-  const q = query.toLowerCase()
-
-  return entries
-    .filter(entry =>
-      entry.title.toLowerCase().includes(q) ||
-      entry.region.toLowerCase().includes(q) ||
-      entry.condition.toLowerCase().includes(q) ||
-      entry.section.toLowerCase().includes(q) ||
-      entry.content.toLowerCase().includes(q)
-    )
-    .slice(0, limit)
+export function loadSearchIndex(): Promise<SearchIndexEntry[]> {
+  if (!cachedIndexPromise) {
+    cachedIndexPromise = fetch(resolveSearchIndexUrl(window.location.pathname), { cache: 'no-store' })
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to load search index (${response.status}).`)
+        }
+        return parseSearchIndex(await response.json())
+      })
+      .catch((error) => {
+        cachedIndexPromise = null
+        throw error
+      })
+  }
+  return cachedIndexPromise
 }

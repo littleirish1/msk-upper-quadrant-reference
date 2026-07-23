@@ -54,7 +54,7 @@ export const REGIONS: Region[] = [
       { slug: 'rotator-cuff-tendinopathy',   label: 'Rotator Cuff Tendinopathy',        region: 'shoulder', icd10: 'M75.1' },
       { slug: 'rotator-cuff-tear',           label: 'Rotator Cuff Tear',                region: 'shoulder', icd10: 'M75.1' },
       { slug: 'subacromial-pain-syndrome',   label: 'Subacromial Pain Syndrome',        region: 'shoulder', icd10: 'M75.1' },
-      { slug: 'adhesive-capsulitis',         label: 'Adhesive Capsulitis',              region: 'shoulder', icd10: 'M75.0' },
+      { slug: 'adhesive-capsulitis',         label: 'Adhesive Capsulitis',              region: 'shoulder', icd10: 'M75.0', aliases: ['Frozen Shoulder'] },
       { slug: 'shoulder-instability',        label: 'Shoulder Instability',             region: 'shoulder', icd10: 'M25.31' },
       { slug: 'acromioclavicular-joint',     label: 'Acromioclavicular Joint',          region: 'shoulder', icd10: 'M75.5' },
       { slug: 'labral-tears',                label: 'Labral Tears',                     region: 'shoulder', icd10: 'S43.4' },
@@ -67,7 +67,7 @@ export const REGIONS: Region[] = [
     description: 'Tendinopathy, nerve entrapment, and joint pathology of the elbow.',
     icon: 'GitBranch',
     conditions: [
-      { slug: 'lateral-epicondylalgia',      label: 'Lateral Epicondylalgia',           region: 'elbow', icd10: 'M77.1' },
+      { slug: 'lateral-epicondylalgia',      label: 'Lateral Epicondylalgia',           region: 'elbow', icd10: 'M77.1', aliases: ['Tennis Elbow'] },
       { slug: 'medial-epicondylalgia',       label: 'Medial Epicondylalgia',            region: 'elbow', icd10: 'M77.0' },
       { slug: 'olecranon-bursitis',          label: 'Olecranon Bursitis',               region: 'elbow', icd10: 'M70.2' },
       { slug: 'cubital-tunnel-syndrome',     label: 'Cubital Tunnel Syndrome',          region: 'elbow', icd10: 'G56.2' },

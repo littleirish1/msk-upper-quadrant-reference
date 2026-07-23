@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import path from 'node:path'
-import { stripMdxForSearch } from './build-search-index.mjs'
+import {
+  extractSearchHeadings,
+  stripMdxForSearch,
+} from './build-search-index.mjs'
 
 let checks = 0
 
@@ -26,6 +29,32 @@ run('cervicogenic search snippet starts with learner content', () => {
   const indexed = stripMdxForSearch(fs.readFileSync(file, 'utf8'))
   assert.equal(indexed.includes('@/components/clinical'), false)
   assert.equal(indexed.startsWith('Cervicogenic Headache'), true)
+})
+
+run('fenced implementation examples and MDX expressions are excluded', () => {
+  const source = [
+    '# Learner heading',
+    'Visible learner prose.',
+    '```tsx',
+    'export const privateImplementation = true',
+    '```',
+    '<ClinicalNote level={internalValue}>Safe child text.</ClinicalNote>',
+  ].join('\n')
+  const indexed = stripMdxForSearch(source)
+  assert.match(indexed, /Learner heading Visible learner prose\. Safe child text\./)
+  assert.equal(indexed.includes('privateImplementation'), false)
+  assert.equal(indexed.includes('internalValue'), false)
+})
+
+run('search headings ignore headings inside fenced code blocks', () => {
+  const source = [
+    '# Public title',
+    '```md',
+    '## Not a learner heading',
+    '```',
+    '## Assessment',
+  ].join('\n')
+  assert.deepEqual(extractSearchHeadings(source), ['Public title', 'Assessment'])
 })
 
 console.log(`Search extraction tests passed. Deterministic assertions: ${checks}.`)
