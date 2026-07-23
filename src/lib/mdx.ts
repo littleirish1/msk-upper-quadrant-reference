@@ -57,7 +57,7 @@ export interface ConditionContent {
 }
 
 export function parseConditionDocument(raw: string, filePath: string): ConditionContent {
-  const { content: rawContent, data } = matter(raw)
+  const { content: rawContent, data } = parseFrontmatter(raw, filePath, 'condition')
   const frontmatter = parseConditionFrontmatter(filePath, data)
   const content = sanitizeMdxContent(rawContent)
 
@@ -140,7 +140,7 @@ export interface CaseContent {
 }
 
 export function parseCaseDocument(raw: string, filePath: string, caseSlug: string, region: string): CaseContent {
-  const { content: rawContent, data } = matter(raw)
+  const { content: rawContent, data } = parseFrontmatter(raw, filePath, 'guided case')
   const frontmatter = parseCaseFrontmatter(filePath, data)
   const content = sanitizeMdxContent(rawContent)
 
@@ -327,4 +327,17 @@ function getCasePublicSlug(
   const caseLabel = caseNumber ? `case-${caseNumber.padStart(2, '0')}` : 'case'
   const regionLabel = region ? region.replace(/[^a-z0-9]+/gi, '-').toLowerCase() : 'msk'
   return `${caseLabel}-${regionLabel}-clinical-reasoning`
+}
+
+function parseFrontmatter(
+  raw: string,
+  filePath: string,
+  label: string,
+): matter.GrayMatterFile<string> {
+  try {
+    return matter(raw.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n'))
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error)
+    throw new Error(`Invalid ${label} frontmatter in ${relativeContentPath(filePath)}: ${detail}`)
+  }
 }

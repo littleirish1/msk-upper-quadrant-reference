@@ -95,6 +95,10 @@ async function checkEntries(entries) {
         fail(`Search entry leaks draft/private case slug "${caseSlug}": ${entry.id ?? index}`)
       }
     }
+
+    if (/\b(?:import|export)\b/.test(entry.content) || entry.content.includes('@/')) {
+      fail(`Search entry contains MDX implementation syntax: ${entry.id ?? index}`)
+    }
   }
 }
 

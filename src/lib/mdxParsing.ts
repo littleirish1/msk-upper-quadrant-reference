@@ -10,40 +10,55 @@ export interface MdxSection {
  * MDX without maintaining phrase-specific replacements.
  */
 export function sanitizeMdxContent(content: string): string {
-  const lines = content.split('\n')
+  const lines = normalizeMdxInput(content).split('\n')
   let fence: string | null = null
+  const expressionState = { depth: 0, quote: null as string | null, escaped: false }
 
   return lines.map((line) => {
     const fenceMatch = line.match(/^\s*(`{3,}|~{3,})/)
     if (fenceMatch) {
-      const marker = fenceMatch[1][0]
-      if (fence === marker) fence = null
+      const marker = fenceMatch[1]
+      if (fence && marker[0] === fence[0] && marker.length >= fence.length) fence = null
       else if (fence === null) fence = marker
       return line
     }
 
     if (fence !== null) return line
-    return escapeComparatorsInProse(line)
+    return escapeComparatorsInProse(line, expressionState)
   }).join('\n')
 }
 
 export function parseSections(content: string): MdxSection[] {
-  const lines = content.split('\n')
+  const lines = normalizeMdxInput(content).split('\n')
   const sections: MdxSection[] = []
+  const slugCounts = new Map<string, number>()
   let currentHeading = ''
   let currentLines: string[] = []
+  let fence: string | null = null
 
   const flush = () => {
     if (!currentHeading) return
+    const baseSlug = slugify(currentHeading)
+    const occurrence = (slugCounts.get(baseSlug) ?? 0) + 1
+    slugCounts.set(baseSlug, occurrence)
     sections.push({
       heading: currentHeading,
-      slug: slugify(currentHeading),
+      slug: occurrence === 1 ? baseSlug : `${baseSlug}-${occurrence}`,
       content: currentLines.join('\n').trim(),
     })
   }
 
   for (const line of lines) {
-    const heading = line.match(/^## (.+)$/)
+    const fenceMatch = line.match(/^\s*(`{3,}|~{3,})/)
+    if (fenceMatch) {
+      const marker = fenceMatch[1]
+      if (fence && marker[0] === fence[0] && marker.length >= fence.length) fence = null
+      else if (fence === null) fence = marker
+      if (currentHeading) currentLines.push(line)
+      continue
+    }
+
+    const heading = fence === null ? line.match(/^##\s+(.+?)\s*#*\s*$/) : null
     if (heading) {
       flush()
       currentHeading = heading[1].trim()
@@ -66,7 +81,10 @@ export function extractExcerpt(mdx: string, maxLength = 200): string {
     .slice(0, maxLength)
 }
 
-function escapeComparatorsInProse(line: string): string {
+function escapeComparatorsInProse(
+  line: string,
+  expression: { depth: number; quote: string | null; escaped: boolean },
+): string {
   let output = ''
   let index = 0
   let inlineCodeTicks = 0
@@ -86,6 +104,23 @@ function escapeComparatorsInProse(line: string): string {
     }
 
     if (inlineCodeTicks === 0) {
+      if (expression.depth > 0) {
+        if (expression.escaped) {
+          expression.escaped = false
+        } else if (character === '\\') {
+          expression.escaped = true
+        } else if (expression.quote) {
+          if (character === expression.quote) expression.quote = null
+        } else if (character === '"' || character === "'" || character === '`') {
+          expression.quote = character
+        } else if (character === '{') {
+          expression.depth += 1
+        } else if (character === '}') {
+          expression.depth -= 1
+        }
+      } else if (!inTag && character === '{') {
+        expression.depth = 1
+      } else
       if (inTag) {
         if (tagQuote) {
           if (character === tagQuote && line[index - 1] !== '\\') tagQuote = null
@@ -111,9 +146,7 @@ function escapeComparatorsInProse(line: string): string {
 }
 
 function comparatorHasNumericOperand(line: string, start: number): boolean {
-  let index = start
-  while (line[index] === ' ' || line[index] === '\t') index += 1
-  return /\d/.test(line[index] ?? '')
+  return /^\s*=?\s*[+-]?(?:\d+(?:\.\d*)?|\.\d+)/.test(line.slice(start))
 }
 
 function countRun(value: string, start: number, character: string): number {
@@ -133,4 +166,8 @@ function slugify(text: string): string {
 
 function stripFirstHeading(mdx: string): string {
   return mdx.replace(/^# .*(?:\r?\n)+/, '')
+}
+
+function normalizeMdxInput(content: string): string {
+  return content.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n')
 }

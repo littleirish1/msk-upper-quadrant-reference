@@ -17,17 +17,37 @@ run('condition frontmatter and H2 sections parse together', () => {
 })
 
 run('numeric notation is escaped generically in prose', () => {
-  assert.equal(mdx.sanitizeMdxContent('<45 >90% p<0.05 P > 0.01'), '&lt;45 &gt;90% p&lt;0.05 P &gt; 0.01')
+  assert.equal(
+    mdx.sanitizeMdxContent('<=45 <45 >90% p < .05 p<0.05 change >-2 and delta <+3.5'),
+    '&lt;=45 &lt;45 &gt;90% p &lt; .05 p&lt;0.05 change &gt;-2 and delta &lt;+3.5',
+  )
 })
 
 run('code and JSX syntax remain byte-stable', () => {
-  const source = '<Callout label="<45">value</Callout> and `<45`\n```txt\n>90%\n```'
+  const source = '<Callout label="<45">value</Callout> and `<45` with {score < 45 ? "<" : ">"}\n```txt\n>90%\n```'
   assert.equal(mdx.sanitizeMdxContent(source), source)
 })
 
 run('section parsing ignores preamble and H3 headings', () => {
   const sections = mdx.parseSections('Preamble\n### Detail\n## Main\nBody\n### Nested\nMore')
   assert.deepEqual(sections, [{ heading: 'Main', slug: 'main', content: 'Body\n### Nested\nMore' }])
+})
+
+run('section parsing ignores fenced headings and disambiguates duplicate headings', () => {
+  const sections = mdx.parseSections([
+    '## Overview',
+    'First.',
+    '```md',
+    '## Not a section',
+    '```',
+    '## Overview',
+    'Second.',
+  ].join('\n'))
+  assert.deepEqual(sections.map(({ heading, slug }) => ({ heading, slug })), [
+    { heading: 'Overview', slug: 'overview' },
+    { heading: 'Overview', slug: 'overview-2' },
+  ])
+  assert.match(sections[0].content, /## Not a section/)
 })
 
 run('empty content has no fabricated sections or excerpt', () => {
@@ -45,6 +65,21 @@ run('malformed condition frontmatter fails with the file path', () => {
     () => mdx.parseConditionDocument('---\nregion: shoulder\n---\n', 'content/shoulder/broken.mdx'),
     /content\/shoulder\/broken\.mdx.*title/i,
   )
+})
+
+run('malformed YAML reports the governed file path', () => {
+  assert.throws(
+    () => mdx.parseConditionDocument('---\ntitle: [broken\nregion: shoulder\n---\n', 'content/shoulder/malformed.mdx'),
+    /content\/shoulder\/malformed\.mdx/i,
+  )
+})
+
+run('BOM and CRLF input normalize deterministically', () => {
+  const source = '\uFEFF' + conditionDocument().replace(/\n/g, '\r\n')
+  const result = mdx.parseConditionDocument(source, 'content/shoulder/windows.mdx')
+  assert.equal(result.frontmatter.title, 'Fixture condition')
+  assert.equal(result.content.includes('\r'), false)
+  assert.equal(JSON.stringify(result), JSON.stringify(mdx.parseConditionDocument(source, 'content/shoulder/windows.mdx')))
 })
 
 run('guided case status remains explicit and neutral slug is preserved', () => {

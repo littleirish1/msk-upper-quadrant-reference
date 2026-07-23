@@ -1,82 +1,119 @@
 /**
- * build-search-index.mjs
- *
- * Run at build time to generate /public/search-index.json.
- * Usage: node scripts/build-search-index.mjs
- *
- * Content structure: content/{region}/{condition}.mdx (flat files)
+ * Generates public/search-index.json from the authoritative public condition
+ * selector. Guided cases and private/admin content are intentionally excluded.
  */
-import { writeFileSync, readdirSync, existsSync, mkdirSync } from 'fs'
-import { join, dirname } from 'path'
-import { fileURLToPath } from 'url'
-import {
-  getTaxonomyRegions,
-  readConditionFrontmatter,
-} from './lib/readMdxFrontmatter.mjs'
+import fs from 'node:fs'
+import path from 'node:path'
+import matter from 'gray-matter'
+import { fileURLToPath } from 'node:url'
+import { loadTypeScriptTree } from './lib/loadTypeScriptTree.mjs'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const ROOT = join(__dirname, '..')
-const CONTENT_DIR = join(ROOT, 'content')
-const PUBLIC_DIR = join(ROOT, 'public')
-const OUT_FILE = join(PUBLIC_DIR, 'search-index.json')
+const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..')
+const CONTENT_DIR = path.join(ROOT, 'content')
+const PUBLIC_DIR = path.join(ROOT, 'public')
+const OUT_FILE = path.join(PUBLIC_DIR, 'search-index.json')
 
-function stripMdx(text) {
-  return text
-    .replace(/---[\s\S]*?---/, '')      // frontmatter
-    .replace(/<[^>]+>/g, ' ')           // JSX
-    .replace(/[#*`[\]|()]/g, '')        // markdown / table pipes
+export function stripMdxForSearch(text) {
+  return stripMdxModuleDeclarations(text)
+    .replace(/^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/[#*`[\]|()]/g, '')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 300)
 }
 
-function slugToLabel(slug) {
-  return slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
-}
-
-if (!existsSync(PUBLIC_DIR)) {
-  mkdirSync(PUBLIC_DIR, { recursive: true })
-}
-
-const entries = []
-
-if (!existsSync(CONTENT_DIR)) {
-  console.warn('No content/ directory found — search index will be empty.')
-  writeFileSync(OUT_FILE, JSON.stringify([]))
-  process.exit(0)
-}
-
-const regions = (await getTaxonomyRegions())
-  .map((region) => region.slug)
-  .sort((a, b) => a.localeCompare(b))
-
-for (const region of regions) {
-  const regionDir = join(CONTENT_DIR, region)
-  if (!existsSync(regionDir)) {
-    continue
+export async function buildSearchIndex() {
+  if (!fs.existsSync(CONTENT_DIR)) {
+    throw new Error('No content/ directory found; a public search index cannot be generated.')
   }
+  fs.mkdirSync(PUBLIC_DIR, { recursive: true })
 
-  const files = readdirSync(regionDir, { withFileTypes: true })
-    .filter(f => f.isFile() && f.name.endsWith('.mdx'))
-    .map(f => f.name)
-    .sort((a, b) => a.localeCompare(b))
-
-  for (const file of files) {
-    const condition = file.replace('.mdx', '')
-    const { content, data } = await readConditionFrontmatter(join(regionDir, file))
-
-    entries.push({
-      id: `${region}/${condition}`,
-      title: data.title || slugToLabel(condition),
-      region,
-      condition,
+  const conditions = await loadTypeScriptTree(
+    path.join(ROOT, 'src', 'lib', 'publicConditions.ts'),
+    path.join(ROOT, 'src'),
+  )
+  const entries = conditions.getPublicConditionRecords().map((record) => {
+    const { content } = matter(fs.readFileSync(record.filePath, 'utf8'))
+    return {
+      id: `${record.region}/${record.condition}`,
+      title: record.frontmatter.title || slugToLabel(record.condition),
+      region: record.region,
+      condition: record.condition,
       section: '',
-      content: stripMdx(content),
-      href: `/${region}/${condition}`,
-    })
-  }
+      content: stripMdxForSearch(content),
+      href: `/${record.region}/${record.condition}`,
+    }
+  }).sort((left, right) => left.id.localeCompare(right.id))
+
+  fs.writeFileSync(OUT_FILE, JSON.stringify(entries, null, 2))
+  console.log(`Search index built: ${entries.length} entries -> ${OUT_FILE}`)
 }
 
-entries.sort((a, b) => a.id.localeCompare(b.id))
-writeFileSync(OUT_FILE, JSON.stringify(entries, null, 2))
-console.log(`✓ Search index built: ${entries.length} entries → ${OUT_FILE}`)
+function stripMdxModuleDeclarations(text) {
+  const lines = text.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n').split('\n')
+  const output = []
+  let moduleKind = null
+  let braceDepth = 0
+
+  for (const line of lines) {
+    const trimmed = line.trimStart()
+    if (!moduleKind && /^(?:import|export)\b/.test(trimmed)) {
+      moduleKind = trimmed.startsWith('import') ? 'import' : 'export'
+      braceDepth = braceDelta(line)
+      if (moduleDeclarationComplete(moduleKind, line, braceDepth)) moduleKind = null
+      continue
+    }
+    if (moduleKind) {
+      braceDepth += braceDelta(line)
+      if (moduleDeclarationComplete(moduleKind, line, braceDepth)) moduleKind = null
+      continue
+    }
+    output.push(line)
+  }
+  return output.join('\n')
+}
+
+function moduleDeclarationComplete(kind, line, braceDepth) {
+  if (braceDepth > 0) return false
+  if (kind === 'import') {
+    return /\bfrom\s+['"][^'"]+['"]\s*;?\s*$/.test(line)
+      || /^\s*import\s+['"][^'"]+['"]\s*;?\s*$/.test(line)
+  }
+  return true
+}
+
+function braceDelta(line) {
+  let depth = 0
+  let quote = null
+  let escaped = false
+  for (const character of line) {
+    if (escaped) {
+      escaped = false
+      continue
+    }
+    if (character === '\\') {
+      escaped = true
+      continue
+    }
+    if (quote) {
+      if (character === quote) quote = null
+      continue
+    }
+    if (character === '"' || character === "'" || character === '`') {
+      quote = character
+      continue
+    }
+    if (character === '{') depth += 1
+    if (character === '}') depth -= 1
+  }
+  return depth
+}
+
+function slugToLabel(slug) {
+  return slug.split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+}
+
+if (path.resolve(process.argv[1] ?? '') === fileURLToPath(import.meta.url)) {
+  await buildSearchIndex()
+}

@@ -32,7 +32,7 @@
     "region": "cervical",
     "condition": "cervicogenic-headache",
     "section": "",
-    "content": "import { ClinicalNote, RedFlag, EvidenceBadge, ReferralBox } from \"@/components/clinical\" Cervicogenic Headache > Clinical Summary: Cervicogenic headache CGH is a secondary headache arising from structural pathology of the cervical spine, particularly the upper three cervical segments C1–C3. It acco",
+    "content": "Cervicogenic Headache > Clinical Summary: Cervicogenic headache CGH is a secondary headache arising from structural pathology of the cervical spine, particularly the upper three cervical segments C1–C3. It accounts for approximately 4–22% of all chronic headaches and is frequently misdiagnosed as mi",
     "href": "/cervical/cervicogenic-headache"
   },
   {
