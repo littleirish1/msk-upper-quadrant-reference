@@ -4,8 +4,11 @@ import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
-import { getAllConditionPaths, getRegion, getCondition } from '@/data/taxonomy'
-import { getConditionContent } from '@/lib/mdx'
+import { getRegion, getCondition } from '@/data/taxonomy'
+import {
+  getAllPublicConditionPaths,
+  getPublicConditionContent,
+} from '@/lib/publicConditions'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
 import { mdxComponents } from '@/components/mdx/MDXComponents'
@@ -18,13 +21,16 @@ interface Props {
 }
 
 export function generateStaticParams() {
-  return getAllConditionPaths()
+  return getAllPublicConditionPaths()
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export const dynamicParams = false
+
+export function generateMetadata({ params }: Props): Metadata {
   const condition = getCondition(params.region, params.condition)
   const region = getRegion(params.region)
-  if (!condition || !region) return {}
+  const content = getPublicConditionContent(params.region, params.condition)
+  if (!condition || !region || !content) return {}
 
   return {
     title: `${condition.label} — ${region.label}`,
@@ -40,14 +46,15 @@ export default async function ConditionPage({ params }: Props) {
 
   if (!region || !condition) notFound()
 
-  const result = await getConditionContent(regionSlug, conditionSlug)
+  const result = getPublicConditionContent(regionSlug, conditionSlug)
+  if (!result) notFound()
 
   return (
     <div className="flex">
       <Sidebar currentRegion={regionSlug} currentCondition={conditionSlug} />
 
       {/* Client-side interactive elements */}
-      {result && result.sections.length > 0 && (
+      {result.sections.length > 0 && (
         <ConditionPageClient sections={result.sections} />
       )}
 
@@ -63,7 +70,7 @@ export default async function ConditionPage({ params }: Props) {
           <h1 className="text-3xl font-bold text-surface-900 dark:text-surface-50 mb-2">
             {condition.label}
           </h1>
-          {result?.frontmatter.evidence_level && (
+          {result.frontmatter.evidence_level && (
             <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-800 dark:bg-green-900 dark:text-green-200">
               Evidence: {result.frontmatter.evidence_level}
             </span>
@@ -71,13 +78,11 @@ export default async function ConditionPage({ params }: Props) {
         </div>
 
         {/* Quick Facts Card */}
-        {result && (
-          <QuickFacts
-            condition={condition}
-            frontmatter={result.frontmatter}
-            sections={result.sections}
-          />
-        )}
+        <QuickFacts
+          condition={condition}
+          frontmatter={result.frontmatter}
+          sections={result.sections}
+        />
 
         <section className="mb-8 rounded-xl border border-brand-200 bg-brand-50 p-5 dark:border-brand-800 dark:bg-brand-950/30">
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-700 dark:text-brand-300">
@@ -88,14 +93,14 @@ export default async function ConditionPage({ params }: Props) {
           </p>
           <Link
             href="/cases"
-            className="mt-4 inline-flex rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
+            className="mt-4 inline-flex min-h-11 items-center rounded-lg bg-brand-600 px-4 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
           >
             Browse neutral guided cases
           </Link>
         </section>
 
         {/* Section anchor nav (mobile-friendly pills) */}
-        {result && result.sections.length > 0 && (
+        {result.sections.length > 0 && (
           <nav aria-label="Page sections" className="mb-8 flex flex-wrap gap-2 xl:hidden">
             {result.sections.map(section => (
               <a
@@ -109,9 +114,7 @@ export default async function ConditionPage({ params }: Props) {
           </nav>
         )}
 
-        {/* MDX content or placeholder */}
-        {result ? (
-          <article className="prose-clinical">
+        <article className="prose-clinical">
             <MDXRemote
               source={result.content}
               components={mdxComponents}
@@ -142,19 +145,7 @@ export default async function ConditionPage({ params }: Props) {
                 </div>
               </footer>
             )}
-          </article>
-        ) : (
-          <div className="rounded-xl border-2 border-dashed border-surface-200 p-10 text-center dark:border-surface-700">
-            <p className="font-medium text-surface-500 dark:text-surface-400">Content coming soon</p>
-            <p className="mt-1 text-sm text-surface-400 dark:text-surface-500">
-              Create{' '}
-              <code className="rounded bg-surface-100 px-1.5 py-0.5 dark:bg-surface-800">
-                content/{regionSlug}/{conditionSlug}.mdx
-              </code>{' '}
-              to populate this page.
-            </p>
-          </div>
-        )}
+        </article>
       </div>
     </div>
   )

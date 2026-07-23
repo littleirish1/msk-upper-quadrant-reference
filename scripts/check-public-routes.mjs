@@ -3,10 +3,12 @@ import path from 'path'
 import {
   collectCaseFiles,
   getTaxonomyConditions,
+  getTaxonomyRegions,
   getPlannedTaxonomyRegions,
   isPrivateStatus,
   readCaseFrontmatter,
 } from './lib/readMdxFrontmatter.mjs'
+import { loadTypeScriptTree } from './lib/loadTypeScriptTree.mjs'
 
 const ROOT = process.cwd()
 const OUT_DIR = path.join(ROOT, 'out')
@@ -34,9 +36,20 @@ const requiredAnchors = [
 ]
 
 const findings = []
+let expectedLearnerRouteCount = 0
 const conditions = await readConditions()
+const taxonomyRegions = await getTaxonomyRegions()
 const plannedRegions = await getPlannedTaxonomyRegions()
 const conditionsByKey = new Map(conditions.map((condition) => [conditionKey(condition.region, condition.slug), condition]))
+const publicConditionModule = await loadTypeScriptTree(
+  path.join(ROOT, 'src', 'lib', 'publicConditions.ts'),
+  path.join(ROOT, 'src'),
+)
+const publicConditions = publicConditionModule.getPublicConditionRecords()
+const anatomyModule = await loadTypeScriptTree(
+  path.join(ROOT, 'src', 'data', 'anatomy.ts'),
+  path.join(ROOT, 'src'),
+)
 
 if (!fs.existsSync(OUT_DIR)) {
   fail('Missing static export directory: out. Run npm run build or npm run preflight first.')
@@ -68,6 +81,13 @@ for (const region of plannedRegions) {
 const cases = await readCases()
 const publishedCases = cases.filter((item) => !isPrivateStatus(item.status))
 const privateCases = cases.filter((item) => isPrivateStatus(item.status))
+
+checkExactPublicRouteSet({
+  publicConditions,
+  taxonomyRegions,
+  anatomyCategories: anatomyModule.ANATOMY_CATEGORIES,
+  publishedCases,
+})
 
 for (const item of cases) {
   const publicRouteFile = path.join(OUT_DIR, 'cases', item.region, item.publicSlug, 'index.html')
@@ -117,6 +137,7 @@ console.log('Public route smoke check passed.')
 console.log(`Published case routes: ${publishedCases.length}`)
 console.log(`Published cases discoverable from /cases: ${publishedCases.length}`)
 console.log(`Private case routes excluded: ${privateCases.length}`)
+console.log(`Expected learner routes reconciled: ${expectedLearnerRouteCount}`)
 
 async function readCases() {
   if (!fs.existsSync(CASES_DIR)) return []
@@ -206,6 +227,42 @@ function checkCaseDiscoveryPage(items) {
   }
 }
 
+function checkExactPublicRouteSet({
+  publicConditions,
+  taxonomyRegions,
+  anatomyCategories,
+  publishedCases,
+}) {
+  const expected = new Set(requiredRoutes.map(([route]) => route))
+  for (const region of taxonomyRegions) expected.add(`/${region.slug}`)
+  for (const condition of publicConditions) expected.add(`/${condition.region}/${condition.condition}`)
+  for (const category of anatomyCategories) expected.add(`/anatomy/${category.slug}`)
+  for (const item of publishedCases) expected.add(item.route)
+
+  const actual = new Set(collectIndexFiles(OUT_DIR)
+    .map(indexFileToRoute)
+    .filter((route) => route !== '/404'))
+  expectedLearnerRouteCount = expected.size
+
+  for (const route of [...expected].sort()) {
+    if (!actual.has(route)) fail(`Expected learner route missing from final export: ${route}`)
+  }
+  for (const route of [...actual].sort()) {
+    if (!expected.has(route)) fail(`Unexpected learner route in final export: ${route}`)
+  }
+
+  const forbiddenRoutes = [
+    `/${['3d', 'model'].join('-')}`,
+    '/ai-manager',
+    '/evidence-hub',
+  ]
+  for (const forbidden of forbiddenRoutes) {
+    if ([...actual].some((route) => route === forbidden || route.startsWith(`${forbidden}/`))) {
+      fail(`Forbidden private route appears in final export: ${forbidden}`)
+    }
+  }
+}
+
 function getHtmlAroundRoute(html, route) {
   const indexes = routeVariants(route)
     .map((variant) => html.indexOf(variant))
@@ -271,4 +328,10 @@ function collectIndexFiles(dir) {
 
 function toPosix(value) {
   return value.split(path.sep).join('/')
+}
+
+function indexFileToRoute(file) {
+  const relativeFile = toPosix(path.relative(OUT_DIR, file))
+  if (relativeFile === 'index.html') return '/'
+  return `/${relativeFile.replace(/\/index\.html$/, '')}`
 }

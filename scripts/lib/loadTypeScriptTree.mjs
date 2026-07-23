@@ -30,7 +30,7 @@ export async function loadTypeScriptTree(entryFile, sourceRoot = path.dirname(en
     const source = fs.readFileSync(sourceFile, 'utf8')
     const dependencies = localSpecifiers(source).map((specifier) => ({
       specifier,
-      file: resolveLocalModule(sourceFile, specifier),
+      file: resolveLocalModule(sourceFile, specifier, root),
     }))
     for (const dependency of dependencies) compile(dependency.file)
 
@@ -73,15 +73,17 @@ function importSpecifiers(source) {
 }
 
 function localSpecifiers(source) {
-  return importSpecifiers(source).filter((specifier) => specifier.startsWith('.'))
+  return importSpecifiers(source).filter((specifier) => specifier.startsWith('.') || specifier.startsWith('@/'))
 }
 
 function externalSpecifiers(source) {
-  return importSpecifiers(source).filter((specifier) => !specifier.startsWith('.'))
+  return importSpecifiers(source).filter((specifier) => !specifier.startsWith('.') && !specifier.startsWith('@/'))
 }
 
-function resolveLocalModule(importer, specifier) {
-  const candidate = path.resolve(path.dirname(importer), specifier)
+function resolveLocalModule(importer, specifier, sourceRoot) {
+  const candidate = specifier.startsWith('@/')
+    ? path.resolve(sourceRoot, specifier.slice(2))
+    : path.resolve(path.dirname(importer), specifier)
   const options = path.extname(candidate)
     ? [candidate]
     : [`${candidate}.ts`, `${candidate}.tsx`, path.join(candidate, 'index.ts')]

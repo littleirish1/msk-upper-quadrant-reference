@@ -5,6 +5,7 @@ import { ChevronRight, Hash, Stethoscope } from 'lucide-react'
 import { REGIONS, getRegion } from '@/data/taxonomy'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
+import { getPublicConditionsForRegion } from '@/lib/publicConditions'
 
 interface Props {
   params: { region: string }
@@ -52,6 +53,9 @@ const conditionMeta: Record<string, { keyTest?: string; commonPresentation?: str
 export default function RegionPage({ params }: Props) {
   const region = getRegion(params.region)
   if (!region) notFound()
+  const publicConditionSlugs = new Set(
+    getPublicConditionsForRegion(region.slug).map((condition) => condition.condition),
+  )
 
   return (
     <div className="flex">
@@ -66,7 +70,7 @@ export default function RegionPage({ params }: Props) {
         <p className="mb-8 text-surface-500 dark:text-surface-400">{region.description}</p>
 
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {region.conditions.map(condition => {
+          {region.conditions.filter((condition) => publicConditionSlugs.has(condition.slug)).map(condition => {
             const meta = conditionMeta[condition.slug]
             return (
               <Link
