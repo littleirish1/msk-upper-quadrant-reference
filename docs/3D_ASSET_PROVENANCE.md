@@ -30,3 +30,33 @@ Public eligibility remains false until all of the following are complete:
 - reduced-motion behaviour verified,
 - WebGL fallback verified,
 - educational/not-diagnostic wording approved.
+
+## Private Prototype Governance
+
+Historical prototype code remains recoverable on the preserved deployment and
+feature branches. The integrated branch keeps only dependency-free
+classification and governance material. A private prototype must not become a
+public route, navigation item, search entry, sitemap entry, or static asset.
+
+Before any asset is evaluated, record a stable asset ID, exact checksum, source,
+author, licence, redistribution terms, attribution, modification history, and
+processing-tool versions. Unknown provenance or rights is a hard stop. Asset
+processing must be reproducible from the governed source and must not silently
+change geometry, labels, textures, coordinate systems, or units.
+
+Anatomical review must verify region tags, structure identity, laterality,
+orientation, attachment/relationship claims, and educational labels.
+Movement or biomechanics features require separate verification of axes,
+ranges, constraints, assumptions, and limitations; visual plausibility is not
+clinical validation.
+
+Technical review must define and measure polygon, texture, download, decoded
+memory, and interaction-frame budgets. It must include constrained-mobile and
+reduced-motion fallbacks, useful text alternatives, keyboard operation, focus
+visibility, assistive-technology behavior, and a non-WebGL route fallback.
+
+Public release requires separate recorded approvals for provenance/licence,
+anatomical accuracy, any biomechanics behavior, accessibility, performance,
+privacy, and clinical framing. No one approval implies another. Until every
+gate is complete, assets stay outside `public/`, `src/app/`, search generation,
+and static output.
