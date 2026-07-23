@@ -1,7 +1,14 @@
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
+import os from 'node:os'
 import path from 'node:path'
-import { HUB_LIB_DIR, buildJsonSchemaDocument, containsEvidenceHubImport, loadEvidenceHubModule } from './shared.mjs'
+import {
+  HUB_LIB_DIR,
+  buildJsonSchemaDocument,
+  containsEvidenceHubImport,
+  findPublicEvidenceHubImportChains,
+  loadEvidenceHubModule,
+} from './shared.mjs'
 
 const hub = await loadEvidenceHubModule()
 let passed = 0
@@ -102,6 +109,11 @@ const records = [reference, evidence, claim, condition, anatomy, exercise, clini
 const relationships = [
   relationship('relationship.fixture.evidence-claim', evidence.id, claim.id, 'supports', { evidenceLocator: 'section 1' }),
   relationship('relationship.fixture.condition-claim', condition.id, claim.id, 'uses'),
+  relationship('relationship.fixture.anatomy-claim', anatomy.id, claim.id, 'uses'),
+  relationship('relationship.fixture.exercise-claim', exercise.id, claim.id, 'uses'),
+  relationship('relationship.fixture.test-claim', clinicalTest.id, claim.id, 'uses'),
+  relationship('relationship.fixture.outcome-claim', outcome.id, claim.id, 'uses'),
+  relationship('relationship.fixture.case-claim', guidedCase.id, claim.id, 'uses'),
   relationship('relationship.fixture.case-condition', guidedCase.id, condition.id, 'references', { revealStageId: 'diagnosis' }),
   relationship('relationship.fixture.evidence-reference', evidence.id, reference.id, 'references'),
 ]
@@ -134,8 +146,9 @@ run('dangling and stale relationships fail', () => {
   assert.equal(findings.some((item) => item.code === 'stale-from-revision'), true)
 })
 run('matching condition relationship before reveal fails', () => {
-  const early = { ...relationships[2], id: 'relationship.fixture.early', revealStageId: 'presentation' }
-  const replaced = relationships.map((item) => item.id === relationships[2].id ? early : item)
+  const caseCondition = relationships.find((item) => item.id === 'relationship.fixture.case-condition')
+  const early = { ...caseCondition, id: 'relationship.fixture.early', revealStageId: 'presentation' }
+  const replaced = relationships.map((item) => item.id === caseCondition.id ? early : item)
   assert.equal(hub.validateEvidenceHubGraph({ ...dataset, relationships: replaced }).findings.some((item) => item.code === 'condition-link-before-reveal'), true)
 })
 run('review and lifecycle transitions are explicit', () => {
@@ -183,7 +196,11 @@ run('private-processing clearance alone cannot make Evidence public', () => {
 run('Reference dependencies require explicit graph edges', () => {
   const withoutReferenceEdge = relationships.filter((item) => item.id !== 'relationship.fixture.evidence-reference')
   const findings = hub.validateEvidenceHubGraph({ ...dataset, relationships: withoutReferenceEdge }).findings
-  assert.equal(findings.some((item) => item.code === 'evidence-reference-edge-missing'), true)
+  assert.equal(findings.some((item) =>
+    item.code === 'declared-link-edge-missing'
+    && item.message.includes('referenceIds')
+    && item.message.includes(reference.id),
+  ), true)
 })
 run('invalid relationship roles fail closed', () => {
   const invalid = relationship('relationship.fixture.invalid-role', condition.id, claim.id, 'supports', { evidenceLocator: 'section 1' })
@@ -245,17 +262,71 @@ run('eligible publication is reference-backed and strips private fields', () => 
   const publicDataset = {
     ...dataset,
     records: publicRecords,
+    relationships: relationships.map((item) =>
+      [relationships[0].id, relationships.at(-1).id].includes(item.id)
+        ? { ...item, lifecycleStatus: 'active', reviewStatus: 'approved' }
+        : item,
+    ),
     reviewDecisions: [
       approval('review.fixture.evidence', publicEvidence, 'evidence-reviewer', 'evidence'),
       approval('review.fixture.claim', publicClaim, 'clinician', 'clinical-meaning'),
     ],
   }
-  assert.equal(hub.evaluatePublication(publicClaim, publicDataset).eligible, true)
+  const publicationDecision = hub.evaluatePublication(publicClaim, publicDataset)
+  assert.equal(publicationDecision.eligible, true, publicationDecision.reasons.join('; '))
   const projection = hub.buildPublicProjection(publicDataset)
   const serialized = JSON.stringify(projection)
   for (const forbidden of ['sourceId', 'sourceLocators', 'sourceProvenance', 'checksum', 'locator', 'reviewStatus', 'verificationEvidence']) {
     assert.equal(serialized.includes(forbidden), false, forbidden)
   }
+})
+run('sectionClaims cannot bypass a private Claim dependency', () => {
+  const publicCondition = {
+    ...condition,
+    lifecycleStatus: 'active',
+    reviewStatus: 'approved',
+    publicEligibility: true,
+  }
+  const governedConditionEdge = {
+    ...relationships.find((item) => item.id === 'relationship.fixture.condition-claim'),
+    lifecycleStatus: 'active',
+    reviewStatus: 'approved',
+  }
+  const privateClaimDataset = {
+    ...dataset,
+    records: records.map((item) => item.id === condition.id ? publicCondition : item),
+    relationships: relationships.map((item) =>
+      item.id === governedConditionEdge.id ? governedConditionEdge : item,
+    ),
+    reviewDecisions: [
+      approval('review.fixture.public-condition', publicCondition, 'clinician', 'clinical-meaning'),
+    ],
+  }
+  const decision = hub.evaluatePublication(publicCondition, privateClaimDataset)
+  assert.equal(decision.dependencyIds.includes(claim.id), true)
+  assert.equal(decision.eligible, false)
+  assert.equal(decision.reasons.some((reason) =>
+    reason.includes(`dependency ${claim.id}`)
+    && reason.includes('publicEligibility is false'),
+  ), true)
+  assert.throws(() => hub.buildPublicProjection(privateClaimDataset), /public projection failed closed/i)
+})
+run('declared dependencies require governed relationship state', () => {
+  const publicCondition = {
+    ...condition,
+    lifecycleStatus: 'active',
+    reviewStatus: 'approved',
+    publicEligibility: true,
+  }
+  const decision = hub.evaluatePublication(publicCondition, {
+    ...dataset,
+    records: records.map((item) => item.id === condition.id ? publicCondition : item),
+    reviewDecisions: [
+      approval('review.fixture.public-condition-edge', publicCondition, 'clinician', 'clinical-meaning'),
+    ],
+  })
+  assert.equal(decision.reasons.some((reason) => reason.includes('is not active')), true)
+  assert.equal(decision.reasons.some((reason) => reason.includes('is not approved')), true)
 })
 run('AI proposal cannot claim approval or publication', () => {
   const proposal = {
@@ -296,6 +367,22 @@ run('public runtime import detection is narrow and deterministic', () => {
   assert.equal(containsEvidenceHubImport("const hub = await import('../lib/evidence-hub/publication')"), true)
   assert.equal(containsEvidenceHubImport("import { evidence } from './ordinary-evidence'"), false)
   assert.equal(containsEvidenceHubImport("const label = 'evidence-hub'"), false)
+})
+run('public runtime boundary follows indirect local imports', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'evidence-hub-boundary-'))
+  const src = path.join(root, 'src')
+  fs.mkdirSync(path.join(src, 'app'), { recursive: true })
+  fs.mkdirSync(path.join(src, 'lib', 'evidence-hub'), { recursive: true })
+  fs.writeFileSync(path.join(src, 'app', 'page.tsx'), "import { helper } from '@/lib/public-helper'\nexport default helper\n")
+  fs.writeFileSync(path.join(src, 'lib', 'public-helper.ts'), "export { privateValue as helper } from './evidence-hub/private'\n")
+  fs.writeFileSync(path.join(src, 'lib', 'evidence-hub', 'private.ts'), 'export const privateValue = null\n')
+  try {
+    const findings = findPublicEvidenceHubImportChains(src, [path.join(src, 'app')])
+    assert.equal(findings.length, 1)
+    assert.match(findings[0], /app\/page\.tsx -> lib\/public-helper\.ts -> .*evidence-hub/)
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true })
+  }
 })
 
 if (failures.length) {

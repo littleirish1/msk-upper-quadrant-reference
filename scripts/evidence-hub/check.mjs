@@ -5,7 +5,7 @@ import {
   HUB_LIB_DIR,
   ROOT,
   buildJsonSchemaDocument,
-  containsEvidenceHubImport,
+  findPublicEvidenceHubImportChains,
   loadEvidenceHubModule,
   readDataset,
   relative,
@@ -13,6 +13,7 @@ import {
 } from './shared.mjs'
 
 const module = await loadEvidenceHubModule()
+const requireOutput = process.argv.includes('--require-output')
 const { dataset, pilots, findings } = readDataset(module)
 const graph = module.validateEvidenceHubGraph(dataset)
 findings.push(...graph.findings.map((finding) => `${finding.code}: ${finding.message}`))
@@ -35,18 +36,17 @@ if (!fs.existsSync(jsonSchemaFile)) {
 const architectureFile = path.join(ROOT, 'docs', 'architecture', 'evidence-hub-v1.md')
 if (!fs.existsSync(architectureFile)) findings.push('missing Evidence Hub architecture specification')
 
-for (const publicSourceDir of [path.join(ROOT, 'src', 'app'), path.join(ROOT, 'src', 'components')]) {
-  if (!fs.existsSync(publicSourceDir)) continue
-  for (const file of collectFiles(publicSourceDir)) {
-    if (!/\.[cm]?[jt]sx?$/.test(file)) continue
-    if (containsEvidenceHubImport(fs.readFileSync(file, 'utf8'))) {
-      findings.push(`public runtime imports the private Evidence Hub: ${relative(file)}`)
-    }
-  }
+const srcRoot = path.join(ROOT, 'src')
+for (const chain of findPublicEvidenceHubImportChains(srcRoot, [
+  path.join(srcRoot, 'app'),
+  path.join(srcRoot, 'components'),
+])) {
+  findings.push(`public runtime reaches the private Evidence Hub: ${chain}`)
 }
 
 const publicProjection = module.buildPublicProjection(dataset)
 const outDir = path.join(ROOT, 'out')
+if (requireOutput && !fs.existsSync(outDir)) findings.push('missing public output; run the build before the output boundary check')
 if (fs.existsSync(path.join(outDir, 'evidence-hub'))) findings.push('public output contains Evidence Hub private data')
 if (fs.existsSync(outDir)) {
   for (const file of collectFiles(outDir)) {

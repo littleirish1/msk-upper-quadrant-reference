@@ -41,6 +41,42 @@ export function containsEvidenceHubImport(source) {
   return /(?:from\s*|import\s*\(|require\s*\()\s*['"][^'"]*(?:\/|^)evidence-hub(?:\/[^'"]*)?['"]/.test(source)
 }
 
+export function findPublicEvidenceHubImportChains(srcRoot, publicSourceDirs) {
+  const findings = []
+  const starts = publicSourceDirs
+    .filter((directory) => fs.existsSync(directory))
+    .flatMap((directory) => collectSourceFiles(directory))
+    .sort()
+
+  for (const start of starts) {
+    const visited = new Set()
+    const visit = (file, chain) => {
+      const normalized = path.resolve(file)
+      if (visited.has(normalized)) return
+      visited.add(normalized)
+
+      const source = fs.readFileSync(normalized, 'utf8')
+      for (const specifier of collectImportSpecifiers(source)) {
+        const nextChain = [...chain, normalized]
+        if (isEvidenceHubSpecifier(specifier)) {
+          findings.push([...nextChain, specifier].map((item) => displayImportNode(item, srcRoot)).join(' -> '))
+          continue
+        }
+        const resolved = resolveLocalImport(specifier, normalized, srcRoot)
+        if (!resolved) continue
+        if (isWithin(path.join(srcRoot, 'lib', 'evidence-hub'), resolved)) {
+          findings.push([...nextChain, resolved].map((item) => displayImportNode(item, srcRoot)).join(' -> '))
+          continue
+        }
+        if (isWithin(srcRoot, resolved)) visit(resolved, nextChain)
+      }
+    }
+    visit(start, [])
+  }
+
+  return [...new Set(findings)].sort()
+}
+
 export function readDataset(module) {
   const records = []
   const files = []
@@ -153,4 +189,54 @@ function parseCatalog(file, schema, key, findings) {
 
 export function relative(file) {
   return path.relative(ROOT, file).split(path.sep).join('/')
+}
+
+function collectSourceFiles(directory) {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const item = path.join(directory, entry.name)
+    return entry.isDirectory()
+      ? collectSourceFiles(item)
+      : entry.isFile() && /\.[cm]?[jt]sx?$/.test(entry.name) ? [item] : []
+  })
+}
+
+function collectImportSpecifiers(source) {
+  const specifiers = []
+  const patterns = [
+    /\b(?:import|export)\s+(?:[\s\S]*?\s+from\s+)?['"]([^'"]+)['"]/g,
+    /\bimport\s*\(\s*['"]([^'"]+)['"]\s*\)/g,
+    /\brequire\s*\(\s*['"]([^'"]+)['"]\s*\)/g,
+  ]
+  for (const pattern of patterns) {
+    for (const match of source.matchAll(pattern)) specifiers.push(match[1])
+  }
+  return [...new Set(specifiers)]
+}
+
+function isEvidenceHubSpecifier(specifier) {
+  return /(?:^|\/)evidence-hub(?:\/|$)/.test(specifier)
+}
+
+function resolveLocalImport(specifier, importer, srcRoot) {
+  let candidate
+  if (specifier.startsWith('@/')) candidate = path.join(srcRoot, specifier.slice(2))
+  else if (specifier.startsWith('.')) candidate = path.resolve(path.dirname(importer), specifier)
+  else return null
+
+  const candidates = [
+    candidate,
+    ...['.ts', '.tsx', '.js', '.jsx', '.mts', '.mjs'].map((extension) => candidate + extension),
+    ...['index.ts', 'index.tsx', 'index.js', 'index.jsx', 'index.mts', 'index.mjs'].map((name) => path.join(candidate, name)),
+  ]
+  return candidates.find((item) => fs.existsSync(item) && fs.statSync(item).isFile()) ?? null
+}
+
+function isWithin(parent, child) {
+  const relativePath = path.relative(path.resolve(parent), path.resolve(child))
+  return relativePath === '' || (!relativePath.startsWith('..') && !path.isAbsolute(relativePath))
+}
+
+function displayImportNode(value, srcRoot) {
+  if (!path.isAbsolute(value)) return value
+  return path.relative(srcRoot, value).split(path.sep).join('/')
 }

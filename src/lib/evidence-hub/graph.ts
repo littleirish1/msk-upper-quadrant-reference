@@ -4,6 +4,10 @@ import {
   reviewDecisionSchema,
 } from './schemas'
 import { canonicalRecordHash } from './lifecycle'
+import {
+  declaredRecordDependencies,
+  findDependencyRelationship,
+} from './dependencies'
 import { publicationDependencyIds } from './publication'
 import type {
   EvidenceHubDataset,
@@ -156,9 +160,31 @@ function validateRecordLinks(
   relationships: HubRelationship[],
   findings: GraphFinding[],
 ) {
-  const ids = collectDeclaredIds(record)
-  for (const id of ids) {
-    if (!byId.has(id)) findings.push({ code: 'declared-link-missing', recordId: record.id, message: `${record.id} declares missing ID ${id}` })
+  const dependencies = declaredRecordDependencies(record)
+  for (const dependency of dependencies) {
+    const target = byId.get(dependency.dependencyId)
+    if (!target) {
+      findings.push({
+        code: 'declared-link-missing',
+        recordId: record.id,
+        message: `${record.id} declares missing ID ${dependency.dependencyId} in ${dependency.field}`,
+      })
+      continue
+    }
+    if (dependency.expectedEntityTypes && !dependency.expectedEntityTypes.includes(target.entityType)) {
+      findings.push({
+        code: 'declared-link-type-invalid',
+        recordId: record.id,
+        message: `${record.id} ${dependency.field} resolves to ${target.entityType}: ${dependency.dependencyId}`,
+      })
+    }
+    if (!findDependencyRelationship(dependency, relationships)) {
+      findings.push({
+        code: 'declared-link-edge-missing',
+        recordId: record.id,
+        message: `${record.id} ${dependency.field} lacks a governed relationship for ${dependency.dependencyId}`,
+      })
+    }
   }
 
   if (record.entityType === 'claim') {
@@ -171,12 +197,6 @@ function validateRecordLinks(
       if (target.revision !== support.evidenceRevision) {
         findings.push({ code: 'claim-evidence-revision-stale', recordId: record.id, message: `claim support revision is stale for ${support.evidenceId}` })
       }
-      const edge = relationships.find((item) =>
-        item.fromId === support.evidenceId
-        && item.toId === record.id
-        && item.role === support.role,
-      )
-      if (!edge) findings.push({ code: 'claim-support-edge-missing', recordId: record.id, message: `claim support lacks relationship edge for ${support.evidenceId}` })
     }
   }
 
@@ -187,12 +207,6 @@ function validateRecordLinks(
         findings.push({ code: 'evidence-reference-missing', recordId: record.id, message: `Evidence Reference does not resolve: ${referenceId}` })
         continue
       }
-      const edge = relationships.find((item) =>
-        item.fromId === record.id
-        && item.toId === referenceId
-        && item.role === 'references',
-      )
-      if (!edge) findings.push({ code: 'evidence-reference-edge-missing', recordId: record.id, message: `Evidence Reference lacks an explicit relationship edge: ${referenceId}` })
     }
   }
 
@@ -207,27 +221,6 @@ function validateRecordLinks(
       }
     }
   }
-}
-
-function collectDeclaredIds(record: EvidenceHubRecord) {
-  const keys = Object.keys(record).filter((key) => key.endsWith('Id') || key.endsWith('Ids'))
-  const ids: string[] = []
-  for (const key of keys) {
-    if (['id', 'diagnosisRevealStageId'].includes(key)) continue
-    const value = (record as unknown as Record<string, unknown>)[key]
-    if (typeof value === 'string' && value.includes('.')) ids.push(value)
-    if (Array.isArray(value)) ids.push(...value.filter((item): item is string => typeof item === 'string' && item.includes('.')))
-  }
-  if (record.entityType === 'condition') {
-    for (const sectionIds of Object.values(record.sectionClaims)) ids.push(...sectionIds)
-  }
-  if (record.entityType === 'claim') {
-    ids.push(...record.support.map((item) => item.evidenceId))
-  }
-  if (record.entityType === 'guided-case') {
-    for (const stage of record.stages) ids.push(...stage.claimIds)
-  }
-  return [...new Set(ids)]
 }
 
 function validateSupersessionCycles(relationships: HubRelationship[], findings: GraphFinding[]) {

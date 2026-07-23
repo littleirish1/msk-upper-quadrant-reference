@@ -1,4 +1,8 @@
 import { canonicalRecordHash, hasApproval, requiresClinicianApproval } from './lifecycle'
+import {
+  declaredRecordDependencies,
+  findDependencyRelationship,
+} from './dependencies'
 import type {
   EvidenceHubDataset,
   EvidenceHubRecord,
@@ -40,6 +44,7 @@ function evaluatePublicationInternal(
   const reasons: string[] = []
   const byId = new Map(dataset.records.map((item) => [item.id, item]))
   const dependencies = publicationDependencyIds(record, dataset)
+  const declaredDependencies = declaredRecordDependencies(record)
 
   if (ancestors.has(record.id)) {
     return {
@@ -53,6 +58,33 @@ function evaluatePublicationInternal(
   if (!record.publicEligibility) reasons.push('publicEligibility is false')
   if (record.lifecycleStatus !== 'active') reasons.push('lifecycle status is not active')
   if (record.reviewStatus !== 'approved') reasons.push('review status is not approved')
+
+  for (const dependency of declaredDependencies) {
+    const target = byId.get(dependency.dependencyId)
+    if (target && dependency.expectedEntityTypes && !dependency.expectedEntityTypes.includes(target.entityType)) {
+      reasons.push(`${dependency.field} resolves to invalid entity type: ${dependency.dependencyId}`)
+    }
+
+    const relationship = findDependencyRelationship(dependency, dataset.relationships)
+    if (!relationship) {
+      reasons.push(`${dependency.field} lacks required governed relationship: ${dependency.dependencyId}`)
+      continue
+    }
+    if (relationship.lifecycleStatus !== 'active') {
+      reasons.push(`relationship ${relationship.id} is not active`)
+    }
+    if (relationship.reviewStatus !== 'approved') {
+      reasons.push(`relationship ${relationship.id} is not approved`)
+    }
+    const from = byId.get(relationship.fromId)
+    const to = byId.get(relationship.toId)
+    if (!from || from.revision !== relationship.fromRevision) {
+      reasons.push(`relationship ${relationship.id} has a missing or stale source revision`)
+    }
+    if (!to || to.revision !== relationship.toRevision) {
+      reasons.push(`relationship ${relationship.id} has a missing or stale target revision`)
+    }
+  }
 
   const nextAncestors = new Set(ancestors).add(record.id)
   for (const dependencyId of dependencies) {
@@ -145,17 +177,18 @@ export function buildPublicProjection(dataset: EvidenceHubDataset): unknown[] {
 }
 
 export function publicationDependencyIds(record: EvidenceHubRecord, dataset: EvidenceHubDataset): string[] {
-  const ids = new Set<string>()
+  const ids = new Set(declaredRecordDependencies(record).map((dependency) => dependency.dependencyId))
   for (const relationship of dataset.relationships) {
-    if (relationship.fromId === record.id && ['uses', 'references', 'illustrates', 'measures', 'assesses', 'applies-to'].includes(relationship.role)) {
-      ids.add(relationship.toId)
-    }
-    if (relationship.toId === record.id && ['supports', 'contradicts', 'qualifies', 'contextualises'].includes(relationship.role)) {
-      ids.add(relationship.fromId)
-    }
+    if (relationship.lifecycleStatus !== 'active' || relationship.reviewStatus !== 'approved') continue
+    if (
+      relationship.fromId === record.id
+      && ['uses', 'references', 'measures', 'assesses', 'applies-to', 'related-to', 'supersedes'].includes(relationship.role)
+    ) ids.add(relationship.toId)
+    if (
+      relationship.toId === record.id
+      && ['supports', 'contradicts', 'qualifies', 'contextualises', 'illustrates'].includes(relationship.role)
+    ) ids.add(relationship.fromId)
   }
-  if (record.entityType === 'claim') for (const support of record.support) ids.add(support.evidenceId)
-  if (record.entityType === 'evidence') for (const referenceId of record.referenceIds) ids.add(referenceId)
   return [...ids].sort()
 }
 
