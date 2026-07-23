@@ -101,7 +101,7 @@ const bodyRegionTags = [
 
 export default function FuturePage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <section className="mb-10">
         <p className="text-sm font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">
           Future direction
@@ -303,6 +303,6 @@ export default function FuturePage() {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   )
 }

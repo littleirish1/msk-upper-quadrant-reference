@@ -44,10 +44,10 @@ export function ClinicalReasoningEngine() {
           <p className="mt-2 max-w-2xl text-sm leading-6 text-surface-600 dark:text-surface-300">Answers stay in memory for this page only. They are not saved, sent, or scored.</p>
         </div>
         <div className="flex gap-2 print:hidden">
-          <button type="button" onClick={() => window.print()} className="inline-flex min-h-10 items-center gap-2 rounded-md border border-surface-200 px-3 text-sm font-semibold text-surface-700 hover:border-brand-300 dark:border-surface-700 dark:text-surface-200">
+          <button type="button" onClick={() => window.print()} className="inline-flex min-h-11 items-center gap-2 rounded-md border border-surface-200 px-3 text-sm font-semibold text-surface-700 hover:border-brand-300 dark:border-surface-700 dark:text-surface-200">
             <Printer className="h-4 w-4" aria-hidden /> Print
           </button>
-          <button type="button" onClick={reset} className="inline-flex min-h-10 items-center gap-2 rounded-md border border-surface-200 px-3 text-sm font-semibold text-surface-700 hover:border-brand-300 dark:border-surface-700 dark:text-surface-200">
+          <button type="button" onClick={reset} className="inline-flex min-h-11 items-center gap-2 rounded-md border border-surface-200 px-3 text-sm font-semibold text-surface-700 hover:border-brand-300 dark:border-surface-700 dark:text-surface-200">
             <RotateCcw className="h-4 w-4" aria-hidden /> Reset
           </button>
         </div>
@@ -90,7 +90,7 @@ export function ClinicalReasoningEngine() {
               type="button"
               aria-expanded={Boolean(revealed[step.id])}
               onClick={() => setRevealed((current) => ({ ...current, [step.id]: !current[step.id] }))}
-              className="inline-flex min-h-10 items-center gap-2 rounded-md bg-brand-600 px-4 text-sm font-semibold text-white hover:bg-brand-700"
+              className="inline-flex min-h-11 items-center gap-2 rounded-md bg-brand-600 px-4 text-sm font-semibold text-white hover:bg-brand-700"
             >
               <Eye className="h-4 w-4" aria-hidden /> {revealed[step.id] ? 'Hide authored information' : 'Reveal authored information'}
             </button>
@@ -113,10 +113,10 @@ export function ClinicalReasoningEngine() {
       </div>
 
       <div className="mt-5 flex items-center justify-between gap-3 print:hidden">
-        <button type="button" disabled={index === 0} onClick={() => setIndex((value) => Math.max(0, value - 1))} className="inline-flex min-h-10 items-center gap-2 rounded-md border border-surface-200 px-3 text-sm font-semibold text-surface-700 disabled:opacity-40 dark:border-surface-700 dark:text-surface-200">
+        <button type="button" disabled={index === 0} onClick={() => setIndex((value) => Math.max(0, value - 1))} className="inline-flex min-h-11 items-center gap-2 rounded-md border border-surface-200 px-3 text-sm font-semibold text-surface-700 disabled:opacity-40 dark:border-surface-700 dark:text-surface-200">
           <ChevronLeft className="h-4 w-4" aria-hidden /> Previous
         </button>
-        <button type="button" disabled={index === steps.length - 1} onClick={() => setIndex((value) => Math.min(steps.length - 1, value + 1))} className="inline-flex min-h-10 items-center gap-2 rounded-md bg-brand-600 px-4 text-sm font-semibold text-white disabled:opacity-40">
+        <button type="button" disabled={index === steps.length - 1} onClick={() => setIndex((value) => Math.min(steps.length - 1, value + 1))} className="inline-flex min-h-11 items-center gap-2 rounded-md bg-brand-600 px-4 text-sm font-semibold text-white disabled:opacity-40">
           Next <ChevronRight className="h-4 w-4" aria-hidden />
         </button>
       </div>

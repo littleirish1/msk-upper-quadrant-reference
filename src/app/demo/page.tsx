@@ -105,7 +105,7 @@ const roadmap = [
 
 export default function DemoPage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <section className="mb-10">
         <p className="text-sm font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">
           Trial demo status
@@ -268,6 +268,6 @@ export default function DemoPage() {
           })}
         </div>
       </section>
-    </main>
+    </div>
   )
 }

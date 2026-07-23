@@ -13,7 +13,7 @@ export default function AnatomyCategoryPage({ params }: { params: { category: st
   const records = getPublicAnatomyRecords().filter((record) => record.category === category.slug)
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-8 pb-24 sm:px-6 sm:py-12 lg:px-8 lg:pb-12">
+    <div className="mx-auto max-w-4xl px-4 py-8 pb-24 sm:px-6 sm:py-12 lg:px-8 lg:pb-12">
       <Link href="/anatomy" className="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300">
         Anatomy foundations
       </Link>
@@ -41,6 +41,6 @@ export default function AnatomyCategoryPage({ params }: { params: { category: st
           </p>
         </div>
       )}
-    </main>
+    </div>
   )
 }

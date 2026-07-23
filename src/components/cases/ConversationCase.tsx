@@ -336,7 +336,7 @@ export function ConversationCase() {
       <button
         type="button"
         onClick={() => setRevealed(true)}
-        className="mt-5 inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-300 dark:bg-brand-500 dark:hover:bg-brand-600"
+        className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 text-sm font-semibold text-white transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-300 dark:bg-brand-500 dark:hover:bg-brand-600"
         aria-expanded={revealed}
       >
         <Eye className="h-4 w-4" aria-hidden />

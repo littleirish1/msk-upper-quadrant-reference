@@ -29,8 +29,9 @@ export function MobileBottomNav() {
             <Link
               key={slug}
               href={`/${slug}`}
+              aria-current={isActive ? 'page' : undefined}
               className={cn(
-                'flex flex-col items-center gap-0.5 rounded-lg px-2 py-1.5 text-[10px] font-medium transition-colors',
+                'flex min-h-11 min-w-11 flex-col items-center justify-center gap-0.5 rounded-lg px-2 text-[10px] font-medium transition-colors',
                 isActive
                   ? 'text-brand-600 dark:text-brand-400'
                   : 'text-surface-400 hover:text-surface-600 dark:text-surface-500 dark:hover:text-surface-300'
@@ -43,7 +44,13 @@ export function MobileBottomNav() {
         })}
         <Link
           href="/search"
-          className="flex flex-col items-center gap-0.5 rounded-lg px-2 py-1.5 text-[10px] font-medium text-surface-400 hover:text-surface-600 dark:text-surface-500 dark:hover:text-surface-300"
+          aria-current={pathname === '/search' ? 'page' : undefined}
+          className={cn(
+            'flex min-h-11 min-w-11 flex-col items-center justify-center gap-0.5 rounded-lg px-2 text-[10px] font-medium',
+            pathname === '/search'
+              ? 'text-brand-600 dark:text-brand-400'
+              : 'text-surface-400 hover:text-surface-600 dark:text-surface-500 dark:hover:text-surface-300',
+          )}
         >
           <Search className="h-5 w-5" />
           Search

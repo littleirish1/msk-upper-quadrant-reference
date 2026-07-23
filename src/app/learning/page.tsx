@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function LearningPage() {
   return (
-    <main className="mx-auto max-w-screen-xl px-4 py-8 pb-24 sm:px-6 sm:py-12 lg:px-8 lg:pb-12">
+    <div className="mx-auto max-w-screen-xl px-4 py-8 pb-24 sm:px-6 sm:py-12 lg:px-8 lg:pb-12">
       <div className="max-w-3xl">
         <p className="text-sm font-semibold text-brand-700 dark:text-brand-300">Pilot learning tools</p>
         <h1 className="mt-2 text-3xl font-bold text-surface-900 dark:text-surface-50">Clinical reasoning learning lab</h1>
@@ -22,6 +22,6 @@ export default function LearningPage() {
         <DecisionTree />
         <LearningModeExamples />
       </div>
-    </main>
+    </div>
   )
 }

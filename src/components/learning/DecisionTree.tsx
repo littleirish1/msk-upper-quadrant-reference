@@ -25,12 +25,12 @@ export function DecisionTree() {
         {node.options.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
             {node.options.map((option) => (
-              <button key={option.label} type="button" onClick={() => setCurrent(option.next)} className="min-h-10 rounded-md bg-brand-600 px-4 text-sm font-semibold text-white hover:bg-brand-700">{option.label}</button>
+              <button key={option.label} type="button" onClick={() => setCurrent(option.next)} className="min-h-11 rounded-md bg-brand-600 px-4 text-sm font-semibold text-white hover:bg-brand-700">{option.label}</button>
             ))}
           </div>
         )}
       </div>
-      <button type="button" onClick={() => setCurrent('start')} className="mt-4 inline-flex min-h-10 items-center gap-2 rounded-md border border-surface-200 px-3 text-sm font-semibold text-surface-700 dark:border-surface-700 dark:text-surface-200">
+      <button type="button" onClick={() => setCurrent('start')} className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-md border border-surface-200 px-3 text-sm font-semibold text-surface-700 dark:border-surface-700 dark:text-surface-200">
         <RotateCcw className="h-4 w-4" aria-hidden /> Reset path
       </button>
       <div className="sr-only" aria-live="polite">{node.text}</div>

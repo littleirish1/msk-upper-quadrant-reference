@@ -38,7 +38,7 @@ export function DifferentialDiagnosisBuilder() {
           <h2 id="differential-builder-heading" className="text-xl font-semibold text-surface-900 dark:text-surface-50">Differential Diagnosis Builder</h2>
           <p className="mt-2 text-sm leading-6 text-surface-600 dark:text-surface-300">Rank by position, record both sides of the argument, and mark cannot-miss considerations. No recommendation is generated.</p>
         </div>
-        <button type="button" onClick={reset} className="inline-flex min-h-10 items-center gap-2 rounded-md border border-surface-200 px-3 text-sm font-semibold text-surface-700 dark:border-surface-700 dark:text-surface-200">
+        <button type="button" onClick={reset} className="inline-flex min-h-11 items-center gap-2 rounded-md border border-surface-200 px-3 text-sm font-semibold text-surface-700 dark:border-surface-700 dark:text-surface-200">
           <RotateCcw className="h-4 w-4" aria-hidden /> Reset
         </button>
       </div>
@@ -50,9 +50,9 @@ export function DifferentialDiagnosisBuilder() {
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-100 text-sm font-bold text-brand-800 dark:bg-brand-900 dark:text-brand-100">{index + 1}</span>
               <label className="min-w-0 flex-1">
                 <span className="sr-only">Candidate explanation {index + 1}</span>
-                <input value={candidate.label} onChange={(event) => update(candidate.id, { label: event.target.value })} className="min-h-10 w-full rounded-md border border-surface-300 bg-white px-3 text-sm dark:border-surface-700 dark:bg-surface-900" placeholder="Candidate explanation" />
+                <input value={candidate.label} onChange={(event) => update(candidate.id, { label: event.target.value })} className="min-h-11 w-full rounded-md border border-surface-300 bg-white px-3 text-sm dark:border-surface-700 dark:bg-surface-900" placeholder="Candidate explanation" />
               </label>
-              <button type="button" aria-label={`Remove candidate ${index + 1}`} disabled={candidates.length === 1} onClick={() => setCandidates((items) => items.filter((item) => item.id !== candidate.id))} className="rounded-md p-2 text-surface-500 hover:bg-surface-100 disabled:opacity-30 dark:hover:bg-surface-800">
+              <button type="button" aria-label={`Remove candidate ${index + 1}`} disabled={candidates.length === 1} onClick={() => setCandidates((items) => items.filter((item) => item.id !== candidate.id))} className="inline-flex h-11 w-11 items-center justify-center rounded-md text-surface-500 hover:bg-surface-100 disabled:opacity-30 dark:hover:bg-surface-800">
                 <Trash2 className="h-4 w-4" aria-hidden />
               </button>
             </div>
@@ -64,14 +64,14 @@ export function DifferentialDiagnosisBuilder() {
                 <textarea value={candidate.contradicting} onChange={(event) => update(candidate.id, { contradicting: event.target.value })} className="mt-1 min-h-24 w-full rounded-md border border-surface-300 bg-white px-3 py-2 text-sm dark:border-surface-700 dark:bg-surface-900" />
               </label>
             </div>
-            <label className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-surface-700 dark:text-surface-300">
+            <label className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-surface-700 dark:text-surface-300">
               <input type="checkbox" checked={candidate.cannotMiss} onChange={(event) => update(candidate.id, { cannotMiss: event.target.checked })} className="h-4 w-4 rounded border-surface-300 text-brand-600" />
               Cannot-miss consideration
             </label>
           </li>
         ))}
       </ol>
-      <button type="button" onClick={addCandidate} className="mt-4 inline-flex min-h-10 items-center gap-2 rounded-md border border-brand-300 px-4 text-sm font-semibold text-brand-700 dark:border-brand-700 dark:text-brand-300">
+      <button type="button" onClick={addCandidate} className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-md border border-brand-300 px-4 text-sm font-semibold text-brand-700 dark:border-brand-700 dark:text-brand-300">
         <Plus className="h-4 w-4" aria-hidden /> Add candidate
       </button>
     </section>

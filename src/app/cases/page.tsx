@@ -6,7 +6,7 @@ export default function CasesPage() {
   const cases = getAllCases()
 
   return (
-    <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-8">
         <p className="text-sm font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">
           Interactive revision guide
@@ -78,7 +78,7 @@ export default function CasesPage() {
 
                 <Link
                   href={`/cases/${caseItem.region}/${caseItem.publicSlug}`}
-                  className="mt-4 inline-flex rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
+                  className="mt-4 inline-flex min-h-11 items-center rounded-lg bg-brand-600 px-4 text-sm font-semibold text-white hover:bg-brand-700"
                 >
                   Start case
                 </Link>
@@ -87,6 +87,6 @@ export default function CasesPage() {
           })}
         </div>
       )}
-    </main>
+    </div>
   )
 }
