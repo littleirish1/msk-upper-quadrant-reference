@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "pilotId": "pilot.ankle-foot.lateral-ankle-sprain",
+  "title": "Lateral Ankle Sprain",
+  "pilotStatus": "placeholder",
+  "lifecycleStatus": "draft",
+  "reviewStatus": "unreviewed",
+  "publicEligibility": false,
+  "ingestionAllowed": false,
+  "entityIds": [],
+  "notes": "Empty workflow placeholder. No evidence has been ingested or approved."
+}

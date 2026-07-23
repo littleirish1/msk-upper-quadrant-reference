@@ -92,6 +92,22 @@ try {
     }),
   }, 'sensitive value in governed report snapshot')
 
+  expectPass('evidence-hub-schema-patterns', {
+    'implementation/src/lib/evidence-hub/evidence-hub-v1.schema.json': JSON.stringify({
+      $schema: 'https://json-schema.org/draft/2020-12/schema',
+      properties: {
+        checksum: { type: 'string', pattern: '^sha256:[0-9a-f]{64}$' },
+        id: { type: 'string', pattern: '^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$' },
+      },
+    }),
+  })
+
+  expectFail('evidence-hub-schema-with-credential', {
+    'implementation/src/lib/evidence-hub/evidence-hub-v1.schema.json': JSON.stringify({
+      properties: { compromised: { description: openAiLike } },
+    }),
+  }, 'credential in Evidence Hub schema source')
+
   const telephoneShape = ['07123', '456789'].join('')
   const gitObjectWithTelephoneShape = `${'a'.repeat(10)}${telephoneShape}${'b'.repeat(19)}`
   const cleanGitObject = 'c'.repeat(40)

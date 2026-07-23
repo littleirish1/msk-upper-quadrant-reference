@@ -176,6 +176,18 @@ function isGeneratedReportEvidence(packetPath, repositoryPath) {
 }
 
 function governedEvidenceTexts(packetPath, section) {
+  if (isEvidenceHubReviewSource(packetPath, section.repositoryPath)) {
+    if (!packetPath.endsWith('.patch') && packetPath.endsWith('evidence-hub-v1.schema.json')) {
+      try { return jsonStringValuesExceptKeys(JSON.parse(section.text), new Set(['pattern'])) }
+      catch { return [section.text] }
+    }
+    return section.text
+      .split(/\r?\n/)
+      .filter((line) => !/^(?:diff --git |index |--- |\+\+\+ |@@ )/.test(line))
+      .map((line) => line.replace(/^[+ -]/, ''))
+      .filter((line) => !/^\s*"pattern"\s*:/.test(line))
+      .map(scrubMachineIdentifiers)
+  }
   if (!isGeneratedReportEvidence(packetPath, section.repositoryPath)) return [section.text]
   if (packetPath.startsWith('tracked-reports/') && packetPath.endsWith('.json')) {
     try { return jsonStringValues(JSON.parse(section.text)).map(scrubMachineIdentifiers) }
@@ -185,6 +197,18 @@ function governedEvidenceTexts(packetPath, section) {
     const content = line.replace(/^[+ -]/, '').replace(/^\s*"[^"]+"\s*:\s*/, '')
     return scrubMachineIdentifiers(content)
   })
+}
+
+function isEvidenceHubReviewSource(packetPath, repositoryPath) {
+  const candidate = (repositoryPath || packetPath).replace(/^implementation\//, '')
+  return candidate === 'docs/architecture/evidence-hub-v1.md'
+    || candidate.endsWith('/evidence-hub-v1.schema.json')
+    || candidate === 'evidence-hub-v1.schema.json'
+    || candidate === 'scripts/lib/loadTypeScriptTree.mjs'
+    || candidate === 'package.json'
+    || candidate.startsWith('content/evidence-hub/')
+    || candidate.startsWith('src/lib/evidence-hub/')
+    || candidate.startsWith('scripts/evidence-hub/')
 }
 
 function scanReviewPacketSensitiveText(text, relative) {
@@ -235,6 +259,15 @@ function jsonStringValues(value) {
   if (typeof value === 'string') return [value]
   if (Array.isArray(value)) return value.flatMap(jsonStringValues)
   if (value && typeof value === 'object') return Object.values(value).flatMap(jsonStringValues)
+  return []
+}
+
+function jsonStringValuesExceptKeys(value, excludedKeys) {
+  if (typeof value === 'string') return [value]
+  if (Array.isArray(value)) return value.flatMap((item) => jsonStringValuesExceptKeys(item, excludedKeys))
+  if (value && typeof value === 'object') {
+    return Object.entries(value).flatMap(([key, item]) => excludedKeys.has(key) ? [] : jsonStringValuesExceptKeys(item, excludedKeys))
+  }
   return []
 }
 

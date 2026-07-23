@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "pilotId": "pilot.shoulder.rcrsp",
+  "title": "Rotator Cuff Related Shoulder Pain",
+  "pilotStatus": "placeholder",
+  "lifecycleStatus": "draft",
+  "reviewStatus": "unreviewed",
+  "publicEligibility": false,
+  "ingestionAllowed": false,
+  "entityIds": [],
+  "notes": "Empty workflow placeholder. No evidence has been ingested or approved."
+}

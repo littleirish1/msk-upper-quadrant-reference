@@ -160,9 +160,10 @@ deprecated when superseded or no longer applicable; archived when retained only
 for audit.
 
 **Governance:** private source clearance permits processing only. Public use
-requires verified Reference identity, reviewed locators, completed limitations,
-evidence review, and no restricted/private source leakage. Evidence review does
-not itself approve any clinical Claim.
+requires every source locator to carry explicit `public-evidence-use` scope,
+verified Reference identity, reviewed locators, completed limitations, evidence
+review, and no restricted/private source leakage. Evidence review does not
+itself approve any clinical Claim.
 
 **Relationships:** cites References; supports, contradicts, qualifies, or
 contextualises Claims; may be derived from private source-intake records.
@@ -1031,9 +1032,14 @@ Publication requires all of the following:
 - public Claims have eligible appraised Evidence;
 - clinical revision approval is current;
 - source clearance and media rights permit the intended use;
+- every public Evidence source has explicit `public-evidence-use` clearance;
+- each Evidence/Claim publication dependency includes a canonical,
+  bibliographically verified Reference with verification evidence;
 - record lifecycle is active and `publicEligibility` is explicitly true;
 - case diagnosis/reveal constraints pass;
 - no private or draft dependency is traversed;
+- the generated projection strips private locators, source identifiers,
+  checksums, review-only metadata, and verification evidence;
 - search, links, source, secret, hygiene, AI-manager, 3D, route, and full
   preflight checks pass.
 

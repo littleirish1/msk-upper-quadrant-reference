@@ -1,0 +1,3432 @@
+{
+  "$defs": {
+    "aiProposal": {
+      "additionalProperties": false,
+      "properties": {
+        "autonomousPublicationAllowed": {
+          "const": false,
+          "type": "boolean"
+        },
+        "clinicalApprovalRepresented": {
+          "const": false,
+          "type": "boolean"
+        },
+        "confidence": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "limitations": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "proposalType": {
+          "enum": [
+            "reference",
+            "evidence",
+            "claim",
+            "relationship",
+            "record-update"
+          ],
+          "type": "string"
+        },
+        "proposedRecord": {},
+        "publicEligibility": {
+          "const": false,
+          "type": "boolean"
+        },
+        "reviewerDecisionId": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "sourceChecksums": {
+          "items": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "sourceIds": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "in-review",
+            "accepted-for-draft",
+            "rejected"
+          ],
+          "type": "string"
+        },
+        "targetIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "proposalType",
+        "targetIds",
+        "sourceIds",
+        "sourceChecksums",
+        "proposedRecord",
+        "confidence",
+        "limitations",
+        "status",
+        "publicEligibility",
+        "clinicalApprovalRepresented",
+        "autonomousPublicationAllowed",
+        "reviewerDecisionId"
+      ],
+      "type": "object"
+    },
+    "anatomy": {
+      "additionalProperties": false,
+      "properties": {
+        "anatomyRelationshipIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "category": {
+          "enum": [
+            "bone",
+            "joint",
+            "muscle",
+            "tendon",
+            "ligament",
+            "peripheral-nerve",
+            "nerve-root",
+            "dermatome",
+            "myotome",
+            "spinal-tract",
+            "cranial-nerve",
+            "brain-region",
+            "blood-vessel"
+          ],
+          "type": "string"
+        },
+        "changeSummary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "claimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "courseClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "createdAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "entityType": {
+          "const": "anatomy",
+          "type": "string"
+        },
+        "examinationClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "functionClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "innervationClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "insertionClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "lifecycleStatus": {
+          "enum": [
+            "draft",
+            "active",
+            "deprecated",
+            "archived"
+          ],
+          "type": "string"
+        },
+        "mediaAssetIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "originClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "provenance": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "checksum": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "clearanceScope": {
+                "default": [],
+                "items": {
+                  "enum": [
+                    "citation-extraction",
+                    "private-proposal-support",
+                    "private-topic-mapping",
+                    "public-evidence-use"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "eligibilityStatus": {
+                "enum": [
+                  "cleared-for-private-evidence-processing",
+                  "restricted-pending-clearance",
+                  "quarantined",
+                  "review-required",
+                  "uncleared",
+                  "metadata-only"
+                ],
+                "type": "string"
+              },
+              "locationCategory": {
+                "enum": [
+                  "repository-reviewed-source",
+                  "approved-local-inbox",
+                  "approved-m365",
+                  "external-reference"
+                ],
+                "type": "string"
+              },
+              "locator": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sourceId": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceId",
+              "checksum",
+              "locator",
+              "locationCategory",
+              "eligibilityStatus",
+              "clearanceScope"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "publicEligibility": {
+          "type": "boolean"
+        },
+        "regions": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "relatedContentIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "reviewStatus": {
+          "enum": [
+            "unreviewed",
+            "structural-review",
+            "evidence-review",
+            "clinician-review",
+            "approved",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "revision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "slug": {
+          "pattern": "^[a-z0-9-]+$",
+          "type": "string"
+        },
+        "supersedesRevision": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "updatedAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "entityType",
+        "revision",
+        "lifecycleStatus",
+        "reviewStatus",
+        "publicEligibility",
+        "createdAt",
+        "updatedAt",
+        "provenance",
+        "supersedesRevision",
+        "changeSummary",
+        "title",
+        "slug",
+        "claimIds",
+        "relatedContentIds",
+        "mediaAssetIds",
+        "category",
+        "regions",
+        "anatomyRelationshipIds",
+        "originClaimIds",
+        "insertionClaimIds",
+        "innervationClaimIds",
+        "functionClaimIds",
+        "courseClaimIds",
+        "examinationClaimIds"
+      ],
+      "type": "object"
+    },
+    "claim": {
+      "additionalProperties": false,
+      "properties": {
+        "changeSummary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "claimType": {
+          "enum": [
+            "definition",
+            "epidemiology",
+            "presentation",
+            "assessment",
+            "diagnostic-accuracy",
+            "prognosis",
+            "safety",
+            "management",
+            "communication",
+            "anatomy",
+            "measurement-property",
+            "educational"
+          ],
+          "type": "string"
+        },
+        "clinicalReviewRequired": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "diagnosisBearing": {
+          "default": false,
+          "type": "boolean"
+        },
+        "entityType": {
+          "const": "claim",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "lifecycleStatus": {
+          "enum": [
+            "draft",
+            "active",
+            "deprecated",
+            "archived"
+          ],
+          "type": "string"
+        },
+        "limitations": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "parentClaimId": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "provenance": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "checksum": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "clearanceScope": {
+                "default": [],
+                "items": {
+                  "enum": [
+                    "citation-extraction",
+                    "private-proposal-support",
+                    "private-topic-mapping",
+                    "public-evidence-use"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "eligibilityStatus": {
+                "enum": [
+                  "cleared-for-private-evidence-processing",
+                  "restricted-pending-clearance",
+                  "quarantined",
+                  "review-required",
+                  "uncleared",
+                  "metadata-only"
+                ],
+                "type": "string"
+              },
+              "locationCategory": {
+                "enum": [
+                  "repository-reviewed-source",
+                  "approved-local-inbox",
+                  "approved-m365",
+                  "external-reference"
+                ],
+                "type": "string"
+              },
+              "locator": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sourceId": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceId",
+              "checksum",
+              "locator",
+              "locationCategory",
+              "eligibilityStatus",
+              "clearanceScope"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "publicEligibility": {
+          "type": "boolean"
+        },
+        "relatedClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "reviewDue": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "reviewStatus": {
+          "enum": [
+            "unreviewed",
+            "structural-review",
+            "evidence-review",
+            "clinician-review",
+            "approved",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "revision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "scope": {
+          "additionalProperties": false,
+          "properties": {
+            "population": {
+              "type": "string"
+            },
+            "qualifiers": {
+              "default": [],
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "regions": {
+              "default": [],
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "setting": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "regions",
+            "qualifiers"
+          ],
+          "type": "object"
+        },
+        "statement": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "strength": {
+          "enum": [
+            "pending",
+            "limited",
+            "moderate",
+            "strong",
+            "consensus-only",
+            "not-rated"
+          ],
+          "type": "string"
+        },
+        "supersedesRevision": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "support": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "applicability": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "evidenceId": {
+                "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+                "type": "string"
+              },
+              "evidenceRevision": {
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991,
+                "type": "integer"
+              },
+              "locator": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "role": {
+                "enum": [
+                  "supports",
+                  "contradicts",
+                  "qualifies",
+                  "contextualises"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "evidenceId",
+              "evidenceRevision",
+              "role",
+              "locator",
+              "applicability"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "updatedAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "wordingNotes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "entityType",
+        "revision",
+        "lifecycleStatus",
+        "reviewStatus",
+        "publicEligibility",
+        "createdAt",
+        "updatedAt",
+        "provenance",
+        "supersedesRevision",
+        "changeSummary",
+        "statement",
+        "claimType",
+        "scope",
+        "support",
+        "strength",
+        "limitations",
+        "clinicalReviewRequired",
+        "diagnosisBearing",
+        "relatedClaimIds"
+      ],
+      "type": "object"
+    },
+    "clinicalTest": {
+      "additionalProperties": false,
+      "properties": {
+        "cautionClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "changeSummary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "claimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "clusterMemberIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "createdAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "diagnosticAccuracyClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "entityType": {
+          "const": "clinical-test",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "interpretationClaimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "lifecycleStatus": {
+          "enum": [
+            "draft",
+            "active",
+            "deprecated",
+            "archived"
+          ],
+          "type": "string"
+        },
+        "limitationClaimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "mediaAssetIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "provenance": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "checksum": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "clearanceScope": {
+                "default": [],
+                "items": {
+                  "enum": [
+                    "citation-extraction",
+                    "private-proposal-support",
+                    "private-topic-mapping",
+                    "public-evidence-use"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "eligibilityStatus": {
+                "enum": [
+                  "cleared-for-private-evidence-processing",
+                  "restricted-pending-clearance",
+                  "quarantined",
+                  "review-required",
+                  "uncleared",
+                  "metadata-only"
+                ],
+                "type": "string"
+              },
+              "locationCategory": {
+                "enum": [
+                  "repository-reviewed-source",
+                  "approved-local-inbox",
+                  "approved-m365",
+                  "external-reference"
+                ],
+                "type": "string"
+              },
+              "locator": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sourceId": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceId",
+              "checksum",
+              "locator",
+              "locationCategory",
+              "eligibilityStatus",
+              "clearanceScope"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "publicEligibility": {
+          "type": "boolean"
+        },
+        "purposeClaimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "regions": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "relatedContentIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "reviewStatus": {
+          "enum": [
+            "unreviewed",
+            "structural-review",
+            "evidence-review",
+            "clinician-review",
+            "approved",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "revision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "slug": {
+          "pattern": "^[a-z0-9-]+$",
+          "type": "string"
+        },
+        "supersedesRevision": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "techniqueClaimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "testKind": {
+          "enum": [
+            "single-test",
+            "cluster",
+            "examination-domain"
+          ],
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "updatedAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "entityType",
+        "revision",
+        "lifecycleStatus",
+        "reviewStatus",
+        "publicEligibility",
+        "createdAt",
+        "updatedAt",
+        "provenance",
+        "supersedesRevision",
+        "changeSummary",
+        "title",
+        "slug",
+        "claimIds",
+        "relatedContentIds",
+        "mediaAssetIds",
+        "regions",
+        "testKind",
+        "purposeClaimIds",
+        "techniqueClaimIds",
+        "interpretationClaimIds",
+        "limitationClaimIds",
+        "cautionClaimIds",
+        "diagnosticAccuracyClaimIds",
+        "clusterMemberIds"
+      ],
+      "type": "object"
+    },
+    "condition": {
+      "additionalProperties": false,
+      "properties": {
+        "anatomyIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "changeSummary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "claimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "clinicalTestIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "codes": {
+          "additionalProperties": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "default": {},
+          "propertyNames": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "createdAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "entityType": {
+          "const": "condition",
+          "type": "string"
+        },
+        "exerciseIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "guidedCaseIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "lifecycleStatus": {
+          "enum": [
+            "draft",
+            "active",
+            "deprecated",
+            "archived"
+          ],
+          "type": "string"
+        },
+        "mediaAssetIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "outcomeMeasureIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "provenance": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "checksum": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "clearanceScope": {
+                "default": [],
+                "items": {
+                  "enum": [
+                    "citation-extraction",
+                    "private-proposal-support",
+                    "private-topic-mapping",
+                    "public-evidence-use"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "eligibilityStatus": {
+                "enum": [
+                  "cleared-for-private-evidence-processing",
+                  "restricted-pending-clearance",
+                  "quarantined",
+                  "review-required",
+                  "uncleared",
+                  "metadata-only"
+                ],
+                "type": "string"
+              },
+              "locationCategory": {
+                "enum": [
+                  "repository-reviewed-source",
+                  "approved-local-inbox",
+                  "approved-m365",
+                  "external-reference"
+                ],
+                "type": "string"
+              },
+              "locator": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sourceId": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceId",
+              "checksum",
+              "locator",
+              "locationCategory",
+              "eligibilityStatus",
+              "clearanceScope"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "publicEligibility": {
+          "type": "boolean"
+        },
+        "region": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "relatedContentIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "reviewStatus": {
+          "enum": [
+            "unreviewed",
+            "structural-review",
+            "evidence-review",
+            "clinician-review",
+            "approved",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "reviewSummary": {
+          "additionalProperties": false,
+          "properties": {
+            "reviewDue": {
+              "anyOf": [
+                {
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "reviewedRevision": {
+              "anyOf": [
+                {
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "reviewedRevision",
+            "reviewDue"
+          ],
+          "type": "object"
+        },
+        "revision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "sectionClaims": {
+          "additionalProperties": {
+            "items": {
+              "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "propertyNames": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "slug": {
+          "pattern": "^[a-z0-9-]+$",
+          "type": "string"
+        },
+        "supersedesRevision": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "synonyms": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "tags": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "updatedAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "entityType",
+        "revision",
+        "lifecycleStatus",
+        "reviewStatus",
+        "publicEligibility",
+        "createdAt",
+        "updatedAt",
+        "provenance",
+        "supersedesRevision",
+        "changeSummary",
+        "title",
+        "slug",
+        "claimIds",
+        "relatedContentIds",
+        "mediaAssetIds",
+        "region",
+        "sectionClaims",
+        "reviewSummary",
+        "codes",
+        "synonyms",
+        "tags",
+        "guidedCaseIds",
+        "anatomyIds",
+        "exerciseIds",
+        "clinicalTestIds",
+        "outcomeMeasureIds"
+      ],
+      "type": "object"
+    },
+    "evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "applicability": {
+          "type": "string"
+        },
+        "appraisalStatus": {
+          "enum": [
+            "not-appraised",
+            "appraisal-in-progress",
+            "appraised",
+            "appraisal-outdated"
+          ],
+          "type": "string"
+        },
+        "changeSummary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "comparator": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "createdAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "effectSummary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "entityType": {
+          "const": "evidence",
+          "type": "string"
+        },
+        "evidenceType": {
+          "enum": [
+            "clinical-guideline",
+            "systematic-review",
+            "randomised-trial",
+            "diagnostic-study",
+            "prognostic-study",
+            "observational-study",
+            "consensus",
+            "textbook",
+            "teaching-source",
+            "patient-information",
+            "other"
+          ],
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "intervention": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "lifecycleStatus": {
+          "enum": [
+            "draft",
+            "active",
+            "deprecated",
+            "archived"
+          ],
+          "type": "string"
+        },
+        "limitations": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "outcomes": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "population": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "provenance": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "checksum": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "clearanceScope": {
+                "default": [],
+                "items": {
+                  "enum": [
+                    "citation-extraction",
+                    "private-proposal-support",
+                    "private-topic-mapping",
+                    "public-evidence-use"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "eligibilityStatus": {
+                "enum": [
+                  "cleared-for-private-evidence-processing",
+                  "restricted-pending-clearance",
+                  "quarantined",
+                  "review-required",
+                  "uncleared",
+                  "metadata-only"
+                ],
+                "type": "string"
+              },
+              "locationCategory": {
+                "enum": [
+                  "repository-reviewed-source",
+                  "approved-local-inbox",
+                  "approved-m365",
+                  "external-reference"
+                ],
+                "type": "string"
+              },
+              "locator": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sourceId": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceId",
+              "checksum",
+              "locator",
+              "locationCategory",
+              "eligibilityStatus",
+              "clearanceScope"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "publicEligibility": {
+          "type": "boolean"
+        },
+        "qualityAssessment": {
+          "additionalProperties": false,
+          "properties": {
+            "framework": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "notes": {
+              "default": [],
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "result": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "framework",
+            "result",
+            "notes"
+          ],
+          "type": "object"
+        },
+        "referenceIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "reviewStatus": {
+          "enum": [
+            "unreviewed",
+            "structural-review",
+            "evidence-review",
+            "clinician-review",
+            "approved",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "revision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "setting": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sourceLocators": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "checksum": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "clearanceScope": {
+                "default": [],
+                "items": {
+                  "enum": [
+                    "citation-extraction",
+                    "private-proposal-support",
+                    "private-topic-mapping",
+                    "public-evidence-use"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "eligibilityStatus": {
+                "enum": [
+                  "cleared-for-private-evidence-processing",
+                  "restricted-pending-clearance",
+                  "quarantined",
+                  "review-required",
+                  "uncleared",
+                  "metadata-only"
+                ],
+                "type": "string"
+              },
+              "locationCategory": {
+                "enum": [
+                  "repository-reviewed-source",
+                  "approved-local-inbox",
+                  "approved-m365",
+                  "external-reference"
+                ],
+                "type": "string"
+              },
+              "locator": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sourceId": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceId",
+              "checksum",
+              "locator",
+              "locationCategory",
+              "eligibilityStatus",
+              "clearanceScope"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "studyDesign": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "supersededByEvidenceIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "supersedesRevision": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "updatedAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "verificationStatus": {
+          "enum": [
+            "extracted-unverified",
+            "bibliographic-verified",
+            "full-text-reviewed",
+            "unable-to-verify"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "entityType",
+        "revision",
+        "lifecycleStatus",
+        "reviewStatus",
+        "publicEligibility",
+        "createdAt",
+        "updatedAt",
+        "provenance",
+        "supersedesRevision",
+        "changeSummary",
+        "title",
+        "evidenceType",
+        "referenceIds",
+        "sourceLocators",
+        "verificationStatus",
+        "appraisalStatus",
+        "applicability",
+        "limitations",
+        "outcomes",
+        "supersededByEvidenceIds"
+      ],
+      "type": "object"
+    },
+    "exercise": {
+      "additionalProperties": false,
+      "properties": {
+        "changeSummary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "claimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "contraindicationClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "createdAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "dosageClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "dosageStatus": {
+          "enum": [
+            "individualise",
+            "protocol-linked",
+            "not-specified"
+          ],
+          "type": "string"
+        },
+        "entityType": {
+          "const": "exercise",
+          "type": "string"
+        },
+        "equipment": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "instructionClaimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "lifecycleStatus": {
+          "enum": [
+            "draft",
+            "active",
+            "deprecated",
+            "archived"
+          ],
+          "type": "string"
+        },
+        "mediaAssetIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "position": {
+          "type": "string"
+        },
+        "progressionClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "provenance": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "checksum": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "clearanceScope": {
+                "default": [],
+                "items": {
+                  "enum": [
+                    "citation-extraction",
+                    "private-proposal-support",
+                    "private-topic-mapping",
+                    "public-evidence-use"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "eligibilityStatus": {
+                "enum": [
+                  "cleared-for-private-evidence-processing",
+                  "restricted-pending-clearance",
+                  "quarantined",
+                  "review-required",
+                  "uncleared",
+                  "metadata-only"
+                ],
+                "type": "string"
+              },
+              "locationCategory": {
+                "enum": [
+                  "repository-reviewed-source",
+                  "approved-local-inbox",
+                  "approved-m365",
+                  "external-reference"
+                ],
+                "type": "string"
+              },
+              "locator": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sourceId": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceId",
+              "checksum",
+              "locator",
+              "locationCategory",
+              "eligibilityStatus",
+              "clearanceScope"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "publicEligibility": {
+          "type": "boolean"
+        },
+        "purposeClaimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "regions": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "regressionClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "relatedContentIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "reviewStatus": {
+          "enum": [
+            "unreviewed",
+            "structural-review",
+            "evidence-review",
+            "clinician-review",
+            "approved",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "revision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "safetyClaimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "slug": {
+          "pattern": "^[a-z0-9-]+$",
+          "type": "string"
+        },
+        "supersedesRevision": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "updatedAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "entityType",
+        "revision",
+        "lifecycleStatus",
+        "reviewStatus",
+        "publicEligibility",
+        "createdAt",
+        "updatedAt",
+        "provenance",
+        "supersedesRevision",
+        "changeSummary",
+        "title",
+        "slug",
+        "claimIds",
+        "relatedContentIds",
+        "mediaAssetIds",
+        "regions",
+        "purposeClaimIds",
+        "instructionClaimIds",
+        "safetyClaimIds",
+        "dosageStatus",
+        "dosageClaimIds",
+        "progressionClaimIds",
+        "regressionClaimIds",
+        "contraindicationClaimIds",
+        "equipment"
+      ],
+      "type": "object"
+    },
+    "guidedCase": {
+      "additionalProperties": false,
+      "properties": {
+        "anatomyIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "changeSummary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "clinicalTestIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "createdAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "diagnosisRevealStageId": {
+          "pattern": "^[a-z0-9-]+$",
+          "type": "string"
+        },
+        "difficulty": {
+          "type": "string"
+        },
+        "entityType": {
+          "const": "guided-case",
+          "type": "string"
+        },
+        "estimatedTime": {
+          "type": "string"
+        },
+        "exerciseIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "internalTitle": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "learningModeIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "lifecycleStatus": {
+          "enum": [
+            "draft",
+            "active",
+            "deprecated",
+            "archived"
+          ],
+          "type": "string"
+        },
+        "linkedConditionId": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "mediaAssetIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "neutralPublicSlug": {
+          "pattern": "^[a-z0-9-]+$",
+          "type": "string"
+        },
+        "neutralTitle": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "outcomeMeasureIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "provenance": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "checksum": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "clearanceScope": {
+                "default": [],
+                "items": {
+                  "enum": [
+                    "citation-extraction",
+                    "private-proposal-support",
+                    "private-topic-mapping",
+                    "public-evidence-use"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "eligibilityStatus": {
+                "enum": [
+                  "cleared-for-private-evidence-processing",
+                  "restricted-pending-clearance",
+                  "quarantined",
+                  "review-required",
+                  "uncleared",
+                  "metadata-only"
+                ],
+                "type": "string"
+              },
+              "locationCategory": {
+                "enum": [
+                  "repository-reviewed-source",
+                  "approved-local-inbox",
+                  "approved-m365",
+                  "external-reference"
+                ],
+                "type": "string"
+              },
+              "locator": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sourceId": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceId",
+              "checksum",
+              "locator",
+              "locationCategory",
+              "eligibilityStatus",
+              "clearanceScope"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "publicEligibility": {
+          "type": "boolean"
+        },
+        "region": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "reviewStatus": {
+          "enum": [
+            "unreviewed",
+            "structural-review",
+            "evidence-review",
+            "clinician-review",
+            "approved",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "revision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "stages": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "claimIds": {
+                "items": {
+                  "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "id": {
+                "pattern": "^[a-z0-9-]+$",
+                "type": "string"
+              },
+              "prompt": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "revealPolicy": {
+                "enum": [
+                  "initial",
+                  "learner-action",
+                  "diagnosis-reveal",
+                  "post-reveal"
+                ],
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "presentation",
+                  "differential",
+                  "justification",
+                  "history-reveal",
+                  "red-flags",
+                  "examination",
+                  "findings-reveal",
+                  "investigation",
+                  "management",
+                  "patient-explanation",
+                  "expert-comparison",
+                  "reflection"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "prompt",
+              "claimIds",
+              "revealPolicy"
+            ],
+            "type": "object"
+          },
+          "minItems": 2,
+          "type": "array"
+        },
+        "supersedesRevision": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "updatedAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "entityType",
+        "revision",
+        "lifecycleStatus",
+        "reviewStatus",
+        "publicEligibility",
+        "createdAt",
+        "updatedAt",
+        "provenance",
+        "supersedesRevision",
+        "changeSummary",
+        "internalTitle",
+        "neutralTitle",
+        "neutralPublicSlug",
+        "region",
+        "linkedConditionId",
+        "stages",
+        "diagnosisRevealStageId",
+        "anatomyIds",
+        "exerciseIds",
+        "clinicalTestIds",
+        "outcomeMeasureIds",
+        "mediaAssetIds",
+        "learningModeIds"
+      ],
+      "type": "object"
+    },
+    "mediaAsset": {
+      "additionalProperties": false,
+      "properties": {
+        "accessibilityStatus": {
+          "enum": [
+            "not-reviewed",
+            "changes-required",
+            "approved"
+          ],
+          "type": "string"
+        },
+        "altText": {
+          "type": "string"
+        },
+        "assetType": {
+          "enum": [
+            "image",
+            "diagram",
+            "audio",
+            "video",
+            "document",
+            "imaging",
+            "model-3d"
+          ],
+          "type": "string"
+        },
+        "attribution": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        },
+        "changeSummary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "checksum": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "clinicalAnnotationClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "createdAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "creator": {
+          "type": "string"
+        },
+        "derivativeOfMediaAssetId": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "entityType": {
+          "const": "media-asset",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "licence": {
+          "type": "string"
+        },
+        "licenceUrl": {
+          "format": "uri",
+          "type": "string"
+        },
+        "lifecycleStatus": {
+          "enum": [
+            "draft",
+            "active",
+            "deprecated",
+            "archived"
+          ],
+          "type": "string"
+        },
+        "mimeType": {
+          "type": "string"
+        },
+        "modificationHistory": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "provenance": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "checksum": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "clearanceScope": {
+                "default": [],
+                "items": {
+                  "enum": [
+                    "citation-extraction",
+                    "private-proposal-support",
+                    "private-topic-mapping",
+                    "public-evidence-use"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "eligibilityStatus": {
+                "enum": [
+                  "cleared-for-private-evidence-processing",
+                  "restricted-pending-clearance",
+                  "quarantined",
+                  "review-required",
+                  "uncleared",
+                  "metadata-only"
+                ],
+                "type": "string"
+              },
+              "locationCategory": {
+                "enum": [
+                  "repository-reviewed-source",
+                  "approved-local-inbox",
+                  "approved-m365",
+                  "external-reference"
+                ],
+                "type": "string"
+              },
+              "locator": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sourceId": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceId",
+              "checksum",
+              "locator",
+              "locationCategory",
+              "eligibilityStatus",
+              "clearanceScope"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "publicEligibility": {
+          "type": "boolean"
+        },
+        "publicPath": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "relatedContentIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "reviewStatus": {
+          "enum": [
+            "unreviewed",
+            "structural-review",
+            "evidence-review",
+            "clinician-review",
+            "approved",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "revision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "rightsStatus": {
+          "enum": [
+            "unknown",
+            "review-required",
+            "approved",
+            "restricted"
+          ],
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "sourceProvenance": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "checksum": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "clearanceScope": {
+                "default": [],
+                "items": {
+                  "enum": [
+                    "citation-extraction",
+                    "private-proposal-support",
+                    "private-topic-mapping",
+                    "public-evidence-use"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "eligibilityStatus": {
+                "enum": [
+                  "cleared-for-private-evidence-processing",
+                  "restricted-pending-clearance",
+                  "quarantined",
+                  "review-required",
+                  "uncleared",
+                  "metadata-only"
+                ],
+                "type": "string"
+              },
+              "locationCategory": {
+                "enum": [
+                  "repository-reviewed-source",
+                  "approved-local-inbox",
+                  "approved-m365",
+                  "external-reference"
+                ],
+                "type": "string"
+              },
+              "locator": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sourceId": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceId",
+              "checksum",
+              "locator",
+              "locationCategory",
+              "eligibilityStatus",
+              "clearanceScope"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "storageClass": {
+          "enum": [
+            "private-cache",
+            "tracked-metadata",
+            "approved-public-asset",
+            "external-link"
+          ],
+          "type": "string"
+        },
+        "supersedesRevision": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "transcript": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "entityType",
+        "revision",
+        "lifecycleStatus",
+        "reviewStatus",
+        "publicEligibility",
+        "createdAt",
+        "updatedAt",
+        "provenance",
+        "supersedesRevision",
+        "changeSummary",
+        "title",
+        "assetType",
+        "checksum",
+        "storageClass",
+        "sourceProvenance",
+        "rightsStatus",
+        "attribution",
+        "accessibilityStatus",
+        "modificationHistory",
+        "relatedContentIds",
+        "clinicalAnnotationClaimIds"
+      ],
+      "type": "object"
+    },
+    "outcomeMeasure": {
+      "additionalProperties": false,
+      "properties": {
+        "abbreviation": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "changeSummary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "claimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "constructClaimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "createdAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "entityType": {
+          "const": "outcome-measure",
+          "type": "string"
+        },
+        "externalAccessUrl": {
+          "format": "uri",
+          "type": "string"
+        },
+        "formMediaAssetId": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "interpretationClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "licenceStatus": {
+          "enum": [
+            "unknown",
+            "review-required",
+            "approved-for-described-use",
+            "restricted"
+          ],
+          "type": "string"
+        },
+        "lifecycleStatus": {
+          "enum": [
+            "draft",
+            "active",
+            "deprecated",
+            "archived"
+          ],
+          "type": "string"
+        },
+        "mcidClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "mdcClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "measurementPropertyClaimIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "mediaAssetIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "populationClaimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "provenance": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "checksum": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "clearanceScope": {
+                "default": [],
+                "items": {
+                  "enum": [
+                    "citation-extraction",
+                    "private-proposal-support",
+                    "private-topic-mapping",
+                    "public-evidence-use"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "eligibilityStatus": {
+                "enum": [
+                  "cleared-for-private-evidence-processing",
+                  "restricted-pending-clearance",
+                  "quarantined",
+                  "review-required",
+                  "uncleared",
+                  "metadata-only"
+                ],
+                "type": "string"
+              },
+              "locationCategory": {
+                "enum": [
+                  "repository-reviewed-source",
+                  "approved-local-inbox",
+                  "approved-m365",
+                  "external-reference"
+                ],
+                "type": "string"
+              },
+              "locator": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sourceId": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceId",
+              "checksum",
+              "locator",
+              "locationCategory",
+              "eligibilityStatus",
+              "clearanceScope"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "publicEligibility": {
+          "type": "boolean"
+        },
+        "relatedContentIds": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "reviewStatus": {
+          "enum": [
+            "unreviewed",
+            "structural-review",
+            "evidence-review",
+            "clinician-review",
+            "approved",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "revision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "scoringClaimIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "slug": {
+          "pattern": "^[a-z0-9-]+$",
+          "type": "string"
+        },
+        "supersedesRevision": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "updatedAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "entityType",
+        "revision",
+        "lifecycleStatus",
+        "reviewStatus",
+        "publicEligibility",
+        "createdAt",
+        "updatedAt",
+        "provenance",
+        "supersedesRevision",
+        "changeSummary",
+        "title",
+        "slug",
+        "claimIds",
+        "relatedContentIds",
+        "mediaAssetIds",
+        "licenceStatus",
+        "constructClaimIds",
+        "populationClaimIds",
+        "scoringClaimIds",
+        "interpretationClaimIds",
+        "measurementPropertyClaimIds",
+        "mcidClaimIds",
+        "mdcClaimIds"
+      ],
+      "type": "object"
+    },
+    "pilot": {
+      "additionalProperties": false,
+      "properties": {
+        "entityIds": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "ingestionAllowed": {
+          "type": "boolean"
+        },
+        "lifecycleStatus": {
+          "enum": [
+            "draft",
+            "active",
+            "archived"
+          ],
+          "type": "string"
+        },
+        "notes": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "pilotId": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "pilotStatus": {
+          "enum": [
+            "placeholder",
+            "active",
+            "complete"
+          ],
+          "type": "string"
+        },
+        "publicEligibility": {
+          "const": false,
+          "type": "boolean"
+        },
+        "reviewStatus": {
+          "enum": [
+            "unreviewed",
+            "structural-review",
+            "evidence-review",
+            "clinician-review",
+            "approved",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "pilotId",
+        "title",
+        "pilotStatus",
+        "lifecycleStatus",
+        "reviewStatus",
+        "publicEligibility",
+        "ingestionAllowed",
+        "entityIds",
+        "notes"
+      ],
+      "type": "object"
+    },
+    "reference": {
+      "additionalProperties": false,
+      "properties": {
+        "authors": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "canonicalReferenceId": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "changeSummary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "citationAsPresented": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "createdAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "doi": {
+          "type": "string"
+        },
+        "duplicateGroupId": {
+          "type": "string"
+        },
+        "entityType": {
+          "const": "reference",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "isbn": {
+          "type": "string"
+        },
+        "issue": {
+          "type": "string"
+        },
+        "journalOrPublisher": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "lifecycleStatus": {
+          "enum": [
+            "draft",
+            "active",
+            "deprecated",
+            "archived"
+          ],
+          "type": "string"
+        },
+        "pages": {
+          "type": "string"
+        },
+        "pmid": {
+          "type": "string"
+        },
+        "provenance": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "checksum": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "clearanceScope": {
+                "default": [],
+                "items": {
+                  "enum": [
+                    "citation-extraction",
+                    "private-proposal-support",
+                    "private-topic-mapping",
+                    "public-evidence-use"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "eligibilityStatus": {
+                "enum": [
+                  "cleared-for-private-evidence-processing",
+                  "restricted-pending-clearance",
+                  "quarantined",
+                  "review-required",
+                  "uncleared",
+                  "metadata-only"
+                ],
+                "type": "string"
+              },
+              "locationCategory": {
+                "enum": [
+                  "repository-reviewed-source",
+                  "approved-local-inbox",
+                  "approved-m365",
+                  "external-reference"
+                ],
+                "type": "string"
+              },
+              "locator": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sourceId": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceId",
+              "checksum",
+              "locator",
+              "locationCategory",
+              "eligibilityStatus",
+              "clearanceScope"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "publicEligibility": {
+          "type": "boolean"
+        },
+        "referenceType": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "reviewStatus": {
+          "enum": [
+            "unreviewed",
+            "structural-review",
+            "evidence-review",
+            "clinician-review",
+            "approved",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "revision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "sourceProvenance": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "checksum": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "clearanceScope": {
+                "default": [],
+                "items": {
+                  "enum": [
+                    "citation-extraction",
+                    "private-proposal-support",
+                    "private-topic-mapping",
+                    "public-evidence-use"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "eligibilityStatus": {
+                "enum": [
+                  "cleared-for-private-evidence-processing",
+                  "restricted-pending-clearance",
+                  "quarantined",
+                  "review-required",
+                  "uncleared",
+                  "metadata-only"
+                ],
+                "type": "string"
+              },
+              "locationCategory": {
+                "enum": [
+                  "repository-reviewed-source",
+                  "approved-local-inbox",
+                  "approved-m365",
+                  "external-reference"
+                ],
+                "type": "string"
+              },
+              "locator": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "sourceId": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sourceId",
+              "checksum",
+              "locator",
+              "locationCategory",
+              "eligibilityStatus",
+              "clearanceScope"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "supersedesRevision": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "updatedAt": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "type": "string"
+        },
+        "verificationEvidence": {
+          "type": "string"
+        },
+        "verificationStatus": {
+          "enum": [
+            "candidate",
+            "identifier-verified",
+            "bibliographic-verified",
+            "unable-to-verify"
+          ],
+          "type": "string"
+        },
+        "volume": {
+          "type": "string"
+        },
+        "year": {
+          "pattern": "^\\d{4}[a-z]?$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "entityType",
+        "revision",
+        "lifecycleStatus",
+        "reviewStatus",
+        "publicEligibility",
+        "createdAt",
+        "updatedAt",
+        "provenance",
+        "supersedesRevision",
+        "changeSummary",
+        "citationAsPresented",
+        "referenceType",
+        "verificationStatus",
+        "sourceProvenance",
+        "authors"
+      ],
+      "type": "object"
+    },
+    "relationship": {
+      "additionalProperties": false,
+      "properties": {
+        "applicability": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "evidenceLocator": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "fromId": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "fromRevision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "lifecycleStatus": {
+          "enum": [
+            "draft",
+            "active",
+            "deprecated",
+            "archived"
+          ],
+          "type": "string"
+        },
+        "order": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "revealStageId": {
+          "pattern": "^[a-z0-9-]+$",
+          "type": "string"
+        },
+        "reviewStatus": {
+          "enum": [
+            "unreviewed",
+            "structural-review",
+            "evidence-review",
+            "clinician-review",
+            "approved",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "supports",
+            "contradicts",
+            "qualifies",
+            "contextualises",
+            "uses",
+            "references",
+            "illustrates",
+            "measures",
+            "assesses",
+            "applies-to",
+            "related-to",
+            "supersedes"
+          ],
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "section": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "toId": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "toRevision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "fromId",
+        "toId",
+        "role",
+        "fromRevision",
+        "toRevision",
+        "lifecycleStatus",
+        "reviewStatus"
+      ],
+      "type": "object"
+    },
+    "reviewDecision": {
+      "additionalProperties": false,
+      "properties": {
+        "canonicalRecordHash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "decision": {
+          "enum": [
+            "approve",
+            "approve-with-edits",
+            "reject",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "decisionDate": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "entityId": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "entityRevision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z0-9-]+)+$",
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "reviewerRole": {
+          "enum": [
+            "structural-reviewer",
+            "evidence-reviewer",
+            "clinician",
+            "rights-reviewer"
+          ],
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "scope": {
+          "items": {
+            "enum": [
+              "structure",
+              "evidence",
+              "clinical-meaning",
+              "rights",
+              "accessibility"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "entityId",
+        "entityRevision",
+        "canonicalRecordHash",
+        "reviewerRole",
+        "decision",
+        "scope",
+        "decisionDate",
+        "notes"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://example.invalid/msk/evidence-hub/v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/evidence"
+    },
+    {
+      "$ref": "#/$defs/claim"
+    },
+    {
+      "$ref": "#/$defs/condition"
+    },
+    {
+      "$ref": "#/$defs/anatomy"
+    },
+    {
+      "$ref": "#/$defs/exercise"
+    },
+    {
+      "$ref": "#/$defs/clinicalTest"
+    },
+    {
+      "$ref": "#/$defs/outcomeMeasure"
+    },
+    {
+      "$ref": "#/$defs/guidedCase"
+    },
+    {
+      "$ref": "#/$defs/reference"
+    },
+    {
+      "$ref": "#/$defs/mediaAsset"
+    }
+  ],
+  "title": "Evidence Hub v1 record"
+}
