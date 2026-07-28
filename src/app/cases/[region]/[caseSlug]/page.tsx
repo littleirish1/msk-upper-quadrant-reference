@@ -3,20 +3,22 @@ import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
-import { getRegion, getCondition } from '@/data/taxonomy'
+import { getRegion } from '@/data/taxonomy'
 import {
   getAllCasePaths,
   getCaseContent,
   getCaseLearnerLabel,
   resolveCaseSlugFromPublicSlug,
 } from '@/lib/mdx'
+import {
+  extractCasePresentationStem,
+  stripPreRevealLinkedConditionSection,
+} from '@/lib/caseContent'
+import { getCaseRevealId } from '@/lib/caseRevealServer'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
 import { mdxComponents } from '@/components/mdx/MDXComponents'
-import {
-  CaseReasoningPrompt,
-  type EnhancedReasoningFeedbackConfig,
-} from '@/components/cases/CaseReasoningPrompt'
+import { CaseReasoningPrompt } from '@/components/cases/CaseReasoningPrompt'
 import { ConversationCase } from '@/components/cases/ConversationCase'
 
 interface Props {
@@ -55,25 +57,13 @@ export default async function GuidedCasePage({ params }: Props) {
 
   const region = getRegion(regionSlug)
 
-  const conditionSlug =
-    typeof result.frontmatter.condition === 'string'
-      ? result.frontmatter.condition
-      : undefined
-
-  const condition =
-    conditionSlug && region
-      ? getCondition(regionSlug, conditionSlug)
-      : null
   const displayTitle = getCaseLearnerLabel(caseSlug, result.frontmatter.title, regionSlug)
   const learnerContent = stripPreRevealLinkedConditionSection(
     result.content,
   )
   const casePresentationContent = extractCasePresentationStem(learnerContent)
-  const learnerSections = result.sections.filter(
-    (section) => section.heading.toLowerCase() !== 'linked evidence and condition pages',
-  )
-  const enhancedFeedback = getEnhancedFeedbackConfig(caseSlug)
   const showConversationPreview = caseSlug === 'visceral-referral-mimicking-thoracic-msk-case-01'
+  const revealId = getCaseRevealId(regionSlug, publicCaseSlug)
 
   return (
     <div className="flex">
@@ -141,143 +131,10 @@ export default async function GuidedCasePage({ params }: Props) {
 
         <CaseReasoningPrompt
           displayTitle={displayTitle}
-          actualTitle={result.frontmatter.title}
-          conditionLabel={condition?.label}
-          conditionHref={condition ? `/${regionSlug}/${condition.slug}` : undefined}
-          enhancedFeedback={enhancedFeedback}
-        >
-          {learnerSections.length > 0 && (
-            <nav aria-label="Case sections" className="mb-8 flex flex-wrap gap-2 xl:hidden">
-              {learnerSections.map((section) => (
-                <a
-                  key={section.slug}
-                  href={`#${section.slug}`}
-                  className="rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 transition-colors hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950 dark:text-brand-300 dark:hover:bg-brand-900"
-                >
-                  {section.heading}
-                </a>
-              ))}
-            </nav>
-          )}
-
-          <article className="prose-clinical">
-            <MDXRemote
-              source={learnerContent}
-              components={mdxComponents}
-              options={{
-                mdxOptions: {
-                  remarkPlugins: [remarkGfm],
-                  rehypePlugins: [rehypeSlug],
-                },
-              }}
-            />
-          </article>
-        </CaseReasoningPrompt>
+          revealId={revealId}
+          enhancedFeedbackAvailable={caseSlug === 'cervical-radiculopathy-case-01'}
+        />
       </div>
     </div>
   )
-}
-
-function stripPreRevealLinkedConditionSection(content: string): string {
-  return content.replace(/\n## Linked evidence and condition pages[\s\S]*$/i, '')
-}
-
-function extractCasePresentationStem(content: string): string {
-  const firstRevealIndex = firstIndexOf(content, [
-    '<ReasoningPrompt',
-    '<RevealAnswer',
-  ])
-  const stem = firstRevealIndex >= 0 ? content.slice(0, firstRevealIndex) : content
-
-  return stem
-    .replace(/^##\s+(case presentation|initial presentation|what you know so far)\s*/i, '')
-    .replace(/^##\s+[^\n]+\n+/, '')
-    .trim()
-}
-
-function firstIndexOf(content: string, markers: string[]): number {
-  const indexes = markers
-    .map((marker) => content.indexOf(marker))
-    .filter((index) => index >= 0)
-
-  return indexes.length ? Math.min(...indexes) : -1
-}
-
-function getEnhancedFeedbackConfig(
-  caseSlug: string,
-): EnhancedReasoningFeedbackConfig | undefined {
-  if (caseSlug !== 'cervical-radiculopathy-case-01') {
-    return undefined
-  }
-
-  return {
-    badgeLabel: 'Enhanced reasoning feedback preview',
-    conceptGroups: {
-      hypothesis: [
-        'cervical nerve root',
-        'cervical radiculopathy',
-        'nerve root irritation',
-        'nerve root',
-        'c6 pattern',
-        'radicular pain',
-        'radicular',
-      ],
-      supportingFeatures: [
-        'arm pain',
-        'dermatomal distribution',
-        'dermatome',
-        'thumb',
-        'index finger',
-        'paresthesia',
-        'pins and needles',
-        'reduced sensation',
-        'reflex change',
-        'biceps reflex',
-        'weakness',
-        'myotomal weakness',
-        'spurling',
-        'distraction relief',
-        'ultt',
-        'upper limb tension',
-        'shoulder abduction relief',
-        'bakody',
-      ],
-      cautionSafety: [
-        'myelopathy',
-        'bilateral symptoms',
-        'gait change',
-        'hand clumsiness',
-        'upper motor neuron',
-        'upper motor neurone',
-        'progressive weakness',
-        'bowel',
-        'bladder',
-        'systemic red flags',
-        'cancer',
-        'fever',
-        'weight loss',
-      ],
-      nextAssessment: [
-        'neurological exam',
-        'neurological examination',
-        'dermatomes',
-        'myotomes',
-        'reflexes',
-        'myelopathy screen',
-        'spurling',
-        'distraction',
-        'ultt',
-        'upper limb tension',
-        'cervical range of motion',
-        'shoulder screen',
-      ],
-      localOnlyPattern: [
-        'shoulder',
-        'rotator cuff',
-        'impingement',
-        'local arm pain',
-        'muscle strain',
-      ],
-    },
-  }
 }

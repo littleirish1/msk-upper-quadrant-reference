@@ -14,9 +14,14 @@ Diagnosis must not be spoiled before reveal anywhere the learner can see it, inc
 - search result
 - related links
 - metadata rendered into the page
-- pre-reveal HTML
+- complete initial HTML
+- inline scripts, hydration data, RSC payloads, and initially loaded assets
 
 The final diagnosis or linked condition may appear only in the final reveal step or in an area that is safely gated after reveal.
+
+The static-site implementation contract is defined in
+`docs/CASE_DISCLOSURE_BOUNDARY.md`. Delayed public reveal assets provide
+pedagogical progressive disclosure, not confidential storage or access control.
 
 Condition/reference links that identify the answer may appear only after reveal. Condition pages may exist as reference pages, but they must not link directly to a matching unrevealed guided case.
 

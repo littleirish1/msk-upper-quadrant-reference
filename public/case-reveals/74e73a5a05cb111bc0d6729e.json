@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "revealId": "74e73a5a05cb111bc0d6729e",
+  "actualTitle": "Cervical Case 01: Neck and Arm Pain",
+  "conditionLabel": "Cervical Radiculopathy",
+  "conditionHref": "/cervical/cervical-radiculopathy",
+  "sections": [
+    {
+      "heading": "Differential diagnosis",
+      "slug": "differential-diagnosis"
+    },
+    {
+      "heading": "Red flag screening",
+      "slug": "red-flag-screening"
+    },
+    {
+      "heading": "Objective assessment",
+      "slug": "objective-assessment"
+    },
+    {
+      "heading": "Expected findings",
+      "slug": "expected-findings"
+    },
+    {
+      "heading": "Management reasoning",
+      "slug": "management-reasoning"
+    },
+    {
+      "heading": "Common traps",
+      "slug": "common-traps"
+    }
+  ],
+  "contentHtml": "<section class=\"my-5 rounded-xl border border-purple-200 bg-purple-50 p-4 dark:border-purple-800 dark:bg-purple-950/30\"><p class=\"text-sm font-bold uppercase text-purple-700 dark:text-purple-300\">Clinical reasoning prompt</p><p class=\"mt-1 text-sm font-medium leading-relaxed text-purple-950 dark:text-purple-100\">What is your leading clinical hypothesis, and what features support it?</p></section>\n<details class=\"my-4 rounded-xl border border-brand-200 bg-white p-4 shadow-sm dark:border-brand-800 dark:bg-surface-900\"><summary class=\"cursor-pointer select-none text-sm font-semibold text-brand-700 dark:text-brand-300\">Compare your reasoning</summary><div class=\"mt-3 border-t border-surface-100 pt-3 text-sm leading-relaxed text-surface-700 dark:border-surface-800 dark:text-surface-300\"><p>The leading hypothesis is cervical radiculopathy.</p><p>Supporting features include neck pain with arm symptoms, paraesthesia into a possible C6 distribution, aggravation with cervical postures and movement, relief with shoulder abduction position, and sleep disturbance linked to symptom provocation.</p><p>The presentation suggests possible nerve root involvement rather than isolated mechanical neck pain because symptoms extend beyond the neck into the arm with sensory features.</p></div></details>\n<h2 id=\"differential-diagnosis\">Differential diagnosis</h2>\n<section class=\"my-5 rounded-xl border border-purple-200 bg-purple-50 p-4 dark:border-purple-800 dark:bg-purple-950/30\"><p class=\"text-sm font-bold uppercase text-purple-700 dark:text-purple-300\">Clinical reasoning prompt</p><p class=\"mt-1 text-sm font-medium leading-relaxed text-purple-950 dark:text-purple-100\">What are your top three differentials, and what would make each more or less likely?</p></section>\n<details class=\"my-4 rounded-xl border border-brand-200 bg-white p-4 shadow-sm dark:border-brand-800 dark:bg-surface-900\"><summary class=\"cursor-pointer select-none text-sm font-semibold text-brand-700 dark:text-brand-300\">Compare your reasoning</summary><div class=\"mt-3 border-t border-surface-100 pt-3 text-sm leading-relaxed text-surface-700 dark:border-surface-800 dark:text-surface-300\"><p>Important differentials include mechanical neck pain with referred pain, peripheral nerve entrapment, shoulder pathology, thoracic outlet syndrome, and early cervical myelopathy.</p><p>Mechanical neck pain with referred pain may cause arm discomfort, but true dermatomal paraesthesia, neurological signs, or positive neurodynamic findings would increase suspicion of radiculopathy.</p><p>Peripheral nerve entrapment becomes more likely if symptoms follow a peripheral nerve distribution rather than a nerve root pattern, and if symptoms are provoked by local nerve compression tests.</p><p>Shoulder pathology becomes more likely if symptoms are strongly linked to shoulder loading, resisted shoulder testing, or shoulder range rather than cervical movement.</p><p>Cervical myelopathy must be screened for if there are bilateral symptoms, gait disturbance, hand clumsiness, hyperreflexia, upper motor neuron signs, or bowel/bladder changes.</p></div></details>\n<h2 id=\"red-flag-screening\">Red flag screening</h2>\n<section class=\"my-5 rounded-xl border border-purple-200 bg-purple-50 p-4 dark:border-purple-800 dark:bg-purple-950/30\"><p class=\"text-sm font-bold uppercase text-purple-700 dark:text-purple-300\">Clinical reasoning prompt</p><p class=\"mt-1 text-sm font-medium leading-relaxed text-purple-950 dark:text-purple-100\">What red flags or serious pathology considerations would you screen for?</p></section>\n<details class=\"my-4 rounded-xl border border-brand-200 bg-white p-4 shadow-sm dark:border-brand-800 dark:bg-surface-900\"><summary class=\"cursor-pointer select-none text-sm font-semibold text-brand-700 dark:text-brand-300\">Compare your reasoning</summary><div class=\"mt-3 border-t border-surface-100 pt-3 text-sm leading-relaxed text-surface-700 dark:border-surface-800 dark:text-surface-300\"><p>Screen for trauma, fracture risk, unexplained weight loss, history of cancer, fever, infection risk, night sweats, constant progressive pain, inflammatory features, progressive neurological deficit, bilateral neurological symptoms, gait disturbance, hand clumsiness, and bowel or bladder dysfunction.</p><p>In this case, the absence of bilateral symptoms, gait disturbance, bowel/bladder change, and systemic symptoms is reassuring, but neurological screening is still required because arm paraesthesia is present.</p></div></details>\n<h2 id=\"objective-assessment\">Objective assessment</h2>\n<section class=\"my-5 rounded-xl border border-purple-200 bg-purple-50 p-4 dark:border-purple-800 dark:bg-purple-950/30\"><p class=\"text-sm font-bold uppercase text-purple-700 dark:text-purple-300\">Clinical reasoning prompt</p><p class=\"mt-1 text-sm font-medium leading-relaxed text-purple-950 dark:text-purple-100\">What would you prioritise in your objective assessment?</p></section>\n<details class=\"my-4 rounded-xl border border-brand-200 bg-white p-4 shadow-sm dark:border-brand-800 dark:bg-surface-900\"><summary class=\"cursor-pointer select-none text-sm font-semibold text-brand-700 dark:text-brand-300\">Compare your reasoning</summary><div class=\"mt-3 border-t border-surface-100 pt-3 text-sm leading-relaxed text-surface-700 dark:border-surface-800 dark:text-surface-300\"><p>Prioritise cervical active range of movement, symptom response to repeated or sustained cervical positions, neurological screen, upper limb neurodynamic testing, shoulder screen, and tests that may help support or challenge cervical radiculopathy.</p><p>A neurological screen should include myotomes, dermatomes, and reflexes relevant to the suspected level.</p><p>Also consider cervical distraction, Spurling-type provocation where appropriate, and symptom modification tests, while remembering that no single test should be interpreted in isolation.</p></div></details>\n<h2 id=\"expected-findings\">Expected findings</h2>\n<section class=\"my-5 rounded-xl border border-purple-200 bg-purple-50 p-4 dark:border-purple-800 dark:bg-purple-950/30\"><p class=\"text-sm font-bold uppercase text-purple-700 dark:text-purple-300\">Clinical reasoning prompt</p><p class=\"mt-1 text-sm font-medium leading-relaxed text-purple-950 dark:text-purple-100\">What objective findings would fit your leading hypothesis?</p></section>\n<details class=\"my-4 rounded-xl border border-brand-200 bg-white p-4 shadow-sm dark:border-brand-800 dark:bg-surface-900\"><summary class=\"cursor-pointer select-none text-sm font-semibold text-brand-700 dark:text-brand-300\">Compare your reasoning</summary><div class=\"mt-3 border-t border-surface-100 pt-3 text-sm leading-relaxed text-surface-700 dark:border-surface-800 dark:text-surface-300\"><p>Findings that would support cervical radiculopathy include reproduction of arm symptoms with cervical provocation, reduced cervical rotation toward the symptomatic side, positive upper limb neurodynamic testing, symptom relief with distraction, and neurological findings such as altered sensation, myotomal weakness, or reflex change.</p><p>For a possible C6 pattern, findings may include altered sensation around the thumb/index region, weakness in elbow flexion or wrist extension depending on presentation, and altered brachioradialis reflex.</p></div></details>\n<h2 id=\"management-reasoning\">Management reasoning</h2>\n<section class=\"my-5 rounded-xl border border-purple-200 bg-purple-50 p-4 dark:border-purple-800 dark:bg-purple-950/30\"><p class=\"text-sm font-bold uppercase text-purple-700 dark:text-purple-300\">Clinical reasoning prompt</p><p class=\"mt-1 text-sm font-medium leading-relaxed text-purple-950 dark:text-purple-100\">What would your early management focus on, and why?</p></section>\n<details class=\"my-4 rounded-xl border border-brand-200 bg-white p-4 shadow-sm dark:border-brand-800 dark:bg-surface-900\"><summary class=\"cursor-pointer select-none text-sm font-semibold text-brand-700 dark:text-brand-300\">Compare your reasoning</summary><div class=\"mt-3 border-t border-surface-100 pt-3 text-sm leading-relaxed text-surface-700 dark:border-surface-800 dark:text-surface-300\"><p>Early management should focus on education, reassurance where appropriate, symptom modification, activity and posture strategies, graded cervical and upper limb movement, and monitoring neurological status.</p><p>If symptoms are irritable, avoid repeatedly provoking arm symptoms. Management may include positions or movements that reduce peripheral symptoms, gentle mobility, nerve-related loading only if tolerated, and progressive strengthening as symptoms settle.</p><p>Escalation is needed if there is progressive neurological deficit, suspected myelopathy, severe unremitting pain, or concerning systemic features.</p></div></details>\n<h2 id=\"common-traps\">Common traps</h2>\n<details class=\"my-4 rounded-xl border border-brand-200 bg-white p-4 shadow-sm dark:border-brand-800 dark:bg-surface-900\"><summary class=\"cursor-pointer select-none text-sm font-semibold text-brand-700 dark:text-brand-300\">Common traps in this case</summary><div class=\"mt-3 border-t border-surface-100 pt-3 text-sm leading-relaxed text-surface-700 dark:border-surface-800 dark:text-surface-300\"><p>Common traps include assuming all neck-related arm pain is radiculopathy, failing to complete a neurological screen, missing signs of cervical myelopathy, over-relying on one special test, and ignoring shoulder or peripheral nerve differentials.</p><p>Another trap is treating only posture without addressing symptom behaviour, irritability, neurological monitoring, and graded return to function.</p></div></details>",
+  "enhancedFeedback": {
+    "badgeLabel": "Enhanced reasoning feedback preview",
+    "conceptGroups": {
+      "hypothesis": [
+        "cervical nerve root",
+        "cervical radiculopathy",
+        "nerve root irritation",
+        "nerve root",
+        "c6 pattern",
+        "radicular pain",
+        "radicular"
+      ],
+      "supportingFeatures": [
+        "arm pain",
+        "dermatomal distribution",
+        "dermatome",
+        "thumb",
+        "index finger",
+        "paresthesia",
+        "pins and needles",
+        "reduced sensation",
+        "reflex change",
+        "biceps reflex",
+        "weakness",
+        "myotomal weakness",
+        "spurling",
+        "distraction relief",
+        "ultt",
+        "upper limb tension",
+        "shoulder abduction relief",
+        "bakody"
+      ],
+      "cautionSafety": [
+        "myelopathy",
+        "bilateral symptoms",
+        "gait change",
+        "hand clumsiness",
+        "upper motor neuron",
+        "upper motor neurone",
+        "progressive weakness",
+        "bowel",
+        "bladder",
+        "systemic red flags",
+        "cancer",
+        "fever",
+        "weight loss"
+      ],
+      "nextAssessment": [
+        "neurological exam",
+        "neurological examination",
+        "dermatomes",
+        "myotomes",
+        "reflexes",
+        "myelopathy screen",
+        "spurling",
+        "distraction",
+        "ultt",
+        "upper limb tension",
+        "cervical range of motion",
+        "shoulder screen"
+      ],
+      "localOnlyPattern": [
+        "shoulder",
+        "rotator cuff",
+        "impingement",
+        "local arm pain",
+        "muscle strain"
+      ]
+    }
+  }
+}

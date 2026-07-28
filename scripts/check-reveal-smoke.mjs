@@ -5,12 +5,18 @@ import {
   isPrivateStatus,
   readCaseFrontmatter,
 } from './lib/readMdxFrontmatter.mjs'
+import { loadTypeScriptTree } from './lib/loadTypeScriptTree.mjs'
 
 const ROOT = process.cwd()
 const CASES_DIR = path.join(ROOT, 'content', 'cases')
 const OUT_DIR = path.join(ROOT, 'out')
 const COMPONENT_FILE = path.join(ROOT, 'src', 'components', 'mdx', 'MDXComponents.tsx')
 const REASONING_PROMPT_FILE = path.join(ROOT, 'src', 'components', 'cases', 'CaseReasoningPrompt.tsx')
+const SOURCE_ROOT = path.join(ROOT, 'src')
+const { getCaseRevealId } = await loadTypeScriptTree(
+  path.join(SOURCE_ROOT, 'lib', 'caseRevealServer.ts'),
+  SOURCE_ROOT,
+)
 
 // Must match REFLECTION_PROMPTS.length in CaseReasoningPrompt.tsx.
 const REASONING_CHECKLIST_PROMPT_COUNT = 4
@@ -32,6 +38,7 @@ const cases = await readCases()
 const publishedCases = cases.filter((item) => !isPrivateStatus(item.status))
 const privateCases = cases.filter((item) => isPrivateStatus(item.status))
 let revealBlockCount = 0
+let generatedRevealBlockCount = 0
 
 if (cases.length === 0) {
   fail('No guided case files found for reveal smoke check.')
@@ -90,6 +97,35 @@ for (const item of publishedCases) {
       fail(`RevealAnswer block is empty: ${item.relativePath} block ${index + 1}`)
     }
   }
+
+  const revealFile = path.join(
+    OUT_DIR,
+    'case-reveals',
+    `${getCaseRevealId(item.region, item.publicSlug)}.json`,
+  )
+  if (!fs.existsSync(revealFile)) {
+    fail(`Published case delayed reveal payload is missing: ${route}`)
+    continue
+  }
+
+  try {
+    const payload = JSON.parse(fs.readFileSync(revealFile, 'utf8'))
+    const generatedBlocks = [...String(payload.contentHtml).matchAll(/<details\b([^>]*)>([\s\S]*?)<\/details>/gi)]
+    generatedRevealBlockCount += generatedBlocks.length
+    if (generatedBlocks.length !== blocks.length) {
+      fail(`Generated reveal block count differs from case source: ${route}`)
+    }
+    for (const [index, generatedBlock] of generatedBlocks.entries()) {
+      if (hasOpenAttribute(generatedBlock[1])) {
+        fail(`Generated reveal block is open by default: ${route} block ${index + 1}`)
+      }
+      if (!/<summary\b[^>]*>[\s\S]*?<\/summary>/i.test(generatedBlock[2])) {
+        fail(`Generated reveal block has no keyboard-operable summary: ${route} block ${index + 1}`)
+      }
+    }
+  } catch (error) {
+    fail(`Published case delayed reveal payload is invalid: ${route} (${error.message})`)
+  }
 }
 
 for (const item of privateCases) {
@@ -112,6 +148,7 @@ if (findings.length > 0) {
 console.log('Reveal smoke check passed.')
 console.log(`Published case pages checked: ${publishedCases.length}`)
 console.log(`RevealAnswer blocks checked: ${revealBlockCount}`)
+console.log(`Generated delayed reveal blocks checked: ${generatedRevealBlockCount}`)
 console.log(`Private case routes excluded: ${privateCases.length}`)
 console.log('RevealAnswer renderer uses native closed details/summary.')
 

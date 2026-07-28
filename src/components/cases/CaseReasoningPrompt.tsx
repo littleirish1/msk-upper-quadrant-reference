@@ -1,9 +1,13 @@
 'use client'
 
-import type { ReactNode } from 'react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { ArrowDown, CheckCircle2, Eye, Lightbulb } from 'lucide-react'
+import {
+  loadCaseReveal,
+  type CaseRevealFeedbackConfig,
+  type CaseRevealPayload,
+} from '@/lib/caseReveal'
 
 type ReflectionField = 'hypothesis' | 'supportingFeatures' | 'safetyFeatures' | 'nextAssessment'
 
@@ -23,16 +27,7 @@ interface ReflectionPromptConfig {
   checklist: string[]
 }
 
-export interface EnhancedReasoningFeedbackConfig {
-  badgeLabel: string
-  conceptGroups: {
-    hypothesis: string[]
-    supportingFeatures: string[]
-    cautionSafety: string[]
-    nextAssessment: string[]
-    localOnlyPattern?: string[]
-  }
-}
+export type EnhancedReasoningFeedbackConfig = CaseRevealFeedbackConfig
 
 const REFLECTION_PROMPTS: ReflectionPromptConfig[] = [
   {
@@ -91,23 +86,20 @@ const REFLECTION_PROMPTS: ReflectionPromptConfig[] = [
 
 interface CaseReasoningPromptProps {
   displayTitle: string
-  actualTitle?: string
-  conditionLabel?: string
-  conditionHref?: string
-  enhancedFeedback?: EnhancedReasoningFeedbackConfig
-  children: ReactNode
+  revealId: string
+  enhancedFeedbackAvailable?: boolean
 }
 
 export function CaseReasoningPrompt({
   displayTitle,
-  actualTitle,
-  conditionLabel,
-  conditionHref,
-  enhancedFeedback,
-  children,
+  revealId,
+  enhancedFeedbackAvailable = false,
 }: CaseReasoningPromptProps) {
   const [diagnosisRevealed, setDiagnosisRevealed] = useState(false)
   const [reasoningRevealed, setReasoningRevealed] = useState(false)
+  const [revealPayload, setRevealPayload] = useState<CaseRevealPayload | null>(null)
+  const [revealLoading, setRevealLoading] = useState(false)
+  const [revealError, setRevealError] = useState('')
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({})
   const [responses, setResponses] = useState<ReasoningResponses>({
     hypothesis: '',
@@ -116,10 +108,62 @@ export function CaseReasoningPrompt({
     nextAssessment: '',
   })
   const [feedbackChecked, setFeedbackChecked] = useState(false)
+  const activeRevealId = useRef(revealId)
 
+  useEffect(() => {
+    activeRevealId.current = revealId
+    setDiagnosisRevealed(false)
+    setReasoningRevealed(false)
+    setRevealPayload(null)
+    setRevealLoading(false)
+    setRevealError('')
+    setFeedbackChecked(false)
+  }, [revealId])
+
+  const enhancedFeedback = revealPayload?.enhancedFeedback
   const feedback = enhancedFeedback && feedbackChecked
     ? buildFeedback(enhancedFeedback, responses)
     : null
+
+  async function ensureRevealPayload(): Promise<CaseRevealPayload | null> {
+    if (revealPayload?.revealId === revealId) return revealPayload
+
+    const requestedRevealId = revealId
+    setRevealLoading(true)
+    setRevealError('')
+
+    try {
+      const payload = await loadCaseReveal(requestedRevealId, window.location.pathname)
+      if (activeRevealId.current !== requestedRevealId) return null
+      setRevealPayload(payload)
+      return payload
+    } catch (error) {
+      if (activeRevealId.current === requestedRevealId) {
+        setRevealPayload(null)
+        setRevealError(error instanceof Error ? error.message : 'Unable to load the case reveal.')
+      }
+      return null
+    } finally {
+      if (activeRevealId.current === requestedRevealId) setRevealLoading(false)
+    }
+  }
+
+  async function revealDiagnosis() {
+    if (await ensureRevealPayload()) setDiagnosisRevealed(true)
+  }
+
+  async function toggleReasoning() {
+    if (reasoningRevealed) {
+      setReasoningRevealed(false)
+      return
+    }
+    if (await ensureRevealPayload()) setReasoningRevealed(true)
+  }
+
+  async function checkReasoning() {
+    const payload = await ensureRevealPayload()
+    if (payload?.enhancedFeedback) setFeedbackChecked(true)
+  }
 
   function updateResponse(field: ReflectionField, value: string) {
     setResponses((current) => ({
@@ -148,9 +192,9 @@ export function CaseReasoningPrompt({
             <p className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">
               Think first
             </p>
-            {enhancedFeedback && (
+            {enhancedFeedbackAvailable && (
               <p className="mt-2 inline-flex rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-800 dark:bg-amber-950 dark:text-amber-200">
-                {enhancedFeedback.badgeLabel}
+                Enhanced reasoning feedback preview
               </p>
             )}
             <h2 className="mt-1 text-lg font-semibold text-surface-900 dark:text-surface-50">
@@ -238,20 +282,22 @@ export function CaseReasoningPrompt({
         </div>
 
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          {enhancedFeedback && (
+          {enhancedFeedbackAvailable && (
             <button
               type="button"
-              onClick={() => setFeedbackChecked(true)}
+              onClick={checkReasoning}
+              disabled={revealLoading}
               className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-4 text-sm font-semibold text-amber-900 transition hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-200 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-100 dark:hover:bg-amber-900"
             >
               <CheckCircle2 className="h-4 w-4" aria-hidden />
-              Check my reasoning
+              {revealLoading ? 'Loading reasoning...' : 'Check my reasoning'}
             </button>
           )}
 
           <button
             type="button"
-            onClick={() => setDiagnosisRevealed(true)}
+            onClick={revealDiagnosis}
+            disabled={revealLoading}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 text-sm font-semibold text-white transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-300 dark:bg-brand-500 dark:hover:bg-brand-600"
             aria-expanded={diagnosisRevealed}
           >
@@ -261,15 +307,30 @@ export function CaseReasoningPrompt({
 
           <button
             type="button"
-            onClick={() => setReasoningRevealed((current) => !current)}
+            onClick={toggleReasoning}
+            disabled={revealLoading}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-brand-200 bg-white px-4 text-sm font-semibold text-brand-700 transition hover:bg-brand-50 focus:outline-none focus:ring-2 focus:ring-brand-200 dark:border-brand-800 dark:bg-surface-900 dark:text-brand-300 dark:hover:bg-brand-950"
             aria-expanded={reasoningRevealed}
             aria-controls="case-learning-content"
           >
             <ArrowDown className="h-4 w-4" aria-hidden />
-            {reasoningRevealed ? 'Hide suggested reasoning' : 'Reveal suggested reasoning'}
+            {revealLoading
+              ? 'Loading suggested reasoning...'
+              : reasoningRevealed
+                ? 'Hide suggested reasoning'
+                : 'Reveal suggested reasoning'}
           </button>
         </div>
+
+        {revealError && (
+          <div
+            role="alert"
+            className="mt-5 rounded-lg border border-danger-200 bg-danger-50 p-4 text-sm text-danger-900 dark:border-danger-800 dark:bg-danger-950/30 dark:text-danger-100"
+          >
+            <p className="font-semibold">The reveal could not be loaded.</p>
+            <p className="mt-1">{revealError} Try the reveal control again.</p>
+          </div>
+        )}
 
         {feedback && (
           <div className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-950/30">
@@ -284,7 +345,7 @@ export function CaseReasoningPrompt({
           </div>
         )}
 
-        {diagnosisRevealed && (
+        {diagnosisRevealed && revealPayload && (
           <div className="mt-5 rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950/30">
             <div className="flex items-start gap-3">
               <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green-700 dark:text-green-300" aria-hidden />
@@ -293,16 +354,20 @@ export function CaseReasoningPrompt({
                   Likely diagnosis / linked condition
                 </p>
                 <p className="mt-1 text-sm leading-6 text-green-900 dark:text-green-100">
-                  {conditionLabel || actualTitle || 'Compare your hypothesis with the reasoning below.'}
+                  {revealPayload.conditionLabel ||
+                    revealPayload.actualTitle ||
+                    'Compare your hypothesis with the reasoning below.'}
                 </p>
-                {actualTitle && conditionLabel && actualTitle !== conditionLabel && (
+                {revealPayload.actualTitle &&
+                  revealPayload.conditionLabel &&
+                  revealPayload.actualTitle !== revealPayload.conditionLabel && (
                   <p className="mt-1 text-xs text-green-800 dark:text-green-200">
-                    Case title: {actualTitle}
+                    Case title: {revealPayload.actualTitle}
                   </p>
                 )}
-                {conditionHref && (
+                {revealPayload.conditionHref && (
                   <Link
-                    href={conditionHref}
+                    href={revealPayload.conditionHref}
                     className="mt-3 inline-flex rounded-lg bg-green-700 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700"
                   >
                     Open linked condition reference
@@ -325,7 +390,7 @@ export function CaseReasoningPrompt({
         )}
       </section>
 
-      {reasoningRevealed && (
+      {reasoningRevealed && revealPayload && (
         <div id="case-learning-content" className="scroll-mt-24">
           <div className="mb-6 rounded-xl border border-brand-100 bg-brand-50 p-4 dark:border-brand-900 dark:bg-brand-950/30">
             <p className="text-xs font-semibold uppercase tracking-wide text-brand-700 dark:text-brand-300">
@@ -335,7 +400,23 @@ export function CaseReasoningPrompt({
               Work through the prompts below and open each comparison panel when you are ready.
             </p>
           </div>
-          {children}
+          {revealPayload.sections.length > 0 && (
+            <nav aria-label="Case sections" className="mb-8 flex flex-wrap gap-2 xl:hidden">
+              {revealPayload.sections.map((section) => (
+                <a
+                  key={section.slug}
+                  href={`#${section.slug}`}
+                  className="rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 transition-colors hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950 dark:text-brand-300 dark:hover:bg-brand-900"
+                >
+                  {section.heading}
+                </a>
+              ))}
+            </nav>
+          )}
+          <article
+            className="prose-clinical"
+            dangerouslySetInnerHTML={{ __html: revealPayload.contentHtml }}
+          />
         </div>
       )}
     </>

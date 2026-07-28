@@ -6,13 +6,20 @@ import {
   isPrivateStatus,
   readCaseFrontmatter,
 } from './lib/readMdxFrontmatter.mjs'
+import { loadTypeScriptTree } from './lib/loadTypeScriptTree.mjs'
 
 const ROOT = process.cwd()
 const OUT_DIR = path.join(ROOT, 'out')
 const CASES_DIR = path.join(ROOT, 'content', 'cases')
 const SEARCH_INDEX_FILE = path.join(ROOT, 'public', 'search-index.json')
+const REVEAL_DIR = path.join(ROOT, 'out', 'case-reveals')
 const BASE_PATH = '/msk-upper-quadrant-reference'
 const RESTRICTED_CASE_METADATA_FIELD = 'learningFocus'
+const SOURCE_ROOT = path.join(ROOT, 'src')
+const { getCaseRevealId } = await loadTypeScriptTree(
+  path.join(SOURCE_ROOT, 'lib', 'caseRevealServer.ts'),
+  SOURCE_ROOT,
+)
 
 const findings = []
 const conditions = await readConditions()
@@ -40,6 +47,7 @@ checkCaseDiscoveryPage(publishedCases)
 checkSearchIndex()
 checkConditionPagesDoNotLinkPublishedCases(publishedCases)
 checkRestrictedCaseMetadataBoundary()
+checkRevealPayloadInventory(publishedCases)
 
 for (const item of cases) {
   const publicRouteFile = path.join(OUT_DIR, 'cases', item.region, item.publicSlug, 'index.html')
@@ -77,26 +85,81 @@ for (const item of cases) {
   }
 
   const html = fs.readFileSync(publicRouteFile, 'utf8')
-  const preRevealHtml = getPreRevealHtml(html)
-  const conditionRoute = item.condition ? `/${item.region}/${item.condition}` : ''
-  const publicCaseRoute = `/cases/${item.region}/${item.publicSlug}`
-  const condition = item.condition ? conditionsByKey.get(conditionKey(item.region, item.condition)) : null
-  const label = condition?.label ?? ''
-  const preRevealTerms = uniqueTerms([
-    item.condition,
-    label,
-  ]).filter((term) => term.length >= 4)
-
-  for (const term of preRevealTerms) {
-    if (containsTerm(preRevealHtml, term)) {
-      fail(`Pre-reveal case HTML leaks "${term}" for /cases/${item.region}/${item.publicSlug}`)
+  const caseNumber = item.publicSlug.match(/^case-(\d+)/i)?.[1]
+  if (!caseNumber || !new RegExp(`Case\\s+${Number(caseNumber).toString().padStart(2, '0')}`, 'iu').test(html)) {
+    fail(`Initial case delivery is missing its neutral case number: /cases/${item.region}/${item.publicSlug}`)
+  }
+  for (const controlName of [
+    'Reveal likely diagnosis / linked condition',
+    'Reveal suggested reasoning',
+  ]) {
+    if (!html.includes(controlName)) {
+      fail(`Initial case delivery is missing reveal control "${controlName}": /cases/${item.region}/${item.publicSlug}`)
     }
   }
 
-  if (conditionRoute && htmlIncludesRoute(preRevealHtml, conditionRoute)) {
-    fail(`Pre-reveal case HTML links to matching condition route: ${publicCaseRoute} -> ${conditionRoute}`)
+  const condition = item.condition ? conditionsByKey.get(conditionKey(item.region, item.condition)) : null
+  const conditionRoute = condition ? `/${item.region}/${condition.slug}` : ''
+  const publicCaseRoute = `/cases/${item.region}/${item.publicSlug}`
+  const label = condition?.label ?? ''
+  const initialAssets = collectInitialAssets(html)
+  const diagnosticLearningFocus = item.learningFocus.filter((focus, index) =>
+    index === 0 || isDiagnosisBearingFocus(focus, item.condition, label),
+  )
+  const restrictedTerms = uniqueTerms([
+    item.title,
+    item.condition,
+    label,
+    ...diagnosticLearningFocus,
+  ]).filter((term) => term.length >= 4)
+
+  for (const term of restrictedTerms) {
+    if (containsTerm(html, term)) {
+      fail(`Initial case delivery leaks a reveal-gated value for ${publicCaseRoute} (field category: ${categoryForTerm(item, label, term)})`)
+    }
+    for (const asset of initialAssets) {
+      if (containsTerm(asset.text, term)) {
+        fail(`Public runtime asset serializes a reveal-gated value for ${publicCaseRoute}: ${asset.relative}`)
+      }
+    }
   }
 
+  if (conditionRoute && htmlIncludesRoute(html, conditionRoute)) {
+    fail(`Initial case delivery links to matching condition route: ${publicCaseRoute} -> ${conditionRoute}`)
+  }
+
+  const revealId = getCaseRevealId(item.region, item.publicSlug)
+  const revealFile = path.join(REVEAL_DIR, `${revealId}.json`)
+  if (!fs.existsSync(revealFile)) {
+    fail(`Delayed reveal payload missing for ${publicCaseRoute}`)
+    continue
+  }
+  if (html.includes(`${revealId}.json`)) {
+    fail(`Initial case delivery eagerly references its delayed reveal payload: ${publicCaseRoute}`)
+  }
+
+  let payload
+  try {
+    payload = JSON.parse(fs.readFileSync(revealFile, 'utf8'))
+  } catch (error) {
+    fail(`Delayed reveal payload is invalid JSON for ${publicCaseRoute}: ${error.message}`)
+    continue
+  }
+  if (payload.revealId !== revealId || payload.schemaVersion !== 1) {
+    fail(`Delayed reveal payload identity mismatch for ${publicCaseRoute}`)
+  }
+  if (payload.actualTitle !== item.title) {
+    fail(`Delayed reveal payload title mismatch for ${publicCaseRoute}`)
+  }
+  if (label && payload.conditionLabel !== label) {
+    fail(`Delayed reveal payload condition label mismatch for ${publicCaseRoute}`)
+  }
+  if (conditionRoute && payload.conditionHref !== conditionRoute) {
+    fail(`Delayed reveal payload condition route mismatch for ${publicCaseRoute}`)
+  }
+  if (typeof payload.contentHtml !== 'string' || payload.contentHtml.trim().length === 0) {
+    fail(`Delayed reveal payload has no reasoning content for ${publicCaseRoute}`)
+  }
 }
 
 if (findings.length > 0) {
@@ -131,6 +194,7 @@ async function readCases() {
         publicSlug,
         condition: typeof data.condition === 'string' ? data.condition : '',
         title: typeof data.title === 'string' ? data.title : '',
+        learningFocus: Array.isArray(data.learningFocus) ? data.learningFocus : [],
         status: data.status,
       })
     } catch (error) {
@@ -253,6 +317,57 @@ function checkRestrictedCaseMetadataBoundary() {
       fail('Search index serializes restricted guided-case metadata.')
     }
   }
+
+  const caseRouteSource = fs.readFileSync(
+    path.join(ROOT, 'src', 'app', 'cases', '[region]', '[caseSlug]', 'page.tsx'),
+    'utf8',
+  )
+  const promptCall = /<CaseReasoningPrompt\b([\s\S]*?)\/>/u.exec(caseRouteSource)?.[1] ?? ''
+  for (const forbiddenProp of [
+    'actualTitle',
+    'conditionLabel',
+    'conditionHref',
+    'learningFocus',
+    'children',
+  ]) {
+    if (new RegExp(`\\b${forbiddenProp}\\s*=`, 'u').test(promptCall)) {
+      fail(`Guided-case server route passes a reveal-gated client prop: ${forbiddenProp}`)
+    }
+  }
+}
+
+function checkRevealPayloadInventory(items) {
+  if (!fs.existsSync(REVEAL_DIR)) {
+    fail('Missing delayed case reveal directory in the static export.')
+    return
+  }
+
+  const expected = new Set(items.map((item) => `${getCaseRevealId(item.region, item.publicSlug)}.json`))
+  const actual = fs.readdirSync(REVEAL_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isFile())
+    .map((entry) => entry.name)
+
+  for (const name of expected) {
+    if (!actual.includes(name)) fail(`Expected delayed reveal payload is missing: ${name}`)
+  }
+  for (const name of actual) {
+    if (!expected.has(name)) fail(`Unexpected or stale delayed reveal payload is public: ${name}`)
+  }
+
+  const discoveryFile = path.join(OUT_DIR, 'cases', 'index.html')
+  const discoveryHtml = fs.existsSync(discoveryFile) ? fs.readFileSync(discoveryFile, 'utf8') : ''
+  const sitemapText = collectTextFiles(OUT_DIR, new Set(['.xml']))
+    .map((file) => fs.readFileSync(file, 'utf8'))
+    .join('\n')
+  const searchText = fs.existsSync(SEARCH_INDEX_FILE)
+    ? fs.readFileSync(SEARCH_INDEX_FILE, 'utf8')
+    : ''
+  for (const name of expected) {
+    const revealId = name.replace(/\.json$/u, '')
+    if (discoveryHtml.includes(revealId) || sitemapText.includes(revealId) || searchText.includes(revealId)) {
+      fail(`Delayed reveal payload is discoverable through navigation, sitemap, or search: ${name}`)
+    }
+  }
 }
 
 function collectTextFiles(dir, extensions) {
@@ -264,6 +379,24 @@ function collectTextFiles(dir, extensions) {
     else if (entry.isFile() && extensions.has(path.extname(entry.name).toLowerCase())) files.push(fullPath)
   }
   return files.sort()
+}
+
+function collectInitialAssets(html) {
+  const references = new Set()
+  for (const match of html.matchAll(/<(?:script|link)\b[^>]+(?:src|href)=["']([^"']+)["'][^>]*>/giu)) {
+    const reference = match[1].split(/[?#]/, 1)[0]
+    if (!/\.(?:js|json)$/iu.test(reference)) continue
+    const relativeReference = reference
+      .replace(new RegExp(`^${escapeRegex(BASE_PATH)}/?`), '')
+      .replace(/^\/+/, '')
+    const file = path.join(OUT_DIR, ...relativeReference.split('/'))
+    if (fs.existsSync(file) && fs.statSync(file).isFile()) references.add(file)
+  }
+
+  return [...references].sort().map((file) => ({
+    relative: toPosix(path.relative(OUT_DIR, file)),
+    text: fs.readFileSync(file, 'utf8'),
+  }))
 }
 
 function toPosix(value) {
@@ -283,27 +416,35 @@ function getHtmlAroundRoute(html, route) {
   return html.slice(Math.max(0, index - 3000), Math.min(html.length, index + 3000))
 }
 
-function getPreRevealHtml(html) {
-  const markers = [
-    'Reveal likely diagnosis / linked condition',
-    'Reveal likely concern / linked condition',
-    'Likely diagnosis / linked condition',
-    'Likely concern / linked condition',
-  ]
-  const indexes = markers
-    .map((marker) => html.indexOf(marker))
-    .filter((index) => index >= 0)
-
-  if (indexes.length === 0) {
-    return html
-  }
-
-  return html.slice(0, Math.min(...indexes))
-}
-
 function containsTerm(text, term) {
   if (!term) return false
   return normalize(text).includes(normalize(term))
+}
+
+function categoryForTerm(item, conditionLabel, term) {
+  if (term === item.title) return 'case title'
+  if (term === item.condition) return 'condition identifier'
+  if (term === conditionLabel) return 'condition label'
+  return 'learning focus'
+}
+
+function isDiagnosisBearingFocus(focus, conditionSlug, conditionLabel) {
+  const focusTokens = significantTokens(focus)
+  const diagnosisTokens = new Set([
+    ...significantTokens(conditionSlug),
+    ...significantTokens(conditionLabel),
+  ])
+  return focusTokens.some((token) => diagnosisTokens.has(token))
+}
+
+function significantTokens(value) {
+  return normalize(value)
+    .split('-')
+    .filter((token) => token.length >= 4 && !['pain', 'case', 'clinical'].includes(token))
+}
+
+function escapeRegex(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
 
 function htmlIncludesRoute(html, route) {
