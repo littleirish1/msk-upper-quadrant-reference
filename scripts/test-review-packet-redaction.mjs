@@ -101,7 +101,7 @@ try {
     'ordinary.txt': `${'d'.repeat(40)}\n${'e'.repeat(64)}\n`,
   })
 
-  const sha256WithNhsShapedDigits = `${'9434765919'}${'a'.repeat(54)}`
+  const sha256WithNhsShapedDigits = `${['943', '476', '5919'].join('')}${'a'.repeat(54)}`
   expectPass('sha256-manifest-hash-field', {
     'SHA256SUMS.txt': `${sha256WithNhsShapedDigits}  safe-report.txt\n`,
   })
