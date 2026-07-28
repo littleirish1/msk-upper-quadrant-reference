@@ -108,12 +108,6 @@ export function CaseReasoningPrompt({
 }: CaseReasoningPromptProps) {
   const [diagnosisRevealed, setDiagnosisRevealed] = useState(false)
   const [reasoningRevealed, setReasoningRevealed] = useState(false)
-  const [openFieldFeedback, setOpenFieldFeedback] = useState<Record<ReflectionField, boolean>>({
-    hypothesis: false,
-    supportingFeatures: false,
-    safetyFeatures: false,
-    nextAssessment: false,
-  })
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({})
   const [responses, setResponses] = useState<ReasoningResponses>({
     hypothesis: '',
@@ -133,13 +127,6 @@ export function CaseReasoningPrompt({
       [field]: value,
     }))
     setFeedbackChecked(false)
-  }
-
-  function toggleFieldFeedback(field: ReflectionField) {
-    setOpenFieldFeedback((current) => ({
-      ...current,
-      [field]: !current[field],
-    }))
   }
 
   function toggleChecklistItem(field: ReflectionField, index: number) {
@@ -177,8 +164,8 @@ export function CaseReasoningPrompt({
 
         <div className="mt-5 grid gap-4 md:grid-cols-2">
           {REFLECTION_PROMPTS.map((prompt) => {
-            const isFeedbackOpen = openFieldFeedback[prompt.field]
             const feedbackId = `field-feedback-${prompt.field}`
+            const feedbackSummaryId = `field-feedback-summary-${prompt.field}`
 
             return (
               <div
@@ -197,20 +184,21 @@ export function CaseReasoningPrompt({
                   />
                 </label>
 
-                <button
-                  type="button"
-                  onClick={() => toggleFieldFeedback(prompt.field)}
-                    className="mt-3 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-surface-200 bg-white px-3 text-xs font-semibold text-surface-700 transition hover:border-brand-300 hover:text-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-100 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-200 dark:hover:border-brand-600 dark:hover:text-brand-300"
-                  aria-expanded={isFeedbackOpen}
-                  aria-controls={feedbackId}
+                <details
+                  data-reasoning-feedback={prompt.field}
+                  className="group mt-3"
                 >
-                  <CheckCircle2 className="h-3.5 w-3.5" aria-hidden />
-                  {isFeedbackOpen ? 'Hide model reasoning' : 'Show model reasoning checklist'}
-                </button>
-
-                {isFeedbackOpen && (
+                  <summary
+                    id={feedbackSummaryId}
+                    className="inline-flex min-h-11 cursor-pointer list-none items-center justify-center gap-2 rounded-lg border border-surface-200 bg-white px-3 text-xs font-semibold text-surface-700 transition marker:content-none hover:border-brand-300 hover:text-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-100 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-200 dark:hover:border-brand-600 dark:hover:text-brand-300"
+                  >
+                    <CheckCircle2 className="h-3.5 w-3.5" aria-hidden />
+                    Model reasoning checklist
+                    <span className="sr-only"> for {prompt.label}</span>
+                  </summary>
                   <div
                     id={feedbackId}
+                    aria-labelledby={feedbackSummaryId}
                     className="mt-3 rounded-lg border border-brand-100 bg-white p-3 text-sm leading-6 text-surface-700 dark:border-brand-900 dark:bg-surface-900 dark:text-surface-300"
                   >
                     <p className="font-semibold text-surface-900 dark:text-surface-100">
@@ -243,7 +231,7 @@ export function CaseReasoningPrompt({
                       })}
                     </fieldset>
                   </div>
-                )}
+                </details>
               </div>
             )
           })}

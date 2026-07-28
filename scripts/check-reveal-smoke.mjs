@@ -195,10 +195,14 @@ function checkReasoningPromptComponent() {
     )
   }
 
-  if (!/isFeedbackOpen\s*\?\s*'Hide model reasoning'\s*:\s*'Show model reasoning checklist'/.test(source)) {
+  if (!/<details[\s\S]*data-reasoning-feedback=\{prompt\.field\}[\s\S]*<summary/i.test(source)) {
     fail(
-      'Reasoning checklist control must toggle exactly between "Show model reasoning checklist" and "Hide model reasoning".',
+      'Reasoning checklist controls must use native details/summary disclosures.',
     )
+  }
+
+  if (/openFieldFeedback|toggleFieldFeedback/.test(source)) {
+    fail('Reasoning checklist controls must not reimplement native disclosure state.')
   }
 }
 
@@ -291,17 +295,33 @@ function hasPreQuestionPresentation(html) {
 // these checks even though it still contains the old string as a substring.
 
 function hasReasoningChecklistRevealControls(html) {
-  const matches = extractButtons(html).filter((button) => {
-    const controls = getAttr(button.attrs, 'aria-controls')
-    return (
-      typeof controls === 'string' &&
-      controls.startsWith('field-feedback-') &&
-      getAttr(button.attrs, 'aria-expanded') === 'false' &&
-      button.text === 'Show model reasoning checklist'
-    )
-  })
+  const disclosures = extractReasoningFeedbackDisclosures(html)
+  if (disclosures.length !== REASONING_CHECKLIST_PROMPT_COUNT) return false
 
-  return matches.length === REASONING_CHECKLIST_PROMPT_COUNT
+  const accessibleNames = new Set()
+  for (const disclosure of disclosures) {
+    if (hasOpenAttribute(disclosure.attrs)) return false
+
+    const field = getAttr(disclosure.attrs, 'data-reasoning-feedback')
+    const summary = /<summary\b([^>]*)>([\s\S]*?)<\/summary>/i.exec(disclosure.body)
+    if (!field || !summary) return false
+
+    const summaryId = getAttr(summary[1], 'id')
+    const accessibleName = stripInnerMarkup(summary[2])
+    const feedbackId = `field-feedback-${field}`
+    const summaryIdExpected = `field-feedback-summary-${field}`
+    const panelPattern = new RegExp(
+      `<div\\b(?=[^>]*\\bid="${escapeRegExp(feedbackId)}")(?=[^>]*\\baria-labelledby="${escapeRegExp(summaryIdExpected)}")[^>]*>`,
+      'i',
+    )
+
+    if (summaryId !== summaryIdExpected) return false
+    if (!accessibleName.toLowerCase().includes('model reasoning checklist')) return false
+    if (!panelPattern.test(disclosure.body)) return false
+    accessibleNames.add(accessibleName.toLowerCase())
+  }
+
+  return accessibleNames.size === REASONING_CHECKLIST_PROMPT_COUNT
 }
 
 function hasSuggestedReasoningRevealControl(html) {
@@ -342,6 +362,14 @@ function extractButtons(html) {
   return buttons
 }
 
+function extractReasoningFeedbackDisclosures(html) {
+  return [...html.matchAll(/<details\b([^>]*\bdata-reasoning-feedback="[^"]+"[^>]*)>([\s\S]*?)<\/details>/gi)]
+    .map((match) => ({
+      attrs: match[1] ?? '',
+      body: match[2] ?? '',
+    }))
+}
+
 function stripInnerMarkup(value) {
   return String(value)
     .replace(/<[^>]*>/g, ' ')
@@ -352,6 +380,10 @@ function stripInnerMarkup(value) {
 function getAttr(attrs, name) {
   const match = attrs.match(new RegExp(`${name}="([^"]*)"`, 'i'))
   return match ? match[1] : null
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
 
 function stripMarkup(value) {
