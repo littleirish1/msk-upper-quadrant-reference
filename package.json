@@ -24,7 +24,7 @@
   "test:conditions": "node scripts/test-public-conditions.mjs",
   "check:search": "node scripts/check-search-index.mjs",
   "test:search-engine": "node scripts/test-search-engine.mjs",
-  "test:search": "node scripts/test-search-indexing.mjs && node scripts/test-search-engine.mjs",
+    "test:search": "node scripts/test-search-indexing.mjs && node scripts/test-search-engine.mjs && node scripts/test-search-surfaces.mjs",
   "check:content-contracts": "node scripts/check-content-contracts.mjs",
   "check:platform-content": "node scripts/check-platform-content.mjs",
   "check:anatomy": "node scripts/check-anatomy-content.mjs",
