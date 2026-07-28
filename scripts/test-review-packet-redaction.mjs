@@ -101,6 +101,18 @@ try {
     'ordinary.txt': `${'d'.repeat(40)}\n${'e'.repeat(64)}\n`,
   })
 
+  const sha256WithNhsShapedDigits = `${'9434765919'}${'a'.repeat(54)}`
+  expectPass('sha256-manifest-hash-field', {
+    'SHA256SUMS.txt': `${sha256WithNhsShapedDigits}  safe-report.txt\n`,
+  })
+
+  expectFail('sha256-manifest-sensitive-filename', {
+    'SHA256SUMS.txt': [
+      `${sha256WithNhsShapedDigits}  safe-report.txt`,
+      ['NHS number: ', '943', ' ', '476', ' ', '5919'].join(''),
+    ].join('\n'),
+  }, 'sensitive text outside the SHA-256 hash field')
+
   expectFail('mixed-safe-and-unsafe-content', {
     'nested/generated/report.md': [
       '# Synthetic report',

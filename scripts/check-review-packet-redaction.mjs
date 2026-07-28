@@ -22,7 +22,12 @@ const findings = []
 const decoder = new TextDecoder('utf-8', { fatal: true })
 const citationExcerptLimit = sensitivePolicy().citationExcerptLimit
 const COMMIT_GRAPH_PACKET_PATH = 'COMMIT_GRAPH.txt'
+const SHA256_MANIFEST_PACKET_PATHS = new Set([
+  'FILE_MANIFEST_SHA256.txt',
+  'SHA256SUMS.txt',
+])
 const GIT_OBJECT_ID_TELEPHONE_SCAN_PLACEHOLDER = '[validated-git-object-id]'
+const SHA256_MANIFEST_SCAN_PLACEHOLDER = '[validated-sha256]'
 const securityToolingPaths = new Set([
   'ai-manager/schemas/sourceIntakeSchemas.mjs',
   'ai-manager/scripts/sensitiveDataPolicy.mjs',
@@ -218,6 +223,10 @@ function isEvidenceHubReviewSource(packetPath, repositoryPath) {
 }
 
 function scanReviewPacketSensitiveText(text, relative) {
+  if (SHA256_MANIFEST_PACKET_PATHS.has(relative)) {
+    return scanSensitiveText(scrubSha256ManifestHashFields(text))
+  }
+
   const originalCategories = scanSensitiveText(text)
   if (relative !== COMMIT_GRAPH_PACKET_PATH || !originalCategories.includes('telephone-number')) {
     return originalCategories
@@ -231,6 +240,13 @@ function scanReviewPacketSensitiveText(text, relative) {
     if (category !== 'telephone-number') categories.add(category)
   }
   return [...categories].sort()
+}
+
+function scrubSha256ManifestHashFields(text) {
+  return text.replace(
+    /^(?:sha256:)?[0-9a-f]{64}(?=\s{2,}\S)/gimu,
+    SHA256_MANIFEST_SCAN_PLACEHOLDER,
+  )
 }
 
 function scrubCommitGraphGitObjectFields(text) {
