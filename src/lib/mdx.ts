@@ -13,6 +13,10 @@ import {
   sanitizeMdxContent,
   stripInternalCaseHeading,
 } from './mdxParsing'
+import {
+  createPublicCaseSummary,
+  type PublicCaseSummary,
+} from './casePublication'
 
 export {
   extractExcerpt,
@@ -246,30 +250,12 @@ export function getAllCasePaths(): Array<{ region: string; caseSlug: string }> {
   return results
 }
 
-export interface CaseListItem {
-  region: string
-  caseSlug: string
-  publicSlug: string
-  title: string
-  condition?: string
-  difficulty?: string
-  caseType?: string
-  status?: string
-  learningFocus: string[]
-  estimatedTime?: string
-  lastReviewed?: string
-  reviewedBy?: string
-  excerpt: string
-  displayTitle: string
-}
-
-
 /**
  * Returns all guided cases with frontmatter and excerpt.
  * Used by /cases to automatically build the case list.
  */
-export function getAllCases(): CaseListItem[] {
-  const results: CaseListItem[] = []
+export function getAllCases(): PublicCaseSummary[] {
+  const results: PublicCaseSummary[] = []
   const casesDir = path.join(CONTENT_DIR, 'cases')
 
   if (!fs.existsSync(casesDir)) return results
@@ -290,34 +276,21 @@ export function getAllCases(): CaseListItem[] {
       const raw = fs.readFileSync(filePath, 'utf-8')
       const { content: rawContent, data } = matter(raw)
       const frontmatter = parseCaseFrontmatter(filePath, data)
-      const content = sanitizeMdxContent(rawContent)
+      if (frontmatter.status !== 'published') continue
 
-   results.push({
-  region,
-  caseSlug,
-  title: frontmatter.title,
-  displayTitle: getCaseLearnerLabel(
-    caseSlug,
-    frontmatter.title,
-    region,
-  ),
-  condition: frontmatter.condition,
-  difficulty: frontmatter.difficulty,
-  caseType: frontmatter.caseType,
-  status: frontmatter.status,
-  publicSlug: getCasePublicSlug(caseSlug, frontmatter, region),
-  learningFocus: frontmatter.learningFocus,
-  estimatedTime: frontmatter.estimatedTime,
-  lastReviewed: frontmatter.lastReviewed,
-  reviewedBy: frontmatter.reviewedBy,
-  excerpt: extractExcerpt(content, 180),
-})
+      const content = stripInternalCaseHeading(sanitizeMdxContent(rawContent))
+      results.push(createPublicCaseSummary({
+        region,
+        displayTitle: getCaseLearnerLabel(caseSlug, frontmatter.title, region),
+        difficulty: frontmatter.difficulty,
+        estimatedTime: frontmatter.estimatedTime,
+        publicSlug: getCasePublicSlug(caseSlug, frontmatter, region),
+        excerpt: extractExcerpt(content, 180),
+      }))
     }
   }
 
-return results
-  .filter((caseItem) => !isPrivateCaseStatus(caseItem.status ?? 'published'))
-  .sort((a, b) => a.title.localeCompare(b.title))
+  return results.sort((a, b) => a.displayTitle.localeCompare(b.displayTitle))
 }
 
 function isPrivateCaseStatus(status: string): boolean {

@@ -43,7 +43,7 @@ export default function CasesPage() {
 
             return (
               <section
-                key={`${caseItem.region}-${caseItem.caseSlug}`}
+                key={`${caseItem.region}-${caseItem.publicSlug}`}
                 className="rounded-xl border border-surface-200 bg-white p-5 shadow-sm transition hover:border-brand-300 hover:shadow-md dark:border-surface-800 dark:bg-surface-900 dark:hover:border-brand-700"
               >
                 <div className="flex flex-wrap gap-2">

@@ -12,6 +12,7 @@ const OUT_DIR = path.join(ROOT, 'out')
 const CASES_DIR = path.join(ROOT, 'content', 'cases')
 const SEARCH_INDEX_FILE = path.join(ROOT, 'public', 'search-index.json')
 const BASE_PATH = '/msk-upper-quadrant-reference'
+const RESTRICTED_CASE_METADATA_FIELD = 'learningFocus'
 
 const findings = []
 const conditions = await readConditions()
@@ -38,6 +39,7 @@ if (!fs.existsSync(OUT_DIR)) {
 checkCaseDiscoveryPage(publishedCases)
 checkSearchIndex()
 checkConditionPagesDoNotLinkPublishedCases(publishedCases)
+checkRestrictedCaseMetadataBoundary()
 
 for (const item of cases) {
   const publicRouteFile = path.join(OUT_DIR, 'cases', item.region, item.publicSlug, 'index.html')
@@ -216,6 +218,56 @@ function checkConditionPagesDoNotLinkPublishedCases(items) {
       }
     }
   }
+}
+
+function checkRestrictedCaseMetadataBoundary() {
+  const allowedRuntimeDefinitions = new Set([
+    'src/lib/casePublication.ts',
+    'src/lib/contentSchemas.ts',
+  ])
+  for (const file of collectTextFiles(path.join(ROOT, 'src'), new Set(['.ts', '.tsx']))) {
+    const relative = toPosix(path.relative(ROOT, file))
+    if (allowedRuntimeDefinitions.has(relative)) continue
+    const source = fs.readFileSync(file, 'utf8')
+    if (/\.learningFocus\b|\[['"]learningFocus['"]\]/u.test(source)) {
+      fail(`Public runtime source accesses restricted guided-case metadata: ${relative}`)
+    }
+  }
+
+  const publicFiles = collectTextFiles(
+    OUT_DIR,
+    new Set(['.html', '.js', '.json', '.txt', '.xml']),
+  )
+
+  for (const file of publicFiles) {
+    const text = fs.readFileSync(file, 'utf8')
+    const relative = toPosix(path.relative(OUT_DIR, file))
+    if (text.includes(RESTRICTED_CASE_METADATA_FIELD)) {
+      fail(`Public output serializes restricted guided-case metadata key: ${relative}`)
+    }
+  }
+
+  if (fs.existsSync(SEARCH_INDEX_FILE)) {
+    const searchText = fs.readFileSync(SEARCH_INDEX_FILE, 'utf8')
+    if (searchText.includes(RESTRICTED_CASE_METADATA_FIELD)) {
+      fail('Search index serializes restricted guided-case metadata.')
+    }
+  }
+}
+
+function collectTextFiles(dir, extensions) {
+  if (!fs.existsSync(dir)) return []
+  const files = []
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const fullPath = path.join(dir, entry.name)
+    if (entry.isDirectory()) files.push(...collectTextFiles(fullPath, extensions))
+    else if (entry.isFile() && extensions.has(path.extname(entry.name).toLowerCase())) files.push(fullPath)
+  }
+  return files.sort()
+}
+
+function toPosix(value) {
+  return value.split(path.sep).join('/')
 }
 
 function getHtmlAroundRoute(html, route) {

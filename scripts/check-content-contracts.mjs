@@ -10,6 +10,7 @@ import {
   readCaseFrontmatter,
   relativePath,
 } from './lib/readMdxFrontmatter.mjs'
+import { loadTypeScriptTree } from './lib/loadTypeScriptTree.mjs'
 
 const ROOT = process.cwd()
 const OUT_DIR = path.join(ROOT, 'out')
@@ -19,6 +20,10 @@ const failures = []
 let passedAssertions = 0
 
 const { caseFrontmatterSchema } = await loadSchemas()
+const casePublication = await loadTypeScriptTree(
+  path.join(ROOT, 'src', 'lib', 'casePublication.ts'),
+  path.join(ROOT, 'src'),
+)
 const baseCase = {
   title: 'Internal teaching title',
   region: 'cervical',
@@ -49,6 +54,35 @@ run('private status helper excludes draft and archived cases', () => {
   assert.equal(isPrivateStatus('draft'), true)
   assert.equal(isPrivateStatus('archived'), true)
   assert.equal(isPrivateStatus('published'), false)
+})
+
+run('learningFocus is explicitly classified as private internal metadata', () => {
+  assert.ok(casePublication.CASE_FRONTMATTER_VISIBILITY.privateInternal.includes('learningFocus'))
+  assert.equal(casePublication.CASE_FRONTMATTER_VISIBILITY.publicPreReveal.includes('learningFocus'), false)
+})
+
+run('public case summaries reject private and reveal-gated metadata', () => {
+  const publicSummary = {
+    region: 'cervical',
+    publicSlug: 'case-99-neutral-presentation',
+    displayTitle: 'Case 99 - Neutral presentation',
+    excerpt: 'Neutral learner-facing stem.',
+  }
+  assert.deepEqual(casePublication.createPublicCaseSummary(publicSummary), publicSummary)
+  assert.throws(
+    () => casePublication.createPublicCaseSummary({
+      ...publicSummary,
+      learningFocus: ['Private teaching focus'],
+    }),
+    /Restricted guided-case metadata.*learningFocus/,
+  )
+  assert.throws(
+    () => casePublication.createPublicCaseSummary({
+      ...publicSummary,
+      condition: 'internal-condition',
+    }),
+    /Restricted guided-case metadata.*condition/,
+  )
 })
 
 await checkFileSpecificSchemaError()

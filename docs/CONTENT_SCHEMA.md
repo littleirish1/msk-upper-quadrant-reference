@@ -47,7 +47,19 @@ Current optional fields include:
 - `publicSlug`
 - source/provenance fields.
 
-`learningFocus` defaults to an empty array. It may contain diagnosis-bearing text and must remain internal unless a learner-safe display value is produced.
+`learningFocus` defaults to an empty array. It is classified as private/internal
+metadata because it may contain diagnosis-bearing text. The public case-summary
+projection rejects this field rather than relying on UI components to remember
+not to render it.
+
+Case frontmatter visibility is declared in `src/lib/casePublication.ts`:
+
+- pre-reveal public fields are the minimum neutral route/card metadata;
+- `title` and `condition` are reveal-gated;
+- `learningFocus` and source/review metadata remain private/internal.
+
+Public HTML, client JavaScript/JSON, search data, cards, metadata, and
+accessibility labels are checked for restricted case metadata.
 
 ## Status And Publication
 
