@@ -51,6 +51,8 @@ for (const item of publishedCases) {
   }
 
   const html = fs.readFileSync(routeFile, 'utf8')
+  checkLearnerFacingCaseHeading(html, item, route)
+
   if (!hasPreQuestionPresentation(html)) {
     fail(`Published case page is missing a pre-question case presentation block: ${route}`)
   }
@@ -132,6 +134,7 @@ async function readCases() {
         publicSlug,
         status: data.status,
         content,
+        internalHeading: extractInitialH1(content),
         relativePath: toPosix(path.relative(ROOT, file)),
       })
     } catch (error) {
@@ -197,6 +200,78 @@ function checkReasoningPromptComponent() {
       'Reasoning checklist control must toggle exactly between "Show model reasoning checklist" and "Hide model reasoning".',
     )
   }
+}
+
+function checkLearnerFacingCaseHeading(html, item, route) {
+  const preRevealHtml = getPreRevealHtml(html)
+  const headingTexts = extractElementText(preRevealHtml, 'h1')
+  const publicNumber = item.publicSlug.match(/^case-(\d+)-/i)?.[1]
+
+  if (!publicNumber) {
+    fail(`Published case slug has no learner-facing number: ${route}`)
+    return
+  }
+
+  if (headingTexts.length !== 1) {
+    fail(`Published case page must have exactly one pre-reveal H1: ${route}`)
+    return
+  }
+
+  const expectedNumber = String(Number(publicNumber)).padStart(2, '0')
+  const visibleNumbers = new Set(
+    stripInnerMarkup(preRevealHtml)
+      .match(/\bCase\s+(\d+)\b/gi)
+      ?.map((value) => String(Number(value.match(/\d+/)[0])).padStart(2, '0'))
+      ?? [],
+  )
+
+  if (!visibleNumbers.has(expectedNumber) || visibleNumbers.size !== 1) {
+    fail(
+      `Published case page has conflicting learner-facing numbers (${[...visibleNumbers].join(', ') || 'none'}): ${route}`,
+    )
+  }
+
+  if (!new RegExp(`\\bCase\\s+0*${Number(publicNumber)}\\b`, 'i').test(headingTexts[0])) {
+    fail(`Published case H1 does not match its public route number: ${route}`)
+  }
+
+  const internalHeading = normalizeVisibleText(item.internalHeading)
+  if (
+    internalHeading
+    && internalHeading !== normalizeVisibleText(headingTexts[0])
+    && normalizeVisibleText(preRevealHtml).includes(internalHeading)
+  ) {
+    fail(`Published case page renders its internal teaching heading before reveal: ${route}`)
+  }
+}
+
+function getPreRevealHtml(html) {
+  const markers = [
+    'Reveal likely diagnosis / linked condition',
+    'Reveal likely concern / linked condition',
+  ]
+  const indexes = markers
+    .map((marker) => html.indexOf(marker))
+    .filter((index) => index >= 0)
+  return indexes.length ? html.slice(0, Math.min(...indexes)) : html
+}
+
+function extractInitialH1(content) {
+  const normalized = String(content).replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n')
+  return /^(?:[ \t]*\n)*[ \t]{0,3}#(?!#)[ \t]+([^\n]+)/u.exec(normalized)?.[1]?.trim() ?? ''
+}
+
+function extractElementText(html, tagName) {
+  const pattern = new RegExp(`<${tagName}\\b[^>]*>([\\s\\S]*?)<\\/${tagName}>`, 'gi')
+  return [...html.matchAll(pattern)].map((match) => stripInnerMarkup(match[1]))
+}
+
+function normalizeVisibleText(value) {
+  return stripInnerMarkup(value)
+    .replace(/&(?:middot|#183|#xB7);/gi, ' ')
+    .replace(/[^a-z0-9]+/gi, ' ')
+    .trim()
+    .toLowerCase()
 }
 
 function extractRevealAnswerBlocks(content) {

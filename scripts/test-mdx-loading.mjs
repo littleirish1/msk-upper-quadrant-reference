@@ -60,6 +60,25 @@ run('excerpt generation strips frontmatter, first H1, JSX, and Markdown', () => 
   assert.equal(mdx.extractExcerpt(source), 'Plain text with code.')
 })
 
+run('internal case heading removal handles BOM, CRLF, and leading blank lines', () => {
+  const source = '\uFEFF\r\n\r\n # Internal teaching title\r\n\r\n## Presentation\r\nNeutral stem.'
+  assert.equal(
+    mdx.stripInternalCaseHeading(source),
+    '## Presentation\nNeutral stem.',
+  )
+})
+
+run('internal case heading removal preserves fenced and later headings', () => {
+  const fenced = [
+    '',
+    '```md',
+    '# Example heading',
+    '```',
+    '# Legitimate later heading',
+  ].join('\n')
+  assert.equal(mdx.stripInternalCaseHeading(fenced), fenced)
+})
+
 run('malformed condition frontmatter fails with the file path', () => {
   assert.throws(
     () => mdx.parseConditionDocument('---\nregion: shoulder\n---\n', 'content/shoulder/broken.mdx'),
@@ -86,6 +105,8 @@ run('guided case status remains explicit and neutral slug is preserved', () => {
   const result = mdx.parseCaseDocument(caseDocument(), 'content/cases/shoulder/fixture.mdx', 'internal-diagnosis', 'shoulder')
   assert.equal(result.frontmatter.status, 'draft')
   assert.equal(result.publicSlug, 'case-99-neutral-presentation')
+  assert.equal(result.content.startsWith('# Internal fixture diagnosis'), false)
+  assert.equal(result.content.startsWith('## Presentation'), true)
 })
 
 run('document parsing is deterministic', () => {
@@ -120,6 +141,8 @@ condition: fixture-condition
 status: draft
 publicSlug: case-99-neutral-presentation
 ---
+# Internal fixture diagnosis
+
 ## Presentation
 Neutral presentation.
 `

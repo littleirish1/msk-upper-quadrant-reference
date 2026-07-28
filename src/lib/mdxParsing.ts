@@ -73,12 +73,24 @@ export function parseSections(content: string): MdxSection[] {
 }
 
 export function extractExcerpt(mdx: string, maxLength = 200): string {
-  return stripFirstHeading(mdx.replace(/---[\s\S]*?---/, '').trimStart())
+  return stripInternalCaseHeading(mdx.replace(/---[\s\S]*?---/, ''))
     .replace(/<[^>]+>/g, '')
     .replace(/[#*`[\]]/g, '')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, maxLength)
+}
+
+/**
+ * Removes only an initial learner-private H1 after normalizing BOM, line
+ * endings, and leading blank lines. Headings inside fences and later H1s stay
+ * intact.
+ */
+export function stripInternalCaseHeading(mdx: string): string {
+  return normalizeMdxInput(mdx).replace(
+    /^(?:[ \t]*\n)*[ \t]{0,3}#(?!#)[ \t]+[^\n]*(?:\n+|$)/u,
+    '',
+  )
 }
 
 function escapeComparatorsInProse(
@@ -162,10 +174,6 @@ function slugify(text: string): string {
     .replace(/[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~]/g, '')
     .replace(/\s/g, '-')
     .trim()
-}
-
-function stripFirstHeading(mdx: string): string {
-  return mdx.replace(/^# .*(?:\r?\n)+/, '')
 }
 
 function normalizeMdxInput(content: string): string {

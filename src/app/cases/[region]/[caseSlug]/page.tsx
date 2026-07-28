@@ -66,7 +66,7 @@ export default async function GuidedCasePage({ params }: Props) {
       : null
   const displayTitle = getCaseLearnerLabel(caseSlug, result.frontmatter.title, regionSlug)
   const learnerContent = stripPreRevealLinkedConditionSection(
-    result.content.replace(/^# .*(?:\r?\n)+/, ''),
+    result.content,
   )
   const casePresentationContent = extractCasePresentationStem(learnerContent)
   const learnerSections = result.sections.filter(

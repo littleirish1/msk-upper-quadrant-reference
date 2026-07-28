@@ -7,9 +7,19 @@ import {
   type CaseFrontmatterSchema,
   type ConditionFrontmatterSchema,
 } from './contentSchemas'
-import { extractExcerpt, parseSections, sanitizeMdxContent } from './mdxParsing'
+import {
+  extractExcerpt,
+  parseSections,
+  sanitizeMdxContent,
+  stripInternalCaseHeading,
+} from './mdxParsing'
 
-export { extractExcerpt, parseSections, sanitizeMdxContent } from './mdxParsing'
+export {
+  extractExcerpt,
+  parseSections,
+  sanitizeMdxContent,
+  stripInternalCaseHeading,
+} from './mdxParsing'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content')
 
@@ -142,7 +152,7 @@ export interface CaseContent {
 export function parseCaseDocument(raw: string, filePath: string, caseSlug: string, region: string): CaseContent {
   const { content: rawContent, data } = parseFrontmatter(raw, filePath, 'guided case')
   const frontmatter = parseCaseFrontmatter(filePath, data)
-  const content = sanitizeMdxContent(rawContent)
+  const content = stripInternalCaseHeading(sanitizeMdxContent(rawContent))
 
   return {
     content,
