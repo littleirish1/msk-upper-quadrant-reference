@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { spawnSync } from 'node:child_process'
+import { artifactsEqual } from './lib/artifactComparison.mjs'
 
 const ROOT = process.cwd()
 const targets = [
@@ -55,7 +56,10 @@ try {
 
       if (
         before.existed !== existsAfter ||
-        (before.bytes && bytesAfter && !before.bytes.equals(bytesAfter))
+        (before.bytes && bytesAfter && !artifactsEqual(before.bytes, bytesAfter, {
+          kind: 'text',
+          allowBom: true,
+        }))
       ) {
         staleTargets.push(relative(target.path))
       }

@@ -11,6 +11,7 @@ import {
   relative,
   stableJson,
 } from './shared.mjs'
+import { canonicalText } from '../lib/artifactComparison.mjs'
 
 const module = await loadEvidenceHubModule()
 const requireOutput = process.argv.includes('--require-output')
@@ -29,7 +30,7 @@ if (!fs.existsSync(jsonSchemaFile)) {
   findings.push(`missing generated JSON Schema: ${relative(jsonSchemaFile)}`)
 } else {
   const expected = stableJson(buildJsonSchemaDocument(module))
-  const current = fs.readFileSync(jsonSchemaFile, 'utf8')
+  const current = canonicalText(fs.readFileSync(jsonSchemaFile), { allowBom: true })
   if (current !== expected) findings.push('Evidence Hub JSON Schema is stale; run npm run generate:evidence-hub-schema')
 }
 
