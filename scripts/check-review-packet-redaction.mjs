@@ -2,7 +2,10 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { TextDecoder } from 'node:util'
 import { CREDENTIAL_RULES } from './lib/secretPatterns.mjs'
-import { scanSensitiveText } from '../ai-manager/scripts/sensitiveDataPolicy.mjs'
+import {
+  scanSensitiveText,
+  sensitivePolicy,
+} from '../ai-manager/scripts/sensitiveDataPolicy.mjs'
 import {
   RAW_LEGACY_PREFIX,
   SENSITIVE_DELETION_SUMMARY,
@@ -17,6 +20,7 @@ const packetDir = path.resolve(ROOT, packetArg)
 const hygieneFile = path.join(ROOT, 'ai-manager', 'content-hygiene-names.json')
 const findings = []
 const decoder = new TextDecoder('utf-8', { fatal: true })
+const citationExcerptLimit = sensitivePolicy().citationExcerptLimit
 const COMMIT_GRAPH_PACKET_PATH = 'COMMIT_GRAPH.txt'
 const GIT_OBJECT_ID_TELEPHONE_SCAN_PLACEHOLDER = '[validated-git-object-id]'
 const securityToolingPaths = new Set([
@@ -52,6 +56,7 @@ const hygiene = JSON.parse(fs.readFileSync(hygieneFile, 'utf8'))
 const sensitiveNames = Array.isArray(hygiene.termsToFlag)
   ? hygiene.termsToFlag.filter((item) => typeof item === 'string' && item.trim())
   : []
+for (const name of additionalGovernedNames()) sensitiveNames.push(name)
 
 for (const file of collectFiles(packetDir)) {
   const relative = normalizePath(path.relative(packetDir, file))
@@ -84,6 +89,7 @@ for (const file of collectFiles(packetDir)) {
   }
 
   scanCredentialRules(text, relative)
+  scanCitationExcerptLimits(text, relative)
 
   const sharedSections = relative === '05-filtered-full-diff.patch' || relative.endsWith('.patch')
     ? splitPatchSections(text)
@@ -253,6 +259,68 @@ function parseCommitGraphGitObjectLine(line) {
 
 function scrubMachineIdentifiers(text) {
   return text.replace(/(?:sha256:)?[0-9a-f]{64}|(?:src|ref|run)-[0-9a-f]{12,64}|ref-[a-z0-9-]+/giu, '[machine-id]')
+}
+
+function scanCitationExcerptLimits(text, relative) {
+  if (!Number.isInteger(citationExcerptLimit) || citationExcerptLimit < 1) {
+    fail('invalid citation excerpt policy')
+    return
+  }
+
+  if (relative.endsWith('.json')) {
+    try {
+      const parsed = JSON.parse(text)
+      for (const length of collectNamedStringLengths(parsed, 'citationText')) {
+        if (length > citationExcerptLimit) {
+          fail(relative + ': citation excerpt exceeds policy limit')
+        }
+      }
+    } catch {
+      // Other checks still inspect non-JSON text stored with a .json suffix.
+    }
+  }
+
+  if (!relative.endsWith('.patch')) return
+  for (const line of text.split(/\r?\n/)) {
+    if (!line.startsWith('+') || line.startsWith('+++')) continue
+    const match = /^\+\s*"citationText"\s*:\s*("(?:[^"\\]|\\.)*")\s*,?\s*$/u.exec(line)
+    if (!match) continue
+    try {
+      if (JSON.parse(match[1]).length > citationExcerptLimit) {
+        fail(relative + ': citation excerpt exceeds policy limit')
+      }
+    } catch {
+      fail(relative + ': malformed citation excerpt in patch')
+    }
+  }
+}
+
+function collectNamedStringLengths(value, targetKey) {
+  if (Array.isArray(value)) {
+    return value.flatMap((item) => collectNamedStringLengths(item, targetKey))
+  }
+  if (!value || typeof value !== 'object') return []
+
+  return Object.entries(value).flatMap(([key, item]) => {
+    const own = key === targetKey && typeof item === 'string' ? [item.length] : []
+    return own.concat(collectNamedStringLengths(item, targetKey))
+  })
+}
+
+function additionalGovernedNames() {
+  const raw = process.env.REVIEW_PACKET_ADDITIONAL_GOVERNED_NAMES
+  if (!raw) return []
+
+  try {
+    const parsed = JSON.parse(raw)
+    if (!Array.isArray(parsed) || parsed.some((item) => typeof item !== 'string' || !item.trim())) {
+      throw new Error('expected a non-empty string array')
+    }
+    return parsed.map((item) => item.trim())
+  } catch {
+    fail('invalid additional governed-name fixture configuration')
+    return []
+  }
 }
 
 function jsonStringValues(value) {

@@ -8,6 +8,11 @@ const BINARY_EXTENSIONS = new Set([
   '.glb', '.gltf', '.hdr', '.exr', '.png', '.jpg', '.jpeg', '.gif', '.webp',
   '.pdf', '.zip', '.7z', '.doc', '.docx', '.ppt', '.pptx', '.xls', '.xlsx',
 ])
+const PROTECTED_LOCAL_PREFIXES = [
+  'ai-manager/.venv-source-intake/',
+  'ai-manager/private-cache/',
+  'docs/reviews/current/',
+]
 
 export function normalizePath(value) {
   return String(value || '').replace(/\\/g, '/').replace(/^\.?\//, '')
@@ -22,6 +27,7 @@ export function isSensitiveRepositoryPath(value) {
   if (/^content\/imports\/[^/]+\/raw\//i.test(file)) return true
   if (file.startsWith('content/imports/html-case-bank/extracted/stations/')) return true
   if (file.startsWith('ai-manager/assets/')) return true
+  if (PROTECTED_LOCAL_PREFIXES.some((prefix) => file.startsWith(prefix))) return true
   if (file.includes('/quarantine/')) return true
   if (name === '.env' || name.startsWith('.env.')) return true
   if (BINARY_EXTENSIONS.has(extension)) return true

@@ -6,18 +6,12 @@ import { spawnSync } from 'node:child_process'
 const ROOT = process.cwd()
 const SCANNER = path.join(ROOT, 'scripts', 'check-review-packet-redaction.mjs')
 const PATTERN_SOURCE = path.join(ROOT, 'scripts', 'lib', 'secretPatterns.mjs')
-const HYGIENE_SOURCE = path.join(ROOT, 'ai-manager', 'content-hygiene-names.json')
 const TEMP_ROOT = fs.mkdtempSync(path.join(os.tmpdir(), 'review-packet-redaction-'))
+const SYNTHETIC_GOVERNED_NAME = 'Fixture Person Alpha'
 let checks = 0
 
 try {
   const patternSource = fs.readFileSync(PATTERN_SOURCE, 'utf8')
-  const hygiene = JSON.parse(fs.readFileSync(HYGIENE_SOURCE, 'utf8'))
-  const governedName = hygiene.termsToFlag?.find(
-    (item) => typeof item === 'string' && item.trim(),
-  )
-
-  if (!governedName) throw new Error('A governed-name fixture is required.')
 
   expectPass('pattern-source', {
     'security-tooling/scripts/lib/secretPatterns.mjs': patternSource,
@@ -42,6 +36,12 @@ try {
   expectFail('ordinary-credential-values', {
     'ordinary.txt': `${googleLike}\n${openAiLike}\n`,
   }, 'credential pattern')
+
+  const genericToken = ['ACCESS', 'TOKEN'].join('_')
+  const genericTokenValue = ['fixture', 'token', 'value', '1234567890'].join('-')
+  expectFail('ordinary-generic-token-value', {
+    'ordinary.txt': `${genericToken}=${genericTokenValue}`,
+  }, 'generic token value')
 
   expectFail('pattern-source-with-credential', {
     'security-tooling/scripts/lib/secretPatterns.mjs':
@@ -68,14 +68,46 @@ try {
   const privatePath = ['C:', 'Users', 'reviewer', 'private-source.html'].join('\\')
   expectFail('private-path', { 'ordinary.txt': privatePath }, 'private local path')
 
-  expectFail('governed-name', { 'ordinary.txt': governedName }, 'governed name')
+  expectFail('governed-name', { 'ordinary.txt': SYNTHETIC_GOVERNED_NAME }, 'governed name')
 
   const rawPath = ['content', 'imports', 'html-case-bank', 'raw', 'index.html'].join('/')
   expectFail('raw-source-entry', { [rawPath]: 'private source body placeholder' }, 'raw source')
 
+  expectFail('protected-private-cache-entry', {
+    'ai-manager/private-cache/report.txt': 'synthetic private cache placeholder',
+  }, 'protected private cache path')
+
+  expectFail('protected-current-review-entry', {
+    'docs/reviews/current/report.txt': 'synthetic current review placeholder',
+  }, 'protected current review path')
+
   expectFail('glb-binary', {
     'public/models/test.glb': Buffer.from([0x67, 0x6c, 0x54, 0x46, 0x00, 0x01]),
   }, 'GLB binary')
+
+  expectFail('unsupported-binary', {
+    'nested/generated/report.bin': Buffer.from([0xff, 0xfe, 0xfd]),
+  }, 'unsupported binary')
+
+  expectPass('already-redacted-values', {
+    'ordinary.txt': [
+      '[redacted credential]',
+      '<private-local-path>',
+      '[sensitive value omitted]',
+    ].join('\n'),
+  })
+
+  expectPass('git-object-identifiers', {
+    'ordinary.txt': `${'d'.repeat(40)}\n${'e'.repeat(64)}\n`,
+  })
+
+  expectFail('mixed-safe-and-unsafe-content', {
+    'nested/generated/report.md': [
+      '# Synthetic report',
+      'Safe summary content.',
+      ['reviewer', '@', 'example.test'].join(''),
+    ].join('\n'),
+  }, 'unsafe value mixed with safe content')
 
   expectPass('governed-report-machine-identifiers', {
     'tracked-reports/source-manifest.json': JSON.stringify({
@@ -91,6 +123,29 @@ try {
       contact: ['+44', '7123', '456', '789'].join(' '),
     }),
   }, 'sensitive value in governed report snapshot')
+
+  expectPass('governed-report-short-citation', {
+    'tracked-reports/references.json': JSON.stringify({
+      citationText: 'Short fictional citation fixture.',
+    }),
+  })
+
+  expectFail('governed-report-long-citation', {
+    'tracked-reports/references.json': JSON.stringify({
+      citationText: 'F'.repeat(281),
+    }),
+  }, 'citation excerpt over the policy limit')
+
+  expectFail('patch-long-citation', {
+    'implementation.patch': [
+      'diff --git a/report.json b/report.json',
+      '--- a/report.json',
+      '+++ b/report.json',
+      '@@ -0,0 +1 @@',
+      `+  "citationText": ${JSON.stringify('F'.repeat(281))},`,
+      '',
+    ].join('\n'),
+  }, 'citation excerpt over the policy limit in a patch')
 
   expectPass('evidence-hub-schema-patterns', {
     'implementation/src/lib/evidence-hub/evidence-hub-v1.schema.json': JSON.stringify({
@@ -244,6 +299,10 @@ function runCase(name, files) {
     cwd: ROOT,
     encoding: 'utf8',
     shell: false,
+    env: {
+      ...process.env,
+      REVIEW_PACKET_ADDITIONAL_GOVERNED_NAMES: JSON.stringify([SYNTHETIC_GOVERNED_NAME]),
+    },
   })
 }
 
