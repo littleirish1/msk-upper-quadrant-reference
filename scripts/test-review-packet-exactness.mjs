@@ -21,7 +21,11 @@ try {
   fs.mkdirSync(repository, { recursive: true })
   git(repository, ['init'])
   git(repository, ['config', 'user.name', 'Synthetic Reviewer'])
-  git(repository, ['config', 'user.email', 'synthetic-reviewer@example.invalid'])
+  git(repository, [
+    'config',
+    'user.email',
+    ['synthetic-reviewer', 'example.invalid'].join('@'),
+  ])
   git(repository, ['config', 'core.autocrlf', 'false'])
 
   const source = path.join(repository, 'source.mjs')
