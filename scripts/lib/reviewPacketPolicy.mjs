@@ -64,6 +64,14 @@ export function redactSensitiveText(value, repositoryRoot = process.cwd()) {
     /\bNHS\s*(?:number|no\.?|id)?\s*[:#-]?\s*(?:\d[\s-]*){10}\b/giu,
     '[redacted-health-identifier]',
   )
+  text = text.replace(
+    /\b(?:hospital|patient|medical\s+record|case)\s*(?:number|no\.?|id|identifier)\s*[:#-]?\s*[A-Z0-9][A-Z0-9/-]{4,19}\b/giu,
+    '[redacted-clinical-identifier]',
+  )
+  text = text.replace(
+    /\b(?:student|candidate|university)\s*(?:number|no\.?|id|identifier)\s*[:#-]?\s*[A-Z0-9][A-Z0-9/-]{4,19}\b/giu,
+    '[redacted-learner-identifier]',
+  )
   for (const pattern of narrativeCredentialPatterns()) {
     text = text.replace(pattern, '[redacted-credential]')
   }

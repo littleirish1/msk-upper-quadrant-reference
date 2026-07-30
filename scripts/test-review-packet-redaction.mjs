@@ -104,6 +104,19 @@ try {
     'ordinary.txt': `${'d'.repeat(40)}\n${'e'.repeat(64)}\n`,
   })
 
+  expectPass('full-index-patch-identifiers', {
+    'implementation.patch': [
+      'diff --git a/source.mjs b/source.mjs',
+      `index ${'1'.repeat(40)}..${'2'.repeat(40)} 100644`,
+      '--- a/source.mjs',
+      '+++ b/source.mjs',
+      '@@ -1 +1 @@',
+      '-const record = { caseId: record.caseId }',
+      '+const record = { caseId: pilot.caseId }',
+      '',
+    ].join('\n'),
+  })
+
   const sha256WithNhsShapedDigits = `${['943', '476', '5919'].join('')}${'a'.repeat(54)}`
   expectPass('sha256-manifest-hash-field', {
     'SHA256SUMS.txt': `${sha256WithNhsShapedDigits}  safe-report.txt\n`,

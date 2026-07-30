@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { TextDecoder } from 'node:util'
+import ts from 'typescript'
 import { CREDENTIAL_RULES } from './lib/secretPatterns.mjs'
 import {
   scanSensitiveText,
@@ -23,6 +24,7 @@ const decoder = new TextDecoder('utf-8', { fatal: true })
 const citationExcerptLimit = sensitivePolicy().citationExcerptLimit
 const COMMIT_GRAPH_PACKET_PATH = 'COMMIT_GRAPH.txt'
 const SHA256_MANIFEST_PACKET_PATHS = new Set([
+  '15-MANIFEST-SHA256.txt',
   'FILE_MANIFEST_SHA256.txt',
   'SHA256SUMS.txt',
 ])
@@ -46,6 +48,8 @@ const securityToolingCategoryAllowances = new Map([
   ['ai-manager/scripts/test-source-intake-validation.mjs', new Set(['unc-path'])],
   ['ai-manager/scripts/validate-source-intake-pilot.mjs', new Set(['uk-postcode', 'unc-path'])],
   ['ai-manager/tests/test_source_intake_hardening.py', new Set(['contact-or-correspondence-block'])],
+  ['scripts/test-review-packet-exactness.mjs', new Set(['patient-or-hospital-identifier', 'unc-path'])],
+  ['scripts/test-review-packet-redaction.mjs', new Set(['patient-or-hospital-identifier'])],
 ])
 const packetCredentialValueRules = [
   new RegExp(`\\b(?:${['A', 'KIA'].join('')}|${['A', 'SIA'].join('')})[A-Z0-9]{16}\\b`, 'g'),
@@ -85,10 +89,6 @@ for (const file of collectFiles(packetDir)) {
     continue
   }
 
-  if (relative !== SENSITIVE_DELETION_SUMMARY && text.includes(RAW_LEGACY_PREFIX)) {
-    fail(relative + ': sensitive legacy path appears outside deletion summary')
-  }
-
   if (/[A-Za-z]:[\\/]+(?:Users|dev)[\\/]+/i.test(text)) {
     fail(relative + ': private local path detected')
   }
@@ -100,6 +100,11 @@ for (const file of collectFiles(packetDir)) {
     ? splitPatchSections(text)
     : [{ repositoryPath: relative, text }]
   for (const section of sharedSections) {
+    if (section.text.includes(RAW_LEGACY_PREFIX)
+      && relative !== SENSITIVE_DELETION_SUMMARY
+      && !allowsGovernedLegacyPathReference(relative, section.repositoryPath)) {
+      fail(relative + ': sensitive legacy path appears outside an approved governance source')
+    }
     for (const pattern of packetCredentialValueRules) {
       pattern.lastIndex = 0
       if (pattern.test(section.text)) fail(relative + ': credential value detected')
@@ -110,7 +115,7 @@ for (const file of collectFiles(packetDir)) {
       relative,
       section.repositoryPath,
     )) {
-      if (securityToolingCategoryAllowances.get(section.repositoryPath)?.has(category)) continue
+      if (securityToolingAllowance(section.repositoryPath || relative)?.has(category)) continue
       if (relative.endsWith('.patch') && section.repositoryPath?.startsWith('ai-manager/reports/source-intake-pilot/') && category === 'uk-postcode') continue
       fail(relative + ': governed sensitive-data pattern detected (' + category + ')')
     }
@@ -151,7 +156,8 @@ function scanCredentialRules(text, relative) {
     : [{ repositoryPath: null, text }]
 
   for (const section of sections) {
-    const rules = securityToolingPaths.has(section.repositoryPath) || isExactCodePath(section.repositoryPath || relative)
+    const rules = isSecurityToolingPath(section.repositoryPath || relative)
+      || isExactCodePath(section.repositoryPath || relative)
       ? CREDENTIAL_RULES.filter((rule) => rule.kind === 'credential-value')
       : CREDENTIAL_RULES
 
@@ -230,12 +236,16 @@ function scanReviewPacketSensitiveText(text, relative, repositoryPath) {
   let scanText = relative.endsWith('.patch') || relative.endsWith('.diff')
     ? scrubValidatedPatchMetadata(text)
     : text
-  if (isExactCodePath(repositoryPath || relative)) {
-    scanText = scrubBenignCodeStructures(scanText)
+  if (isExactCodePath(repositoryPath || relative)
+    && !isGeneratedReportEvidence(relative, repositoryPath)) {
+    scanText = extractCodeReviewText(scanText, repositoryPath || relative)
   }
 
-  if (SHA256_MANIFEST_PACKET_PATHS.has(relative)) {
+  if (SHA256_MANIFEST_PACKET_PATHS.has(path.posix.basename(relative))) {
     return scanSensitiveText(scrubSha256ManifestHashFields(scanText))
+  }
+  if (path.posix.basename(relative) === '05-FILE-HASHES-BEFORE-AFTER.csv') {
+    return scanSensitiveText(scrubHashCsvFields(scanText))
   }
 
   const originalCategories = scanSensitiveText(scanText)
@@ -253,20 +263,107 @@ function scanReviewPacketSensitiveText(text, relative, repositoryPath) {
   return [...categories].sort()
 }
 
+function isSecurityToolingPath(value) {
+  const candidate = normalizePath(value)
+  return [...securityToolingPaths].some(
+    (securityPath) => candidate === securityPath || candidate.endsWith(`/${securityPath}`),
+  )
+}
+
+function securityToolingAllowance(value) {
+  const candidate = normalizePath(value)
+  for (const [securityPath, allowances] of securityToolingCategoryAllowances) {
+    if (candidate === securityPath || candidate.endsWith(`/${securityPath}`)) return allowances
+  }
+  return null
+}
+
 function isExactCodePath(value) {
   return /\.(?:[cm]?js|jsx|json5?|tsx?)$/iu.test(String(value || ''))
 }
 
-function scrubBenignCodeStructures(text) {
+function extractCodeReviewText(text, fileName) {
+  const source = stripPatchSyntax(text)
+  if (/\.json5?$/iu.test(fileName)) {
+    try {
+      return jsonStringValues(JSON.parse(source)).join('\n')
+    } catch {
+      // Fall through to the tolerant TypeScript parser for JSON5 or patch fragments.
+    }
+  }
+
+  const sourceFile = ts.createSourceFile(
+    fileName,
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    scriptKind(fileName),
+  )
+  const values = []
+  const visit = (node) => {
+    if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) {
+      values.push(node.getText(sourceFile))
+    } else if (ts.isTemplateExpression(node)) {
+      values.push(node.getText(sourceFile))
+    }
+    ts.forEachChild(node, visit)
+  }
+  visit(sourceFile)
+
+  const scanner = ts.createScanner(
+    ts.ScriptTarget.Latest,
+    false,
+    ts.LanguageVariant.Standard,
+    source,
+  )
+  for (let token = scanner.scan(); token !== ts.SyntaxKind.EndOfFileToken; token = scanner.scan()) {
+    if (token === ts.SyntaxKind.SingleLineCommentTrivia || token === ts.SyntaxKind.MultiLineCommentTrivia) {
+      values.push(scanner.getTokenText())
+    }
+  }
+  return values.join('\n')
+}
+
+function stripPatchSyntax(text) {
   return text
-    .replace(
-      /\bcaseId(\s*:\s*)(?=[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*)*)/gu,
-      `codeProperty$1`,
-    )
-    .replace(
-      /^([+ -]?\s*(?:const|let|var)\s+\w*PathPattern\s*=\s*)\/[^\r\n/]*(?:\\.[^\r\n/]*)*\/[dgimsuvy]*\s*;?\s*$/gimu,
-      '$1/[validated-path-detection-regex]/',
-    )
+    .split(/\r?\n/u)
+    .filter((line) => !/^(?:diff --git |index |--- |\+\+\+ |@@ )/u.test(line))
+    .map((line) => /^[+ -]/u.test(line) ? line.slice(1) : line)
+    .join('\n')
+}
+
+function scriptKind(fileName) {
+  if (/\.tsx$/iu.test(fileName)) return ts.ScriptKind.TSX
+  if (/\.jsx$/iu.test(fileName)) return ts.ScriptKind.JSX
+  if (/\.json5?$/iu.test(fileName)) return ts.ScriptKind.JSON
+  if (/\.ts$/iu.test(fileName)) return ts.ScriptKind.TS
+  return ts.ScriptKind.JS
+}
+
+function allowsGovernedLegacyPathReference(packetPath, repositoryPath) {
+  const candidate = normalizePath(repositoryPath || packetPath)
+  return [
+    'docs/REVIEW_WORKFLOW.md',
+    'scripts/export-redacted-review-packet.mjs',
+    'scripts/lib/reviewPacketPolicy.mjs',
+  ].some((allowed) => candidate === allowed || candidate.endsWith(`/${allowed}`))
+}
+
+function scrubHashCsvFields(text) {
+  return text
+    .split(/\r?\n/u)
+    .map((line, index) => {
+      if (index === 0 || !line) return line
+      const fields = line.split(',')
+      if (fields.length !== 4) return line
+      for (const fieldIndex of [2, 3]) {
+        if (/^[0-9a-f]{64}$/iu.test(fields[fieldIndex])) {
+          fields[fieldIndex] = SHA256_MANIFEST_SCAN_PLACEHOLDER
+        }
+      }
+      return fields.join(',')
+    })
+    .join('\n')
 }
 
 function scrubValidatedPatchMetadata(text) {
