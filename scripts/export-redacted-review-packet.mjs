@@ -6,8 +6,13 @@ import {
   RAW_LEGACY_PATH,
   isSensitiveRepositoryPath,
   normalizePath,
-  redactSensitiveText,
 } from './lib/reviewPacketPolicy.mjs'
+import {
+  PACKET_ARTIFACT_HANDLING,
+  classifyPacketArtifact,
+  copyExactArtifact,
+  writePacketArtifact,
+} from './lib/reviewPacketArtifacts.mjs'
 
 const ROOT = process.cwd()
 const OUTPUT = path.resolve(ROOT, process.argv[2] || 'phase-hardening-rereview-v2')
@@ -65,7 +70,9 @@ for (const file of safeUntrackedFiles()) {
   }
   patch += '\n' + addition.stdout
 }
-write('05-filtered-full-diff.patch', patch)
+write('05-filtered-full-diff.patch', Buffer.from(patch, 'utf8'), {
+  handling: PACKET_ARTIFACT_HANDLING.exact,
+})
 
 write(
   '06-sensitive-deletion-summary.md',
@@ -83,7 +90,7 @@ write(
     '- Body omitted because the source is private and historically credential-bearing.',
     '',
   ].join('\n'),
-  false,
+  { redactNarrative: false },
 )
 
 copyContracts()
@@ -327,14 +334,24 @@ function copyConfig() {
 function copyText(source, destination) {
   const fullPath = path.join(ROOT, source)
   if (!fs.existsSync(fullPath)) return
-  write(destination, fs.readFileSync(fullPath, 'utf8'))
+  const target = path.join(OUTPUT, destination)
+  const handling = classifyPacketArtifact(source)
+  if (handling === PACKET_ARTIFACT_HANDLING.exact) {
+    copyExactArtifact(fullPath, target)
+    return
+  }
+  write(destination, fs.readFileSync(fullPath, 'utf8'), { handling })
 }
 
-function write(relative, content, redact = true) {
+function write(relative, content, options = {}) {
   const destination = path.join(OUTPUT, relative)
-  fs.mkdirSync(path.dirname(destination), { recursive: true })
-  const safe = redact ? redactSensitiveText(content, ROOT) : String(content)
-  fs.writeFileSync(destination, safe, 'utf8')
+  writePacketArtifact({
+    destination,
+    content,
+    handling: options.handling,
+    repositoryRoot: ROOT,
+    redactNarrative: options.redactNarrative !== false,
+  })
 }
 
 function writeManifest() {
@@ -344,7 +361,10 @@ function writeManifest() {
       const hash = crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')
       return hash + '  ' + normalizePath(path.relative(OUTPUT, file))
     })
-  write('SHA256SUMS.txt', rows.join('\n') + '\n')
+  write('SHA256SUMS.txt', rows.join('\n') + '\n', {
+    handling: PACKET_ARTIFACT_HANDLING.narrative,
+    redactNarrative: false,
+  })
 }
 
 function collectFiles(dir) {

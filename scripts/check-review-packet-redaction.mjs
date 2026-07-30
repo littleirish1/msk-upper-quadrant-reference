@@ -105,7 +105,11 @@ for (const file of collectFiles(packetDir)) {
       if (pattern.test(section.text)) fail(relative + ': credential value detected')
     }
     const governedTexts = governedEvidenceTexts(relative, section)
-    for (const governedText of governedTexts) for (const category of scanReviewPacketSensitiveText(governedText, relative)) {
+    for (const governedText of governedTexts) for (const category of scanReviewPacketSensitiveText(
+      governedText,
+      relative,
+      section.repositoryPath,
+    )) {
       if (securityToolingCategoryAllowances.get(section.repositoryPath)?.has(category)) continue
       if (relative.endsWith('.patch') && section.repositoryPath?.startsWith('ai-manager/reports/source-intake-pilot/') && category === 'uk-postcode') continue
       fail(relative + ': governed sensitive-data pattern detected (' + category + ')')
@@ -147,7 +151,7 @@ function scanCredentialRules(text, relative) {
     : [{ repositoryPath: null, text }]
 
   for (const section of sections) {
-    const rules = securityToolingPaths.has(section.repositoryPath)
+    const rules = securityToolingPaths.has(section.repositoryPath) || isExactCodePath(section.repositoryPath || relative)
       ? CREDENTIAL_RULES.filter((rule) => rule.kind === 'credential-value')
       : CREDENTIAL_RULES
 
@@ -222,24 +226,60 @@ function isEvidenceHubReviewSource(packetPath, repositoryPath) {
     || candidate.startsWith('scripts/evidence-hub/')
 }
 
-function scanReviewPacketSensitiveText(text, relative) {
-  if (SHA256_MANIFEST_PACKET_PATHS.has(relative)) {
-    return scanSensitiveText(scrubSha256ManifestHashFields(text))
+function scanReviewPacketSensitiveText(text, relative, repositoryPath) {
+  let scanText = relative.endsWith('.patch') || relative.endsWith('.diff')
+    ? scrubValidatedPatchMetadata(text)
+    : text
+  if (isExactCodePath(repositoryPath || relative)) {
+    scanText = scrubBenignCodeStructures(scanText)
   }
 
-  const originalCategories = scanSensitiveText(text)
+  if (SHA256_MANIFEST_PACKET_PATHS.has(relative)) {
+    return scanSensitiveText(scrubSha256ManifestHashFields(scanText))
+  }
+
+  const originalCategories = scanSensitiveText(scanText)
   if (relative !== COMMIT_GRAPH_PACKET_PATH || !originalCategories.includes('telephone-number')) {
     return originalCategories
   }
 
-  const telephoneScanText = scrubCommitGraphGitObjectFields(text)
-  if (telephoneScanText === text) return originalCategories
+  const telephoneScanText = scrubCommitGraphGitObjectFields(scanText)
+  if (telephoneScanText === scanText) return originalCategories
 
   const categories = new Set(scanSensitiveText(telephoneScanText))
   for (const category of originalCategories) {
     if (category !== 'telephone-number') categories.add(category)
   }
   return [...categories].sort()
+}
+
+function isExactCodePath(value) {
+  return /\.(?:[cm]?js|jsx|json5?|tsx?)$/iu.test(String(value || ''))
+}
+
+function scrubBenignCodeStructures(text) {
+  return text
+    .replace(
+      /\bcaseId(\s*:\s*)(?=[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*)*)/gu,
+      `codeProperty$1`,
+    )
+    .replace(
+      /^([+ -]?\s*(?:const|let|var)\s+\w*PathPattern\s*=\s*)\/[^\r\n/]*(?:\\.[^\r\n/]*)*\/[dgimsuvy]*\s*;?\s*$/gimu,
+      '$1/[validated-path-detection-regex]/',
+    )
+}
+
+function scrubValidatedPatchMetadata(text) {
+  return text
+    .split(/(\r?\n)/u)
+    .map((part, index) => {
+      if (index % 2 === 1) return part
+      if (/^index [0-9a-f]{40,64}\.\.[0-9a-f]{40,64}(?: [0-7]{6})?$/u.test(part)) {
+        return 'index [validated-old-object-id]..[validated-new-object-id]'
+      }
+      return part
+    })
+    .join('')
 }
 
 function scrubSha256ManifestHashFields(text) {

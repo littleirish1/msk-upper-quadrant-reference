@@ -142,3 +142,18 @@ separate sensitive-deletion summary.
 Packets must not contain secret values, credential-like values, governed sensitive
 names, private local paths, raw private source bodies, binary model assets, or
 environment-file content. Run the packet redaction scanner before distribution.
+
+### Exact Artifacts
+
+Code-bearing files, JSON, JSON Schema, lockfiles, fixtures, generated code, and
+Git patches are exact artifacts. Packet generation must scan them and then copy
+or write them byte-for-byte. It must never redact a substring, normalize line
+endings, alter syntax, or rewrite Git object IDs. A sensitive finding in an
+exact artifact blocks packet generation until the source or packet selection is
+corrected.
+
+Narrative summaries and selected human-readable logs may use deterministic
+placeholder redaction. Unsupported or binary files fail closed unless an
+explicit reviewed handler permits them. A complete patch must use full Git
+object IDs, pass `git apply --check` against its recorded baseline, and
+reproduce the expected changed-file hashes.
