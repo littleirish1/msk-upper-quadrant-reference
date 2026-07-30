@@ -1,0 +1,655 @@
+{
+  "$id": "https://example.invalid/msk/guided-case/v2.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "caseId": {
+      "pattern": "^case\\.[a-z0-9-]+\\.[a-z0-9-]+$",
+      "type": "string"
+    },
+    "contentHash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "contentRevision": {
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991,
+      "type": "integer"
+    },
+    "difficulty": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "estimatedTime": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidenceHub": {
+      "additionalProperties": false,
+      "properties": {
+        "conditionRecordId": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidenceRecordIds": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "pinnedCaseHash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "pinnedCaseRevision": {
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "relationshipIds": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "reviewDecisionId": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unresolvedEvidenceGaps": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "conditionRecordId",
+        "evidenceRecordIds",
+        "relationshipIds",
+        "reviewDecisionId",
+        "pinnedCaseRevision",
+        "pinnedCaseHash",
+        "unresolvedEvidenceGaps"
+      ],
+      "type": "object"
+    },
+    "governance": {
+      "additionalProperties": false,
+      "properties": {
+        "authoringStatus": {
+          "enum": [
+            "draft",
+            "human-edited",
+            "approved"
+          ],
+          "type": "string"
+        },
+        "clinicalReviewStatus": {
+          "enum": [
+            "baseline-reviewed",
+            "clinician-review-required",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "evidenceReviewStatus": {
+          "enum": [
+            "baseline-preserved",
+            "evidence-review-required",
+            "changes-requested"
+          ],
+          "type": "string"
+        },
+        "knownLimitations": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "nextReviewDate": {
+          "anyOf": [
+            {
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "publicationDecision": {
+          "additionalProperties": false,
+          "properties": {
+            "approvedContentHash": {
+              "anyOf": [
+                {
+                  "pattern": "^[a-f0-9]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "approvedRevision": {
+              "anyOf": [
+                {
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "rationale": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "baseline-carried-forward",
+                "blocked",
+                "approved"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "approvedRevision",
+            "approvedContentHash",
+            "rationale"
+          ],
+          "type": "object"
+        },
+        "reviewDate": {
+          "anyOf": [
+            {
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewerRole": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sourceClearanceStatus": {
+          "enum": [
+            "baseline-public-content",
+            "source-clearance-required",
+            "restricted"
+          ],
+          "type": "string"
+        },
+        "unresolvedIssues": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "authoringStatus",
+        "clinicalReviewStatus",
+        "evidenceReviewStatus",
+        "sourceClearanceStatus",
+        "reviewerRole",
+        "reviewDate",
+        "nextReviewDate",
+        "unresolvedIssues",
+        "knownLimitations",
+        "publicationDecision"
+      ],
+      "type": "object"
+    },
+    "learnerCaseNumber": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "learnerPresentation": {
+      "additionalProperties": false,
+      "properties": {
+        "aggravatingFactors": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "demographics": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "easingFactors": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "functionalImpact": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "initialPresentation": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "medicationContext": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "psychosocialOrOccupationalContext": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "relevantMedicalHistory": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "stagedDisclosure": {
+          "default": [],
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "content": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "id": {
+                "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+                "type": "string"
+              },
+              "order": {
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991,
+                "type": "integer"
+              },
+              "revealState": {
+                "enum": [
+                  "public-immediate",
+                  "public-after-reveal",
+                  "internal-only"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "order",
+              "content",
+              "revealState"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "symptomHistory": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "initialPresentation",
+        "aggravatingFactors",
+        "easingFactors",
+        "stagedDisclosure"
+      ],
+      "type": "object"
+    },
+    "lifecycleState": {
+      "enum": [
+        "published",
+        "draft",
+        "archived"
+      ],
+      "type": "string"
+    },
+    "neutralTitle": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "privateDiagnosticIdentity": {
+      "additionalProperties": false,
+      "properties": {
+        "associatedConditionId": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "evidenceHubConditionId": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "internalSourceStationId": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "internalTitle": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "likelyDiagnosis": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "privateLearningFocus": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "internalTitle",
+        "likelyDiagnosis",
+        "associatedConditionId",
+        "evidenceHubConditionId",
+        "privateLearningFocus",
+        "internalSourceStationId"
+      ],
+      "type": "object"
+    },
+    "provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "aiAssisted": {
+          "type": "boolean"
+        },
+        "citationReferenceIds": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "extractionDate": {
+          "anyOf": [
+            {
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "humanEdited": {
+          "type": "boolean"
+        },
+        "legacySourceId": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sourceRecordIds": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "sourceRevisionOrHash": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sourceType": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "transformationHistory": {
+          "default": [],
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "detail": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "reviewRequired": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "action",
+              "detail",
+              "reviewRequired"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "sourceRecordIds",
+        "legacySourceId",
+        "sourceType",
+        "extractionDate",
+        "sourceRevisionOrHash",
+        "citationReferenceIds",
+        "transformationHistory",
+        "aiAssisted",
+        "humanEdited"
+      ],
+      "type": "object"
+    },
+    "publicationEligibility": {
+      "type": "boolean"
+    },
+    "publicSlug": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    },
+    "reasoningStages": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "commonPitfalls": {
+            "default": [],
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "expectedReasoningThemes": {
+            "default": [],
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "feedback": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "humanReviewRequired": {
+            "type": "boolean"
+          },
+          "id": {
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "learnerQuestion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "modelReasoningChecklist": {
+            "default": [],
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "neutralSupportingInformation": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "order": {
+            "exclusiveMinimum": 0,
+            "maximum": 9007199254740991,
+            "type": "integer"
+          },
+          "revealState": {
+            "enum": [
+              "public-immediate",
+              "public-after-reveal",
+              "internal-only"
+            ],
+            "type": "string"
+          },
+          "sourceSectionHeading": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "initial-hypothesis",
+              "subjective-assessment",
+              "objective-assessment",
+              "differential-diagnosis",
+              "red-flag-escalation",
+              "investigation-reasoning",
+              "management-reasoning",
+              "safety-netting",
+              "referral-threshold",
+              "reassessment-progression",
+              "patient-communication",
+              "reflection"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "order",
+          "learnerQuestion",
+          "expectedReasoningThemes",
+          "modelReasoningChecklist",
+          "commonPitfalls",
+          "revealState",
+          "humanReviewRequired"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "region": {
+      "enum": [
+        "cervical",
+        "thoracic",
+        "shoulder",
+        "elbow",
+        "wrist-hand",
+        "lumbar",
+        "pelvis-sij",
+        "hip",
+        "knee",
+        "ankle-foot"
+      ],
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": 2,
+      "type": "number"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "caseId",
+    "learnerCaseNumber",
+    "neutralTitle",
+    "region",
+    "publicSlug",
+    "contentRevision",
+    "contentHash",
+    "lifecycleState",
+    "publicationEligibility",
+    "privateDiagnosticIdentity",
+    "learnerPresentation",
+    "reasoningStages",
+    "governance",
+    "provenance",
+    "evidenceHub"
+  ],
+  "title": "Governed guided case v2",
+  "type": "object"
+}

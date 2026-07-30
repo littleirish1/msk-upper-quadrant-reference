@@ -36,6 +36,8 @@
   "check:ai-manager": "node scripts/check-ai-manager-boundary.mjs",
   "check:source-intake": "node ai-manager/scripts/validate-source-intake-pilot.mjs",
   "generate:evidence-hub-schema": "node scripts/evidence-hub/generate-json-schema.mjs",
+  "generate:case-schema": "node scripts/guided-cases/generate-schema.mjs",
+  "test:case-schema": "node scripts/guided-cases/test-schema.mjs",
   "check:evidence-hub": "node scripts/evidence-hub/check.mjs",
   "check:evidence-hub-output": "node scripts/evidence-hub/check.mjs --require-output",
   "test:evidence-hub": "node scripts/evidence-hub/test.mjs",
