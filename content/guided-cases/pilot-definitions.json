@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "pilots": [
+    {
+      "caseId": "case.cervical.pilot-01",
+      "learnerCaseNumber": "Pilot 01",
+      "neutralTitle": "Unilateral headache with neck-related features",
+      "region": "cervical",
+      "publicSlug": "pilot-01-unilateral-headache-with-neck-features",
+      "difficulty": "review required",
+      "estimatedTime": "not set",
+      "sourceStationId": "s27",
+      "associatedConditionId": "cervicogenic-headache",
+      "likelyDiagnosis": "Cervicogenic headache",
+      "initialPresentation": "An adult recreational runner reports a six-month history of unilateral headache beginning in the upper neck and extending toward the temple. Symptoms are associated with sustained desk posture and long drives, settle with movement, and are affecting preparation for a planned running event.",
+      "stages": [
+        {
+          "id": "initial-hypothesis",
+          "type": "initial-hypothesis",
+          "learnerQuestion": "Which broad hypotheses would you consider from this presentation, and what information is still missing?"
+        },
+        {
+          "id": "differential-diagnosis",
+          "type": "differential-diagnosis",
+          "learnerQuestion": "Which alternative headache presentations must remain in the differential before considering a neck-related explanation?"
+        },
+        {
+          "id": "red-flag-escalation",
+          "type": "red-flag-escalation",
+          "learnerQuestion": "What safety screening and escalation questions are required before physical assessment?"
+        },
+        {
+          "id": "objective-assessment",
+          "type": "objective-assessment",
+          "learnerQuestion": "What examination would help test the competing hypotheses without treating one finding as diagnostic in isolation?"
+        },
+        {
+          "id": "management-reasoning",
+          "type": "management-reasoning",
+          "learnerQuestion": "What information would be needed before proposing a graded activity plan?"
+        }
+      ],
+      "selectionRationale": "Selected because the extracted station contains a coherent history, examination, safety screen and competing hypotheses. The draft remains blocked because the clinical claims and cited measures require verification."
+    },
+    {
+      "caseId": "case.shoulder.pilot-02",
+      "learnerCaseNumber": "Pilot 02",
+      "neutralTitle": "Shoulder pain after a contact injury",
+      "region": "shoulder",
+      "publicSlug": "pilot-02-shoulder-pain-after-contact",
+      "difficulty": "review required",
+      "estimatedTime": "not set",
+      "sourceStationId": "s31",
+      "associatedConditionId": "acromioclavicular-joint",
+      "likelyDiagnosis": "Acromioclavicular joint injury",
+      "initialPresentation": "An adult contact-sport participant reports acute pain over the top of the shoulder after landing directly onto it five days earlier. Arm elevation and carrying equipment are difficult, and a visible contour change has been noticed.",
+      "stages": [
+        {
+          "id": "initial-hypothesis",
+          "type": "initial-hypothesis",
+          "learnerQuestion": "What structures and injury patterns should be considered from the mechanism and symptom location?"
+        },
+        {
+          "id": "differential-diagnosis",
+          "type": "differential-diagnosis",
+          "learnerQuestion": "Which alternative traumatic shoulder presentations need to be excluded?"
+        },
+        {
+          "id": "red-flag-escalation",
+          "type": "red-flag-escalation",
+          "learnerQuestion": "Which neurovascular and fracture-related findings would change the urgency of assessment?"
+        },
+        {
+          "id": "objective-assessment",
+          "type": "objective-assessment",
+          "learnerQuestion": "How would you structure a safe objective assessment and interpret instability without over-grading the injury?"
+        },
+        {
+          "id": "referral-threshold",
+          "type": "referral-threshold",
+          "learnerQuestion": "What additional information is needed before discussing referral or return to contact activity?"
+        }
+      ],
+      "selectionRationale": "Selected as a distinct traumatic shoulder presentation with enough extracted material for a structured draft. Grading, test accuracy and return-to-sport claims remain unverified and blocked."
+    },
+    {
+      "caseId": "case.wrist-hand.pilot-03",
+      "learnerCaseNumber": "Pilot 03",
+      "neutralTitle": "Ulnar-sided wrist pain with loading",
+      "region": "wrist-hand",
+      "publicSlug": "pilot-03-ulnar-sided-wrist-pain-with-loading",
+      "difficulty": "review required",
+      "estimatedTime": "not set",
+      "sourceStationId": "s30",
+      "associatedConditionId": "tfcc-injury",
+      "likelyDiagnosis": "Triangular fibrocartilage complex irritation or injury",
+      "initialPresentation": "An adult climber reports a two-month history of ulnar-sided wrist pain during loaded extension and deviation, with clicking during rotation. There was no single traumatic event, and the learner must consider how to assess load tolerance and competing sources of ulnar wrist pain.",
+      "stages": [
+        {
+          "id": "initial-hypothesis",
+          "type": "initial-hypothesis",
+          "learnerQuestion": "Which tissues and mechanisms could explain ulnar-sided wrist pain in this loading context?"
+        },
+        {
+          "id": "differential-diagnosis",
+          "type": "differential-diagnosis",
+          "learnerQuestion": "How would you compare possible joint, tendon and instability-related explanations?"
+        },
+        {
+          "id": "red-flag-escalation",
+          "type": "red-flag-escalation",
+          "learnerQuestion": "Which findings would lower the threshold for imaging or specialist review?"
+        },
+        {
+          "id": "objective-assessment",
+          "type": "objective-assessment",
+          "learnerQuestion": "What examination would help localise symptoms while avoiding over-reliance on a single provocative test?"
+        },
+        {
+          "id": "reassessment-progression",
+          "type": "reassessment-progression",
+          "learnerQuestion": "Which review findings would be needed before progressing loading toward climbing?"
+        }
+      ],
+      "selectionRationale": "Selected because it adds a wrist/hand loading presentation distinct from the existing private acute-fracture draft. Test interpretation and progression criteria remain evidence-review requirements."
+    }
+  ]
+}

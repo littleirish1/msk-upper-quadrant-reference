@@ -1,0 +1,153 @@
+{
+  "caseId": "case.wrist-hand.pilot-03",
+  "contentHash": "51848a62d95ba9a6cbaa7407663f0c630868f8c0649f20293e19709b45afe404",
+  "contentRevision": 1,
+  "difficulty": "review required",
+  "estimatedTime": "not set",
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "51848a62d95ba9a6cbaa7407663f0c630868f8c0649f20293e19709b45afe404",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No governed Evidence Hub condition record exists for this pilot.",
+      "No source citation has been verified into an approved Evidence Hub evidence record."
+    ]
+  },
+  "governance": {
+    "authoringStatus": "draft",
+    "clinicalReviewStatus": "clinician-review-required",
+    "evidenceReviewStatus": "evidence-review-required",
+    "knownLimitations": [
+      "Selected because it adds a wrist/hand loading presentation distinct from the existing private acute-fracture draft. Test interpretation and progression criteria remain evidence-review requirements.",
+      "Missing model answers are intentionally not invented."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": null,
+      "approvedRevision": null,
+      "rationale": "Mechanically converted pilot; human clinical, evidence and source-clearance review are required.",
+      "status": "blocked"
+    },
+    "reviewDate": null,
+    "reviewerRole": null,
+    "sourceClearanceStatus": "source-clearance-required",
+    "unresolvedIssues": [
+      "Clinical reasoning and safety statements require clinician review.",
+      "Citations and evidence claims in the legacy source require independent verification.",
+      "Source clearance for derivative publication has not been established."
+    ]
+  },
+  "learnerCaseNumber": "Pilot 03",
+  "learnerPresentation": {
+    "aggravatingFactors": [],
+    "easingFactors": [],
+    "initialPresentation": "An adult climber reports a two-month history of ulnar-sided wrist pain during loaded extension and deviation, with clicking during rotation. There was no single traumatic event, and the learner must consider how to assess load tolerance and competing sources of ulnar wrist pain.",
+    "stagedDisclosure": []
+  },
+  "lifecycleState": "draft",
+  "neutralTitle": "Ulnar-sided wrist pain with loading",
+  "privateDiagnosticIdentity": {
+    "associatedConditionId": "tfcc-injury",
+    "evidenceHubConditionId": null,
+    "internalSourceStationId": "s30",
+    "internalTitle": "Legacy pilot s30",
+    "likelyDiagnosis": "Triangular fibrocartilage complex irritation or injury",
+    "privateLearningFocus": [
+      "Legacy conversion pilot",
+      "Clinical reasoning structure"
+    ]
+  },
+  "provenance": {
+    "aiAssisted": true,
+    "citationReferenceIds": [],
+    "extractionDate": null,
+    "humanEdited": false,
+    "legacySourceId": "legacy-html-case-bank-v1",
+    "sourceRecordIds": [
+      "s30"
+    ],
+    "sourceRevisionOrHash": "0c56a5aee504c892dbf36f35c66f2ef449ff57d90021266a07270f5d1c96d63d",
+    "sourceType": "legacy-html-case-bank",
+    "transformationHistory": [
+      {
+        "action": "personal-identifier-redaction",
+        "detail": "Removed the source display name and retained only clinically relevant anonymised attributes.",
+        "reviewRequired": true
+      },
+      {
+        "action": "structured-draft-conversion",
+        "detail": "Mapped source-supported presentation facts into the governed draft structure without filling evidence gaps.",
+        "reviewRequired": true
+      }
+    ]
+  },
+  "publicationEligibility": false,
+  "publicSlug": "pilot-03-ulnar-sided-wrist-pain-with-loading",
+  "reasoningStages": [
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Source-supported model reasoning has not yet been clinically and evidentially reviewed.",
+      "humanReviewRequired": true,
+      "id": "initial-hypothesis",
+      "learnerQuestion": "Which tissues and mechanisms could explain ulnar-sided wrist pain in this loading context?",
+      "modelReasoningChecklist": [],
+      "order": 1,
+      "revealState": "public-after-reveal",
+      "type": "initial-hypothesis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Source-supported model reasoning has not yet been clinically and evidentially reviewed.",
+      "humanReviewRequired": true,
+      "id": "differential-diagnosis",
+      "learnerQuestion": "How would you compare possible joint, tendon and instability-related explanations?",
+      "modelReasoningChecklist": [],
+      "order": 2,
+      "revealState": "public-after-reveal",
+      "type": "differential-diagnosis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Source-supported model reasoning has not yet been clinically and evidentially reviewed.",
+      "humanReviewRequired": true,
+      "id": "red-flag-escalation",
+      "learnerQuestion": "Which findings would lower the threshold for imaging or specialist review?",
+      "modelReasoningChecklist": [],
+      "order": 3,
+      "revealState": "public-after-reveal",
+      "type": "red-flag-escalation"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Source-supported model reasoning has not yet been clinically and evidentially reviewed.",
+      "humanReviewRequired": true,
+      "id": "objective-assessment",
+      "learnerQuestion": "What examination would help localise symptoms while avoiding over-reliance on a single provocative test?",
+      "modelReasoningChecklist": [],
+      "order": 4,
+      "revealState": "public-after-reveal",
+      "type": "objective-assessment"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Source-supported model reasoning has not yet been clinically and evidentially reviewed.",
+      "humanReviewRequired": true,
+      "id": "reassessment-progression",
+      "learnerQuestion": "Which review findings would be needed before progressing loading toward climbing?",
+      "modelReasoningChecklist": [],
+      "order": 5,
+      "revealState": "public-after-reveal",
+      "type": "reassessment-progression"
+    }
+  ],
+  "region": "wrist-hand",
+  "schemaVersion": 2
+}
