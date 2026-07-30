@@ -40,6 +40,26 @@ export const REASONING_STAGE_FIELD_CLASSIFICATION = Object.freeze({
   humanReviewRequired: 'internal-only',
 } satisfies Record<keyof GuidedCaseRecord['reasoningStages'][number], PublicationClass>)
 
+export const LEARNER_PRESENTATION_FIELD_CLASSIFICATION = Object.freeze({
+  initialPresentation: 'public-immediate',
+  demographics: 'public-immediate',
+  symptomHistory: 'public-immediate',
+  functionalImpact: 'public-immediate',
+  aggravatingFactors: 'public-immediate',
+  easingFactors: 'public-immediate',
+  relevantMedicalHistory: 'public-immediate',
+  medicationContext: 'public-immediate',
+  psychosocialOrOccupationalContext: 'public-immediate',
+  stagedDisclosure: 'internal-only',
+} satisfies Record<keyof GuidedCaseRecord['learnerPresentation'], PublicationClass>)
+
+export const STAGED_DISCLOSURE_FIELD_CLASSIFICATION = Object.freeze({
+  id: 'internal-only',
+  order: 'internal-only',
+  content: 'internal-only',
+  revealState: 'internal-only',
+} satisfies Record<keyof GuidedCaseRecord['learnerPresentation']['stagedDisclosure'][number], PublicationClass>)
+
 export interface PublicImmediateCase {
   schemaVersion: number
   caseId: string
@@ -149,6 +169,18 @@ function parseAndClassify(input: unknown): GuidedCaseRecord {
   for (const stage of parsed.reasoningStages) {
     assertEveryFieldClassified(stage, REASONING_STAGE_FIELD_CLASSIFICATION, `reasoning stage ${stage.id}`)
   }
+  assertEveryFieldClassified(
+    parsed.learnerPresentation,
+    LEARNER_PRESENTATION_FIELD_CLASSIFICATION,
+    'learner presentation',
+  )
+  for (const item of parsed.learnerPresentation.stagedDisclosure) {
+    assertEveryFieldClassified(
+      item,
+      STAGED_DISCLOSURE_FIELD_CLASSIFICATION,
+      `staged disclosure item ${item.id}`,
+    )
+  }
   return parsed
 }
 
@@ -164,7 +196,19 @@ function assertEveryFieldClassified(
   }
   for (const key of Object.keys(classification)) {
     if (!Object.prototype.hasOwnProperty.call(value, key)
-      && !['difficulty', 'estimatedTime', 'neutralSupportingInformation', 'feedback', 'sourceSectionHeading'].includes(key)) {
+      && ![
+        'difficulty',
+        'estimatedTime',
+        'neutralSupportingInformation',
+        'feedback',
+        'sourceSectionHeading',
+        'demographics',
+        'symptomHistory',
+        'functionalImpact',
+        'relevantMedicalHistory',
+        'medicationContext',
+        'psychosocialOrOccupationalContext',
+      ].includes(key)) {
       throw new Error(`Classification has no corresponding ${label} field: ${key}`)
     }
   }

@@ -71,6 +71,52 @@ assert.equal('evidenceHub' in reveal, false)
 assert.equal('governance' in reveal, false)
 assertions += 3
 
+const publishedWithStagedDisclosure = structuredClone(minimum)
+publishedWithStagedDisclosure.learnerPresentation.stagedDisclosure = [{
+  id: 'additional-history',
+  order: 1,
+  content: 'Authoring-only staged information.',
+  revealState: 'public-after-reveal',
+}]
+publishedWithStagedDisclosure.contentHash = canonicalCaseHash(publishedWithStagedDisclosure)
+publishedWithStagedDisclosure.evidenceHub.pinnedCaseHash = publishedWithStagedDisclosure.contentHash
+publishedWithStagedDisclosure.governance.publicationDecision.approvedContentHash = publishedWithStagedDisclosure.contentHash
+const publishedStagedResult = module.guidedCaseRecordSchema.safeParse(publishedWithStagedDisclosure)
+assert.equal(publishedStagedResult.success, false)
+assert.match(
+  publishedStagedResult.error.issues.map((issue) => issue.message).join('\n'),
+  /schema-reserved and authoring-only/,
+)
+assertions += 2
+
+const draftWithStagedDisclosure = structuredClone(draft)
+draftWithStagedDisclosure.learnerPresentation.stagedDisclosure = [{
+  id: 'additional-history',
+  order: 1,
+  content: 'Internal authoring detail.',
+  revealState: 'public-after-reveal',
+}]
+draftWithStagedDisclosure.contentHash = canonicalCaseHash(draftWithStagedDisclosure)
+draftWithStagedDisclosure.evidenceHub.pinnedCaseHash = draftWithStagedDisclosure.contentHash
+const internalDraft = module.createInternalCaseReviewModel(draftWithStagedDisclosure)
+assert.equal(internalDraft.learnerPresentation.stagedDisclosure.length, 1)
+assert.throws(() => module.createPublicImmediateCase(draftWithStagedDisclosure), /not publication eligible/)
+assert.throws(() => module.createPublicRevealPayload(draftWithStagedDisclosure), /not publication eligible/)
+assert.equal(
+  JSON.stringify(module.createPublicImmediateCase(minimum)).includes('stagedDisclosure'),
+  false,
+)
+assert.equal(
+  JSON.stringify(module.createPublicRevealPayload(minimum)).includes('stagedDisclosure'),
+  false,
+)
+assertions += 5
+
+const unknownNestedStagedField = structuredClone(draftWithStagedDisclosure)
+unknownNestedStagedField.learnerPresentation.stagedDisclosure[0].futureDeliveryHint = 'unclassified'
+assert.equal(module.guidedCaseRecordSchema.safeParse(unknownNestedStagedField).success, false)
+assertions += 1
+
 console.log(`Guided-case schema tests passed. Assertions: ${assertions}.`)
 
 function makeRecord() {

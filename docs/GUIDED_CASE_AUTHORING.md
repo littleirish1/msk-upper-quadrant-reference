@@ -23,6 +23,10 @@ invalidate an earlier approval.
    false` and `human-review-required`.
 7. Never include unnecessary personal identifiers. Governed sensitive names,
    private paths, credentials and contact identifiers are rejected.
+8. `learnerPresentation.stagedDisclosure` is schema-reserved, authoring-only
+   until governed staged-delivery projections are implemented. A non-empty
+   value blocks publication and is excluded from immediate and reveal
+   projections.
 
 ## Commands
 

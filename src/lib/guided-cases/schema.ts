@@ -71,6 +71,13 @@ export const revealStateSchema = z.enum([
   'internal-only',
 ])
 
+export const stagedDisclosureItemSchema = z.strictObject({
+  id: slugSchema,
+  order: z.number().int().positive(),
+  content: z.string().min(1),
+  revealState: revealStateSchema,
+})
+
 export const reasoningStageSchema = z.strictObject({
   id: slugSchema,
   type: stageTypeSchema,
@@ -117,12 +124,7 @@ export const guidedCaseRecordSchema = z.strictObject({
     relevantMedicalHistory: z.string().min(1).optional(),
     medicationContext: z.string().min(1).optional(),
     psychosocialOrOccupationalContext: z.string().min(1).optional(),
-    stagedDisclosure: z.array(z.strictObject({
-      id: slugSchema,
-      order: z.number().int().positive(),
-      content: z.string().min(1),
-      revealState: revealStateSchema,
-    })).default([]),
+    stagedDisclosure: z.array(stagedDisclosureItemSchema).default([]),
   }),
   reasoningStages: z.array(reasoningStageSchema).min(1),
   governance: z.strictObject({
@@ -193,6 +195,13 @@ export const guidedCaseRecordSchema = z.strictObject({
 
   if (record.publicationEligibility) {
     const decision = record.governance.publicationDecision
+    if (record.learnerPresentation.stagedDisclosure.length > 0) {
+      context.addIssue({
+        code: 'custom',
+        path: ['learnerPresentation', 'stagedDisclosure'],
+        message: 'stagedDisclosure is schema-reserved and authoring-only until governed staged-delivery projections are implemented',
+      })
+    }
     if (record.lifecycleState !== 'published') {
       context.addIssue({ code: 'custom', path: ['publicationEligibility'], message: 'public eligibility requires published lifecycle' })
     }
