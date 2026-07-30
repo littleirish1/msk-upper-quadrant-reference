@@ -7,6 +7,7 @@ import {
   PACKET_ARTIFACT_HANDLING,
   copyExactArtifact,
   verifyPatchReconstructsTree,
+  writeNarrativeArtifact,
   writePacketArtifact,
 } from './lib/reviewPacketArtifacts.mjs'
 
@@ -149,6 +150,19 @@ try {
     /Unsupported packet artifact/,
   )
   assertions += 1
+
+  const narrative = path.join(packet, 'validation-log.txt')
+  const narrativeEmail = ['reviewer', 'example.invalid'].join('@')
+  writeNarrativeArtifact(
+    narrative,
+    `Contact: ${narrativeEmail}\nRepository: ${repository}\n`,
+    { repositoryRoot: repository },
+  )
+  const narrativeText = fs.readFileSync(narrative, 'utf8')
+  assert.equal(narrativeText.includes(narrativeEmail), false)
+  assert.equal(narrativeText.includes(repository), false)
+  assert.match(narrativeText, /\[redacted-email\]/)
+  assertions += 3
 
   console.log(`Exact review-packet artifact tests passed. Assertions: ${assertions}.`)
 } finally {

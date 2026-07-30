@@ -52,6 +52,31 @@ export function redactSensitiveText(value, repositoryRoot = process.cwd()) {
     /[A-Za-z]:[\\/]+(?:Users|dev)(?:[\\/]+[^\s"'<>|]*)?/gi,
     '<private-local-path>',
   )
+  text = text.replace(
+    /(?<![\w.+-])[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}(?![\w.-])/giu,
+    '[redacted-email]',
+  )
+  text = text.replace(
+    /(?<!\d)(?:(?:\+|00)44[\s().-]*\d(?:[\s().-]*\d){8,10}|0\d(?:[\s().-]*\d){8,10})(?!\d)/gu,
+    '[redacted-telephone]',
+  )
+  text = text.replace(
+    /\bNHS\s*(?:number|no\.?|id)?\s*[:#-]?\s*(?:\d[\s-]*){10}\b/giu,
+    '[redacted-health-identifier]',
+  )
+  for (const pattern of narrativeCredentialPatterns()) {
+    text = text.replace(pattern, '[redacted-credential]')
+  }
 
   return text
+}
+
+function narrativeCredentialPatterns() {
+  return [
+    new RegExp(`\\b${['s', 'k-'].join('')}[0-9A-Za-z_-]{20,}`, 'gu'),
+    new RegExp(`\\b${['AI', 'za'].join('')}[0-9A-Za-z_-]{20,}`, 'gu'),
+    new RegExp(`\\b(?:${['A', 'KIA'].join('')}|${['A', 'SIA'].join('')})[A-Z0-9]{16}\\b`, 'gu'),
+    new RegExp(`-----BEGIN [A-Z ]*${['PRIVATE', ' KEY'].join('')}-----`, 'gu'),
+    /\bBearer\s+[A-Za-z0-9._~-]{20,}\b/gu,
+  ]
 }
