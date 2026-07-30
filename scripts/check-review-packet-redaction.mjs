@@ -89,7 +89,7 @@ for (const file of collectFiles(packetDir)) {
     fail(relative + ': sensitive legacy path appears outside deletion summary')
   }
 
-  if (/[A-Za-z]:[\\/](?:Users|dev)[\\/]/i.test(text)) {
+  if (/[A-Za-z]:[\\/]+(?:Users|dev)[\\/]+/i.test(text)) {
     fail(relative + ': private local path detected')
   }
 

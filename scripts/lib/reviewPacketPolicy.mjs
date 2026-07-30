@@ -38,8 +38,9 @@ export function redactSensitiveText(value, repositoryRoot = process.cwd()) {
   let text = String(value || '')
   const rootForward = normalizePath(repositoryRoot)
   const rootBackward = String(repositoryRoot).replace(/\//g, '\\')
+  const rootJsonEscaped = rootBackward.replace(/\\/g, '\\\\')
 
-  for (const root of [rootForward, rootBackward]) {
+  for (const root of [rootForward, rootBackward, rootJsonEscaped]) {
     if (root) text = text.split(root).join('<repository-root>')
   }
 
@@ -48,7 +49,7 @@ export function redactSensitiveText(value, repositoryRoot = process.cwd()) {
     '[sensitive legacy source path omitted; see sensitive-deletion-summary.md]',
   )
   text = text.replace(
-    /[A-Za-z]:[\\/](?:Users|dev)(?:[\\/][^\s"'<>|]*)?/gi,
+    /[A-Za-z]:[\\/]+(?:Users|dev)(?:[\\/]+[^\s"'<>|]*)?/gi,
     '<private-local-path>',
   )
 

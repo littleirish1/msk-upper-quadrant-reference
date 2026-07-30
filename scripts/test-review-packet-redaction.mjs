@@ -67,6 +67,9 @@ try {
 
   const privatePath = ['C:', 'Users', 'reviewer', 'private-source.html'].join('\\')
   expectFail('private-path', { 'ordinary.txt': privatePath }, 'private local path')
+  expectFail('json-escaped-private-path', {
+    'ordinary.txt': JSON.stringify({ location: privatePath }),
+  }, 'JSON-escaped private local path')
 
   expectFail('governed-name', { 'ordinary.txt': SYNTHETIC_GOVERNED_NAME }, 'governed name')
 
