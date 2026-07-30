@@ -1,0 +1,135 @@
+{
+  "caseId": "case.shoulder.case-04",
+  "contentHash": "9d31c9a356365255e852cb80b0109007a40c315e67a0a91cb24bcf5635d3e5dd",
+  "contentRevision": 1,
+  "difficulty": "early-intermediate",
+  "estimatedTime": "10-15 minutes",
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "9d31c9a356365255e852cb80b0109007a40c315e67a0a91cb24bcf5635d3e5dd",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No approved Evidence Hub condition or evidence record is available for this case."
+    ]
+  },
+  "governance": {
+    "authoringStatus": "approved",
+    "clinicalReviewStatus": "baseline-reviewed",
+    "evidenceReviewStatus": "baseline-preserved",
+    "knownLimitations": [
+      "This migration preserves the reviewed baseline and does not constitute new clinical approval.",
+      "Evidence Hub relationships remain unresolved until governed records exist."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": "9d31c9a356365255e852cb80b0109007a40c315e67a0a91cb24bcf5635d3e5dd",
+      "approvedRevision": 1,
+      "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
+      "status": "baseline-carried-forward"
+    },
+    "reviewDate": "2026-06-03",
+    "reviewerRole": "existing reviewed baseline",
+    "sourceClearanceStatus": "baseline-public-content",
+    "unresolvedIssues": []
+  },
+  "learnerCaseNumber": "Case 04",
+  "learnerPresentation": {
+    "aggravatingFactors": [],
+    "easingFactors": [],
+    "initialPresentation": "A 29-year-old active patient presents with a 5-month history of right lateral shoulder pain. Symptoms began gradually with no clear traumatic event. Pain is worse with overhead activity, throwing, and lying on the affected side at night. They have tried rest for 6 weeks with minimal improvement. NSAIDs from the GP gave some benefit. They are motivated to return to sport.",
+    "stagedDisclosure": []
+  },
+  "lifecycleState": "published",
+  "neutralTitle": "Lateral shoulder pain with overhead activity",
+  "privateDiagnosticIdentity": {
+    "associatedConditionId": "rotator-cuff-tendinopathy",
+    "evidenceHubConditionId": null,
+    "internalSourceStationId": null,
+    "internalTitle": "Shoulder Case 01: Lateral Shoulder Pain",
+    "likelyDiagnosis": "Rotator Cuff Tendinopathy",
+    "privateLearningFocus": [
+      "Rotator cuff related shoulder pain",
+      "Differential diagnosis",
+      "Objective assessment planning",
+      "Early management reasoning"
+    ]
+  },
+  "provenance": {
+    "aiAssisted": false,
+    "citationReferenceIds": [],
+    "extractionDate": null,
+    "humanEdited": true,
+    "legacySourceId": null,
+    "sourceRecordIds": [],
+    "sourceRevisionOrHash": "d0b9dd3e12e05ddd92ad64ea05fe76578225843725ef19ffa62e521dd386befe",
+    "sourceType": "existing-public-mdx",
+    "transformationHistory": [
+      {
+        "action": "governed-schema-migration",
+        "detail": "Mapped the existing reviewed case to v2 without changing clinical meaning.",
+        "reviewRequired": false
+      }
+    ]
+  },
+  "publicationEligibility": true,
+  "publicSlug": "case-04-lateral-shoulder-pain-overhead-activity",
+  "reasoningStages": [
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "initial-hypothesis-1",
+      "learnerQuestion": "What is your leading clinical hypothesis, and what features support it?",
+      "modelReasoningChecklist": [],
+      "order": 1,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Reasoning prompt 1",
+      "type": "initial-hypothesis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "differential-diagnosis-2",
+      "learnerQuestion": "What are three important differentials you would keep in mind?",
+      "modelReasoningChecklist": [],
+      "order": 2,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Reasoning prompt 2",
+      "type": "differential-diagnosis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "objective-assessment-3",
+      "learnerQuestion": "What would you want to assess objectively?",
+      "modelReasoningChecklist": [],
+      "order": 3,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Reasoning prompt 3",
+      "type": "objective-assessment"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "management-reasoning-4",
+      "learnerQuestion": "What would your early management focus on?",
+      "modelReasoningChecklist": [],
+      "order": 4,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Reasoning prompt 4",
+      "type": "management-reasoning"
+    }
+  ],
+  "region": "shoulder",
+  "schemaVersion": 2
+}

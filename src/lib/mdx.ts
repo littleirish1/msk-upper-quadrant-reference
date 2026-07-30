@@ -122,18 +122,29 @@ export function getAllMdxPaths(): Array<{ region: string; condition: string }> {
   return results
 }
 
-const CASE_LEARNER_LABELS: Record<string, string> = {
-  'cervical-radiculopathy-case-01': 'Case 01 · Neck and arm symptoms',
-  'early-degenerative-cervical-myelopathy-case-01': 'Case 02 · Hand clumsiness and heavy legs',
-  'distal-biceps-rupture-case-01': 'Case 03 · Sudden anterior elbow pain after lifting',
-  'rcrsp-case-01': 'Case 04 · Lateral shoulder pain with overhead activity',
-  'adhesive-capsulitis-case-01': 'Case 05 · Progressive shoulder stiffness',
-  'visceral-referral-mimicking-thoracic-msk-case-01': 'Case 06 · Thoracic pain with broader screening cues',
+interface PublicCaseRegistryEntry {
+  caseId: string
+  learnerCaseNumber: string
+  neutralTitle: string
 }
 
-export function getCaseLearnerLabel(caseSlug: string, title?: string, region?: string): string {
-  if (CASE_LEARNER_LABELS[caseSlug]) {
-    return CASE_LEARNER_LABELS[caseSlug]
+const publicCaseRegistry = JSON.parse(
+  fs.readFileSync(path.join(process.cwd(), 'src', 'data', 'public-case-registry.json'), 'utf8'),
+) as PublicCaseRegistryEntry[]
+
+const PUBLIC_CASES_BY_ID = new Map(
+  publicCaseRegistry.map((record) => [record.caseId, record] as const),
+)
+
+export function getCaseLearnerLabel(
+  caseSlug: string,
+  title?: string,
+  region?: string,
+  guidedCaseId?: string,
+): string {
+  const governed = guidedCaseId ? PUBLIC_CASES_BY_ID.get(guidedCaseId) : undefined
+  if (governed) {
+    return `${governed.learnerCaseNumber} - ${governed.neutralTitle}`
   }
 
   void title
@@ -142,7 +153,7 @@ export function getCaseLearnerLabel(caseSlug: string, title?: string, region?: s
   const caseLabel = caseNumber ? `Case ${caseNumber.padStart(2, '0')}` : 'Guided case'
   const regionLabel = region ? region.replace(/-/g, ' ') : 'MSK'
   const fallback = `${caseLabel} - ${regionLabel} clinical reasoning case`
-  return `Guided case · ${fallback}`
+  return `Guided case - ${fallback}`
 }
 
 export interface CaseContent {
@@ -281,7 +292,12 @@ export function getAllCases(): PublicCaseSummary[] {
       const content = stripInternalCaseHeading(sanitizeMdxContent(rawContent))
       results.push(createPublicCaseSummary({
         region,
-        displayTitle: getCaseLearnerLabel(caseSlug, frontmatter.title, region),
+        displayTitle: getCaseLearnerLabel(
+          caseSlug,
+          frontmatter.title,
+          region,
+          frontmatter.guidedCaseId,
+        ),
         difficulty: frontmatter.difficulty,
         estimatedTime: frontmatter.estimatedTime,
         publicSlug: getCasePublicSlug(caseSlug, frontmatter, region),

@@ -38,6 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     internalCaseSlug ?? params.caseSlug,
     result?.frontmatter.title,
     params.region,
+    result?.frontmatter.guidedCaseId,
   )
 
   return {
@@ -57,7 +58,12 @@ export default async function GuidedCasePage({ params }: Props) {
 
   const region = getRegion(regionSlug)
 
-  const displayTitle = getCaseLearnerLabel(caseSlug, result.frontmatter.title, regionSlug)
+  const displayTitle = getCaseLearnerLabel(
+    caseSlug,
+    result.frontmatter.title,
+    regionSlug,
+    result.frontmatter.guidedCaseId,
+  )
   const learnerContent = stripPreRevealLinkedConditionSection(
     result.content,
   )

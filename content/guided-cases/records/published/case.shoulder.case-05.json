@@ -1,0 +1,161 @@
+{
+  "caseId": "case.shoulder.case-05",
+  "contentHash": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+  "contentRevision": 1,
+  "difficulty": "early-intermediate",
+  "estimatedTime": "10-15 minutes",
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No approved Evidence Hub condition or evidence record is available for this case."
+    ]
+  },
+  "governance": {
+    "authoringStatus": "approved",
+    "clinicalReviewStatus": "baseline-reviewed",
+    "evidenceReviewStatus": "baseline-preserved",
+    "knownLimitations": [
+      "This migration preserves the reviewed baseline and does not constitute new clinical approval.",
+      "Evidence Hub relationships remain unresolved until governed records exist."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+      "approvedRevision": 1,
+      "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
+      "status": "baseline-carried-forward"
+    },
+    "reviewDate": "2026-06-03",
+    "reviewerRole": "existing reviewed baseline",
+    "sourceClearanceStatus": "baseline-public-content",
+    "unresolvedIssues": []
+  },
+  "learnerCaseNumber": "Case 05",
+  "learnerPresentation": {
+    "aggravatingFactors": [],
+    "easingFactors": [],
+    "initialPresentation": "A 56-year-old patient with type 2 diabetes presents with an 8-month history of progressive left shoulder stiffness. The shoulder was initially very painful, especially at night, but the pain has reduced slightly. Stiffness is now the dominant problem. She struggles to reach behind her back, reach across her body, dress normally, and sleep comfortably. There was no trauma or dislocation. She previously attended physiotherapy elsewhere, mainly involving deep tissue massage, but she reports no meaningful improvement. She is frustrated and asks, “Will this ever get better?”",
+    "stagedDisclosure": []
+  },
+  "lifecycleState": "published",
+  "neutralTitle": "Progressive shoulder stiffness",
+  "privateDiagnosticIdentity": {
+    "associatedConditionId": "adhesive-capsulitis",
+    "evidenceHubConditionId": null,
+    "internalSourceStationId": null,
+    "internalTitle": "Shoulder Case 02: Progressive Shoulder Stiffness",
+    "likelyDiagnosis": "Adhesive Capsulitis",
+    "privateLearningFocus": [
+      "Adhesive capsulitis",
+      "Differential diagnosis",
+      "Pattern recognition",
+      "Management reasoning"
+    ]
+  },
+  "provenance": {
+    "aiAssisted": false,
+    "citationReferenceIds": [],
+    "extractionDate": null,
+    "humanEdited": true,
+    "legacySourceId": null,
+    "sourceRecordIds": [],
+    "sourceRevisionOrHash": "a60a33570d5e3e946b00068cc801cf678cffd6557f8e854e93845cc0ced691a1",
+    "sourceType": "existing-public-mdx",
+    "transformationHistory": [
+      {
+        "action": "governed-schema-migration",
+        "detail": "Mapped the existing reviewed case to v2 without changing clinical meaning.",
+        "reviewRequired": false
+      }
+    ]
+  },
+  "publicationEligibility": true,
+  "publicSlug": "case-05-progressive-shoulder-stiffness",
+  "reasoningStages": [
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "initial-hypothesis-1",
+      "learnerQuestion": "What is your leading clinical hypothesis, and what features support it?",
+      "modelReasoningChecklist": [],
+      "order": 1,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Case presentation",
+      "type": "initial-hypothesis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "differential-diagnosis-2",
+      "learnerQuestion": "What are your top three differentials, and what would make each more or less likely?",
+      "modelReasoningChecklist": [],
+      "order": 2,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Differential diagnosis",
+      "type": "differential-diagnosis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "red-flag-escalation-3",
+      "learnerQuestion": "What red flags or serious pathology considerations would you screen for?",
+      "modelReasoningChecklist": [],
+      "order": 3,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Red flag screening",
+      "type": "red-flag-escalation"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "objective-assessment-4",
+      "learnerQuestion": "What would you prioritise in your objective assessment?",
+      "modelReasoningChecklist": [],
+      "order": 4,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Objective assessment",
+      "type": "objective-assessment"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "objective-assessment-5",
+      "learnerQuestion": "What objective findings would fit your leading hypothesis?",
+      "modelReasoningChecklist": [],
+      "order": 5,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Expected findings",
+      "type": "objective-assessment"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "management-reasoning-6",
+      "learnerQuestion": "What would your early management focus on, and why?",
+      "modelReasoningChecklist": [],
+      "order": 6,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Management reasoning",
+      "type": "management-reasoning"
+    }
+  ],
+  "region": "shoulder",
+  "schemaVersion": 2
+}

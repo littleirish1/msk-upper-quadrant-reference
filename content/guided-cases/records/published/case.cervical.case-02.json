@@ -1,0 +1,189 @@
+{
+  "caseId": "case.cervical.case-02",
+  "contentHash": "8618d85f06ce9d29649d8ec4042652dd607d66f6f0c174a0e5818fbcb7f3a645",
+  "contentRevision": 1,
+  "difficulty": "advanced",
+  "estimatedTime": "10-15 minutes",
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "8618d85f06ce9d29649d8ec4042652dd607d66f6f0c174a0e5818fbcb7f3a645",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No approved Evidence Hub condition or evidence record is available for this case."
+    ]
+  },
+  "governance": {
+    "authoringStatus": "approved",
+    "clinicalReviewStatus": "baseline-reviewed",
+    "evidenceReviewStatus": "baseline-preserved",
+    "knownLimitations": [
+      "This migration preserves the reviewed baseline and does not constitute new clinical approval.",
+      "Evidence Hub relationships remain unresolved until governed records exist."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": "8618d85f06ce9d29649d8ec4042652dd607d66f6f0c174a0e5818fbcb7f3a645",
+      "approvedRevision": 1,
+      "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
+      "status": "baseline-carried-forward"
+    },
+    "reviewDate": "2026-06-04",
+    "reviewerRole": "existing reviewed baseline",
+    "sourceClearanceStatus": "baseline-public-content",
+    "unresolvedIssues": []
+  },
+  "learnerCaseNumber": "Case 02",
+  "learnerPresentation": {
+    "aggravatingFactors": [],
+    "easingFactors": [],
+    "initialPresentation": "A 58-year-old retired nurse is referred for a pre-operative physiotherapy assessment before planned bilateral carpal tunnel release. She reports a 6-month history of increasing difficulty with fine motor tasks, including fastening buttons, typing, and handling cutlery. She also reports that her legs feel heavy on stairs. She has intermittent numbness in both arms, but it does not follow one clear dermatomal or peripheral nerve distribution. She has no significant neck pain. She denies falls, but reports that her balance feels slightly less reliable. Over the past 2 months, she has noticed mild bladder urgency, which she has attributed to possible urinary tract infections. Her current working diagnosis is bilateral carpal tunnel syndrome.",
+    "stagedDisclosure": []
+  },
+  "lifecycleState": "published",
+  "neutralTitle": "Hand clumsiness and heavy legs",
+  "privateDiagnosticIdentity": {
+    "associatedConditionId": "cervical-myelopathy",
+    "evidenceHubConditionId": null,
+    "internalSourceStationId": "s20",
+    "internalTitle": "Cervical Case 02: Subtle Hand Dysfunction and Heavy Legs",
+    "likelyDiagnosis": "Cervical Myelopathy",
+    "privateLearningFocus": [
+      "Degenerative cervical myelopathy",
+      "Upper motor neuron screening",
+      "Diagnostic overshadowing",
+      "Urgent referral reasoning"
+    ]
+  },
+  "provenance": {
+    "aiAssisted": false,
+    "citationReferenceIds": [],
+    "extractionDate": null,
+    "humanEdited": true,
+    "legacySourceId": "legacy-html-case-bank-v1",
+    "sourceRecordIds": [
+      "s20"
+    ],
+    "sourceRevisionOrHash": "da826055346f36be34e99a4a98462311865ec9e08f251828ca09715fed5f8922",
+    "sourceType": "legacy-html-case-bank",
+    "transformationHistory": [
+      {
+        "action": "governed-schema-migration",
+        "detail": "Mapped the existing reviewed case to v2 without changing clinical meaning.",
+        "reviewRequired": false
+      }
+    ]
+  },
+  "publicationEligibility": true,
+  "publicSlug": "case-02-hand-clumsiness-heavy-legs",
+  "reasoningStages": [
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "red-flag-escalation-1",
+      "learnerQuestion": "What is your leading concern, and why should you not simply continue with the planned pre-operative CTS pathway?",
+      "modelReasoningChecklist": [],
+      "order": 1,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Case presentation",
+      "type": "red-flag-escalation"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "initial-hypothesis-2",
+      "learnerQuestion": "Why is this case easy to misclassify as bilateral carpal tunnel syndrome?",
+      "modelReasoningChecklist": [],
+      "order": 2,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Diagnostic trap",
+      "type": "initial-hypothesis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "differential-diagnosis-3",
+      "learnerQuestion": "What differentials should remain in your reasoning, and what features help discriminate them?",
+      "modelReasoningChecklist": [],
+      "order": 3,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Differential diagnosis",
+      "type": "differential-diagnosis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "red-flag-escalation-4",
+      "learnerQuestion": "Which features make this a high-stakes referral case?",
+      "modelReasoningChecklist": [],
+      "order": 4,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Red flag and referral reasoning",
+      "type": "red-flag-escalation"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "objective-assessment-5",
+      "learnerQuestion": "What would you prioritise in the objective assessment?",
+      "modelReasoningChecklist": [],
+      "order": 5,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Objective assessment",
+      "type": "objective-assessment"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "red-flag-escalation-6",
+      "learnerQuestion": "What findings would support your concern for early DCM?",
+      "modelReasoningChecklist": [],
+      "order": 6,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Expected findings",
+      "type": "red-flag-escalation"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "management-reasoning-7",
+      "learnerQuestion": "What should your immediate management focus on?",
+      "modelReasoningChecklist": [],
+      "order": 7,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Management reasoning",
+      "type": "management-reasoning"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "red-flag-escalation-8",
+      "learnerQuestion": "How would you explain the concern without causing unnecessary alarm?",
+      "modelReasoningChecklist": [],
+      "order": 8,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Communication",
+      "type": "red-flag-escalation"
+    }
+  ],
+  "region": "cervical",
+  "schemaVersion": 2
+}

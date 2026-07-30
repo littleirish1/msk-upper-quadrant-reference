@@ -11,6 +11,9 @@ export const CASE_FRONTMATTER_VISIBILITY = Object.freeze({
     'condition',
   ],
   privateInternal: [
+    'guidedCaseId',
+    'schemaVersion',
+    'contentRevision',
     'learningFocus',
     'sourceType',
     'sourceId',

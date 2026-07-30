@@ -357,6 +357,9 @@ export const decisionTreeRecordSchema = z.object({
 })
 
 export const caseFrontmatterSchema = sourceMetadataSchema.merge(z.object({
+  guidedCaseId: z.string().regex(/^case\.[a-z0-9-]+\.[a-z0-9-]+$/).optional(),
+  schemaVersion: z.number().int().positive().optional(),
+  contentRevision: z.number().int().positive().optional(),
   title: z.string().min(1),
   region: regionSlugSchema,
   condition: z.string().min(1),
@@ -395,6 +398,25 @@ export const caseFrontmatterSchema = sourceMetadataSchema.merge(z.object({
         code: 'custom',
         path: ['reviewStatus'],
         message: 'published legacy-derived cases require reviewStatus reviewed',
+      })
+    }
+  }
+
+  if (data.status === 'published') {
+    for (const field of ['guidedCaseId', 'schemaVersion', 'contentRevision'] as const) {
+      if (data[field] === undefined) {
+        context.addIssue({
+          code: 'custom',
+          path: [field],
+          message: `${field} is required for governed published cases`,
+        })
+      }
+    }
+    if (data.schemaVersion !== 2) {
+      context.addIssue({
+        code: 'custom',
+        path: ['schemaVersion'],
+        message: 'published guided cases must use schemaVersion 2',
       })
     }
   }

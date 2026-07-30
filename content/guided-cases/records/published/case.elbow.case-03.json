@@ -1,0 +1,176 @@
+{
+  "caseId": "case.elbow.case-03",
+  "contentHash": "92fb595c5e7ff5d8011f3c0ade913fd9c6a9ecf04b4505485dec6b5ca4699a07",
+  "contentRevision": 1,
+  "difficulty": "intermediate",
+  "estimatedTime": "10-15 minutes",
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "92fb595c5e7ff5d8011f3c0ade913fd9c6a9ecf04b4505485dec6b5ca4699a07",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No approved Evidence Hub condition or evidence record is available for this case."
+    ]
+  },
+  "governance": {
+    "authoringStatus": "approved",
+    "clinicalReviewStatus": "baseline-reviewed",
+    "evidenceReviewStatus": "baseline-preserved",
+    "knownLimitations": [
+      "This migration preserves the reviewed baseline and does not constitute new clinical approval.",
+      "Evidence Hub relationships remain unresolved until governed records exist."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": "92fb595c5e7ff5d8011f3c0ade913fd9c6a9ecf04b4505485dec6b5ca4699a07",
+      "approvedRevision": 1,
+      "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
+      "status": "baseline-carried-forward"
+    },
+    "reviewDate": "2026-06-03",
+    "reviewerRole": "existing reviewed baseline",
+    "sourceClearanceStatus": "baseline-public-content",
+    "unresolvedIssues": []
+  },
+  "learnerCaseNumber": "Case 03",
+  "learnerPresentation": {
+    "aggravatingFactors": [],
+    "easingFactors": [],
+    "initialPresentation": "A 49-year-old patient presents with sudden pain in the front of the elbow after lifting a heavy box yesterday. He felt a distinct “pop” in the antecubital fossa at the time of injury. Over the past 24 hours, bruising has developed around the front of the elbow. He reports weakness when turning the palm upwards and when bending the elbow. Pain is 5/10 at rest and increases to 8/10 with lifting or resisted supination. He wants to know whether this needs urgent onward referral.",
+    "stagedDisclosure": []
+  },
+  "lifecycleState": "published",
+  "neutralTitle": "Sudden anterior elbow pain after lifting",
+  "privateDiagnosticIdentity": {
+    "associatedConditionId": "distal-biceps-rupture",
+    "evidenceHubConditionId": null,
+    "internalSourceStationId": "s28",
+    "internalTitle": "Elbow Case 01: Sudden Antecubital Pain",
+    "likelyDiagnosis": "Distal Biceps Rupture",
+    "privateLearningFocus": [
+      "Distal biceps rupture",
+      "Urgent referral reasoning",
+      "Objective assessment planning",
+      "Time-critical surgical decision-making"
+    ]
+  },
+  "provenance": {
+    "aiAssisted": false,
+    "citationReferenceIds": [],
+    "extractionDate": null,
+    "humanEdited": true,
+    "legacySourceId": "legacy-html-case-bank-v1",
+    "sourceRecordIds": [
+      "s28"
+    ],
+    "sourceRevisionOrHash": "a252e4676cac55d2c25054a97a9bc291d7db3b5e57eca62e3845a010f9ec1c7a",
+    "sourceType": "legacy-html-case-bank",
+    "transformationHistory": [
+      {
+        "action": "governed-schema-migration",
+        "detail": "Mapped the existing reviewed case to v2 without changing clinical meaning.",
+        "reviewRequired": false
+      }
+    ]
+  },
+  "publicationEligibility": true,
+  "publicSlug": "case-03-sudden-anterior-elbow-pain-after-lifting",
+  "reasoningStages": [
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "initial-hypothesis-1",
+      "learnerQuestion": "What is your leading clinical hypothesis, and what features support it?",
+      "modelReasoningChecklist": [],
+      "order": 1,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Case presentation",
+      "type": "initial-hypothesis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "differential-diagnosis-2",
+      "learnerQuestion": "What are your top differentials, and what would make each more or less likely?",
+      "modelReasoningChecklist": [],
+      "order": 2,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Differential diagnosis",
+      "type": "differential-diagnosis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "red-flag-escalation-3",
+      "learnerQuestion": "Is this an urgent referral, routine referral, or conservative management case?",
+      "modelReasoningChecklist": [],
+      "order": 3,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Red flag and referral reasoning",
+      "type": "red-flag-escalation"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "objective-assessment-4",
+      "learnerQuestion": "What would you prioritise in your objective assessment?",
+      "modelReasoningChecklist": [],
+      "order": 4,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Objective assessment",
+      "type": "objective-assessment"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "objective-assessment-5",
+      "learnerQuestion": "What additional objective findings would increase or decrease confidence in your leading hypothesis?",
+      "modelReasoningChecklist": [],
+      "order": 5,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Expected findings",
+      "type": "objective-assessment"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "management-reasoning-6",
+      "learnerQuestion": "What would your immediate management focus on?",
+      "modelReasoningChecklist": [],
+      "order": 6,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Management reasoning",
+      "type": "management-reasoning"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "patient-communication-7",
+      "learnerQuestion": "How would you explain the urgency to the patient?",
+      "modelReasoningChecklist": [],
+      "order": 7,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Communication",
+      "type": "patient-communication"
+    }
+  ],
+  "region": "elbow",
+  "schemaVersion": 2
+}

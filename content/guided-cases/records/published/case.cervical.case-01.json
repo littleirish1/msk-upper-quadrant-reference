@@ -1,0 +1,162 @@
+{
+  "caseId": "case.cervical.case-01",
+  "contentHash": "f815ab06c3259b69aae11f45df4206f90e8bcd676f24694305a13142e6e2f86a",
+  "contentRevision": 1,
+  "difficulty": "intermediate",
+  "estimatedTime": "10-15 minutes",
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "f815ab06c3259b69aae11f45df4206f90e8bcd676f24694305a13142e6e2f86a",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No approved Evidence Hub condition or evidence record is available for this case."
+    ]
+  },
+  "governance": {
+    "authoringStatus": "approved",
+    "clinicalReviewStatus": "baseline-reviewed",
+    "evidenceReviewStatus": "baseline-preserved",
+    "knownLimitations": [
+      "This migration preserves the reviewed baseline and does not constitute new clinical approval.",
+      "Evidence Hub relationships remain unresolved until governed records exist."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": "f815ab06c3259b69aae11f45df4206f90e8bcd676f24694305a13142e6e2f86a",
+      "approvedRevision": 1,
+      "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
+      "status": "baseline-carried-forward"
+    },
+    "reviewDate": "2026-06-03",
+    "reviewerRole": "existing reviewed baseline",
+    "sourceClearanceStatus": "baseline-public-content",
+    "unresolvedIssues": []
+  },
+  "learnerCaseNumber": "Case 01",
+  "learnerPresentation": {
+    "aggravatingFactors": [],
+    "easingFactors": [],
+    "initialPresentation": "A 42-year-old office worker presents with a 6-week history of right-sided neck pain with symptoms radiating into the right arm. Symptoms began gradually after a busy period at work involving prolonged desk-based activity. The patient describes intermittent pain travelling from the lower cervical region into the lateral arm and forearm, with occasional tingling into the thumb and index finger. Symptoms are aggravated by prolonged sitting, looking down at a laptop, and turning the head to the right. They report some relief when placing the hand on top of the head. Sleep is disturbed when lying on the right side. There is no history of trauma. They report no gait disturbance, no bilateral symptoms, no bowel or bladder changes, and no unexplained weight loss.",
+    "stagedDisclosure": []
+  },
+  "lifecycleState": "published",
+  "neutralTitle": "Neck and arm symptoms",
+  "privateDiagnosticIdentity": {
+    "associatedConditionId": "cervical-radiculopathy",
+    "evidenceHubConditionId": null,
+    "internalSourceStationId": null,
+    "internalTitle": "Cervical Case 01: Neck and Arm Pain",
+    "likelyDiagnosis": "Cervical Radiculopathy",
+    "privateLearningFocus": [
+      "Cervical radiculopathy",
+      "Neurological screening",
+      "Differential diagnosis",
+      "Red flag reasoning",
+      "Management reasoning"
+    ]
+  },
+  "provenance": {
+    "aiAssisted": false,
+    "citationReferenceIds": [],
+    "extractionDate": null,
+    "humanEdited": true,
+    "legacySourceId": null,
+    "sourceRecordIds": [],
+    "sourceRevisionOrHash": "849ddad48c3c81251ab8492bb302644d4ea58f8e7e2e77c0fd54212f789dbb2d",
+    "sourceType": "existing-public-mdx",
+    "transformationHistory": [
+      {
+        "action": "governed-schema-migration",
+        "detail": "Mapped the existing reviewed case to v2 without changing clinical meaning.",
+        "reviewRequired": false
+      }
+    ]
+  },
+  "publicationEligibility": true,
+  "publicSlug": "case-01-neck-arm-symptoms",
+  "reasoningStages": [
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "initial-hypothesis-1",
+      "learnerQuestion": "What is your leading clinical hypothesis, and what features support it?",
+      "modelReasoningChecklist": [],
+      "order": 1,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Case presentation",
+      "type": "initial-hypothesis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "differential-diagnosis-2",
+      "learnerQuestion": "What are your top three differentials, and what would make each more or less likely?",
+      "modelReasoningChecklist": [],
+      "order": 2,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Differential diagnosis",
+      "type": "differential-diagnosis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "red-flag-escalation-3",
+      "learnerQuestion": "What red flags or serious pathology considerations would you screen for?",
+      "modelReasoningChecklist": [],
+      "order": 3,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Red flag screening",
+      "type": "red-flag-escalation"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "objective-assessment-4",
+      "learnerQuestion": "What would you prioritise in your objective assessment?",
+      "modelReasoningChecklist": [],
+      "order": 4,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Objective assessment",
+      "type": "objective-assessment"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "objective-assessment-5",
+      "learnerQuestion": "What objective findings would fit your leading hypothesis?",
+      "modelReasoningChecklist": [],
+      "order": 5,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Expected findings",
+      "type": "objective-assessment"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "management-reasoning-6",
+      "learnerQuestion": "What would your early management focus on, and why?",
+      "modelReasoningChecklist": [],
+      "order": 6,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Management reasoning",
+      "type": "management-reasoning"
+    }
+  ],
+  "region": "cervical",
+  "schemaVersion": 2
+}

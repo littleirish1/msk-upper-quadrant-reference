@@ -1,0 +1,187 @@
+{
+  "caseId": "case.thoracic.case-06",
+  "contentHash": "f3e276c9322017da401579ef0e7c6756ee35b2a7c0fd6790e039e775f43957c7",
+  "contentRevision": 1,
+  "difficulty": "advanced",
+  "estimatedTime": "10-15 minutes",
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "f3e276c9322017da401579ef0e7c6756ee35b2a7c0fd6790e039e775f43957c7",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No approved Evidence Hub condition or evidence record is available for this case."
+    ]
+  },
+  "governance": {
+    "authoringStatus": "approved",
+    "clinicalReviewStatus": "baseline-reviewed",
+    "evidenceReviewStatus": "baseline-preserved",
+    "knownLimitations": [
+      "This migration preserves the reviewed baseline and does not constitute new clinical approval.",
+      "Evidence Hub relationships remain unresolved until governed records exist."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": "f3e276c9322017da401579ef0e7c6756ee35b2a7c0fd6790e039e775f43957c7",
+      "approvedRevision": 1,
+      "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
+      "status": "baseline-carried-forward"
+    },
+    "reviewDate": "2026-06-04",
+    "reviewerRole": "existing reviewed baseline",
+    "sourceClearanceStatus": "baseline-public-content",
+    "unresolvedIssues": []
+  },
+  "learnerCaseNumber": "Case 06",
+  "learnerPresentation": {
+    "aggravatingFactors": [],
+    "easingFactors": [],
+    "initialPresentation": "A 55-year-old accountant presents with left-sided upper thoracic and periscapular discomfort that was initially assumed to be postural. He has been working long hours at a desk during year-end accounts. He also returned to light gym work two weeks ago and noticed his upper back felt tight after rowing and pressing exercises. These details make an MSK explanation tempting. The symptom he is worried about is a deep ache between the left shoulder blade and spine, sometimes spreading as a band-like pressure across the front of the chest. It is not reliably reproduced by thoracic rotation, shoulder movement, palpation, resisted testing, or loaded spinal positions. Heat and stretching help general stiffness but do not change the main symptom. The most concerning episode occurred while walking uphill from a car park. He developed the same thoracic/scapular ache with chest pressure, felt clammy and mildly nauseous, and had to stop. Symptoms settled after several minutes of rest. A milder episode occurred again on stairs the following day. He has hypertension, previously raised cholesterol, a past smoking history, and a family history of myocardial infarction in a first-degree relative in their late 50s. He denies cough, fever, calf pain, pleuritic pain, unexplained weight loss, night sweats, trauma, neurological symptoms, or bowel/bladder disturbance.",
+    "stagedDisclosure": []
+  },
+  "lifecycleState": "published",
+  "neutralTitle": "Thoracic pain with broader screening cues",
+  "privateDiagnosticIdentity": {
+    "associatedConditionId": "visceral-referral",
+    "evidenceHubConditionId": null,
+    "internalSourceStationId": "s44",
+    "internalTitle": "Thoracic Case 01: Visceral Referral Mimicking MSK Pain",
+    "likelyDiagnosis": "Visceral Referral",
+    "privateLearningFocus": [
+      "Visceral referral",
+      "Thoracic red flags",
+      "Non-MSK masqueraders",
+      "Referral reasoning"
+    ]
+  },
+  "provenance": {
+    "aiAssisted": false,
+    "citationReferenceIds": [],
+    "extractionDate": null,
+    "humanEdited": true,
+    "legacySourceId": "legacy-html-case-bank-v1",
+    "sourceRecordIds": [
+      "s44"
+    ],
+    "sourceRevisionOrHash": "4f768aa6bafd356cbc0101f7bf69555565542246cc17dad16ccbbff69dad3f3d",
+    "sourceType": "legacy-html-case-bank",
+    "transformationHistory": [
+      {
+        "action": "governed-schema-migration",
+        "detail": "Mapped the existing reviewed case to v2 without changing clinical meaning.",
+        "reviewRequired": false
+      }
+    ]
+  },
+  "publicationEligibility": true,
+  "publicSlug": "case-06-thoracic-pain-broader-screening-cues",
+  "reasoningStages": [
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "initial-hypothesis-1",
+      "learnerQuestion": "What initially looks MSK, and what does not fit a simple mechanical explanation?",
+      "modelReasoningChecklist": [],
+      "order": 1,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Case presentation",
+      "type": "initial-hypothesis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [
+        "Do symptoms come on with exertion and ease with rest?",
+        "Is there chest pressure, breathlessness, sweating, nausea, dizziness, or a sense of heaviness?",
+        "Are there cardiovascular risk factors such as hypertension, diabetes, smoking history, high cholesterol, or family history?",
+        "Are there pulmonary clues such as cough, fever, pleuritic pain, or calf pain?"
+      ],
+      "feedback": "Compare the reasoning themes with the case information rather than treating them as a rigid marking rubric.",
+      "humanReviewRequired": false,
+      "id": "initial-hypothesis-2",
+      "learnerQuestion": "Which two targeted questions would most change your risk assessment?",
+      "modelReasoningChecklist": [
+        "Do symptoms come on with exertion and ease with rest?",
+        "Is there chest pressure, breathlessness, sweating, nausea, dizziness, or a sense of heaviness?",
+        "Are there cardiovascular risk factors such as hypertension, diabetes, smoking history, high cholesterol, or family history?",
+        "Are there pulmonary clues such as cough, fever, pleuritic pain, or calf pain?",
+        "Are there systemic features such as unexplained weight loss, night sweats, or persistent night pain?"
+      ],
+      "order": 2,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Targeted screening questions",
+      "type": "initial-hypothesis"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "red-flag-escalation-3",
+      "learnerQuestion": "Which two red flags or caution features would stop you treating this as routine MSK pain today?",
+      "modelReasoningChecklist": [],
+      "order": 3,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Features that increase concern",
+      "type": "red-flag-escalation"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "red-flag-escalation-4",
+      "learnerQuestion": "What findings would support an MSK explanation, and what findings would reduce but not remove medical concern?",
+      "modelReasoningChecklist": [],
+      "order": 4,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "What would reduce concern?",
+      "type": "red-flag-escalation"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "objective-assessment-5",
+      "learnerQuestion": "Would you continue with an MSK objective assessment?",
+      "modelReasoningChecklist": [],
+      "order": 5,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Objective assessment boundaries",
+      "type": "objective-assessment"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "referral-threshold-6",
+      "learnerQuestion": "What is the safest action or referral decision?",
+      "modelReasoningChecklist": [],
+      "order": 6,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Referral decision",
+      "type": "referral-threshold"
+    },
+    {
+      "commonPitfalls": [],
+      "expectedReasoningThemes": [],
+      "feedback": "Use the existing reviewed reveal discussion for comparison.",
+      "humanReviewRequired": false,
+      "id": "patient-communication-7",
+      "learnerQuestion": "How would you explain the decision without alarming the patient unnecessarily?",
+      "modelReasoningChecklist": [],
+      "order": 7,
+      "revealState": "public-after-reveal",
+      "sourceSectionHeading": "Communication",
+      "type": "patient-communication"
+    }
+  ],
+  "region": "thoracic",
+  "schemaVersion": 2
+}

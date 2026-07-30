@@ -91,7 +91,7 @@ export function createPublicImmediateCase(input: unknown): PublicImmediateCase {
     ...(record.estimatedTime ? { estimatedTime: record.estimatedTime } : {}),
     initialPresentation: record.learnerPresentation.initialPresentation,
     reasoningPrompts: record.reasoningStages
-      .filter((stage) => stage.revealState === 'public-immediate')
+      .filter((stage) => stage.revealState !== 'internal-only')
       .sort((a, b) => a.order - b.order)
       .map((stage) => ({
         id: stage.id,
