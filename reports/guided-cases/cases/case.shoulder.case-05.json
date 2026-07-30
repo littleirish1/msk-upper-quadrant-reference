@@ -1,11 +1,11 @@
 {
   "caseId": "case.shoulder.case-05",
-  "contentHash": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+  "contentHash": "cc80fa9baf5cfa44e690ab9dba9888e5d1c6294026fcf02ec55769ea82907d12",
   "contentRevision": 1,
   "evidenceHub": {
     "conditionRecordId": null,
     "evidenceRecordIds": [],
-    "pinnedCaseHash": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+    "pinnedCaseHash": "cc80fa9baf5cfa44e690ab9dba9888e5d1c6294026fcf02ec55769ea82907d12",
     "pinnedCaseRevision": 1,
     "relationshipIds": [],
     "reviewDecisionId": null,
@@ -27,7 +27,7 @@
     ],
     "nextReviewDate": null,
     "publicationDecision": {
-      "approvedContentHash": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+      "approvedContentHash": "cc80fa9baf5cfa44e690ab9dba9888e5d1c6294026fcf02ec55769ea82907d12",
       "approvedRevision": 1,
       "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
       "status": "baseline-carried-forward"
@@ -37,7 +37,7 @@
     "sourceClearanceStatus": "baseline-public-content",
     "unresolvedIssues": []
   },
-  "hashRecomputed": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+  "hashRecomputed": "cc80fa9baf5cfa44e690ab9dba9888e5d1c6294026fcf02ec55769ea82907d12",
   "learnerCaseNumber": "Case 05",
   "lifecycleState": "published",
   "publicationEligibility": true,

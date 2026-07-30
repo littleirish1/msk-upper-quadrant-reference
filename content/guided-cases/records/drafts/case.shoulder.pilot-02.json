@@ -1,13 +1,13 @@
 {
   "caseId": "case.shoulder.pilot-02",
-  "contentHash": "cb79b0a9d59759c6789cf0256db42fe30973e2723ea7fd1cdce9e230c6b64eee",
+  "contentHash": "65e202544800eeea5833c4ffb57ed11a8b088c0c86638ad5249c3c4b541fa4fe",
   "contentRevision": 1,
   "difficulty": "review required",
   "estimatedTime": "not set",
   "evidenceHub": {
     "conditionRecordId": null,
     "evidenceRecordIds": [],
-    "pinnedCaseHash": "cb79b0a9d59759c6789cf0256db42fe30973e2723ea7fd1cdce9e230c6b64eee",
+    "pinnedCaseHash": "65e202544800eeea5833c4ffb57ed11a8b088c0c86638ad5249c3c4b541fa4fe",
     "pinnedCaseRevision": 1,
     "relationshipIds": [],
     "reviewDecisionId": null,
@@ -69,7 +69,7 @@
     "sourceRecordIds": [
       "s31"
     ],
-    "sourceRevisionOrHash": "15a168922d97045d4b2e61c756233d9c7edf1398e7d1ad9d05ecd0fe49a18bdd",
+    "sourceRevisionOrHash": "9c557204e6569348ecb2ad5436a6e589105976650c1bca3c50893535a5ae074e",
     "sourceType": "legacy-html-case-bank",
     "transformationHistory": [
       {

@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { canonicalText, sha256 } from './shared.mjs'
 import { validateRecordSet } from './validator-lib.mjs'
 
 const base = {
@@ -41,5 +42,9 @@ assert.match(validateRecordSet([stale]).findings.join('\n'), /pin is stale/)
 const inventedLink = structuredClone(base)
 inventedLink.evidenceHub.conditionRecordId = 'condition.fake'
 assert.match(validateRecordSet([inventedLink]).findings.join('\n'), /zero-record baseline/)
+assert.equal(
+  sha256(canonicalText('first\r\nsecond\r\n')),
+  sha256(canonicalText('first\nsecond\n')),
+)
 
-console.log('Guided-case pipeline regression tests passed. Assertions: 6.')
+console.log('Guided-case pipeline regression tests passed. Assertions: 7.')

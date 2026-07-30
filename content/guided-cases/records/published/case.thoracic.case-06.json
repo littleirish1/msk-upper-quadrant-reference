@@ -1,13 +1,13 @@
 {
   "caseId": "case.thoracic.case-06",
-  "contentHash": "f3e276c9322017da401579ef0e7c6756ee35b2a7c0fd6790e039e775f43957c7",
+  "contentHash": "a915d9006b9d1fa329cc0ac54f54c14f9f248531995a3af49c70ea6e5b49bb40",
   "contentRevision": 1,
   "difficulty": "advanced",
   "estimatedTime": "10-15 minutes",
   "evidenceHub": {
     "conditionRecordId": null,
     "evidenceRecordIds": [],
-    "pinnedCaseHash": "f3e276c9322017da401579ef0e7c6756ee35b2a7c0fd6790e039e775f43957c7",
+    "pinnedCaseHash": "a915d9006b9d1fa329cc0ac54f54c14f9f248531995a3af49c70ea6e5b49bb40",
     "pinnedCaseRevision": 1,
     "relationshipIds": [],
     "reviewDecisionId": null,
@@ -25,7 +25,7 @@
     ],
     "nextReviewDate": null,
     "publicationDecision": {
-      "approvedContentHash": "f3e276c9322017da401579ef0e7c6756ee35b2a7c0fd6790e039e775f43957c7",
+      "approvedContentHash": "a915d9006b9d1fa329cc0ac54f54c14f9f248531995a3af49c70ea6e5b49bb40",
       "approvedRevision": 1,
       "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
       "status": "baseline-carried-forward"
@@ -66,7 +66,7 @@
     "sourceRecordIds": [
       "s44"
     ],
-    "sourceRevisionOrHash": "4f768aa6bafd356cbc0101f7bf69555565542246cc17dad16ccbbff69dad3f3d",
+    "sourceRevisionOrHash": "93b7b6c3b1bf2994c50999cea2f9f4dd8fff7a74e75624af82e733b34b35f3c8",
     "sourceType": "legacy-html-case-bank",
     "transformationHistory": [
       {

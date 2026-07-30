@@ -1,11 +1,11 @@
 {
   "caseId": "case.cervical.case-01",
-  "contentHash": "f815ab06c3259b69aae11f45df4206f90e8bcd676f24694305a13142e6e2f86a",
+  "contentHash": "5f65167cce69f274cdfe7f6da994d2e2447cd6386378b02010c6f5731d17dfa1",
   "contentRevision": 1,
   "evidenceHub": {
     "conditionRecordId": null,
     "evidenceRecordIds": [],
-    "pinnedCaseHash": "f815ab06c3259b69aae11f45df4206f90e8bcd676f24694305a13142e6e2f86a",
+    "pinnedCaseHash": "5f65167cce69f274cdfe7f6da994d2e2447cd6386378b02010c6f5731d17dfa1",
     "pinnedCaseRevision": 1,
     "relationshipIds": [],
     "reviewDecisionId": null,
@@ -27,7 +27,7 @@
     ],
     "nextReviewDate": null,
     "publicationDecision": {
-      "approvedContentHash": "f815ab06c3259b69aae11f45df4206f90e8bcd676f24694305a13142e6e2f86a",
+      "approvedContentHash": "5f65167cce69f274cdfe7f6da994d2e2447cd6386378b02010c6f5731d17dfa1",
       "approvedRevision": 1,
       "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
       "status": "baseline-carried-forward"
@@ -37,7 +37,7 @@
     "sourceClearanceStatus": "baseline-public-content",
     "unresolvedIssues": []
   },
-  "hashRecomputed": "f815ab06c3259b69aae11f45df4206f90e8bcd676f24694305a13142e6e2f86a",
+  "hashRecomputed": "5f65167cce69f274cdfe7f6da994d2e2447cd6386378b02010c6f5731d17dfa1",
   "learnerCaseNumber": "Case 01",
   "lifecycleState": "published",
   "publicationEligibility": true,

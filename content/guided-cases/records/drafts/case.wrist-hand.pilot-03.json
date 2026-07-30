@@ -1,13 +1,13 @@
 {
   "caseId": "case.wrist-hand.pilot-03",
-  "contentHash": "51848a62d95ba9a6cbaa7407663f0c630868f8c0649f20293e19709b45afe404",
+  "contentHash": "ea5f03b6839c475062197431603716d341c4a58b802d68c70addf2b5331c8379",
   "contentRevision": 1,
   "difficulty": "review required",
   "estimatedTime": "not set",
   "evidenceHub": {
     "conditionRecordId": null,
     "evidenceRecordIds": [],
-    "pinnedCaseHash": "51848a62d95ba9a6cbaa7407663f0c630868f8c0649f20293e19709b45afe404",
+    "pinnedCaseHash": "ea5f03b6839c475062197431603716d341c4a58b802d68c70addf2b5331c8379",
     "pinnedCaseRevision": 1,
     "relationshipIds": [],
     "reviewDecisionId": null,
@@ -69,7 +69,7 @@
     "sourceRecordIds": [
       "s30"
     ],
-    "sourceRevisionOrHash": "0c56a5aee504c892dbf36f35c66f2ef449ff57d90021266a07270f5d1c96d63d",
+    "sourceRevisionOrHash": "bb748ca43fd37f3daaca04a844ad6332c6efbda5c247382501f50b4e7af35e98",
     "sourceType": "legacy-html-case-bank",
     "transformationHistory": [
       {

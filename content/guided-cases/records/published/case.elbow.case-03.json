@@ -1,13 +1,13 @@
 {
   "caseId": "case.elbow.case-03",
-  "contentHash": "92fb595c5e7ff5d8011f3c0ade913fd9c6a9ecf04b4505485dec6b5ca4699a07",
+  "contentHash": "0eb88ca59315367cb641847e880faad3e9210e7729b84b838ec71353203cd32b",
   "contentRevision": 1,
   "difficulty": "intermediate",
   "estimatedTime": "10-15 minutes",
   "evidenceHub": {
     "conditionRecordId": null,
     "evidenceRecordIds": [],
-    "pinnedCaseHash": "92fb595c5e7ff5d8011f3c0ade913fd9c6a9ecf04b4505485dec6b5ca4699a07",
+    "pinnedCaseHash": "0eb88ca59315367cb641847e880faad3e9210e7729b84b838ec71353203cd32b",
     "pinnedCaseRevision": 1,
     "relationshipIds": [],
     "reviewDecisionId": null,
@@ -25,7 +25,7 @@
     ],
     "nextReviewDate": null,
     "publicationDecision": {
-      "approvedContentHash": "92fb595c5e7ff5d8011f3c0ade913fd9c6a9ecf04b4505485dec6b5ca4699a07",
+      "approvedContentHash": "0eb88ca59315367cb641847e880faad3e9210e7729b84b838ec71353203cd32b",
       "approvedRevision": 1,
       "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
       "status": "baseline-carried-forward"
@@ -66,7 +66,7 @@
     "sourceRecordIds": [
       "s28"
     ],
-    "sourceRevisionOrHash": "a252e4676cac55d2c25054a97a9bc291d7db3b5e57eca62e3845a010f9ec1c7a",
+    "sourceRevisionOrHash": "abfb232ebda7b9265c1f45d3f3ccf60085696a9398a15d6855f6dd1db34aa4b7",
     "sourceType": "legacy-html-case-bank",
     "transformationHistory": [
       {

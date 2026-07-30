@@ -61,6 +61,10 @@ export function fileSha256(file) {
   return sha256(fs.readFileSync(file))
 }
 
+export function fileCanonicalTextSha256(file) {
+  return sha256(canonicalText(fs.readFileSync(file, 'utf8')))
+}
+
 export function canonicalCaseHash(record) {
   const governedContent = {
     schemaVersion: record.schemaVersion,

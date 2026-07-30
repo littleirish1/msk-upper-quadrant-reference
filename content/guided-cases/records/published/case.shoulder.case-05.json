@@ -1,13 +1,13 @@
 {
   "caseId": "case.shoulder.case-05",
-  "contentHash": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+  "contentHash": "cc80fa9baf5cfa44e690ab9dba9888e5d1c6294026fcf02ec55769ea82907d12",
   "contentRevision": 1,
   "difficulty": "early-intermediate",
   "estimatedTime": "10-15 minutes",
   "evidenceHub": {
     "conditionRecordId": null,
     "evidenceRecordIds": [],
-    "pinnedCaseHash": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+    "pinnedCaseHash": "cc80fa9baf5cfa44e690ab9dba9888e5d1c6294026fcf02ec55769ea82907d12",
     "pinnedCaseRevision": 1,
     "relationshipIds": [],
     "reviewDecisionId": null,
@@ -25,7 +25,7 @@
     ],
     "nextReviewDate": null,
     "publicationDecision": {
-      "approvedContentHash": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+      "approvedContentHash": "cc80fa9baf5cfa44e690ab9dba9888e5d1c6294026fcf02ec55769ea82907d12",
       "approvedRevision": 1,
       "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
       "status": "baseline-carried-forward"
@@ -64,7 +64,7 @@
     "humanEdited": true,
     "legacySourceId": null,
     "sourceRecordIds": [],
-    "sourceRevisionOrHash": "a60a33570d5e3e946b00068cc801cf678cffd6557f8e854e93845cc0ced691a1",
+    "sourceRevisionOrHash": "7da82a9e70bc914d12efee58c8a1072995bc8035336e62af817d004f17573109",
     "sourceType": "existing-public-mdx",
     "transformationHistory": [
       {

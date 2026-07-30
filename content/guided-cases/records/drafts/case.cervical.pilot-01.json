@@ -1,13 +1,13 @@
 {
   "caseId": "case.cervical.pilot-01",
-  "contentHash": "9bf7c2d987931c0d3c61be7c8e4f9e08a10c8539bdd552f05156853db04b0ce0",
+  "contentHash": "fba1c2bd71c04b1f4f9d2830f7b84c35c4f122b6eccc8385c69d0e060955a5d9",
   "contentRevision": 1,
   "difficulty": "review required",
   "estimatedTime": "not set",
   "evidenceHub": {
     "conditionRecordId": null,
     "evidenceRecordIds": [],
-    "pinnedCaseHash": "9bf7c2d987931c0d3c61be7c8e4f9e08a10c8539bdd552f05156853db04b0ce0",
+    "pinnedCaseHash": "fba1c2bd71c04b1f4f9d2830f7b84c35c4f122b6eccc8385c69d0e060955a5d9",
     "pinnedCaseRevision": 1,
     "relationshipIds": [],
     "reviewDecisionId": null,
@@ -69,7 +69,7 @@
     "sourceRecordIds": [
       "s27"
     ],
-    "sourceRevisionOrHash": "2fafeba31702c8c27b2b99f0636ca248fc7ccd3ae625ffc3fa623ee79e0ffa89",
+    "sourceRevisionOrHash": "37738d4ed4e5c916779554c203926667af2fb6ec703b7ac00b7a0385cb6c3564",
     "sourceType": "legacy-html-case-bank",
     "transformationHistory": [
       {

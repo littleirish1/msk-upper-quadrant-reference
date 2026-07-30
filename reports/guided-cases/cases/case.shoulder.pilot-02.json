@@ -1,11 +1,11 @@
 {
   "caseId": "case.shoulder.pilot-02",
-  "contentHash": "cb79b0a9d59759c6789cf0256db42fe30973e2723ea7fd1cdce9e230c6b64eee",
+  "contentHash": "65e202544800eeea5833c4ffb57ed11a8b088c0c86638ad5249c3c4b541fa4fe",
   "contentRevision": 1,
   "evidenceHub": {
     "conditionRecordId": null,
     "evidenceRecordIds": [],
-    "pinnedCaseHash": "cb79b0a9d59759c6789cf0256db42fe30973e2723ea7fd1cdce9e230c6b64eee",
+    "pinnedCaseHash": "65e202544800eeea5833c4ffb57ed11a8b088c0c86638ad5249c3c4b541fa4fe",
     "pinnedCaseRevision": 1,
     "relationshipIds": [],
     "reviewDecisionId": null,
@@ -41,7 +41,7 @@
       "Source clearance for derivative publication has not been established."
     ]
   },
-  "hashRecomputed": "cb79b0a9d59759c6789cf0256db42fe30973e2723ea7fd1cdce9e230c6b64eee",
+  "hashRecomputed": "65e202544800eeea5833c4ffb57ed11a8b088c0c86638ad5249c3c4b541fa4fe",
   "learnerCaseNumber": "Pilot 02",
   "lifecycleState": "draft",
   "publicationEligibility": false,

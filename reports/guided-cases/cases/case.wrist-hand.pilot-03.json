@@ -1,11 +1,11 @@
 {
   "caseId": "case.wrist-hand.pilot-03",
-  "contentHash": "51848a62d95ba9a6cbaa7407663f0c630868f8c0649f20293e19709b45afe404",
+  "contentHash": "ea5f03b6839c475062197431603716d341c4a58b802d68c70addf2b5331c8379",
   "contentRevision": 1,
   "evidenceHub": {
     "conditionRecordId": null,
     "evidenceRecordIds": [],
-    "pinnedCaseHash": "51848a62d95ba9a6cbaa7407663f0c630868f8c0649f20293e19709b45afe404",
+    "pinnedCaseHash": "ea5f03b6839c475062197431603716d341c4a58b802d68c70addf2b5331c8379",
     "pinnedCaseRevision": 1,
     "relationshipIds": [],
     "reviewDecisionId": null,
@@ -41,7 +41,7 @@
       "Source clearance for derivative publication has not been established."
     ]
   },
-  "hashRecomputed": "51848a62d95ba9a6cbaa7407663f0c630868f8c0649f20293e19709b45afe404",
+  "hashRecomputed": "ea5f03b6839c475062197431603716d341c4a58b802d68c70addf2b5331c8379",
   "learnerCaseNumber": "Pilot 03",
   "lifecycleState": "draft",
   "publicationEligibility": false,

@@ -6,7 +6,7 @@ import {
   PUBLIC_REGISTRY_FILE,
   RECORDS_DIR,
   ROOT,
-  fileSha256,
+  fileCanonicalTextSha256,
   loadGuidedCaseModule,
   readJson,
   stableJson,
@@ -86,7 +86,7 @@ const records = PUBLIC.map(([relativePath, caseId, learnerCaseNumber, neutralTit
         : null,
       sourceType: frontmatter.sourceType ?? 'existing-public-mdx',
       extractionDate: null,
-      sourceRevisionOrHash: fileSha256(file),
+      sourceRevisionOrHash: fileCanonicalTextSha256(file),
       citationReferenceIds: [],
       transformationHistory: [{
         action: 'governed-schema-migration',
@@ -181,7 +181,7 @@ for (const [pilotIndex, pilot] of pilotDefinitions.entries()) {
       legacySourceId: 'legacy-html-case-bank-v1',
       sourceType: 'legacy-html-case-bank',
       extractionDate: null,
-      sourceRevisionOrHash: fileSha256(sourceFile),
+      sourceRevisionOrHash: fileCanonicalTextSha256(sourceFile),
       citationReferenceIds: [],
       transformationHistory: [
         {

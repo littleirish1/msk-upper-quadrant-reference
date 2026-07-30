@@ -1,11 +1,11 @@
 {
   "caseId": "case.cervical.pilot-01",
-  "contentHash": "9bf7c2d987931c0d3c61be7c8e4f9e08a10c8539bdd552f05156853db04b0ce0",
+  "contentHash": "fba1c2bd71c04b1f4f9d2830f7b84c35c4f122b6eccc8385c69d0e060955a5d9",
   "contentRevision": 1,
   "evidenceHub": {
     "conditionRecordId": null,
     "evidenceRecordIds": [],
-    "pinnedCaseHash": "9bf7c2d987931c0d3c61be7c8e4f9e08a10c8539bdd552f05156853db04b0ce0",
+    "pinnedCaseHash": "fba1c2bd71c04b1f4f9d2830f7b84c35c4f122b6eccc8385c69d0e060955a5d9",
     "pinnedCaseRevision": 1,
     "relationshipIds": [],
     "reviewDecisionId": null,
@@ -41,7 +41,7 @@
       "Source clearance for derivative publication has not been established."
     ]
   },
-  "hashRecomputed": "9bf7c2d987931c0d3c61be7c8e4f9e08a10c8539bdd552f05156853db04b0ce0",
+  "hashRecomputed": "fba1c2bd71c04b1f4f9d2830f7b84c35c4f122b6eccc8385c69d0e060955a5d9",
   "learnerCaseNumber": "Pilot 01",
   "lifecycleState": "draft",
   "publicationEligibility": false,
