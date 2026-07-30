@@ -1,0 +1,50 @@
+{
+  "caseId": "case.shoulder.pilot-02",
+  "contentHash": "cb79b0a9d59759c6789cf0256db42fe30973e2723ea7fd1cdce9e230c6b64eee",
+  "contentRevision": 1,
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "cb79b0a9d59759c6789cf0256db42fe30973e2723ea7fd1cdce9e230c6b64eee",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No governed Evidence Hub condition record exists for this pilot.",
+      "No source citation has been verified into an approved Evidence Hub evidence record."
+    ]
+  },
+  "generatedArtifacts": [
+    "internal review model only"
+  ],
+  "governance": {
+    "authoringStatus": "draft",
+    "clinicalReviewStatus": "clinician-review-required",
+    "evidenceReviewStatus": "evidence-review-required",
+    "knownLimitations": [
+      "Selected as a distinct traumatic shoulder presentation with enough extracted material for a structured draft. Grading, test accuracy and return-to-sport claims remain unverified and blocked.",
+      "Missing model answers are intentionally not invented."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": null,
+      "approvedRevision": null,
+      "rationale": "Mechanically converted pilot; human clinical, evidence and source-clearance review are required.",
+      "status": "blocked"
+    },
+    "reviewDate": null,
+    "reviewerRole": null,
+    "sourceClearanceStatus": "source-clearance-required",
+    "unresolvedIssues": [
+      "Clinical reasoning and safety statements require clinician review.",
+      "Citations and evidence claims in the legacy source require independent verification.",
+      "Source clearance for derivative publication has not been established."
+    ]
+  },
+  "hashRecomputed": "cb79b0a9d59759c6789cf0256db42fe30973e2723ea7fd1cdce9e230c6b64eee",
+  "learnerCaseNumber": "Pilot 02",
+  "lifecycleState": "draft",
+  "publicationEligibility": false,
+  "publicRoute": null,
+  "schemaVersion": 2
+}

@@ -1,0 +1,46 @@
+{
+  "caseId": "case.elbow.case-03",
+  "contentHash": "92fb595c5e7ff5d8011f3c0ade913fd9c6a9ecf04b4505485dec6b5ca4699a07",
+  "contentRevision": 1,
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "92fb595c5e7ff5d8011f3c0ade913fd9c6a9ecf04b4505485dec6b5ca4699a07",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No approved Evidence Hub condition or evidence record is available for this case."
+    ]
+  },
+  "generatedArtifacts": [
+    "public immediate projection",
+    "delayed reveal projection"
+  ],
+  "governance": {
+    "authoringStatus": "approved",
+    "clinicalReviewStatus": "baseline-reviewed",
+    "evidenceReviewStatus": "baseline-preserved",
+    "knownLimitations": [
+      "This migration preserves the reviewed baseline and does not constitute new clinical approval.",
+      "Evidence Hub relationships remain unresolved until governed records exist."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": "92fb595c5e7ff5d8011f3c0ade913fd9c6a9ecf04b4505485dec6b5ca4699a07",
+      "approvedRevision": 1,
+      "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
+      "status": "baseline-carried-forward"
+    },
+    "reviewDate": "2026-06-03",
+    "reviewerRole": "existing reviewed baseline",
+    "sourceClearanceStatus": "baseline-public-content",
+    "unresolvedIssues": []
+  },
+  "hashRecomputed": "92fb595c5e7ff5d8011f3c0ade913fd9c6a9ecf04b4505485dec6b5ca4699a07",
+  "learnerCaseNumber": "Case 03",
+  "lifecycleState": "published",
+  "publicationEligibility": true,
+  "publicRoute": "/cases/elbow/case-03-sudden-anterior-elbow-pain-after-lifting/",
+  "schemaVersion": 2
+}

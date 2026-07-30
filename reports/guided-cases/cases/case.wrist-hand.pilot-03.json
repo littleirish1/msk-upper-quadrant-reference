@@ -1,0 +1,50 @@
+{
+  "caseId": "case.wrist-hand.pilot-03",
+  "contentHash": "51848a62d95ba9a6cbaa7407663f0c630868f8c0649f20293e19709b45afe404",
+  "contentRevision": 1,
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "51848a62d95ba9a6cbaa7407663f0c630868f8c0649f20293e19709b45afe404",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No governed Evidence Hub condition record exists for this pilot.",
+      "No source citation has been verified into an approved Evidence Hub evidence record."
+    ]
+  },
+  "generatedArtifacts": [
+    "internal review model only"
+  ],
+  "governance": {
+    "authoringStatus": "draft",
+    "clinicalReviewStatus": "clinician-review-required",
+    "evidenceReviewStatus": "evidence-review-required",
+    "knownLimitations": [
+      "Selected because it adds a wrist/hand loading presentation distinct from the existing private acute-fracture draft. Test interpretation and progression criteria remain evidence-review requirements.",
+      "Missing model answers are intentionally not invented."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": null,
+      "approvedRevision": null,
+      "rationale": "Mechanically converted pilot; human clinical, evidence and source-clearance review are required.",
+      "status": "blocked"
+    },
+    "reviewDate": null,
+    "reviewerRole": null,
+    "sourceClearanceStatus": "source-clearance-required",
+    "unresolvedIssues": [
+      "Clinical reasoning and safety statements require clinician review.",
+      "Citations and evidence claims in the legacy source require independent verification.",
+      "Source clearance for derivative publication has not been established."
+    ]
+  },
+  "hashRecomputed": "51848a62d95ba9a6cbaa7407663f0c630868f8c0649f20293e19709b45afe404",
+  "learnerCaseNumber": "Pilot 03",
+  "lifecycleState": "draft",
+  "publicationEligibility": false,
+  "publicRoute": null,
+  "schemaVersion": 2
+}

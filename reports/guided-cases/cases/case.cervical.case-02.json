@@ -1,0 +1,46 @@
+{
+  "caseId": "case.cervical.case-02",
+  "contentHash": "8618d85f06ce9d29649d8ec4042652dd607d66f6f0c174a0e5818fbcb7f3a645",
+  "contentRevision": 1,
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "8618d85f06ce9d29649d8ec4042652dd607d66f6f0c174a0e5818fbcb7f3a645",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No approved Evidence Hub condition or evidence record is available for this case."
+    ]
+  },
+  "generatedArtifacts": [
+    "public immediate projection",
+    "delayed reveal projection"
+  ],
+  "governance": {
+    "authoringStatus": "approved",
+    "clinicalReviewStatus": "baseline-reviewed",
+    "evidenceReviewStatus": "baseline-preserved",
+    "knownLimitations": [
+      "This migration preserves the reviewed baseline and does not constitute new clinical approval.",
+      "Evidence Hub relationships remain unresolved until governed records exist."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": "8618d85f06ce9d29649d8ec4042652dd607d66f6f0c174a0e5818fbcb7f3a645",
+      "approvedRevision": 1,
+      "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
+      "status": "baseline-carried-forward"
+    },
+    "reviewDate": "2026-06-04",
+    "reviewerRole": "existing reviewed baseline",
+    "sourceClearanceStatus": "baseline-public-content",
+    "unresolvedIssues": []
+  },
+  "hashRecomputed": "8618d85f06ce9d29649d8ec4042652dd607d66f6f0c174a0e5818fbcb7f3a645",
+  "learnerCaseNumber": "Case 02",
+  "lifecycleState": "published",
+  "publicationEligibility": true,
+  "publicRoute": "/cases/cervical/case-02-hand-clumsiness-heavy-legs/",
+  "schemaVersion": 2
+}

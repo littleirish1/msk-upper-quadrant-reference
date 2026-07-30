@@ -300,6 +300,7 @@ export function CaseReasoningPrompt({
             disabled={revealLoading}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 text-sm font-semibold text-white transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-300 dark:bg-brand-500 dark:hover:bg-brand-600"
             aria-expanded={diagnosisRevealed}
+            aria-controls="case-diagnosis-reveal"
           >
             <Eye className="h-4 w-4" aria-hidden />
             Reveal likely diagnosis / linked condition
@@ -346,7 +347,10 @@ export function CaseReasoningPrompt({
         )}
 
         {diagnosisRevealed && revealPayload && (
-          <div className="mt-5 rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950/30">
+          <div
+            id="case-diagnosis-reveal"
+            className="mt-5 rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950/30"
+          >
             <div className="flex items-start gap-3">
               <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green-700 dark:text-green-300" aria-hidden />
               <div>

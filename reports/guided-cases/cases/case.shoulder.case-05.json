@@ -1,0 +1,46 @@
+{
+  "caseId": "case.shoulder.case-05",
+  "contentHash": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+  "contentRevision": 1,
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No approved Evidence Hub condition or evidence record is available for this case."
+    ]
+  },
+  "generatedArtifacts": [
+    "public immediate projection",
+    "delayed reveal projection"
+  ],
+  "governance": {
+    "authoringStatus": "approved",
+    "clinicalReviewStatus": "baseline-reviewed",
+    "evidenceReviewStatus": "baseline-preserved",
+    "knownLimitations": [
+      "This migration preserves the reviewed baseline and does not constitute new clinical approval.",
+      "Evidence Hub relationships remain unresolved until governed records exist."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+      "approvedRevision": 1,
+      "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
+      "status": "baseline-carried-forward"
+    },
+    "reviewDate": "2026-06-03",
+    "reviewerRole": "existing reviewed baseline",
+    "sourceClearanceStatus": "baseline-public-content",
+    "unresolvedIssues": []
+  },
+  "hashRecomputed": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+  "learnerCaseNumber": "Case 05",
+  "lifecycleState": "published",
+  "publicationEligibility": true,
+  "publicRoute": "/cases/shoulder/case-05-progressive-shoulder-stiffness/",
+  "schemaVersion": 2
+}

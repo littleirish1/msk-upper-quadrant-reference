@@ -373,7 +373,7 @@ function hasSuggestedReasoningRevealControl(html) {
 function hasDiagnosisRevealControl(html) {
   return extractButtons(html).some(
     (button) =>
-      getAttr(button.attrs, 'aria-controls') === null &&
+      getAttr(button.attrs, 'aria-controls') === 'case-diagnosis-reveal' &&
       getAttr(button.attrs, 'aria-expanded') === 'false' &&
       (button.text === 'Reveal likely diagnosis / linked condition' ||
         button.text === 'Reveal likely concern / linked condition'),

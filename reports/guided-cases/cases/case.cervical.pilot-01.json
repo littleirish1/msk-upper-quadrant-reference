@@ -1,0 +1,50 @@
+{
+  "caseId": "case.cervical.pilot-01",
+  "contentHash": "9bf7c2d987931c0d3c61be7c8e4f9e08a10c8539bdd552f05156853db04b0ce0",
+  "contentRevision": 1,
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "9bf7c2d987931c0d3c61be7c8e4f9e08a10c8539bdd552f05156853db04b0ce0",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No governed Evidence Hub condition record exists for this pilot.",
+      "No source citation has been verified into an approved Evidence Hub evidence record."
+    ]
+  },
+  "generatedArtifacts": [
+    "internal review model only"
+  ],
+  "governance": {
+    "authoringStatus": "draft",
+    "clinicalReviewStatus": "clinician-review-required",
+    "evidenceReviewStatus": "evidence-review-required",
+    "knownLimitations": [
+      "Selected because the extracted station contains a coherent history, examination, safety screen and competing hypotheses. The draft remains blocked because the clinical claims and cited measures require verification.",
+      "Missing model answers are intentionally not invented."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": null,
+      "approvedRevision": null,
+      "rationale": "Mechanically converted pilot; human clinical, evidence and source-clearance review are required.",
+      "status": "blocked"
+    },
+    "reviewDate": null,
+    "reviewerRole": null,
+    "sourceClearanceStatus": "source-clearance-required",
+    "unresolvedIssues": [
+      "Clinical reasoning and safety statements require clinician review.",
+      "Citations and evidence claims in the legacy source require independent verification.",
+      "Source clearance for derivative publication has not been established."
+    ]
+  },
+  "hashRecomputed": "9bf7c2d987931c0d3c61be7c8e4f9e08a10c8539bdd552f05156853db04b0ce0",
+  "learnerCaseNumber": "Pilot 01",
+  "lifecycleState": "draft",
+  "publicationEligibility": false,
+  "publicRoute": null,
+  "schemaVersion": 2
+}

@@ -1,0 +1,32 @@
+{
+  "caseId": "case.wrist-hand.pilot-03",
+  "evidenceQuestions": [
+    "No governed Evidence Hub condition record exists for this pilot.",
+    "No source citation has been verified into an approved Evidence Hub evidence record."
+  ],
+  "omittedOrUnsupportedContent": [
+    "Clinical reasoning and safety statements require clinician review.",
+    "Citations and evidence claims in the legacy source require independent verification.",
+    "Source clearance for derivative publication has not been established."
+  ],
+  "publicationBlockers": [
+    "clinician-review-required",
+    "evidence-review-required",
+    "source-clearance-required"
+  ],
+  "publicOutputExpected": false,
+  "sourceHash": "0c56a5aee504c892dbf36f35c66f2ef449ff57d90021266a07270f5d1c96d63d",
+  "sourceStationId": "s30",
+  "transformations": [
+    {
+      "action": "personal-identifier-redaction",
+      "detail": "Removed the source display name and retained only clinically relevant anonymised attributes.",
+      "reviewRequired": true
+    },
+    {
+      "action": "structured-draft-conversion",
+      "detail": "Mapped source-supported presentation facts into the governed draft structure without filling evidence gaps.",
+      "reviewRequired": true
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "caseId": "case.cervical.case-01",
+  "contentHash": "f815ab06c3259b69aae11f45df4206f90e8bcd676f24694305a13142e6e2f86a",
+  "contentRevision": 1,
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "f815ab06c3259b69aae11f45df4206f90e8bcd676f24694305a13142e6e2f86a",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No approved Evidence Hub condition or evidence record is available for this case."
+    ]
+  },
+  "generatedArtifacts": [
+    "public immediate projection",
+    "delayed reveal projection"
+  ],
+  "governance": {
+    "authoringStatus": "approved",
+    "clinicalReviewStatus": "baseline-reviewed",
+    "evidenceReviewStatus": "baseline-preserved",
+    "knownLimitations": [
+      "This migration preserves the reviewed baseline and does not constitute new clinical approval.",
+      "Evidence Hub relationships remain unresolved until governed records exist."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": "f815ab06c3259b69aae11f45df4206f90e8bcd676f24694305a13142e6e2f86a",
+      "approvedRevision": 1,
+      "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
+      "status": "baseline-carried-forward"
+    },
+    "reviewDate": "2026-06-03",
+    "reviewerRole": "existing reviewed baseline",
+    "sourceClearanceStatus": "baseline-public-content",
+    "unresolvedIssues": []
+  },
+  "hashRecomputed": "f815ab06c3259b69aae11f45df4206f90e8bcd676f24694305a13142e6e2f86a",
+  "learnerCaseNumber": "Case 01",
+  "lifecycleState": "published",
+  "publicationEligibility": true,
+  "publicRoute": "/cases/cervical/case-01-neck-arm-symptoms/",
+  "schemaVersion": 2
+}

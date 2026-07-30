@@ -1,0 +1,46 @@
+{
+  "caseId": "case.thoracic.case-06",
+  "contentHash": "f3e276c9322017da401579ef0e7c6756ee35b2a7c0fd6790e039e775f43957c7",
+  "contentRevision": 1,
+  "evidenceHub": {
+    "conditionRecordId": null,
+    "evidenceRecordIds": [],
+    "pinnedCaseHash": "f3e276c9322017da401579ef0e7c6756ee35b2a7c0fd6790e039e775f43957c7",
+    "pinnedCaseRevision": 1,
+    "relationshipIds": [],
+    "reviewDecisionId": null,
+    "unresolvedEvidenceGaps": [
+      "No approved Evidence Hub condition or evidence record is available for this case."
+    ]
+  },
+  "generatedArtifacts": [
+    "public immediate projection",
+    "delayed reveal projection"
+  ],
+  "governance": {
+    "authoringStatus": "approved",
+    "clinicalReviewStatus": "baseline-reviewed",
+    "evidenceReviewStatus": "baseline-preserved",
+    "knownLimitations": [
+      "This migration preserves the reviewed baseline and does not constitute new clinical approval.",
+      "Evidence Hub relationships remain unresolved until governed records exist."
+    ],
+    "nextReviewDate": null,
+    "publicationDecision": {
+      "approvedContentHash": "f3e276c9322017da401579ef0e7c6756ee35b2a7c0fd6790e039e775f43957c7",
+      "approvedRevision": 1,
+      "rationale": "Existing reviewed public case carried forward without changing clinical meaning.",
+      "status": "baseline-carried-forward"
+    },
+    "reviewDate": "2026-06-04",
+    "reviewerRole": "existing reviewed baseline",
+    "sourceClearanceStatus": "baseline-public-content",
+    "unresolvedIssues": []
+  },
+  "hashRecomputed": "f3e276c9322017da401579ef0e7c6756ee35b2a7c0fd6790e039e775f43957c7",
+  "learnerCaseNumber": "Case 06",
+  "lifecycleState": "published",
+  "publicationEligibility": true,
+  "publicRoute": "/cases/thoracic/case-06-thoracic-pain-broader-screening-cues/",
+  "schemaVersion": 2
+}

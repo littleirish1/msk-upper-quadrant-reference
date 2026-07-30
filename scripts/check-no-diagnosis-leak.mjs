@@ -7,6 +7,7 @@ import {
   readCaseFrontmatter,
 } from './lib/readMdxFrontmatter.mjs'
 import { loadTypeScriptTree } from './lib/loadTypeScriptTree.mjs'
+import { readRecords as readGovernedCaseRecords } from './guided-cases/shared.mjs'
 
 const ROOT = process.cwd()
 const OUT_DIR = path.join(ROOT, 'out')
@@ -22,6 +23,11 @@ const { getCaseRevealId } = await loadTypeScriptTree(
 )
 
 const findings = []
+const governedResult = await readGovernedCaseRecords()
+for (const finding of governedResult.findings) fail(finding)
+const governedById = new Map(
+  governedResult.records.map(({ record }) => [record.caseId, record]),
+)
 const conditions = await readConditions()
 const conditionsByKey = new Map(conditions.map((condition) => [conditionKey(condition.region, condition.slug), condition]))
 const cases = await readCases()
@@ -111,6 +117,7 @@ for (const item of cases) {
     item.condition,
     label,
     ...diagnosticLearningFocus,
+    ...governedRestrictedValues(governedById.get(item.guidedCaseId)),
   ]).filter((term) => term.length >= 4)
 
   for (const term of restrictedTerms) {
@@ -196,6 +203,7 @@ async function readCases() {
         title: typeof data.title === 'string' ? data.title : '',
         learningFocus: Array.isArray(data.learningFocus) ? data.learningFocus : [],
         status: data.status,
+        guidedCaseId: typeof data.guidedCaseId === 'string' ? data.guidedCaseId : '',
       })
     } catch (error) {
       fail(error.message)
@@ -203,6 +211,29 @@ async function readCases() {
   }
 
   return items
+}
+
+function governedRestrictedValues(record) {
+  if (!record) return []
+  const diagnosticFocus = record.privateDiagnosticIdentity.privateLearningFocus.filter(
+    (focus, index) => index === 0 || isDiagnosisBearingFocus(
+      focus,
+      record.privateDiagnosticIdentity.associatedConditionId,
+      record.privateDiagnosticIdentity.likelyDiagnosis,
+    ),
+  )
+  return [
+    record.privateDiagnosticIdentity.internalTitle,
+    record.privateDiagnosticIdentity.likelyDiagnosis,
+    record.privateDiagnosticIdentity.associatedConditionId,
+    ...diagnosticFocus,
+    ...record.reasoningStages.flatMap((stage) => [
+      ...stage.expectedReasoningThemes,
+      ...stage.modelReasoningChecklist,
+      ...stage.commonPitfalls,
+      stage.feedback ?? '',
+    ]),
+  ]
 }
 
 async function readConditions() {

@@ -12,6 +12,7 @@ import {
   readCaseFrontmatter,
 } from './lib/readMdxFrontmatter.mjs'
 import { loadTypeScriptTree } from './lib/loadTypeScriptTree.mjs'
+import { readRecords } from './guided-cases/shared.mjs'
 
 const ROOT = process.cwd()
 const OUTPUT_DIR = path.join(ROOT, 'public', 'case-reveals')
@@ -34,6 +35,12 @@ const conditionsByKey = new Map(
   conditions.map((condition) => [`${condition.region}:${condition.slug}`, condition]),
 )
 const payloads = []
+const governed = await readRecords()
+if (governed.findings.length) {
+  throw new Error(governed.findings.join('\n'))
+}
+const governedById = new Map(governed.records.map(({ record }) => [record.caseId, record]))
+const guidedCaseModule = governed.module
 
 for (const file of collectCaseFiles()) {
   const { content: rawContent, data } = await readCaseFrontmatter(file)
@@ -41,6 +48,14 @@ for (const file of collectCaseFiles()) {
 
   const region = path.basename(path.dirname(file))
   const caseSlug = path.basename(file, '.mdx')
+  const governedRecord = governedById.get(data.guidedCaseId)
+  if (!governedRecord) {
+    throw new Error(`Published case has no governed record: ${relative(file)}`)
+  }
+  const governedReveal = guidedCaseModule.createPublicRevealPayload(governedRecord)
+  if (governedReveal.associatedConditionId !== data.condition) {
+    throw new Error(`Governed condition does not match MDX frontmatter: ${relative(file)}`)
+  }
   const publicSlug = data.publicSlug
   const revealId = getCaseRevealId(region, publicSlug)
   const condition = conditionsByKey.get(`${region}:${data.condition}`)
@@ -67,7 +82,7 @@ for (const file of collectCaseFiles()) {
   payloads.push({
     schemaVersion: 1,
     revealId,
-    actualTitle: data.title,
+    actualTitle: governedReveal.internalTitle,
     ...(condition ? {
       conditionLabel: condition.label,
       conditionHref: `/${region}/${condition.slug}`,

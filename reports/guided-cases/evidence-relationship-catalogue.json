@@ -1,0 +1,127 @@
+{
+  "publicProjection": false,
+  "relationships": [
+    {
+      "caseHash": "f815ab06c3259b69aae11f45df4206f90e8bcd676f24694305a13142e6e2f86a",
+      "caseId": "case.cervical.case-01",
+      "caseRevision": 1,
+      "conditionRecordId": null,
+      "evidenceRecordIds": [],
+      "gaps": [
+        "No approved Evidence Hub condition or evidence record is available for this case."
+      ],
+      "relationshipIds": [],
+      "reviewDecisionId": null,
+      "status": "blocked-unresolved"
+    },
+    {
+      "caseHash": "8618d85f06ce9d29649d8ec4042652dd607d66f6f0c174a0e5818fbcb7f3a645",
+      "caseId": "case.cervical.case-02",
+      "caseRevision": 1,
+      "conditionRecordId": null,
+      "evidenceRecordIds": [],
+      "gaps": [
+        "No approved Evidence Hub condition or evidence record is available for this case."
+      ],
+      "relationshipIds": [],
+      "reviewDecisionId": null,
+      "status": "blocked-unresolved"
+    },
+    {
+      "caseHash": "9bf7c2d987931c0d3c61be7c8e4f9e08a10c8539bdd552f05156853db04b0ce0",
+      "caseId": "case.cervical.pilot-01",
+      "caseRevision": 1,
+      "conditionRecordId": null,
+      "evidenceRecordIds": [],
+      "gaps": [
+        "No governed Evidence Hub condition record exists for this pilot.",
+        "No source citation has been verified into an approved Evidence Hub evidence record."
+      ],
+      "relationshipIds": [],
+      "reviewDecisionId": null,
+      "status": "blocked-unresolved"
+    },
+    {
+      "caseHash": "92fb595c5e7ff5d8011f3c0ade913fd9c6a9ecf04b4505485dec6b5ca4699a07",
+      "caseId": "case.elbow.case-03",
+      "caseRevision": 1,
+      "conditionRecordId": null,
+      "evidenceRecordIds": [],
+      "gaps": [
+        "No approved Evidence Hub condition or evidence record is available for this case."
+      ],
+      "relationshipIds": [],
+      "reviewDecisionId": null,
+      "status": "blocked-unresolved"
+    },
+    {
+      "caseHash": "9d31c9a356365255e852cb80b0109007a40c315e67a0a91cb24bcf5635d3e5dd",
+      "caseId": "case.shoulder.case-04",
+      "caseRevision": 1,
+      "conditionRecordId": null,
+      "evidenceRecordIds": [],
+      "gaps": [
+        "No approved Evidence Hub condition or evidence record is available for this case."
+      ],
+      "relationshipIds": [],
+      "reviewDecisionId": null,
+      "status": "blocked-unresolved"
+    },
+    {
+      "caseHash": "d605bbe8ccbb3b0a345d79fd7b82108d5ce22c709f4c92616243e279172bd1d2",
+      "caseId": "case.shoulder.case-05",
+      "caseRevision": 1,
+      "conditionRecordId": null,
+      "evidenceRecordIds": [],
+      "gaps": [
+        "No approved Evidence Hub condition or evidence record is available for this case."
+      ],
+      "relationshipIds": [],
+      "reviewDecisionId": null,
+      "status": "blocked-unresolved"
+    },
+    {
+      "caseHash": "cb79b0a9d59759c6789cf0256db42fe30973e2723ea7fd1cdce9e230c6b64eee",
+      "caseId": "case.shoulder.pilot-02",
+      "caseRevision": 1,
+      "conditionRecordId": null,
+      "evidenceRecordIds": [],
+      "gaps": [
+        "No governed Evidence Hub condition record exists for this pilot.",
+        "No source citation has been verified into an approved Evidence Hub evidence record."
+      ],
+      "relationshipIds": [],
+      "reviewDecisionId": null,
+      "status": "blocked-unresolved"
+    },
+    {
+      "caseHash": "f3e276c9322017da401579ef0e7c6756ee35b2a7c0fd6790e039e775f43957c7",
+      "caseId": "case.thoracic.case-06",
+      "caseRevision": 1,
+      "conditionRecordId": null,
+      "evidenceRecordIds": [],
+      "gaps": [
+        "No approved Evidence Hub condition or evidence record is available for this case."
+      ],
+      "relationshipIds": [],
+      "reviewDecisionId": null,
+      "status": "blocked-unresolved"
+    },
+    {
+      "caseHash": "51848a62d95ba9a6cbaa7407663f0c630868f8c0649f20293e19709b45afe404",
+      "caseId": "case.wrist-hand.pilot-03",
+      "caseRevision": 1,
+      "conditionRecordId": null,
+      "evidenceRecordIds": [],
+      "gaps": [
+        "No governed Evidence Hub condition record exists for this pilot.",
+        "No source citation has been verified into an approved Evidence Hub evidence record."
+      ],
+      "relationshipIds": [],
+      "reviewDecisionId": null,
+      "status": "blocked-unresolved"
+    }
+  ],
+  "schemaVersion": 1,
+  "verifiedRelationshipCount": 0
+}
