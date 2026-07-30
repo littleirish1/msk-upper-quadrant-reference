@@ -22,6 +22,7 @@ The final diagnosis or linked condition may appear only in the final reveal step
 The static-site implementation contract is defined in
 `docs/CASE_DISCLOSURE_BOUNDARY.md`. Delayed public reveal assets provide
 pedagogical progressive disclosure, not confidential storage or access control.
+Static reveal assets remain retrievable if their opaque URL is discovered.
 
 Condition/reference links that identify the answer may appear only after reveal. Condition pages may exist as reference pages, but they must not link directly to a matching unrevealed guided case.
 

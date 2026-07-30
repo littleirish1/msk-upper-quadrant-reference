@@ -36,6 +36,11 @@ Required fields:
 - `condition`: internal linked diagnosis/condition slug.
 - `status`: one of `published`, `draft`, or `archived`.
 
+Governed published cases additionally require `guidedCaseId`, `schemaVersion:
+2`, and `contentRevision`. The authoritative v2 record and projections are
+documented in `docs/GUIDED_CASE_ARCHITECTURE.md`; frontmatter alone cannot grant
+publication eligibility.
+
 Current optional fields include:
 
 - `caseType`
@@ -104,6 +109,10 @@ Agents may draft structure, prompts, and diagnosis-neutral fallback feedback. Th
 Clinical claims, diagnoses, red flags, management advice, case facts, model answers, and evidence interpretation require clinician sign-off before publication.
 
 Generated or imported clinical material starts as draft/unreviewed. It cannot bypass the generator -> reviewer -> clinician -> publish sequence.
+
+The v2 record separates `public-immediate`, `public-after-reveal`,
+`internal-only`, and `human-review-required` fields. Unknown fields fail closed,
+and publication decisions are pinned to the current content revision and hash.
 
 ## Anatomy And Neuro Content
 
