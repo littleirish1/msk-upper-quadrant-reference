@@ -244,26 +244,14 @@ function runNode(root, script, args = [], env = releaseEnv()) {
 }
 
 function copyTrackedTree(destination) {
-  let tracked = null
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    tracked = spawnSync('git', ['ls-files', '-z'], {
-      cwd: ROOT,
-      encoding: 'utf8',
-      shell: false,
-      windowsHide: true,
-      maxBuffer: 4 * 1024 * 1024,
-    })
-    if (tracked.status === 0) break
-  }
-  if (!tracked || tracked.status !== 0) {
-    throw new Error('Unable to enumerate tracked fixture files after three attempts.')
-  }
-  for (const relative of tracked.stdout.split('\0').filter(Boolean)) {
-    const source = path.join(ROOT, relative)
-    const target = path.join(destination, relative)
-    fs.mkdirSync(path.dirname(target), { recursive: true })
-    fs.copyFileSync(source, target)
-  }
+  const prefix = `${path.resolve(destination).replaceAll('\\', '/')}/`
+  const exported = spawnSync('git', ['checkout-index', '--all', '--force', `--prefix=${prefix}`], {
+    cwd: ROOT,
+    encoding: 'utf8',
+    shell: false,
+    windowsHide: true,
+  })
+  if (exported.status !== 0) throw new Error('Unable to export tracked fixture files from the Git index.')
 }
 
 function linkNodeModules(destination) {
