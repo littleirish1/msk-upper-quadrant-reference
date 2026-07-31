@@ -22,7 +22,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 8121,
+      "sourceByteSize": 7961,
       "sourceChecksum": "sha256:84518bcae5da70dba7d3f69fd2f425c770dc827a259fc777ceae17cff4888f03",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s1"
@@ -49,7 +49,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 6566,
+      "sourceByteSize": 6412,
       "sourceChecksum": "sha256:1c2ccb77f7b2bfc7dc755d3344b01909a783dc05f18b7d21a36c14c1172bdcf1",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s2"
@@ -76,7 +76,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 5735,
+      "sourceByteSize": 5587,
       "sourceChecksum": "sha256:6de4734ed16a6976dc9411183deb78c70cabbd5e69fbd8f558c4d128af81ad55",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s3"
@@ -103,7 +103,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 4471,
+      "sourceByteSize": 4333,
       "sourceChecksum": "sha256:c3f1d1cbbbfcf9e2cf211159a20835e9c02a060b878f07bc40ddc8dd599a3ae8",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s4"
@@ -130,7 +130,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 5790,
+      "sourceByteSize": 5642,
       "sourceChecksum": "sha256:e722cfc55173f0eccd9a0f40e70953624debe182c0fe50ccd5b60df13a7c39c1",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s5"
@@ -157,7 +157,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 4176,
+      "sourceByteSize": 4064,
       "sourceChecksum": "sha256:957603520caf7624dc07524b23a5fecbc3a499171f92d80a38044f2aa57d9e04",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s6"
@@ -184,7 +184,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 6545,
+      "sourceByteSize": 6400,
       "sourceChecksum": "sha256:319f5dcfc4c605d44fe497b0bc38070ee595573a91d2f524974a50a92db93d9a",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s7"
@@ -211,7 +211,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 5797,
+      "sourceByteSize": 5670,
       "sourceChecksum": "sha256:b6dabf324b9c4e50651e8b722656e6c2d534b7bba81ff14b696c158eb9e9bb6d",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s8"
@@ -238,7 +238,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 4026,
+      "sourceByteSize": 3926,
       "sourceChecksum": "sha256:7148bbedf714b99bc755ad72203464a6c0e33ca758dc7020d4fda3b30711ce2a",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s9"
@@ -265,7 +265,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 3780,
+      "sourceByteSize": 3672,
       "sourceChecksum": "sha256:434e0c0c3a25fd390ad2002f973306b91b47e0a41d0f32eb325e60a220db5612",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s10"
@@ -292,7 +292,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 4230,
+      "sourceByteSize": 4120,
       "sourceChecksum": "sha256:8279c8d67482fae728e1bf4cad4a8148eea80dbfa6206fea4a680a4e5dff8bbe",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s11"
@@ -319,7 +319,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 3691,
+      "sourceByteSize": 3593,
       "sourceChecksum": "sha256:8081996a085275411f3feb2ba265b69e0449611c203bd5d069e81e7466235e52",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s12"
@@ -346,7 +346,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 3445,
+      "sourceByteSize": 3363,
       "sourceChecksum": "sha256:fbe6a0d7b7990178dc6a78b1600c1a6cc3b14f586d2f29526118eee2dca787e6",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s13"
@@ -373,7 +373,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 3600,
+      "sourceByteSize": 3508,
       "sourceChecksum": "sha256:0952ee467452805223910cb5492dbd2271a77213774c2f8700054924361b6fe0",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s14"
@@ -400,7 +400,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 4084,
+      "sourceByteSize": 3994,
       "sourceChecksum": "sha256:5c7426caacbffe92b20568ff7fd9428c90694453efd990b1764ed5be6180a25b",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s15"
@@ -427,7 +427,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 4294,
+      "sourceByteSize": 4199,
       "sourceChecksum": "sha256:d7b835b0f480a9427835b1a886e0e78f9bee9c499d4f938d3965c42fa4022ab9",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s16"
@@ -454,7 +454,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 7420,
+      "sourceByteSize": 7272,
       "sourceChecksum": "sha256:6f7e7c6cd6c4df7565cc3d4b86f313d63e1f0f08e247d25c3495208e7439c1b2",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s17"
@@ -481,7 +481,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 6410,
+      "sourceByteSize": 6271,
       "sourceChecksum": "sha256:14900b998a7d9d3b0eea90d052564ba2a565b56533c72ce2345f35eab4ee336a",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s18"
@@ -508,7 +508,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 7614,
+      "sourceByteSize": 7471,
       "sourceChecksum": "sha256:8a6ccd4664db54040b6d2b658b1175d5455ebf66b9b9a1682d15789499acc4e1",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s19"
@@ -535,7 +535,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 7308,
+      "sourceByteSize": 7168,
       "sourceChecksum": "sha256:e693639b7343795446509bb45cbc8e84e2664aa3d660e75aa96bf8a558f98293",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s21"
@@ -562,7 +562,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 7616,
+      "sourceByteSize": 7475,
       "sourceChecksum": "sha256:a5cb39e252242e35f5884ebfc23fb6cdc43ffaa98590934c96a1b0702a6a4fd4",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s22"
@@ -589,7 +589,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 7102,
+      "sourceByteSize": 6975,
       "sourceChecksum": "sha256:0a4dc68fbe0e49ee978132ed223187c174ed0ab420ba6f702c25112e41c1bcd7",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s23"
@@ -616,7 +616,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 6002,
+      "sourceByteSize": 5888,
       "sourceChecksum": "sha256:6adc41119fff139f445c8d09584df42d64d8b613dbc343df79a3744507e6b7db",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s24"
@@ -643,7 +643,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 6538,
+      "sourceByteSize": 6420,
       "sourceChecksum": "sha256:89489740103bf5caceb86884eec29c6cd4b933f509297ba47a31bf8d1acb027c",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s25"
@@ -670,7 +670,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 5176,
+      "sourceByteSize": 5072,
       "sourceChecksum": "sha256:03b1ad5481c9e84f468cc4256a21ca110d9e872286c2d878310f0b06a51f54fd",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s26"
@@ -697,7 +697,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 5848,
+      "sourceByteSize": 5735,
       "sourceChecksum": "sha256:37738d4ed4e5c916779554c203926667af2fb6ec703b7ac00b7a0385cb6c3564",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s27"
@@ -724,7 +724,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 6093,
+      "sourceByteSize": 5976,
       "sourceChecksum": "sha256:d2877c1a0eb956691c433085121b455bccd2da02e64dc79ef06b177813ebeb2b",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s29"
@@ -751,7 +751,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 5654,
+      "sourceByteSize": 5547,
       "sourceChecksum": "sha256:bb748ca43fd37f3daaca04a844ad6332c6efbda5c247382501f50b4e7af35e98",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s30"
@@ -778,7 +778,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 5128,
+      "sourceByteSize": 5017,
       "sourceChecksum": "sha256:9c557204e6569348ecb2ad5436a6e589105976650c1bca3c50893535a5ae074e",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s31"
@@ -805,7 +805,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 5778,
+      "sourceByteSize": 5661,
       "sourceChecksum": "sha256:decad736f228d8db6783d49830801e1bfc323035304958a740b1c72983263a7b",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s32"
@@ -832,7 +832,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 5041,
+      "sourceByteSize": 4938,
       "sourceChecksum": "sha256:862e3f5109b06af23503a7134edad79d68afc1dc5056bfa4cc5f1c68fff83a07",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s33"
@@ -859,7 +859,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 5002,
+      "sourceByteSize": 4897,
       "sourceChecksum": "sha256:ac35574e7e5e648baf19fe2097591414efc4b69af88b982ade9442b9863b83ec",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s34"
@@ -886,7 +886,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 4830,
+      "sourceByteSize": 4731,
       "sourceChecksum": "sha256:b25cbb7b9bb225f909b6cd53b50a256f09f561be884a3c35ba63d4616db42698",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s35"
@@ -913,7 +913,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 4157,
+      "sourceByteSize": 4066,
       "sourceChecksum": "sha256:4fdd3c0c47db61794eb0d1402b001ea1980ebbffbe5281ef7a68274303e04dee",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s36"
@@ -940,7 +940,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 4782,
+      "sourceByteSize": 4684,
       "sourceChecksum": "sha256:e8407915c1e814cef123cd08d0b6e6e8725f0c1a1a34988b4d2bbceaf14a14b7",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s39"
@@ -967,7 +967,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 4604,
+      "sourceByteSize": 4501,
       "sourceChecksum": "sha256:0d087fdf11ce99c1580fdcf19b78452132310dd7cee85298bbc9d8204f36848b",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s41"
@@ -994,7 +994,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 6180,
+      "sourceByteSize": 6063,
       "sourceChecksum": "sha256:52ae0e1ca3cedac2bc1c91d2e2973154c6545315926fef8555146fdda0d22f9c",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s43"
@@ -1021,7 +1021,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 5727,
+      "sourceByteSize": 5609,
       "sourceChecksum": "sha256:77e451102f77e4eea7b59b6a31b90c76b12cece20b515233b07fe7304cb9eaa8",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s45"
@@ -1048,7 +1048,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 6071,
+      "sourceByteSize": 5951,
       "sourceChecksum": "sha256:469b0eade3d22e44732dd34f4af67e7b44a2d99ca611ead0c62f5b05ba911cc7",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s47"
@@ -1075,7 +1075,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 5876,
+      "sourceByteSize": 5759,
       "sourceChecksum": "sha256:aa468cf63b1f2f9cb328d29ee8e32897be2afcd2ed3e9f4366513bd6b689b0c5",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s48"
@@ -1102,7 +1102,7 @@
       "privatePathStored": false,
       "publicEligibility": false,
       "sourceBodyStoredInReport": false,
-      "sourceByteSize": 6648,
+      "sourceByteSize": 6527,
       "sourceChecksum": "sha256:c9958f356ee60ab9038e8e199396d400f67e44ae660b409835578ec77b99ee2d",
       "sourceIdentityMarkerCount": 1,
       "stationId": "s49"

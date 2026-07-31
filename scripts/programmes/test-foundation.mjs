@@ -4,6 +4,7 @@ import os from 'node:os'
 import path from 'node:path'
 import {
   loadProgrammeSchemas,
+  canonicalFileByteSize,
   sha256File,
 } from './shared.mjs'
 
@@ -146,7 +147,9 @@ try {
   fs.writeFileSync(binaryA, Buffer.from([0, 10, 13, 255]))
   fs.writeFileSync(binaryB, Buffer.from([0, 13, 10, 255]))
   ok(sha256File(lfFile) === sha256File(crlfFile), 'text checksums normalize LF and CRLF')
+  ok(canonicalFileByteSize(lfFile) === canonicalFileByteSize(crlfFile), 'text byte sizes normalize LF and CRLF')
   ok(sha256File(binaryA) !== sha256File(binaryB), 'binary checksums remain byte-exact')
+  ok(canonicalFileByteSize(binaryA) === 4, 'binary byte sizes remain exact')
 } finally {
   fs.rmSync(temporary, { recursive: true, force: true })
 }
