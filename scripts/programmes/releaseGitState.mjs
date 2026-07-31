@@ -112,13 +112,18 @@ function resolveRequiredTree(root, commit, category) {
 }
 
 function runGit(root, args) {
-  const result = spawnSync('git', args, {
-    cwd: root,
-    encoding: 'utf8',
-    shell: false,
-    windowsHide: true,
-  })
-  if (result.error) {
+  let result = null
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    result = spawnSync('git', args, {
+      cwd: root,
+      encoding: 'utf8',
+      shell: false,
+      windowsHide: true,
+    })
+    if (!result.error && result.status === 0) return result
+    if (attempt < 2) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 50)
+  }
+  if (!result || result.error) {
     throw new Error('Release governance Git operation failed before a ref could be resolved.')
   }
   return result
