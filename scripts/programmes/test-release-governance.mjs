@@ -133,12 +133,6 @@ try {
 
 const detachedRoot = fs.mkdtempSync(path.join(ROOT, '.tmp-release-detached-project-'))
 try {
-  copyTrackedTree(detachedRoot)
-  fs.copyFileSync(
-    path.join(ROOT, 'scripts', 'programmes', 'releaseGitState.mjs'),
-    path.join(detachedRoot, 'scripts', 'programmes', 'releaseGitState.mjs'),
-  )
-  linkNodeModules(detachedRoot)
   git(detachedRoot, 'init', '-b', 'main')
   git(detachedRoot, 'config', 'user.name', 'Fixture Reviewer')
   git(detachedRoot, 'config', 'user.email', 'fixture@example.invalid')
@@ -147,9 +141,19 @@ try {
   git(detachedRoot, 'switch', '-c', 'fixture-feature')
   git(detachedRoot, 'commit', '--allow-empty', '-m', 'fixture current')
   const detachedCurrent = git(detachedRoot, 'rev-parse', 'HEAD')
+  const fixtureGitEnvironment = (overrides = {}) => releaseEnv({
+    GIT_DIR: path.join(detachedRoot, '.git'),
+    GIT_WORK_TREE: ROOT,
+    ...overrides,
+  })
 
   const branchOutput = path.join(detachedRoot, '.test-output-branch')
-  runNode(detachedRoot, 'scripts/programmes/generate-release-governance.mjs', [`--output=${branchOutput}`])
+  runNode(
+    ROOT,
+    'scripts/programmes/generate-release-governance.mjs',
+    [`--output=${branchOutput}`],
+    fixtureGitEnvironment(),
+  )
 
   git(detachedRoot, 'switch', '--detach', detachedCurrent)
   git(detachedRoot, 'branch', '-D', 'fixture-feature')
@@ -160,10 +164,10 @@ try {
 
   const detachedOutput = path.join(detachedRoot, '.test-output-detached')
   const detachedRun = runNode(
-    detachedRoot,
+    ROOT,
     'scripts/programmes/generate-release-governance.mjs',
     [`--output=${detachedOutput}`],
-    releaseEnv({ NETLIFY: 'true', COMMIT_REF: detachedCurrent, CACHED_COMMIT_REF: detachedCurrent }),
+    fixtureGitEnvironment({ NETLIFY: 'true', COMMIT_REF: detachedCurrent, CACHED_COMMIT_REF: detachedCurrent }),
   )
   assert.match(detachedRun.stdout, /comparison=full-tree-fallback/); assertions++
   assert.match(detachedRun.stdout, /governanceSource=complete-current-tree/); assertions++
@@ -177,7 +181,7 @@ try {
   }
 
   const candidate = JSON.parse(fs.readFileSync(path.join(detachedOutput, 'reports/release/release-candidate.json'), 'utf8'))
-  const trackedCandidate = JSON.parse(fs.readFileSync(path.join(detachedRoot, 'reports/release/release-candidate.json'), 'utf8'))
+  const trackedCandidate = JSON.parse(fs.readFileSync(path.join(ROOT, 'reports/release/release-candidate.json'), 'utf8'))
   assert.deepEqual(candidate.blockers, trackedCandidate.blockers); assertions++
   assert.equal(candidate.status, 'blocked'); assertions++
   assert.equal(candidate.publicationApproved, false); assertions++
@@ -188,10 +192,14 @@ try {
   assert.notEqual(detachedBaseline, detachedCurrent); assertions++
 
   runNode(
-    detachedRoot,
+    ROOT,
     'scripts/programmes/check-release-governance.mjs',
     [],
-    releaseEnv({ NETLIFY: 'true', COMMIT_REF: detachedCurrent, CACHED_COMMIT_REF: 'unavailable-cached-ref' }),
+    fixtureGitEnvironment({
+      NETLIFY: 'true',
+      COMMIT_REF: detachedCurrent,
+      CACHED_COMMIT_REF: 'unavailable-cached-ref',
+    }),
   )
   assertions++
 } finally {
@@ -241,21 +249,4 @@ function runNode(root, script, args = [], env = releaseEnv()) {
     throw new Error(`Fixture Node command failed (${script}): ${result.stderr || result.stdout}`)
   }
   return result
-}
-
-function copyTrackedTree(destination) {
-  const prefix = `${path.resolve(destination).replaceAll('\\', '/')}/`
-  const exported = spawnSync('git', ['checkout-index', '--all', '--force', `--prefix=${prefix}`], {
-    cwd: ROOT,
-    encoding: 'utf8',
-    shell: false,
-    windowsHide: true,
-  })
-  if (exported.status !== 0) throw new Error('Unable to export tracked fixture files from the Git index.')
-}
-
-function linkNodeModules(destination) {
-  const source = path.join(ROOT, 'node_modules')
-  if (!fs.existsSync(source)) throw new Error('Release governance tests require npm ci before execution.')
-  fs.symlinkSync(source, path.join(destination, 'node_modules'), process.platform === 'win32' ? 'junction' : 'dir')
 }
