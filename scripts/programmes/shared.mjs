@@ -66,7 +66,15 @@ export function sha256Bytes(value) {
 }
 
 export function sha256File(file) {
-  return sha256Bytes(fs.readFileSync(file))
+  const bytes = fs.readFileSync(file)
+  const extension = path.extname(file).toLowerCase()
+  const textExtensions = new Set([
+    '.css', '.csv', '.html', '.js', '.json', '.jsx', '.md', '.mdx', '.mjs',
+    '.toml', '.ts', '.tsx', '.txt', '.yaml', '.yml',
+  ])
+  if (!textExtensions.has(extension)) return sha256Bytes(bytes)
+  const text = bytes.toString('utf8').replace(/^\uFEFF/, '').replace(/\r\n/g, '\n')
+  return sha256Bytes(text)
 }
 
 export function relative(file) {

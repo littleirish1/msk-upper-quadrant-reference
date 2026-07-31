@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict'
+import fs from 'node:fs'
+import os from 'node:os'
+import path from 'node:path'
 import {
   loadProgrammeSchemas,
+  sha256File,
 } from './shared.mjs'
 
 const schemas = await loadProgrammeSchemas()
@@ -130,5 +134,21 @@ const gap = {
 }
 ok(schemas.evidenceGapSchema.safeParse(gap).success, 'valid evidence gap')
 ok(!schemas.evidenceGapSchema.safeParse({ ...gap, publicEligibility: true }).success, 'evidence gap cannot be public')
+
+const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'msk-programme-hash-'))
+try {
+  const lfFile = path.join(temporary, 'lf.json')
+  const crlfFile = path.join(temporary, 'crlf.json')
+  const binaryA = path.join(temporary, 'a.bin')
+  const binaryB = path.join(temporary, 'b.bin')
+  fs.writeFileSync(lfFile, '{\n  "value": 1\n}\n')
+  fs.writeFileSync(crlfFile, '{\r\n  "value": 1\r\n}\r\n')
+  fs.writeFileSync(binaryA, Buffer.from([0, 10, 13, 255]))
+  fs.writeFileSync(binaryB, Buffer.from([0, 13, 10, 255]))
+  ok(sha256File(lfFile) === sha256File(crlfFile), 'text checksums normalize LF and CRLF')
+  ok(sha256File(binaryA) !== sha256File(binaryB), 'binary checksums remain byte-exact')
+} finally {
+  fs.rmSync(temporary, { recursive: true, force: true })
+}
 
 console.log(`Programme foundation schema tests passed. Assertions: ${assertions}.`)

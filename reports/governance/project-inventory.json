@@ -21,7 +21,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:d1d0a505f0f16c992b384336d062c6e4343c0f061a1f5c5023631a488c0d1c96",
+          "checksum": "sha256:5036733fc87c9065daae37a5bdd8bbdca48a1d5382e8c0affe9333284e927c7e",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/anatomy/private/cranial-nerve-01-review-template.json",
           "revision": "1",
@@ -51,7 +51,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:8e90260e67bb0002f1a81c8847a314aef463c14106170fd2d6c1184c9c04c715",
+          "checksum": "sha256:c81aba621caefcda4738bf1cd2fbdcdc661008b14034add5109ca8817fb8d463",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/anatomy/private/upper-limb-dermatomes.json",
           "revision": "1",
@@ -81,7 +81,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:9662bda73317e13572ef4c24df687fe91a1cddd82f57631947a4a23de352959b",
+          "checksum": "sha256:dd9836f9a25f83fc0ac18167e6ec7d332218cf6390428f407d1033d618576617",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/anatomy/private/rotator-cuff-group.json",
           "revision": "1",
@@ -111,7 +111,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:04608e0a93cc8472a08f51c96ba8ff9761e5f9240b0938022bbbb2e9618cde27",
+          "checksum": "sha256:5b420dddb4da287e48c189c4e8aa63c05e3b2388b8e79bec1af833f12f358135",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/anatomy/private/upper-limb-myotomes.json",
           "revision": "1",
@@ -141,7 +141,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:81c89a066fd61404e79306e5a2dfb52d3fa93c6cd556ca65fa35eb22dddf9d8f",
+          "checksum": "sha256:11832b3f54cdbb67f80e36f2f5801f216112dd0a3fb9d05e2531bfcfec30eb2d",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/anatomy/private/cervical-nerve-roots.json",
           "revision": "1",
@@ -171,7 +171,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:dbbf58410f46502078b7f438bb4e427a6c6796d94310284df2d5c04cca563ed3",
+          "checksum": "sha256:8c0b9e40fcf3b25a88121447a44c5e6f04ad1148776653e5dfd2956fe5909a70",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/anatomy/private/median-nerve.json",
           "revision": "1",
@@ -201,7 +201,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:d2cc36067c83407b4247a005e70ddfb3e6baf5a645ae8e9ad8fd2d4c1f1e6e95",
+          "checksum": "sha256:86d4111d99a9d33c08d325efdb56eed5b8c6c50604266dcc7d5c9a373644a07d",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/anatomy/private/radial-nerve.json",
           "revision": "1",
@@ -231,7 +231,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:c21dea559b2c9d4b5485898ef2d76f4cbfb8831f0031da6795b844192f676d86",
+          "checksum": "sha256:08714520a470b25aeb82859ba5f6458cb19f05643b9b0200f8b7bffb06c50217",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/anatomy/private/suprascapular-nerve.json",
           "revision": "1",
@@ -261,7 +261,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:3f46cdadec17acc9d56d713e70430514bf11841ac7ed9b2538218fceb1042bc8",
+          "checksum": "sha256:f93a0d9299a6d98d3f4502627cbb2e4891b11153de3e73abc3e35ab8e09f628d",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/anatomy/private/ulnar-nerve.json",
           "revision": "1",
@@ -320,7 +320,7 @@
       "sourceClearanceState": "approved-for-public-use",
       "sources": [
         {
-          "checksum": "sha256:a0c20d60ddf4818018dbb39f83818bed2da251e41417d519d2893e2298846673",
+          "checksum": "sha256:10994f6dcb7bb2857c1dbe87aabc913d9dc10bf6974e1b8a8d11d2711cb2e6f7",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/guided-cases/records/published/case.cervical.case-01.json",
           "revision": "1",
@@ -349,7 +349,7 @@
       "sourceClearanceState": "approved-for-public-use",
       "sources": [
         {
-          "checksum": "sha256:4f9e7dfc51c310a1b30d931a76f59f9c010fd51cde1d932f51a188c10c180e8f",
+          "checksum": "sha256:70383e01829585664c9338dcb8df293954535d6d05539943d6dc484edba7d494",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/guided-cases/records/published/case.cervical.case-02.json",
           "revision": "1",
@@ -382,7 +382,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:816902c9713761be091140b5fac83116a40daec58207aeec8643d078effcf1a3",
+          "checksum": "sha256:25d6b3f5c2a87329e96b8c685f55711b9806cf4f7f6ac115507f5a79f593fe49",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/guided-cases/records/drafts/case.cervical.pilot-01.json",
           "revision": "1",
@@ -411,7 +411,7 @@
       "sourceClearanceState": "approved-for-public-use",
       "sources": [
         {
-          "checksum": "sha256:8a2a132922611f883278081a823147d9bb672adc13ebf0ea810a434800261f87",
+          "checksum": "sha256:8ff27421e84879dd94f115bc2dfad61b178784d7a247047a72da05cd74563673",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/guided-cases/records/published/case.elbow.case-03.json",
           "revision": "1",
@@ -440,7 +440,7 @@
       "sourceClearanceState": "approved-for-public-use",
       "sources": [
         {
-          "checksum": "sha256:05ad5c16c2b8dcd76b1366b412ee858f46edd49b36603552d0ad9f5eb08ce75c",
+          "checksum": "sha256:f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-04.json",
           "revision": "1",
@@ -469,7 +469,7 @@
       "sourceClearanceState": "approved-for-public-use",
       "sources": [
         {
-          "checksum": "sha256:a451fc4a9704526e3fe4b6532610cf76e6781dceddcdb6d1c4c46fe17f9b993b",
+          "checksum": "sha256:af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-05.json",
           "revision": "1",
@@ -502,7 +502,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:3016b01648c00a8758b13178714277a755dd3f325b880ce2cd95c7c242ee54cf",
+          "checksum": "sha256:596c2a5d6a7a8647bd1e418a7f72754533d8a5cfa5550f562d5a8454e84f800c",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/guided-cases/records/drafts/case.shoulder.pilot-02.json",
           "revision": "1",
@@ -531,7 +531,7 @@
       "sourceClearanceState": "approved-for-public-use",
       "sources": [
         {
-          "checksum": "sha256:369517d4fd677f17e2ffa9be651e83639be43b2026c0a723ac50914bf7b2501d",
+          "checksum": "sha256:2f2b88137e838c14447f2b3569c201dffc7817271020abf8f37f44aa961d9d3c",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/guided-cases/records/published/case.thoracic.case-06.json",
           "revision": "1",
@@ -564,7 +564,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:309aa0f0c1ca6114b6269fbd29151600e26559bce42d2d4b07aa3d4a1430e5ce",
+          "checksum": "sha256:2c422d33d6f760eb856021f2851c20b448eb00d35bed963f813ac0d8b3bd76b3",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/guided-cases/records/drafts/case.wrist-hand.pilot-03.json",
           "revision": "1",
@@ -593,7 +593,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:965d98e2c4cd0a8d8e457c370f3519c2e803b43ce17365aabc4a94ccf2435717",
+          "checksum": "sha256:9a59360ca90cd32b0ada19ba99f59bc2b067fe6f4855368c1cc47607ce074441",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/cervical/cervical-artery-dysfunction.mdx",
           "revision": "1",
@@ -622,7 +622,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:d5a7e916edf23be8b25eaf5c52f0727afedd296c0a6c33f85fd5523e301f3b51",
+          "checksum": "sha256:679f060c0279b9b52dc6ec7e4ad28b6024f9cf45dda0cba4129828a97ea19c0c",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/cervical/cervical-myelopathy.mdx",
           "revision": "1",
@@ -651,7 +651,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+          "checksum": "sha256:2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/cervical/cervical-radiculopathy.mdx",
           "revision": "1",
@@ -680,7 +680,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:bcf07c880decff1274ec678b3da3129da5fb4ffb9144e97de584675e18b33cf5",
+          "checksum": "sha256:4d7c85dfb98cc608196a20e54bd333e9478995a91a0b1c5a7e4d8cdeafb22c3b",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/cervical/cervicogenic-headache.mdx",
           "revision": "1",
@@ -709,7 +709,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:6c0a805e34fdffd7e39c7318bdd3e479b04a01876581d74ac133fa3f88e07d67",
+          "checksum": "sha256:8529fcfd869d5f1835dc7ad7556d3b057d4c7e53462356dd5a852a62fd70e387",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/cervical/mechanical-neck-pain.mdx",
           "revision": "1",
@@ -738,7 +738,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:8ea83088d8423e6d57c522492f137af78fde30971e96807fc29726c8656d7e7f",
+          "checksum": "sha256:df53ccd9172ca5d55b360a8dee94366984ae983c0b0fb41ab09f82c5253027d4",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/cervical/whiplash-associated-disorders.mdx",
           "revision": "1",
@@ -767,7 +767,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:ab962707fb02e0c30355eb1eaf0a7710647ba995f64d564171e7cb1e86d5181e",
+          "checksum": "sha256:f496bc6df35ea8edb51307c8a34fac963cbdd578b77b33b4fe94d06ee471497c",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/elbow/cubital-tunnel-syndrome.mdx",
           "revision": "1",
@@ -796,7 +796,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:c9c2bba8b4d0e2b200f93265b5953348d4ecc5051e8fb07b701e034c7267bde1",
+          "checksum": "sha256:6dcbc25f4d0f474583747aae03b445c45d2fc8ee0062a2c8983b764ba4572edc",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/elbow/elbow-osteoarthritis.mdx",
           "revision": "1",
@@ -825,7 +825,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:85414128673833ebead58054cb2652fabe3b4a27072704db264d8504b9cfbe29",
+          "checksum": "sha256:d0ad4122fd624b8a71844803484938ebfd6b7deeb50b8c523f4a1cab5f05390b",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/elbow/lateral-epicondylalgia.mdx",
           "revision": "1",
@@ -854,7 +854,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:cf7ab79d2c9bd3ce39d1fa808f750e342cd6fca4ace8183eb070b37c3abd6aa2",
+          "checksum": "sha256:319cb13323174a317d63dfbc81fb8f2234f134a3b85cc676239346a61a34cc01",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/elbow/medial-epicondylalgia.mdx",
           "revision": "1",
@@ -883,7 +883,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:23051994d335576226d151c8a8e7497ebc7dadfa472070d09354107d1ade2292",
+          "checksum": "sha256:0d6131f2d5419b64be53a51dd83e2aa97439918901230cb1a5c49d60311c36b6",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/elbow/olecranon-bursitis.mdx",
           "revision": "1",
@@ -912,7 +912,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:661b4c91db51995225ccfe0382384167f64397d5f4919b9e7146500707e388d7",
+          "checksum": "sha256:deeb3beefe643770c2ce244b85630cbe22f47505336590e8ae5d138cc86a96ce",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/elbow/radial-tunnel-syndrome.mdx",
           "revision": "1",
@@ -941,7 +941,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+          "checksum": "sha256:12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/shoulder/acromioclavicular-joint.mdx",
           "revision": "1",
@@ -970,7 +970,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+          "checksum": "sha256:d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/shoulder/adhesive-capsulitis.mdx",
           "revision": "1",
@@ -999,7 +999,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:315b3125fc5f65f91fb9f79d7096f666d952e89dfd86cc0d1331a6dd24e49483",
+          "checksum": "sha256:d3637b454bd018ccb337f99911b2a677aee45f4b5ff330cc36bd53f0f184aeab",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/shoulder/calcific-tendinitis.mdx",
           "revision": "1",
@@ -1028,7 +1028,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:c94721de36ba064e73f5a4e52c47e3d7e1f15fc3c67edc39a9088731241e002b",
+          "checksum": "sha256:9aed97cfb0712c4fad186107a53c9a383d23938b66116ba5d44306bbc0a24071",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/shoulder/labral-tears.mdx",
           "revision": "1",
@@ -1057,7 +1057,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:acb567a27f0211f1ec5b02ce5f94505845d82017c7448dd32f6fe17aec501449",
+          "checksum": "sha256:009fc0757ab678a60bdecc2c220c637fecba7e2bb5f0cf0a746b3ef19c6d6007",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/shoulder/rotator-cuff-tear.mdx",
           "revision": "1",
@@ -1086,7 +1086,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+          "checksum": "sha256:32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/shoulder/rotator-cuff-tendinopathy.mdx",
           "revision": "1",
@@ -1115,7 +1115,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+          "checksum": "sha256:25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/shoulder/shoulder-instability.mdx",
           "revision": "1",
@@ -1144,7 +1144,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:c80bb57f24c5f063e5de7b1c1071f91a23023b1b0a9f3dc4477e905ee1472ef7",
+          "checksum": "sha256:14db2a0a4fbad76dedd14027986cc8cf3c51e83ea08fef079b61a775c243f8f3",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/shoulder/subacromial-pain-syndrome.mdx",
           "revision": "1",
@@ -1173,7 +1173,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:e190b431be1f9232c371a14f1a3c88f8d2f5d8fbaddb2eb56378bf224104e132",
+          "checksum": "sha256:34cdadde7cbc9c36c58221797ac848f3242d628d22f413f1479824a96943c32f",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/thoracic/costochondritis.mdx",
           "revision": "1",
@@ -1202,7 +1202,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:ff84e1e94f98c118c9a8ed6452144e797cc8c8be04f5f6e60b6fa5675d949865",
+          "checksum": "sha256:323e30017749d699c3109165f7f27e3f15d4012e00144d97fd26a2ee52c4d5ac",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/thoracic/scheuermanns-disease.mdx",
           "revision": "1",
@@ -1231,7 +1231,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:0a738fca27aad42baa8f1152e25e56c86d7ead75818ab3d6a1f098852e0ed2c4",
+          "checksum": "sha256:f867b5de1647c0f696df418710acc619c61fe3e9fa64622854fd36b5cc5a8b7b",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/thoracic/thoracic-disc-herniation.mdx",
           "revision": "1",
@@ -1260,7 +1260,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:721b44304b1d2c7f0fa3adbeee71f363f3949cc6a9e8c4ea9ed0d8db8891a4e7",
+          "checksum": "sha256:d0a3dcc6eb84a596bedc7fd836290b9d7b6481cc16eecae4de2f17032e465564",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/thoracic/thoracic-facet-joint-pain.mdx",
           "revision": "1",
@@ -1289,7 +1289,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:df9d73f7c41fb5d9dd354c0fb4e616e5090165c389df12aa99bd657523a41e64",
+          "checksum": "sha256:2777b2d6029bbe201efce67891cde7a3b35b9c51721bb238d441a234c7a8533e",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/thoracic/thoracic-outlet-syndrome.mdx",
           "revision": "1",
@@ -1318,7 +1318,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:ebeb2d811f78a0671f327d8a15cf7456f54f9a0214178868ed0b61229239e590",
+          "checksum": "sha256:2c86a1d4f95826b80b1b67e8ecb36bcc768d0ece10d811780dd46322ceb9a1d4",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/thoracic/thoracic-radiculopathy.mdx",
           "revision": "1",
@@ -1347,7 +1347,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:1c9a9c26b016aa18ec9a5e574efe82fa7c13f9364bbd1063b133cf570aeec451",
+          "checksum": "sha256:04dd3cc8e750275bcde2e199521bb491afc0adce50e394dba53f264269ab021d",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/wrist-hand/carpal-tunnel-syndrome.mdx",
           "revision": "1",
@@ -1376,7 +1376,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:847efeb6d92838fcf5460788f2fee68d504e4c9bfa63cf55bf598bec60fb9086",
+          "checksum": "sha256:0917c6d02e4c49418e8344b971520e0c7308f0ed4dfdd64f395d76fb17a4e667",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/wrist-hand/de-quervains-tenosynovitis.mdx",
           "revision": "1",
@@ -1405,7 +1405,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:0367f613706aa335d203fa8d87b2da070c342401c48aea61095ccc8b055990d5",
+          "checksum": "sha256:0e0be31bc16f0033fd4f1fcd2f4cbd6fb807856dbe45cf71225d8f359003b072",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/wrist-hand/dupuytrens-contracture.mdx",
           "revision": "1",
@@ -1434,7 +1434,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:b12f950b79b85a6f0ffcf60432e06d7862b2c3a7ce4df390c474777b39884c16",
+          "checksum": "sha256:61b108ee4534873d7a90f2844bb5a49489bb3c7332a2b0ab632a514c27cb3e78",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/wrist-hand/scaphoid-fracture.mdx",
           "revision": "1",
@@ -1463,7 +1463,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:1372383f06fdad6854334decc69dc800fa453ffd5dc9bb476f5b94833e0f9f8a",
+          "checksum": "sha256:394e461bb03dc88be23cdadb32f1d3ecb9dbfaf8e1b194456a0754ade17ddd54",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/wrist-hand/tfcc-injury.mdx",
           "revision": "1",
@@ -1492,7 +1492,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:69db45756fd8bfbc6fa7137982392c6f391bbfc33cdd3626ea45c87b362b2da0",
+          "checksum": "sha256:ba3315eba2ef9f78549360dfe3974dfec758f3fd51bcd0e7dd8518fa5e4e9fa8",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/wrist-hand/thumb-cmc-osteoarthritis.mdx",
           "revision": "1",
@@ -1521,7 +1521,7 @@
       "sourceClearanceState": "unknown",
       "sources": [
         {
-          "checksum": "sha256:3789b4f1ac353903a5c0e2167a3324011b5e6691b2260b2565f7c8cacf7f1632",
+          "checksum": "sha256:c34cffd211743b73a684163eba674500717bb67617f359cceb93d5d9afdb7edf",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/wrist-hand/trigger-finger.mdx",
           "revision": "1",
@@ -5541,7 +5541,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:050beef38161e15ff0a0aef0ef258cd9fbf9f21c598cbbd6e2e9e8ab19ed4343",
+          "checksum": "sha256:0036e4b09ee6b7ba0d996790968cbf24fb5ad4f973c297022693bf7e2b57508e",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/learning/private/decision-tree-example.json",
           "revision": "1",
@@ -5571,7 +5571,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:796a4df50108525542da88bd7ee0b36c0c11a4e0aacc75332042fcda6bcc3320",
+          "checksum": "sha256:6e33d5c868db86fd9daa10164e3d0dba42738b66e7035f264de9855803b29895",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/learning/private/flashcard-example.json",
           "revision": "1",
@@ -5601,7 +5601,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:7464f61cd1b6ca131994941b959b7d851d3e2072d95ee935c419a6f0e33f525f",
+          "checksum": "sha256:0ddfa1cec6396dfeb387872014db2b9b459f65282870998b64f3dce3bdf1094d",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/learning/private/osce-example.json",
           "revision": "1",
@@ -5631,7 +5631,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:42e557ae7b2e73199f5e02181e2fd267dbf5bc1fea91d5b235cce4b820cd3126",
+          "checksum": "sha256:2ffd2afa787d91e77adfa7aefa1e1b2b3b230fed8dac54bd124a3a4c02f232b3",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/learning/private/quiz-example.json",
           "revision": "1",
@@ -5661,7 +5661,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:8120f53497d12ae51f6ddd61385a837106d7fb81c7de284e7508e603eba876ce",
+          "checksum": "sha256:cd5d17a49c32470712dba5b958f67b93cca0c6fdca36c9c92ec8cc972a97e0eb",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/learning/private/reasoning-engine-example.json",
           "revision": "1",
@@ -5691,7 +5691,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:556f0148ab163172870414a15b4e9ba15fd51890ac300e413d1e5ac6a217e404",
+          "checksum": "sha256:b1da2d9f04b6079e5c1c7710e39a8a24c7666b99fecf1c2cee9cd9931e52112b",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/learning/private/viva-example.json",
           "revision": "1",
@@ -7108,7 +7108,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:d2eeab75023398ca30ad1ddd604e07a5eaca5e013efe2a9bdb73080cef2b135d",
+          "checksum": "sha256:8b4ee352852bbf763fd53c01eef4f608883b71b38321e47d6730ce8d96934f71",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/outcome-measures/private/neck-disability-index.json",
           "revision": "1",
@@ -7138,7 +7138,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:093ad2da7af524f61b21b323ffd0414d2049bbd998aa110fe1c3d1dbf8676139",
+          "checksum": "sha256:da69db79265a76ccbcfb020f6b5ebf0904ac61728459bbaa0c728673e4116e5c",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/plans/regions/ankle-foot.json",
           "revision": "1",
@@ -7168,7 +7168,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:4f19c9049d8f0f978ec0ebc4281c2dce7c67accb5d7384798b84863fa6ddf5c3",
+          "checksum": "sha256:70b8134a0dd8f4ae17ef9897f3c8ac452c2974fe89b2372ab2fc627c7aa06961",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/plans/regions/hip.json",
           "revision": "1",
@@ -7198,7 +7198,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:94556609298115e7f25100127705fa59d60ac781f34bfd8adf6449084d61fa96",
+          "checksum": "sha256:b96912058d10bbb9c71f01c59bcd51a4665bfa3a1b2aac8d145df6e7a0230b08",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/plans/regions/knee.json",
           "revision": "1",
@@ -7228,7 +7228,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:6dec879b2ed9a7ac0fd639be87bbe2170ca1691eb1326a3c1ea94cf9ee30aaf6",
+          "checksum": "sha256:f25bb1021b0c6d27270a83c84dc1a21ab1d74b436e8666a2a67e8341daff9a19",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/plans/regions/lumbar.json",
           "revision": "1",
@@ -7258,7 +7258,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:e9d054815960c636d92d466fdce2243cd9692e74ad8d6b3c6531166450ff75e5",
+          "checksum": "sha256:9e2e23ab0b92624865f937b62e38f09fb6edb244cf5a9b775f6375f33e56830b",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/plans/regions/pelvis-sij.json",
           "revision": "1",
@@ -7285,7 +7285,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:1d8caea9cd792c84c68777fbc674f4ead6f0ca2d9c594b9b94480a2392484d3e",
+          "checksum": "sha256:78e248e864ea4b489ccdb764093a420e3b7b034cc4e41d71e0881dc74461c01c",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/taxonomy.ts",
           "revision": "1",
@@ -7312,7 +7312,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d300b5c92d0123e10e8686f8ff7af5f75e83920cc0059eed24476122c01bc57b",
+          "checksum": "sha256:6eaedce431b2affdbd4770ef17af16f75d05aab77a8f39be984e60a186c9e520",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/anatomy.ts",
           "revision": "1",
@@ -7339,7 +7339,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d300b5c92d0123e10e8686f8ff7af5f75e83920cc0059eed24476122c01bc57b",
+          "checksum": "sha256:6eaedce431b2affdbd4770ef17af16f75d05aab77a8f39be984e60a186c9e520",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/anatomy.ts",
           "revision": "1",
@@ -7366,7 +7366,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d300b5c92d0123e10e8686f8ff7af5f75e83920cc0059eed24476122c01bc57b",
+          "checksum": "sha256:6eaedce431b2affdbd4770ef17af16f75d05aab77a8f39be984e60a186c9e520",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/anatomy.ts",
           "revision": "1",
@@ -7393,7 +7393,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d300b5c92d0123e10e8686f8ff7af5f75e83920cc0059eed24476122c01bc57b",
+          "checksum": "sha256:6eaedce431b2affdbd4770ef17af16f75d05aab77a8f39be984e60a186c9e520",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/anatomy.ts",
           "revision": "1",
@@ -7420,7 +7420,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d300b5c92d0123e10e8686f8ff7af5f75e83920cc0059eed24476122c01bc57b",
+          "checksum": "sha256:6eaedce431b2affdbd4770ef17af16f75d05aab77a8f39be984e60a186c9e520",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/anatomy.ts",
           "revision": "1",
@@ -7447,7 +7447,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d300b5c92d0123e10e8686f8ff7af5f75e83920cc0059eed24476122c01bc57b",
+          "checksum": "sha256:6eaedce431b2affdbd4770ef17af16f75d05aab77a8f39be984e60a186c9e520",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/anatomy.ts",
           "revision": "1",
@@ -7474,7 +7474,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d300b5c92d0123e10e8686f8ff7af5f75e83920cc0059eed24476122c01bc57b",
+          "checksum": "sha256:6eaedce431b2affdbd4770ef17af16f75d05aab77a8f39be984e60a186c9e520",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/anatomy.ts",
           "revision": "1",
@@ -7501,7 +7501,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d300b5c92d0123e10e8686f8ff7af5f75e83920cc0059eed24476122c01bc57b",
+          "checksum": "sha256:6eaedce431b2affdbd4770ef17af16f75d05aab77a8f39be984e60a186c9e520",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/anatomy.ts",
           "revision": "1",
@@ -7528,7 +7528,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d300b5c92d0123e10e8686f8ff7af5f75e83920cc0059eed24476122c01bc57b",
+          "checksum": "sha256:6eaedce431b2affdbd4770ef17af16f75d05aab77a8f39be984e60a186c9e520",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/anatomy.ts",
           "revision": "1",
@@ -7555,7 +7555,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d300b5c92d0123e10e8686f8ff7af5f75e83920cc0059eed24476122c01bc57b",
+          "checksum": "sha256:6eaedce431b2affdbd4770ef17af16f75d05aab77a8f39be984e60a186c9e520",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/anatomy.ts",
           "revision": "1",
@@ -7582,7 +7582,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d300b5c92d0123e10e8686f8ff7af5f75e83920cc0059eed24476122c01bc57b",
+          "checksum": "sha256:6eaedce431b2affdbd4770ef17af16f75d05aab77a8f39be984e60a186c9e520",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/anatomy.ts",
           "revision": "1",
@@ -7609,7 +7609,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d300b5c92d0123e10e8686f8ff7af5f75e83920cc0059eed24476122c01bc57b",
+          "checksum": "sha256:6eaedce431b2affdbd4770ef17af16f75d05aab77a8f39be984e60a186c9e520",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/anatomy.ts",
           "revision": "1",
@@ -7636,7 +7636,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d300b5c92d0123e10e8686f8ff7af5f75e83920cc0059eed24476122c01bc57b",
+          "checksum": "sha256:6eaedce431b2affdbd4770ef17af16f75d05aab77a8f39be984e60a186c9e520",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/anatomy.ts",
           "revision": "1",
@@ -7663,7 +7663,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:ad599a990621672bca61a644ef187cc582afdd44053cb2848c73e8eb96af8c2b",
+          "checksum": "sha256:6ef2ce2ef691ae6fa35055f2216d6a308851c1ac0a7941d0d98d76b0926c1712",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/public-case-registry.json",
           "revision": "1",
@@ -7690,7 +7690,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:a0c20d60ddf4818018dbb39f83818bed2da251e41417d519d2893e2298846673",
+          "checksum": "sha256:10994f6dcb7bb2857c1dbe87aabc913d9dc10bf6974e1b8a8d11d2711cb2e6f7",
           "provenanceStatus": "generated",
           "repositoryPath": "content/guided-cases/records/published/case.cervical.case-01.json",
           "revision": "1",
@@ -7717,7 +7717,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:4f9e7dfc51c310a1b30d931a76f59f9c010fd51cde1d932f51a188c10c180e8f",
+          "checksum": "sha256:70383e01829585664c9338dcb8df293954535d6d05539943d6dc484edba7d494",
           "provenanceStatus": "generated",
           "repositoryPath": "content/guided-cases/records/published/case.cervical.case-02.json",
           "revision": "1",
@@ -7744,7 +7744,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:8a2a132922611f883278081a823147d9bb672adc13ebf0ea810a434800261f87",
+          "checksum": "sha256:8ff27421e84879dd94f115bc2dfad61b178784d7a247047a72da05cd74563673",
           "provenanceStatus": "generated",
           "repositoryPath": "content/guided-cases/records/published/case.elbow.case-03.json",
           "revision": "1",
@@ -7771,7 +7771,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:05ad5c16c2b8dcd76b1366b412ee858f46edd49b36603552d0ad9f5eb08ce75c",
+          "checksum": "sha256:f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
           "provenanceStatus": "generated",
           "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-04.json",
           "revision": "1",
@@ -7798,7 +7798,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:a451fc4a9704526e3fe4b6532610cf76e6781dceddcdb6d1c4c46fe17f9b993b",
+          "checksum": "sha256:af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
           "provenanceStatus": "generated",
           "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-05.json",
           "revision": "1",
@@ -7825,7 +7825,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:369517d4fd677f17e2ffa9be651e83639be43b2026c0a723ac50914bf7b2501d",
+          "checksum": "sha256:2f2b88137e838c14447f2b3569c201dffc7817271020abf8f37f44aa961d9d3c",
           "provenanceStatus": "generated",
           "repositoryPath": "content/guided-cases/records/published/case.thoracic.case-06.json",
           "revision": "1",
@@ -7852,7 +7852,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:1d8caea9cd792c84c68777fbc674f4ead6f0ca2d9c594b9b94480a2392484d3e",
+          "checksum": "sha256:78e248e864ea4b489ccdb764093a420e3b7b034cc4e41d71e0881dc74461c01c",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/taxonomy.ts",
           "revision": "1",
@@ -7879,7 +7879,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:965d98e2c4cd0a8d8e457c370f3519c2e803b43ce17365aabc4a94ccf2435717",
+          "checksum": "sha256:9a59360ca90cd32b0ada19ba99f59bc2b067fe6f4855368c1cc47607ce074441",
           "provenanceStatus": "generated",
           "repositoryPath": "content/cervical/cervical-artery-dysfunction.mdx",
           "revision": "1",
@@ -7906,7 +7906,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d5a7e916edf23be8b25eaf5c52f0727afedd296c0a6c33f85fd5523e301f3b51",
+          "checksum": "sha256:679f060c0279b9b52dc6ec7e4ad28b6024f9cf45dda0cba4129828a97ea19c0c",
           "provenanceStatus": "generated",
           "repositoryPath": "content/cervical/cervical-myelopathy.mdx",
           "revision": "1",
@@ -7933,7 +7933,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+          "checksum": "sha256:2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
           "provenanceStatus": "generated",
           "repositoryPath": "content/cervical/cervical-radiculopathy.mdx",
           "revision": "1",
@@ -7960,7 +7960,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:bcf07c880decff1274ec678b3da3129da5fb4ffb9144e97de584675e18b33cf5",
+          "checksum": "sha256:4d7c85dfb98cc608196a20e54bd333e9478995a91a0b1c5a7e4d8cdeafb22c3b",
           "provenanceStatus": "generated",
           "repositoryPath": "content/cervical/cervicogenic-headache.mdx",
           "revision": "1",
@@ -7987,7 +7987,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:6c0a805e34fdffd7e39c7318bdd3e479b04a01876581d74ac133fa3f88e07d67",
+          "checksum": "sha256:8529fcfd869d5f1835dc7ad7556d3b057d4c7e53462356dd5a852a62fd70e387",
           "provenanceStatus": "generated",
           "repositoryPath": "content/cervical/mechanical-neck-pain.mdx",
           "revision": "1",
@@ -8014,7 +8014,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:8ea83088d8423e6d57c522492f137af78fde30971e96807fc29726c8656d7e7f",
+          "checksum": "sha256:df53ccd9172ca5d55b360a8dee94366984ae983c0b0fb41ab09f82c5253027d4",
           "provenanceStatus": "generated",
           "repositoryPath": "content/cervical/whiplash-associated-disorders.mdx",
           "revision": "1",
@@ -8041,7 +8041,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:1d8caea9cd792c84c68777fbc674f4ead6f0ca2d9c594b9b94480a2392484d3e",
+          "checksum": "sha256:78e248e864ea4b489ccdb764093a420e3b7b034cc4e41d71e0881dc74461c01c",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/taxonomy.ts",
           "revision": "1",
@@ -8068,7 +8068,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:1d8caea9cd792c84c68777fbc674f4ead6f0ca2d9c594b9b94480a2392484d3e",
+          "checksum": "sha256:78e248e864ea4b489ccdb764093a420e3b7b034cc4e41d71e0881dc74461c01c",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/taxonomy.ts",
           "revision": "1",
@@ -8095,7 +8095,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:ab962707fb02e0c30355eb1eaf0a7710647ba995f64d564171e7cb1e86d5181e",
+          "checksum": "sha256:f496bc6df35ea8edb51307c8a34fac963cbdd578b77b33b4fe94d06ee471497c",
           "provenanceStatus": "generated",
           "repositoryPath": "content/elbow/cubital-tunnel-syndrome.mdx",
           "revision": "1",
@@ -8122,7 +8122,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:c9c2bba8b4d0e2b200f93265b5953348d4ecc5051e8fb07b701e034c7267bde1",
+          "checksum": "sha256:6dcbc25f4d0f474583747aae03b445c45d2fc8ee0062a2c8983b764ba4572edc",
           "provenanceStatus": "generated",
           "repositoryPath": "content/elbow/elbow-osteoarthritis.mdx",
           "revision": "1",
@@ -8149,7 +8149,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:85414128673833ebead58054cb2652fabe3b4a27072704db264d8504b9cfbe29",
+          "checksum": "sha256:d0ad4122fd624b8a71844803484938ebfd6b7deeb50b8c523f4a1cab5f05390b",
           "provenanceStatus": "generated",
           "repositoryPath": "content/elbow/lateral-epicondylalgia.mdx",
           "revision": "1",
@@ -8176,7 +8176,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:cf7ab79d2c9bd3ce39d1fa808f750e342cd6fca4ace8183eb070b37c3abd6aa2",
+          "checksum": "sha256:319cb13323174a317d63dfbc81fb8f2234f134a3b85cc676239346a61a34cc01",
           "provenanceStatus": "generated",
           "repositoryPath": "content/elbow/medial-epicondylalgia.mdx",
           "revision": "1",
@@ -8203,7 +8203,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:23051994d335576226d151c8a8e7497ebc7dadfa472070d09354107d1ade2292",
+          "checksum": "sha256:0d6131f2d5419b64be53a51dd83e2aa97439918901230cb1a5c49d60311c36b6",
           "provenanceStatus": "generated",
           "repositoryPath": "content/elbow/olecranon-bursitis.mdx",
           "revision": "1",
@@ -8230,7 +8230,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:661b4c91db51995225ccfe0382384167f64397d5f4919b9e7146500707e388d7",
+          "checksum": "sha256:deeb3beefe643770c2ce244b85630cbe22f47505336590e8ae5d138cc86a96ce",
           "provenanceStatus": "generated",
           "repositoryPath": "content/elbow/radial-tunnel-syndrome.mdx",
           "revision": "1",
@@ -8257,7 +8257,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:1d8caea9cd792c84c68777fbc674f4ead6f0ca2d9c594b9b94480a2392484d3e",
+          "checksum": "sha256:78e248e864ea4b489ccdb764093a420e3b7b034cc4e41d71e0881dc74461c01c",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/taxonomy.ts",
           "revision": "1",
@@ -8284,7 +8284,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:1d8caea9cd792c84c68777fbc674f4ead6f0ca2d9c594b9b94480a2392484d3e",
+          "checksum": "sha256:78e248e864ea4b489ccdb764093a420e3b7b034cc4e41d71e0881dc74461c01c",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/taxonomy.ts",
           "revision": "1",
@@ -8311,7 +8311,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:1d8caea9cd792c84c68777fbc674f4ead6f0ca2d9c594b9b94480a2392484d3e",
+          "checksum": "sha256:78e248e864ea4b489ccdb764093a420e3b7b034cc4e41d71e0881dc74461c01c",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/taxonomy.ts",
           "revision": "1",
@@ -8338,7 +8338,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:1d8caea9cd792c84c68777fbc674f4ead6f0ca2d9c594b9b94480a2392484d3e",
+          "checksum": "sha256:78e248e864ea4b489ccdb764093a420e3b7b034cc4e41d71e0881dc74461c01c",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/taxonomy.ts",
           "revision": "1",
@@ -8392,7 +8392,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:1d8caea9cd792c84c68777fbc674f4ead6f0ca2d9c594b9b94480a2392484d3e",
+          "checksum": "sha256:78e248e864ea4b489ccdb764093a420e3b7b034cc4e41d71e0881dc74461c01c",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/taxonomy.ts",
           "revision": "1",
@@ -8419,7 +8419,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+          "checksum": "sha256:12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
           "provenanceStatus": "generated",
           "repositoryPath": "content/shoulder/acromioclavicular-joint.mdx",
           "revision": "1",
@@ -8446,7 +8446,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+          "checksum": "sha256:d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
           "provenanceStatus": "generated",
           "repositoryPath": "content/shoulder/adhesive-capsulitis.mdx",
           "revision": "1",
@@ -8473,7 +8473,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:315b3125fc5f65f91fb9f79d7096f666d952e89dfd86cc0d1331a6dd24e49483",
+          "checksum": "sha256:d3637b454bd018ccb337f99911b2a677aee45f4b5ff330cc36bd53f0f184aeab",
           "provenanceStatus": "generated",
           "repositoryPath": "content/shoulder/calcific-tendinitis.mdx",
           "revision": "1",
@@ -8500,7 +8500,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:c94721de36ba064e73f5a4e52c47e3d7e1f15fc3c67edc39a9088731241e002b",
+          "checksum": "sha256:9aed97cfb0712c4fad186107a53c9a383d23938b66116ba5d44306bbc0a24071",
           "provenanceStatus": "generated",
           "repositoryPath": "content/shoulder/labral-tears.mdx",
           "revision": "1",
@@ -8527,7 +8527,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:acb567a27f0211f1ec5b02ce5f94505845d82017c7448dd32f6fe17aec501449",
+          "checksum": "sha256:009fc0757ab678a60bdecc2c220c637fecba7e2bb5f0cf0a746b3ef19c6d6007",
           "provenanceStatus": "generated",
           "repositoryPath": "content/shoulder/rotator-cuff-tear.mdx",
           "revision": "1",
@@ -8554,7 +8554,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+          "checksum": "sha256:32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
           "provenanceStatus": "generated",
           "repositoryPath": "content/shoulder/rotator-cuff-tendinopathy.mdx",
           "revision": "1",
@@ -8581,7 +8581,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+          "checksum": "sha256:25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
           "provenanceStatus": "generated",
           "repositoryPath": "content/shoulder/shoulder-instability.mdx",
           "revision": "1",
@@ -8608,7 +8608,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:c80bb57f24c5f063e5de7b1c1071f91a23023b1b0a9f3dc4477e905ee1472ef7",
+          "checksum": "sha256:14db2a0a4fbad76dedd14027986cc8cf3c51e83ea08fef079b61a775c243f8f3",
           "provenanceStatus": "generated",
           "repositoryPath": "content/shoulder/subacromial-pain-syndrome.mdx",
           "revision": "1",
@@ -8635,7 +8635,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:1d8caea9cd792c84c68777fbc674f4ead6f0ca2d9c594b9b94480a2392484d3e",
+          "checksum": "sha256:78e248e864ea4b489ccdb764093a420e3b7b034cc4e41d71e0881dc74461c01c",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/taxonomy.ts",
           "revision": "1",
@@ -8662,7 +8662,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:e190b431be1f9232c371a14f1a3c88f8d2f5d8fbaddb2eb56378bf224104e132",
+          "checksum": "sha256:34cdadde7cbc9c36c58221797ac848f3242d628d22f413f1479824a96943c32f",
           "provenanceStatus": "generated",
           "repositoryPath": "content/thoracic/costochondritis.mdx",
           "revision": "1",
@@ -8689,7 +8689,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:ff84e1e94f98c118c9a8ed6452144e797cc8c8be04f5f6e60b6fa5675d949865",
+          "checksum": "sha256:323e30017749d699c3109165f7f27e3f15d4012e00144d97fd26a2ee52c4d5ac",
           "provenanceStatus": "generated",
           "repositoryPath": "content/thoracic/scheuermanns-disease.mdx",
           "revision": "1",
@@ -8716,7 +8716,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:0a738fca27aad42baa8f1152e25e56c86d7ead75818ab3d6a1f098852e0ed2c4",
+          "checksum": "sha256:f867b5de1647c0f696df418710acc619c61fe3e9fa64622854fd36b5cc5a8b7b",
           "provenanceStatus": "generated",
           "repositoryPath": "content/thoracic/thoracic-disc-herniation.mdx",
           "revision": "1",
@@ -8743,7 +8743,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:721b44304b1d2c7f0fa3adbeee71f363f3949cc6a9e8c4ea9ed0d8db8891a4e7",
+          "checksum": "sha256:d0a3dcc6eb84a596bedc7fd836290b9d7b6481cc16eecae4de2f17032e465564",
           "provenanceStatus": "generated",
           "repositoryPath": "content/thoracic/thoracic-facet-joint-pain.mdx",
           "revision": "1",
@@ -8770,7 +8770,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:df9d73f7c41fb5d9dd354c0fb4e616e5090165c389df12aa99bd657523a41e64",
+          "checksum": "sha256:2777b2d6029bbe201efce67891cde7a3b35b9c51721bb238d441a234c7a8533e",
           "provenanceStatus": "generated",
           "repositoryPath": "content/thoracic/thoracic-outlet-syndrome.mdx",
           "revision": "1",
@@ -8797,7 +8797,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:ebeb2d811f78a0671f327d8a15cf7456f54f9a0214178868ed0b61229239e590",
+          "checksum": "sha256:2c86a1d4f95826b80b1b67e8ecb36bcc768d0ece10d811780dd46322ceb9a1d4",
           "provenanceStatus": "generated",
           "repositoryPath": "content/thoracic/thoracic-radiculopathy.mdx",
           "revision": "1",
@@ -8824,7 +8824,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:1d8caea9cd792c84c68777fbc674f4ead6f0ca2d9c594b9b94480a2392484d3e",
+          "checksum": "sha256:78e248e864ea4b489ccdb764093a420e3b7b034cc4e41d71e0881dc74461c01c",
           "provenanceStatus": "generated",
           "repositoryPath": "src/data/taxonomy.ts",
           "revision": "1",
@@ -8851,7 +8851,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:1c9a9c26b016aa18ec9a5e574efe82fa7c13f9364bbd1063b133cf570aeec451",
+          "checksum": "sha256:04dd3cc8e750275bcde2e199521bb491afc0adce50e394dba53f264269ab021d",
           "provenanceStatus": "generated",
           "repositoryPath": "content/wrist-hand/carpal-tunnel-syndrome.mdx",
           "revision": "1",
@@ -8878,7 +8878,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:847efeb6d92838fcf5460788f2fee68d504e4c9bfa63cf55bf598bec60fb9086",
+          "checksum": "sha256:0917c6d02e4c49418e8344b971520e0c7308f0ed4dfdd64f395d76fb17a4e667",
           "provenanceStatus": "generated",
           "repositoryPath": "content/wrist-hand/de-quervains-tenosynovitis.mdx",
           "revision": "1",
@@ -8905,7 +8905,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:0367f613706aa335d203fa8d87b2da070c342401c48aea61095ccc8b055990d5",
+          "checksum": "sha256:0e0be31bc16f0033fd4f1fcd2f4cbd6fb807856dbe45cf71225d8f359003b072",
           "provenanceStatus": "generated",
           "repositoryPath": "content/wrist-hand/dupuytrens-contracture.mdx",
           "revision": "1",
@@ -8932,7 +8932,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:b12f950b79b85a6f0ffcf60432e06d7862b2c3a7ce4df390c474777b39884c16",
+          "checksum": "sha256:61b108ee4534873d7a90f2844bb5a49489bb3c7332a2b0ab632a514c27cb3e78",
           "provenanceStatus": "generated",
           "repositoryPath": "content/wrist-hand/scaphoid-fracture.mdx",
           "revision": "1",
@@ -8959,7 +8959,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:1372383f06fdad6854334decc69dc800fa453ffd5dc9bb476f5b94833e0f9f8a",
+          "checksum": "sha256:394e461bb03dc88be23cdadb32f1d3ecb9dbfaf8e1b194456a0754ade17ddd54",
           "provenanceStatus": "generated",
           "repositoryPath": "content/wrist-hand/tfcc-injury.mdx",
           "revision": "1",
@@ -8986,7 +8986,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:69db45756fd8bfbc6fa7137982392c6f391bbfc33cdd3626ea45c87b362b2da0",
+          "checksum": "sha256:ba3315eba2ef9f78549360dfe3974dfec758f3fd51bcd0e7dd8518fa5e4e9fa8",
           "provenanceStatus": "generated",
           "repositoryPath": "content/wrist-hand/thumb-cmc-osteoarthritis.mdx",
           "revision": "1",
@@ -9013,7 +9013,7 @@
       "sourceClearanceState": "not-applicable",
       "sources": [
         {
-          "checksum": "sha256:3789b4f1ac353903a5c0e2167a3324011b5e6691b2260b2565f7c8cacf7f1632",
+          "checksum": "sha256:c34cffd211743b73a684163eba674500717bb67617f359cceb93d5d9afdb7edf",
           "provenanceStatus": "generated",
           "repositoryPath": "content/wrist-hand/trigger-finger.mdx",
           "revision": "1",
@@ -9934,7 +9934,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:e513efd19c6f9693d86730e3e034fc146ecfc01de6fec22f36f7f316bd17629f",
+          "checksum": "sha256:db3b0dc1941ca0d42e960358b858201856353f5bc9b533a7ac25ffb7372cafa7",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/special-tests/private/cervical-radiculopathy-test-cluster.json",
           "revision": "1",
