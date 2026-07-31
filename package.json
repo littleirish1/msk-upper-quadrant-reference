@@ -33,7 +33,7 @@
   "check:anatomy": "node scripts/check-anatomy-content.mjs",
   "check:learning": "node scripts/check-learning-content.mjs",
   "check:accessibility": "node scripts/check-accessibility-smoke.mjs",
-  "check:ai-manager": "node scripts/check-ai-manager-boundary.mjs",
+  "check:ai-manager": "npm run test:manager:private-workflows && node scripts/check-ai-manager-boundary.mjs",
   "check:source-intake": "node ai-manager/scripts/validate-source-intake-pilot.mjs",
   "generate:evidence-hub-schema": "node scripts/evidence-hub/generate-json-schema.mjs",
   "generate:case-schema": "node scripts/guided-cases/generate-schema.mjs",
@@ -78,6 +78,7 @@
   "preflight": "npm run clean:build && npm run check:hygiene && npm run check:sources && npm run check:secrets && npm run check:frontmatter && npm run test:mdx && npm run test:conditions && npm run test:search && npm run test:case-reveal && npm run test:cases && npm run cases:validate:published && npm run cases:validate:drafts && npm run cases:check && npm run test:currentness && npm run check:generated-sources && npm run check:platform-content && npm run check:programmes && npm run check:source-intake && npm run test:evidence-hub && npm run check:evidence-hub && npm run build && npm run cases:validate -- --require-output && npm run check:encoding && npm run check:evidence-hub-output && npm run check:search && npm run check:content-contracts && npm run check:anatomy && npm run check:learning && npm run check:accessibility && npm run check:ai-manager && npm run check:3d && npm run check:links && npm run check:no-leak && npm run check:reveal && npm run check:routes",
   "manager:status": "python ai-manager/project_status.py",
   "manager:validate": "node ai-manager/scripts/validate-manager.mjs",
+  "test:manager:private-workflows": "node ai-manager/scripts/test-private-workflows.mjs",
   "source:intake-pilot": "python ai-manager/scripts/source_intake_pilot.py",
   "type-check": "tsc --noEmit",
   "export": "next build"

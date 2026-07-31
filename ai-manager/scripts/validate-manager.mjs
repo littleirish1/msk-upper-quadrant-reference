@@ -5,6 +5,9 @@ import {
   contentProposalSchema,
   ingestionManifestSchema,
   managerConfigSchema,
+  managerActionPolicySchema,
+  privateAuthoringWorkspaceSchema,
+  privateIngestionProposalSchema,
 } from '../schemas/managerSchemas.mjs'
 
 const ROOT = process.cwd()
@@ -14,6 +17,9 @@ const findings = []
 validateJson('config/manager.example.json', managerConfigSchema)
 validateJson('schemas/ingestion-manifest.template.json', ingestionManifestSchema)
 validateJson('schemas/content-proposal.template.json', contentProposalSchema)
+validateJson('config/programmes-1-6-manager-policy.json', managerActionPolicySchema)
+validateJson('schemas/private-ingestion-proposal.example.json', privateIngestionProposalSchema)
+validateJson('case-manager/workspace.json', privateAuthoringWorkspaceSchema)
 
 const invalidApproval = JSON.parse(fs.readFileSync(path.join(MANAGER_DIR, 'schemas', 'content-proposal.template.json'), 'utf8'))
 invalidApproval.status = 'approved-for-commit'

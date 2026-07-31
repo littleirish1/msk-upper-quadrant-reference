@@ -50,3 +50,14 @@ No agent may approve its own clinical output.
 ## Future Retrieval
 
 Start with deterministic metadata and lexical search. Chroma, pgvector, or other vector options remain future choices after local governance and data-flow approval. Public builds must never depend on those services.
+
+## Programme 4 Service Boundary
+
+The tracked Programme 4 additions are schemas, disabled policy, synthetic
+fixtures, and a local authoring workspace description. They extend the existing
+private source-intake engine without reading its protected cache. The local
+workspace can prepare proposals and review evidence, but cannot grant clinical,
+evidence, source-clearance, copyright, or publication approval.
+
+Provider and network modes remain disabled. Any future provider adapter must be
+opt-in, local-only, separately reviewed, and unnecessary for preflight.

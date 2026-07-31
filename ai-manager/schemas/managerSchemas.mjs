@@ -201,3 +201,77 @@ export const contentProposalSchema = z.object({
     if (!data.finalDiffPath) context.addIssue({ code: 'custom', path: ['finalDiffPath'], message: 'reviewed diff path is required before commit' })
   }
 })
+
+export const extractionUnitSchema = z.object({
+  unitId: z.string().regex(/^[a-z0-9][a-z0-9._-]+$/),
+  unitType: z.enum(['page', 'slide', 'sheet', 'section', 'note', 'table']),
+  locator: z.string().min(1),
+  textStoredInTrackedOutput: z.literal(false),
+  headingCount: z.number().int().nonnegative(),
+  tableCount: z.number().int().nonnegative(),
+  referenceCandidateCount: z.number().int().nonnegative(),
+}).strict()
+
+export const privateIngestionProposalSchema = z.object({
+  schemaVersion: z.literal(1),
+  proposalId: z.string().regex(/^[a-z0-9][a-z0-9._-]+$/),
+  sourceId: z.string().regex(/^[a-z0-9][a-z0-9._-]+$/),
+  sourceType: ingestionSourceTypeSchema,
+  sourceChecksum: z.string().regex(/^sha256:[0-9a-f]{64}$/),
+  adapterId: z.string().regex(/^[a-z0-9][a-z0-9._-]+$/),
+  fixtureOnly: z.boolean(),
+  extractedUnits: z.array(extractionUnitSchema),
+  proposedTargetIds: z.array(z.string().min(1)),
+  claimCandidateIds: z.array(z.string().min(1)),
+  sensitivityReview: z.enum(['required', 'passed-synthetic-fixture']),
+  copyrightReview: z.literal('required'),
+  clinicalReview: z.literal('required'),
+  evidenceReview: z.literal('required'),
+  sourceClearance: z.literal('required'),
+  publicationState: z.literal('blocked'),
+  autonomousPublicationAllowed: z.literal(false),
+}).strict()
+
+export const managerActionPolicySchema = z.object({
+  schemaVersion: z.literal(1),
+  providerMode: z.literal('disabled'),
+  networkRequired: z.literal(false),
+  allowedActions: z.array(z.enum([
+    'inspect-tracked-repository',
+    'create-governed-proposal',
+    'validate-content',
+    'generate-review-packet',
+    'prepare-explicit-staging-list',
+  ])).min(1),
+  prohibitedActions: z.array(z.enum([
+    'push',
+    'merge',
+    'deploy',
+    'approve-clinical-content',
+    'approve-evidence',
+    'approve-source-clearance',
+    'approve-publication',
+    'read-protected-private-cache',
+  ])).min(1),
+  actionLogContainsSecrets: z.literal(false),
+  humanApprovalRequired: z.literal(true),
+}).strict()
+
+export const privateAuthoringWorkspaceSchema = z.object({
+  schemaVersion: z.literal(1),
+  workspaceId: z.string().regex(/^[a-z0-9][a-z0-9._-]+$/),
+  publicRoute: z.literal(null),
+  staticExportAllowed: z.literal(false),
+  providerMode: z.literal('disabled'),
+  capabilities: z.array(z.enum([
+    'condition-draft',
+    'guided-case-draft',
+    'branching-model',
+    'mcq-draft',
+    'evidence-relationship-proposal',
+    'provenance-review',
+    'validation-review',
+    'packet-generation',
+  ])).min(1),
+  outstandingUiWork: z.array(z.string().min(1)),
+}).strict()

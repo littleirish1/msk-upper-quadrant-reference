@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "providerMode": "disabled",
+  "networkRequired": false,
+  "allowedActions": [
+    "inspect-tracked-repository",
+    "create-governed-proposal",
+    "validate-content",
+    "generate-review-packet",
+    "prepare-explicit-staging-list"
+  ],
+  "prohibitedActions": [
+    "push",
+    "merge",
+    "deploy",
+    "approve-clinical-content",
+    "approve-evidence",
+    "approve-source-clearance",
+    "approve-publication",
+    "read-protected-private-cache"
+  ],
+  "actionLogContainsSecrets": false,
+  "humanApprovalRequired": true
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "proposalId": "proposal.synthetic-document-01",
+  "sourceId": "source.synthetic-document-01",
+  "sourceType": "teaching-presentation",
+  "sourceChecksum": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+  "adapterId": "adapter.synthetic-structured-document",
+  "fixtureOnly": true,
+  "extractedUnits": [
+    {
+      "unitId": "unit.synthetic-document-01.slide-1",
+      "unitType": "slide",
+      "locator": "slide 1",
+      "textStoredInTrackedOutput": false,
+      "headingCount": 1,
+      "tableCount": 0,
+      "referenceCandidateCount": 0
+    }
+  ],
+  "proposedTargetIds": [],
+  "claimCandidateIds": [],
+  "sensitivityReview": "passed-synthetic-fixture",
+  "copyrightReview": "required",
+  "clinicalReview": "required",
+  "evidenceReview": "required",
+  "sourceClearance": "required",
+  "publicationState": "blocked",
+  "autonomousPublicationAllowed": false
+}

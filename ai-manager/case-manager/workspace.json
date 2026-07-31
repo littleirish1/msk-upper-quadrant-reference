@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "workspaceId": "workspace.local-authoring-v1",
+  "publicRoute": null,
+  "staticExportAllowed": false,
+  "providerMode": "disabled",
+  "capabilities": [
+    "condition-draft",
+    "guided-case-draft",
+    "branching-model",
+    "mcq-draft",
+    "evidence-relationship-proposal",
+    "provenance-review",
+    "validation-review",
+    "packet-generation"
+  ],
+  "outstandingUiWork": [
+    "Human usability review of the private authoring workflow.",
+    "Manual accessibility review of the local-only interface.",
+    "Clinician review screens remain proposal views and cannot approve publication."
+  ]
+}
