@@ -1,0 +1,15 @@
+{
+  "consentReviewRequired": true,
+  "feedbackItems": [],
+  "participantGroups": [
+    "physiotherapy-student",
+    "band-5-clinician",
+    "experienced-msk-clinician",
+    "clinical-educator"
+  ],
+  "privacyReviewRequired": true,
+  "publicationApprovalGranted": false,
+  "resultsRecorded": false,
+  "schemaVersion": 1,
+  "status": "planned"
+}

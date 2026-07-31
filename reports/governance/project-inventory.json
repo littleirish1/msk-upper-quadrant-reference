@@ -9944,11 +9944,42 @@
       "supersededBy": [],
       "supersedes": [],
       "title": "Cervical radiculopathy test cluster extraction brief"
+    },
+    {
+      "blockers": [
+        "Accessibility and performance review are incomplete.",
+        "Clinical labels are not approved.",
+        "Ownership and licence are not approved."
+      ],
+      "clinicalReviewState": "required",
+      "contentType": "visual-asset",
+      "destinationRoute": null,
+      "duplicateOf": null,
+      "evidenceReviewState": "not-applicable",
+      "id": "visual.prototype.body-model",
+      "lifecycleState": "private",
+      "nextAction": "Resolve rights, clinical, accessibility, and publication review.",
+      "publicationState": "blocked",
+      "region": null,
+      "schemaVersion": 1,
+      "sourceClearanceState": "review-required",
+      "sources": [
+        {
+          "checksum": "sha256:43de5ffd021e7829de173b22858d8f1484688272b2d2b8f7a327f991522a640f",
+          "provenanceStatus": "repository-tracked",
+          "repositoryPath": "content/visual-assets/private/registry.json",
+          "revision": "1",
+          "sourceId": "visual.prototype.body-model"
+        }
+      ],
+      "supersededBy": [],
+      "supersedes": [],
+      "title": "Internal body-model prototype"
     }
   ],
   "schemaVersion": 1,
   "summary": {
-    "blockedItems": 3,
+    "blockedItems": 4,
     "byContentType": {
       "anatomy": 9,
       "condition": 33,
@@ -9962,16 +9993,17 @@
       "public-route": 64,
       "region-plan": 5,
       "search-entry": 33,
-      "special-test": 1
+      "special-test": 1,
+      "visual-asset": 1
     },
     "byPublicationState": {
-      "blocked": 3,
+      "blocked": 4,
       "planned": 5,
       "private": 199,
       "public": 137
     },
     "publicItems": 137,
-    "total": 344,
+    "total": 345,
     "unaccountedLegacyItems": 41
   }
 }

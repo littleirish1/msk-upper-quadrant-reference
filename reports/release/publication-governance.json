@@ -1,0 +1,21 @@
+{
+  "analyticsEnabled": false,
+  "cookiesRequired": false,
+  "formsEnabled": false,
+  "humanPublicationDecisionRequired": true,
+  "incidentAndTakedownReviewRequired": true,
+  "learnerAccountsEnabled": false,
+  "learnerHealthDataStored": false,
+  "legalApprovalClaimed": false,
+  "privateRepositoryRequired": true,
+  "privateToolsPubliclyRoutable": false,
+  "protectedAreas": [
+    "Evidence Hub",
+    "AI manager",
+    "source intake",
+    "authoring workspace",
+    "3D prototype"
+  ],
+  "publicRuntime": "static-export",
+  "schemaVersion": 1
+}

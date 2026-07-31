@@ -1,0 +1,63 @@
+{
+  "automatedValidationComplete": false,
+  "baselineCommit": "d6d632666f767d5d61434a50e99551530fad8c17",
+  "blockers": [
+    {
+      "count": 185,
+      "gate": "clinical-review",
+      "humanControlled": true,
+      "summary": "Exact-revision human review queue remains open."
+    },
+    {
+      "count": 39,
+      "gate": "evidence-review",
+      "humanControlled": true,
+      "summary": "Explicit Evidence Hub gaps remain unresolved."
+    },
+    {
+      "count": 1,
+      "gate": "source-clearance",
+      "humanControlled": true,
+      "summary": "Source-clearance decisions remain outside automation."
+    },
+    {
+      "count": 1,
+      "gate": "licensing",
+      "humanControlled": true,
+      "summary": "The private visual prototype has unknown rights."
+    },
+    {
+      "count": 1,
+      "gate": "beta",
+      "humanControlled": true,
+      "summary": "No beta sessions or results are represented."
+    },
+    {
+      "count": 11,
+      "gate": "security",
+      "humanControlled": false,
+      "summary": "Dependency risks require separate reviewed remediation."
+    },
+    {
+      "count": 1,
+      "gate": "independent-review",
+      "humanControlled": true,
+      "summary": "This branch has not passed independent external review."
+    },
+    {
+      "count": 1,
+      "gate": "publication",
+      "humanControlled": true,
+      "summary": "No human publication decision has been recorded."
+    }
+  ],
+  "candidateId": "release.programmes-1-6-v1",
+  "draftCaseCount": 3,
+  "inputDigest": "sha256:bed3763444425f9a898699d292fd281ac3eae36cf302ecdd1fc387ae17e25bca",
+  "publicationApproved": false,
+  "publicEvidenceHubRecordCount": 0,
+  "publicRouteCount": 64,
+  "publishedCaseCount": 6,
+  "schemaVersion": 1,
+  "status": "blocked"
+}

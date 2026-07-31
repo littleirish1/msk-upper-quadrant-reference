@@ -2,7 +2,7 @@
 
 Baseline: `d6d632666f767d5d61434a50e99551530fad8c17`
 
-Total governed inventory items: 344.
+Total governed inventory items: 345.
 
 ## Content Types
 
@@ -21,12 +21,13 @@ Total governed inventory items: 344.
 | region-plan | 5 |
 | search-entry | 33 |
 | special-test | 1 |
+| visual-asset | 1 |
 
 ## Publication States
 
 | State | Count |
 |---|---:|
-| blocked | 3 |
+| blocked | 4 |
 | planned | 5 |
 | private | 199 |
 | public | 137 |

@@ -34,6 +34,15 @@ export const EVIDENCE_HUB_OUTPUTS = [
   'reports/programmes/evidence-surveillance-summary.md',
 ]
 
+export const RELEASE_OUTPUTS = [
+  'reports/release/beta-framework.json',
+  'reports/release/exact-revision-review-matrix.json',
+  'reports/release/maintenance-status.json',
+  'reports/release/publication-governance.json',
+  'reports/release/release-candidate.json',
+  'reports/release/release-candidate-summary.md',
+]
+
 export function readJson(file) {
   return JSON.parse(fs.readFileSync(file, 'utf8'))
 }

@@ -388,6 +388,28 @@ function addSearchEntries() {
 }
 
 function addVisualAssets() {
+  const registryFile = path.join(ROOT, 'content', 'visual-assets', 'private', 'registry.json')
+  if (fs.existsSync(registryFile)) {
+    const registry = readJson(registryFile)
+    for (const asset of registry.assets ?? []) {
+      items.push(item({
+        id: asset.id,
+        region: null,
+        contentType: 'visual-asset',
+        title: asset.title,
+        file: registryFile,
+        sourceId: asset.id,
+        lifecycleState: 'private',
+        clinicalReviewState: asset.clinicalReviewState,
+        evidenceReviewState: 'not-applicable',
+        sourceClearanceState: asset.ownershipOrLicence === 'approved' ? 'approved-for-public-use' : 'review-required',
+        publicationState: asset.publicationState,
+        destinationRoute: null,
+        blockers: asset.blockers,
+        nextAction: 'Resolve rights, clinical, accessibility, and publication review.',
+      }))
+    }
+  }
   const extensions = new Set(['.png', '.jpg', '.jpeg', '.webp', '.svg', '.gif', '.avif', '.glb', '.gltf'])
   for (const file of collectFiles(path.join(ROOT, 'public'), (item) => extensions.has(path.extname(item).toLowerCase()))) {
     const extension = path.extname(file).toLowerCase()

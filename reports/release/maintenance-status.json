@@ -1,0 +1,21 @@
+{
+  "automaticPublicationAllowed": false,
+  "checks": [
+    "evidence-review-due",
+    "clinical-review-due",
+    "stale-approval",
+    "dependency-update",
+    "broken-link",
+    "accessibility-regression",
+    "search-and-route",
+    "backup-review",
+    "security-review",
+    "feedback-triage",
+    "content-retirement"
+  ],
+  "dependencyRisksOpen": 11,
+  "evidenceGapsOpen": 39,
+  "generatedFromInputDigest": "sha256:bed3763444425f9a898699d292fd281ac3eae36cf302ecdd1fc387ae17e25bca",
+  "reviewItemsPending": 185,
+  "schemaVersion": 1
+}

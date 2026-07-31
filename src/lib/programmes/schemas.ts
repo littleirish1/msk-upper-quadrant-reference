@@ -490,6 +490,11 @@ export const exactRevisionReviewSchema = z.object({
   stale: z.boolean(),
 }).strict()
 
+export const exactRevisionReviewMatrixSchema = z.object({
+  schemaVersion: z.literal(PROGRAMME_SCHEMA_VERSION),
+  reviews: z.array(exactRevisionReviewSchema),
+}).strict()
+
 export const betaFeedbackSchema = z.object({
   schemaVersion: z.literal(PROGRAMME_SCHEMA_VERSION),
   feedbackId: stableIdSchema,
@@ -516,6 +521,53 @@ export const betaFeedbackSchema = z.object({
   summary: z.string().min(1),
   route: z.string().startsWith('/').nullable(),
   status: z.enum(['new', 'triaged', 'in-progress', 'resolved', 'wont-fix']),
+}).strict()
+
+export const betaFrameworkSchema = z.object({
+  schemaVersion: z.literal(PROGRAMME_SCHEMA_VERSION),
+  status: z.literal('planned'),
+  participantGroups: z.array(z.enum([
+    'physiotherapy-student',
+    'band-5-clinician',
+    'experienced-msk-clinician',
+    'clinical-educator',
+  ])).length(4),
+  resultsRecorded: z.literal(false),
+  feedbackItems: z.array(betaFeedbackSchema).length(0),
+  consentReviewRequired: z.literal(true),
+  privacyReviewRequired: z.literal(true),
+  publicationApprovalGranted: z.literal(false),
+}).strict()
+
+export const releaseCandidateSchema = z.object({
+  schemaVersion: z.literal(PROGRAMME_SCHEMA_VERSION),
+  candidateId: stableIdSchema,
+  baselineCommit: z.string().regex(/^[0-9a-f]{40}$/),
+  inputDigest: checksumSchema,
+  status: z.literal('blocked'),
+  publicRouteCount: z.number().int().nonnegative(),
+  publishedCaseCount: z.number().int().nonnegative(),
+  draftCaseCount: z.number().int().nonnegative(),
+  publicEvidenceHubRecordCount: z.literal(0),
+  blockers: z.array(z.object({
+    gate: z.enum([
+      'clinical-review',
+      'evidence-review',
+      'source-clearance',
+      'privacy',
+      'licensing',
+      'accessibility',
+      'beta',
+      'security',
+      'independent-review',
+      'publication',
+    ]),
+    count: z.number().int().positive(),
+    humanControlled: z.boolean(),
+    summary: z.string().min(1),
+  }).strict()).min(1),
+  automatedValidationComplete: z.literal(false),
+  publicationApproved: z.literal(false),
 }).strict()
 
 export type ProjectInventoryItem = z.infer<typeof projectInventoryItemSchema>

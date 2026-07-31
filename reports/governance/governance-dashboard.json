@@ -81,7 +81,8 @@
       "region-brief.knee.foundation",
       "region-brief.lumbar.foundation",
       "region-brief.pelvis-sij.foundation",
-      "special-test.cervical.radiculopathy-test-cluster"
+      "special-test.cervical.radiculopathy-test-cluster",
+      "visual.prototype.body-model"
     ],
     "contentDueForReview": [],
     "dependencySecurity": [
@@ -348,7 +349,8 @@
     "publicationBlockers": [
       "case.cervical.pilot-01",
       "case.shoulder.pilot-02",
-      "case.wrist-hand.pilot-03"
+      "case.wrist-hand.pilot-03",
+      "visual.prototype.body-model"
     ],
     "sourceClearance": [
       "anatomy.cranial-nerve.cranial-nerve-01-review-template",
@@ -590,7 +592,8 @@
       "region-brief.knee.foundation",
       "region-brief.lumbar.foundation",
       "region-brief.pelvis-sij.foundation",
-      "special-test.cervical.radiculopathy-test-cluster"
+      "special-test.cervical.radiculopathy-test-cluster",
+      "visual.prototype.body-model"
     ],
     "staleApprovals": [],
     "unaccountedLegacy": [
