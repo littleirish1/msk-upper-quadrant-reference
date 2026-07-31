@@ -17,6 +17,15 @@ export const FOUNDATION_OUTPUTS = [
   'reports/governance/review-queues.md',
 ]
 
+export const CONTENT_PRODUCTION_OUTPUTS = [
+  'reports/programmes/content-production-summary.md',
+  'reports/programmes/full-region-curriculum.json',
+  'reports/programmes/legacy-case-batches.json',
+  'reports/programmes/legacy-case-readiness.json',
+  'reports/programmes/mcq-governance-summary.json',
+  'reports/programmes/upper-quadrant-production.json',
+]
+
 export function readJson(file) {
   return JSON.parse(fs.readFileSync(file, 'utf8'))
 }

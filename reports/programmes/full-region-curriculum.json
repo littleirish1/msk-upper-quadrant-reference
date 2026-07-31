@@ -1,0 +1,143 @@
+{
+  "canonicalTaxonomySource": "src/data/taxonomy.ts",
+  "publicPlannedRoutes": 0,
+  "regions": [
+    {
+      "blockers": [
+        "No reviewed public condition library exists.",
+        "Clinical, evidence, source-clearance, route, Search, and publication review remain required."
+      ],
+      "conditionCount": 0,
+      "contentTemplate": "content/_TEMPLATE/overview.mdx",
+      "label": "Ankle / Foot",
+      "lifecycleState": "planned",
+      "planChecksum": "sha256:093ad2da7af524f61b21b323ffd0414d2049bbd998aa110fe1c3d1dbf8676139",
+      "planSource": "content/plans/regions/ankle-foot.json",
+      "publicEligibility": false,
+      "regionId": "region.ankle-foot",
+      "routeState": "roadmap-only",
+      "slug": "ankle-foot"
+    },
+    {
+      "blockers": [],
+      "conditionCount": 6,
+      "contentTemplate": "content/_TEMPLATE/overview.mdx",
+      "label": "Cervical Spine",
+      "lifecycleState": "active",
+      "publicEligibility": true,
+      "regionId": "region.cervical",
+      "routeState": "live",
+      "slug": "cervical"
+    },
+    {
+      "blockers": [],
+      "conditionCount": 6,
+      "contentTemplate": "content/_TEMPLATE/overview.mdx",
+      "label": "Elbow",
+      "lifecycleState": "active",
+      "publicEligibility": true,
+      "regionId": "region.elbow",
+      "routeState": "live",
+      "slug": "elbow"
+    },
+    {
+      "blockers": [
+        "No reviewed public condition library exists.",
+        "Clinical, evidence, source-clearance, route, Search, and publication review remain required."
+      ],
+      "conditionCount": 0,
+      "contentTemplate": "content/_TEMPLATE/overview.mdx",
+      "label": "Hip",
+      "lifecycleState": "planned",
+      "planChecksum": "sha256:4f19c9049d8f0f978ec0ebc4281c2dce7c67accb5d7384798b84863fa6ddf5c3",
+      "planSource": "content/plans/regions/hip.json",
+      "publicEligibility": false,
+      "regionId": "region.hip",
+      "routeState": "roadmap-only",
+      "slug": "hip"
+    },
+    {
+      "blockers": [
+        "No reviewed public condition library exists.",
+        "Clinical, evidence, source-clearance, route, Search, and publication review remain required."
+      ],
+      "conditionCount": 0,
+      "contentTemplate": "content/_TEMPLATE/overview.mdx",
+      "label": "Knee",
+      "lifecycleState": "planned",
+      "planChecksum": "sha256:94556609298115e7f25100127705fa59d60ac781f34bfd8adf6449084d61fa96",
+      "planSource": "content/plans/regions/knee.json",
+      "publicEligibility": false,
+      "regionId": "region.knee",
+      "routeState": "roadmap-only",
+      "slug": "knee"
+    },
+    {
+      "blockers": [
+        "No reviewed public condition library exists.",
+        "Clinical, evidence, source-clearance, route, Search, and publication review remain required."
+      ],
+      "conditionCount": 0,
+      "contentTemplate": "content/_TEMPLATE/overview.mdx",
+      "label": "Lumbar Spine",
+      "lifecycleState": "planned",
+      "planChecksum": "sha256:6dec879b2ed9a7ac0fd639be87bbe2170ca1691eb1326a3c1ea94cf9ee30aaf6",
+      "planSource": "content/plans/regions/lumbar.json",
+      "publicEligibility": false,
+      "regionId": "region.lumbar",
+      "routeState": "roadmap-only",
+      "slug": "lumbar"
+    },
+    {
+      "blockers": [
+        "No reviewed public condition library exists.",
+        "Clinical, evidence, source-clearance, route, Search, and publication review remain required."
+      ],
+      "conditionCount": 0,
+      "contentTemplate": "content/_TEMPLATE/overview.mdx",
+      "label": "Pelvis / SIJ",
+      "lifecycleState": "planned",
+      "planChecksum": "sha256:e9d054815960c636d92d466fdce2243cd9692e74ad8d6b3c6531166450ff75e5",
+      "planSource": "content/plans/regions/pelvis-sij.json",
+      "publicEligibility": false,
+      "regionId": "region.pelvis-sij",
+      "routeState": "roadmap-only",
+      "slug": "pelvis-sij"
+    },
+    {
+      "blockers": [],
+      "conditionCount": 8,
+      "contentTemplate": "content/_TEMPLATE/overview.mdx",
+      "label": "Shoulder",
+      "lifecycleState": "active",
+      "publicEligibility": true,
+      "regionId": "region.shoulder",
+      "routeState": "live",
+      "slug": "shoulder"
+    },
+    {
+      "blockers": [],
+      "conditionCount": 6,
+      "contentTemplate": "content/_TEMPLATE/overview.mdx",
+      "label": "Thoracic Spine",
+      "lifecycleState": "active",
+      "publicEligibility": true,
+      "regionId": "region.thoracic",
+      "routeState": "live",
+      "slug": "thoracic"
+    },
+    {
+      "blockers": [],
+      "conditionCount": 7,
+      "contentTemplate": "content/_TEMPLATE/overview.mdx",
+      "label": "Wrist & Hand",
+      "lifecycleState": "active",
+      "publicEligibility": true,
+      "regionId": "region.wrist-hand",
+      "routeState": "live",
+      "slug": "wrist-hand"
+    }
+  ],
+  "schemaVersion": 1,
+  "separateRuntimeStackCreated": false
+}

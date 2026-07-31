@@ -243,6 +243,12 @@ export const branchingCaseModelSchema = z.object({
   publicEligibility: z.boolean(),
   reviewState: reviewStateSchema,
   startNodeId: z.string().regex(/^[a-z0-9-]+$/),
+  terminalNodeIds: z.array(z.string().regex(/^[a-z0-9-]+$/)).min(1),
+  allowedCycleEdges: z.array(z.object({
+    fromNodeId: z.string().regex(/^[a-z0-9-]+$/),
+    toNodeId: z.string().regex(/^[a-z0-9-]+$/),
+    rationale: z.string().min(1),
+  }).strict()),
   nodes: z.array(branchNodeSchema).min(1),
   sourceContentIds: z.array(stableIdSchema),
   aiFreeTextEnabled: z.literal(false),
@@ -309,6 +315,86 @@ export const governedMcqSchema = z.object({
     }
   }
 })
+
+export const mcqPlanSchema = z.object({
+  schemaVersion: z.literal(PROGRAMME_SCHEMA_VERSION),
+  targetCount: z.literal(20),
+  scopeDecision: z.literal('twenty-review-required-authoring-slots'),
+  publicEligibility: z.literal(false),
+  slots: z.array(z.object({
+    id: stableIdSchema,
+    region: z.string().min(1),
+    targetContentIds: z.array(stableIdSchema),
+    learningObjective: z.string().min(1),
+    lifecycleState: z.literal('planned'),
+    clinicalReviewState: z.literal('required'),
+    evidenceReviewState: z.literal('required'),
+    sourceClearanceState: z.literal('review-required'),
+    blockers: z.array(z.string().min(1)).min(1),
+  }).strict()).length(20),
+}).strict()
+
+export const curriculumDomainSchema = z.enum([
+  'functional-anatomy',
+  'landmarks-palpation',
+  'muscle-roles',
+  'presentation',
+  'subjective-assessment',
+  'objective-assessment',
+  'neurological-screening',
+  'special-tests',
+  'differential-diagnoses',
+  'red-flags-escalation',
+  'imaging',
+  'management',
+  'prognosis-reassessment',
+  'patient-communication',
+  'references',
+  'evidence-limitations',
+])
+
+export const upperQuadrantProductionPolicySchema = z.object({
+  schemaVersion: z.literal(PROGRAMME_SCHEMA_VERSION),
+  canonicalTaxonomySource: z.literal('src/data/taxonomy.ts'),
+  requiredDomains: z.array(curriculumDomainSchema).min(1),
+  publicationRule: z.literal('preserve-baseline-and-fail-closed-for-new-clinical-content'),
+  gapHandling: z.literal('generate-review-required-gaps-without-inventing-content'),
+  requiredChecks: z.array(z.string().min(1)).min(1),
+}).strict()
+
+export const legacyCaseBatchCatalogSchema = z.object({
+  schemaVersion: z.literal(PROGRAMME_SCHEMA_VERSION),
+  sourceId: z.literal('legacy-html-case-bank-v1'),
+  batchSizePolicy: z.object({
+    minimum: z.literal(3),
+    maximum: z.literal(5),
+  }).strict(),
+  batches: z.array(z.object({
+    batchId: stableIdSchema,
+    status: z.literal('planned-private-review'),
+    stationIds: z.array(z.string().regex(/^s\d+$/)).min(3).max(5),
+    records: z.array(z.object({
+      stationId: z.string().regex(/^s\d+$/),
+      proposedRegion: z.string().min(1).nullable(),
+      classification: z.enum([
+        'governed-draft',
+        'duplicate-merge-candidate',
+        'source-insufficient',
+        'awaiting-clinical-review',
+        'awaiting-evidence-review',
+        'awaiting-source-clearance',
+        'rejected',
+        'archived',
+      ]),
+      sourceExtractionStatus: z.literal('repository-extracted-not-reviewed'),
+      anonymisationStatus: z.literal('required'),
+      schemaMappingStatus: z.literal('not-started'),
+      publicEligibility: z.literal(false),
+      blockers: z.array(z.string().min(1)).min(1),
+    }).strict()).min(3).max(5),
+  }).strict()),
+  heldUnbatchedStationIds: z.array(z.string().regex(/^s\d+$/)),
+}).strict()
 
 export const visualAssetRecordSchema = z.object({
   schemaVersion: z.literal(PROGRAMME_SCHEMA_VERSION),

@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { loadSchemas } from './lib/readMdxFrontmatter.mjs'
+import { loadTypeScriptTree } from './lib/loadTypeScriptTree.mjs'
 
 const ROOT = process.cwd()
 const CONTENT_DIR = path.join(ROOT, 'content', 'learning')
@@ -9,6 +10,14 @@ const COMPONENT_DIR = path.join(ROOT, 'src', 'components', 'learning')
 const findings = []
 const seenIds = new Set()
 const schemas = await loadSchemas()
+const programmeSchemas = await loadTypeScriptTree(
+  path.join(ROOT, 'src', 'lib', 'programmes', 'schemas.ts'),
+  path.join(ROOT, 'src'),
+)
+const branching = await loadTypeScriptTree(
+  path.join(ROOT, 'src', 'lib', 'programmes', 'branching.ts'),
+  path.join(ROOT, 'src'),
+)
 const schemaByType = new Map([
   ['reasoning-engine', schemas.reasoningEngineRecordSchema],
   ['quiz-question', schemas.quizQuestionRecordSchema],
@@ -16,13 +25,15 @@ const schemaByType = new Map([
   ['osce-station', schemas.osceStationRecordSchema],
   ['viva-prompt', schemas.vivaPromptRecordSchema],
   ['decision-tree', schemas.decisionTreeRecordSchema],
+  ['branching-reasoning', programmeSchemas.branchingCaseModelSchema],
 ])
 const stepOrder = schemas.reasoningStepTypeSchema.options
 let recordCount = 0
 
 for (const file of collectFiles(CONTENT_DIR, (item) => item.endsWith('.json'))) {
   const value = JSON.parse(fs.readFileSync(file, 'utf8'))
-  const schema = schemaByType.get(value.recordType)
+  const recordType = value.recordType ?? (value.id?.startsWith('branching.') ? 'branching-reasoning' : undefined)
+  const schema = schemaByType.get(recordType)
   if (!schema) {
     findings.push(`unknown learning record type in ${relative(file)}`)
     continue
@@ -36,6 +47,11 @@ for (const file of collectFiles(CONTENT_DIR, (item) => item.endsWith('.json'))) 
   if (seenIds.has(result.data.contentId)) findings.push(`duplicate learning ID: ${result.data.contentId}`)
   seenIds.add(result.data.contentId)
   if (result.data.publicEligibility) findings.push(`private learning example is public eligible: ${relative(file)}`)
+
+  if (recordType === 'branching-reasoning') {
+    const validation = branching.validateBranchingModel(result.data)
+    for (const finding of validation.findings) findings.push(`${relative(file)} ${finding}`)
+  }
 
   if (result.data.recordType === 'reasoning-engine') {
     let previous = -1

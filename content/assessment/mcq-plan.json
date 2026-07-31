@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "targetCount": 20,
+  "scopeDecision": "twenty-review-required-authoring-slots",
+  "publicEligibility": false,
+  "slots": [
+    {
+      "id": "mcq-slot.cervical.01",
+      "region": "cervical",
+      "targetContentIds": ["condition.cervical.cervical-radiculopathy"],
+      "learningObjective": "Author a source-supported assessment question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.cervical.02",
+      "region": "cervical",
+      "targetContentIds": ["condition.cervical.cervical-myelopathy"],
+      "learningObjective": "Author a source-supported safety and escalation question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.cervical.03",
+      "region": "cervical",
+      "targetContentIds": ["condition.cervical.cervicogenic-headache"],
+      "learningObjective": "Author a source-supported differential reasoning question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.cervical.04",
+      "region": "cervical",
+      "targetContentIds": ["condition.cervical.whiplash-associated-disorders"],
+      "learningObjective": "Author a source-supported reassessment question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.thoracic.01",
+      "region": "thoracic",
+      "targetContentIds": ["condition.thoracic.thoracic-outlet-syndrome"],
+      "learningObjective": "Author a source-supported assessment question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.thoracic.02",
+      "region": "thoracic",
+      "targetContentIds": ["condition.thoracic.thoracic-disc-herniation"],
+      "learningObjective": "Author a source-supported neurological screening question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.thoracic.03",
+      "region": "thoracic",
+      "targetContentIds": ["condition.thoracic.costochondritis"],
+      "learningObjective": "Author a source-supported differential reasoning question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.thoracic.04",
+      "region": "thoracic",
+      "targetContentIds": ["condition.thoracic.thoracic-radiculopathy"],
+      "learningObjective": "Author a source-supported escalation question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.shoulder.01",
+      "region": "shoulder",
+      "targetContentIds": ["condition.shoulder.rotator-cuff-tendinopathy"],
+      "learningObjective": "Author a source-supported assessment question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.shoulder.02",
+      "region": "shoulder",
+      "targetContentIds": ["condition.shoulder.rotator-cuff-tear"],
+      "learningObjective": "Author a source-supported investigation reasoning question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.shoulder.03",
+      "region": "shoulder",
+      "targetContentIds": ["condition.shoulder.adhesive-capsulitis"],
+      "learningObjective": "Author a source-supported prognosis and reassessment question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.shoulder.04",
+      "region": "shoulder",
+      "targetContentIds": ["condition.shoulder.shoulder-instability"],
+      "learningObjective": "Author a source-supported differential reasoning question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.elbow.01",
+      "region": "elbow",
+      "targetContentIds": ["condition.elbow.lateral-epicondylalgia"],
+      "learningObjective": "Author a source-supported assessment question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.elbow.02",
+      "region": "elbow",
+      "targetContentIds": ["condition.elbow.cubital-tunnel-syndrome"],
+      "learningObjective": "Author a source-supported neurological screening question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.elbow.03",
+      "region": "elbow",
+      "targetContentIds": ["condition.elbow.olecranon-bursitis"],
+      "learningObjective": "Author a source-supported red-flag and escalation question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.elbow.04",
+      "region": "elbow",
+      "targetContentIds": ["condition.elbow.elbow-osteoarthritis"],
+      "learningObjective": "Author a source-supported management reasoning question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.wrist-hand.01",
+      "region": "wrist-hand",
+      "targetContentIds": ["condition.wrist-hand.carpal-tunnel-syndrome"],
+      "learningObjective": "Author a source-supported assessment question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.wrist-hand.02",
+      "region": "wrist-hand",
+      "targetContentIds": ["condition.wrist-hand.scaphoid-fracture"],
+      "learningObjective": "Author a source-supported imaging and escalation question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.wrist-hand.03",
+      "region": "wrist-hand",
+      "targetContentIds": ["condition.wrist-hand.tfcc-injury"],
+      "learningObjective": "Author a source-supported differential reasoning question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    },
+    {
+      "id": "mcq-slot.wrist-hand.04",
+      "region": "wrist-hand",
+      "targetContentIds": ["condition.wrist-hand.thumb-cmc-osteoarthritis"],
+      "learningObjective": "Author a source-supported management and reassessment question for the linked condition.",
+      "lifecycleState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "sourceClearanceState": "review-required",
+      "blockers": ["Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."]
+    }
+  ]
+}

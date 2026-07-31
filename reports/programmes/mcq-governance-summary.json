@@ -1,0 +1,16 @@
+{
+  "answerRevealPolicy": "after-submission",
+  "authoredGovernedExamples": 1,
+  "blockers": [
+    "The 20-item baseline is an authoring plan, not completed clinical content.",
+    "Every clinical question requires evidence, source clearance, clinical review, and exact-revision publication approval."
+  ],
+  "competenceClaimAllowed": false,
+  "exampleId": "mcq.governance.publication-contract",
+  "plannedSlots": 20,
+  "publicEligibility": false,
+  "publicQuestions": 0,
+  "schemaVersion": 1,
+  "targetCount": 20,
+  "targetDecision": "twenty-review-required-authoring-slots"
+}

@@ -274,6 +274,36 @@
     },
     {
       "blockers": [
+        "No verified evidence relationship is recorded.",
+        "Private structured record is not approved for publication."
+      ],
+      "clinicalReviewState": "required",
+      "contentType": "learning-record",
+      "destinationRoute": null,
+      "duplicateOf": null,
+      "evidenceReviewState": "required",
+      "id": "branching.reasoning.process-example",
+      "lifecycleState": "private",
+      "nextAction": "Complete source, evidence, clinical, and publication review for the exact revision.",
+      "publicationState": "private",
+      "region": null,
+      "schemaVersion": 1,
+      "sourceClearanceState": "review-required",
+      "sources": [
+        {
+          "checksum": "sha256:5ceffca97fd00dd6794ca698be4a527a226f6e371da2e39dca8334de74cd30cb",
+          "provenanceStatus": "repository-tracked",
+          "repositoryPath": "content/learning/private/branching-reasoning-example.json",
+          "revision": "1",
+          "sourceId": "branching.reasoning.process-example"
+        }
+      ],
+      "supersededBy": [],
+      "supersedes": [],
+      "title": "Reasoning process branch example"
+    },
+    {
+      "blockers": [
         "No approved Evidence Hub condition or evidence record is available for this case."
       ],
       "clinicalReviewState": "approved",
@@ -7035,6 +7065,36 @@
         "Private structured record is not approved for publication."
       ],
       "clinicalReviewState": "required",
+      "contentType": "mcq",
+      "destinationRoute": null,
+      "duplicateOf": null,
+      "evidenceReviewState": "required",
+      "id": "mcq.governance.publication-contract",
+      "lifecycleState": "private",
+      "nextAction": "Complete source, evidence, clinical, and publication review for the exact revision.",
+      "publicationState": "private",
+      "region": "global",
+      "schemaVersion": 1,
+      "sourceClearanceState": "review-required",
+      "sources": [
+        {
+          "checksum": "sha256:9120b493fa3469ad46bb7d841d814085e3fb5392c0d5f793f571d6a0e0bc6f1a",
+          "provenanceStatus": "repository-tracked",
+          "repositoryPath": "content/assessment/private/mcq-contract-example.json",
+          "revision": "1",
+          "sourceId": "mcq.governance.publication-contract"
+        }
+      ],
+      "supersededBy": [],
+      "supersedes": [],
+      "title": "Publication contract example"
+    },
+    {
+      "blockers": [
+        "No verified evidence relationship is recorded.",
+        "Private structured record is not approved for publication."
+      ],
+      "clinicalReviewState": "required",
       "contentType": "outcome-measure",
       "destinationRoute": null,
       "duplicateOf": null,
@@ -9895,9 +9955,9 @@
       "differential-red-flag": 1,
       "evidence-source": 133,
       "guided-case": 9,
-      "learning-record": 5,
+      "learning-record": 6,
       "legacy-station": 47,
-      "mcq": 1,
+      "mcq": 2,
       "outcome-measure": 1,
       "public-route": 64,
       "region-plan": 5,
@@ -9907,11 +9967,11 @@
     "byPublicationState": {
       "blocked": 3,
       "planned": 5,
-      "private": 197,
+      "private": 199,
       "public": 137
     },
     "publicItems": 137,
-    "total": 342,
+    "total": 344,
     "unaccountedLegacyItems": 41
   }
 }

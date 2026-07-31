@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "mcq.governance.publication-contract",
+  "title": "Publication contract example",
+  "region": "global",
+  "conditionIds": [],
+  "learningObjectives": [
+    "Recognise that technical validation cannot replace required human approval."
+  ],
+  "prompt": "Which statement matches the governed publication contract?",
+  "options": [
+    {
+      "id": "a",
+      "text": "A passing schema check grants clinical approval.",
+      "explanation": "Schema validation checks structure only and cannot grant clinical approval.",
+      "correct": false
+    },
+    {
+      "id": "b",
+      "text": "Required human approvals remain separate from technical validation.",
+      "explanation": "Clinical, evidence, source-clearance, and publication decisions remain human-controlled.",
+      "correct": true
+    },
+    {
+      "id": "c",
+      "text": "Private draft questions may enter Search before review.",
+      "explanation": "Draft questions remain excluded from public routes, Search, sitemap, and static output.",
+      "correct": false
+    }
+  ],
+  "difficulty": "foundation",
+  "evidenceRecordIds": [],
+  "referenceIds": [],
+  "lifecycleState": "draft",
+  "clinicalReviewState": "required",
+  "evidenceReviewState": "required",
+  "sourceClearanceState": "review-required",
+  "publicEligibility": false,
+  "answerRevealPolicy": "after-submission",
+  "competenceClaimAllowed": false
+}

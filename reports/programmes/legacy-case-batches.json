@@ -1,0 +1,703 @@
+{
+  "batches": [
+    {
+      "batchId": "legacy-batch.programme-2.01",
+      "records": [
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Potential overlap requires comparison with condition.cervical.cervical-radiculopathy.",
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "duplicate-merge-candidate",
+          "proposedRegion": "cervical",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s1"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "cervical",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s2"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s3"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Potential overlap requires comparison with condition.cervical.cervicogenic-headache.",
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "duplicate-merge-candidate",
+          "proposedRegion": "cervical",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s4"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "shoulder",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s5"
+        }
+      ],
+      "stationIds": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ],
+      "status": "planned-private-review"
+    },
+    {
+      "batchId": "legacy-batch.programme-2.02",
+      "records": [
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Potential overlap requires comparison with condition.shoulder.adhesive-capsulitis.",
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "duplicate-merge-candidate",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s6"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Potential overlap requires comparison with condition.shoulder.shoulder-instability.",
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "duplicate-merge-candidate",
+          "proposedRegion": "shoulder",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s7"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s8"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "thoracic",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s9"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "thoracic",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s10"
+        }
+      ],
+      "stationIds": [
+        "s6",
+        "s7",
+        "s8",
+        "s9",
+        "s10"
+      ],
+      "status": "planned-private-review"
+    },
+    {
+      "batchId": "legacy-batch.programme-2.03",
+      "records": [
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "wrist-hand",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s11"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "wrist-hand",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s12"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "wrist-hand",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s13"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s14"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "cervical",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s15"
+        }
+      ],
+      "stationIds": [
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15"
+      ],
+      "status": "planned-private-review"
+    },
+    {
+      "batchId": "legacy-batch.programme-2.04",
+      "records": [
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s16"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "elbow",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s17"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Potential overlap requires comparison with condition.elbow.cubital-tunnel-syndrome.",
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "duplicate-merge-candidate",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s18"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "thoracic",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s19"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s21"
+        }
+      ],
+      "stationIds": [
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s21"
+      ],
+      "status": "planned-private-review"
+    },
+    {
+      "batchId": "legacy-batch.programme-2.05",
+      "records": [
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s22"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "cervical",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s23"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s24"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s25"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s26"
+        }
+      ],
+      "stationIds": [
+        "s22",
+        "s23",
+        "s24",
+        "s25",
+        "s26"
+      ],
+      "status": "planned-private-review"
+    },
+    {
+      "batchId": "legacy-batch.programme-2.06",
+      "records": [
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s27"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s29"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s30"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s31"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "shoulder",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s32"
+        }
+      ],
+      "stationIds": [
+        "s27",
+        "s29",
+        "s30",
+        "s31",
+        "s32"
+      ],
+      "status": "planned-private-review"
+    },
+    {
+      "batchId": "legacy-batch.programme-2.07",
+      "records": [
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "shoulder",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s33"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s34"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "elbow",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s35"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "elbow",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s36"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s39"
+        }
+      ],
+      "stationIds": [
+        "s33",
+        "s34",
+        "s35",
+        "s36",
+        "s39"
+      ],
+      "status": "planned-private-review"
+    },
+    {
+      "batchId": "legacy-batch.programme-2.08",
+      "records": [
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s41"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "shoulder",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s43"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s45"
+        }
+      ],
+      "stationIds": [
+        "s41",
+        "s43",
+        "s45"
+      ],
+      "status": "planned-private-review"
+    },
+    {
+      "batchId": "legacy-batch.programme-2.09",
+      "records": [
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "cervical",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s47"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": null,
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s48"
+        },
+        {
+          "anonymisationStatus": "required",
+          "blockers": [
+            "Source clearance is not established.",
+            "Clinical and evidence review have not started.",
+            "No governed draft has been generated."
+          ],
+          "classification": "awaiting-source-clearance",
+          "proposedRegion": "cervical",
+          "publicEligibility": false,
+          "schemaMappingStatus": "not-started",
+          "sourceExtractionStatus": "repository-extracted-not-reviewed",
+          "stationId": "s49"
+        }
+      ],
+      "stationIds": [
+        "s47",
+        "s48",
+        "s49"
+      ],
+      "status": "planned-private-review"
+    }
+  ],
+  "batchSizePolicy": {
+    "maximum": 5,
+    "minimum": 3
+  },
+  "heldUnbatchedStationIds": [],
+  "schemaVersion": 1,
+  "sourceId": "legacy-html-case-bank-v1"
+}

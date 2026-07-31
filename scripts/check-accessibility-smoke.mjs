@@ -42,6 +42,7 @@ if (landmarkFiles.length !== 1 || path.resolve(landmarkFiles[0]) !== path.resolv
 
 for (const relativeFile of [
   'src/components/learning/ClinicalReasoningEngine.tsx',
+  'src/components/learning/BranchingReasoningEngine.tsx',
   'src/components/learning/DecisionTree.tsx',
   'src/components/learning/DifferentialDiagnosisBuilder.tsx',
   'src/components/learning/LearningModeExamples.tsx',

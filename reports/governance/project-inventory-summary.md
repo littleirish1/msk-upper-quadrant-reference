@@ -2,7 +2,7 @@
 
 Baseline: `d6d632666f767d5d61434a50e99551530fad8c17`
 
-Total governed inventory items: 342.
+Total governed inventory items: 344.
 
 ## Content Types
 
@@ -13,9 +13,9 @@ Total governed inventory items: 342.
 | differential-red-flag | 1 |
 | evidence-source | 133 |
 | guided-case | 9 |
-| learning-record | 5 |
+| learning-record | 6 |
 | legacy-station | 47 |
-| mcq | 1 |
+| mcq | 2 |
 | outcome-measure | 1 |
 | public-route | 64 |
 | region-plan | 5 |
@@ -28,7 +28,7 @@ Total governed inventory items: 342.
 |---|---:|
 | blocked | 3 |
 | planned | 5 |
-| private | 197 |
+| private | 199 |
 | public | 137 |
 
 Unaccounted legacy stations: 41.

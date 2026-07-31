@@ -60,6 +60,8 @@ const branch = {
   publicEligibility: false,
   reviewState: 'required',
   startNodeId: 'start',
+  terminalNodeIds: ['start'],
+  allowedCycleEdges: [],
   sourceContentIds: ['case.fixture.example'],
   aiFreeTextEnabled: false,
   networkRequired: false,

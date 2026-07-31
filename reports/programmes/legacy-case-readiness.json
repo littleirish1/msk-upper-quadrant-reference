@@ -1,0 +1,1120 @@
+{
+  "records": [
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.01",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": true,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 8121,
+      "sourceChecksum": "sha256:7fa74fe27fde6453a19d8654112f20bb1d98cd3217a1d97214f673e68d7cfcd7",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s1"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.01",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 6566,
+      "sourceChecksum": "sha256:c36d9a35adec34384a9dc9870ca9949ddd737b7d4299f27c5ca6041c00f57b0f",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s2"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.01",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 5735,
+      "sourceChecksum": "sha256:608d988737e7a38fd82859f154a8c709c057cf7d774dd7c277619251ab10f3e4",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s3"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.01",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 4471,
+      "sourceChecksum": "sha256:3c96c83d9227062afc278f6db77e99e37cc9bb850bc48456d694b8008713287c",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s4"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.01",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 5790,
+      "sourceChecksum": "sha256:a399a5af3ecb979e49c6e5144d83b2066cda8fe9ec66ff431f6fe6140e0b62ea",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s5"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.02",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": false,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 4176,
+      "sourceChecksum": "sha256:fc17710591e0dc3cf543045f805831d8642ed86b84f62f813aeab64869f87ed2",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s6"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.02",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 6545,
+      "sourceChecksum": "sha256:71e7751a95757529b6dd7b502e32c9b5e5129de9bcd9b4c70a60b36e413f705f",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s7"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.02",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": true,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 5797,
+      "sourceChecksum": "sha256:2fdc5864695d7f702f0d8099621389f00345570187b65bb58e4915e1da2dff07",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s8"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.02",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": false,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": false,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 4026,
+      "sourceChecksum": "sha256:f149b34d090f7d9d47df87d8c10042bcef8f47da0077345a41397e5ac02e5e48",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s9"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.02",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": false,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 3780,
+      "sourceChecksum": "sha256:51ce68c318d22610496be7c2c830332b723d17d4fad70a6f5e7d8c31fdd0355f",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s10"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.03",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": false,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 4230,
+      "sourceChecksum": "sha256:54a969aa74bbd06e02967c66e42562165c1f10284ce50b98dda5e4cc5ee57182",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s11"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.03",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": true,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": false,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 3691,
+      "sourceChecksum": "sha256:c2a2f8a77e6dccc8436f2f8c7579d9782c2353c5a0f77004cfcfea64997f1a1d",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s12"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.03",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": false,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": false,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 3445,
+      "sourceChecksum": "sha256:6ecccbe8aa0b11fb0701189fc703e2cf33d8cda29855bb8e10b007116178cb6c",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s13"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.03",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": false,
+        "investigation": false,
+        "management": false,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": false,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 3600,
+      "sourceChecksum": "sha256:3d8d3d87375033959f840f9994292726ad9df4a676982b7038979bd4089d3624",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s14"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.03",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": false,
+        "investigation": false,
+        "management": false,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": false,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 4084,
+      "sourceChecksum": "sha256:ab5166cc6df92c0b7c24489408b61ce6b00ec0f227b1c364bc3149cc5dfae8c8",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s15"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.04",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": false,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 4294,
+      "sourceChecksum": "sha256:1d11f46acd163ff17ac1a784f977df4559649f32059605005f7f1c163734d2ae",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s16"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.04",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 7420,
+      "sourceChecksum": "sha256:1b1cc67bfb935a39372c3c38335fc7b67c3f549c1e1c9f770b52ad0784c4c4f6",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s17"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.04",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 6410,
+      "sourceChecksum": "sha256:77acbb7081513bb3a601d7d1ba41a757e85f1a3df05de0a924d586b49be00be2",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s18"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.04",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": true,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 7614,
+      "sourceChecksum": "sha256:c4ac511ce6369f38e4f4cd02e92070f3f19ee82003f5c9cde87e15336a12d6c1",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s19"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.04",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 7308,
+      "sourceChecksum": "sha256:b9fd71b0720b8d83015bf816a624fad8f79b31eecf206f002baae44ea9d17690",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s21"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.05",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 7616,
+      "sourceChecksum": "sha256:387bb4e5fdd0e8316378b13510969c589d6240f60fe54e52bab6afd0f501c51f",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s22"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.05",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 7102,
+      "sourceChecksum": "sha256:3c5bb73a05206e4a24adfb66488ad554e29a8e11c42f3aa49702fd7b0d776a0f",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s23"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.05",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": false,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 6002,
+      "sourceChecksum": "sha256:f1f2b1456cb55a192b3afecd6d5e8d7aca07af1644c16bd77da77c096a087ee2",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s24"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.05",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 6538,
+      "sourceChecksum": "sha256:a2db1bd4b6b3abc13f9701bec516b98f4cfe12caf5d76fb5d91dd68ca6bc52cf",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s25"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.05",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 5176,
+      "sourceChecksum": "sha256:8de18060b1d08ce3ee09d4890d96e309df1647f2f76693a7ad81cd97760643c2",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s26"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.06",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 5848,
+      "sourceChecksum": "sha256:2fafeba31702c8c27b2b99f0636ca248fc7ccd3ae625ffc3fa623ee79e0ffa89",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s27"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.06",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 6093,
+      "sourceChecksum": "sha256:d10a05e12760c788c7744be23a8bc8bcc9e3709f65c04917ca716dcdbca11778",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s29"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.06",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": false,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 5654,
+      "sourceChecksum": "sha256:0c56a5aee504c892dbf36f35c66f2ef449ff57d90021266a07270f5d1c96d63d",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s30"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.06",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 5128,
+      "sourceChecksum": "sha256:15a168922d97045d4b2e61c756233d9c7edf1398e7d1ad9d05ecd0fe49a18bdd",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s31"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.06",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": true,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 5778,
+      "sourceChecksum": "sha256:959a7532cc943e73696d4917d248472d86adec387e9e0406d222a04a613e8102",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s32"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.07",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": false,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 5041,
+      "sourceChecksum": "sha256:4adfeff41a7484b310474ba7252cf126253379197a153b8ef014a8bdfd09351c",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s33"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.07",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 5002,
+      "sourceChecksum": "sha256:cf01957692bf0b50e4c8c0e8959c633354a07a1090c70458e1242b640a099f6c",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s34"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.07",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 4830,
+      "sourceChecksum": "sha256:2e8f6ec8f4722b5f401731877c9ff1daa9718561c2624807ef44b6e802887391",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s35"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.07",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 4157,
+      "sourceChecksum": "sha256:d27855a2cdc0d65a3a8357d2356643a6078d92185be280698f37022975e97d0c",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s36"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.07",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 4782,
+      "sourceChecksum": "sha256:1f1e1d510e13069e26ad9de261ad94057f686284b6cfd23a54ffe03e86d9e6bc",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s39"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.08",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 4604,
+      "sourceChecksum": "sha256:158d91e3b014a5dc701685174aa759976d77efea8ac90187234fedc14320ff1b",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s41"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.08",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": false,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 6180,
+      "sourceChecksum": "sha256:6f25e0c6ea01a792288726b972d0040cdaeff57e0e5438471a038566b76c4590",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s43"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.08",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": false,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 5727,
+      "sourceChecksum": "sha256:75d0cb9ce62844bc30774aed0f004dab8428a768f1926b1388c4f75207a5a741",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s45"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.09",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": false,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 6071,
+      "sourceChecksum": "sha256:1fb7309652510bb5456f5e22aea58fbbdd0399189afba2525a18be3446834c9c",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s47"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.09",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": false,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 5876,
+      "sourceChecksum": "sha256:4198ef11bb8de3fce8d4969023eb1592cfb8c175140f4a258da4c0e091b67ef1",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s48"
+    },
+    {
+      "anonymisationStatus": "required",
+      "batchId": "legacy-batch.programme-2.09",
+      "blockers": [
+        "Source identity markers require redaction before derivative drafting.",
+        "Clinical mapping and source sufficiency require human review.",
+        "Evidence and source clearance are not established."
+      ],
+      "clinicalMappingStatus": "not-started-human-review-required",
+      "governedNameMatchCount": 0,
+      "mappedFieldAvailability": {
+        "differentialReasoning": true,
+        "investigation": false,
+        "management": true,
+        "objectiveOrExamination": true,
+        "redFlagOrSafety": true,
+        "references": true,
+        "subjectiveOrHistory": true
+      },
+      "privatePathStored": false,
+      "publicEligibility": false,
+      "sourceBodyStoredInReport": false,
+      "sourceByteSize": 6648,
+      "sourceChecksum": "sha256:c12cfa0c8abfe3c52da8325697f4ed43031525d62ab9f5260a02d9fe8ce222c6",
+      "sourceIdentityMarkerCount": 1,
+      "stationId": "s49"
+    }
+  ],
+  "schemaVersion": 1,
+  "sourceId": "legacy-html-case-bank-v1",
+  "summary": {
+    "governedNameMatchesReportedAsCountsOnly": 0,
+    "publicEligible": 0,
+    "recordsRequiringAnonymisation": 41,
+    "sourceBodiesStored": 0,
+    "sourcesChecked": 41
+  }
+}

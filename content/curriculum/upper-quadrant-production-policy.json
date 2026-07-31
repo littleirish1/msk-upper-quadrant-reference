@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "canonicalTaxonomySource": "src/data/taxonomy.ts",
+  "requiredDomains": [
+    "functional-anatomy",
+    "landmarks-palpation",
+    "muscle-roles",
+    "presentation",
+    "subjective-assessment",
+    "objective-assessment",
+    "neurological-screening",
+    "special-tests",
+    "differential-diagnoses",
+    "red-flags-escalation",
+    "imaging",
+    "management",
+    "prognosis-reassessment",
+    "patient-communication",
+    "references",
+    "evidence-limitations"
+  ],
+  "publicationRule": "preserve-baseline-and-fail-closed-for-new-clinical-content",
+  "gapHandling": "generate-review-required-gaps-without-inventing-content",
+  "requiredChecks": [
+    "no blank authored sections",
+    "reference navigation remains usable",
+    "mobile text and tables remain readable",
+    "headache timing statements require source-specific evidence review",
+    "no marking-rubric framing",
+    "no prohibited personal identifiers",
+    "no draft or review-required route publication"
+  ]
+}

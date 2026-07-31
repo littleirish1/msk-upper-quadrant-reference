@@ -209,21 +209,25 @@ function addPrivateStructuredRecords() {
     ['content/special-tests/private', 'special-test'],
     ['content/outcome-measures/private', 'outcome-measure'],
     ['content/learning/private', 'learning-record'],
+    ['content/assessment/private', 'mcq'],
     ['content/plans/regions', 'region-plan'],
   ]
   for (const [directory, contentType] of definitions) {
     for (const file of collectFiles(path.join(ROOT, directory), (item) => item.endsWith('.json'))) {
       const record = readJson(file)
       const actualType = record.recordType === 'quiz-question' ? 'mcq' : contentType
+      const recordId = record.contentId ?? record.id
       items.push(item({
-        id: record.contentId,
+        id: recordId,
         region: record.region ?? record.regions?.[0] ?? null,
         contentType: actualType,
         title: record.title,
         file,
-        sourceId: record.contentId,
+        sourceId: recordId,
         lifecycleState: record.status === 'planned' ? 'planned' : 'private',
-        clinicalReviewState: record.reviewStatus === 'reviewed' ? 'approved' : 'required',
+        clinicalReviewState: record.reviewStatus === 'reviewed' || record.reviewState === 'approved'
+          ? 'approved'
+          : 'required',
         evidenceReviewState: record.references?.length ? 'in-review' : 'required',
         sourceClearanceState: 'review-required',
         publicationState: record.status === 'planned' ? 'planned' : 'private',

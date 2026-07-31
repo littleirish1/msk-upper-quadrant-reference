@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "branching.reasoning.process-example",
+  "title": "Reasoning process branch example",
+  "status": "private",
+  "publicEligibility": false,
+  "reviewState": "required",
+  "startNodeId": "start",
+  "terminalNodeIds": ["complete"],
+  "allowedCycleEdges": [
+    {
+      "fromNodeId": "hypothesis",
+      "toNodeId": "request-information",
+      "rationale": "Learners may request more authored information before revising a hypothesis."
+    },
+    {
+      "fromNodeId": "process-feedback",
+      "toNodeId": "decision",
+      "rationale": "Learners may revisit the decision after reading process feedback."
+    }
+  ],
+  "sourceContentIds": ["learning.reasoning.static-process"],
+  "aiFreeTextEnabled": false,
+  "networkRequired": false,
+  "nodes": [
+    {
+      "id": "start",
+      "kind": "presentation",
+      "prompt": "Begin with a diagnosis-neutral reviewed presentation.",
+      "revealPolicy": "initial",
+      "diagnosisBearing": false,
+      "choices": [
+        {
+          "id": "request-more",
+          "label": "Request authored information",
+          "nextNodeId": "request-information",
+          "feedbackId": null
+        },
+        {
+          "id": "record-hypothesis",
+          "label": "Record a working hypothesis",
+          "nextNodeId": "hypothesis",
+          "feedbackId": null
+        }
+      ]
+    },
+    {
+      "id": "request-information",
+      "kind": "information-request",
+      "prompt": "Choose from information requests authored with the case.",
+      "revealPolicy": "learner-action",
+      "diagnosisBearing": false,
+      "choices": [
+        {
+          "id": "continue-to-hypothesis",
+          "label": "Update the working hypothesis",
+          "nextNodeId": "hypothesis",
+          "feedbackId": null
+        }
+      ]
+    },
+    {
+      "id": "hypothesis",
+      "kind": "hypothesis",
+      "prompt": "Compare supporting, contradicting, and cannot-miss considerations.",
+      "revealPolicy": "learner-action",
+      "diagnosisBearing": false,
+      "choices": [
+        {
+          "id": "request-again",
+          "label": "Request different information",
+          "nextNodeId": "request-information",
+          "feedbackId": null
+        },
+        {
+          "id": "continue-to-finding",
+          "label": "Plan the next assessment step",
+          "nextNodeId": "finding",
+          "feedbackId": null
+        }
+      ]
+    },
+    {
+      "id": "finding",
+      "kind": "finding",
+      "prompt": "Reveal only case-authored findings after an explicit learner action.",
+      "revealPolicy": "learner-action",
+      "diagnosisBearing": false,
+      "choices": [
+        {
+          "id": "make-decision",
+          "label": "Make a proportionate decision",
+          "nextNodeId": "decision",
+          "feedbackId": null
+        }
+      ]
+    },
+    {
+      "id": "decision",
+      "kind": "decision",
+      "prompt": "Select the reasoning path that best reflects the available information.",
+      "revealPolicy": "learner-action",
+      "diagnosisBearing": false,
+      "choices": [
+        {
+          "id": "compare-path",
+          "label": "Compare with authored reasoning",
+          "nextNodeId": "reviewed-conclusion",
+          "feedbackId": "process-feedback"
+        }
+      ]
+    },
+    {
+      "id": "process-feedback",
+      "kind": "feedback",
+      "prompt": "Feedback describes the reasoning process without claiming a competence score.",
+      "revealPolicy": "learner-action",
+      "diagnosisBearing": false,
+      "choices": [
+        {
+          "id": "return-to-decision",
+          "label": "Return to the decision",
+          "nextNodeId": "decision",
+          "feedbackId": null
+        }
+      ]
+    },
+    {
+      "id": "reviewed-conclusion",
+      "kind": "feedback",
+      "prompt": "A reviewed case conclusion may appear only at the explicit diagnosis reveal.",
+      "revealPolicy": "diagnosis-reveal",
+      "diagnosisBearing": true,
+      "choices": [
+        {
+          "id": "finish",
+          "label": "Reflect and finish",
+          "nextNodeId": "complete",
+          "feedbackId": null
+        }
+      ]
+    },
+    {
+      "id": "complete",
+      "kind": "outcome",
+      "prompt": "Record reflection without persisting free text.",
+      "revealPolicy": "post-reveal",
+      "diagnosisBearing": false,
+      "choices": []
+    }
+  ]
+}
