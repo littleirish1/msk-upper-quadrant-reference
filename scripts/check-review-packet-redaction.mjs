@@ -41,6 +41,7 @@ const securityToolingPaths = new Set([
   'scripts/check-review-packet-redaction.mjs',
   'scripts/check-secrets.mjs',
   'scripts/lib/secretPatterns.mjs',
+  'scripts/programmes/test-release-governance.mjs',
 ])
 const securityToolingCategoryAllowances = new Map([
   ['ai-manager/schemas/sourceIntakeSchemas.mjs', new Set(['contact-or-correspondence-block', 'telephone-number'])],
@@ -50,6 +51,7 @@ const securityToolingCategoryAllowances = new Map([
   ['ai-manager/scripts/validate-source-intake-pilot.mjs', new Set(['uk-postcode', 'unc-path'])],
   ['ai-manager/tests/test_source_intake_hardening.py', new Set(['contact-or-correspondence-block'])],
   ['scripts/check-review-packet-redaction.mjs', new Set(['unc-path'])],
+  ['scripts/programmes/test-release-governance.mjs', new Set(['unc-path'])],
   ['scripts/test-review-packet-exactness.mjs', new Set(['patient-or-hospital-identifier', 'unc-path'])],
   ['scripts/test-review-packet-redaction.mjs', new Set([
     'contact-or-correspondence-block',

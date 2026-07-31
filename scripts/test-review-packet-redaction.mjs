@@ -52,6 +52,17 @@ try {
     '05-filtered-full-diff.patch': `${policyDiff}+const compromised = '${googleLike}'\n`,
   }, 'credential in the pattern-module diff')
 
+  const releaseGovernanceTestSyntax = [
+    'const escapedPattern = /\\\\\\\\[^\\\\\\s]+\\\\[^\\r\\n]+/gu',
+    '',
+  ].join('\n')
+  expectPass('release-governance-test-syntax', {
+    'scripts/programmes/test-release-governance.mjs': releaseGovernanceTestSyntax,
+  })
+  expectFail('release-governance-test-credential', {
+    'scripts/programmes/test-release-governance.mjs': `${releaseGovernanceTestSyntax}const compromised = '${googleLike}'\n`,
+  }, 'credential in the release-governance test source')
+
   const awsLike = `${['A', 'KIA'].join('')}${'C'.repeat(16)}`
   const intakePolicyDiff = [
     'diff --git a/ai-manager/scripts/source_intake_policy.py b/ai-manager/scripts/source_intake_policy.py',

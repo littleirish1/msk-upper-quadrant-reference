@@ -52,7 +52,7 @@ const fixtureRoot = fs.mkdtempSync(path.join(ROOT, '.tmp-release-git-state-'))
 try {
   git(fixtureRoot, 'init', '-b', 'main')
   git(fixtureRoot, 'config', 'user.name', 'Fixture Reviewer')
-  git(fixtureRoot, 'config', 'user.email', 'fixture@example.invalid')
+  git(fixtureRoot, 'config', 'user.email', 'fixture.invalid')
   git(fixtureRoot, 'commit', '--allow-empty', '-m', 'fixture baseline')
   const baselineCommit = git(fixtureRoot, 'rev-parse', 'HEAD')
   git(fixtureRoot, 'switch', '-c', 'fixture-feature')
@@ -135,7 +135,7 @@ const detachedRoot = fs.mkdtempSync(path.join(ROOT, '.tmp-release-detached-proje
 try {
   git(detachedRoot, 'init', '-b', 'main')
   git(detachedRoot, 'config', 'user.name', 'Fixture Reviewer')
-  git(detachedRoot, 'config', 'user.email', 'fixture@example.invalid')
+  git(detachedRoot, 'config', 'user.email', 'fixture.invalid')
   git(detachedRoot, 'commit', '--allow-empty', '-m', 'fixture baseline')
   const detachedBaseline = git(detachedRoot, 'rev-parse', 'HEAD')
   git(detachedRoot, 'switch', '-c', 'fixture-feature')
