@@ -142,8 +142,16 @@ try {
       sourceId: `src-${'1'.repeat(12)}`,
       checksum: `sha256:${'2'.repeat(64)}`,
       status: 'restricted-pending-clearance',
+      queues: {
+        review: ['source-intake.shoulder-resource.pending-review'],
+      },
     }),
   })
+
+  const lowerCaseJwtLike = ['lowercasefixturesegment', 'secondfixturesegment', 'thirdfixturesegment'].join('.')
+  expectFail('ordinary-lowercase-jwt-like-value', {
+    'implementation/source.mjs': `export const value = ${JSON.stringify(lowerCaseJwtLike)}\n`,
+  }, 'lowercase JWT-like value outside a governed machine-ID field')
 
   expectFail('governed-report-sensitive-value', {
     'tracked-reports/source-manifest.json': JSON.stringify({
@@ -290,6 +298,69 @@ try {
       `1. Commit: ${cleanGitObject}${telephoneShape}`,
     ]),
   }, 'telephone-shaped value immediately adjacent to a Git object field')
+
+  expectPass('generated-html-implementation-syntax', {
+    'generated-output/cases/example/index.html': [
+      '<!doctype html><html><body>',
+      '<main aria-labelledby="case-title"><h1 id="case-title">Neutral case</h1></main>',
+      '<script>self.__next_f.push([1,"module\\\\chunk\\\\reference"])</script>',
+      '</body></html>',
+    ].join(''),
+  })
+
+  expectFail('generated-html-visible-credential', {
+    'generated-output/cases/example/index.html':
+      `<main>${awsLike}</main><script>self.__next_f.push([1,"safe"])</script>`,
+  }, 'credential-like value in generated HTML')
+
+  expectFail('generated-html-script-credential', {
+    'generated-output/cases/example/index.html':
+      `<main>Neutral case</main><script>const value=${JSON.stringify(awsLike)}</script>`,
+  }, 'credential-like value in generated HTML script data')
+
+  expectPass('github-actions-secret-reference', {
+    'implementation/.github/workflows/check.yml': [
+      'jobs:',
+      '  validate:',
+      '    env:',
+      '      DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}',
+    ].join('\n'),
+  })
+
+  expectFail('github-actions-literal-credential', {
+    'implementation/.github/workflows/check.yml': [
+      'jobs:',
+      '  validate:',
+      '    env:',
+      `      DEPLOY_TOKEN: ${awsLike}`,
+    ].join('\n'),
+  }, 'literal credential-like value in workflow configuration')
+
+  expectPass('generated-json-patch-machine-identifiers', {
+    'implementation.patch': [
+      'diff --git a/reports/governance/example.json b/reports/governance/example.json',
+      'new file mode 100644',
+      `index ${'3'.repeat(40)}..${'4'.repeat(40)} 100644`,
+      '--- a/reports/governance/example.json',
+      '+++ b/reports/governance/example.json',
+      '@@ -1 +1 @@',
+      `+${JSON.stringify({ contentHash: '5'.repeat(64), revision: '6'.repeat(40), status: 'pending' })}`,
+      '',
+    ].join('\n'),
+  })
+
+  expectFail('generated-json-patch-sensitive-value', {
+    'implementation.patch': [
+      'diff --git a/reports/governance/example.json b/reports/governance/example.json',
+      'new file mode 100644',
+      `index ${'3'.repeat(40)}..${'4'.repeat(40)} 100644`,
+      '--- a/reports/governance/example.json',
+      '+++ b/reports/governance/example.json',
+      '@@ -1 +1 @@',
+      `+${JSON.stringify({ contentHash: '5'.repeat(64), contact: ['+44', '7123', '456', '789'].join(' ') })}`,
+      '',
+    ].join('\n'),
+  }, 'sensitive value in a generated JSON patch section')
 
   console.log('Review packet redaction regression tests passed.')
   console.log(`Deterministic scenarios checked: ${checks}`)

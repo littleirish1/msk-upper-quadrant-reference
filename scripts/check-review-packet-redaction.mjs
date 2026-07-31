@@ -24,6 +24,7 @@ const decoder = new TextDecoder('utf-8', { fatal: true })
 const citationExcerptLimit = sensitivePolicy().citationExcerptLimit
 const COMMIT_GRAPH_PACKET_PATH = 'COMMIT_GRAPH.txt'
 const SHA256_MANIFEST_PACKET_PATHS = new Set([
+  '18-MANIFEST-SHA256.txt',
   '15-MANIFEST-SHA256.txt',
   'FILE_MANIFEST_SHA256.txt',
   'SHA256SUMS.txt',
@@ -55,6 +56,15 @@ const packetCredentialValueRules = [
   new RegExp(`\\b(?:${['A', 'KIA'].join('')}|${['A', 'SIA'].join('')})[A-Z0-9]{16}\\b`, 'g'),
   new RegExp(`-----BEGIN [A-Z ]*${['PRIVATE', ' KEY'].join('')}-----`, 'g'),
 ]
+const governedPlaceholderAssignmentPattern = new RegExp(
+  `\\b(?:${[
+    ['API', 'KEY'].join('_'),
+    ['ACCESS', 'TOKEN'].join('_'),
+    ['PRIVATE', 'KEY'].join('_'),
+    ['SEC', 'RET'].join(''),
+  ].join('|')})\\s*[:=]\\s*(?:disabled|undefined|null|not-configured|configuration-required)\\b`,
+  'giu',
+)
 
 if (!fs.existsSync(packetDir) || !fs.statSync(packetDir).isDirectory()) {
   fail('packet directory is missing')
@@ -197,6 +207,29 @@ function isGeneratedReportEvidence(packetPath, repositoryPath) {
 }
 
 function governedEvidenceTexts(packetPath, section) {
+  if (packetPath.endsWith('.patch')) {
+    const artifactPath = section.repositoryPath || ''
+    if (/\.json$/iu.test(artifactPath)) {
+      try {
+        const target = reconstructPatchTarget(section.text)
+        const parsed = JSON.parse(target)
+        return artifactPath.startsWith('reports/')
+          ? jsonGovernedReviewValues(parsed)
+          : jsonStringValues(parsed).map(scrubMachineIdentifiers)
+      } catch {
+        // Fall through to the other structural treatments for incomplete sections.
+      }
+    }
+    if (/\.html?$/iu.test(artifactPath)) {
+      return [scrubMachineIdentifiers(extractHtmlReviewText(section.text))]
+    }
+    if (/\.(?:ya?ml|toml)$/iu.test(artifactPath)) {
+      return [scrubMachineIdentifiers(extractConfigurationReviewText(section.text))]
+    }
+    if (isExactCodePath(artifactPath)) {
+      return [scrubMachineIdentifiers(extractCodeReviewText(section.text, artifactPath))]
+    }
+  }
   if (isEvidenceHubReviewSource(packetPath, section.repositoryPath)) {
     if (!packetPath.endsWith('.patch') && packetPath.endsWith('evidence-hub-v1.schema.json')) {
       try { return jsonStringValuesExceptKeys(JSON.parse(section.text), new Set(['pattern'])) }
@@ -211,7 +244,7 @@ function governedEvidenceTexts(packetPath, section) {
   }
   if (!isGeneratedReportEvidence(packetPath, section.repositoryPath)) return [section.text]
   if (packetPath.startsWith('tracked-reports/') && packetPath.endsWith('.json')) {
-    try { return jsonStringValues(JSON.parse(section.text)).map(scrubMachineIdentifiers) }
+    try { return jsonGovernedReviewValues(JSON.parse(section.text)) }
     catch { return [section.text] }
   }
   return section.text.split(/\r?\n/).map((line) => {
@@ -236,9 +269,14 @@ function scanReviewPacketSensitiveText(text, relative, repositoryPath) {
   let scanText = relative.endsWith('.patch') || relative.endsWith('.diff')
     ? scrubValidatedPatchMetadata(text)
     : text
-  if (isExactCodePath(repositoryPath || relative)
+  const artifactPath = repositoryPath || relative
+  if (!relative.endsWith('.patch') && !relative.endsWith('.diff') && /\.html?$/iu.test(artifactPath)) {
+    scanText = scrubMachineIdentifiers(extractHtmlReviewText(scanText))
+  } else if (!relative.endsWith('.patch') && !relative.endsWith('.diff') && /\.(?:ya?ml|toml)$/iu.test(artifactPath)) {
+    scanText = scrubMachineIdentifiers(extractConfigurationReviewText(scanText))
+  } else if (!relative.endsWith('.patch') && !relative.endsWith('.diff') && isExactCodePath(artifactPath)
     && !isGeneratedReportEvidence(relative, repositoryPath)) {
-    scanText = extractCodeReviewText(scanText, repositoryPath || relative)
+    scanText = scrubMachineIdentifiers(extractCodeReviewText(scanText, artifactPath))
   }
 
   if (SHA256_MANIFEST_PACKET_PATHS.has(path.posix.basename(relative))) {
@@ -302,7 +340,7 @@ function extractCodeReviewText(text, fileName) {
   const values = []
   const visit = (node) => {
     if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) {
-      values.push(node.getText(sourceFile))
+      values.push(node.text)
     } else if (ts.isTemplateExpression(node)) {
       values.push(node.getText(sourceFile))
     }
@@ -324,11 +362,68 @@ function extractCodeReviewText(text, fileName) {
   return values.join('\n')
 }
 
+function extractHtmlReviewText(text) {
+  const values = []
+  const source = stripPatchSyntax(text)
+  const withoutScripts = source.replace(/<script\b([^>]*)>([\s\S]*?)<\/script>/giu, (_, attributes, body) => {
+    values.push(...htmlAttributeValues(attributes))
+    const type = /\btype\s*=\s*["']([^"']+)["']/iu.exec(attributes)?.[1]?.toLowerCase()
+    if (type === 'application/json' || type === 'application/ld+json') {
+      try { values.push(...jsonStringValues(JSON.parse(body))) }
+      catch { values.push(body) }
+    } else {
+      values.push(extractCodeReviewText(body, 'packet-inline-script.js'))
+    }
+    return ' '
+  })
+  const withoutStyles = withoutScripts.replace(/<style\b[^>]*>[\s\S]*?<\/style>/giu, ' ')
+  for (const tag of withoutStyles.matchAll(/<[^>]+>/gu)) {
+    values.push(...htmlAttributeValues(tag[0]))
+  }
+  values.push(decodeHtmlEntities(withoutStyles.replace(/<[^>]+>/gu, ' ')))
+  return values.join('\n')
+}
+
+function htmlAttributeValues(value) {
+  return [...value.matchAll(/\b[\w:-]+\s*=\s*(?:"([^"]*)"|'([^']*)')/gu)]
+    .map((match) => decodeHtmlEntities(match[1] ?? match[2] ?? ''))
+}
+
+function decodeHtmlEntities(value) {
+  return String(value)
+    .replace(/&quot;/giu, '"')
+    .replace(/&#39;|&apos;/giu, "'")
+    .replace(/&lt;/giu, '<')
+    .replace(/&gt;/giu, '>')
+    .replace(/&amp;/giu, '&')
+    .replace(/&#(\d+);/gu, (_, code) => String.fromCodePoint(Number(code)))
+    .replace(/&#x([0-9a-f]+);/giu, (_, code) => String.fromCodePoint(Number.parseInt(code, 16)))
+}
+
+function extractConfigurationReviewText(text) {
+  return stripPatchSyntax(text)
+    .split(/\r?\n/gu)
+    .map((line) => line
+      .replace(/\$\{\{\s*secrets\.[A-Z0-9_]+\s*\}\}/giu, '[configured-secret-reference]')
+      .replace(/^\s*(?:-\s*)?[\w.-]+\s*:\s*/u, '')
+      .replace(/\s+#.*$/u, ''))
+    .join('\n')
+}
+
 function stripPatchSyntax(text) {
   return text
     .split(/\r?\n/u)
     .filter((line) => !/^(?:diff --git |index |--- |\+\+\+ |@@ )/u.test(line))
     .map((line) => /^[+ -]/u.test(line) ? line.slice(1) : line)
+    .join('\n')
+}
+
+function reconstructPatchTarget(text) {
+  return text
+    .split(/\r?\n/u)
+    .filter((line) => !/^(?:diff --git |index |--- |\+\+\+ |@@ |new file mode |deleted file mode |similarity index |rename from |rename to )/u.test(line))
+    .filter((line) => !line.startsWith('-'))
+    .map((line) => line.startsWith('+') || line.startsWith(' ') ? line.slice(1) : line)
     .join('\n')
 }
 
@@ -411,7 +506,28 @@ function parseCommitGraphGitObjectLine(line) {
 }
 
 function scrubMachineIdentifiers(text) {
-  return text.replace(/(?:sha256:)?[0-9a-f]{64}|(?:src|ref|run)-[0-9a-f]{12,64}|ref-[a-z0-9-]+/giu, '[machine-id]')
+  return text
+    .replace(/(?:sha256:)?[0-9a-f]{64}|(?<![0-9a-f])[0-9a-f]{40}(?![0-9a-f])|(?:src|ref|run)-[0-9a-f]{12,64}|ref-[a-z0-9-]+/giu, '[machine-id]')
+    .replace(governedPlaceholderAssignmentPattern, '[governed-placeholder]')
+}
+
+function jsonGovernedReviewValues(value, key = '', pathSegments = []) {
+  if (typeof value === 'string') {
+    const isMachineField = /^(?:id|[a-z]+Ids?|checksum|sha256|[a-z]*Hash|revision)$/iu.test(key)
+      || pathSegments.includes('queues')
+    if (isMachineField && /^[a-z][a-z0-9-]*(?:\.[a-z0-9-]+)+$/u.test(value)) {
+      return ['[validated-machine-id]']
+    }
+    return [scrubMachineIdentifiers(value)]
+  }
+  if (Array.isArray(value)) {
+    return value.flatMap((item) => jsonGovernedReviewValues(item, key, pathSegments))
+  }
+  if (value && typeof value === 'object') {
+    return Object.entries(value).flatMap(([childKey, item]) =>
+      jsonGovernedReviewValues(item, childKey, [...pathSegments, childKey]))
+  }
+  return []
 }
 
 function scanCitationExcerptLimits(text, relative) {
