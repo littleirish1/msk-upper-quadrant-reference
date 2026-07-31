@@ -111,9 +111,9 @@ function resolveRequiredTree(root, commit, category) {
   return tree
 }
 
-function runGit(root, args) {
+function runGit(root, args, { attempts = 3, delayMs = 50 } = {}) {
   let result = null
-  for (let attempt = 0; attempt < 3; attempt += 1) {
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
     result = spawnSync('git', args, {
       cwd: root,
       encoding: 'utf8',
@@ -121,7 +121,9 @@ function runGit(root, args) {
       windowsHide: true,
     })
     if (!result.error && result.status === 0) return result
-    if (attempt < 2) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 50)
+    if (attempt < attempts - 1) {
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, delayMs)
+    }
   }
   if (!result || result.error) {
     throw new Error('Release governance Git operation failed before a ref could be resolved.')
@@ -130,7 +132,7 @@ function runGit(root, args) {
 }
 
 function assertGitRepository(root) {
-  const result = runGit(root, ['rev-parse', '--git-dir'])
+  const result = runGit(root, ['rev-parse', '--git-dir'], { attempts: 10, delayMs: 250 })
   if (result.status !== 0) {
     throw new Error('Release governance Git resolution failed: repository metadata is unavailable.')
   }
