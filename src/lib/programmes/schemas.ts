@@ -221,6 +221,39 @@ export const evidenceGapCatalogSchema = z.object({
   gaps: z.array(evidenceGapSchema),
 }).strict()
 
+export const evidenceSurveillanceProposalSchema = z.object({
+  schemaVersion: z.literal(PROGRAMME_SCHEMA_VERSION),
+  proposalId: stableIdSchema,
+  proposalType: z.enum([
+    'guideline-update',
+    'bibliographic-import',
+    'duplicate-review',
+    'supersession-review',
+    'evidence-gap-follow-up',
+  ]),
+  targetContentIds: z.array(stableIdSchema).min(1),
+  sourceRecordIds: z.array(stableIdSchema),
+  previousVersionIds: z.array(stableIdSchema),
+  proposedVersionIds: z.array(stableIdSchema),
+  lifecycleState: z.literal('draft'),
+  reviewState: z.literal('required'),
+  publicEligibility: z.literal(false),
+  networkLookupCompleted: z.literal(false),
+  autonomousChangeAllowed: z.literal(false),
+  unresolvedQuestions: z.array(z.string().min(1)).min(1),
+}).strict()
+
+export const evidenceSurveillanceCatalogSchema = z.object({
+  schemaVersion: z.literal(PROGRAMME_SCHEMA_VERSION),
+  adapters: z.array(z.object({
+    adapterId: stableIdSchema,
+    mode: z.literal('offline-fixture'),
+    enabled: z.literal(false),
+    networkRequired: z.boolean(),
+  }).strict()),
+  proposals: z.array(evidenceSurveillanceProposalSchema),
+}).strict()
+
 export const branchNodeSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
   kind: z.enum(['presentation', 'information-request', 'hypothesis', 'finding', 'decision', 'feedback', 'caution', 'outcome']),

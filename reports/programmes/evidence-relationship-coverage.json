@@ -1,0 +1,480 @@
+{
+  "content": [
+    {
+      "contentId": "case.cervical.case-01",
+      "contentRevision": "1",
+      "contentType": "guided-case",
+      "destinationRoute": "/cases/cervical/case-01-neck-arm-symptoms",
+      "evidenceGapIds": [
+        "gap.case.cervical.case-01"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "case.cervical.case-02",
+      "contentRevision": "1",
+      "contentType": "guided-case",
+      "destinationRoute": "/cases/cervical/case-02-hand-clumsiness-heavy-legs",
+      "evidenceGapIds": [
+        "gap.case.cervical.case-02"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "case.elbow.case-03",
+      "contentRevision": "1",
+      "contentType": "guided-case",
+      "destinationRoute": "/cases/elbow/case-03-sudden-anterior-elbow-pain-after-lifting",
+      "evidenceGapIds": [
+        "gap.case.elbow.case-03"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "case.shoulder.case-04",
+      "contentRevision": "1",
+      "contentType": "guided-case",
+      "destinationRoute": "/cases/shoulder/case-04-lateral-shoulder-pain-overhead-activity",
+      "evidenceGapIds": [
+        "gap.case.shoulder.case-04"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "case.shoulder.case-05",
+      "contentRevision": "1",
+      "contentType": "guided-case",
+      "destinationRoute": "/cases/shoulder/case-05-progressive-shoulder-stiffness",
+      "evidenceGapIds": [
+        "gap.case.shoulder.case-05"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "case.thoracic.case-06",
+      "contentRevision": "1",
+      "contentType": "guided-case",
+      "destinationRoute": "/cases/thoracic/case-06-thoracic-pain-broader-screening-cues",
+      "evidenceGapIds": [
+        "gap.case.thoracic.case-06"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.cervical.cervical-artery-dysfunction",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/cervical/cervical-artery-dysfunction",
+      "evidenceGapIds": [
+        "gap.condition.cervical.cervical-artery-dysfunction"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.cervical.cervical-myelopathy",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/cervical/cervical-myelopathy",
+      "evidenceGapIds": [
+        "gap.condition.cervical.cervical-myelopathy"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.cervical.cervical-radiculopathy",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/cervical/cervical-radiculopathy",
+      "evidenceGapIds": [
+        "gap.condition.cervical.cervical-radiculopathy"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.cervical.cervicogenic-headache",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/cervical/cervicogenic-headache",
+      "evidenceGapIds": [
+        "gap.condition.cervical.cervicogenic-headache"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.cervical.mechanical-neck-pain",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/cervical/mechanical-neck-pain",
+      "evidenceGapIds": [
+        "gap.condition.cervical.mechanical-neck-pain"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.cervical.whiplash-associated-disorders",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/cervical/whiplash-associated-disorders",
+      "evidenceGapIds": [
+        "gap.condition.cervical.whiplash-associated-disorders"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.elbow.cubital-tunnel-syndrome",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/elbow/cubital-tunnel-syndrome",
+      "evidenceGapIds": [
+        "gap.condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.elbow.elbow-osteoarthritis",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/elbow/elbow-osteoarthritis",
+      "evidenceGapIds": [
+        "gap.condition.elbow.elbow-osteoarthritis"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.elbow.lateral-epicondylalgia",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/elbow/lateral-epicondylalgia",
+      "evidenceGapIds": [
+        "gap.condition.elbow.lateral-epicondylalgia"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.elbow.medial-epicondylalgia",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/elbow/medial-epicondylalgia",
+      "evidenceGapIds": [
+        "gap.condition.elbow.medial-epicondylalgia"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.elbow.olecranon-bursitis",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/elbow/olecranon-bursitis",
+      "evidenceGapIds": [
+        "gap.condition.elbow.olecranon-bursitis"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.elbow.radial-tunnel-syndrome",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/elbow/radial-tunnel-syndrome",
+      "evidenceGapIds": [
+        "gap.condition.elbow.radial-tunnel-syndrome"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.shoulder.acromioclavicular-joint",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/shoulder/acromioclavicular-joint",
+      "evidenceGapIds": [
+        "gap.condition.shoulder.acromioclavicular-joint"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.shoulder.adhesive-capsulitis",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/shoulder/adhesive-capsulitis",
+      "evidenceGapIds": [
+        "gap.condition.shoulder.adhesive-capsulitis"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.shoulder.calcific-tendinitis",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/shoulder/calcific-tendinitis",
+      "evidenceGapIds": [
+        "gap.condition.shoulder.calcific-tendinitis"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.shoulder.labral-tears",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/shoulder/labral-tears",
+      "evidenceGapIds": [
+        "gap.condition.shoulder.labral-tears"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.shoulder.rotator-cuff-tear",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/shoulder/rotator-cuff-tear",
+      "evidenceGapIds": [
+        "gap.condition.shoulder.rotator-cuff-tear"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.shoulder.rotator-cuff-tendinopathy",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/shoulder/rotator-cuff-tendinopathy",
+      "evidenceGapIds": [
+        "gap.condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.shoulder.shoulder-instability",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/shoulder/shoulder-instability",
+      "evidenceGapIds": [
+        "gap.condition.shoulder.shoulder-instability"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.shoulder.subacromial-pain-syndrome",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/shoulder/subacromial-pain-syndrome",
+      "evidenceGapIds": [
+        "gap.condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.thoracic.costochondritis",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/thoracic/costochondritis",
+      "evidenceGapIds": [
+        "gap.condition.thoracic.costochondritis"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.thoracic.scheuermanns-disease",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/thoracic/scheuermanns-disease",
+      "evidenceGapIds": [
+        "gap.condition.thoracic.scheuermanns-disease"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.thoracic.thoracic-disc-herniation",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/thoracic/thoracic-disc-herniation",
+      "evidenceGapIds": [
+        "gap.condition.thoracic.thoracic-disc-herniation"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.thoracic.thoracic-facet-joint-pain",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/thoracic/thoracic-facet-joint-pain",
+      "evidenceGapIds": [
+        "gap.condition.thoracic.thoracic-facet-joint-pain"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.thoracic.thoracic-outlet-syndrome",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/thoracic/thoracic-outlet-syndrome",
+      "evidenceGapIds": [
+        "gap.condition.thoracic.thoracic-outlet-syndrome"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.thoracic.thoracic-radiculopathy",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/thoracic/thoracic-radiculopathy",
+      "evidenceGapIds": [
+        "gap.condition.thoracic.thoracic-radiculopathy"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.wrist-hand.carpal-tunnel-syndrome",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/wrist-hand/carpal-tunnel-syndrome",
+      "evidenceGapIds": [
+        "gap.condition.wrist-hand.carpal-tunnel-syndrome"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.wrist-hand.de-quervains-tenosynovitis",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/wrist-hand/de-quervains-tenosynovitis",
+      "evidenceGapIds": [
+        "gap.condition.wrist-hand.de-quervains-tenosynovitis"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.wrist-hand.dupuytrens-contracture",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/wrist-hand/dupuytrens-contracture",
+      "evidenceGapIds": [
+        "gap.condition.wrist-hand.dupuytrens-contracture"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.wrist-hand.scaphoid-fracture",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/wrist-hand/scaphoid-fracture",
+      "evidenceGapIds": [
+        "gap.condition.wrist-hand.scaphoid-fracture"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.wrist-hand.tfcc-injury",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/wrist-hand/tfcc-injury",
+      "evidenceGapIds": [
+        "gap.condition.wrist-hand.tfcc-injury"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.wrist-hand.thumb-cmc-osteoarthritis",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/wrist-hand/thumb-cmc-osteoarthritis",
+      "evidenceGapIds": [
+        "gap.condition.wrist-hand.thumb-cmc-osteoarthritis"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    },
+    {
+      "contentId": "condition.wrist-hand.trigger-finger",
+      "contentRevision": "1",
+      "contentType": "condition",
+      "destinationRoute": "/wrist-hand/trigger-finger",
+      "evidenceGapIds": [
+        "gap.condition.wrist-hand.trigger-finger"
+      ],
+      "evidenceRelationshipCount": 0,
+      "publicEligibilityChanged": false,
+      "relationshipStatus": "explicit-gap"
+    }
+  ],
+  "counts": {
+    "explicitEvidenceGaps": 39,
+    "publicContent": 39,
+    "publicEvidenceHubRecords": 0,
+    "revisionPinnedEvidenceRelationships": 0
+  },
+  "generatedFrom": "reports/governance/project-inventory.json",
+  "schemaVersion": 1
+}

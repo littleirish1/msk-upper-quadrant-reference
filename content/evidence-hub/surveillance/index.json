@@ -1,0 +1,793 @@
+{
+  "adapters": [
+    {
+      "adapterId": "adapter.evidence.offline-fixture",
+      "enabled": false,
+      "mode": "offline-fixture",
+      "networkRequired": false
+    }
+  ],
+  "proposals": [
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.case.cervical.case-01",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "case.cervical.case-01"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.case.cervical.case-02",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "case.cervical.case-02"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.case.elbow.case-03",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "case.elbow.case-03"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.case.shoulder.case-04",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "case.shoulder.case-04"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.case.shoulder.case-05",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "case.shoulder.case-05"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.case.thoracic.case-06",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "case.thoracic.case-06"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.cervical.cervical-artery-dysfunction",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.cervical.cervical-artery-dysfunction"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.cervical.cervical-myelopathy",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.cervical.cervical-radiculopathy",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.cervical.cervicogenic-headache",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.cervical.mechanical-neck-pain",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.cervical.whiplash-associated-disorders",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.elbow.cubital-tunnel-syndrome",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.elbow.elbow-osteoarthritis",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.elbow.lateral-epicondylalgia",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.elbow.lateral-epicondylalgia"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.elbow.medial-epicondylalgia",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.elbow.olecranon-bursitis",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.elbow.olecranon-bursitis"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.elbow.radial-tunnel-syndrome",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.elbow.radial-tunnel-syndrome"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.shoulder.acromioclavicular-joint",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.shoulder.adhesive-capsulitis",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.shoulder.calcific-tendinitis",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.shoulder.labral-tears",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.shoulder.rotator-cuff-tear",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.shoulder.rotator-cuff-tear"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.shoulder.rotator-cuff-tendinopathy",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.shoulder.shoulder-instability",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.shoulder.shoulder-instability"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.shoulder.subacromial-pain-syndrome",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.thoracic.costochondritis",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.thoracic.costochondritis"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.thoracic.scheuermanns-disease",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.thoracic.scheuermanns-disease"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.thoracic.thoracic-disc-herniation",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.thoracic.thoracic-disc-herniation"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.thoracic.thoracic-facet-joint-pain",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.thoracic.thoracic-facet-joint-pain"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.thoracic.thoracic-outlet-syndrome",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.thoracic.thoracic-outlet-syndrome"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.thoracic.thoracic-radiculopathy",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.thoracic.thoracic-radiculopathy"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.wrist-hand.carpal-tunnel-syndrome",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.wrist-hand.carpal-tunnel-syndrome"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.wrist-hand.de-quervains-tenosynovitis",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.wrist-hand.de-quervains-tenosynovitis"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.wrist-hand.dupuytrens-contracture",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.wrist-hand.dupuytrens-contracture"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.wrist-hand.scaphoid-fracture",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.wrist-hand.scaphoid-fracture"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.wrist-hand.tfcc-injury",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.wrist-hand.tfcc-injury"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.wrist-hand.thumb-cmc-osteoarthritis",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.wrist-hand.thumb-cmc-osteoarthritis"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    },
+    {
+      "autonomousChangeAllowed": false,
+      "lifecycleState": "draft",
+      "networkLookupCompleted": false,
+      "previousVersionIds": [],
+      "proposalId": "proposal.gap.condition.wrist-hand.trigger-finger",
+      "proposalType": "evidence-gap-follow-up",
+      "proposedVersionIds": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceRecordIds": [],
+      "targetContentIds": [
+        "condition.wrist-hand.trigger-finger"
+      ],
+      "unresolvedQuestions": [
+        "Which governed evidence record supports this exact content revision?",
+        "Has an authorised reviewer approved the relationship and its limitations?"
+      ]
+    }
+  ],
+  "schemaVersion": 1
+}

@@ -1,0 +1,746 @@
+{
+  "gaps": [
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "case.cervical.case-01",
+      "contentRevision": "1",
+      "gapId": "gap.case.cervical.case-01",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "case.cervical.case-02",
+      "contentRevision": "1",
+      "gapId": "gap.case.cervical.case-02",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "case.elbow.case-03",
+      "contentRevision": "1",
+      "gapId": "gap.case.elbow.case-03",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "case.shoulder.case-04",
+      "contentRevision": "1",
+      "gapId": "gap.case.shoulder.case-04",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "case.shoulder.case-05",
+      "contentRevision": "1",
+      "gapId": "gap.case.shoulder.case-05",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "case.thoracic.case-06",
+      "contentRevision": "1",
+      "gapId": "gap.case.thoracic.case-06",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.cervical.cervical-artery-dysfunction",
+      "contentRevision": "1",
+      "gapId": "gap.condition.cervical.cervical-artery-dysfunction",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.cervical.cervical-myelopathy",
+      "contentRevision": "1",
+      "gapId": "gap.condition.cervical.cervical-myelopathy",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.cervical.cervical-radiculopathy",
+      "contentRevision": "1",
+      "gapId": "gap.condition.cervical.cervical-radiculopathy",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.cervical.cervicogenic-headache",
+      "contentRevision": "1",
+      "gapId": "gap.condition.cervical.cervicogenic-headache",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.cervical.mechanical-neck-pain",
+      "contentRevision": "1",
+      "gapId": "gap.condition.cervical.mechanical-neck-pain",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.cervical.whiplash-associated-disorders",
+      "contentRevision": "1",
+      "gapId": "gap.condition.cervical.whiplash-associated-disorders",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.elbow.cubital-tunnel-syndrome",
+      "contentRevision": "1",
+      "gapId": "gap.condition.elbow.cubital-tunnel-syndrome",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.elbow.elbow-osteoarthritis",
+      "contentRevision": "1",
+      "gapId": "gap.condition.elbow.elbow-osteoarthritis",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.elbow.lateral-epicondylalgia",
+      "contentRevision": "1",
+      "gapId": "gap.condition.elbow.lateral-epicondylalgia",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.elbow.medial-epicondylalgia",
+      "contentRevision": "1",
+      "gapId": "gap.condition.elbow.medial-epicondylalgia",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.elbow.olecranon-bursitis",
+      "contentRevision": "1",
+      "gapId": "gap.condition.elbow.olecranon-bursitis",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.elbow.radial-tunnel-syndrome",
+      "contentRevision": "1",
+      "gapId": "gap.condition.elbow.radial-tunnel-syndrome",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.shoulder.acromioclavicular-joint",
+      "contentRevision": "1",
+      "gapId": "gap.condition.shoulder.acromioclavicular-joint",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.shoulder.adhesive-capsulitis",
+      "contentRevision": "1",
+      "gapId": "gap.condition.shoulder.adhesive-capsulitis",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.shoulder.calcific-tendinitis",
+      "contentRevision": "1",
+      "gapId": "gap.condition.shoulder.calcific-tendinitis",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.shoulder.labral-tears",
+      "contentRevision": "1",
+      "gapId": "gap.condition.shoulder.labral-tears",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.shoulder.rotator-cuff-tear",
+      "contentRevision": "1",
+      "gapId": "gap.condition.shoulder.rotator-cuff-tear",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.shoulder.rotator-cuff-tendinopathy",
+      "contentRevision": "1",
+      "gapId": "gap.condition.shoulder.rotator-cuff-tendinopathy",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.shoulder.shoulder-instability",
+      "contentRevision": "1",
+      "gapId": "gap.condition.shoulder.shoulder-instability",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.shoulder.subacromial-pain-syndrome",
+      "contentRevision": "1",
+      "gapId": "gap.condition.shoulder.subacromial-pain-syndrome",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.thoracic.costochondritis",
+      "contentRevision": "1",
+      "gapId": "gap.condition.thoracic.costochondritis",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.thoracic.scheuermanns-disease",
+      "contentRevision": "1",
+      "gapId": "gap.condition.thoracic.scheuermanns-disease",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.thoracic.thoracic-disc-herniation",
+      "contentRevision": "1",
+      "gapId": "gap.condition.thoracic.thoracic-disc-herniation",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.thoracic.thoracic-facet-joint-pain",
+      "contentRevision": "1",
+      "gapId": "gap.condition.thoracic.thoracic-facet-joint-pain",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.thoracic.thoracic-outlet-syndrome",
+      "contentRevision": "1",
+      "gapId": "gap.condition.thoracic.thoracic-outlet-syndrome",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.thoracic.thoracic-radiculopathy",
+      "contentRevision": "1",
+      "gapId": "gap.condition.thoracic.thoracic-radiculopathy",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.wrist-hand.carpal-tunnel-syndrome",
+      "contentRevision": "1",
+      "gapId": "gap.condition.wrist-hand.carpal-tunnel-syndrome",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.wrist-hand.de-quervains-tenosynovitis",
+      "contentRevision": "1",
+      "gapId": "gap.condition.wrist-hand.de-quervains-tenosynovitis",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.wrist-hand.dupuytrens-contracture",
+      "contentRevision": "1",
+      "gapId": "gap.condition.wrist-hand.dupuytrens-contracture",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.wrist-hand.scaphoid-fracture",
+      "contentRevision": "1",
+      "gapId": "gap.condition.wrist-hand.scaphoid-fracture",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.wrist-hand.tfcc-injury",
+      "contentRevision": "1",
+      "gapId": "gap.condition.wrist-hand.tfcc-injury",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.wrist-hand.thumb-cmc-osteoarthritis",
+      "contentRevision": "1",
+      "gapId": "gap.condition.wrist-hand.thumb-cmc-osteoarthritis",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    },
+    {
+      "blockers": [
+        "No approved Evidence Hub evidence record is pinned to this exact content revision.",
+        "Evidence review remains a human-controlled gate."
+      ],
+      "contentId": "condition.wrist-hand.trigger-finger",
+      "contentRevision": "1",
+      "gapId": "gap.condition.wrist-hand.trigger-finger",
+      "gapTypes": [
+        "missing-evidence-record",
+        "missing-evidence-review",
+        "missing-revision-pinned-relationship"
+      ],
+      "lifecycleState": "active",
+      "nextAction": "Create and independently review a revision-pinned evidence relationship.",
+      "publicEligibility": false,
+      "reviewState": "recorded",
+      "schemaVersion": 1
+    }
+  ],
+  "schemaVersion": 1
+}

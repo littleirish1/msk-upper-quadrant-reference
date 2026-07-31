@@ -26,6 +26,14 @@ export const CONTENT_PRODUCTION_OUTPUTS = [
   'reports/programmes/upper-quadrant-production.json',
 ]
 
+export const EVIDENCE_HUB_OUTPUTS = [
+  'content/evidence-hub/gaps/index.json',
+  'content/evidence-hub/surveillance/index.json',
+  'reports/programmes/evidence-gap-summary.md',
+  'reports/programmes/evidence-relationship-coverage.json',
+  'reports/programmes/evidence-surveillance-summary.md',
+]
+
 export function readJson(file) {
   return JSON.parse(fs.readFileSync(file, 'utf8'))
 }
