@@ -49,8 +49,16 @@ const securityToolingCategoryAllowances = new Map([
   ['ai-manager/scripts/test-source-intake-validation.mjs', new Set(['unc-path'])],
   ['ai-manager/scripts/validate-source-intake-pilot.mjs', new Set(['uk-postcode', 'unc-path'])],
   ['ai-manager/tests/test_source_intake_hardening.py', new Set(['contact-or-correspondence-block'])],
+  ['scripts/check-review-packet-redaction.mjs', new Set(['unc-path'])],
   ['scripts/test-review-packet-exactness.mjs', new Set(['patient-or-hospital-identifier', 'unc-path'])],
-  ['scripts/test-review-packet-redaction.mjs', new Set(['patient-or-hospital-identifier'])],
+  ['scripts/test-review-packet-redaction.mjs', new Set([
+    'contact-or-correspondence-block',
+    'credential-value',
+    'nhs-number',
+    'patient-or-hospital-identifier',
+    'telephone-number',
+    'unc-path',
+  ])],
 ])
 const packetCredentialValueRules = [
   new RegExp(`\\b(?:${['A', 'KIA'].join('')}|${['A', 'SIA'].join('')})[A-Z0-9]{16}\\b`, 'g'),
