@@ -204,6 +204,9 @@ try {
   assertions++
 } finally {
   fs.rmSync(detachedRoot, { recursive: true, force: true })
+  if (process.platform === 'win32') {
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 500)
+  }
 }
 
 const expectedNode = '20.20.2'
