@@ -104,6 +104,17 @@ The public learner site remains a static export:
 - Clinical changes identify whether clinician sign-off is required.
 - Review evidence follows `docs/REVIEW_WORKFLOW.md`.
 
+## Cross-Programme Inventory And Risk Register
+
+The generated inventory and dependency risk register are private governance
+artifacts under `reports/governance/`. They are checked by
+`npm run check:programmes` and do not create a public dashboard route.
+
+Dependency audit findings require an explicit treatment decision. Static-export
+reachability may be recorded as a control, but it does not mark a vulnerable
+package resolved. Automatic audit fixes and unreviewed lockfile churn remain
+prohibited.
+
 ## Sensitive Review Evidence
 
 Review evidence follows the same information-governance boundary as runtime output.
