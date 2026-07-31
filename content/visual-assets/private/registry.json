@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "schemaVersion": 1,
+      "id": "visual.prototype.body-model",
+      "title": "Internal body-model prototype",
+      "assetType": "model-3d",
+      "repositoryPath": null,
+      "checksum": null,
+      "source": "Internal prototype source; asset provenance is not approved.",
+      "ownershipOrLicence": "unknown",
+      "permittedUse": "private-review",
+      "altText": "",
+      "clinicalReviewState": "required",
+      "accessibilityReviewState": "required",
+      "publicationState": "blocked",
+      "blockers": [
+        "Ownership and licence are not approved.",
+        "Clinical labels are not approved.",
+        "Accessibility and performance review are incomplete."
+      ]
+    }
+  ]
+}

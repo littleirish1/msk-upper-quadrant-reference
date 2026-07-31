@@ -455,6 +455,11 @@ export const visualAssetRecordSchema = z.object({
   }
 })
 
+export const visualAssetRegistrySchema = z.object({
+  schemaVersion: z.literal(PROGRAMME_SCHEMA_VERSION),
+  assets: z.array(visualAssetRecordSchema),
+}).strict()
+
 export const exactRevisionReviewSchema = z.object({
   schemaVersion: z.literal(PROGRAMME_SCHEMA_VERSION),
   reviewId: stableIdSchema,

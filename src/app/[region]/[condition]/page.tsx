@@ -15,6 +15,7 @@ import { mdxComponents } from '@/components/mdx/MDXComponents'
 import { QuickFacts } from '@/components/ui/QuickFacts'
 import { ConditionPageClient } from '@/components/ui/ConditionPageClient'
 import { Clock, Tag } from 'lucide-react'
+import { LearningJourneyLinks } from '@/components/ui/LearningJourneyLinks'
 
 interface Props {
   params: { region: string; condition: string }
@@ -98,6 +99,8 @@ export default async function ConditionPage({ params }: Props) {
             Browse neutral guided cases
           </Link>
         </section>
+
+        <LearningJourneyLinks current="condition" regionHref={`/${regionSlug}`} />
 
         {/* Section anchor nav (mobile-friendly pills) */}
         {result.sections.length > 0 && (

@@ -6,6 +6,7 @@ import { REGIONS, getRegion } from '@/data/taxonomy'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
 import { getPublicConditionsForRegion } from '@/lib/publicConditions'
+import { LearningJourneyLinks } from '@/components/ui/LearningJourneyLinks'
 
 interface Props {
   params: { region: string }
@@ -68,6 +69,8 @@ export default function RegionPage({ params }: Props) {
           {region.label}
         </h1>
         <p className="mb-8 text-surface-500 dark:text-surface-400">{region.description}</p>
+
+        <LearningJourneyLinks current="region" regionHref={`/${region.slug}`} />
 
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {region.conditions.filter((condition) => publicConditionSlugs.has(condition.slug)).map(condition => {
