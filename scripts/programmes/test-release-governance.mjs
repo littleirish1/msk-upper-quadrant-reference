@@ -244,13 +244,20 @@ function runNode(root, script, args = [], env = releaseEnv()) {
 }
 
 function copyTrackedTree(destination) {
-  const tracked = spawnSync('git', ['ls-files', '-z'], {
-    cwd: ROOT,
-    encoding: 'utf8',
-    shell: false,
-    windowsHide: true,
-  })
-  if (tracked.status !== 0) throw new Error('Unable to enumerate tracked fixture files.')
+  let tracked = null
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    tracked = spawnSync('git', ['ls-files', '-z'], {
+      cwd: ROOT,
+      encoding: 'utf8',
+      shell: false,
+      windowsHide: true,
+      maxBuffer: 4 * 1024 * 1024,
+    })
+    if (tracked.status === 0) break
+  }
+  if (!tracked || tracked.status !== 0) {
+    throw new Error('Unable to enumerate tracked fixture files after three attempts.')
+  }
   for (const relative of tracked.stdout.split('\0').filter(Boolean)) {
     const source = path.join(ROOT, relative)
     const target = path.join(destination, relative)
