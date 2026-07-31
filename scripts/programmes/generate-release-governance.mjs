@@ -1,5 +1,4 @@
 import crypto from 'node:crypto'
-import { spawnSync } from 'node:child_process'
 import path from 'node:path'
 import {
   RELEASE_OUTPUTS,
@@ -9,6 +8,7 @@ import {
   stableJson,
   writeText,
 } from './shared.mjs'
+import { formatReleaseGitMetadata, resolveReleaseGitState } from './releaseGitState.mjs'
 
 const outputArgument = process.argv.find((item) => item.startsWith('--output='))
 const outputRoot = outputArgument ? path.resolve(outputArgument.slice('--output='.length)) : ROOT
@@ -16,7 +16,7 @@ const schemas = await loadProgrammeSchemas()
 const inventory = readJson(path.join(ROOT, 'reports', 'governance', 'project-inventory.json'))
 const gaps = readJson(path.join(ROOT, 'content', 'evidence-hub', 'gaps', 'index.json'))
 const risks = readJson(path.join(ROOT, 'reports', 'governance', 'dependency-risk-register.json'))
-const baseline = git('merge-base', 'main', 'HEAD')
+const gitState = resolveReleaseGitState({ root: ROOT })
 const inputDigest = `sha256:${crypto.createHash('sha256')
   .update(stableJson({ inventory, gaps, risks }))
   .digest('hex')}`
@@ -107,7 +107,7 @@ const maintenance = {
 const candidate = schemas.releaseCandidateSchema.parse({
   schemaVersion: 1,
   candidateId: 'release.programmes-1-6-v1',
-  baselineCommit: baseline,
+  baselineCommit: inventory.baselineCommit,
   inputDigest,
   status: 'blocked',
   publicRouteCount: inventory.items.filter((item) => item.contentType === 'public-route').length,
@@ -157,11 +157,6 @@ const values = new Map([
   [RELEASE_OUTPUTS[5], summary],
 ])
 for (const [file, text] of values) writeText(outputRoot, file, text)
+console.log(`Release Git metadata: ${formatReleaseGitMetadata(gitState)}`)
 console.log(`Release governance generated. Reviews pending: ${reviews.length}; status: blocked.`)
 if (process.argv.includes('--assert-candidate')) process.exit(2)
-
-function git(...args) {
-  const run = spawnSync('git', args, { cwd: ROOT, encoding: 'utf8', shell: false })
-  if (run.status !== 0) throw new Error(run.stderr || run.stdout)
-  return run.stdout.trim()
-}
