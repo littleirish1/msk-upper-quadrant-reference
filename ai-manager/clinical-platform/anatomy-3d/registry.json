@@ -1,0 +1,511 @@
+{
+  "assets": [
+    {
+      "assetHash": null,
+      "assetPath": null,
+      "attribution": "required before use",
+      "blockers": [
+        "No governed source asset is present.",
+        "Source, creator, licence, permitted use and attribution are unknown.",
+        "Anatomy, clinical, accessibility, performance and publication review are pending."
+      ],
+      "budgets": {
+        "budgetReviewState": "required",
+        "lazyLoadRequired": true,
+        "maxDecodedBytes": 67108864,
+        "maxMobileTriangles": 100000,
+        "maxTextureBytes": 4194304,
+        "unrelatedRouteBundleBytes": 0
+      },
+      "creator": "unknown",
+      "id": "asset3d.cervical.review-slot",
+      "interactions": [
+        "rotate",
+        "zoom",
+        "pan",
+        "reset",
+        "isolate",
+        "hide-show",
+        "transparency",
+        "select",
+        "labels",
+        "origin-insertion",
+        "muscle-actions",
+        "related-content",
+        "keyboard-controls"
+      ],
+      "licence": "unknown",
+      "nonVisualEquivalent": {
+        "keyboardOperation": true,
+        "structureBrowser": true,
+        "textRelationships": true,
+        "transcriptRequired": true,
+        "webglFallbackRequired": true
+      },
+      "permittedUse": "none",
+      "publicEligibility": false,
+      "region": "cervical",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedMovementIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "licence": "required",
+        "performance": "required",
+        "provenance": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "source": "unknown",
+      "structures": [],
+      "title": "cervical governed 3D review slot"
+    },
+    {
+      "assetHash": null,
+      "assetPath": null,
+      "attribution": "required before use",
+      "blockers": [
+        "No governed source asset is present.",
+        "Source, creator, licence, permitted use and attribution are unknown.",
+        "Anatomy, clinical, accessibility, performance and publication review are pending."
+      ],
+      "budgets": {
+        "budgetReviewState": "required",
+        "lazyLoadRequired": true,
+        "maxDecodedBytes": 67108864,
+        "maxMobileTriangles": 100000,
+        "maxTextureBytes": 4194304,
+        "unrelatedRouteBundleBytes": 0
+      },
+      "creator": "unknown",
+      "id": "asset3d.shoulder.review-slot",
+      "interactions": [
+        "rotate",
+        "zoom",
+        "pan",
+        "reset",
+        "isolate",
+        "hide-show",
+        "transparency",
+        "select",
+        "labels",
+        "origin-insertion",
+        "muscle-actions",
+        "related-content",
+        "keyboard-controls"
+      ],
+      "licence": "unknown",
+      "nonVisualEquivalent": {
+        "keyboardOperation": true,
+        "structureBrowser": true,
+        "textRelationships": true,
+        "transcriptRequired": true,
+        "webglFallbackRequired": true
+      },
+      "permittedUse": "none",
+      "publicEligibility": false,
+      "region": "shoulder",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedMovementIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "licence": "required",
+        "performance": "required",
+        "provenance": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "source": "unknown",
+      "structures": [],
+      "title": "shoulder governed 3D review slot"
+    },
+    {
+      "assetHash": null,
+      "assetPath": null,
+      "attribution": "required before use",
+      "blockers": [
+        "No governed source asset is present.",
+        "Source, creator, licence, permitted use and attribution are unknown.",
+        "Anatomy, clinical, accessibility, performance and publication review are pending."
+      ],
+      "budgets": {
+        "budgetReviewState": "required",
+        "lazyLoadRequired": true,
+        "maxDecodedBytes": 67108864,
+        "maxMobileTriangles": 100000,
+        "maxTextureBytes": 4194304,
+        "unrelatedRouteBundleBytes": 0
+      },
+      "creator": "unknown",
+      "id": "asset3d.elbow.review-slot",
+      "interactions": [
+        "rotate",
+        "zoom",
+        "pan",
+        "reset",
+        "isolate",
+        "hide-show",
+        "transparency",
+        "select",
+        "labels",
+        "origin-insertion",
+        "muscle-actions",
+        "related-content",
+        "keyboard-controls"
+      ],
+      "licence": "unknown",
+      "nonVisualEquivalent": {
+        "keyboardOperation": true,
+        "structureBrowser": true,
+        "textRelationships": true,
+        "transcriptRequired": true,
+        "webglFallbackRequired": true
+      },
+      "permittedUse": "none",
+      "publicEligibility": false,
+      "region": "elbow",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedMovementIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "licence": "required",
+        "performance": "required",
+        "provenance": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "source": "unknown",
+      "structures": [],
+      "title": "elbow governed 3D review slot"
+    },
+    {
+      "assetHash": null,
+      "assetPath": null,
+      "attribution": "required before use",
+      "blockers": [
+        "No governed source asset is present.",
+        "Source, creator, licence, permitted use and attribution are unknown.",
+        "Anatomy, clinical, accessibility, performance and publication review are pending."
+      ],
+      "budgets": {
+        "budgetReviewState": "required",
+        "lazyLoadRequired": true,
+        "maxDecodedBytes": 67108864,
+        "maxMobileTriangles": 100000,
+        "maxTextureBytes": 4194304,
+        "unrelatedRouteBundleBytes": 0
+      },
+      "creator": "unknown",
+      "id": "asset3d.wrist-hand.review-slot",
+      "interactions": [
+        "rotate",
+        "zoom",
+        "pan",
+        "reset",
+        "isolate",
+        "hide-show",
+        "transparency",
+        "select",
+        "labels",
+        "origin-insertion",
+        "muscle-actions",
+        "related-content",
+        "keyboard-controls"
+      ],
+      "licence": "unknown",
+      "nonVisualEquivalent": {
+        "keyboardOperation": true,
+        "structureBrowser": true,
+        "textRelationships": true,
+        "transcriptRequired": true,
+        "webglFallbackRequired": true
+      },
+      "permittedUse": "none",
+      "publicEligibility": false,
+      "region": "wrist-hand",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedMovementIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "licence": "required",
+        "performance": "required",
+        "provenance": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "source": "unknown",
+      "structures": [],
+      "title": "wrist hand governed 3D review slot"
+    },
+    {
+      "assetHash": null,
+      "assetPath": null,
+      "attribution": "required before use",
+      "blockers": [
+        "No governed source asset is present.",
+        "Source, creator, licence, permitted use and attribution are unknown.",
+        "Anatomy, clinical, accessibility, performance and publication review are pending."
+      ],
+      "budgets": {
+        "budgetReviewState": "required",
+        "lazyLoadRequired": true,
+        "maxDecodedBytes": 67108864,
+        "maxMobileTriangles": 100000,
+        "maxTextureBytes": 4194304,
+        "unrelatedRouteBundleBytes": 0
+      },
+      "creator": "unknown",
+      "id": "asset3d.lumbar.review-slot",
+      "interactions": [
+        "rotate",
+        "zoom",
+        "pan",
+        "reset",
+        "isolate",
+        "hide-show",
+        "transparency",
+        "select",
+        "labels",
+        "origin-insertion",
+        "muscle-actions",
+        "related-content",
+        "keyboard-controls"
+      ],
+      "licence": "unknown",
+      "nonVisualEquivalent": {
+        "keyboardOperation": true,
+        "structureBrowser": true,
+        "textRelationships": true,
+        "transcriptRequired": true,
+        "webglFallbackRequired": true
+      },
+      "permittedUse": "none",
+      "publicEligibility": false,
+      "region": "lumbar",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedMovementIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "licence": "required",
+        "performance": "required",
+        "provenance": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "source": "unknown",
+      "structures": [],
+      "title": "lumbar governed 3D review slot"
+    },
+    {
+      "assetHash": null,
+      "assetPath": null,
+      "attribution": "required before use",
+      "blockers": [
+        "No governed source asset is present.",
+        "Source, creator, licence, permitted use and attribution are unknown.",
+        "Anatomy, clinical, accessibility, performance and publication review are pending."
+      ],
+      "budgets": {
+        "budgetReviewState": "required",
+        "lazyLoadRequired": true,
+        "maxDecodedBytes": 67108864,
+        "maxMobileTriangles": 100000,
+        "maxTextureBytes": 4194304,
+        "unrelatedRouteBundleBytes": 0
+      },
+      "creator": "unknown",
+      "id": "asset3d.hip.review-slot",
+      "interactions": [
+        "rotate",
+        "zoom",
+        "pan",
+        "reset",
+        "isolate",
+        "hide-show",
+        "transparency",
+        "select",
+        "labels",
+        "origin-insertion",
+        "muscle-actions",
+        "related-content",
+        "keyboard-controls"
+      ],
+      "licence": "unknown",
+      "nonVisualEquivalent": {
+        "keyboardOperation": true,
+        "structureBrowser": true,
+        "textRelationships": true,
+        "transcriptRequired": true,
+        "webglFallbackRequired": true
+      },
+      "permittedUse": "none",
+      "publicEligibility": false,
+      "region": "hip",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedMovementIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "licence": "required",
+        "performance": "required",
+        "provenance": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "source": "unknown",
+      "structures": [],
+      "title": "hip governed 3D review slot"
+    },
+    {
+      "assetHash": null,
+      "assetPath": null,
+      "attribution": "required before use",
+      "blockers": [
+        "No governed source asset is present.",
+        "Source, creator, licence, permitted use and attribution are unknown.",
+        "Anatomy, clinical, accessibility, performance and publication review are pending."
+      ],
+      "budgets": {
+        "budgetReviewState": "required",
+        "lazyLoadRequired": true,
+        "maxDecodedBytes": 67108864,
+        "maxMobileTriangles": 100000,
+        "maxTextureBytes": 4194304,
+        "unrelatedRouteBundleBytes": 0
+      },
+      "creator": "unknown",
+      "id": "asset3d.knee.review-slot",
+      "interactions": [
+        "rotate",
+        "zoom",
+        "pan",
+        "reset",
+        "isolate",
+        "hide-show",
+        "transparency",
+        "select",
+        "labels",
+        "origin-insertion",
+        "muscle-actions",
+        "related-content",
+        "keyboard-controls"
+      ],
+      "licence": "unknown",
+      "nonVisualEquivalent": {
+        "keyboardOperation": true,
+        "structureBrowser": true,
+        "textRelationships": true,
+        "transcriptRequired": true,
+        "webglFallbackRequired": true
+      },
+      "permittedUse": "none",
+      "publicEligibility": false,
+      "region": "knee",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedMovementIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "licence": "required",
+        "performance": "required",
+        "provenance": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "source": "unknown",
+      "structures": [],
+      "title": "knee governed 3D review slot"
+    },
+    {
+      "assetHash": null,
+      "assetPath": null,
+      "attribution": "required before use",
+      "blockers": [
+        "No governed source asset is present.",
+        "Source, creator, licence, permitted use and attribution are unknown.",
+        "Anatomy, clinical, accessibility, performance and publication review are pending."
+      ],
+      "budgets": {
+        "budgetReviewState": "required",
+        "lazyLoadRequired": true,
+        "maxDecodedBytes": 67108864,
+        "maxMobileTriangles": 100000,
+        "maxTextureBytes": 4194304,
+        "unrelatedRouteBundleBytes": 0
+      },
+      "creator": "unknown",
+      "id": "asset3d.ankle-foot.review-slot",
+      "interactions": [
+        "rotate",
+        "zoom",
+        "pan",
+        "reset",
+        "isolate",
+        "hide-show",
+        "transparency",
+        "select",
+        "labels",
+        "origin-insertion",
+        "muscle-actions",
+        "related-content",
+        "keyboard-controls"
+      ],
+      "licence": "unknown",
+      "nonVisualEquivalent": {
+        "keyboardOperation": true,
+        "structureBrowser": true,
+        "textRelationships": true,
+        "transcriptRequired": true,
+        "webglFallbackRequired": true
+      },
+      "permittedUse": "none",
+      "publicEligibility": false,
+      "region": "ankle-foot",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedMovementIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "licence": "required",
+        "performance": "required",
+        "provenance": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "source": "unknown",
+      "structures": [],
+      "title": "ankle foot governed 3D review slot"
+    }
+  ],
+  "authority": "governed-anatomy-3d-registry",
+  "privateAuthoringOnly": true,
+  "schemaVersion": 1
+}

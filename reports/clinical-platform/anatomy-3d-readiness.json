@@ -1,0 +1,42 @@
+{
+  "governedAssetsPresent": 0,
+  "interactionsSupported": [
+    "rotate",
+    "zoom",
+    "pan",
+    "reset",
+    "isolate",
+    "hide-show",
+    "transparency",
+    "select",
+    "labels",
+    "origin-insertion",
+    "muscle-actions",
+    "related-content",
+    "keyboard-controls"
+  ],
+  "lazyLoadRequired": true,
+  "licenceBlockers": 8,
+  "nonVisualEquivalentsRequired": 8,
+  "publicAssets": 0,
+  "publicRoutes": 0,
+  "regionalSceneSlots": 8,
+  "schemaVersion": 1,
+  "structureTypesSupported": [
+    "bone",
+    "joint",
+    "articular-surface",
+    "ligament",
+    "tendon",
+    "muscle",
+    "origin",
+    "insertion",
+    "nerve",
+    "vessel",
+    "landmark",
+    "plane",
+    "axis",
+    "regional-relationship"
+  ],
+  "unrelatedRouteBundleBytes": 0
+}
