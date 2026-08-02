@@ -1,0 +1,1086 @@
+{
+  "personalDisplayNamesIncluded": false,
+  "records": [
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "7fa74fe27fde6453a19d8654112f20bb1d98cd3217a1d97214f673e68d7cfcd7",
+      "stationId": "s1",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "c36d9a35adec34384a9dc9870ca9949ddd737b7d4299f27c5ca6041c00f57b0f",
+      "stationId": "s2",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "608d988737e7a38fd82859f154a8c709c057cf7d774dd7c277619251ab10f3e4",
+      "stationId": "s3",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "3c96c83d9227062afc278f6db77e99e37cc9bb850bc48456d694b8008713287c",
+      "stationId": "s4",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "a399a5af3ecb979e49c6e5144d83b2066cda8fe9ec66ff431f6fe6140e0b62ea",
+      "stationId": "s5",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "fc17710591e0dc3cf543045f805831d8642ed86b84f62f813aeab64869f87ed2",
+      "stationId": "s6",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "71e7751a95757529b6dd7b502e32c9b5e5129de9bcd9b4c70a60b36e413f705f",
+      "stationId": "s7",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "2fdc5864695d7f702f0d8099621389f00345570187b65bb58e4915e1da2dff07",
+      "stationId": "s8",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "f149b34d090f7d9d47df87d8c10042bcef8f47da0077345a41397e5ac02e5e48",
+      "stationId": "s9",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "51ce68c318d22610496be7c2c830332b723d17d4fad70a6f5e7d8c31fdd0355f",
+      "stationId": "s10",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "54a969aa74bbd06e02967c66e42562165c1f10284ce50b98dda5e4cc5ee57182",
+      "stationId": "s11",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "c2a2f8a77e6dccc8436f2f8c7579d9782c2353c5a0f77004cfcfea64997f1a1d",
+      "stationId": "s12",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "6ecccbe8aa0b11fb0701189fc703e2cf33d8cda29855bb8e10b007116178cb6c",
+      "stationId": "s13",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "3d8d3d87375033959f840f9994292726ad9df4a676982b7038979bd4089d3624",
+      "stationId": "s14",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "ab5166cc6df92c0b7c24489408b61ce6b00ec0f227b1c364bc3149cc5dfae8c8",
+      "stationId": "s15",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "1d11f46acd163ff17ac1a784f977df4559649f32059605005f7f1c163734d2ae",
+      "stationId": "s16",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "1b1cc67bfb935a39372c3c38335fc7b67c3f549c1e1c9f770b52ad0784c4c4f6",
+      "stationId": "s17",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "77acbb7081513bb3a601d7d1ba41a757e85f1a3df05de0a924d586b49be00be2",
+      "stationId": "s18",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "c4ac511ce6369f38e4f4cd02e92070f3f19ee82003f5c9cde87e15336a12d6c1",
+      "stationId": "s19",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "baseline-reviewed",
+      "blockers": [],
+      "classification": "baseline-public-converted",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": "published",
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": true,
+      "recipeId": null,
+      "sourceRevision": "d3599b031ac46c5a1bcec4b0904195ab50b2d8e70e587e30d4d0b32b2e33809f",
+      "stationId": "s20",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "b9fd71b0720b8d83015bf816a624fad8f79b31eecf206f002baae44ea9d17690",
+      "stationId": "s21",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "387bb4e5fdd0e8316378b13510969c589d6240f60fe54e52bab6afd0f501c51f",
+      "stationId": "s22",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "3c5bb73a05206e4a24adfb66488ad554e29a8e11c42f3aa49702fd7b0d776a0f",
+      "stationId": "s23",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "f1f2b1456cb55a192b3afecd6d5e8d7aca07af1644c16bd77da77c096a087ee2",
+      "stationId": "s24",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "a2db1bd4b6b3abc13f9701bec516b98f4cfe12caf5d76fb5d91dd68ca6bc52cf",
+      "stationId": "s25",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "8de18060b1d08ce3ee09d4890d96e309df1647f2f76693a7ad81cd97760643c2",
+      "stationId": "s26",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "2fafeba31702c8c27b2b99f0636ca248fc7ccd3ae625ffc3fa623ee79e0ffa89",
+      "stationId": "s27",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "baseline-reviewed",
+      "blockers": [],
+      "classification": "baseline-public-converted",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": "published",
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": true,
+      "recipeId": null,
+      "sourceRevision": "4096e8da3b1b819b42a8092cdfe3a13791d1b01c7e96e751cb600886acedcf2e",
+      "stationId": "s28",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "d10a05e12760c788c7744be23a8bc8bcc9e3709f65c04917ca716dcdbca11778",
+      "stationId": "s29",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "0c56a5aee504c892dbf36f35c66f2ef449ff57d90021266a07270f5d1c96d63d",
+      "stationId": "s30",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "15a168922d97045d4b2e61c756233d9c7edf1398e7d1ad9d05ecd0fe49a18bdd",
+      "stationId": "s31",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "959a7532cc943e73696d4917d248472d86adec387e9e0406d222a04a613e8102",
+      "stationId": "s32",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "4adfeff41a7484b310474ba7252cf126253379197a153b8ef014a8bdfd09351c",
+      "stationId": "s33",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "cf01957692bf0b50e4c8c0e8959c633354a07a1090c70458e1242b640a099f6c",
+      "stationId": "s34",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "2e8f6ec8f4722b5f401731877c9ff1daa9718561c2624807ef44b6e802887391",
+      "stationId": "s35",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "d27855a2cdc0d65a3a8357d2356643a6078d92185be280698f37022975e97d0c",
+      "stationId": "s36",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "1f1e1d510e13069e26ad9de261ad94057f686284b6cfd23a54ffe03e86d9e6bc",
+      "stationId": "s39",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "governed-draft-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": "draft",
+      "modeDrafts": {
+        "conversation": false,
+        "guided": true,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "71aed8419e2101b2ddd2edb1af928556ec22865a402f8008b2f7801a4ce3450f",
+      "stationId": "s40",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "158d91e3b014a5dc701685174aa759976d77efea8ac90187234fedc14320ff1b",
+      "stationId": "s41",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "governed-draft-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": "draft",
+      "modeDrafts": {
+        "conversation": false,
+        "guided": true,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "2a5bc5435b3128e946d62e1ab7c2fed69c15b5a16b581da3c386d184f5b95ab9",
+      "stationId": "s42",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "6f25e0c6ea01a792288726b972d0040cdaeff57e0e5438471a038566b76c4590",
+      "stationId": "s43",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "baseline-reviewed",
+      "blockers": [],
+      "classification": "baseline-public-converted",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": "published",
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": true,
+      "recipeId": null,
+      "sourceRevision": "a515fce442ef2dc8e117b12641d11bea8090538be7ccd3bc55624b52c84e048c",
+      "stationId": "s44",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "75d0cb9ce62844bc30774aed0f004dab8428a768f1926b1388c4f75207a5a741",
+      "stationId": "s45",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "governed-draft-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": "draft",
+      "modeDrafts": {
+        "conversation": false,
+        "guided": true,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "cd86b4c12eb9a25511c2ca3246194762cae2ba659e0efb4552e04dfa8b201795",
+      "stationId": "s46",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "1fb7309652510bb5456f5e22aea58fbbdd0399189afba2525a18be3446834c9c",
+      "stationId": "s47",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "4198ef11bb8de3fce8d4969023eb1592cfb8c175140f4a258da4c0e091b67ef1",
+      "stationId": "s48",
+      "truthRecordId": null
+    },
+    {
+      "anonymisationStatus": "required",
+      "blockers": [
+        "Source sufficiency and anonymisation require human review.",
+        "Clinical mapping, exact evidence, source clearance and publication review are pending.",
+        "Missing truth, module, rule, recipe or mode content is not auto-filled."
+      ],
+      "classification": "source-insufficient-awaiting-review",
+      "compatibilityReportId": null,
+      "evidenceGapRecorded": true,
+      "existingTargetStatus": null,
+      "modeDrafts": {
+        "conversation": false,
+        "guided": false,
+        "hybrid": false
+      },
+      "moduleIds": [],
+      "publicEligibility": false,
+      "recipeId": null,
+      "sourceRevision": "c12cfa0c8abfe3c52da8325697f4ed43031525d62ab9f5260a02d9fe8ce222c6",
+      "stationId": "s49",
+      "truthRecordId": null
+    }
+  ],
+  "schemaVersion": 1,
+  "sourceBodiesIncluded": false,
+  "sourceId": "legacy-html-case-bank-v1",
+  "summary": {
+    "baselinePublicConverted": 3,
+    "governedDraftAwaitingReview": 3,
+    "newlyInventedAnswers": 0,
+    "newlyPublished": 0,
+    "sourceInsufficientAwaitingReview": 41,
+    "total": 47,
+    "unaccounted": 0
+  }
+}
