@@ -1,0 +1,285 @@
+{
+  "authority": "seeded-patient-recipes",
+  "recipes": [
+    {
+      "allowedVariation": "cosmetic",
+      "caseId": "case.cervical.case-01",
+      "comorbidityModuleIds": [],
+      "difficulty": "not-rated",
+      "distractorModuleIds": [],
+      "governance": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "publicationReview": "required",
+        "recipeApprovalHash": null
+      },
+      "lifecycle": "draft",
+      "moduleRevisions": [
+        {
+          "approvalHash": null,
+          "moduleId": "module.cervical.case-01.presentation",
+          "revision": 1
+        }
+      ],
+      "recipeId": "recipe.cervical.case-01.baseline",
+      "recipeRevision": 1,
+      "region": "cervical",
+      "ruleCatalogueRevision": 1,
+      "ruleDigest": "draft-catalogue-r1",
+      "schemaVersion": 1,
+      "targetReasoningObjective": "Preserve the source case reasoning objective without adding clinical claims.",
+      "truthHash": "b05d849dee55d349ef01710e284f88e2b147590f3813b82f3ded5503df28cd80",
+      "truthRecordId": "patient-truth.cervical.case-01"
+    },
+    {
+      "allowedVariation": "cosmetic",
+      "caseId": "case.cervical.case-02",
+      "comorbidityModuleIds": [],
+      "difficulty": "not-rated",
+      "distractorModuleIds": [],
+      "governance": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "publicationReview": "required",
+        "recipeApprovalHash": null
+      },
+      "lifecycle": "draft",
+      "moduleRevisions": [
+        {
+          "approvalHash": null,
+          "moduleId": "module.cervical.case-02.presentation",
+          "revision": 1
+        }
+      ],
+      "recipeId": "recipe.cervical.case-02.baseline",
+      "recipeRevision": 1,
+      "region": "cervical",
+      "ruleCatalogueRevision": 1,
+      "ruleDigest": "draft-catalogue-r1",
+      "schemaVersion": 1,
+      "targetReasoningObjective": "Preserve the source case reasoning objective without adding clinical claims.",
+      "truthHash": "e7b51b241f41d9932a596afbee8cf69f8b270ea321cbcd13a66a6fde65fbf738",
+      "truthRecordId": "patient-truth.cervical.case-02"
+    },
+    {
+      "allowedVariation": "cosmetic",
+      "caseId": "case.cervical.pilot-01",
+      "comorbidityModuleIds": [],
+      "difficulty": "not-rated",
+      "distractorModuleIds": [],
+      "governance": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "publicationReview": "required",
+        "recipeApprovalHash": null
+      },
+      "lifecycle": "draft",
+      "moduleRevisions": [
+        {
+          "approvalHash": null,
+          "moduleId": "module.cervical.pilot-01.presentation",
+          "revision": 1
+        }
+      ],
+      "recipeId": "recipe.cervical.pilot-01.baseline",
+      "recipeRevision": 1,
+      "region": "cervical",
+      "ruleCatalogueRevision": 1,
+      "ruleDigest": "draft-catalogue-r1",
+      "schemaVersion": 1,
+      "targetReasoningObjective": "Preserve the source case reasoning objective without adding clinical claims.",
+      "truthHash": "7d68be2817e0585e0db8ce182c0d32f6709c90ed17512e14c0884102f9716d2c",
+      "truthRecordId": "patient-truth.cervical.pilot-01"
+    },
+    {
+      "allowedVariation": "cosmetic",
+      "caseId": "case.elbow.case-03",
+      "comorbidityModuleIds": [],
+      "difficulty": "not-rated",
+      "distractorModuleIds": [],
+      "governance": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "publicationReview": "required",
+        "recipeApprovalHash": null
+      },
+      "lifecycle": "draft",
+      "moduleRevisions": [
+        {
+          "approvalHash": null,
+          "moduleId": "module.elbow.case-03.presentation",
+          "revision": 1
+        }
+      ],
+      "recipeId": "recipe.elbow.case-03.baseline",
+      "recipeRevision": 1,
+      "region": "elbow",
+      "ruleCatalogueRevision": 1,
+      "ruleDigest": "draft-catalogue-r1",
+      "schemaVersion": 1,
+      "targetReasoningObjective": "Preserve the source case reasoning objective without adding clinical claims.",
+      "truthHash": "db2c806efd7c2f32f6607c06cc9a4827608a71b4cdd2eebed6db16aa6cf73c88",
+      "truthRecordId": "patient-truth.elbow.case-03"
+    },
+    {
+      "allowedVariation": "cosmetic",
+      "caseId": "case.shoulder.case-04",
+      "comorbidityModuleIds": [],
+      "difficulty": "not-rated",
+      "distractorModuleIds": [],
+      "governance": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "publicationReview": "required",
+        "recipeApprovalHash": null
+      },
+      "lifecycle": "draft",
+      "moduleRevisions": [
+        {
+          "approvalHash": null,
+          "moduleId": "module.shoulder.case-04.presentation",
+          "revision": 1
+        }
+      ],
+      "recipeId": "recipe.shoulder.case-04.baseline",
+      "recipeRevision": 1,
+      "region": "shoulder",
+      "ruleCatalogueRevision": 1,
+      "ruleDigest": "draft-catalogue-r1",
+      "schemaVersion": 1,
+      "targetReasoningObjective": "Preserve the source case reasoning objective without adding clinical claims.",
+      "truthHash": "6d6a29a04802baad8d33e87af7e6a35dd51106c0a891c8a35cea60c56331c69f",
+      "truthRecordId": "patient-truth.shoulder.case-04"
+    },
+    {
+      "allowedVariation": "cosmetic",
+      "caseId": "case.shoulder.case-05",
+      "comorbidityModuleIds": [],
+      "difficulty": "not-rated",
+      "distractorModuleIds": [],
+      "governance": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "publicationReview": "required",
+        "recipeApprovalHash": null
+      },
+      "lifecycle": "draft",
+      "moduleRevisions": [
+        {
+          "approvalHash": null,
+          "moduleId": "module.shoulder.case-05.presentation",
+          "revision": 1
+        }
+      ],
+      "recipeId": "recipe.shoulder.case-05.baseline",
+      "recipeRevision": 1,
+      "region": "shoulder",
+      "ruleCatalogueRevision": 1,
+      "ruleDigest": "draft-catalogue-r1",
+      "schemaVersion": 1,
+      "targetReasoningObjective": "Preserve the source case reasoning objective without adding clinical claims.",
+      "truthHash": "9109db5737c02fb0551d1da8f4a7944bca9e30fc32ceab946e75add16fff5bb7",
+      "truthRecordId": "patient-truth.shoulder.case-05"
+    },
+    {
+      "allowedVariation": "cosmetic",
+      "caseId": "case.shoulder.pilot-02",
+      "comorbidityModuleIds": [],
+      "difficulty": "not-rated",
+      "distractorModuleIds": [],
+      "governance": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "publicationReview": "required",
+        "recipeApprovalHash": null
+      },
+      "lifecycle": "draft",
+      "moduleRevisions": [
+        {
+          "approvalHash": null,
+          "moduleId": "module.shoulder.pilot-02.presentation",
+          "revision": 1
+        }
+      ],
+      "recipeId": "recipe.shoulder.pilot-02.baseline",
+      "recipeRevision": 1,
+      "region": "shoulder",
+      "ruleCatalogueRevision": 1,
+      "ruleDigest": "draft-catalogue-r1",
+      "schemaVersion": 1,
+      "targetReasoningObjective": "Preserve the source case reasoning objective without adding clinical claims.",
+      "truthHash": "0e3e904a488905e9623459d094041980e2b39c0094b59cdc9b42db2909b2d7fd",
+      "truthRecordId": "patient-truth.shoulder.pilot-02"
+    },
+    {
+      "allowedVariation": "cosmetic",
+      "caseId": "case.thoracic.case-06",
+      "comorbidityModuleIds": [],
+      "difficulty": "not-rated",
+      "distractorModuleIds": [],
+      "governance": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "publicationReview": "required",
+        "recipeApprovalHash": null
+      },
+      "lifecycle": "draft",
+      "moduleRevisions": [
+        {
+          "approvalHash": null,
+          "moduleId": "module.thoracic.case-06.presentation",
+          "revision": 1
+        }
+      ],
+      "recipeId": "recipe.thoracic.case-06.baseline",
+      "recipeRevision": 1,
+      "region": "thoracic",
+      "ruleCatalogueRevision": 1,
+      "ruleDigest": "draft-catalogue-r1",
+      "schemaVersion": 1,
+      "targetReasoningObjective": "Preserve the source case reasoning objective without adding clinical claims.",
+      "truthHash": "a16e186d46841357921c3da3d492e7193806a9d2d08f90de2f365e35e3358bc1",
+      "truthRecordId": "patient-truth.thoracic.case-06"
+    },
+    {
+      "allowedVariation": "cosmetic",
+      "caseId": "case.wrist-hand.pilot-03",
+      "comorbidityModuleIds": [],
+      "difficulty": "not-rated",
+      "distractorModuleIds": [],
+      "governance": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "publicationReview": "required",
+        "recipeApprovalHash": null
+      },
+      "lifecycle": "draft",
+      "moduleRevisions": [
+        {
+          "approvalHash": null,
+          "moduleId": "module.wrist-hand.pilot-03.presentation",
+          "revision": 1
+        }
+      ],
+      "recipeId": "recipe.wrist-hand.pilot-03.baseline",
+      "recipeRevision": 1,
+      "region": "wrist-hand",
+      "ruleCatalogueRevision": 1,
+      "ruleDigest": "draft-catalogue-r1",
+      "schemaVersion": 1,
+      "targetReasoningObjective": "Preserve the source case reasoning objective without adding clinical claims.",
+      "truthHash": "71ac312d0d0c350d60aa0286054c1882cb47c37605d5ba0fca621b444b856bf4",
+      "truthRecordId": "patient-truth.wrist-hand.pilot-03"
+    }
+  ],
+  "schemaVersion": 1
+}

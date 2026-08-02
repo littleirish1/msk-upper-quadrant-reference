@@ -1,0 +1,34 @@
+{
+  "difficultyReport": {
+    "notRatedRecipes": 9,
+    "ratedRecipes": 0
+  },
+  "diversityReport": {
+    "authoritativeClinicalVariants": 0,
+    "cosmeticAliasSpace": 676000
+  },
+  "evidenceGaps": 360,
+  "humanReviewPacketRequired": true,
+  "privateRecipes": 9,
+  "publicRecipes": 0,
+  "recipes": 9,
+  "reproducibility": {
+    "authoritativeTruthImmutable": true,
+    "byteEquivalentForSameInputs": true
+  },
+  "scans": {
+    "contradictionCount": 0,
+    "disclosureViolationCount": 0,
+    "escalationRequirementCount": 0,
+    "evidenceGapCount": 40
+  },
+  "schemaVersion": 1,
+  "similarityWarnings": [
+    "All recipes preserve an existing source case and are not independent clinical variants."
+  ],
+  "variationSupport": [
+    "cosmetic",
+    "clinical-blocked-until-approved",
+    "complex-blocked-until-approved"
+  ]
+}

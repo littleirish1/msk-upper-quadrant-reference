@@ -1,0 +1,31 @@
+{
+  "authoritativeTruthHash": "b05d849dee55d349ef01710e284f88e2b147590f3813b82f3ded5503df28cd80",
+  "manifest": {
+    "authoritativeOutputHash": "bdfeb51b34f5532493fdd7bd857f24be767e0d84c87d0aa824e6c4c953475dd4",
+    "instanceId": "pt-d068e86fa9353929",
+    "moduleRevisions": [
+      {
+        "moduleId": "module.cervical.case-01.presentation",
+        "revision": 1
+      }
+    ],
+    "patientAlias": "Patient SK-581",
+    "publicEligibility": false,
+    "purpose": "private-preview",
+    "recipeId": "recipe.cervical.case-01.baseline",
+    "recipeRevision": 1,
+    "ruleCatalogueRevision": 1,
+    "ruleDigest": "draft-catalogue-r1",
+    "scans": {
+      "contradictionCount": 0,
+      "disclosureViolationCount": 0,
+      "escalationRequirementCount": 0,
+      "evidenceGapCount": 40
+    },
+    "schemaVersion": 1,
+    "seedHash": "2b6d49b512721880547cc4b58c8ba20c21de14cc9a8db2e9c10f9257cca1c7e4",
+    "truthHash": "b05d849dee55d349ef01710e284f88e2b147590f3813b82f3ded5503df28cd80",
+    "truthRecordId": "patient-truth.cervical.case-01",
+    "variationLevel": "cosmetic"
+  }
+}

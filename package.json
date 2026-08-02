@@ -10,6 +10,8 @@
   "test:truth": "node scripts/clinical-platform/test-truth-records.mjs",
   "rules:generate": "node scripts/clinical-platform/generate-compatibility-rules.mjs",
   "test:rules": "node scripts/clinical-platform/test-compatibility.mjs",
+  "patients:generate": "node scripts/clinical-platform/generate-patient-recipes.mjs",
+  "test:patients": "node scripts/clinical-platform/test-seeded-generator.mjs",
   "dev": "next dev",
   "prebuild": "npm run cases:generate && npm run build:search && npm run build:case-reveals",
   "build": "next build",
