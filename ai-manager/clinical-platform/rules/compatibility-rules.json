@@ -1,0 +1,551 @@
+{
+  "authority": "clinical-compatibility-rules",
+  "revision": 1,
+  "rules": [
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled requires rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the requires rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.requires"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.requires",
+      "kind": "requires",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled prohibits rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the prohibits rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.prohibits"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.prohibits",
+      "kind": "prohibits",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled implies rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the implies rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.implies"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.implies",
+      "kind": "implies",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled conditional-permission rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the conditional-permission rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.conditional-permission"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.conditional-permission",
+      "kind": "conditional-permission",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled mutual-exclusion rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the mutual-exclusion rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.mutual-exclusion"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.mutual-exclusion",
+      "kind": "mutual-exclusion",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled severity rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the severity rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.severity"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.severity",
+      "kind": "severity",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled laterality rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the laterality rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.laterality"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.laterality",
+      "kind": "laterality",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled anatomy-distribution rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the anatomy-distribution rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.anatomy-distribution"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.anatomy-distribution",
+      "kind": "anatomy-distribution",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled timing rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the timing rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.timing"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.timing",
+      "kind": "timing",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled population rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the population rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.population"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.population",
+      "kind": "population",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled comorbidity rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the comorbidity rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.comorbidity"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.comorbidity",
+      "kind": "comorbidity",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled investigation rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the investigation rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.investigation"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.investigation",
+      "kind": "investigation",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled escalation rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the escalation rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.escalation"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.escalation",
+      "kind": "escalation",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled movement rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the movement rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.movement"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.movement",
+      "kind": "movement",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled subjective-objective-consistency rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the subjective-objective-consistency rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.subjective-objective-consistency"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.subjective-objective-consistency",
+      "kind": "subjective-objective-consistency",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled diagnosis-differential-consistency rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the diagnosis-differential-consistency rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.diagnosis-differential-consistency"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.diagnosis-differential-consistency",
+      "kind": "diagnosis-differential-consistency",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Disabled publication-licensing-dependency rule template; no clinical assertion has been encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human clinical and evidence review is required before enabling the publication-licensing-dependency rule family."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule-template.publication-licensing-dependency"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.template.publication-licensing-dependency",
+      "kind": "publication-licensing-dependency",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {}
+      }
+    }
+  ],
+  "schemaVersion": 1
+}
