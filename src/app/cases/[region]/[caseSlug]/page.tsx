@@ -18,8 +18,8 @@ import { getCaseRevealId } from '@/lib/caseRevealServer'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { Breadcrumb } from '@/components/layout/Breadcrumb'
 import { mdxComponents } from '@/components/mdx/MDXComponents'
-import { CaseReasoningPrompt } from '@/components/cases/CaseReasoningPrompt'
-import { ConversationCase } from '@/components/cases/ConversationCase'
+import { CaseModeExperience } from '@/components/cases/CaseModeExperience'
+import conversationAssets from '@/data/case-conversation-assets.json'
 
 interface Props {
   params: { region: string; caseSlug: string }
@@ -68,8 +68,10 @@ export default async function GuidedCasePage({ params }: Props) {
     result.content,
   )
   const casePresentationContent = extractCasePresentationStem(learnerContent)
-  const showConversationPreview = caseSlug === 'visceral-referral-mimicking-thoracic-msk-case-01'
   const revealId = getCaseRevealId(regionSlug, publicCaseSlug)
+  const caseId = result.frontmatter.guidedCaseId
+  const conversationAsset = conversationAssets.assets.find((item) => item.caseId === caseId)
+  if (!caseId || !conversationAsset) notFound()
 
   return (
     <div className="flex">
@@ -110,8 +112,6 @@ export default async function GuidedCasePage({ params }: Props) {
           </div>
         </div>
 
-        {showConversationPreview && <ConversationCase />}
-
         {casePresentationContent && (
           <section className="mb-6 rounded-xl border border-surface-200 bg-white p-5 shadow-sm dark:border-surface-800 dark:bg-surface-900">
             <p className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">
@@ -135,9 +135,12 @@ export default async function GuidedCasePage({ params }: Props) {
           </section>
         )}
 
-        <CaseReasoningPrompt
+        <CaseModeExperience
           displayTitle={displayTitle}
           revealId={revealId}
+          caseId={caseId}
+          truthHash={conversationAsset.truthHash}
+          conversationAssetPath={conversationAsset.assetPath}
           enhancedFeedbackAvailable={caseSlug === 'cervical-radiculopathy-case-01'}
         />
       </div>

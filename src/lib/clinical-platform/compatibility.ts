@@ -105,7 +105,7 @@ export function evaluateCompatibility(
 ): CompatibilityResult {
   const sortedModules = [...modules].sort((left, right) => left.id.localeCompare(right.id))
   const enabledRules = [...rules].filter((rule) => rule.enabled).sort((left, right) => left.id.localeCompare(right.id))
-  const selected = new Set(sortedModules.map((module) => module.id))
+  const selected = new Set(sortedModules.map((entry) => entry.id))
   const implied = new Set<string>()
   const errors: string[] = []
   const warnings: string[] = []
@@ -117,9 +117,9 @@ export function evaluateCompatibility(
   const trace: CompatibilityResult['trace'] = []
 
   if (selected.size !== sortedModules.length) errors.push('Duplicate module IDs are invalid.')
-  for (const module of sortedModules) {
-    if (module.lifecycle !== 'approved') reviewNeeds.add(`${module.id}@${module.revision}: exact-revision module approval required`)
-    for (const gap of module.evidenceGapIds ?? []) evidenceGaps.add(gap)
+  for (const entry of sortedModules) {
+    if (entry.lifecycle !== 'approved') reviewNeeds.add(`${entry.id}@${entry.revision}: exact-revision module approval required`)
+    for (const gap of entry.evidenceGapIds ?? []) evidenceGaps.add(gap)
   }
 
   let changed = true
@@ -176,9 +176,9 @@ export function evaluateCompatibility(
 
   const digestInput = enabledRules.map((rule) => `${rule.id}@${rule.revision}`).join('|')
   const ruleDigest = simpleStableDigest(digestInput)
-  for (const module of sortedModules) {
-    if (module.approvedRuleDigest && module.approvedRuleDigest !== ruleDigest) {
-      reviewNeeds.add(`${module.id}: rule revision changed; prior approval is stale`)
+  for (const entry of sortedModules) {
+    if (entry.approvedRuleDigest && entry.approvedRuleDigest !== ruleDigest) {
+      reviewNeeds.add(`${entry.id}: rule revision changed; prior approval is stale`)
     }
   }
 
