@@ -1,6 +1,7 @@
 import { spawnSync } from 'node:child_process'
 
-const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm'
+const npmCli = process.env.npm_execpath
+if (!npmCli) throw new Error('npm_execpath is unavailable; run this check through npm.')
 const status = () => {
   const result = spawnSync('git', ['status', '--porcelain=v1', '--untracked-files=all'], { cwd: process.cwd(), encoding: 'utf8' })
   if (result.status !== 0) throw new Error(result.stderr || 'Unable to inspect Git status.')
@@ -8,7 +9,8 @@ const status = () => {
 }
 
 const before = status()
-const generation = spawnSync(npm, ['run', 'clinical-platform:generate'], { cwd: process.cwd(), encoding: 'utf8', stdio: 'inherit' })
+const generation = spawnSync(process.execPath, [npmCli, 'run', 'clinical-platform:generate'], { cwd: process.cwd(), encoding: 'utf8', stdio: 'inherit' })
+if (generation.error) throw generation.error
 if (generation.status !== 0) process.exit(generation.status ?? 1)
 const after = status()
 
