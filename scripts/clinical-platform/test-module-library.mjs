@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict'
-import crypto from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 import { loadTypeScriptTree } from '../lib/loadTypeScriptTree.mjs'
+import { sha256CanonicalFile } from './canonical-hash.mjs'
 
 const ROOT = process.cwd()
 const schemas = await loadTypeScriptTree(
@@ -20,8 +20,7 @@ assert.ok(library.modules.every((item) => Object.keys(schemas.projectClinicalMod
 
 for (const module of library.modules) {
   const source = module.relationships.sources[0]
-  const bytes = fs.readFileSync(path.join(ROOT, source.repositoryPath))
-  assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), source.hash, 'source hash drift')
+  assert.equal(sha256CanonicalFile(path.join(ROOT, source.repositoryPath)), source.hash, 'canonical source hash drift')
 }
 
 const staleFixture = structuredClone(library.modules[0])

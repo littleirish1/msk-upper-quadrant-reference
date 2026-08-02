@@ -2,6 +2,7 @@ import crypto from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 import { loadTypeScriptTree } from '../lib/loadTypeScriptTree.mjs'
+import { sha256CanonicalFile } from './canonical-hash.mjs'
 
 const ROOT = process.cwd()
 const schemas = await loadTypeScriptTree(
@@ -33,7 +34,7 @@ const withheldDomains = new Set(['likely-diagnosis', 'condition-link'])
 const records = sources.map(({ file, kind }) => {
   const sourceBytes = fs.readFileSync(file)
   const source = JSON.parse(sourceBytes.toString('utf8'))
-  const sourceHash = sha(sourceBytes)
+  const sourceHash = sha256CanonicalFile(file)
   const moduleId = `module.${source.caseId.slice('case.'.length)}.presentation`
   const baseSource = {
     recordId: source.caseId,

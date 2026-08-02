@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { deriveState, exactRevisionKey } from './review-governance.mjs'
+import { canonicalBytes } from './canonical-hash.mjs'
 
 const root = process.cwd()
 const ledger = JSON.parse(fs.readFileSync(path.join(root, 'ai-manager', 'clinical-platform', 'reviews', 'review-ledger.json'), 'utf8'))
@@ -21,6 +23,8 @@ for (const review of ledger.reviews) {
 assert.equal(queues.total, ledger.reviews.reduce((total, review) => total + review.decisions.length, 0))
 assert.equal(new Set(queues.queue.map((item) => item.queueId)).size, queues.total)
 assert.ok(packets.packets.every((packet) => packet.reviewerAssignment === null && packet.status === 'awaiting-human-review'))
+const helperFile = fileURLToPath(new URL('./canonical-hash.mjs', import.meta.url))
+assert.deepEqual(canonicalBytes(helperFile), Buffer.from(fs.readFileSync(helperFile, 'utf8').replace(/\r\n/g, '\n'), 'utf8'))
 
 const target = ledger.reviews[0].target
 const previouslyApproved = deriveState({

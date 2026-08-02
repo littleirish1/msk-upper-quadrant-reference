@@ -1,6 +1,6 @@
-import crypto from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
+import { sha256CanonicalFile } from './canonical-hash.mjs'
 
 const ROOT = process.cwd()
 const sourceRegistry = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'imports', 'source-registry.json'), 'utf8'))
@@ -16,7 +16,7 @@ const truthBySourceId = new Map(truth.records.flatMap((record) => {
 }))
 const records = sourceRegistry.sources.map((source) => {
   const sourceFile = path.join(ROOT, source.sourcePath)
-  const sourceHash = crypto.createHash('sha256').update(fs.readFileSync(sourceFile)).digest('hex')
+  const sourceHash = sha256CanonicalFile(sourceFile)
   const ready = readinessById.get(source.sourceId)
   const truthRecord = truthBySourceId.get(source.sourceId)
   const recipe = truthRecord ? recipes.recipes.find((item) => item.truthRecordId === truthRecord.recordId) : null

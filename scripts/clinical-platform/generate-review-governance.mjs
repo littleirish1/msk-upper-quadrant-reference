@@ -1,10 +1,10 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { deriveState, exactRevisionKey, hashValue } from './review-governance.mjs'
+import { canonicalBytes } from './canonical-hash.mjs'
 
 const ROOT = process.cwd()
 const snapshot = JSON.parse(fs.readFileSync(path.join(ROOT, 'ai-manager', 'clinical-platform', 'workspace', 'snapshot.json'), 'utf8'))
-const readBytes = (relativePath) => fs.readFileSync(path.join(ROOT, relativePath))
 
 const definitions = [
   { group: 'modules', entityType: 'module', reviews: ['clinical', 'evidence', 'publication'] },
@@ -19,7 +19,7 @@ const definitions = [
 
 const records = definitions.flatMap(({ group, entityType, reviews }) => (snapshot.groups[group] ?? []).map((item) => ({ item, entityType, reviews })))
 const visualFiles = ['src/app/page.tsx', 'src/app/cases/page.tsx', 'src/app/anatomy/page.tsx', 'src/components/layout/Header.tsx', 'src/app/globals.css']
-const visualDigest = hashValue(visualFiles.map((file) => ({ file, sha256: hashValue(readBytes(file).toString('base64')) })))
+const visualDigest = hashValue(visualFiles.map((file) => ({ file, sha256: hashValue(canonicalBytes(path.join(ROOT, file)).toString('base64')) })))
 records.push({
   entityType: 'visual-asset',
   reviews: ['accessibility', 'clinical', 'publication'],

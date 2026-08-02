@@ -1,7 +1,7 @@
-import crypto from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 import { loadTypeScriptTree } from '../lib/loadTypeScriptTree.mjs'
+import { sha256CanonicalFile } from './canonical-hash.mjs'
 
 const ROOT = process.cwd()
 const schemas = await loadTypeScriptTree(path.join(ROOT, 'src', 'lib', 'clinical-platform', 'ingestionSchema.ts'), path.join(ROOT, 'src'))
@@ -15,12 +15,11 @@ const sourceDefinitions = [
 
 const sources = sourceDefinitions.map((definition) => {
   const file = path.join(ROOT, definition.repositoryPath)
-  const bytes = fs.readFileSync(file)
   return schemas.ingestionSourceSchema.parse({
     schemaVersion: 1,
     ...definition,
     revision: 1,
-    hash: crypto.createHash('sha256').update(bytes).digest('hex'),
+    hash: sha256CanonicalFile(file),
     registrationState: 'registered',
     extractionState: 'metadata-only',
     sourceClearance: 'unknown',

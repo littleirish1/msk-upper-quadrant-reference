@@ -5285,8 +5285,8 @@
         "entityType": "visual-asset",
         "entityId": "visual-system.learner-v1",
         "revision": 1,
-        "contentHash": "c2dcd44a85134fa84375b42cfed05959b7e420bc5cb5390eea255152fb214d34",
-        "exactRevisionKey": "visual-asset:visual-system.learner-v1@1#sha256:c2dcd44a85134fa84375b42cfed05959b7e420bc5cb5390eea255152fb214d34",
+        "contentHash": "c447f321616d7763a917386e9df26bbfcace85d4c6feb04551a3a44ceb485c3c",
+        "exactRevisionKey": "visual-asset:visual-system.learner-v1@1#sha256:c447f321616d7763a917386e9df26bbfcace85d4c6feb04551a3a44ceb485c3c",
         "publicationState": "candidate"
       },
       "decisions": [

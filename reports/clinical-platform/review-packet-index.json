@@ -61,7 +61,7 @@
         "movement:movement.joint.spinal-flexion-extension@1#sha256:8453491eaeb21566b6285c21e702e3872b9a7fa39882d1022cdd870328c60a47",
         "movement:movement.joint.spinal-lateral-flexion@1#sha256:6d6d95474a6451246157ffcee71bd8e6adaec4a225b8c05d26c921bb61723fab",
         "movement:movement.joint.spinal-rotation@1#sha256:98085a27bec120d399a0468a3b8aedfcd96044c91ad379dd5dc1757a2b92d2d5",
-        "visual-asset:visual-system.learner-v1@1#sha256:c2dcd44a85134fa84375b42cfed05959b7e420bc5cb5390eea255152fb214d34"
+        "visual-asset:visual-system.learner-v1@1#sha256:c447f321616d7763a917386e9df26bbfcace85d4c6feb04551a3a44ceb485c3c"
       ],
       "reviewerAssignment": null,
       "status": "awaiting-human-review"
@@ -206,7 +206,7 @@
         "tutor-transcript:transcript.case.shoulder.case-04@1#sha256:6d6a29a04802baad8d33e87af7e6a35dd51106c0a891c8a35cea60c56331c69f",
         "tutor-transcript:transcript.case.shoulder.case-05@1#sha256:9109db5737c02fb0551d1da8f4a7944bca9e30fc32ceab946e75add16fff5bb7",
         "tutor-transcript:transcript.case.thoracic.case-06@1#sha256:a16e186d46841357921c3da3d492e7193806a9d2d08f90de2f365e35e3358bc1",
-        "visual-asset:visual-system.learner-v1@1#sha256:c2dcd44a85134fa84375b42cfed05959b7e420bc5cb5390eea255152fb214d34"
+        "visual-asset:visual-system.learner-v1@1#sha256:c447f321616d7763a917386e9df26bbfcace85d4c6feb04551a3a44ceb485c3c"
       ],
       "reviewerAssignment": null,
       "status": "awaiting-human-review"
@@ -459,7 +459,7 @@
         "tutor-transcript:transcript.case.shoulder.case-04@1#sha256:6d6a29a04802baad8d33e87af7e6a35dd51106c0a891c8a35cea60c56331c69f",
         "tutor-transcript:transcript.case.shoulder.case-05@1#sha256:9109db5737c02fb0551d1da8f4a7944bca9e30fc32ceab946e75add16fff5bb7",
         "tutor-transcript:transcript.case.thoracic.case-06@1#sha256:a16e186d46841357921c3da3d492e7193806a9d2d08f90de2f365e35e3358bc1",
-        "visual-asset:visual-system.learner-v1@1#sha256:c2dcd44a85134fa84375b42cfed05959b7e420bc5cb5390eea255152fb214d34"
+        "visual-asset:visual-system.learner-v1@1#sha256:c447f321616d7763a917386e9df26bbfcace85d4c6feb04551a3a44ceb485c3c"
       ],
       "reviewerAssignment": null,
       "status": "awaiting-human-review"

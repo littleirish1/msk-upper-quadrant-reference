@@ -1,8 +1,8 @@
-import crypto from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { loadTypeScriptTree } from '../lib/loadTypeScriptTree.mjs'
+import { sha256CanonicalFile } from './canonical-hash.mjs'
 
 const ROOT = process.cwd()
 const schemaFile = path.join(ROOT, 'src', 'lib', 'clinical-platform', 'moduleSchema.ts')
@@ -61,7 +61,7 @@ const modules = sourceFiles.map((sourceFile) => {
         recordId: source.caseId,
         repositoryPath: sourcePath,
         revision: String(source.contentRevision),
-        hash: crypto.createHash('sha256').update(sourceBytes).digest('hex'),
+        hash: sha256CanonicalFile(sourceFile),
       }],
       evidenceRecordIds: source.evidenceHub.evidenceRecordIds,
       evidenceGapIds: source.evidenceHub.unresolvedEvidenceGaps.map((_, index) =>

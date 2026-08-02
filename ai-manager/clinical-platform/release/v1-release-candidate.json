@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "candidateId": "release.v1-conversational-clinical-platform",
-  "candidateDigest": "sha256:9bfafc6db17524b63487b310c569860d22767d23ecf853bcce589ce927db0ff7",
+  "candidateDigest": "sha256:b53431b7c9a631e98207841eda02f09495b72a055486398f4cc3c0342c43007f",
   "repositoryCommit": null,
   "status": "blocked",
   "automatedValidationStatus": "pending-final-exact-commit-validation",
@@ -765,9 +765,9 @@
       "state": "open"
     },
     {
-      "blockerId": "exact-revision-review:accessibility:visual-asset:visual-system.learner-v1@1#sha256:c2dcd44a85134fa84375b42cfed05959b7e420bc5cb5390eea255152fb214d34",
+      "blockerId": "exact-revision-review:accessibility:visual-asset:visual-system.learner-v1@1#sha256:c447f321616d7763a917386e9df26bbfcace85d4c6feb04551a3a44ceb485c3c",
       "gate": "exact-revision-review",
-      "target": "accessibility:visual-asset:visual-system.learner-v1@1#sha256:c2dcd44a85134fa84375b42cfed05959b7e420bc5cb5390eea255152fb214d34",
+      "target": "accessibility:visual-asset:visual-system.learner-v1@1#sha256:c447f321616d7763a917386e9df26bbfcace85d4c6feb04551a3a44ceb485c3c",
       "humanControlled": true,
       "state": "open"
     },
@@ -1654,9 +1654,9 @@
       "state": "open"
     },
     {
-      "blockerId": "exact-revision-review:clinical:visual-asset:visual-system.learner-v1@1#sha256:c2dcd44a85134fa84375b42cfed05959b7e420bc5cb5390eea255152fb214d34",
+      "blockerId": "exact-revision-review:clinical:visual-asset:visual-system.learner-v1@1#sha256:c447f321616d7763a917386e9df26bbfcace85d4c6feb04551a3a44ceb485c3c",
       "gate": "exact-revision-review",
-      "target": "clinical:visual-asset:visual-system.learner-v1@1#sha256:c2dcd44a85134fa84375b42cfed05959b7e420bc5cb5390eea255152fb214d34",
+      "target": "clinical:visual-asset:visual-system.learner-v1@1#sha256:c447f321616d7763a917386e9df26bbfcace85d4c6feb04551a3a44ceb485c3c",
       "humanControlled": true,
       "state": "open"
     },
@@ -3110,9 +3110,9 @@
       "state": "open"
     },
     {
-      "blockerId": "exact-revision-review:publication:visual-asset:visual-system.learner-v1@1#sha256:c2dcd44a85134fa84375b42cfed05959b7e420bc5cb5390eea255152fb214d34",
+      "blockerId": "exact-revision-review:publication:visual-asset:visual-system.learner-v1@1#sha256:c447f321616d7763a917386e9df26bbfcace85d4c6feb04551a3a44ceb485c3c",
       "gate": "exact-revision-review",
-      "target": "publication:visual-asset:visual-system.learner-v1@1#sha256:c2dcd44a85134fa84375b42cfed05959b7e420bc5cb5390eea255152fb214d34",
+      "target": "publication:visual-asset:visual-system.learner-v1@1#sha256:c447f321616d7763a917386e9df26bbfcace85d4c6feb04551a3a44ceb485c3c",
       "humanControlled": true,
       "state": "open"
     },

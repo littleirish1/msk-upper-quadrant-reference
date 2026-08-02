@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict'
-import crypto from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 import { loadTypeScriptTree } from '../lib/loadTypeScriptTree.mjs'
+import { sha256CanonicalFile } from './canonical-hash.mjs'
 
 const ROOT = process.cwd()
 const schemas = await loadTypeScriptTree(path.join(ROOT, 'src', 'lib', 'clinical-platform', 'ingestionSchema.ts'), path.join(ROOT, 'src'))
@@ -16,8 +16,7 @@ assert.ok(register.proposals.every((proposal) => proposal.claimProposals.length 
 
 for (const source of register.sources) {
   assert.ok(!source.repositoryPath.includes('private-cache') && !source.repositoryPath.includes('.venv-source-intake') && !source.repositoryPath.includes('docs/reviews/current'))
-  const bytes = fs.readFileSync(path.join(ROOT, source.repositoryPath))
-  assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), source.hash)
+  assert.equal(sha256CanonicalFile(path.join(ROOT, source.repositoryPath)), source.hash)
 }
 
 const powerpoint = schemas.ingestionSourceSchema.safeParse({ ...register.sources[0], sourceId: 'source.synthetic.powerpoint-fixture', sourceType: 'powerpoint-secondary-educational', educationalSecondarySource: true })
