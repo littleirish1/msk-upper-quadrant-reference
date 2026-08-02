@@ -5,7 +5,7 @@
     "routeCount": 67,
     "htmlFileCount": 67,
     "javascriptFileCount": 27,
-    "totalJavascriptBytes": 821200,
+    "totalJavascriptBytes": 821538,
     "largestJavascriptBytes": 172834,
     "checks": [
       {
@@ -31,7 +31,7 @@
       {
         "id": "javascript-total-under-2-mib",
         "status": "pass",
-        "evidence": "821200 bytes"
+        "evidence": "821538 bytes"
       },
       {
         "id": "javascript-chunk-under-256-kib",

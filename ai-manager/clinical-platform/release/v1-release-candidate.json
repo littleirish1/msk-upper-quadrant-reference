@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "candidateId": "release.v1-conversational-clinical-platform",
-  "candidateDigest": "sha256:3d69b46141f2612c4d3e3c9b484d15fad3354590325285402ae61438f6b07ae2",
+  "candidateDigest": "sha256:9bfafc6db17524b63487b310c569860d22767d23ecf853bcce589ce927db0ff7",
   "repositoryCommit": null,
   "status": "blocked",
   "automatedValidationStatus": "pending-final-exact-commit-validation",
