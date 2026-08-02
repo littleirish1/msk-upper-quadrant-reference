@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": null,
+  "automated": {
+    "routeCount": 67,
+    "htmlFileCount": 67,
+    "javascriptFileCount": 27,
+    "totalJavascriptBytes": 821200,
+    "largestJavascriptBytes": 172834,
+    "checks": [
+      {
+        "id": "single-main-landmark-and-skip-link",
+        "status": "pass",
+        "evidence": "src/app/layout.tsx"
+      },
+      {
+        "id": "visible-keyboard-focus",
+        "status": "pass",
+        "evidence": "src/app/globals.css"
+      },
+      {
+        "id": "case-mode-keyboard-tabs",
+        "status": "pass",
+        "evidence": "src/components/cases/CaseModeExperience.tsx"
+      },
+      {
+        "id": "minimum-touch-target-token",
+        "status": "pass",
+        "evidence": "src/components/cases/CaseModeExperience.tsx"
+      },
+      {
+        "id": "javascript-total-under-2-mib",
+        "status": "pass",
+        "evidence": "821200 bytes"
+      },
+      {
+        "id": "javascript-chunk-under-256-kib",
+        "status": "pass",
+        "evidence": "172834 bytes"
+      }
+    ]
+  },
+  "manualMatrix": [
+    {
+      "viewport": "320x568",
+      "theme": "light",
+      "status": "manual-required"
+    },
+    {
+      "viewport": "320x568",
+      "theme": "dark",
+      "status": "manual-required"
+    },
+    {
+      "viewport": "375x667",
+      "theme": "light",
+      "status": "manual-required"
+    },
+    {
+      "viewport": "375x667",
+      "theme": "dark",
+      "status": "manual-required"
+    },
+    {
+      "viewport": "768x1024",
+      "theme": "light",
+      "status": "manual-required"
+    },
+    {
+      "viewport": "768x1024",
+      "theme": "dark",
+      "status": "manual-required"
+    },
+    {
+      "viewport": "1024x768",
+      "theme": "light",
+      "status": "manual-required"
+    },
+    {
+      "viewport": "1024x768",
+      "theme": "dark",
+      "status": "manual-required"
+    },
+    {
+      "viewport": "1440x900",
+      "theme": "light",
+      "status": "manual-required"
+    },
+    {
+      "viewport": "1440x900",
+      "theme": "dark",
+      "status": "manual-required"
+    }
+  ],
+  "humanSignOffRecorded": false,
+  "releaseEligibility": false,
+  "blockers": [
+    "keyboard-screen-reader-manual-sign-off-required",
+    "responsive-visual-manual-sign-off-required",
+    "two-hundred-percent-zoom-manual-sign-off-required"
+  ]
+}

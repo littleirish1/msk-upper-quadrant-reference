@@ -37,7 +37,7 @@ export function MobileBottomNav() {
                   : 'text-surface-400 hover:text-surface-600 dark:text-surface-500 dark:hover:text-surface-300'
               )}
             >
-              <Icon className={cn('h-5 w-5', isActive && 'text-brand-600 dark:text-brand-400')} />
+              <Icon className={cn('h-5 w-5', isActive && 'text-brand-600 dark:text-brand-400')} aria-hidden />
               {label}
             </Link>
           )
@@ -52,7 +52,7 @@ export function MobileBottomNav() {
               : 'text-surface-400 hover:text-surface-600 dark:text-surface-500 dark:hover:text-surface-300',
           )}
         >
-          <Search className="h-5 w-5" />
+          <Search className="h-5 w-5" aria-hidden />
           Search
         </Link>
       </div>

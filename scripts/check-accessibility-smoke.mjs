@@ -28,6 +28,33 @@ if (!header.includes('xl:flex') || !header.includes('xl:hidden')) {
 }
 if (!header.includes('aria-current=')) findings.push('header navigation lacks aria-current')
 
+const layout = read('src/app/layout.tsx')
+if (!layout.includes('href="#main-content"') || !layout.includes('id="main-content"')) {
+  findings.push('root layout lacks a skip link wired to the main landmark')
+}
+const globalStyles = read('src/app/globals.css')
+if (!globalStyles.includes(':focus-visible') || !globalStyles.includes('outline: 3px solid')) {
+  findings.push('global high-contrast keyboard focus indicator is missing')
+}
+
+const caseModes = read('src/components/cases/CaseModeExperience.tsx')
+for (const requirement of [
+  'role="tablist"',
+  'role="tab"',
+  'role="tabpanel"',
+  'aria-controls',
+  'aria-labelledby',
+  'aria-selected',
+  'tabIndex={mode === item.id ? 0 : -1}',
+  'ArrowRight',
+  'ArrowLeft',
+  'Home',
+  'End',
+  'aria-live="polite"',
+]) {
+  if (!caseModes.includes(requirement)) findings.push(`case mode interaction is missing ${requirement}`)
+}
+
 const bottomNavigation = read('src/components/ui/MobileBottomNav.tsx')
 if (!bottomNavigation.includes('href="/search"')) findings.push('mobile Search is missing')
 if (!bottomNavigation.includes('aria-current=')) findings.push('mobile navigation lacks aria-current')
@@ -57,7 +84,7 @@ if (findings.length) {
   process.exit(1)
 }
 
-console.log('Accessibility smoke check passed: landmarks, tabs, navigation state, mobile Search, and learning touch targets.')
+console.log('Accessibility smoke check passed: skip navigation, landmarks, keyboard tabs, live status, navigation state, mobile Search, and learning touch targets.')
 
 function collectFiles(directory) {
   if (!fs.existsSync(directory)) return []

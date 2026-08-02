@@ -1,6 +1,6 @@
 'use client'
 
-import { FormEvent, useEffect, useRef, useState } from 'react'
+import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from 'react'
 import { Bot, MessageCircle, RotateCcw, Send, Sparkles, UserRound } from 'lucide-react'
 import { CaseReasoningPrompt } from './CaseReasoningPrompt'
 import {
@@ -117,6 +117,21 @@ export function CaseModeExperience({
     setComposer(question)
   }
 
+  function moveModeFocus(event: KeyboardEvent<HTMLButtonElement>, currentIndex: number) {
+    const keyTargets: Record<string, number> = {
+      ArrowRight: (currentIndex + 1) % MODES.length,
+      ArrowLeft: (currentIndex - 1 + MODES.length) % MODES.length,
+      Home: 0,
+      End: MODES.length - 1,
+    }
+    const nextIndex = keyTargets[event.key]
+    if (nextIndex === undefined) return
+    event.preventDefault()
+    const nextMode = MODES[nextIndex]
+    setMode(nextMode.id)
+    document.getElementById(`mode-${nextMode.id}`)?.focus()
+  }
+
   function reset(newSeed: boolean) {
     if (!projection) return
     const nextSeed = newSeed ? sessionSeed + 1 : sessionSeed
@@ -136,7 +151,7 @@ export function CaseModeExperience({
             <h2 id="case-mode-heading" className="mt-1 text-xl font-semibold text-surface-950 dark:text-white">Choose how you want to work through this case</h2>
           </div>
           <div role="tablist" aria-label="Case learning mode" className="grid gap-2 sm:grid-cols-3">
-            {MODES.map((item) => (
+            {MODES.map((item, index) => (
               <button
                 key={item.id}
                 id={`mode-${item.id}`}
@@ -144,6 +159,8 @@ export function CaseModeExperience({
                 role="tab"
                 aria-selected={mode === item.id}
                 aria-controls={`panel-${item.id}`}
+                tabIndex={mode === item.id ? 0 : -1}
+                onKeyDown={(event) => moveModeFocus(event, index)}
                 onClick={() => setMode(item.id)}
                 className={`min-h-12 rounded-xl border px-4 py-2 text-left transition focus:outline-none focus:ring-2 focus:ring-brand-400 ${mode === item.id ? 'border-brand-500 bg-brand-50 text-brand-950 dark:bg-brand-950 dark:text-brand-50' : 'border-surface-200 hover:border-brand-300 dark:border-surface-700'}`}
               >

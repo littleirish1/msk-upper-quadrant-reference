@@ -14,8 +14,8 @@ const largest = scripts.reduce((current, file) =>
   !current || fs.statSync(file).size > fs.statSync(current).size ? file : current, null)
 const largestBytes = largest ? fs.statSync(largest).size : 0
 const findings = []
-if (totalBytes > 5 * 1024 * 1024) findings.push(`exported JavaScript exceeds 5 MiB: ${totalBytes}`)
-if (largestBytes > 1024 * 1024) findings.push(`single JavaScript chunk exceeds 1 MiB: ${relative(largest)}`)
+if (totalBytes > 2 * 1024 * 1024) findings.push(`exported JavaScript exceeds 2 MiB: ${totalBytes}`)
+if (largestBytes > 256 * 1024) findings.push(`single JavaScript chunk exceeds 256 KiB: ${relative(largest)}`)
 
 for (const htmlFile of collectFiles(out, (file) => file.endsWith('.html'))) {
   const html = fs.readFileSync(htmlFile, 'utf8')
