@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "status": "planned",
+  "taskScripts": [
+    {
+      "taskId": "beta-task.physiotherapy-student.01",
+      "revision": 1,
+      "participantGroup": "physiotherapy-student",
+      "route": "/",
+      "instruction": "Find a reviewed learning pathway and explain the governance status shown for unavailable systems.",
+      "observationFocus": [
+        "navigation",
+        "governance-comprehension"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.physiotherapy-student.02",
+      "revision": 1,
+      "participantGroup": "physiotherapy-student",
+      "route": "/cases",
+      "instruction": "Open a reviewed case and move between Guided, Conversation, and Hybrid modes without revealing the diagnosis early.",
+      "observationFocus": [
+        "mode-comprehension",
+        "diagnosis-disclosure",
+        "keyboard-flow"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.physiotherapy-student.03",
+      "revision": 1,
+      "participantGroup": "physiotherapy-student",
+      "route": "/anatomy",
+      "instruction": "Locate an available anatomy category and distinguish it from the route-withheld 3D and movement roadmap.",
+      "observationFocus": [
+        "content-clarity",
+        "route-withheld-comprehension"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.physiotherapy-student.04",
+      "revision": 1,
+      "participantGroup": "physiotherapy-student",
+      "route": "/search",
+      "instruction": "Use search to reach a reviewed public record and return to the regional library.",
+      "observationFocus": [
+        "search",
+        "wayfinding",
+        "mobile-navigation"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.band-5-clinician.01",
+      "revision": 1,
+      "participantGroup": "band-5-clinician",
+      "route": "/",
+      "instruction": "Find a reviewed learning pathway and explain the governance status shown for unavailable systems.",
+      "observationFocus": [
+        "navigation",
+        "governance-comprehension"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.band-5-clinician.02",
+      "revision": 1,
+      "participantGroup": "band-5-clinician",
+      "route": "/cases",
+      "instruction": "Open a reviewed case and move between Guided, Conversation, and Hybrid modes without revealing the diagnosis early.",
+      "observationFocus": [
+        "mode-comprehension",
+        "diagnosis-disclosure",
+        "keyboard-flow"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.band-5-clinician.03",
+      "revision": 1,
+      "participantGroup": "band-5-clinician",
+      "route": "/anatomy",
+      "instruction": "Locate an available anatomy category and distinguish it from the route-withheld 3D and movement roadmap.",
+      "observationFocus": [
+        "content-clarity",
+        "route-withheld-comprehension"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.band-5-clinician.04",
+      "revision": 1,
+      "participantGroup": "band-5-clinician",
+      "route": "/search",
+      "instruction": "Use search to reach a reviewed public record and return to the regional library.",
+      "observationFocus": [
+        "search",
+        "wayfinding",
+        "mobile-navigation"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.experienced-msk-clinician.01",
+      "revision": 1,
+      "participantGroup": "experienced-msk-clinician",
+      "route": "/",
+      "instruction": "Find a reviewed learning pathway and explain the governance status shown for unavailable systems.",
+      "observationFocus": [
+        "navigation",
+        "governance-comprehension"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.experienced-msk-clinician.02",
+      "revision": 1,
+      "participantGroup": "experienced-msk-clinician",
+      "route": "/cases",
+      "instruction": "Open a reviewed case and move between Guided, Conversation, and Hybrid modes without revealing the diagnosis early.",
+      "observationFocus": [
+        "mode-comprehension",
+        "diagnosis-disclosure",
+        "keyboard-flow"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.experienced-msk-clinician.03",
+      "revision": 1,
+      "participantGroup": "experienced-msk-clinician",
+      "route": "/anatomy",
+      "instruction": "Locate an available anatomy category and distinguish it from the route-withheld 3D and movement roadmap.",
+      "observationFocus": [
+        "content-clarity",
+        "route-withheld-comprehension"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.experienced-msk-clinician.04",
+      "revision": 1,
+      "participantGroup": "experienced-msk-clinician",
+      "route": "/search",
+      "instruction": "Use search to reach a reviewed public record and return to the regional library.",
+      "observationFocus": [
+        "search",
+        "wayfinding",
+        "mobile-navigation"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.clinical-educator.01",
+      "revision": 1,
+      "participantGroup": "clinical-educator",
+      "route": "/",
+      "instruction": "Find a reviewed learning pathway and explain the governance status shown for unavailable systems.",
+      "observationFocus": [
+        "navigation",
+        "governance-comprehension"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.clinical-educator.02",
+      "revision": 1,
+      "participantGroup": "clinical-educator",
+      "route": "/cases",
+      "instruction": "Open a reviewed case and move between Guided, Conversation, and Hybrid modes without revealing the diagnosis early.",
+      "observationFocus": [
+        "mode-comprehension",
+        "diagnosis-disclosure",
+        "keyboard-flow"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.clinical-educator.03",
+      "revision": 1,
+      "participantGroup": "clinical-educator",
+      "route": "/anatomy",
+      "instruction": "Locate an available anatomy category and distinguish it from the route-withheld 3D and movement roadmap.",
+      "observationFocus": [
+        "content-clarity",
+        "route-withheld-comprehension"
+      ],
+      "status": "planned-human-session"
+    },
+    {
+      "taskId": "beta-task.clinical-educator.04",
+      "revision": 1,
+      "participantGroup": "clinical-educator",
+      "route": "/search",
+      "instruction": "Use search to reach a reviewed public record and return to the regional library.",
+      "observationFocus": [
+        "search",
+        "wayfinding",
+        "mobile-navigation"
+      ],
+      "status": "planned-human-session"
+    }
+  ],
+  "privacy": {
+    "dataCollection": "minimum-structured-feedback-no-health-data",
+    "opaqueSessionIds": true,
+    "consentTextStatus": "human-review-required",
+    "privacyNoticeStatus": "human-review-required",
+    "retentionDecisionStatus": "human-review-required"
+  },
+  "realResults": {
+    "participantCount": 0,
+    "sessionCount": 0,
+    "feedbackCount": 0
+  },
+  "publicationApprovalGranted": false
+}

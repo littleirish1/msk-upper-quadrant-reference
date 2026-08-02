@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "fixtureOnly": true,
+  "fixtures": [
+    {
+      "fixture": true,
+      "sessionId": "synthetic-session-001",
+      "participantGroup": "physiotherapy-student",
+      "taskId": "beta-task.physiotherapy-student.01",
+      "completion": "completed",
+      "severity": "observation",
+      "category": "navigation",
+      "noteCode": "SYNTHETIC_WORKFLOW_FIXTURE_1",
+      "containsHealthData": false
+    },
+    {
+      "fixture": true,
+      "sessionId": "synthetic-session-002",
+      "participantGroup": "band-5-clinician",
+      "taskId": "beta-task.band-5-clinician.01",
+      "completion": "partial",
+      "severity": "low",
+      "category": "content-clarity",
+      "noteCode": "SYNTHETIC_WORKFLOW_FIXTURE_2",
+      "containsHealthData": false
+    },
+    {
+      "fixture": true,
+      "sessionId": "synthetic-session-003",
+      "participantGroup": "experienced-msk-clinician",
+      "taskId": "beta-task.experienced-msk-clinician.01",
+      "completion": "completed",
+      "severity": "medium",
+      "category": "accessibility",
+      "noteCode": "SYNTHETIC_WORKFLOW_FIXTURE_3",
+      "containsHealthData": false
+    },
+    {
+      "fixture": true,
+      "sessionId": "synthetic-session-004",
+      "participantGroup": "clinical-educator",
+      "taskId": "beta-task.clinical-educator.01",
+      "completion": "partial",
+      "severity": "high",
+      "category": "privacy",
+      "noteCode": "SYNTHETIC_WORKFLOW_FIXTURE_4",
+      "containsHealthData": false
+    }
+  ]
+}

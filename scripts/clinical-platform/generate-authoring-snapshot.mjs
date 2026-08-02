@@ -16,6 +16,7 @@ const movement = read('ai-manager/clinical-platform/movement/movement-library.js
 const anatomy3d = read('ai-manager/clinical-platform/anatomy-3d/registry.json').assets
 const dependency = read('reports/governance/dependency-risk-register.json')
 const legacy = read('reports/clinical-platform/legacy-case-reconciliation.json').records
+const beta = read('ai-manager/clinical-platform/beta/programme.json')
 
 const groups = {
   modules: modules.map((item) => record(item.id, item.revision, item.lifecycle, item.relationships.sources[0]?.hash, item.publicationState)),
@@ -30,6 +31,7 @@ const groups = {
   movement: movement.map((item) => record(item.id, item.revision, item.lifecycle, null, 'private')),
   anatomy3d: anatomy3d.map((item) => record(item.id, item.revision, 'blocked', item.assetHash, 'private')),
   legacy: legacy.map((item) => record(`legacy.${item.stationId}`, 1, item.classification, item.sourceRevision, item.publicEligibility ? 'baseline-public' : 'private')),
+  betaTasks: beta.taskScripts.map((item) => record(item.taskId, item.revision, item.status, null, 'private')),
 }
 
 const queues = {
@@ -41,7 +43,7 @@ const queues = {
   anatomy: anatomy3d.filter((item) => item.reviews.anatomy !== 'approved').map((item) => item.id),
   movement: movement.filter((item) => item.reviews.movement !== 'approved').map((item) => item.id),
   staleApproval: [...modules.filter((item) => item.lifecycle === 'stale').map((item) => item.id), ...rules.filter((item) => item.lifecycle === 'stale').map((item) => item.id)],
-  betaIssue: ['beta.programme.real-results-pending'],
+  betaIssue: ['beta.programme.real-results-pending', ...beta.taskScripts.map((item) => item.taskId)],
   dependencyRisk: dependency.risks.filter((item) => item.status !== 'resolved').map((item) => item.riskId),
   publicationDecision: [...modules.map((item) => item.id), ...recipes.map((item) => item.recipeId), ...movement.map((item) => item.id), ...anatomy3d.map((item) => item.id), ...mcqs.map((item) => item.id)],
 }

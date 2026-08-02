@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "status": "not-started",
+  "plannedParticipantGroups": 4,
+  "plannedTaskScripts": 16,
+  "syntheticFixtureCount": 4,
+  "realParticipantCount": 0,
+  "realSessionCount": 0,
+  "realFeedbackCount": 0,
+  "syntheticFixturesExcludedFromResults": true,
+  "escalation": {
+    "blocker": "stop-session-and-escalate",
+    "clinicalConcern": "clinical-review-queue",
+    "privacy": "privacy-governance-queue",
+    "high": "product-owner-and-clinical-owner-review"
+  },
+  "blockers": [
+    "consent-text-human-approval",
+    "privacy-notice-human-approval",
+    "retention-decision-human-approval",
+    "recruitment-human-approval"
+  ]
+}

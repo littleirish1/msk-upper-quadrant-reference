@@ -8,6 +8,7 @@
   "authority": "private-clinical-authoring-workspace",
   "counts": {
     "anatomy3d": 8,
+    "betaTasks": 16,
     "evidence": 3,
     "ingestion": 3,
     "legacy": 47,
@@ -75,6 +76,120 @@
         "hash": null,
         "id": "asset3d.ankle-foot.review-slot",
         "lifecycle": "blocked",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "betaTasks": [
+      {
+        "hash": null,
+        "id": "beta-task.physiotherapy-student.01",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.physiotherapy-student.02",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.physiotherapy-student.03",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.physiotherapy-student.04",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.band-5-clinician.01",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.band-5-clinician.02",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.band-5-clinician.03",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.band-5-clinician.04",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.experienced-msk-clinician.01",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.experienced-msk-clinician.02",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.experienced-msk-clinician.03",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.experienced-msk-clinician.04",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.clinical-educator.01",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.clinical-educator.02",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.clinical-educator.03",
+        "lifecycle": "planned-human-session",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "beta-task.clinical-educator.04",
+        "lifecycle": "planned-human-session",
         "publication": "private",
         "revision": 1
       }
@@ -1207,7 +1322,7 @@
   "queueCounts": {
     "accessibility": 54,
     "anatomy": 8,
-    "betaIssue": 1,
+    "betaIssue": 17,
     "clinical": 78,
     "dependencyRisk": 11,
     "evidence": 72,
@@ -1285,6 +1400,22 @@
       "asset3d.wrist-hand.review-slot"
     ],
     "betaIssue": [
+      "beta-task.band-5-clinician.01",
+      "beta-task.band-5-clinician.02",
+      "beta-task.band-5-clinician.03",
+      "beta-task.band-5-clinician.04",
+      "beta-task.clinical-educator.01",
+      "beta-task.clinical-educator.02",
+      "beta-task.clinical-educator.03",
+      "beta-task.clinical-educator.04",
+      "beta-task.experienced-msk-clinician.01",
+      "beta-task.experienced-msk-clinician.02",
+      "beta-task.experienced-msk-clinician.03",
+      "beta-task.experienced-msk-clinician.04",
+      "beta-task.physiotherapy-student.01",
+      "beta-task.physiotherapy-student.02",
+      "beta-task.physiotherapy-student.03",
+      "beta-task.physiotherapy-student.04",
       "beta.programme.real-results-pending"
     ],
     "clinical": [
