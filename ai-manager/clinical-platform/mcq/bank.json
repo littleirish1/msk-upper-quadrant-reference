@@ -1,0 +1,608 @@
+{
+  "authority": "governed-mcq-bank",
+  "governanceExamplePath": "content/assessment/private/mcq-contract-example.json",
+  "records": [
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.cervical.01",
+      "learningObjectives": [
+        "Author a source-supported assessment question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "cervical",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.cervical.cervical-radiculopathy"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.cervical.02",
+      "learningObjectives": [
+        "Author a source-supported safety and escalation question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "cervical",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.cervical.cervical-myelopathy"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.cervical.03",
+      "learningObjectives": [
+        "Author a source-supported differential reasoning question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "cervical",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.cervical.cervicogenic-headache"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.cervical.04",
+      "learningObjectives": [
+        "Author a source-supported reassessment question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "cervical",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.cervical.whiplash-associated-disorders"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.thoracic.01",
+      "learningObjectives": [
+        "Author a source-supported assessment question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "thoracic",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.thoracic.thoracic-outlet-syndrome"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.thoracic.02",
+      "learningObjectives": [
+        "Author a source-supported neurological screening question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "thoracic",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.thoracic.thoracic-disc-herniation"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.thoracic.03",
+      "learningObjectives": [
+        "Author a source-supported differential reasoning question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "thoracic",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.thoracic.costochondritis"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.thoracic.04",
+      "learningObjectives": [
+        "Author a source-supported escalation question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "thoracic",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.thoracic.thoracic-radiculopathy"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder.01",
+      "learningObjectives": [
+        "Author a source-supported assessment question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "shoulder",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder.02",
+      "learningObjectives": [
+        "Author a source-supported investigation reasoning question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "shoulder",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.shoulder.rotator-cuff-tear"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder.03",
+      "learningObjectives": [
+        "Author a source-supported prognosis and reassessment question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "shoulder",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.shoulder.adhesive-capsulitis"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder.04",
+      "learningObjectives": [
+        "Author a source-supported differential reasoning question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "shoulder",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.shoulder.shoulder-instability"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.elbow.01",
+      "learningObjectives": [
+        "Author a source-supported assessment question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "elbow",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.elbow.lateral-epicondylalgia"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.elbow.02",
+      "learningObjectives": [
+        "Author a source-supported neurological screening question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "elbow",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.elbow.03",
+      "learningObjectives": [
+        "Author a source-supported red-flag and escalation question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "elbow",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.elbow.olecranon-bursitis"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.elbow.04",
+      "learningObjectives": [
+        "Author a source-supported management reasoning question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "elbow",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.wrist-hand.01",
+      "learningObjectives": [
+        "Author a source-supported assessment question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "wrist-hand",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.wrist-hand.carpal-tunnel-syndrome"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.wrist-hand.02",
+      "learningObjectives": [
+        "Author a source-supported imaging and escalation question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "wrist-hand",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.wrist-hand.scaphoid-fracture"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.wrist-hand.03",
+      "learningObjectives": [
+        "Author a source-supported differential reasoning question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "wrist-hand",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.wrist-hand.tfcc-injury"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+      ],
+      "competenceClaimAllowed": false,
+      "difficulty": "not-rated",
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.wrist-hand.04",
+      "learningObjectives": [
+        "Author a source-supported management and reassessment question for the linked condition."
+      ],
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "referenceIds": [],
+      "region": "wrist-hand",
+      "reviews": {
+        "accessibility": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "publication": "required",
+        "sourceClearance": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "targetContentIds": [
+        "condition.wrist-hand.thumb-cmc-osteoarthritis"
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetCount": 20
+}

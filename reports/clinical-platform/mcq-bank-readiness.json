@@ -1,0 +1,14 @@
+{
+  "answerLeakageSurfaceCount": 0,
+  "authoredClinicalQuestions": 0,
+  "evidenceLinked": 0,
+  "governanceContractExampleCount": 1,
+  "governedSlots": 20,
+  "oneBestAnswerValidated": 0,
+  "optionExplanationsValidated": 0,
+  "publicQuestions": 0,
+  "realClinicalApprovalClaimed": false,
+  "schemaVersion": 1,
+  "sourceInsufficient": 20,
+  "targetCount": 20
+}
