@@ -4,9 +4,9 @@ This generated report is a private status surface. It does not grant clinical, e
 
 | Queue | Items |
 |---|---:|
-| Clinical review | 75 |
-| Evidence review | 246 |
-| Source clearance | 241 |
+| Clinical review | 78 |
+| Evidence review | 249 |
+| Source clearance | 244 |
 | Publication blockers | 4 |
 | Unaccounted legacy | 41 |
 | Open dependency risks | 11 |

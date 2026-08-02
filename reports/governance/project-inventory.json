@@ -5524,6 +5524,93 @@
     },
     {
       "blockers": [
+        "Evidence Hub record is private and requires exact-revision review."
+      ],
+      "clinicalReviewState": "required",
+      "contentType": "evidence-hub-record",
+      "destinationRoute": null,
+      "duplicateOf": null,
+      "evidenceReviewState": "required",
+      "id": "inventory.evidence.repository.evidence-pilot-lateral-ankle-sprain",
+      "lifecycleState": "draft",
+      "nextAction": "Complete the Evidence Hub review workflow without creating a public route.",
+      "publicationState": "private",
+      "region": null,
+      "schemaVersion": 1,
+      "sourceClearanceState": "review-required",
+      "sources": [
+        {
+          "checksum": "sha256:c283c8fec4806ded724265e72a4a1ffc7e0bca35c31c3b1971fd3e01f84076af",
+          "provenanceStatus": "repository-tracked",
+          "repositoryPath": "content/evidence-hub/evidence/evidence-repository-evidence-pilot-lateral-ankle-sprain.json",
+          "revision": "1",
+          "sourceId": "evidence.repository.evidence-pilot-lateral-ankle-sprain"
+        }
+      ],
+      "supersededBy": [],
+      "supersedes": [],
+      "title": "Registered repository pilot: lateral ankle sprain"
+    },
+    {
+      "blockers": [
+        "Evidence Hub record is private and requires exact-revision review."
+      ],
+      "clinicalReviewState": "required",
+      "contentType": "evidence-hub-record",
+      "destinationRoute": null,
+      "duplicateOf": null,
+      "evidenceReviewState": "required",
+      "id": "inventory.evidence.repository.evidence-pilot-rcrsp",
+      "lifecycleState": "draft",
+      "nextAction": "Complete the Evidence Hub review workflow without creating a public route.",
+      "publicationState": "private",
+      "region": null,
+      "schemaVersion": 1,
+      "sourceClearanceState": "review-required",
+      "sources": [
+        {
+          "checksum": "sha256:54c47d14db823f61983025e43f5f31ca5b27fb16ba9172b7c170278d2ba9a615",
+          "provenanceStatus": "repository-tracked",
+          "repositoryPath": "content/evidence-hub/evidence/evidence-repository-evidence-pilot-rcrsp.json",
+          "revision": "1",
+          "sourceId": "evidence.repository.evidence-pilot-rcrsp"
+        }
+      ],
+      "supersededBy": [],
+      "supersedes": [],
+      "title": "Registered repository pilot: shoulder pain"
+    },
+    {
+      "blockers": [
+        "Evidence Hub record is private and requires exact-revision review."
+      ],
+      "clinicalReviewState": "required",
+      "contentType": "evidence-hub-record",
+      "destinationRoute": null,
+      "duplicateOf": null,
+      "evidenceReviewState": "required",
+      "id": "inventory.evidence.repository.legacy-source-registry",
+      "lifecycleState": "draft",
+      "nextAction": "Complete the Evidence Hub review workflow without creating a public route.",
+      "publicationState": "private",
+      "region": null,
+      "schemaVersion": 1,
+      "sourceClearanceState": "review-required",
+      "sources": [
+        {
+          "checksum": "sha256:20ee3a2819f557d4134e59484b2d0a52965fe8cd96f71951f8580589d27d9f2d",
+          "provenanceStatus": "repository-tracked",
+          "repositoryPath": "content/evidence-hub/evidence/evidence-repository-legacy-source-registry.json",
+          "revision": "1",
+          "sourceId": "evidence.repository.legacy-source-registry"
+        }
+      ],
+      "supersededBy": [],
+      "supersedes": [],
+      "title": "Registered legacy source catalogue"
+    },
+    {
+      "blockers": [
         "No verified evidence relationship is recorded.",
         "Private structured record is not approved for publication."
       ],
@@ -9984,6 +10071,7 @@
       "anatomy": 9,
       "condition": 33,
       "differential-red-flag": 1,
+      "evidence-hub-record": 3,
       "evidence-source": 133,
       "guided-case": 9,
       "learning-record": 6,
@@ -9999,11 +10087,11 @@
     "byPublicationState": {
       "blocked": 4,
       "planned": 5,
-      "private": 199,
+      "private": 202,
       "public": 137
     },
     "publicItems": 137,
-    "total": 345,
+    "total": 348,
     "unaccountedLegacyItems": 41
   }
 }
