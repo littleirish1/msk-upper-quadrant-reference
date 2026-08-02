@@ -1,0 +1,46 @@
+{
+  "applicability": "",
+  "appraisalStatus": "not-appraised",
+  "changeSummary": "Registered exact repository source metadata; no clinical claim or bibliographic approval created.",
+  "createdAt": "2026-08-02",
+  "entityType": "evidence",
+  "evidenceType": "teaching-source",
+  "id": "evidence.repository.evidence-pilot-lateral-ankle-sprain",
+  "lifecycleStatus": "draft",
+  "limitations": [
+    "This record proves only the tracked source identity and checksum.",
+    "Bibliographic identity, claims, study design, population, applicability and source clearance are not verified."
+  ],
+  "notes": "Private metadata-only record. It must not support a public claim without exact-locator extraction and human review.",
+  "outcomes": [],
+  "provenance": [
+    {
+      "checksum": "sha256:95c4889802d977420396cb0225cc2cbca7fcec22130162d9af863aa1d581dfbb",
+      "clearanceScope": [],
+      "eligibilityStatus": "metadata-only",
+      "locationCategory": "repository-reviewed-source",
+      "locator": "content/evidence-hub/pilots/lateral-ankle-sprain.json",
+      "sourceId": "source.repository.evidence-pilot-lateral-ankle-sprain"
+    }
+  ],
+  "publicEligibility": false,
+  "referenceIds": [],
+  "reviewStatus": "unreviewed",
+  "revision": 1,
+  "schemaVersion": 1,
+  "sourceLocators": [
+    {
+      "checksum": "sha256:95c4889802d977420396cb0225cc2cbca7fcec22130162d9af863aa1d581dfbb",
+      "clearanceScope": [],
+      "eligibilityStatus": "metadata-only",
+      "locationCategory": "repository-reviewed-source",
+      "locator": "content/evidence-hub/pilots/lateral-ankle-sprain.json",
+      "sourceId": "source.repository.evidence-pilot-lateral-ankle-sprain"
+    }
+  ],
+  "supersededByEvidenceIds": [],
+  "supersedesRevision": null,
+  "title": "Registered repository pilot: lateral ankle sprain",
+  "updatedAt": "2026-08-02",
+  "verificationStatus": "extracted-unverified"
+}

@@ -21,6 +21,8 @@
   "test:movement": "node scripts/clinical-platform/test-movement.mjs",
   "ingestion:generate": "node scripts/clinical-platform/generate-ingestion-register.mjs",
   "test:ingestion": "node scripts/clinical-platform/test-ingestion.mjs",
+  "evidence:populate": "node scripts/clinical-platform/populate-evidence-hub.mjs",
+  "test:evidence-population": "node scripts/clinical-platform/test-evidence-population.mjs",
   "dev": "next dev",
   "prebuild": "npm run cases:generate && npm run build:search && npm run build:case-reveals",
   "build": "next build",

@@ -1,0 +1,46 @@
+{
+  "applicability": "",
+  "appraisalStatus": "not-appraised",
+  "changeSummary": "Registered exact repository source metadata; no clinical claim or bibliographic approval created.",
+  "createdAt": "2026-08-02",
+  "entityType": "evidence",
+  "evidenceType": "teaching-source",
+  "id": "evidence.repository.evidence-pilot-rcrsp",
+  "lifecycleStatus": "draft",
+  "limitations": [
+    "This record proves only the tracked source identity and checksum.",
+    "Bibliographic identity, claims, study design, population, applicability and source clearance are not verified."
+  ],
+  "notes": "Private metadata-only record. It must not support a public claim without exact-locator extraction and human review.",
+  "outcomes": [],
+  "provenance": [
+    {
+      "checksum": "sha256:f448b9b08efee255b31c0b217c17ba63aa7afd448ef3e172bc675118084cb98c",
+      "clearanceScope": [],
+      "eligibilityStatus": "metadata-only",
+      "locationCategory": "repository-reviewed-source",
+      "locator": "content/evidence-hub/pilots/rcrsp.json",
+      "sourceId": "source.repository.evidence-pilot-rcrsp"
+    }
+  ],
+  "publicEligibility": false,
+  "referenceIds": [],
+  "reviewStatus": "unreviewed",
+  "revision": 1,
+  "schemaVersion": 1,
+  "sourceLocators": [
+    {
+      "checksum": "sha256:f448b9b08efee255b31c0b217c17ba63aa7afd448ef3e172bc675118084cb98c",
+      "clearanceScope": [],
+      "eligibilityStatus": "metadata-only",
+      "locationCategory": "repository-reviewed-source",
+      "locator": "content/evidence-hub/pilots/rcrsp.json",
+      "sourceId": "source.repository.evidence-pilot-rcrsp"
+    }
+  ],
+  "supersededByEvidenceIds": [],
+  "supersedesRevision": null,
+  "title": "Registered repository pilot: shoulder pain",
+  "updatedAt": "2026-08-02",
+  "verificationStatus": "extracted-unverified"
+}

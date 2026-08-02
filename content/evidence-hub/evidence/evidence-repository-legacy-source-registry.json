@@ -1,0 +1,46 @@
+{
+  "applicability": "",
+  "appraisalStatus": "not-appraised",
+  "changeSummary": "Registered exact repository source metadata; no clinical claim or bibliographic approval created.",
+  "createdAt": "2026-08-02",
+  "entityType": "evidence",
+  "evidenceType": "other",
+  "id": "evidence.repository.legacy-source-registry",
+  "lifecycleStatus": "draft",
+  "limitations": [
+    "This record proves only the tracked source identity and checksum.",
+    "Bibliographic identity, claims, study design, population, applicability and source clearance are not verified."
+  ],
+  "notes": "Private metadata-only record. It must not support a public claim without exact-locator extraction and human review.",
+  "outcomes": [],
+  "provenance": [
+    {
+      "checksum": "sha256:904e849cbeb718aa69ee405a2ebd15c5270912765da066c5a9535740afc01076",
+      "clearanceScope": [],
+      "eligibilityStatus": "metadata-only",
+      "locationCategory": "repository-reviewed-source",
+      "locator": "content/imports/source-registry.json",
+      "sourceId": "source.repository.legacy-source-registry"
+    }
+  ],
+  "publicEligibility": false,
+  "referenceIds": [],
+  "reviewStatus": "unreviewed",
+  "revision": 1,
+  "schemaVersion": 1,
+  "sourceLocators": [
+    {
+      "checksum": "sha256:904e849cbeb718aa69ee405a2ebd15c5270912765da066c5a9535740afc01076",
+      "clearanceScope": [],
+      "eligibilityStatus": "metadata-only",
+      "locationCategory": "repository-reviewed-source",
+      "locator": "content/imports/source-registry.json",
+      "sourceId": "source.repository.legacy-source-registry"
+    }
+  ],
+  "supersededByEvidenceIds": [],
+  "supersedesRevision": null,
+  "title": "Registered legacy source catalogue",
+  "updatedAt": "2026-08-02",
+  "verificationStatus": "extracted-unverified"
+}

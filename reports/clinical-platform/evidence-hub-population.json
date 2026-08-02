@@ -1,0 +1,31 @@
+{
+  "approvedAnatomyEvidence": 0,
+  "approvedMovementEvidence": 0,
+  "blockers": [
+    "No source has verified bibliographic identity, full-text appraisal, exact claim locators or public-use clearance.",
+    "No human evidence, clinical or publication decision has been recorded."
+  ],
+  "claims": 0,
+  "clinicalQuestions": 0,
+  "conditions": 0,
+  "educationalSources": 2,
+  "evidenceRecords": 3,
+  "exactRevisionCoverage": 0,
+  "explicitGapCollections": {
+    "anatomy3d": 8,
+    "mcq": 20,
+    "modules": 6,
+    "movement": 26,
+    "truthRecords": 360
+  },
+  "genuineRegisteredSources": 3,
+  "guidelines": 0,
+  "presentationVariants": 0,
+  "primaryStudies": 0,
+  "publicRecords": 0,
+  "relationships": 0,
+  "reviewDecisions": 0,
+  "schemaVersion": 1,
+  "supersededRecords": 0,
+  "systematicReviews": 0
+}

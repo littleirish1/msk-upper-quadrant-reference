@@ -1,0 +1,561 @@
+{
+  "nodes": [
+    {
+      "entityType": "evidence",
+      "id": "evidence.repository.evidence-pilot-lateral-ankle-sprain",
+      "publicEligibility": false,
+      "reviewStatus": "unreviewed",
+      "revision": 1
+    },
+    {
+      "entityType": "evidence",
+      "id": "evidence.repository.evidence-pilot-rcrsp",
+      "publicEligibility": false,
+      "reviewStatus": "unreviewed",
+      "revision": 1
+    },
+    {
+      "entityType": "evidence",
+      "id": "evidence.repository.legacy-source-registry",
+      "publicEligibility": false,
+      "reviewStatus": "unreviewed",
+      "revision": 1
+    }
+  ],
+  "relationships": [],
+  "schemaVersion": 1,
+  "unresolvedExternalCoverage": {
+    "anatomy3d": [
+      {
+        "blockers": [
+          "No governed source asset is present.",
+          "Source, creator, licence, permitted use and attribution are unknown.",
+          "Anatomy, clinical, accessibility, performance and publication review are pending."
+        ],
+        "id": "asset3d.cervical.review-slot",
+        "publicEligibility": false,
+        "revision": 1
+      },
+      {
+        "blockers": [
+          "No governed source asset is present.",
+          "Source, creator, licence, permitted use and attribution are unknown.",
+          "Anatomy, clinical, accessibility, performance and publication review are pending."
+        ],
+        "id": "asset3d.shoulder.review-slot",
+        "publicEligibility": false,
+        "revision": 1
+      },
+      {
+        "blockers": [
+          "No governed source asset is present.",
+          "Source, creator, licence, permitted use and attribution are unknown.",
+          "Anatomy, clinical, accessibility, performance and publication review are pending."
+        ],
+        "id": "asset3d.elbow.review-slot",
+        "publicEligibility": false,
+        "revision": 1
+      },
+      {
+        "blockers": [
+          "No governed source asset is present.",
+          "Source, creator, licence, permitted use and attribution are unknown.",
+          "Anatomy, clinical, accessibility, performance and publication review are pending."
+        ],
+        "id": "asset3d.wrist-hand.review-slot",
+        "publicEligibility": false,
+        "revision": 1
+      },
+      {
+        "blockers": [
+          "No governed source asset is present.",
+          "Source, creator, licence, permitted use and attribution are unknown.",
+          "Anatomy, clinical, accessibility, performance and publication review are pending."
+        ],
+        "id": "asset3d.lumbar.review-slot",
+        "publicEligibility": false,
+        "revision": 1
+      },
+      {
+        "blockers": [
+          "No governed source asset is present.",
+          "Source, creator, licence, permitted use and attribution are unknown.",
+          "Anatomy, clinical, accessibility, performance and publication review are pending."
+        ],
+        "id": "asset3d.hip.review-slot",
+        "publicEligibility": false,
+        "revision": 1
+      },
+      {
+        "blockers": [
+          "No governed source asset is present.",
+          "Source, creator, licence, permitted use and attribution are unknown.",
+          "Anatomy, clinical, accessibility, performance and publication review are pending."
+        ],
+        "id": "asset3d.knee.review-slot",
+        "publicEligibility": false,
+        "revision": 1
+      },
+      {
+        "blockers": [
+          "No governed source asset is present.",
+          "Source, creator, licence, permitted use and attribution are unknown.",
+          "Anatomy, clinical, accessibility, performance and publication review are pending."
+        ],
+        "id": "asset3d.ankle-foot.review-slot",
+        "publicEligibility": false,
+        "revision": 1
+      }
+    ],
+    "mcqSlots": [
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.cervical.01"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.cervical.02"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.cervical.03"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.cervical.04"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.thoracic.01"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.thoracic.02"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.thoracic.03"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.thoracic.04"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.shoulder.01"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.shoulder.02"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.shoulder.03"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.shoulder.04"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.elbow.01"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.elbow.02"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.elbow.03"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.elbow.04"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.wrist-hand.01"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.wrist-hand.02"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.wrist-hand.03"
+      },
+      {
+        "blockers": [
+          "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored."
+        ],
+        "id": "mcq-slot.wrist-hand.04"
+      }
+    ],
+    "modules": [
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.case.cervical.case-01.module-presentation-1"
+        ],
+        "id": "module.cervical.case-01.presentation",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.case.cervical.case-02.module-presentation-1"
+        ],
+        "id": "module.cervical.case-02.presentation",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.case.elbow.case-03.module-presentation-1"
+        ],
+        "id": "module.elbow.case-03.presentation",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.case.shoulder.case-04.module-presentation-1"
+        ],
+        "id": "module.shoulder.case-04.presentation",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.case.shoulder.case-05.module-presentation-1"
+        ],
+        "id": "module.shoulder.case-05.presentation",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.case.thoracic.case-06.module-presentation-1"
+        ],
+        "id": "module.thoracic.case-06.presentation",
+        "revision": 1
+      }
+    ],
+    "movement": [
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.joint.flexion-extension"
+        ],
+        "id": "movement.joint.flexion-extension",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.joint.abduction-adduction"
+        ],
+        "id": "movement.joint.abduction-adduction",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.joint.internal-external-rotation"
+        ],
+        "id": "movement.joint.internal-external-rotation",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.joint.pronation-supination"
+        ],
+        "id": "movement.joint.pronation-supination",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.joint.radial-ulnar-deviation"
+        ],
+        "id": "movement.joint.radial-ulnar-deviation",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.joint.spinal-flexion-extension"
+        ],
+        "id": "movement.joint.spinal-flexion-extension",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.joint.spinal-lateral-flexion"
+        ],
+        "id": "movement.joint.spinal-lateral-flexion",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.joint.spinal-rotation"
+        ],
+        "id": "movement.joint.spinal-rotation",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.joint.accessory-movement"
+        ],
+        "id": "movement.joint.accessory-movement",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.joint.combined-movement"
+        ],
+        "id": "movement.joint.combined-movement",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.reaching"
+        ],
+        "id": "movement.functional.reaching",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.overhead-use"
+        ],
+        "id": "movement.functional.overhead-use",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.lifting"
+        ],
+        "id": "movement.functional.lifting",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.carrying"
+        ],
+        "id": "movement.functional.carrying",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.pushing"
+        ],
+        "id": "movement.functional.pushing",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.pulling"
+        ],
+        "id": "movement.functional.pulling",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.gripping"
+        ],
+        "id": "movement.functional.gripping",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.throwing"
+        ],
+        "id": "movement.functional.throwing",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.sit-to-stand"
+        ],
+        "id": "movement.functional.sit-to-stand",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.squat"
+        ],
+        "id": "movement.functional.squat",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.step"
+        ],
+        "id": "movement.functional.step",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.gait"
+        ],
+        "id": "movement.functional.gait",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.running"
+        ],
+        "id": "movement.functional.running",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.jumping-landing"
+        ],
+        "id": "movement.functional.jumping-landing",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.stairs"
+        ],
+        "id": "movement.functional.stairs",
+        "revision": 1
+      },
+      {
+        "evidenceRecordIds": [],
+        "gapIds": [
+          "gap.movement.functional.work-task"
+        ],
+        "id": "movement.functional.work-task",
+        "revision": 1
+      }
+    ],
+    "truthRecords": [
+      {
+        "hash": "b05d849dee55d349ef01710e284f88e2b147590f3813b82f3ded5503df28cd80",
+        "id": "patient-truth.cervical.case-01",
+        "unresolvedIssues": [
+          "No approved Evidence Hub condition or evidence record is available for this case."
+        ]
+      },
+      {
+        "hash": "e7b51b241f41d9932a596afbee8cf69f8b270ea321cbcd13a66a6fde65fbf738",
+        "id": "patient-truth.cervical.case-02",
+        "unresolvedIssues": [
+          "No approved Evidence Hub condition or evidence record is available for this case."
+        ]
+      },
+      {
+        "hash": "7d68be2817e0585e0db8ce182c0d32f6709c90ed17512e14c0884102f9716d2c",
+        "id": "patient-truth.cervical.pilot-01",
+        "unresolvedIssues": [
+          "No governed Evidence Hub condition record exists for this pilot.",
+          "No source citation has been verified into an approved Evidence Hub evidence record."
+        ]
+      },
+      {
+        "hash": "db2c806efd7c2f32f6607c06cc9a4827608a71b4cdd2eebed6db16aa6cf73c88",
+        "id": "patient-truth.elbow.case-03",
+        "unresolvedIssues": [
+          "No approved Evidence Hub condition or evidence record is available for this case."
+        ]
+      },
+      {
+        "hash": "6d6a29a04802baad8d33e87af7e6a35dd51106c0a891c8a35cea60c56331c69f",
+        "id": "patient-truth.shoulder.case-04",
+        "unresolvedIssues": [
+          "No approved Evidence Hub condition or evidence record is available for this case."
+        ]
+      },
+      {
+        "hash": "9109db5737c02fb0551d1da8f4a7944bca9e30fc32ceab946e75add16fff5bb7",
+        "id": "patient-truth.shoulder.case-05",
+        "unresolvedIssues": [
+          "No approved Evidence Hub condition or evidence record is available for this case."
+        ]
+      },
+      {
+        "hash": "0e3e904a488905e9623459d094041980e2b39c0094b59cdc9b42db2909b2d7fd",
+        "id": "patient-truth.shoulder.pilot-02",
+        "unresolvedIssues": [
+          "No governed Evidence Hub condition record exists for this pilot.",
+          "No source citation has been verified into an approved Evidence Hub evidence record."
+        ]
+      },
+      {
+        "hash": "a16e186d46841357921c3da3d492e7193806a9d2d08f90de2f365e35e3358bc1",
+        "id": "patient-truth.thoracic.case-06",
+        "unresolvedIssues": [
+          "No approved Evidence Hub condition or evidence record is available for this case."
+        ]
+      },
+      {
+        "hash": "71ac312d0d0c350d60aa0286054c1882cb47c37605d5ba0fca621b444b856bf4",
+        "id": "patient-truth.wrist-hand.pilot-03",
+        "unresolvedIssues": [
+          "No governed Evidence Hub condition record exists for this pilot.",
+          "No source citation has been verified into an approved Evidence Hub evidence record."
+        ]
+      }
+    ]
+  }
+}
