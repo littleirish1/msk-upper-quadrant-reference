@@ -1,0 +1,11 @@
+{
+  "clinicalMeaningChanged": false,
+  "explicitGaps": 360,
+  "implicitNegatives": 0,
+  "migratedPrivatePilots": 3,
+  "migratedPublicRecords": 6,
+  "publicRoutesChanged": 0,
+  "schemaVersion": 1,
+  "sourceRecordCount": 9,
+  "truthItems": 378
+}
