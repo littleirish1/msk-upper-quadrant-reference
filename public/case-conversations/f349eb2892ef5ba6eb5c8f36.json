@@ -1,0 +1,411 @@
+{
+  "caseId": "case.thoracic.case-06",
+  "items": [
+    {
+      "domain": "profile",
+      "id": "truth.thoracic.case-06.profile",
+      "retrievalIntents": [
+        "profile"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "communication-style",
+      "id": "truth.thoracic.case-06.communication-style",
+      "retrievalIntents": [
+        "communication-style"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "goals-concerns",
+      "id": "truth.thoracic.case-06.goals-concerns",
+      "retrievalIntents": [
+        "goals-concerns"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "presenting-complaint",
+      "id": "truth.thoracic.case-06.presenting-complaint",
+      "retrievalIntents": [
+        "opening",
+        "presenting-complaint",
+        "tell-me-more"
+      ],
+      "state": "positive",
+      "value": "A 55-year-old accountant presents with left-sided upper thoracic and periscapular discomfort that was initially assumed to be postural. He has been working long hours at a desk during year-end accounts. He also returned to light gym work two weeks ago and noticed his upper back felt tight after rowing and pressing exercises. These details make an MSK explanation tempting. The symptom he is worried about is a deep ache between the left shoulder blade and spine, sometimes spreading as a band-like pressure across the front of the chest. It is not reliably reproduced by thoracic rotation, shoulder movement, palpation, resisted testing, or loaded spinal positions. Heat and stretching help general stiffness but do not change the main symptom. The most concerning episode occurred while walking uphill from a car park. He developed the same thoracic/scapular ache with chest pressure, felt clammy and mildly nauseous, and had to stop. Symptoms settled after several minutes of rest. A milder episode occurred again on stairs the following day. He has hypertension, previously raised cholesterol, a past smoking history, and a family history of myocardial infarction in a first-degree relative in their late 50s. He denies cough, fever, calf pain, pleuritic pain, unexplained weight loss, night sweats, trauma, neurological symptoms, or bowel/bladder disturbance.",
+      "volunteered": true
+    },
+    {
+      "domain": "volunteered-fact",
+      "id": "truth.thoracic.case-06.volunteered-fact",
+      "retrievalIntents": [
+        "volunteered-information"
+      ],
+      "state": "positive",
+      "value": "A 55-year-old accountant presents with left-sided upper thoracic and periscapular discomfort that was initially assumed to be postural. He has been working long hours at a desk during year-end accounts. He also returned to light gym work two weeks ago and noticed his upper back felt tight after rowing and pressing exercises. These details make an MSK explanation tempting. The symptom he is worried about is a deep ache between the left shoulder blade and spine, sometimes spreading as a band-like pressure across the front of the chest. It is not reliably reproduced by thoracic rotation, shoulder movement, palpation, resisted testing, or loaded spinal positions. Heat and stretching help general stiffness but do not change the main symptom. The most concerning episode occurred while walking uphill from a car park. He developed the same thoracic/scapular ache with chest pressure, felt clammy and mildly nauseous, and had to stop. Symptoms settled after several minutes of rest. A milder episode occurred again on stairs the following day. He has hypertension, previously raised cholesterol, a past smoking history, and a family history of myocardial infarction in a first-degree relative in their late 50s. He denies cough, fever, calf pain, pleuritic pain, unexplained weight loss, night sweats, trauma, neurological symptoms, or bowel/bladder disturbance.",
+      "volunteered": true
+    },
+    {
+      "domain": "symptom-location",
+      "id": "truth.thoracic.case-06.symptom-location",
+      "retrievalIntents": [
+        "symptom-location"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "laterality",
+      "id": "truth.thoracic.case-06.laterality",
+      "retrievalIntents": [
+        "laterality"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "distribution",
+      "id": "truth.thoracic.case-06.distribution",
+      "retrievalIntents": [
+        "distribution"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "quality",
+      "id": "truth.thoracic.case-06.quality",
+      "retrievalIntents": [
+        "quality"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "intensity",
+      "id": "truth.thoracic.case-06.intensity",
+      "retrievalIntents": [
+        "intensity"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "irritability",
+      "id": "truth.thoracic.case-06.irritability",
+      "retrievalIntents": [
+        "irritability"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "onset",
+      "id": "truth.thoracic.case-06.onset",
+      "retrievalIntents": [
+        "onset"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "duration",
+      "id": "truth.thoracic.case-06.duration",
+      "retrievalIntents": [
+        "duration"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "mechanism",
+      "id": "truth.thoracic.case-06.mechanism",
+      "retrievalIntents": [
+        "mechanism"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "progression",
+      "id": "truth.thoracic.case-06.progression",
+      "retrievalIntents": [
+        "progression"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "twenty-four-hour-pattern",
+      "id": "truth.thoracic.case-06.twenty-four-hour-pattern",
+      "retrievalIntents": [
+        "twenty-four-hour-pattern"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "aggravating-factor",
+      "id": "truth.thoracic.case-06.aggravating-factor",
+      "retrievalIntents": [
+        "aggravating-factor"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "easing-factor",
+      "id": "truth.thoracic.case-06.easing-factor",
+      "retrievalIntents": [
+        "easing-factor"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "function",
+      "id": "truth.thoracic.case-06.function",
+      "retrievalIntents": [
+        "function"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "bladder-bowel-saddle",
+      "id": "truth.thoracic.case-06.bladder-bowel-saddle",
+      "retrievalIntents": [
+        "bladder-bowel-saddle"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "weakness",
+      "id": "truth.thoracic.case-06.weakness",
+      "retrievalIntents": [
+        "weakness"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "falls-balance",
+      "id": "truth.thoracic.case-06.falls-balance",
+      "retrievalIntents": [
+        "falls-balance"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "systemic-history",
+      "id": "truth.thoracic.case-06.systemic-history",
+      "retrievalIntents": [
+        "systemic-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "red-flag-history",
+      "id": "truth.thoracic.case-06.red-flag-history",
+      "retrievalIntents": [
+        "red-flag-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "medical-history",
+      "id": "truth.thoracic.case-06.medical-history",
+      "retrievalIntents": [
+        "medical-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "medication",
+      "id": "truth.thoracic.case-06.medication",
+      "retrievalIntents": [
+        "medication"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "diabetes",
+      "id": "truth.thoracic.case-06.diabetes",
+      "retrievalIntents": [
+        "diabetes"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "anticoagulation",
+      "id": "truth.thoracic.case-06.anticoagulation",
+      "retrievalIntents": [
+        "anticoagulation"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "steroids",
+      "id": "truth.thoracic.case-06.steroids",
+      "retrievalIntents": [
+        "steroids"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "psychosocial-context",
+      "id": "truth.thoracic.case-06.psychosocial-context",
+      "retrievalIntents": [
+        "psychosocial-context"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "objective-finding",
+      "id": "truth.thoracic.case-06.objective-finding",
+      "retrievalIntents": [
+        "objective-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "neurological-finding",
+      "id": "truth.thoracic.case-06.neurological-finding",
+      "retrievalIntents": [
+        "neurological-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "movement-finding",
+      "id": "truth.thoracic.case-06.movement-finding",
+      "retrievalIntents": [
+        "movement-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "test-finding",
+      "id": "truth.thoracic.case-06.test-finding",
+      "retrievalIntents": [
+        "test-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "investigation-finding",
+      "id": "truth.thoracic.case-06.investigation-finding",
+      "retrievalIntents": [
+        "investigation-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "differential",
+      "id": "truth.thoracic.case-06.differential",
+      "retrievalIntents": [
+        "differential"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "management",
+      "id": "truth.thoracic.case-06.management",
+      "retrievalIntents": [
+        "management"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "safety-netting",
+      "id": "truth.thoracic.case-06.safety-netting",
+      "retrievalIntents": [
+        "safety-netting"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "escalation",
+      "id": "truth.thoracic.case-06.escalation",
+      "retrievalIntents": [
+        "escalation"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "prognosis",
+      "id": "truth.thoracic.case-06.prognosis",
+      "retrievalIntents": [
+        "prognosis"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    }
+  ],
+  "openingTruthId": "truth.thoracic.case-06.presenting-complaint",
+  "publicSlug": "case-06-thoracic-pain-broader-screening-cues",
+  "schemaVersion": 1,
+  "truthHash": "a16e186d46841357921c3da3d492e7193806a9d2d08f90de2f365e35e3358bc1"
+}

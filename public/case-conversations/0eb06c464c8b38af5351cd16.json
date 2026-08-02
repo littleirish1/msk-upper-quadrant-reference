@@ -1,0 +1,411 @@
+{
+  "caseId": "case.shoulder.case-04",
+  "items": [
+    {
+      "domain": "profile",
+      "id": "truth.shoulder.case-04.profile",
+      "retrievalIntents": [
+        "profile"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "communication-style",
+      "id": "truth.shoulder.case-04.communication-style",
+      "retrievalIntents": [
+        "communication-style"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "goals-concerns",
+      "id": "truth.shoulder.case-04.goals-concerns",
+      "retrievalIntents": [
+        "goals-concerns"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "presenting-complaint",
+      "id": "truth.shoulder.case-04.presenting-complaint",
+      "retrievalIntents": [
+        "opening",
+        "presenting-complaint",
+        "tell-me-more"
+      ],
+      "state": "positive",
+      "value": "A 29-year-old active patient presents with a 5-month history of right lateral shoulder pain. Symptoms began gradually with no clear traumatic event. Pain is worse with overhead activity, throwing, and lying on the affected side at night. They have tried rest for 6 weeks with minimal improvement. NSAIDs from the GP gave some benefit. They are motivated to return to sport.",
+      "volunteered": true
+    },
+    {
+      "domain": "volunteered-fact",
+      "id": "truth.shoulder.case-04.volunteered-fact",
+      "retrievalIntents": [
+        "volunteered-information"
+      ],
+      "state": "positive",
+      "value": "A 29-year-old active patient presents with a 5-month history of right lateral shoulder pain. Symptoms began gradually with no clear traumatic event. Pain is worse with overhead activity, throwing, and lying on the affected side at night. They have tried rest for 6 weeks with minimal improvement. NSAIDs from the GP gave some benefit. They are motivated to return to sport.",
+      "volunteered": true
+    },
+    {
+      "domain": "symptom-location",
+      "id": "truth.shoulder.case-04.symptom-location",
+      "retrievalIntents": [
+        "symptom-location"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "laterality",
+      "id": "truth.shoulder.case-04.laterality",
+      "retrievalIntents": [
+        "laterality"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "distribution",
+      "id": "truth.shoulder.case-04.distribution",
+      "retrievalIntents": [
+        "distribution"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "quality",
+      "id": "truth.shoulder.case-04.quality",
+      "retrievalIntents": [
+        "quality"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "intensity",
+      "id": "truth.shoulder.case-04.intensity",
+      "retrievalIntents": [
+        "intensity"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "irritability",
+      "id": "truth.shoulder.case-04.irritability",
+      "retrievalIntents": [
+        "irritability"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "onset",
+      "id": "truth.shoulder.case-04.onset",
+      "retrievalIntents": [
+        "onset"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "duration",
+      "id": "truth.shoulder.case-04.duration",
+      "retrievalIntents": [
+        "duration"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "mechanism",
+      "id": "truth.shoulder.case-04.mechanism",
+      "retrievalIntents": [
+        "mechanism"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "progression",
+      "id": "truth.shoulder.case-04.progression",
+      "retrievalIntents": [
+        "progression"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "twenty-four-hour-pattern",
+      "id": "truth.shoulder.case-04.twenty-four-hour-pattern",
+      "retrievalIntents": [
+        "twenty-four-hour-pattern"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "aggravating-factor",
+      "id": "truth.shoulder.case-04.aggravating-factor",
+      "retrievalIntents": [
+        "aggravating-factor"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "easing-factor",
+      "id": "truth.shoulder.case-04.easing-factor",
+      "retrievalIntents": [
+        "easing-factor"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "function",
+      "id": "truth.shoulder.case-04.function",
+      "retrievalIntents": [
+        "function"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "bladder-bowel-saddle",
+      "id": "truth.shoulder.case-04.bladder-bowel-saddle",
+      "retrievalIntents": [
+        "bladder-bowel-saddle"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "weakness",
+      "id": "truth.shoulder.case-04.weakness",
+      "retrievalIntents": [
+        "weakness"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "falls-balance",
+      "id": "truth.shoulder.case-04.falls-balance",
+      "retrievalIntents": [
+        "falls-balance"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "systemic-history",
+      "id": "truth.shoulder.case-04.systemic-history",
+      "retrievalIntents": [
+        "systemic-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "red-flag-history",
+      "id": "truth.shoulder.case-04.red-flag-history",
+      "retrievalIntents": [
+        "red-flag-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "medical-history",
+      "id": "truth.shoulder.case-04.medical-history",
+      "retrievalIntents": [
+        "medical-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "medication",
+      "id": "truth.shoulder.case-04.medication",
+      "retrievalIntents": [
+        "medication"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "diabetes",
+      "id": "truth.shoulder.case-04.diabetes",
+      "retrievalIntents": [
+        "diabetes"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "anticoagulation",
+      "id": "truth.shoulder.case-04.anticoagulation",
+      "retrievalIntents": [
+        "anticoagulation"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "steroids",
+      "id": "truth.shoulder.case-04.steroids",
+      "retrievalIntents": [
+        "steroids"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "psychosocial-context",
+      "id": "truth.shoulder.case-04.psychosocial-context",
+      "retrievalIntents": [
+        "psychosocial-context"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "objective-finding",
+      "id": "truth.shoulder.case-04.objective-finding",
+      "retrievalIntents": [
+        "objective-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "neurological-finding",
+      "id": "truth.shoulder.case-04.neurological-finding",
+      "retrievalIntents": [
+        "neurological-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "movement-finding",
+      "id": "truth.shoulder.case-04.movement-finding",
+      "retrievalIntents": [
+        "movement-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "test-finding",
+      "id": "truth.shoulder.case-04.test-finding",
+      "retrievalIntents": [
+        "test-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "investigation-finding",
+      "id": "truth.shoulder.case-04.investigation-finding",
+      "retrievalIntents": [
+        "investigation-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "differential",
+      "id": "truth.shoulder.case-04.differential",
+      "retrievalIntents": [
+        "differential"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "management",
+      "id": "truth.shoulder.case-04.management",
+      "retrievalIntents": [
+        "management"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "safety-netting",
+      "id": "truth.shoulder.case-04.safety-netting",
+      "retrievalIntents": [
+        "safety-netting"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "escalation",
+      "id": "truth.shoulder.case-04.escalation",
+      "retrievalIntents": [
+        "escalation"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "prognosis",
+      "id": "truth.shoulder.case-04.prognosis",
+      "retrievalIntents": [
+        "prognosis"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    }
+  ],
+  "openingTruthId": "truth.shoulder.case-04.presenting-complaint",
+  "publicSlug": "case-04-lateral-shoulder-pain-overhead-activity",
+  "schemaVersion": 1,
+  "truthHash": "6d6a29a04802baad8d33e87af7e6a35dd51106c0a891c8a35cea60c56331c69f"
+}

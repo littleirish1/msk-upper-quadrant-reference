@@ -1,0 +1,411 @@
+{
+  "caseId": "case.cervical.case-02",
+  "items": [
+    {
+      "domain": "profile",
+      "id": "truth.cervical.case-02.profile",
+      "retrievalIntents": [
+        "profile"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "communication-style",
+      "id": "truth.cervical.case-02.communication-style",
+      "retrievalIntents": [
+        "communication-style"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "goals-concerns",
+      "id": "truth.cervical.case-02.goals-concerns",
+      "retrievalIntents": [
+        "goals-concerns"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "presenting-complaint",
+      "id": "truth.cervical.case-02.presenting-complaint",
+      "retrievalIntents": [
+        "opening",
+        "presenting-complaint",
+        "tell-me-more"
+      ],
+      "state": "positive",
+      "value": "A 58-year-old retired nurse is referred for a pre-operative physiotherapy assessment before planned bilateral carpal tunnel release. She reports a 6-month history of increasing difficulty with fine motor tasks, including fastening buttons, typing, and handling cutlery. She also reports that her legs feel heavy on stairs. She has intermittent numbness in both arms, but it does not follow one clear dermatomal or peripheral nerve distribution. She has no significant neck pain. She denies falls, but reports that her balance feels slightly less reliable. Over the past 2 months, she has noticed mild bladder urgency, which she has attributed to possible urinary tract infections. Her current working diagnosis is bilateral carpal tunnel syndrome.",
+      "volunteered": true
+    },
+    {
+      "domain": "volunteered-fact",
+      "id": "truth.cervical.case-02.volunteered-fact",
+      "retrievalIntents": [
+        "volunteered-information"
+      ],
+      "state": "positive",
+      "value": "A 58-year-old retired nurse is referred for a pre-operative physiotherapy assessment before planned bilateral carpal tunnel release. She reports a 6-month history of increasing difficulty with fine motor tasks, including fastening buttons, typing, and handling cutlery. She also reports that her legs feel heavy on stairs. She has intermittent numbness in both arms, but it does not follow one clear dermatomal or peripheral nerve distribution. She has no significant neck pain. She denies falls, but reports that her balance feels slightly less reliable. Over the past 2 months, she has noticed mild bladder urgency, which she has attributed to possible urinary tract infections. Her current working diagnosis is bilateral carpal tunnel syndrome.",
+      "volunteered": true
+    },
+    {
+      "domain": "symptom-location",
+      "id": "truth.cervical.case-02.symptom-location",
+      "retrievalIntents": [
+        "symptom-location"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "laterality",
+      "id": "truth.cervical.case-02.laterality",
+      "retrievalIntents": [
+        "laterality"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "distribution",
+      "id": "truth.cervical.case-02.distribution",
+      "retrievalIntents": [
+        "distribution"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "quality",
+      "id": "truth.cervical.case-02.quality",
+      "retrievalIntents": [
+        "quality"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "intensity",
+      "id": "truth.cervical.case-02.intensity",
+      "retrievalIntents": [
+        "intensity"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "irritability",
+      "id": "truth.cervical.case-02.irritability",
+      "retrievalIntents": [
+        "irritability"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "onset",
+      "id": "truth.cervical.case-02.onset",
+      "retrievalIntents": [
+        "onset"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "duration",
+      "id": "truth.cervical.case-02.duration",
+      "retrievalIntents": [
+        "duration"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "mechanism",
+      "id": "truth.cervical.case-02.mechanism",
+      "retrievalIntents": [
+        "mechanism"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "progression",
+      "id": "truth.cervical.case-02.progression",
+      "retrievalIntents": [
+        "progression"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "twenty-four-hour-pattern",
+      "id": "truth.cervical.case-02.twenty-four-hour-pattern",
+      "retrievalIntents": [
+        "twenty-four-hour-pattern"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "aggravating-factor",
+      "id": "truth.cervical.case-02.aggravating-factor",
+      "retrievalIntents": [
+        "aggravating-factor"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "easing-factor",
+      "id": "truth.cervical.case-02.easing-factor",
+      "retrievalIntents": [
+        "easing-factor"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "function",
+      "id": "truth.cervical.case-02.function",
+      "retrievalIntents": [
+        "function"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "bladder-bowel-saddle",
+      "id": "truth.cervical.case-02.bladder-bowel-saddle",
+      "retrievalIntents": [
+        "bladder-bowel-saddle"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "weakness",
+      "id": "truth.cervical.case-02.weakness",
+      "retrievalIntents": [
+        "weakness"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "falls-balance",
+      "id": "truth.cervical.case-02.falls-balance",
+      "retrievalIntents": [
+        "falls-balance"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "systemic-history",
+      "id": "truth.cervical.case-02.systemic-history",
+      "retrievalIntents": [
+        "systemic-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "red-flag-history",
+      "id": "truth.cervical.case-02.red-flag-history",
+      "retrievalIntents": [
+        "red-flag-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "medical-history",
+      "id": "truth.cervical.case-02.medical-history",
+      "retrievalIntents": [
+        "medical-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "medication",
+      "id": "truth.cervical.case-02.medication",
+      "retrievalIntents": [
+        "medication"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "diabetes",
+      "id": "truth.cervical.case-02.diabetes",
+      "retrievalIntents": [
+        "diabetes"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "anticoagulation",
+      "id": "truth.cervical.case-02.anticoagulation",
+      "retrievalIntents": [
+        "anticoagulation"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "steroids",
+      "id": "truth.cervical.case-02.steroids",
+      "retrievalIntents": [
+        "steroids"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "psychosocial-context",
+      "id": "truth.cervical.case-02.psychosocial-context",
+      "retrievalIntents": [
+        "psychosocial-context"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "objective-finding",
+      "id": "truth.cervical.case-02.objective-finding",
+      "retrievalIntents": [
+        "objective-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "neurological-finding",
+      "id": "truth.cervical.case-02.neurological-finding",
+      "retrievalIntents": [
+        "neurological-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "movement-finding",
+      "id": "truth.cervical.case-02.movement-finding",
+      "retrievalIntents": [
+        "movement-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "test-finding",
+      "id": "truth.cervical.case-02.test-finding",
+      "retrievalIntents": [
+        "test-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "investigation-finding",
+      "id": "truth.cervical.case-02.investigation-finding",
+      "retrievalIntents": [
+        "investigation-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "differential",
+      "id": "truth.cervical.case-02.differential",
+      "retrievalIntents": [
+        "differential"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "management",
+      "id": "truth.cervical.case-02.management",
+      "retrievalIntents": [
+        "management"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "safety-netting",
+      "id": "truth.cervical.case-02.safety-netting",
+      "retrievalIntents": [
+        "safety-netting"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "escalation",
+      "id": "truth.cervical.case-02.escalation",
+      "retrievalIntents": [
+        "escalation"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "prognosis",
+      "id": "truth.cervical.case-02.prognosis",
+      "retrievalIntents": [
+        "prognosis"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    }
+  ],
+  "openingTruthId": "truth.cervical.case-02.presenting-complaint",
+  "publicSlug": "case-02-hand-clumsiness-heavy-legs",
+  "schemaVersion": 1,
+  "truthHash": "e7b51b241f41d9932a596afbee8cf69f8b270ea321cbcd13a66a6fde65fbf738"
+}

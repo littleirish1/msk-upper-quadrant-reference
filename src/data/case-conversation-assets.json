@@ -1,0 +1,41 @@
+{
+  "assets": [
+    {
+      "assetPath": "/case-conversations/78c02423f8b5b0f5ae002f36.json",
+      "caseId": "case.cervical.case-01",
+      "publicSlug": "case-01-neck-arm-symptoms",
+      "truthHash": "b05d849dee55d349ef01710e284f88e2b147590f3813b82f3ded5503df28cd80"
+    },
+    {
+      "assetPath": "/case-conversations/f52d465de527d8ec73a65e33.json",
+      "caseId": "case.cervical.case-02",
+      "publicSlug": "case-02-hand-clumsiness-heavy-legs",
+      "truthHash": "e7b51b241f41d9932a596afbee8cf69f8b270ea321cbcd13a66a6fde65fbf738"
+    },
+    {
+      "assetPath": "/case-conversations/f64c78e3a59adc37089a6080.json",
+      "caseId": "case.elbow.case-03",
+      "publicSlug": "case-03-sudden-anterior-elbow-pain-after-lifting",
+      "truthHash": "db2c806efd7c2f32f6607c06cc9a4827608a71b4cdd2eebed6db16aa6cf73c88"
+    },
+    {
+      "assetPath": "/case-conversations/0eb06c464c8b38af5351cd16.json",
+      "caseId": "case.shoulder.case-04",
+      "publicSlug": "case-04-lateral-shoulder-pain-overhead-activity",
+      "truthHash": "6d6a29a04802baad8d33e87af7e6a35dd51106c0a891c8a35cea60c56331c69f"
+    },
+    {
+      "assetPath": "/case-conversations/fb03e02618f0d6ccdcbb7797.json",
+      "caseId": "case.shoulder.case-05",
+      "publicSlug": "case-05-progressive-shoulder-stiffness",
+      "truthHash": "9109db5737c02fb0551d1da8f4a7944bca9e30fc32ceab946e75add16fff5bb7"
+    },
+    {
+      "assetPath": "/case-conversations/f349eb2892ef5ba6eb5c8f36.json",
+      "caseId": "case.thoracic.case-06",
+      "publicSlug": "case-06-thoracic-pain-broader-screening-cues",
+      "truthHash": "a16e186d46841357921c3da3d492e7193806a9d2d08f90de2f365e35e3358bc1"
+    }
+  ],
+  "schemaVersion": 1
+}

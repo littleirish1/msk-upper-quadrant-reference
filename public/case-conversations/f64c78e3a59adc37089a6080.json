@@ -1,0 +1,411 @@
+{
+  "caseId": "case.elbow.case-03",
+  "items": [
+    {
+      "domain": "profile",
+      "id": "truth.elbow.case-03.profile",
+      "retrievalIntents": [
+        "profile"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "communication-style",
+      "id": "truth.elbow.case-03.communication-style",
+      "retrievalIntents": [
+        "communication-style"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "goals-concerns",
+      "id": "truth.elbow.case-03.goals-concerns",
+      "retrievalIntents": [
+        "goals-concerns"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "presenting-complaint",
+      "id": "truth.elbow.case-03.presenting-complaint",
+      "retrievalIntents": [
+        "opening",
+        "presenting-complaint",
+        "tell-me-more"
+      ],
+      "state": "positive",
+      "value": "A 49-year-old patient presents with sudden pain in the front of the elbow after lifting a heavy box yesterday. He felt a distinct “pop” in the antecubital fossa at the time of injury. Over the past 24 hours, bruising has developed around the front of the elbow. He reports weakness when turning the palm upwards and when bending the elbow. Pain is 5/10 at rest and increases to 8/10 with lifting or resisted supination. He wants to know whether this needs urgent onward referral.",
+      "volunteered": true
+    },
+    {
+      "domain": "volunteered-fact",
+      "id": "truth.elbow.case-03.volunteered-fact",
+      "retrievalIntents": [
+        "volunteered-information"
+      ],
+      "state": "positive",
+      "value": "A 49-year-old patient presents with sudden pain in the front of the elbow after lifting a heavy box yesterday. He felt a distinct “pop” in the antecubital fossa at the time of injury. Over the past 24 hours, bruising has developed around the front of the elbow. He reports weakness when turning the palm upwards and when bending the elbow. Pain is 5/10 at rest and increases to 8/10 with lifting or resisted supination. He wants to know whether this needs urgent onward referral.",
+      "volunteered": true
+    },
+    {
+      "domain": "symptom-location",
+      "id": "truth.elbow.case-03.symptom-location",
+      "retrievalIntents": [
+        "symptom-location"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "laterality",
+      "id": "truth.elbow.case-03.laterality",
+      "retrievalIntents": [
+        "laterality"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "distribution",
+      "id": "truth.elbow.case-03.distribution",
+      "retrievalIntents": [
+        "distribution"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "quality",
+      "id": "truth.elbow.case-03.quality",
+      "retrievalIntents": [
+        "quality"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "intensity",
+      "id": "truth.elbow.case-03.intensity",
+      "retrievalIntents": [
+        "intensity"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "irritability",
+      "id": "truth.elbow.case-03.irritability",
+      "retrievalIntents": [
+        "irritability"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "onset",
+      "id": "truth.elbow.case-03.onset",
+      "retrievalIntents": [
+        "onset"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "duration",
+      "id": "truth.elbow.case-03.duration",
+      "retrievalIntents": [
+        "duration"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "mechanism",
+      "id": "truth.elbow.case-03.mechanism",
+      "retrievalIntents": [
+        "mechanism"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "progression",
+      "id": "truth.elbow.case-03.progression",
+      "retrievalIntents": [
+        "progression"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "twenty-four-hour-pattern",
+      "id": "truth.elbow.case-03.twenty-four-hour-pattern",
+      "retrievalIntents": [
+        "twenty-four-hour-pattern"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "aggravating-factor",
+      "id": "truth.elbow.case-03.aggravating-factor",
+      "retrievalIntents": [
+        "aggravating-factor"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "easing-factor",
+      "id": "truth.elbow.case-03.easing-factor",
+      "retrievalIntents": [
+        "easing-factor"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "function",
+      "id": "truth.elbow.case-03.function",
+      "retrievalIntents": [
+        "function"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "bladder-bowel-saddle",
+      "id": "truth.elbow.case-03.bladder-bowel-saddle",
+      "retrievalIntents": [
+        "bladder-bowel-saddle"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "weakness",
+      "id": "truth.elbow.case-03.weakness",
+      "retrievalIntents": [
+        "weakness"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "falls-balance",
+      "id": "truth.elbow.case-03.falls-balance",
+      "retrievalIntents": [
+        "falls-balance"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "systemic-history",
+      "id": "truth.elbow.case-03.systemic-history",
+      "retrievalIntents": [
+        "systemic-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "red-flag-history",
+      "id": "truth.elbow.case-03.red-flag-history",
+      "retrievalIntents": [
+        "red-flag-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "medical-history",
+      "id": "truth.elbow.case-03.medical-history",
+      "retrievalIntents": [
+        "medical-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "medication",
+      "id": "truth.elbow.case-03.medication",
+      "retrievalIntents": [
+        "medication"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "diabetes",
+      "id": "truth.elbow.case-03.diabetes",
+      "retrievalIntents": [
+        "diabetes"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "anticoagulation",
+      "id": "truth.elbow.case-03.anticoagulation",
+      "retrievalIntents": [
+        "anticoagulation"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "steroids",
+      "id": "truth.elbow.case-03.steroids",
+      "retrievalIntents": [
+        "steroids"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "psychosocial-context",
+      "id": "truth.elbow.case-03.psychosocial-context",
+      "retrievalIntents": [
+        "psychosocial-context"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "objective-finding",
+      "id": "truth.elbow.case-03.objective-finding",
+      "retrievalIntents": [
+        "objective-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "neurological-finding",
+      "id": "truth.elbow.case-03.neurological-finding",
+      "retrievalIntents": [
+        "neurological-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "movement-finding",
+      "id": "truth.elbow.case-03.movement-finding",
+      "retrievalIntents": [
+        "movement-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "test-finding",
+      "id": "truth.elbow.case-03.test-finding",
+      "retrievalIntents": [
+        "test-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "investigation-finding",
+      "id": "truth.elbow.case-03.investigation-finding",
+      "retrievalIntents": [
+        "investigation-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "differential",
+      "id": "truth.elbow.case-03.differential",
+      "retrievalIntents": [
+        "differential"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "management",
+      "id": "truth.elbow.case-03.management",
+      "retrievalIntents": [
+        "management"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "safety-netting",
+      "id": "truth.elbow.case-03.safety-netting",
+      "retrievalIntents": [
+        "safety-netting"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "escalation",
+      "id": "truth.elbow.case-03.escalation",
+      "retrievalIntents": [
+        "escalation"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "prognosis",
+      "id": "truth.elbow.case-03.prognosis",
+      "retrievalIntents": [
+        "prognosis"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    }
+  ],
+  "openingTruthId": "truth.elbow.case-03.presenting-complaint",
+  "publicSlug": "case-03-sudden-anterior-elbow-pain-after-lifting",
+  "schemaVersion": 1,
+  "truthHash": "db2c806efd7c2f32f6607c06cc9a4827608a71b4cdd2eebed6db16aa6cf73c88"
+}

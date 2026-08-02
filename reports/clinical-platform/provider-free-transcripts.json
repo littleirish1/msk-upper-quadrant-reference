@@ -1,0 +1,427 @@
+{
+  "learnerIdentifiersStored": 0,
+  "providerCalls": 0,
+  "schemaVersion": 1,
+  "transcripts": [
+    {
+      "audit": [
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "presenting-complaint",
+          "retrievedTruthIds": [
+            "truth.cervical.case-01.presenting-complaint"
+          ],
+          "templateId": "patient.truth-verbatim",
+          "turn": 1
+        },
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "medication",
+          "retrievedTruthIds": [],
+          "templateId": "patient.unavailable",
+          "turn": 2
+        },
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "diagnosis-request",
+          "retrievedTruthIds": [],
+          "templateId": "patient.diagnosis-boundary",
+          "turn": 3
+        }
+      ],
+      "caseId": "case.cervical.case-01",
+      "truthHash": "b05d849dee55d349ef01710e284f88e2b147590f3813b82f3ded5503df28cd80",
+      "turns": [
+        {
+          "clarification": false,
+          "intentId": "presenting-complaint",
+          "response": "A 42-year-old office worker presents with a 6-week history of right-sided neck pain with symptoms radiating into the right arm. Symptoms began gradually after a busy period at work involving prolonged desk-based activity. The patient describes intermittent pain travelling from the lower cervical region into the lateral arm and forearm, with occasional tingling into the thumb and index finger. Symptoms are aggravated by prolonged sitting, looking down at a laptop, and turning the head to the right. They report some relief when placing the hand on top of the head. Sleep is disturbed when lying on the right side. There is no history of trauma. They report no gait disturbance, no bilateral symptoms, no bowel or bladder changes, and no unexplained weight loss.",
+          "retrievedTruthIds": [
+            "truth.cervical.case-01.presenting-complaint"
+          ]
+        },
+        {
+          "clarification": false,
+          "intentId": "medication",
+          "response": "That information isn't available in this case.",
+          "retrievedTruthIds": []
+        },
+        {
+          "clarification": false,
+          "intentId": "diagnosis-request",
+          "response": "I don't know the diagnosis. Please ask me about my experience or history.",
+          "retrievedTruthIds": []
+        }
+      ],
+      "tutor": {
+        "checkpointFeedback": "Some reasoning domains remain unexplored. This is process feedback, not a diagnosis or model answer.",
+        "clarificationQuality": "focused",
+        "exploredDomains": [
+          "medication",
+          "presenting-complaint"
+        ],
+        "omissions": [
+          "function",
+          "objective-request",
+          "red-flag-history"
+        ],
+        "optionalHint": "Consider whether you have explored the function domain.",
+        "patientImpersonation": false,
+        "patientTruthChanged": false
+      }
+    },
+    {
+      "audit": [
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "presenting-complaint",
+          "retrievedTruthIds": [
+            "truth.cervical.case-02.presenting-complaint"
+          ],
+          "templateId": "patient.truth-verbatim",
+          "turn": 1
+        },
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "medication",
+          "retrievedTruthIds": [],
+          "templateId": "patient.unavailable",
+          "turn": 2
+        },
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "diagnosis-request",
+          "retrievedTruthIds": [],
+          "templateId": "patient.diagnosis-boundary",
+          "turn": 3
+        }
+      ],
+      "caseId": "case.cervical.case-02",
+      "truthHash": "e7b51b241f41d9932a596afbee8cf69f8b270ea321cbcd13a66a6fde65fbf738",
+      "turns": [
+        {
+          "clarification": false,
+          "intentId": "presenting-complaint",
+          "response": "A 58-year-old retired nurse is referred for a pre-operative physiotherapy assessment before planned bilateral carpal tunnel release. She reports a 6-month history of increasing difficulty with fine motor tasks, including fastening buttons, typing, and handling cutlery. She also reports that her legs feel heavy on stairs. She has intermittent numbness in both arms, but it does not follow one clear dermatomal or peripheral nerve distribution. She has no significant neck pain. She denies falls, but reports that her balance feels slightly less reliable. Over the past 2 months, she has noticed mild bladder urgency, which she has attributed to possible urinary tract infections. Her current working diagnosis is bilateral carpal tunnel syndrome.",
+          "retrievedTruthIds": [
+            "truth.cervical.case-02.presenting-complaint"
+          ]
+        },
+        {
+          "clarification": false,
+          "intentId": "medication",
+          "response": "That information isn't available in this case.",
+          "retrievedTruthIds": []
+        },
+        {
+          "clarification": false,
+          "intentId": "diagnosis-request",
+          "response": "I don't know the diagnosis. Please ask me about my experience or history.",
+          "retrievedTruthIds": []
+        }
+      ],
+      "tutor": {
+        "checkpointFeedback": "Some reasoning domains remain unexplored. This is process feedback, not a diagnosis or model answer.",
+        "clarificationQuality": "focused",
+        "exploredDomains": [
+          "medication",
+          "presenting-complaint"
+        ],
+        "omissions": [
+          "function",
+          "objective-request",
+          "red-flag-history"
+        ],
+        "optionalHint": "Consider whether you have explored the function domain.",
+        "patientImpersonation": false,
+        "patientTruthChanged": false
+      }
+    },
+    {
+      "audit": [
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "presenting-complaint",
+          "retrievedTruthIds": [
+            "truth.elbow.case-03.presenting-complaint"
+          ],
+          "templateId": "patient.truth-verbatim",
+          "turn": 1
+        },
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "medication",
+          "retrievedTruthIds": [],
+          "templateId": "patient.unavailable",
+          "turn": 2
+        },
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "diagnosis-request",
+          "retrievedTruthIds": [],
+          "templateId": "patient.diagnosis-boundary",
+          "turn": 3
+        }
+      ],
+      "caseId": "case.elbow.case-03",
+      "truthHash": "db2c806efd7c2f32f6607c06cc9a4827608a71b4cdd2eebed6db16aa6cf73c88",
+      "turns": [
+        {
+          "clarification": false,
+          "intentId": "presenting-complaint",
+          "response": "A 49-year-old patient presents with sudden pain in the front of the elbow after lifting a heavy box yesterday. He felt a distinct “pop” in the antecubital fossa at the time of injury. Over the past 24 hours, bruising has developed around the front of the elbow. He reports weakness when turning the palm upwards and when bending the elbow. Pain is 5/10 at rest and increases to 8/10 with lifting or resisted supination. He wants to know whether this needs urgent onward referral.",
+          "retrievedTruthIds": [
+            "truth.elbow.case-03.presenting-complaint"
+          ]
+        },
+        {
+          "clarification": false,
+          "intentId": "medication",
+          "response": "That information isn't available in this case.",
+          "retrievedTruthIds": []
+        },
+        {
+          "clarification": false,
+          "intentId": "diagnosis-request",
+          "response": "I don't know the diagnosis. Please ask me about my experience or history.",
+          "retrievedTruthIds": []
+        }
+      ],
+      "tutor": {
+        "checkpointFeedback": "Some reasoning domains remain unexplored. This is process feedback, not a diagnosis or model answer.",
+        "clarificationQuality": "focused",
+        "exploredDomains": [
+          "medication",
+          "presenting-complaint"
+        ],
+        "omissions": [
+          "function",
+          "objective-request",
+          "red-flag-history"
+        ],
+        "optionalHint": "Consider whether you have explored the function domain.",
+        "patientImpersonation": false,
+        "patientTruthChanged": false
+      }
+    },
+    {
+      "audit": [
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "presenting-complaint",
+          "retrievedTruthIds": [
+            "truth.shoulder.case-04.presenting-complaint"
+          ],
+          "templateId": "patient.truth-verbatim",
+          "turn": 1
+        },
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "medication",
+          "retrievedTruthIds": [],
+          "templateId": "patient.unavailable",
+          "turn": 2
+        },
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "diagnosis-request",
+          "retrievedTruthIds": [],
+          "templateId": "patient.diagnosis-boundary",
+          "turn": 3
+        }
+      ],
+      "caseId": "case.shoulder.case-04",
+      "truthHash": "6d6a29a04802baad8d33e87af7e6a35dd51106c0a891c8a35cea60c56331c69f",
+      "turns": [
+        {
+          "clarification": false,
+          "intentId": "presenting-complaint",
+          "response": "A 29-year-old active patient presents with a 5-month history of right lateral shoulder pain. Symptoms began gradually with no clear traumatic event. Pain is worse with overhead activity, throwing, and lying on the affected side at night. They have tried rest for 6 weeks with minimal improvement. NSAIDs from the GP gave some benefit. They are motivated to return to sport.",
+          "retrievedTruthIds": [
+            "truth.shoulder.case-04.presenting-complaint"
+          ]
+        },
+        {
+          "clarification": false,
+          "intentId": "medication",
+          "response": "That information isn't available in this case.",
+          "retrievedTruthIds": []
+        },
+        {
+          "clarification": false,
+          "intentId": "diagnosis-request",
+          "response": "I don't know the diagnosis. Please ask me about my experience or history.",
+          "retrievedTruthIds": []
+        }
+      ],
+      "tutor": {
+        "checkpointFeedback": "Some reasoning domains remain unexplored. This is process feedback, not a diagnosis or model answer.",
+        "clarificationQuality": "focused",
+        "exploredDomains": [
+          "medication",
+          "presenting-complaint"
+        ],
+        "omissions": [
+          "function",
+          "objective-request",
+          "red-flag-history"
+        ],
+        "optionalHint": "Consider whether you have explored the function domain.",
+        "patientImpersonation": false,
+        "patientTruthChanged": false
+      }
+    },
+    {
+      "audit": [
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "presenting-complaint",
+          "retrievedTruthIds": [
+            "truth.shoulder.case-05.presenting-complaint"
+          ],
+          "templateId": "patient.truth-verbatim",
+          "turn": 1
+        },
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "medication",
+          "retrievedTruthIds": [],
+          "templateId": "patient.unavailable",
+          "turn": 2
+        },
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "diagnosis-request",
+          "retrievedTruthIds": [],
+          "templateId": "patient.diagnosis-boundary",
+          "turn": 3
+        }
+      ],
+      "caseId": "case.shoulder.case-05",
+      "truthHash": "9109db5737c02fb0551d1da8f4a7944bca9e30fc32ceab946e75add16fff5bb7",
+      "turns": [
+        {
+          "clarification": false,
+          "intentId": "presenting-complaint",
+          "response": "A 56-year-old patient with type 2 diabetes presents with an 8-month history of progressive left shoulder stiffness. The shoulder was initially very painful, especially at night, but the pain has reduced slightly. Stiffness is now the dominant problem. She struggles to reach behind her back, reach across her body, dress normally, and sleep comfortably. There was no trauma or dislocation. She previously attended physiotherapy elsewhere, mainly involving deep tissue massage, but she reports no meaningful improvement. She is frustrated and asks, “Will this ever get better?”",
+          "retrievedTruthIds": [
+            "truth.shoulder.case-05.presenting-complaint"
+          ]
+        },
+        {
+          "clarification": false,
+          "intentId": "medication",
+          "response": "That information isn't available in this case.",
+          "retrievedTruthIds": []
+        },
+        {
+          "clarification": false,
+          "intentId": "diagnosis-request",
+          "response": "I don't know the diagnosis. Please ask me about my experience or history.",
+          "retrievedTruthIds": []
+        }
+      ],
+      "tutor": {
+        "checkpointFeedback": "Some reasoning domains remain unexplored. This is process feedback, not a diagnosis or model answer.",
+        "clarificationQuality": "focused",
+        "exploredDomains": [
+          "medication",
+          "presenting-complaint"
+        ],
+        "omissions": [
+          "function",
+          "objective-request",
+          "red-flag-history"
+        ],
+        "optionalHint": "Consider whether you have explored the function domain.",
+        "patientImpersonation": false,
+        "patientTruthChanged": false
+      }
+    },
+    {
+      "audit": [
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "presenting-complaint",
+          "retrievedTruthIds": [
+            "truth.thoracic.case-06.presenting-complaint"
+          ],
+          "templateId": "patient.truth-verbatim",
+          "turn": 1
+        },
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "medication",
+          "retrievedTruthIds": [],
+          "templateId": "patient.unavailable",
+          "turn": 2
+        },
+        {
+          "adapterUsed": false,
+          "adapterValidated": false,
+          "intentId": "diagnosis-request",
+          "retrievedTruthIds": [],
+          "templateId": "patient.diagnosis-boundary",
+          "turn": 3
+        }
+      ],
+      "caseId": "case.thoracic.case-06",
+      "truthHash": "a16e186d46841357921c3da3d492e7193806a9d2d08f90de2f365e35e3358bc1",
+      "turns": [
+        {
+          "clarification": false,
+          "intentId": "presenting-complaint",
+          "response": "A 55-year-old accountant presents with left-sided upper thoracic and periscapular discomfort that was initially assumed to be postural. He has been working long hours at a desk during year-end accounts. He also returned to light gym work two weeks ago and noticed his upper back felt tight after rowing and pressing exercises. These details make an MSK explanation tempting. The symptom he is worried about is a deep ache between the left shoulder blade and spine, sometimes spreading as a band-like pressure across the front of the chest. It is not reliably reproduced by thoracic rotation, shoulder movement, palpation, resisted testing, or loaded spinal positions. Heat and stretching help general stiffness but do not change the main symptom. The most concerning episode occurred while walking uphill from a car park. He developed the same thoracic/scapular ache with chest pressure, felt clammy and mildly nauseous, and had to stop. Symptoms settled after several minutes of rest. A milder episode occurred again on stairs the following day. He has hypertension, previously raised cholesterol, a past smoking history, and a family history of myocardial infarction in a first-degree relative in their late 50s. He denies cough, fever, calf pain, pleuritic pain, unexplained weight loss, night sweats, trauma, neurological symptoms, or bowel/bladder disturbance.",
+          "retrievedTruthIds": [
+            "truth.thoracic.case-06.presenting-complaint"
+          ]
+        },
+        {
+          "clarification": false,
+          "intentId": "medication",
+          "response": "That information isn't available in this case.",
+          "retrievedTruthIds": []
+        },
+        {
+          "clarification": false,
+          "intentId": "diagnosis-request",
+          "response": "I don't know the diagnosis. Please ask me about my experience or history.",
+          "retrievedTruthIds": []
+        }
+      ],
+      "tutor": {
+        "checkpointFeedback": "Some reasoning domains remain unexplored. This is process feedback, not a diagnosis or model answer.",
+        "clarificationQuality": "focused",
+        "exploredDomains": [
+          "medication",
+          "presenting-complaint"
+        ],
+        "omissions": [
+          "function",
+          "objective-request",
+          "red-flag-history"
+        ],
+        "optionalHint": "Consider whether you have explored the function domain.",
+        "patientImpersonation": false,
+        "patientTruthChanged": false
+      }
+    }
+  ]
+}

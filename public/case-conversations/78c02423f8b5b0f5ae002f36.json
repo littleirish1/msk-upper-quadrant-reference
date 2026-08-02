@@ -1,0 +1,411 @@
+{
+  "caseId": "case.cervical.case-01",
+  "items": [
+    {
+      "domain": "profile",
+      "id": "truth.cervical.case-01.profile",
+      "retrievalIntents": [
+        "profile"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "communication-style",
+      "id": "truth.cervical.case-01.communication-style",
+      "retrievalIntents": [
+        "communication-style"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "goals-concerns",
+      "id": "truth.cervical.case-01.goals-concerns",
+      "retrievalIntents": [
+        "goals-concerns"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "presenting-complaint",
+      "id": "truth.cervical.case-01.presenting-complaint",
+      "retrievalIntents": [
+        "opening",
+        "presenting-complaint",
+        "tell-me-more"
+      ],
+      "state": "positive",
+      "value": "A 42-year-old office worker presents with a 6-week history of right-sided neck pain with symptoms radiating into the right arm. Symptoms began gradually after a busy period at work involving prolonged desk-based activity. The patient describes intermittent pain travelling from the lower cervical region into the lateral arm and forearm, with occasional tingling into the thumb and index finger. Symptoms are aggravated by prolonged sitting, looking down at a laptop, and turning the head to the right. They report some relief when placing the hand on top of the head. Sleep is disturbed when lying on the right side. There is no history of trauma. They report no gait disturbance, no bilateral symptoms, no bowel or bladder changes, and no unexplained weight loss.",
+      "volunteered": true
+    },
+    {
+      "domain": "volunteered-fact",
+      "id": "truth.cervical.case-01.volunteered-fact",
+      "retrievalIntents": [
+        "volunteered-information"
+      ],
+      "state": "positive",
+      "value": "A 42-year-old office worker presents with a 6-week history of right-sided neck pain with symptoms radiating into the right arm. Symptoms began gradually after a busy period at work involving prolonged desk-based activity. The patient describes intermittent pain travelling from the lower cervical region into the lateral arm and forearm, with occasional tingling into the thumb and index finger. Symptoms are aggravated by prolonged sitting, looking down at a laptop, and turning the head to the right. They report some relief when placing the hand on top of the head. Sleep is disturbed when lying on the right side. There is no history of trauma. They report no gait disturbance, no bilateral symptoms, no bowel or bladder changes, and no unexplained weight loss.",
+      "volunteered": true
+    },
+    {
+      "domain": "symptom-location",
+      "id": "truth.cervical.case-01.symptom-location",
+      "retrievalIntents": [
+        "symptom-location"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "laterality",
+      "id": "truth.cervical.case-01.laterality",
+      "retrievalIntents": [
+        "laterality"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "distribution",
+      "id": "truth.cervical.case-01.distribution",
+      "retrievalIntents": [
+        "distribution"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "quality",
+      "id": "truth.cervical.case-01.quality",
+      "retrievalIntents": [
+        "quality"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "intensity",
+      "id": "truth.cervical.case-01.intensity",
+      "retrievalIntents": [
+        "intensity"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "irritability",
+      "id": "truth.cervical.case-01.irritability",
+      "retrievalIntents": [
+        "irritability"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "onset",
+      "id": "truth.cervical.case-01.onset",
+      "retrievalIntents": [
+        "onset"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "duration",
+      "id": "truth.cervical.case-01.duration",
+      "retrievalIntents": [
+        "duration"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "mechanism",
+      "id": "truth.cervical.case-01.mechanism",
+      "retrievalIntents": [
+        "mechanism"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "progression",
+      "id": "truth.cervical.case-01.progression",
+      "retrievalIntents": [
+        "progression"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "twenty-four-hour-pattern",
+      "id": "truth.cervical.case-01.twenty-four-hour-pattern",
+      "retrievalIntents": [
+        "twenty-four-hour-pattern"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "aggravating-factor",
+      "id": "truth.cervical.case-01.aggravating-factor",
+      "retrievalIntents": [
+        "aggravating-factor"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "easing-factor",
+      "id": "truth.cervical.case-01.easing-factor",
+      "retrievalIntents": [
+        "easing-factor"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "function",
+      "id": "truth.cervical.case-01.function",
+      "retrievalIntents": [
+        "function"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "bladder-bowel-saddle",
+      "id": "truth.cervical.case-01.bladder-bowel-saddle",
+      "retrievalIntents": [
+        "bladder-bowel-saddle"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "weakness",
+      "id": "truth.cervical.case-01.weakness",
+      "retrievalIntents": [
+        "weakness"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "falls-balance",
+      "id": "truth.cervical.case-01.falls-balance",
+      "retrievalIntents": [
+        "falls-balance"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "systemic-history",
+      "id": "truth.cervical.case-01.systemic-history",
+      "retrievalIntents": [
+        "systemic-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "red-flag-history",
+      "id": "truth.cervical.case-01.red-flag-history",
+      "retrievalIntents": [
+        "red-flag-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "medical-history",
+      "id": "truth.cervical.case-01.medical-history",
+      "retrievalIntents": [
+        "medical-history"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "medication",
+      "id": "truth.cervical.case-01.medication",
+      "retrievalIntents": [
+        "medication"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "diabetes",
+      "id": "truth.cervical.case-01.diabetes",
+      "retrievalIntents": [
+        "diabetes"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "anticoagulation",
+      "id": "truth.cervical.case-01.anticoagulation",
+      "retrievalIntents": [
+        "anticoagulation"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "steroids",
+      "id": "truth.cervical.case-01.steroids",
+      "retrievalIntents": [
+        "steroids"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "psychosocial-context",
+      "id": "truth.cervical.case-01.psychosocial-context",
+      "retrievalIntents": [
+        "psychosocial-context"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "objective-finding",
+      "id": "truth.cervical.case-01.objective-finding",
+      "retrievalIntents": [
+        "objective-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "neurological-finding",
+      "id": "truth.cervical.case-01.neurological-finding",
+      "retrievalIntents": [
+        "neurological-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "movement-finding",
+      "id": "truth.cervical.case-01.movement-finding",
+      "retrievalIntents": [
+        "movement-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "test-finding",
+      "id": "truth.cervical.case-01.test-finding",
+      "retrievalIntents": [
+        "test-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "investigation-finding",
+      "id": "truth.cervical.case-01.investigation-finding",
+      "retrievalIntents": [
+        "investigation-finding"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "differential",
+      "id": "truth.cervical.case-01.differential",
+      "retrievalIntents": [
+        "differential"
+      ],
+      "state": "unavailable-in-case",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "management",
+      "id": "truth.cervical.case-01.management",
+      "retrievalIntents": [
+        "management"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "safety-netting",
+      "id": "truth.cervical.case-01.safety-netting",
+      "retrievalIntents": [
+        "safety-netting"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "escalation",
+      "id": "truth.cervical.case-01.escalation",
+      "retrievalIntents": [
+        "escalation"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    },
+    {
+      "domain": "prognosis",
+      "id": "truth.cervical.case-01.prognosis",
+      "retrievalIntents": [
+        "prognosis"
+      ],
+      "state": "not-yet-assessed",
+      "value": null,
+      "volunteered": false
+    }
+  ],
+  "openingTruthId": "truth.cervical.case-01.presenting-complaint",
+  "publicSlug": "case-01-neck-arm-symptoms",
+  "schemaVersion": 1,
+  "truthHash": "b05d849dee55d349ef01710e284f88e2b147590f3813b82f3ded5503df28cd80"
+}
