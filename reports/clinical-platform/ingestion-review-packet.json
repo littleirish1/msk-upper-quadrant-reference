@@ -1,0 +1,50 @@
+{
+  "adapters": [
+    "doi-crossref-like",
+    "pubmed-like",
+    "europe-pmc-like",
+    "guideline-metadata",
+    "user-list",
+    "google-scholar-discovery-only"
+  ],
+  "automaticApplications": 0,
+  "duplicateGroups": 0,
+  "extractedClaimProposals": 0,
+  "networkCalls": 0,
+  "proposedModuleRevisions": 0,
+  "proposedRuleRevisions": 0,
+  "publicOutputs": 0,
+  "registeredSources": 3,
+  "reviewQueue": [
+    {
+      "blockers": [
+        "Clinical claims and source identifiers have not been independently verified.",
+        "Source clearance and exact-locator extraction review remain required."
+      ],
+      "proposalId": "ingestion.repository.evidence-pilot-lateral-ankle-sprain",
+      "reviewState": "required",
+      "sourceId": "source.repository.evidence-pilot-lateral-ankle-sprain"
+    },
+    {
+      "blockers": [
+        "Clinical claims and source identifiers have not been independently verified.",
+        "Source clearance and exact-locator extraction review remain required."
+      ],
+      "proposalId": "ingestion.repository.evidence-pilot-rcrsp",
+      "reviewState": "required",
+      "sourceId": "source.repository.evidence-pilot-rcrsp"
+    },
+    {
+      "blockers": [
+        "Clinical claims and source identifiers have not been independently verified.",
+        "Source clearance and exact-locator extraction review remain required."
+      ],
+      "proposalId": "ingestion.repository.legacy-source-registry",
+      "reviewState": "required",
+      "sourceId": "source.repository.legacy-source-registry"
+    }
+  ],
+  "schemaVersion": 1,
+  "supersessionDecisions": 0,
+  "verifiedHashes": 3
+}

@@ -19,6 +19,8 @@
   "test:anatomy-3d": "node scripts/clinical-platform/test-anatomy-3d.mjs",
   "movement:generate": "node scripts/clinical-platform/generate-movement-library.mjs",
   "test:movement": "node scripts/clinical-platform/test-movement.mjs",
+  "ingestion:generate": "node scripts/clinical-platform/generate-ingestion-register.mjs",
+  "test:ingestion": "node scripts/clinical-platform/test-ingestion.mjs",
   "dev": "next dev",
   "prebuild": "npm run cases:generate && npm run build:search && npm run build:case-reveals",
   "build": "next build",

@@ -1,0 +1,184 @@
+{
+  "adapters": [
+    {
+      "adapterId": "doi-crossref-like",
+      "automaticClaimCreation": false,
+      "mode": "offline-fixture",
+      "networkEnabled": false
+    },
+    {
+      "adapterId": "pubmed-like",
+      "automaticClaimCreation": false,
+      "mode": "offline-fixture",
+      "networkEnabled": false
+    },
+    {
+      "adapterId": "europe-pmc-like",
+      "automaticClaimCreation": false,
+      "mode": "offline-fixture",
+      "networkEnabled": false
+    },
+    {
+      "adapterId": "guideline-metadata",
+      "automaticClaimCreation": false,
+      "mode": "offline-fixture",
+      "networkEnabled": false
+    },
+    {
+      "adapterId": "user-list",
+      "automaticClaimCreation": false,
+      "mode": "offline-fixture",
+      "networkEnabled": false
+    },
+    {
+      "adapterId": "google-scholar-discovery-only",
+      "automaticClaimCreation": false,
+      "mode": "offline-fixture",
+      "networkEnabled": false
+    }
+  ],
+  "authority": "private-evidence-to-module-ingestion",
+  "proposals": [
+    {
+      "applyAutomatically": false,
+      "claimProposals": [],
+      "duplicateSourceIds": [],
+      "extracted": {
+        "claimCount": 0,
+        "headingCount": 0,
+        "limitations": [],
+        "noteCount": 0,
+        "populations": [],
+        "presentationFeatures": [],
+        "referenceCount": 0,
+        "settings": [],
+        "tableCount": 0,
+        "textStored": false
+      },
+      "licensingIssues": [
+        "Public-use rights are not established; embedded images must not be republished."
+      ],
+      "proposalId": "ingestion.repository.evidence-pilot-lateral-ankle-sprain",
+      "proposedModuleRevisions": [],
+      "proposedRuleRevisions": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceId": "source.repository.evidence-pilot-lateral-ankle-sprain",
+      "sourceRevision": 1,
+      "supersedesSourceIds": []
+    },
+    {
+      "applyAutomatically": false,
+      "claimProposals": [],
+      "duplicateSourceIds": [],
+      "extracted": {
+        "claimCount": 0,
+        "headingCount": 0,
+        "limitations": [],
+        "noteCount": 0,
+        "populations": [],
+        "presentationFeatures": [],
+        "referenceCount": 0,
+        "settings": [],
+        "tableCount": 0,
+        "textStored": false
+      },
+      "licensingIssues": [
+        "Public-use rights are not established; embedded images must not be republished."
+      ],
+      "proposalId": "ingestion.repository.evidence-pilot-rcrsp",
+      "proposedModuleRevisions": [],
+      "proposedRuleRevisions": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceId": "source.repository.evidence-pilot-rcrsp",
+      "sourceRevision": 1,
+      "supersedesSourceIds": []
+    },
+    {
+      "applyAutomatically": false,
+      "claimProposals": [],
+      "duplicateSourceIds": [],
+      "extracted": {
+        "claimCount": 0,
+        "headingCount": 0,
+        "limitations": [],
+        "noteCount": 0,
+        "populations": [],
+        "presentationFeatures": [],
+        "referenceCount": 0,
+        "settings": [],
+        "tableCount": 0,
+        "textStored": false
+      },
+      "licensingIssues": [
+        "Public-use rights are not established; embedded images must not be republished."
+      ],
+      "proposalId": "ingestion.repository.legacy-source-registry",
+      "proposedModuleRevisions": [],
+      "proposedRuleRevisions": [],
+      "publicEligibility": false,
+      "reviewState": "required",
+      "schemaVersion": 1,
+      "sourceId": "source.repository.legacy-source-registry",
+      "sourceRevision": 1,
+      "supersedesSourceIds": []
+    }
+  ],
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "blockers": [
+        "Clinical claims and source identifiers have not been independently verified.",
+        "Source clearance and exact-locator extraction review remain required."
+      ],
+      "educationalSecondarySource": true,
+      "extractionState": "metadata-only",
+      "hash": "95c4889802d977420396cb0225cc2cbca7fcec22130162d9af863aa1d581dfbb",
+      "imageRepublicationAllowed": false,
+      "registrationState": "registered",
+      "repositoryPath": "content/evidence-hub/pilots/lateral-ankle-sprain.json",
+      "revision": 1,
+      "schemaVersion": 1,
+      "sourceClearance": "unknown",
+      "sourceId": "source.repository.evidence-pilot-lateral-ankle-sprain",
+      "sourceType": "textbook-educational"
+    },
+    {
+      "blockers": [
+        "Clinical claims and source identifiers have not been independently verified.",
+        "Source clearance and exact-locator extraction review remain required."
+      ],
+      "educationalSecondarySource": true,
+      "extractionState": "metadata-only",
+      "hash": "f448b9b08efee255b31c0b217c17ba63aa7afd448ef3e172bc675118084cb98c",
+      "imageRepublicationAllowed": false,
+      "registrationState": "registered",
+      "repositoryPath": "content/evidence-hub/pilots/rcrsp.json",
+      "revision": 1,
+      "schemaVersion": 1,
+      "sourceClearance": "unknown",
+      "sourceId": "source.repository.evidence-pilot-rcrsp",
+      "sourceType": "textbook-educational"
+    },
+    {
+      "blockers": [
+        "Clinical claims and source identifiers have not been independently verified.",
+        "Source clearance and exact-locator extraction review remain required."
+      ],
+      "educationalSecondarySource": false,
+      "extractionState": "metadata-only",
+      "hash": "904e849cbeb718aa69ee405a2ebd15c5270912765da066c5a9535740afc01076",
+      "imageRepublicationAllowed": false,
+      "registrationState": "registered",
+      "repositoryPath": "content/imports/source-registry.json",
+      "revision": 1,
+      "schemaVersion": 1,
+      "sourceClearance": "unknown",
+      "sourceId": "source.repository.legacy-source-registry",
+      "sourceType": "repository-registry"
+    }
+  ]
+}
