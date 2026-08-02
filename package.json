@@ -39,6 +39,8 @@
   "test:quality-v1": "node scripts/clinical-platform/test-quality-gates.mjs",
   "beta:generate-v1": "node scripts/clinical-platform/generate-beta-programme.mjs",
   "test:beta-v1": "node scripts/clinical-platform/test-beta-programme.mjs",
+  "release:generate-v1": "node scripts/clinical-platform/generate-v1-release-candidate.mjs",
+  "test:release-v1": "node scripts/clinical-platform/test-v1-release-candidate.mjs",
   "dev": "next dev",
   "prebuild": "npm run cases:generate && npm run build:search && npm run build:case-reveals",
   "build": "next build",

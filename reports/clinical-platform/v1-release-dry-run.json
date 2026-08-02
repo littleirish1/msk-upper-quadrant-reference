@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "release.v1-conversational-clinical-platform",
+  "outcome": "blocked-before-publication",
+  "deploymentAttempted": false,
+  "pushAttempted": false,
+  "tagAttempted": false,
+  "evaluatedBlockerCount": 500,
+  "stopReason": "open-release-gates"
+}
