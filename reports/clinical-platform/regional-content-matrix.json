@@ -1,0 +1,2142 @@
+{
+  "authority": "regional-content-production-matrix",
+  "regions": [
+    {
+      "conditionCount": 6,
+      "domains": [
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "anatomy",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "landmarks",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "muscle-roles",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "conditions",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "presentations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "subjective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "objective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "neurological-screening",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "tests",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "differentials",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "red-flags",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "imaging-investigations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "management",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "prognosis",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "evidence",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "cases",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "mcqs",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "movement",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "anatomy-3d",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        }
+      ],
+      "label": "Cervical",
+      "publicNewRoutes": 0,
+      "regionId": "region-matrix.cervical",
+      "routeState": "live-baseline",
+      "slug": "cervical",
+      "sourcePointers": [
+        "src/data/taxonomy.ts",
+        "content/cervical/cervical-radiculopathy.mdx",
+        "content/cervical/cervical-myelopathy.mdx",
+        "content/cervical/mechanical-neck-pain.mdx",
+        "content/cervical/whiplash-associated-disorders.mdx",
+        "content/cervical/cervicogenic-headache.mdx",
+        "content/cervical/cervical-artery-dysfunction.mdx"
+      ],
+      "unresolvedIssues": [
+        "Exact evidence/module/movement/3D/MCQ relationships are incomplete.",
+        "Any new clinical content requires source sufficiency, clearance and exact-revision human review."
+      ]
+    },
+    {
+      "conditionCount": 8,
+      "domains": [
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "anatomy",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "landmarks",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "muscle-roles",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "conditions",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "presentations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "subjective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "objective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "neurological-screening",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "tests",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "differentials",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "red-flags",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "imaging-investigations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "management",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "prognosis",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "evidence",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "cases",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "mcqs",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "movement",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "anatomy-3d",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        }
+      ],
+      "label": "Shoulder",
+      "publicNewRoutes": 0,
+      "regionId": "region-matrix.shoulder",
+      "routeState": "live-baseline",
+      "slug": "shoulder",
+      "sourcePointers": [
+        "src/data/taxonomy.ts",
+        "content/shoulder/rotator-cuff-tendinopathy.mdx",
+        "content/shoulder/rotator-cuff-tear.mdx",
+        "content/shoulder/subacromial-pain-syndrome.mdx",
+        "content/shoulder/adhesive-capsulitis.mdx",
+        "content/shoulder/shoulder-instability.mdx",
+        "content/shoulder/acromioclavicular-joint.mdx",
+        "content/shoulder/labral-tears.mdx",
+        "content/shoulder/calcific-tendinitis.mdx"
+      ],
+      "unresolvedIssues": [
+        "Exact evidence/module/movement/3D/MCQ relationships are incomplete.",
+        "Any new clinical content requires source sufficiency, clearance and exact-revision human review."
+      ]
+    },
+    {
+      "conditionCount": 6,
+      "domains": [
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "anatomy",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "landmarks",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "muscle-roles",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "conditions",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "presentations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "subjective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "objective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "neurological-screening",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "tests",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "differentials",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "red-flags",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "imaging-investigations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "management",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "prognosis",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "evidence",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "cases",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "mcqs",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "movement",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "anatomy-3d",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        }
+      ],
+      "label": "Elbow",
+      "publicNewRoutes": 0,
+      "regionId": "region-matrix.elbow",
+      "routeState": "live-baseline",
+      "slug": "elbow",
+      "sourcePointers": [
+        "src/data/taxonomy.ts",
+        "content/elbow/lateral-epicondylalgia.mdx",
+        "content/elbow/medial-epicondylalgia.mdx",
+        "content/elbow/olecranon-bursitis.mdx",
+        "content/elbow/cubital-tunnel-syndrome.mdx",
+        "content/elbow/radial-tunnel-syndrome.mdx",
+        "content/elbow/elbow-osteoarthritis.mdx"
+      ],
+      "unresolvedIssues": [
+        "Exact evidence/module/movement/3D/MCQ relationships are incomplete.",
+        "Any new clinical content requires source sufficiency, clearance and exact-revision human review."
+      ]
+    },
+    {
+      "conditionCount": 7,
+      "domains": [
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "anatomy",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "landmarks",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "muscle-roles",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "conditions",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "presentations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "subjective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "objective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "neurological-screening",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "tests",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "differentials",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "red-flags",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "imaging-investigations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "management",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "prognosis",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "evidence",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "cases",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "mcqs",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "movement",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "anatomy-3d",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        }
+      ],
+      "label": "Wrist and hand",
+      "publicNewRoutes": 0,
+      "regionId": "region-matrix.wrist-hand",
+      "routeState": "live-baseline",
+      "slug": "wrist-hand",
+      "sourcePointers": [
+        "src/data/taxonomy.ts",
+        "content/wrist-hand/carpal-tunnel-syndrome.mdx",
+        "content/wrist-hand/de-quervains-tenosynovitis.mdx",
+        "content/wrist-hand/trigger-finger.mdx",
+        "content/wrist-hand/dupuytrens-contracture.mdx",
+        "content/wrist-hand/scaphoid-fracture.mdx",
+        "content/wrist-hand/tfcc-injury.mdx",
+        "content/wrist-hand/thumb-cmc-osteoarthritis.mdx"
+      ],
+      "unresolvedIssues": [
+        "Exact evidence/module/movement/3D/MCQ relationships are incomplete.",
+        "Any new clinical content requires source sufficiency, clearance and exact-revision human review."
+      ]
+    },
+    {
+      "conditionCount": 6,
+      "domains": [
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "anatomy",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "landmarks",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "muscle-roles",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "conditions",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "presentations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "subjective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "objective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "neurological-screening",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "tests",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "differentials",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "red-flags",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "imaging-investigations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "management",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "prognosis",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": true,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "baseline-content-present-review-not-reopened"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "evidence",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "cases",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "mcqs",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "movement",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "baseline-only-new-work-required",
+          "domain": "anatomy-3d",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "baseline-only-new-work-required",
+          "structuralState": "explicit-production-gap"
+        }
+      ],
+      "label": "Thoracic",
+      "publicNewRoutes": 0,
+      "regionId": "region-matrix.thoracic",
+      "routeState": "live-baseline",
+      "slug": "thoracic",
+      "sourcePointers": [
+        "src/data/taxonomy.ts",
+        "content/thoracic/thoracic-outlet-syndrome.mdx",
+        "content/thoracic/thoracic-disc-herniation.mdx",
+        "content/thoracic/costochondritis.mdx",
+        "content/thoracic/thoracic-facet-joint-pain.mdx",
+        "content/thoracic/scheuermanns-disease.mdx",
+        "content/thoracic/thoracic-radiculopathy.mdx"
+      ],
+      "unresolvedIssues": [
+        "Exact evidence/module/movement/3D/MCQ relationships are incomplete.",
+        "Any new clinical content requires source sufficiency, clearance and exact-revision human review."
+      ]
+    },
+    {
+      "conditionCount": 0,
+      "domains": [
+        {
+          "clinicalReviewState": "required",
+          "domain": "anatomy",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "landmarks",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "muscle-roles",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "conditions",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "presentations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "subjective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "objective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "neurological-screening",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "tests",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "differentials",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "red-flags",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "imaging-investigations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "management",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "prognosis",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "evidence",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "cases",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "mcqs",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "movement",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "anatomy-3d",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        }
+      ],
+      "label": "Headache",
+      "publicNewRoutes": 0,
+      "regionId": "region-matrix.headache",
+      "routeState": "cross-cutting-no-route",
+      "slug": "headache",
+      "sourcePointers": [
+        "src/data/taxonomy.ts"
+      ],
+      "unresolvedIssues": [
+        "Exact evidence/module/movement/3D/MCQ relationships are incomplete.",
+        "Any new clinical content requires source sufficiency, clearance and exact-revision human review."
+      ]
+    },
+    {
+      "conditionCount": 0,
+      "domains": [
+        {
+          "clinicalReviewState": "required",
+          "domain": "anatomy",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "landmarks",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "muscle-roles",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "conditions",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "presentations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "subjective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "objective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "neurological-screening",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "tests",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "differentials",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "red-flags",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "imaging-investigations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "management",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "prognosis",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "evidence",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "cases",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "mcqs",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "movement",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "anatomy-3d",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        }
+      ],
+      "label": "Lumbar",
+      "publicNewRoutes": 0,
+      "regionId": "region-matrix.lumbar",
+      "routeState": "roadmap-only",
+      "slug": "lumbar",
+      "sourcePointers": [
+        "src/data/taxonomy.ts",
+        "content/plans/regions/lumbar.json"
+      ],
+      "unresolvedIssues": [
+        "Exact evidence/module/movement/3D/MCQ relationships are incomplete.",
+        "Any new clinical content requires source sufficiency, clearance and exact-revision human review."
+      ]
+    },
+    {
+      "conditionCount": 0,
+      "domains": [
+        {
+          "clinicalReviewState": "required",
+          "domain": "anatomy",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "landmarks",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "muscle-roles",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "conditions",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "presentations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "subjective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "objective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "neurological-screening",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "tests",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "differentials",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "red-flags",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "imaging-investigations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "management",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "prognosis",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "evidence",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "cases",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "mcqs",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "movement",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "anatomy-3d",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        }
+      ],
+      "label": "Hip",
+      "publicNewRoutes": 0,
+      "regionId": "region-matrix.hip",
+      "routeState": "roadmap-only",
+      "slug": "hip",
+      "sourcePointers": [
+        "src/data/taxonomy.ts",
+        "content/plans/regions/hip.json"
+      ],
+      "unresolvedIssues": [
+        "Exact evidence/module/movement/3D/MCQ relationships are incomplete.",
+        "Any new clinical content requires source sufficiency, clearance and exact-revision human review."
+      ]
+    },
+    {
+      "conditionCount": 0,
+      "domains": [
+        {
+          "clinicalReviewState": "required",
+          "domain": "anatomy",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "landmarks",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "muscle-roles",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "conditions",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "presentations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "subjective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "objective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "neurological-screening",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "tests",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "differentials",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "red-flags",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "imaging-investigations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "management",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "prognosis",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "evidence",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "cases",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "mcqs",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "movement",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "anatomy-3d",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        }
+      ],
+      "label": "Knee",
+      "publicNewRoutes": 0,
+      "regionId": "region-matrix.knee",
+      "routeState": "roadmap-only",
+      "slug": "knee",
+      "sourcePointers": [
+        "src/data/taxonomy.ts",
+        "content/plans/regions/knee.json"
+      ],
+      "unresolvedIssues": [
+        "Exact evidence/module/movement/3D/MCQ relationships are incomplete.",
+        "Any new clinical content requires source sufficiency, clearance and exact-revision human review."
+      ]
+    },
+    {
+      "conditionCount": 0,
+      "domains": [
+        {
+          "clinicalReviewState": "required",
+          "domain": "anatomy",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "landmarks",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "muscle-roles",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "conditions",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "presentations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "subjective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "objective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "neurological-screening",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "tests",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "differentials",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "red-flags",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "imaging-investigations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "management",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "prognosis",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "evidence",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "cases",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "mcqs",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "movement",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "anatomy-3d",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        }
+      ],
+      "label": "Ankle and foot",
+      "publicNewRoutes": 0,
+      "regionId": "region-matrix.ankle-foot",
+      "routeState": "roadmap-only",
+      "slug": "ankle-foot",
+      "sourcePointers": [
+        "src/data/taxonomy.ts",
+        "content/plans/regions/ankle-foot.json"
+      ],
+      "unresolvedIssues": [
+        "Exact evidence/module/movement/3D/MCQ relationships are incomplete.",
+        "Any new clinical content requires source sufficiency, clearance and exact-revision human review."
+      ]
+    },
+    {
+      "conditionCount": 0,
+      "domains": [
+        {
+          "clinicalReviewState": "required",
+          "domain": "anatomy",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "landmarks",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "muscle-roles",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "conditions",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "presentations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "subjective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "objective-assessment",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "neurological-screening",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "tests",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "differentials",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "red-flags",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "imaging-investigations",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "management",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "prognosis",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "evidence",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "cases",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "mcqs",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "movement",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        },
+        {
+          "clinicalReviewState": "required",
+          "domain": "anatomy-3d",
+          "evidenceState": "exact-revision-link-required",
+          "newContentCreated": false,
+          "publicEligibility": false,
+          "sourceClearanceState": "required",
+          "structuralState": "explicit-production-gap"
+        }
+      ],
+      "label": "Neuro and systemic differentials",
+      "publicNewRoutes": 0,
+      "regionId": "region-matrix.neuro-systemic",
+      "routeState": "cross-cutting-no-route",
+      "slug": "neuro-systemic",
+      "sourcePointers": [
+        "src/data/taxonomy.ts"
+      ],
+      "unresolvedIssues": [
+        "Exact evidence/module/movement/3D/MCQ relationships are incomplete.",
+        "Any new clinical content requires source sufficiency, clearance and exact-revision human review."
+      ]
+    }
+  ],
+  "requiredDomains": [
+    "anatomy",
+    "landmarks",
+    "muscle-roles",
+    "conditions",
+    "presentations",
+    "subjective-assessment",
+    "objective-assessment",
+    "neurological-screening",
+    "tests",
+    "differentials",
+    "red-flags",
+    "imaging-investigations",
+    "management",
+    "prognosis",
+    "evidence",
+    "cases",
+    "mcqs",
+    "movement",
+    "anatomy-3d"
+  ],
+  "schemaVersion": 1,
+  "summary": {
+    "crossCuttingAreas": 2,
+    "domainCells": 209,
+    "explicitProductionGaps": 164,
+    "liveBaselineRegions": 5,
+    "newClinicalClaims": 0,
+    "publicNewRoutes": 0,
+    "regions": 11,
+    "roadmapRegions": 4
+  }
+}
