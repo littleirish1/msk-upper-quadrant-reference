@@ -4,6 +4,8 @@
   "private": true,
   "description": "MSK Upper Quadrant Clinical Reference — HSC Northern Ireland",
   "scripts": {
+  "modules:generate": "node scripts/clinical-platform/generate-module-library.mjs",
+  "test:modules": "node scripts/clinical-platform/test-module-library.mjs",
   "dev": "next dev",
   "prebuild": "npm run cases:generate && npm run build:search && npm run build:case-reveals",
   "build": "next build",

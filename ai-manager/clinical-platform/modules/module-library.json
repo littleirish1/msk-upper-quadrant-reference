@@ -1,0 +1,730 @@
+{
+  "authority": "clinical-module-library",
+  "generatedFrom": [
+    "content/guided-cases/records/published/case.cervical.case-01.json",
+    "content/guided-cases/records/published/case.cervical.case-02.json",
+    "content/guided-cases/records/published/case.elbow.case-03.json",
+    "content/guided-cases/records/published/case.shoulder.case-04.json",
+    "content/guided-cases/records/published/case.shoulder.case-05.json",
+    "content/guided-cases/records/published/case.thoracic.case-06.json"
+  ],
+  "modules": [
+    {
+      "applicability": {
+        "limitations": [
+          "No applicability beyond the exact carried-forward source case is asserted."
+        ],
+        "populations": [
+          "source-record population only"
+        ],
+        "regions": [
+          "cervical"
+        ],
+        "settings": [
+          "education"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "intermediate",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": false,
+        "humanEdited": true,
+        "requiresHumanReview": true
+      },
+      "id": "module.cervical.case-01.presentation",
+      "internalLabel": "Cervical Case 01: Neck and Arm Pain",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [
+          "A 42-year-old office worker presents with a 6-week history of right-sided neck pain with symptoms radiating into the right arm. Symptoms began gradually after a busy period at work involving prolonged desk-based activity. The patient describes intermittent pain travelling from the lower cervical region into the lateral arm and forearm, with occasional tingling into the thumb and index finger. Symptoms are aggravated by prolonged sitting, looking down at a laptop, and turning the head to the right. They report some relief when placing the hand on top of the head. Sleep is disturbed when lying on the right side. There is no history of trauma. They report no gait disturbance, no bilateral symptoms, no bowel or bladder changes, and no unexplained weight loss."
+        ],
+        "status": "baseline-carried-forward"
+      },
+      "publicationState": "private",
+      "publicLabel": "Neck and arm symptoms",
+      "questionMappings": [
+        "presenting complaint",
+        "tell me what brought you in",
+        "tell me more"
+      ],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.case.cervical.case-01.module-presentation-1"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "10994f6dcb7bb2857c1dbe87aabc913d9dc10bf6974e1b8a8d11d2711cb2e6f7",
+            "recordId": "case.cervical.case-01",
+            "repositoryPath": "content/guided-cases/records/published/case.cervical.case-01.json",
+            "revision": "1"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The source case approval is preserved; it does not approve this new module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Exact-revision clinical, evidence and publication review are required."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "carried-forward-presentation",
+        "sourceCaseId": "case.cervical.case-01",
+        "value": "A 42-year-old office worker presents with a 6-week history of right-sided neck pain with symptoms radiating into the right arm. Symptoms began gradually after a busy period at work involving prolonged desk-based activity. The patient describes intermittent pain travelling from the lower cervical region into the lateral arm and forearm, with occasional tingling into the thumb and index finger. Symptoms are aggravated by prolonged sitting, looking down at a laptop, and turning the head to the right. They report some relief when placing the hand on top of the head. Sleep is disturbed when lying on the right side. There is no history of trauma. They report no gait disturbance, no bilateral symptoms, no bowel or bladder changes, and no unexplained weight loss."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison."
+        ],
+        "status": "baseline-carried-forward"
+      },
+      "type": "condition-presentation"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "No applicability beyond the exact carried-forward source case is asserted."
+        ],
+        "populations": [
+          "source-record population only"
+        ],
+        "regions": [
+          "cervical"
+        ],
+        "settings": [
+          "education"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "advanced",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": false,
+        "humanEdited": true,
+        "requiresHumanReview": true
+      },
+      "id": "module.cervical.case-02.presentation",
+      "internalLabel": "Cervical Case 02: Subtle Hand Dysfunction and Heavy Legs",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [
+          "A 58-year-old retired nurse is referred for a pre-operative physiotherapy assessment before planned bilateral carpal tunnel release. She reports a 6-month history of increasing difficulty with fine motor tasks, including fastening buttons, typing, and handling cutlery. She also reports that her legs feel heavy on stairs. She has intermittent numbness in both arms, but it does not follow one clear dermatomal or peripheral nerve distribution. She has no significant neck pain. She denies falls, but reports that her balance feels slightly less reliable. Over the past 2 months, she has noticed mild bladder urgency, which she has attributed to possible urinary tract infections. Her current working diagnosis is bilateral carpal tunnel syndrome."
+        ],
+        "status": "baseline-carried-forward"
+      },
+      "publicationState": "private",
+      "publicLabel": "Hand clumsiness and heavy legs",
+      "questionMappings": [
+        "presenting complaint",
+        "tell me what brought you in",
+        "tell me more"
+      ],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.case.cervical.case-02.module-presentation-1"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "70383e01829585664c9338dcb8df293954535d6d05539943d6dc484edba7d494",
+            "recordId": "case.cervical.case-02",
+            "repositoryPath": "content/guided-cases/records/published/case.cervical.case-02.json",
+            "revision": "1"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The source case approval is preserved; it does not approve this new module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Exact-revision clinical, evidence and publication review are required."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "carried-forward-presentation",
+        "sourceCaseId": "case.cervical.case-02",
+        "value": "A 58-year-old retired nurse is referred for a pre-operative physiotherapy assessment before planned bilateral carpal tunnel release. She reports a 6-month history of increasing difficulty with fine motor tasks, including fastening buttons, typing, and handling cutlery. She also reports that her legs feel heavy on stairs. She has intermittent numbness in both arms, but it does not follow one clear dermatomal or peripheral nerve distribution. She has no significant neck pain. She denies falls, but reports that her balance feels slightly less reliable. Over the past 2 months, she has noticed mild bladder urgency, which she has attributed to possible urinary tract infections. Her current working diagnosis is bilateral carpal tunnel syndrome."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison."
+        ],
+        "status": "baseline-carried-forward"
+      },
+      "type": "condition-presentation"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "No applicability beyond the exact carried-forward source case is asserted."
+        ],
+        "populations": [
+          "source-record population only"
+        ],
+        "regions": [
+          "elbow"
+        ],
+        "settings": [
+          "education"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "intermediate",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": false,
+        "humanEdited": true,
+        "requiresHumanReview": true
+      },
+      "id": "module.elbow.case-03.presentation",
+      "internalLabel": "Elbow Case 01: Sudden Antecubital Pain",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [
+          "A 49-year-old patient presents with sudden pain in the front of the elbow after lifting a heavy box yesterday. He felt a distinct “pop” in the antecubital fossa at the time of injury. Over the past 24 hours, bruising has developed around the front of the elbow. He reports weakness when turning the palm upwards and when bending the elbow. Pain is 5/10 at rest and increases to 8/10 with lifting or resisted supination. He wants to know whether this needs urgent onward referral."
+        ],
+        "status": "baseline-carried-forward"
+      },
+      "publicationState": "private",
+      "publicLabel": "Sudden anterior elbow pain after lifting",
+      "questionMappings": [
+        "presenting complaint",
+        "tell me what brought you in",
+        "tell me more"
+      ],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.case.elbow.case-03.module-presentation-1"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "8ff27421e84879dd94f115bc2dfad61b178784d7a247047a72da05cd74563673",
+            "recordId": "case.elbow.case-03",
+            "repositoryPath": "content/guided-cases/records/published/case.elbow.case-03.json",
+            "revision": "1"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The source case approval is preserved; it does not approve this new module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Exact-revision clinical, evidence and publication review are required."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "carried-forward-presentation",
+        "sourceCaseId": "case.elbow.case-03",
+        "value": "A 49-year-old patient presents with sudden pain in the front of the elbow after lifting a heavy box yesterday. He felt a distinct “pop” in the antecubital fossa at the time of injury. Over the past 24 hours, bruising has developed around the front of the elbow. He reports weakness when turning the palm upwards and when bending the elbow. Pain is 5/10 at rest and increases to 8/10 with lifting or resisted supination. He wants to know whether this needs urgent onward referral."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison."
+        ],
+        "status": "baseline-carried-forward"
+      },
+      "type": "condition-presentation"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "No applicability beyond the exact carried-forward source case is asserted."
+        ],
+        "populations": [
+          "source-record population only"
+        ],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": false,
+        "humanEdited": true,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.case-04.presentation",
+      "internalLabel": "Shoulder Case 01: Lateral Shoulder Pain",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [
+          "A 29-year-old active patient presents with a 5-month history of right lateral shoulder pain. Symptoms began gradually with no clear traumatic event. Pain is worse with overhead activity, throwing, and lying on the affected side at night. They have tried rest for 6 weeks with minimal improvement. NSAIDs from the GP gave some benefit. They are motivated to return to sport."
+        ],
+        "status": "baseline-carried-forward"
+      },
+      "publicationState": "private",
+      "publicLabel": "Lateral shoulder pain with overhead activity",
+      "questionMappings": [
+        "presenting complaint",
+        "tell me what brought you in",
+        "tell me more"
+      ],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.case.shoulder.case-04.module-presentation-1"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+            "recordId": "case.shoulder.case-04",
+            "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-04.json",
+            "revision": "1"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The source case approval is preserved; it does not approve this new module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Exact-revision clinical, evidence and publication review are required."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "carried-forward-presentation",
+        "sourceCaseId": "case.shoulder.case-04",
+        "value": "A 29-year-old active patient presents with a 5-month history of right lateral shoulder pain. Symptoms began gradually with no clear traumatic event. Pain is worse with overhead activity, throwing, and lying on the affected side at night. They have tried rest for 6 weeks with minimal improvement. NSAIDs from the GP gave some benefit. They are motivated to return to sport."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison."
+        ],
+        "status": "baseline-carried-forward"
+      },
+      "type": "condition-presentation"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "No applicability beyond the exact carried-forward source case is asserted."
+        ],
+        "populations": [
+          "source-record population only"
+        ],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": false,
+        "humanEdited": true,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.case-05.presentation",
+      "internalLabel": "Shoulder Case 02: Progressive Shoulder Stiffness",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [
+          "A 56-year-old patient with type 2 diabetes presents with an 8-month history of progressive left shoulder stiffness. The shoulder was initially very painful, especially at night, but the pain has reduced slightly. Stiffness is now the dominant problem. She struggles to reach behind her back, reach across her body, dress normally, and sleep comfortably. There was no trauma or dislocation. She previously attended physiotherapy elsewhere, mainly involving deep tissue massage, but she reports no meaningful improvement. She is frustrated and asks, “Will this ever get better?”"
+        ],
+        "status": "baseline-carried-forward"
+      },
+      "publicationState": "private",
+      "publicLabel": "Progressive shoulder stiffness",
+      "questionMappings": [
+        "presenting complaint",
+        "tell me what brought you in",
+        "tell me more"
+      ],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.case.shoulder.case-05.module-presentation-1"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+            "recordId": "case.shoulder.case-05",
+            "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-05.json",
+            "revision": "1"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The source case approval is preserved; it does not approve this new module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Exact-revision clinical, evidence and publication review are required."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "carried-forward-presentation",
+        "sourceCaseId": "case.shoulder.case-05",
+        "value": "A 56-year-old patient with type 2 diabetes presents with an 8-month history of progressive left shoulder stiffness. The shoulder was initially very painful, especially at night, but the pain has reduced slightly. Stiffness is now the dominant problem. She struggles to reach behind her back, reach across her body, dress normally, and sleep comfortably. There was no trauma or dislocation. She previously attended physiotherapy elsewhere, mainly involving deep tissue massage, but she reports no meaningful improvement. She is frustrated and asks, “Will this ever get better?”"
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison."
+        ],
+        "status": "baseline-carried-forward"
+      },
+      "type": "condition-presentation"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "No applicability beyond the exact carried-forward source case is asserted."
+        ],
+        "populations": [
+          "source-record population only"
+        ],
+        "regions": [
+          "thoracic"
+        ],
+        "settings": [
+          "education"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "advanced",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": false,
+        "humanEdited": true,
+        "requiresHumanReview": true
+      },
+      "id": "module.thoracic.case-06.presentation",
+      "internalLabel": "Thoracic Case 01: Visceral Referral Mimicking MSK Pain",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [
+          "A 55-year-old accountant presents with left-sided upper thoracic and periscapular discomfort that was initially assumed to be postural. He has been working long hours at a desk during year-end accounts. He also returned to light gym work two weeks ago and noticed his upper back felt tight after rowing and pressing exercises. These details make an MSK explanation tempting. The symptom he is worried about is a deep ache between the left shoulder blade and spine, sometimes spreading as a band-like pressure across the front of the chest. It is not reliably reproduced by thoracic rotation, shoulder movement, palpation, resisted testing, or loaded spinal positions. Heat and stretching help general stiffness but do not change the main symptom. The most concerning episode occurred while walking uphill from a car park. He developed the same thoracic/scapular ache with chest pressure, felt clammy and mildly nauseous, and had to stop. Symptoms settled after several minutes of rest. A milder episode occurred again on stairs the following day. He has hypertension, previously raised cholesterol, a past smoking history, and a family history of myocardial infarction in a first-degree relative in their late 50s. He denies cough, fever, calf pain, pleuritic pain, unexplained weight loss, night sweats, trauma, neurological symptoms, or bowel/bladder disturbance."
+        ],
+        "status": "baseline-carried-forward"
+      },
+      "publicationState": "private",
+      "publicLabel": "Thoracic pain with broader screening cues",
+      "questionMappings": [
+        "presenting complaint",
+        "tell me what brought you in",
+        "tell me more"
+      ],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.case.thoracic.case-06.module-presentation-1"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "2f2b88137e838c14447f2b3569c201dffc7817271020abf8f37f44aa961d9d3c",
+            "recordId": "case.thoracic.case-06",
+            "repositoryPath": "content/guided-cases/records/published/case.thoracic.case-06.json",
+            "revision": "1"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The source case approval is preserved; it does not approve this new module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Exact-revision clinical, evidence and publication review are required."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "carried-forward-presentation",
+        "sourceCaseId": "case.thoracic.case-06",
+        "value": "A 55-year-old accountant presents with left-sided upper thoracic and periscapular discomfort that was initially assumed to be postural. He has been working long hours at a desk during year-end accounts. He also returned to light gym work two weeks ago and noticed his upper back felt tight after rowing and pressing exercises. These details make an MSK explanation tempting. The symptom he is worried about is a deep ache between the left shoulder blade and spine, sometimes spreading as a band-like pressure across the front of the chest. It is not reliably reproduced by thoracic rotation, shoulder movement, palpation, resisted testing, or loaded spinal positions. Heat and stretching help general stiffness but do not change the main symptom. The most concerning episode occurred while walking uphill from a car park. He developed the same thoracic/scapular ache with chest pressure, felt clammy and mildly nauseous, and had to stop. Symptoms settled after several minutes of rest. A milder episode occurred again on stairs the following day. He has hypertension, previously raised cholesterol, a past smoking history, and a family history of myocardial infarction in a first-degree relative in their late 50s. He denies cough, fever, calf pain, pleuritic pain, unexplained weight loss, night sweats, trauma, neurological symptoms, or bowel/bladder disturbance."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Compare the reasoning themes with the case information rather than treating them as a rigid marking rubric.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison.",
+          "Use the existing reviewed reveal discussion for comparison."
+        ],
+        "status": "baseline-carried-forward"
+      },
+      "type": "condition-presentation"
+    }
+  ],
+  "schemaVersion": 1
+}
