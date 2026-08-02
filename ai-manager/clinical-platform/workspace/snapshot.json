@@ -1,0 +1,1574 @@
+{
+  "actions": [
+    "inspect-exact-revision",
+    "filter-queues",
+    "draft-ephemeral-note",
+    "download-review-packet"
+  ],
+  "authority": "private-clinical-authoring-workspace",
+  "counts": {
+    "anatomy3d": 8,
+    "evidence": 3,
+    "ingestion": 3,
+    "legacy": 47,
+    "mcqs": 20,
+    "modules": 6,
+    "movement": 26,
+    "recipes": 9,
+    "regions": 11,
+    "rules": 17,
+    "transcripts": 6,
+    "truthRecords": 9
+  },
+  "groups": {
+    "anatomy3d": [
+      {
+        "hash": null,
+        "id": "asset3d.cervical.review-slot",
+        "lifecycle": "blocked",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "asset3d.shoulder.review-slot",
+        "lifecycle": "blocked",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "asset3d.elbow.review-slot",
+        "lifecycle": "blocked",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "asset3d.wrist-hand.review-slot",
+        "lifecycle": "blocked",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "asset3d.lumbar.review-slot",
+        "lifecycle": "blocked",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "asset3d.hip.review-slot",
+        "lifecycle": "blocked",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "asset3d.knee.review-slot",
+        "lifecycle": "blocked",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "asset3d.ankle-foot.review-slot",
+        "lifecycle": "blocked",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "evidence": [
+      {
+        "hash": null,
+        "id": "evidence.metadata.1",
+        "lifecycle": "unreviewed",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "evidence.metadata.2",
+        "lifecycle": "unreviewed",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "evidence.metadata.3",
+        "lifecycle": "unreviewed",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "ingestion": [
+      {
+        "hash": null,
+        "id": "ingestion.repository.evidence-pilot-lateral-ankle-sprain",
+        "lifecycle": "required",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "ingestion.repository.evidence-pilot-rcrsp",
+        "lifecycle": "required",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "ingestion.repository.legacy-source-registry",
+        "lifecycle": "required",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "legacy": [
+      {
+        "hash": "7fa74fe27fde6453a19d8654112f20bb1d98cd3217a1d97214f673e68d7cfcd7",
+        "id": "legacy.s1",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "c36d9a35adec34384a9dc9870ca9949ddd737b7d4299f27c5ca6041c00f57b0f",
+        "id": "legacy.s2",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "608d988737e7a38fd82859f154a8c709c057cf7d774dd7c277619251ab10f3e4",
+        "id": "legacy.s3",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "3c96c83d9227062afc278f6db77e99e37cc9bb850bc48456d694b8008713287c",
+        "id": "legacy.s4",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "a399a5af3ecb979e49c6e5144d83b2066cda8fe9ec66ff431f6fe6140e0b62ea",
+        "id": "legacy.s5",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "fc17710591e0dc3cf543045f805831d8642ed86b84f62f813aeab64869f87ed2",
+        "id": "legacy.s6",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "71e7751a95757529b6dd7b502e32c9b5e5129de9bcd9b4c70a60b36e413f705f",
+        "id": "legacy.s7",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "2fdc5864695d7f702f0d8099621389f00345570187b65bb58e4915e1da2dff07",
+        "id": "legacy.s8",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "f149b34d090f7d9d47df87d8c10042bcef8f47da0077345a41397e5ac02e5e48",
+        "id": "legacy.s9",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "51ce68c318d22610496be7c2c830332b723d17d4fad70a6f5e7d8c31fdd0355f",
+        "id": "legacy.s10",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "54a969aa74bbd06e02967c66e42562165c1f10284ce50b98dda5e4cc5ee57182",
+        "id": "legacy.s11",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "c2a2f8a77e6dccc8436f2f8c7579d9782c2353c5a0f77004cfcfea64997f1a1d",
+        "id": "legacy.s12",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "6ecccbe8aa0b11fb0701189fc703e2cf33d8cda29855bb8e10b007116178cb6c",
+        "id": "legacy.s13",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "3d8d3d87375033959f840f9994292726ad9df4a676982b7038979bd4089d3624",
+        "id": "legacy.s14",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "ab5166cc6df92c0b7c24489408b61ce6b00ec0f227b1c364bc3149cc5dfae8c8",
+        "id": "legacy.s15",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "1d11f46acd163ff17ac1a784f977df4559649f32059605005f7f1c163734d2ae",
+        "id": "legacy.s16",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "1b1cc67bfb935a39372c3c38335fc7b67c3f549c1e1c9f770b52ad0784c4c4f6",
+        "id": "legacy.s17",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "77acbb7081513bb3a601d7d1ba41a757e85f1a3df05de0a924d586b49be00be2",
+        "id": "legacy.s18",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "c4ac511ce6369f38e4f4cd02e92070f3f19ee82003f5c9cde87e15336a12d6c1",
+        "id": "legacy.s19",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "d3599b031ac46c5a1bcec4b0904195ab50b2d8e70e587e30d4d0b32b2e33809f",
+        "id": "legacy.s20",
+        "lifecycle": "baseline-public-converted",
+        "publication": "baseline-public",
+        "revision": 1
+      },
+      {
+        "hash": "b9fd71b0720b8d83015bf816a624fad8f79b31eecf206f002baae44ea9d17690",
+        "id": "legacy.s21",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "387bb4e5fdd0e8316378b13510969c589d6240f60fe54e52bab6afd0f501c51f",
+        "id": "legacy.s22",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "3c5bb73a05206e4a24adfb66488ad554e29a8e11c42f3aa49702fd7b0d776a0f",
+        "id": "legacy.s23",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "f1f2b1456cb55a192b3afecd6d5e8d7aca07af1644c16bd77da77c096a087ee2",
+        "id": "legacy.s24",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "a2db1bd4b6b3abc13f9701bec516b98f4cfe12caf5d76fb5d91dd68ca6bc52cf",
+        "id": "legacy.s25",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "8de18060b1d08ce3ee09d4890d96e309df1647f2f76693a7ad81cd97760643c2",
+        "id": "legacy.s26",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "2fafeba31702c8c27b2b99f0636ca248fc7ccd3ae625ffc3fa623ee79e0ffa89",
+        "id": "legacy.s27",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "4096e8da3b1b819b42a8092cdfe3a13791d1b01c7e96e751cb600886acedcf2e",
+        "id": "legacy.s28",
+        "lifecycle": "baseline-public-converted",
+        "publication": "baseline-public",
+        "revision": 1
+      },
+      {
+        "hash": "d10a05e12760c788c7744be23a8bc8bcc9e3709f65c04917ca716dcdbca11778",
+        "id": "legacy.s29",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "0c56a5aee504c892dbf36f35c66f2ef449ff57d90021266a07270f5d1c96d63d",
+        "id": "legacy.s30",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "15a168922d97045d4b2e61c756233d9c7edf1398e7d1ad9d05ecd0fe49a18bdd",
+        "id": "legacy.s31",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "959a7532cc943e73696d4917d248472d86adec387e9e0406d222a04a613e8102",
+        "id": "legacy.s32",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "4adfeff41a7484b310474ba7252cf126253379197a153b8ef014a8bdfd09351c",
+        "id": "legacy.s33",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "cf01957692bf0b50e4c8c0e8959c633354a07a1090c70458e1242b640a099f6c",
+        "id": "legacy.s34",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "2e8f6ec8f4722b5f401731877c9ff1daa9718561c2624807ef44b6e802887391",
+        "id": "legacy.s35",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "d27855a2cdc0d65a3a8357d2356643a6078d92185be280698f37022975e97d0c",
+        "id": "legacy.s36",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "1f1e1d510e13069e26ad9de261ad94057f686284b6cfd23a54ffe03e86d9e6bc",
+        "id": "legacy.s39",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "71aed8419e2101b2ddd2edb1af928556ec22865a402f8008b2f7801a4ce3450f",
+        "id": "legacy.s40",
+        "lifecycle": "governed-draft-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "158d91e3b014a5dc701685174aa759976d77efea8ac90187234fedc14320ff1b",
+        "id": "legacy.s41",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "2a5bc5435b3128e946d62e1ab7c2fed69c15b5a16b581da3c386d184f5b95ab9",
+        "id": "legacy.s42",
+        "lifecycle": "governed-draft-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "6f25e0c6ea01a792288726b972d0040cdaeff57e0e5438471a038566b76c4590",
+        "id": "legacy.s43",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "a515fce442ef2dc8e117b12641d11bea8090538be7ccd3bc55624b52c84e048c",
+        "id": "legacy.s44",
+        "lifecycle": "baseline-public-converted",
+        "publication": "baseline-public",
+        "revision": 1
+      },
+      {
+        "hash": "75d0cb9ce62844bc30774aed0f004dab8428a768f1926b1388c4f75207a5a741",
+        "id": "legacy.s45",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "cd86b4c12eb9a25511c2ca3246194762cae2ba659e0efb4552e04dfa8b201795",
+        "id": "legacy.s46",
+        "lifecycle": "governed-draft-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "1fb7309652510bb5456f5e22aea58fbbdd0399189afba2525a18be3446834c9c",
+        "id": "legacy.s47",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "4198ef11bb8de3fce8d4969023eb1592cfb8c175140f4a258da4c0e091b67ef1",
+        "id": "legacy.s48",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "c12cfa0c8abfe3c52da8325697f4ed43031525d62ab9f5260a02d9fe8ce222c6",
+        "id": "legacy.s49",
+        "lifecycle": "source-insufficient-awaiting-review",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "mcqs": [
+      {
+        "hash": null,
+        "id": "mcq-slot.cervical.01",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.cervical.02",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.cervical.03",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.cervical.04",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.thoracic.01",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.thoracic.02",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.thoracic.03",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.thoracic.04",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder.01",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder.02",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder.03",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder.04",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.elbow.01",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.elbow.02",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.elbow.03",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.elbow.04",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.wrist-hand.01",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.wrist-hand.02",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.wrist-hand.03",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.wrist-hand.04",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "modules": [
+      {
+        "hash": "10994f6dcb7bb2857c1dbe87aabc913d9dc10bf6974e1b8a8d11d2711cb2e6f7",
+        "id": "module.cervical.case-01.presentation",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "70383e01829585664c9338dcb8df293954535d6d05539943d6dc484edba7d494",
+        "id": "module.cervical.case-02.presentation",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "8ff27421e84879dd94f115bc2dfad61b178784d7a247047a72da05cd74563673",
+        "id": "module.elbow.case-03.presentation",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+        "id": "module.shoulder.case-04.presentation",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+        "id": "module.shoulder.case-05.presentation",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "2f2b88137e838c14447f2b3569c201dffc7817271020abf8f37f44aa961d9d3c",
+        "id": "module.thoracic.case-06.presentation",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "movement": [
+      {
+        "hash": null,
+        "id": "movement.joint.flexion-extension",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.joint.abduction-adduction",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.joint.internal-external-rotation",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.joint.pronation-supination",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.joint.radial-ulnar-deviation",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.joint.spinal-flexion-extension",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.joint.spinal-lateral-flexion",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.joint.spinal-rotation",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.joint.accessory-movement",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.joint.combined-movement",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.reaching",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.overhead-use",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.lifting",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.carrying",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.pushing",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.pulling",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.gripping",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.throwing",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.sit-to-stand",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.squat",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.step",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.gait",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.running",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.jumping-landing",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.stairs",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.functional.work-task",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "recipes": [
+      {
+        "hash": null,
+        "id": "recipe.cervical.case-01.baseline",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "recipe.cervical.case-02.baseline",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "recipe.cervical.pilot-01.baseline",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "recipe.elbow.case-03.baseline",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "recipe.shoulder.case-04.baseline",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "recipe.shoulder.case-05.baseline",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "recipe.shoulder.pilot-02.baseline",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "recipe.thoracic.case-06.baseline",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "recipe.wrist-hand.pilot-03.baseline",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "regions": [
+      {
+        "hash": null,
+        "id": "region-matrix.cervical",
+        "lifecycle": "live-baseline",
+        "publication": "no-new-route",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "region-matrix.shoulder",
+        "lifecycle": "live-baseline",
+        "publication": "no-new-route",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "region-matrix.elbow",
+        "lifecycle": "live-baseline",
+        "publication": "no-new-route",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "region-matrix.wrist-hand",
+        "lifecycle": "live-baseline",
+        "publication": "no-new-route",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "region-matrix.thoracic",
+        "lifecycle": "live-baseline",
+        "publication": "no-new-route",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "region-matrix.headache",
+        "lifecycle": "cross-cutting-no-route",
+        "publication": "no-new-route",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "region-matrix.lumbar",
+        "lifecycle": "roadmap-only",
+        "publication": "no-new-route",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "region-matrix.hip",
+        "lifecycle": "roadmap-only",
+        "publication": "no-new-route",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "region-matrix.knee",
+        "lifecycle": "roadmap-only",
+        "publication": "no-new-route",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "region-matrix.ankle-foot",
+        "lifecycle": "roadmap-only",
+        "publication": "no-new-route",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "region-matrix.neuro-systemic",
+        "lifecycle": "cross-cutting-no-route",
+        "publication": "no-new-route",
+        "revision": 1
+      }
+    ],
+    "rules": [
+      {
+        "hash": null,
+        "id": "rule.template.requires",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.prohibits",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.implies",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.conditional-permission",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.mutual-exclusion",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.severity",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.laterality",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.anatomy-distribution",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.timing",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.population",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.comorbidity",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.investigation",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.escalation",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.movement",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.subjective-objective-consistency",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.diagnosis-differential-consistency",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.template.publication-licensing-dependency",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      }
+    ],
+    "transcripts": [
+      {
+        "hash": "b05d849dee55d349ef01710e284f88e2b147590f3813b82f3ded5503df28cd80",
+        "id": "transcript.case.cervical.case-01",
+        "lifecycle": "provider-free-fixture",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "e7b51b241f41d9932a596afbee8cf69f8b270ea321cbcd13a66a6fde65fbf738",
+        "id": "transcript.case.cervical.case-02",
+        "lifecycle": "provider-free-fixture",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "db2c806efd7c2f32f6607c06cc9a4827608a71b4cdd2eebed6db16aa6cf73c88",
+        "id": "transcript.case.elbow.case-03",
+        "lifecycle": "provider-free-fixture",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "6d6a29a04802baad8d33e87af7e6a35dd51106c0a891c8a35cea60c56331c69f",
+        "id": "transcript.case.shoulder.case-04",
+        "lifecycle": "provider-free-fixture",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "9109db5737c02fb0551d1da8f4a7944bca9e30fc32ceab946e75add16fff5bb7",
+        "id": "transcript.case.shoulder.case-05",
+        "lifecycle": "provider-free-fixture",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "a16e186d46841357921c3da3d492e7193806a9d2d08f90de2f365e35e3358bc1",
+        "id": "transcript.case.thoracic.case-06",
+        "lifecycle": "provider-free-fixture",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "truthRecords": [
+      {
+        "hash": "b05d849dee55d349ef01710e284f88e2b147590f3813b82f3ded5503df28cd80",
+        "id": "patient-truth.cervical.case-01",
+        "lifecycle": "baseline-published",
+        "publication": "baseline-public-mode",
+        "revision": 1
+      },
+      {
+        "hash": "e7b51b241f41d9932a596afbee8cf69f8b270ea321cbcd13a66a6fde65fbf738",
+        "id": "patient-truth.cervical.case-02",
+        "lifecycle": "baseline-published",
+        "publication": "baseline-public-mode",
+        "revision": 1
+      },
+      {
+        "hash": "7d68be2817e0585e0db8ce182c0d32f6709c90ed17512e14c0884102f9716d2c",
+        "id": "patient-truth.cervical.pilot-01",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "db2c806efd7c2f32f6607c06cc9a4827608a71b4cdd2eebed6db16aa6cf73c88",
+        "id": "patient-truth.elbow.case-03",
+        "lifecycle": "baseline-published",
+        "publication": "baseline-public-mode",
+        "revision": 1
+      },
+      {
+        "hash": "6d6a29a04802baad8d33e87af7e6a35dd51106c0a891c8a35cea60c56331c69f",
+        "id": "patient-truth.shoulder.case-04",
+        "lifecycle": "baseline-published",
+        "publication": "baseline-public-mode",
+        "revision": 1
+      },
+      {
+        "hash": "9109db5737c02fb0551d1da8f4a7944bca9e30fc32ceab946e75add16fff5bb7",
+        "id": "patient-truth.shoulder.case-05",
+        "lifecycle": "baseline-published",
+        "publication": "baseline-public-mode",
+        "revision": 1
+      },
+      {
+        "hash": "0e3e904a488905e9623459d094041980e2b39c0094b59cdc9b42db2909b2d7fd",
+        "id": "patient-truth.shoulder.pilot-02",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "a16e186d46841357921c3da3d492e7193806a9d2d08f90de2f365e35e3358bc1",
+        "id": "patient-truth.thoracic.case-06",
+        "lifecycle": "baseline-published",
+        "publication": "baseline-public-mode",
+        "revision": 1
+      },
+      {
+        "hash": "71ac312d0d0c350d60aa0286054c1882cb47c37605d5ba0fca621b444b856bf4",
+        "id": "patient-truth.wrist-hand.pilot-03",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      }
+    ]
+  },
+  "persistence": "ephemeral-browser-drafts-and-downloaded-packets-only",
+  "providerCallsEnabled": false,
+  "publicRoute": null,
+  "queueCounts": {
+    "accessibility": 54,
+    "anatomy": 8,
+    "betaIssue": 1,
+    "clinical": 78,
+    "dependencyRisk": 11,
+    "evidence": 72,
+    "licensing": 8,
+    "movement": 26,
+    "publicationDecision": 69,
+    "source": 3,
+    "staleApproval": 0
+  },
+  "queues": {
+    "accessibility": [
+      "asset3d.ankle-foot.review-slot",
+      "asset3d.cervical.review-slot",
+      "asset3d.elbow.review-slot",
+      "asset3d.hip.review-slot",
+      "asset3d.knee.review-slot",
+      "asset3d.lumbar.review-slot",
+      "asset3d.shoulder.review-slot",
+      "asset3d.wrist-hand.review-slot",
+      "mcq-slot.cervical.01",
+      "mcq-slot.cervical.02",
+      "mcq-slot.cervical.03",
+      "mcq-slot.cervical.04",
+      "mcq-slot.elbow.01",
+      "mcq-slot.elbow.02",
+      "mcq-slot.elbow.03",
+      "mcq-slot.elbow.04",
+      "mcq-slot.shoulder.01",
+      "mcq-slot.shoulder.02",
+      "mcq-slot.shoulder.03",
+      "mcq-slot.shoulder.04",
+      "mcq-slot.thoracic.01",
+      "mcq-slot.thoracic.02",
+      "mcq-slot.thoracic.03",
+      "mcq-slot.thoracic.04",
+      "mcq-slot.wrist-hand.01",
+      "mcq-slot.wrist-hand.02",
+      "mcq-slot.wrist-hand.03",
+      "mcq-slot.wrist-hand.04",
+      "movement.functional.carrying",
+      "movement.functional.gait",
+      "movement.functional.gripping",
+      "movement.functional.jumping-landing",
+      "movement.functional.lifting",
+      "movement.functional.overhead-use",
+      "movement.functional.pulling",
+      "movement.functional.pushing",
+      "movement.functional.reaching",
+      "movement.functional.running",
+      "movement.functional.sit-to-stand",
+      "movement.functional.squat",
+      "movement.functional.stairs",
+      "movement.functional.step",
+      "movement.functional.throwing",
+      "movement.functional.work-task",
+      "movement.joint.abduction-adduction",
+      "movement.joint.accessory-movement",
+      "movement.joint.combined-movement",
+      "movement.joint.flexion-extension",
+      "movement.joint.internal-external-rotation",
+      "movement.joint.pronation-supination",
+      "movement.joint.radial-ulnar-deviation",
+      "movement.joint.spinal-flexion-extension",
+      "movement.joint.spinal-lateral-flexion",
+      "movement.joint.spinal-rotation"
+    ],
+    "anatomy": [
+      "asset3d.ankle-foot.review-slot",
+      "asset3d.cervical.review-slot",
+      "asset3d.elbow.review-slot",
+      "asset3d.hip.review-slot",
+      "asset3d.knee.review-slot",
+      "asset3d.lumbar.review-slot",
+      "asset3d.shoulder.review-slot",
+      "asset3d.wrist-hand.review-slot"
+    ],
+    "betaIssue": [
+      "beta.programme.real-results-pending"
+    ],
+    "clinical": [
+      "mcq-slot.cervical.01",
+      "mcq-slot.cervical.02",
+      "mcq-slot.cervical.03",
+      "mcq-slot.cervical.04",
+      "mcq-slot.elbow.01",
+      "mcq-slot.elbow.02",
+      "mcq-slot.elbow.03",
+      "mcq-slot.elbow.04",
+      "mcq-slot.shoulder.01",
+      "mcq-slot.shoulder.02",
+      "mcq-slot.shoulder.03",
+      "mcq-slot.shoulder.04",
+      "mcq-slot.thoracic.01",
+      "mcq-slot.thoracic.02",
+      "mcq-slot.thoracic.03",
+      "mcq-slot.thoracic.04",
+      "mcq-slot.wrist-hand.01",
+      "mcq-slot.wrist-hand.02",
+      "mcq-slot.wrist-hand.03",
+      "mcq-slot.wrist-hand.04",
+      "module.cervical.case-01.presentation",
+      "module.cervical.case-02.presentation",
+      "module.elbow.case-03.presentation",
+      "module.shoulder.case-04.presentation",
+      "module.shoulder.case-05.presentation",
+      "module.thoracic.case-06.presentation",
+      "movement.functional.carrying",
+      "movement.functional.gait",
+      "movement.functional.gripping",
+      "movement.functional.jumping-landing",
+      "movement.functional.lifting",
+      "movement.functional.overhead-use",
+      "movement.functional.pulling",
+      "movement.functional.pushing",
+      "movement.functional.reaching",
+      "movement.functional.running",
+      "movement.functional.sit-to-stand",
+      "movement.functional.squat",
+      "movement.functional.stairs",
+      "movement.functional.step",
+      "movement.functional.throwing",
+      "movement.functional.work-task",
+      "movement.joint.abduction-adduction",
+      "movement.joint.accessory-movement",
+      "movement.joint.combined-movement",
+      "movement.joint.flexion-extension",
+      "movement.joint.internal-external-rotation",
+      "movement.joint.pronation-supination",
+      "movement.joint.radial-ulnar-deviation",
+      "movement.joint.spinal-flexion-extension",
+      "movement.joint.spinal-lateral-flexion",
+      "movement.joint.spinal-rotation",
+      "recipe.cervical.case-01.baseline",
+      "recipe.cervical.case-02.baseline",
+      "recipe.cervical.pilot-01.baseline",
+      "recipe.elbow.case-03.baseline",
+      "recipe.shoulder.case-04.baseline",
+      "recipe.shoulder.case-05.baseline",
+      "recipe.shoulder.pilot-02.baseline",
+      "recipe.thoracic.case-06.baseline",
+      "recipe.wrist-hand.pilot-03.baseline",
+      "rule.template.anatomy-distribution",
+      "rule.template.comorbidity",
+      "rule.template.conditional-permission",
+      "rule.template.diagnosis-differential-consistency",
+      "rule.template.escalation",
+      "rule.template.implies",
+      "rule.template.investigation",
+      "rule.template.laterality",
+      "rule.template.movement",
+      "rule.template.mutual-exclusion",
+      "rule.template.population",
+      "rule.template.prohibits",
+      "rule.template.publication-licensing-dependency",
+      "rule.template.requires",
+      "rule.template.severity",
+      "rule.template.subjective-objective-consistency",
+      "rule.template.timing"
+    ],
+    "dependencyRisk": [
+      "risk.dependency.brace-expansion",
+      "risk.dependency.eslint-config-next",
+      "risk.dependency.glob",
+      "risk.dependency.js-yaml",
+      "risk.dependency.minimatch",
+      "risk.dependency.next",
+      "risk.dependency.next-eslint-plugin",
+      "risk.dependency.next-mdx-remote",
+      "risk.dependency.postcss",
+      "risk.dependency.typescript-eslint-parser",
+      "risk.dependency.typescript-estree"
+    ],
+    "evidence": [
+      "ingestion.repository.evidence-pilot-lateral-ankle-sprain",
+      "ingestion.repository.evidence-pilot-rcrsp",
+      "ingestion.repository.legacy-source-registry",
+      "mcq-slot.cervical.01",
+      "mcq-slot.cervical.02",
+      "mcq-slot.cervical.03",
+      "mcq-slot.cervical.04",
+      "mcq-slot.elbow.01",
+      "mcq-slot.elbow.02",
+      "mcq-slot.elbow.03",
+      "mcq-slot.elbow.04",
+      "mcq-slot.shoulder.01",
+      "mcq-slot.shoulder.02",
+      "mcq-slot.shoulder.03",
+      "mcq-slot.shoulder.04",
+      "mcq-slot.thoracic.01",
+      "mcq-slot.thoracic.02",
+      "mcq-slot.thoracic.03",
+      "mcq-slot.thoracic.04",
+      "mcq-slot.wrist-hand.01",
+      "mcq-slot.wrist-hand.02",
+      "mcq-slot.wrist-hand.03",
+      "mcq-slot.wrist-hand.04",
+      "module.cervical.case-01.presentation",
+      "module.cervical.case-02.presentation",
+      "module.elbow.case-03.presentation",
+      "module.shoulder.case-04.presentation",
+      "module.shoulder.case-05.presentation",
+      "module.thoracic.case-06.presentation",
+      "movement.functional.carrying",
+      "movement.functional.gait",
+      "movement.functional.gripping",
+      "movement.functional.jumping-landing",
+      "movement.functional.lifting",
+      "movement.functional.overhead-use",
+      "movement.functional.pulling",
+      "movement.functional.pushing",
+      "movement.functional.reaching",
+      "movement.functional.running",
+      "movement.functional.sit-to-stand",
+      "movement.functional.squat",
+      "movement.functional.stairs",
+      "movement.functional.step",
+      "movement.functional.throwing",
+      "movement.functional.work-task",
+      "movement.joint.abduction-adduction",
+      "movement.joint.accessory-movement",
+      "movement.joint.combined-movement",
+      "movement.joint.flexion-extension",
+      "movement.joint.internal-external-rotation",
+      "movement.joint.pronation-supination",
+      "movement.joint.radial-ulnar-deviation",
+      "movement.joint.spinal-flexion-extension",
+      "movement.joint.spinal-lateral-flexion",
+      "movement.joint.spinal-rotation",
+      "rule.template.anatomy-distribution",
+      "rule.template.comorbidity",
+      "rule.template.conditional-permission",
+      "rule.template.diagnosis-differential-consistency",
+      "rule.template.escalation",
+      "rule.template.implies",
+      "rule.template.investigation",
+      "rule.template.laterality",
+      "rule.template.movement",
+      "rule.template.mutual-exclusion",
+      "rule.template.population",
+      "rule.template.prohibits",
+      "rule.template.publication-licensing-dependency",
+      "rule.template.requires",
+      "rule.template.severity",
+      "rule.template.subjective-objective-consistency",
+      "rule.template.timing"
+    ],
+    "licensing": [
+      "asset3d.ankle-foot.review-slot",
+      "asset3d.cervical.review-slot",
+      "asset3d.elbow.review-slot",
+      "asset3d.hip.review-slot",
+      "asset3d.knee.review-slot",
+      "asset3d.lumbar.review-slot",
+      "asset3d.shoulder.review-slot",
+      "asset3d.wrist-hand.review-slot"
+    ],
+    "movement": [
+      "movement.functional.carrying",
+      "movement.functional.gait",
+      "movement.functional.gripping",
+      "movement.functional.jumping-landing",
+      "movement.functional.lifting",
+      "movement.functional.overhead-use",
+      "movement.functional.pulling",
+      "movement.functional.pushing",
+      "movement.functional.reaching",
+      "movement.functional.running",
+      "movement.functional.sit-to-stand",
+      "movement.functional.squat",
+      "movement.functional.stairs",
+      "movement.functional.step",
+      "movement.functional.throwing",
+      "movement.functional.work-task",
+      "movement.joint.abduction-adduction",
+      "movement.joint.accessory-movement",
+      "movement.joint.combined-movement",
+      "movement.joint.flexion-extension",
+      "movement.joint.internal-external-rotation",
+      "movement.joint.pronation-supination",
+      "movement.joint.radial-ulnar-deviation",
+      "movement.joint.spinal-flexion-extension",
+      "movement.joint.spinal-lateral-flexion",
+      "movement.joint.spinal-rotation"
+    ],
+    "publicationDecision": [
+      "asset3d.ankle-foot.review-slot",
+      "asset3d.cervical.review-slot",
+      "asset3d.elbow.review-slot",
+      "asset3d.hip.review-slot",
+      "asset3d.knee.review-slot",
+      "asset3d.lumbar.review-slot",
+      "asset3d.shoulder.review-slot",
+      "asset3d.wrist-hand.review-slot",
+      "mcq-slot.cervical.01",
+      "mcq-slot.cervical.02",
+      "mcq-slot.cervical.03",
+      "mcq-slot.cervical.04",
+      "mcq-slot.elbow.01",
+      "mcq-slot.elbow.02",
+      "mcq-slot.elbow.03",
+      "mcq-slot.elbow.04",
+      "mcq-slot.shoulder.01",
+      "mcq-slot.shoulder.02",
+      "mcq-slot.shoulder.03",
+      "mcq-slot.shoulder.04",
+      "mcq-slot.thoracic.01",
+      "mcq-slot.thoracic.02",
+      "mcq-slot.thoracic.03",
+      "mcq-slot.thoracic.04",
+      "mcq-slot.wrist-hand.01",
+      "mcq-slot.wrist-hand.02",
+      "mcq-slot.wrist-hand.03",
+      "mcq-slot.wrist-hand.04",
+      "module.cervical.case-01.presentation",
+      "module.cervical.case-02.presentation",
+      "module.elbow.case-03.presentation",
+      "module.shoulder.case-04.presentation",
+      "module.shoulder.case-05.presentation",
+      "module.thoracic.case-06.presentation",
+      "movement.functional.carrying",
+      "movement.functional.gait",
+      "movement.functional.gripping",
+      "movement.functional.jumping-landing",
+      "movement.functional.lifting",
+      "movement.functional.overhead-use",
+      "movement.functional.pulling",
+      "movement.functional.pushing",
+      "movement.functional.reaching",
+      "movement.functional.running",
+      "movement.functional.sit-to-stand",
+      "movement.functional.squat",
+      "movement.functional.stairs",
+      "movement.functional.step",
+      "movement.functional.throwing",
+      "movement.functional.work-task",
+      "movement.joint.abduction-adduction",
+      "movement.joint.accessory-movement",
+      "movement.joint.combined-movement",
+      "movement.joint.flexion-extension",
+      "movement.joint.internal-external-rotation",
+      "movement.joint.pronation-supination",
+      "movement.joint.radial-ulnar-deviation",
+      "movement.joint.spinal-flexion-extension",
+      "movement.joint.spinal-lateral-flexion",
+      "movement.joint.spinal-rotation",
+      "recipe.cervical.case-01.baseline",
+      "recipe.cervical.case-02.baseline",
+      "recipe.cervical.pilot-01.baseline",
+      "recipe.elbow.case-03.baseline",
+      "recipe.shoulder.case-04.baseline",
+      "recipe.shoulder.case-05.baseline",
+      "recipe.shoulder.pilot-02.baseline",
+      "recipe.thoracic.case-06.baseline",
+      "recipe.wrist-hand.pilot-03.baseline"
+    ],
+    "source": [
+      "source.repository.evidence-pilot-lateral-ankle-sprain",
+      "source.repository.evidence-pilot-rcrsp",
+      "source.repository.legacy-source-registry"
+    ],
+    "staleApproval": []
+  },
+  "schemaVersion": 1
+}

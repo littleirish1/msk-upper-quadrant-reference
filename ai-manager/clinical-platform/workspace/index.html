@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Private clinical authoring workspace</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <div><p class="eyebrow">Local private tool · not learner-facing</p><h1>Clinical authoring & review workspace</h1><p>Exact revisions, derived queues, preview inventories and review packets. No provider calls or public routes.</p></div>
+    <button id="download" type="button">Download review packet</button>
+  </header>
+  <main>
+    <section aria-labelledby="overview"><h2 id="overview">Workspace overview</h2><div id="counts" class="cards" aria-live="polite"></div></section>
+    <section class="layout">
+      <aside><h2>Review queues</h2><nav id="queues" aria-label="Review queues"></nav></aside>
+      <section class="records" aria-labelledby="records-title">
+        <div class="toolbar"><div><p class="eyebrow" id="active-label">Inventory</p><h2 id="records-title">Exact-revision records</h2></div><label>Filter records<input id="filter" type="search" placeholder="ID, lifecycle or revision"></label></div>
+        <div id="table-wrap" tabindex="0"></div>
+      </section>
+    </section>
+    <section class="draft" aria-labelledby="draft-title"><div><p class="eyebrow">Ephemeral proposal</p><h2 id="draft-title">Draft a reviewer note</h2><p>This note stays in this browser tab until included in a downloaded packet. It never changes authoritative truth.</p></div><label>Reviewer note<textarea id="note" rows="6" placeholder="Record a limitation, correction request or review question…"></textarea></label></section>
+  </main>
+  <footer>Human review is required. Technical validation does not grant clinical, evidence, source, licensing, publication or release approval.</footer>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
