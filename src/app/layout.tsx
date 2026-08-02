@@ -40,9 +40,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-GB" suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
+        <a href="#main-content" className="fixed left-4 top-3 z-[100] -translate-y-20 rounded-lg bg-teal-300 px-4 py-2 text-sm font-bold text-slate-950 shadow-lg transition focus:translate-y-0">
+          Skip to main content
+        </a>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
-          <main className="flex-1 pb-14 lg:pb-0">
+          <main id="main-content" tabIndex={-1} className="flex-1 pb-14 outline-none lg:pb-0">
             {children}
           </main>
           <Footer />

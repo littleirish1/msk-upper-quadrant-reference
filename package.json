@@ -32,6 +32,7 @@
   "authoring:generate-v1": "node scripts/clinical-platform/generate-authoring-snapshot.mjs",
   "authoring:v1": "node ai-manager/clinical-platform/workspace/server.mjs",
   "test:authoring-v1": "node scripts/clinical-platform/test-authoring-workspace.mjs",
+  "test:visual-v1": "node scripts/clinical-platform/test-visual-system.mjs",
   "dev": "next dev",
   "prebuild": "npm run cases:generate && npm run build:search && npm run build:case-reveals",
   "build": "next build",
