@@ -12,6 +12,7 @@ for (const contract of ['role="tablist"', 'role="tabpanel"', 'aria-live="polite"
   assert.ok(component.includes(contract), `missing mode UI contract: ${contract}`)
 }
 assert.ok(component.includes("mode === 'guided' || projection"), 'conversation asset must not load in initial Guided mode')
+assert.ok(!component.includes('conversationAssetPath, loadState, mode'), 'loading state must not cancel its own conversation request')
 assert.ok(component.includes('cache: \'no-store\''), 'conversation fetch must avoid stale cross-case cache state')
 assert.ok(component.includes('does not match this case revision'), 'asset identity validation missing')
 assert.ok(component.includes('crossed the disclosure boundary'), 'client disclosure validation missing')

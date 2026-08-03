@@ -65,7 +65,7 @@ export function CaseModeExperience({
   const announcementRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (mode === 'guided' || projection || loadState === 'loading') return
+    if (mode === 'guided' || projection) return
     let cancelled = false
     setLoadState('loading')
     const url = resolveConversationUrl(window.location.pathname, conversationAssetPath)
@@ -87,7 +87,7 @@ export function CaseModeExperience({
         setLoadState('error')
       })
     return () => { cancelled = true }
-  }, [caseId, conversationAssetPath, loadState, mode, projection, sessionSeed, truthHash])
+  }, [caseId, conversationAssetPath, mode, projection, sessionSeed, truthHash])
 
   function startSession(activeProjection: ConversationProjection, seed: number) {
     const next = createPatientSession(activeProjection)
