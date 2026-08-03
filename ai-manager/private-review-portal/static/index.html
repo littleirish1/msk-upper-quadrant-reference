@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+    <title>MSK Private Review Portal</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to portal content</a>
+    <header class="notice" role="note">
+      <strong>Private research and project workspace.</strong>
+      Patient-identifiable, Trust-confidential and clinical-record uploads are prohibited. Uploading or acting here does not create clinical, evidence, source, licensing, accessibility, beta, publication or release approval.
+    </header>
+    <main id="main">
+      <section id="login-view" class="login-card" aria-labelledby="login-title">
+        <p class="eyebrow">Tailnet / loopback only</p>
+        <h1 id="login-title">Private Review Portal</h1>
+        <p>Use the environment-configured review passphrase. It is never stored in this browser.</p>
+        <form id="login-form">
+          <label for="passphrase">Review passphrase</label>
+          <input id="passphrase" name="passphrase" type="password" minlength="16" autocomplete="current-password" required>
+          <button type="submit">Sign in</button>
+          <p id="login-status" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section id="portal-view" hidden>
+        <div class="portal-heading">
+          <div>
+            <p class="eyebrow">Exact-revision governance</p>
+            <h1>MSK project review</h1>
+          </div>
+          <button id="logout" class="secondary" type="button">Sign out</button>
+        </div>
+
+        <nav class="tabs" aria-label="Portal sections">
+          <button type="button" role="tab" aria-selected="true" aria-controls="dashboard-panel" id="dashboard-tab" data-panel="dashboard-panel">Dashboard</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="upload-panel" id="upload-tab" data-panel="upload-panel" tabindex="-1">Upload</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="library-panel" id="library-tab" data-panel="library-panel" tabindex="-1">Library</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="queues-panel" id="queues-tab" data-panel="queues-panel" tabindex="-1">Review queues</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="future-panel" id="future-tab" data-panel="future-panel" tabindex="-1">Future Build</button>
+        </nav>
+
+        <div id="global-status" class="status" role="status" aria-live="polite"></div>
+
+        <section id="dashboard-panel" role="tabpanel" aria-labelledby="dashboard-tab">
+          <h2>Derived project position</h2>
+          <p>Counts come from authoritative repository records and the external private database; they are not approval assertions.</p>
+          <div id="headline" class="metrics" aria-live="polite"></div>
+          <div id="datasets" class="cards"></div>
+        </section>
+
+        <section id="upload-panel" role="tabpanel" aria-labelledby="upload-tab" hidden>
+          <h2>Secure mobile intake</h2>
+          <p>Allowed: PDF, PPTX, DOCX, Markdown, TXT, CSV, PNG, JPEG and WebP. Files stream to quarantine and are not released without a clean malware scan.</p>
+          <form id="upload-form">
+            <div class="form-grid">
+              <label>Title <input name="title" maxlength="160"></label>
+              <label>Source type <input name="sourceType" maxlength="60"></label>
+              <label>Region <input name="region" maxlength="60"></label>
+              <label>Condition <input name="condition" maxlength="100"></label>
+              <label class="wide">Tags, comma separated <input name="tags" maxlength="400"></label>
+              <label class="wide">Notes <textarea name="notes" rows="3" maxlength="2000"></textarea></label>
+              <label class="wide file-picker">Choose documents or images
+                <input id="files" name="files" type="file" multiple accept=".pdf,.pptx,.docx,.md,.txt,.csv,.png,.jpg,.jpeg,.webp,application/pdf,image/png,image/jpeg,image/webp">
+              </label>
+              <label class="wide file-picker">Use phone camera or gallery
+                <input id="camera" type="file" multiple accept="image/png,image/jpeg,image/webp" capture="environment">
+              </label>
+            </div>
+            <button type="submit">Upload to quarantine</button>
+          </form>
+          <div id="upload-list" class="upload-list" aria-live="polite"></div>
+        </section>
+
+        <section id="library-panel" role="tabpanel" aria-labelledby="library-tab" hidden>
+          <h2>Document library and quarantine</h2>
+          <div id="documents" class="cards"></div>
+        </section>
+
+        <section id="queues-panel" role="tabpanel" aria-labelledby="queues-tab" hidden>
+          <h2>Review queues and governed systems</h2>
+          <label class="filter">Filter <input id="dataset-filter" type="search" placeholder="3D, movement, MCQ, cases…"></label>
+          <div id="queue-datasets" class="cards"></div>
+        </section>
+
+        <section id="future-panel" role="tabpanel" aria-labelledby="future-tab" hidden>
+          <h2>Future Build workspace</h2>
+          <p>Planning records remain private and do not grant approval. Every item requires an authorised owner and exact-revision work packet.</p>
+          <div id="future-items" class="cards"></div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

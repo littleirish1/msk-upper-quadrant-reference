@@ -56,5 +56,6 @@ ai-manager/**/*.env
 ai-manager/**/*.secret
 ai-manager/private-cache/
 ai-manager/.venv-source-intake/
+ai-manager/private-review-portal/.data/
 !ai-manager/reports/source-intake-pilot/
 !ai-manager/reports/source-intake-pilot/**
