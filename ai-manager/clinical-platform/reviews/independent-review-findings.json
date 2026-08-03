@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "v1-conversational-clinical-platform-final-independent-review",
+  "reviewedImplementation": {
+    "commit": "0c2b16c52744e2dfaa0fd5c0e99bf588095f6209",
+    "tree": "67465e30566faebfba4e8d838b23703780a1a38b"
+  },
+  "decision": {
+    "value": "ready-for-human-merge-decision",
+    "technicalScopeOnly": true,
+    "reviewerBlockingTechnicalFindingsRemaining": 0,
+    "humanAuthorityApprovalsGranted": []
+  },
+  "findings": [
+    {
+      "id": "F-1",
+      "severity": "medium",
+      "subsystem": "generated-artifact-currentness",
+      "evidence": "Two builds from identical committed source produced different totalJavascriptBytes values (818224 and 821521). The build-dependent value was persisted in reports/clinical-platform/accessibility-mobile-performance.json and compared byte-for-byte by currentness.",
+      "reproduction": "Generate the quality report from two otherwise identical Next.js builds and compare the persisted observed JavaScript byte metrics.",
+      "requiredChange": "Do not persist invocation-dependent observed bundle metrics as currentness inputs. Keep deterministic limits and enforce them against each current build.",
+      "affectedPaths": [
+        "scripts/clinical-platform/generate-quality-gates.mjs",
+        "scripts/clinical-platform/test-quality-gates.mjs",
+        "scripts/clinical-platform/test-quality-gate-determinism.mjs",
+        "src/lib/clinical-platform/qualityGateSchema.ts",
+        "reports/clinical-platform/accessibility-mobile-performance.json",
+        "ai-manager/clinical-platform/release/v1-release-candidate.json"
+      ],
+      "requirementType": "technical",
+      "reviewerBlocksMerge": false,
+      "resolutionCommit": "acce15519dfa93d0871f1500fa3ccf034b43e514",
+      "focusedRegressionTest": "npm run test:quality-v1",
+      "retestResult": "pass: a synthetic 3072-byte JavaScript build variance leaves the tracked quality report byte-identical, while the current build remains checked against deterministic 2 MiB total and 256 KiB chunk limits",
+      "remainingLimitation": "Observed bundle sizes are intentionally ephemeral build evidence. They are enforced during generation and by the performance-budget check, but exact observed bytes are not a reproducible tracked artifact."
+    },
+    {
+      "id": "F-2",
+      "severity": "low",
+      "subsystem": "git-currentness-capture",
+      "evidence": "spawnSync captured a full-index binary Git diff using Node's default buffer and failed with ENOBUFS when the patch exceeded 1 MiB.",
+      "reproduction": "Run repository-state capture with a tracked working-tree patch larger than Node's historical default capture limit.",
+      "requiredChange": "Set an explicit generous maxBuffer for Git state capture and prove a patch larger than 1 MiB is captured.",
+      "affectedPaths": [
+        "scripts/clinical-platform/check-currentness.mjs",
+        "scripts/clinical-platform/currentness-git-state.mjs",
+        "scripts/clinical-platform/test-currentness-git-state.mjs"
+      ],
+      "requirementType": "technical",
+      "reviewerBlocksMerge": false,
+      "resolutionCommit": "acce15519dfa93d0871f1500fa3ccf034b43e514",
+      "focusedRegressionTest": "npm run test:currentness",
+      "retestResult": "pass: captured a 2900257-byte synthetic full-index patch with the configured 209715200-byte buffer",
+      "remainingLimitation": "Capture fails closed if repository changes exceed 200 MiB; this is intentional protection against unbounded child-process output."
+    }
+  ],
+  "independentlyReverifiedClaims": {
+    "zeroPublicOutput": ["3d", "movement", "mcq", "evidence-hub", "authoring-workspace"],
+    "exactRevisionStaleApproval": "pass",
+    "reviewTargets": 96,
+    "pendingReviewDecisions": 431,
+    "releaseBlockers": 500,
+    "regionalMatrix": { "regions": 11, "domains": 19 },
+    "legacyStations": 47,
+    "betaFixtures": 4,
+    "realBetaResults": 0,
+    "dependencyAudit": { "critical": 0, "high": 11 }
+  },
+  "humanAuthorityBoundary": {
+    "stillRequired": [
+      "clinical",
+      "evidence",
+      "source-clearance",
+      "licensing",
+      "legal",
+      "accessibility",
+      "beta",
+      "publication",
+      "release",
+      "deployment"
+    ],
+    "publicationApproved": false,
+    "deploymentAllowed": false
+  }
+}
