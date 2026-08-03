@@ -4,18 +4,16 @@ import { spawnSync } from 'node:child_process'
 
 export function findDefender(environment = process.env) {
   if (process.platform !== 'win32') return null
-  const candidates = [
-    environment.ProgramFiles && path.join(environment.ProgramFiles, 'Windows Defender', 'MpCmdRun.exe'),
-    environment.ProgramData && path.join(environment.ProgramData, 'Microsoft', 'Windows Defender', 'Platform'),
-  ].filter(Boolean)
-  if (candidates[0] && fs.existsSync(candidates[0])) return { executable: candidates[0], version: 'installed' }
-  if (candidates[1] && fs.existsSync(candidates[1])) {
-    const versions = fs.readdirSync(candidates[1]).sort().reverse()
+  const platformRoot = environment.ProgramData && path.join(environment.ProgramData, 'Microsoft', 'Windows Defender', 'Platform')
+  if (platformRoot && fs.existsSync(platformRoot)) {
+    const versions = fs.readdirSync(platformRoot).sort().reverse()
     for (const version of versions) {
-      const executable = path.join(candidates[1], version, 'MpCmdRun.exe')
+      const executable = path.join(platformRoot, version, 'MpCmdRun.exe')
       if (fs.existsSync(executable)) return { executable, version }
     }
   }
+  const installed = environment.ProgramFiles && path.join(environment.ProgramFiles, 'Windows Defender', 'MpCmdRun.exe')
+  if (installed && fs.existsSync(installed)) return { executable: installed, version: 'installed-version-unavailable' }
   return null
 }
 

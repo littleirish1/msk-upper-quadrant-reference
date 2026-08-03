@@ -11,12 +11,18 @@ const datasetDefinitions = Object.freeze([
   { id: 'compatibility-rules', label: 'Compatibility rules', path: 'ai-manager/clinical-platform/rules/compatibility-rules.json', collection: 'rules' },
   { id: 'recipes', label: 'Generated recipes', path: 'ai-manager/clinical-platform/generator/patient-recipes.json', collection: 'recipes' },
   { id: 'cases', label: 'Public/private cases', path: 'reports/guided-cases/summary.json', collection: 'records' },
-  { id: 'evidence', label: 'Evidence Hub records and gaps', path: 'reports/clinical-platform/evidence-hub-population.json', collection: 'evidenceRecords' },
+  { id: 'evidence', label: 'Evidence Hub records', path: 'reports/clinical-platform/evidence-hub-population.json', collection: 'evidenceRecords' },
+  { id: 'evidence-proposals', label: 'Evidence-to-module proposals', path: 'reports/clinical-platform/evidence-hub-population.json', collection: 'relationships' },
+  { id: 'evidence-gaps', label: 'Evidence Hub explicit gaps', path: 'reports/clinical-platform/evidence-hub-population.json', collection: 'explicitGapCollections' },
   { id: 'anatomy-3d', label: '3D slots/assets', path: 'ai-manager/clinical-platform/anatomy-3d/registry.json', collection: 'assets' },
   { id: 'movement', label: 'Movement slots/records', path: 'ai-manager/clinical-platform/movement/movement-library.json', collection: 'records' },
   { id: 'mcq', label: 'MCQ slots/questions', path: 'ai-manager/clinical-platform/mcq/bank.json', collection: 'records' },
   { id: 'reviews', label: 'Exact-revision reviews', path: 'ai-manager/clinical-platform/reviews/review-ledger.json', collection: 'reviews' },
   { id: 'review-queues', label: 'Review queues', path: 'reports/clinical-platform/review-queues.json', collection: 'queue' },
+  { id: 'source-clearance', label: 'Source-clearance reviews', path: 'reports/clinical-platform/review-queues.json', collection: 'queue', filterField: 'reviewKind', filterValue: 'source' },
+  { id: 'licensing', label: 'Licensing reviews', path: 'reports/clinical-platform/review-queues.json', collection: 'queue', filterField: 'reviewKind', filterValue: 'licensing' },
+  { id: 'accessibility', label: 'Accessibility sign-offs', path: 'reports/clinical-platform/review-queues.json', collection: 'queue', filterField: 'reviewKind', filterValue: 'accessibility' },
+  { id: 'dependencies', label: 'Dependency findings', path: 'reports/private-review-portal/dependency-classification.json', collection: 'findings' },
   { id: 'beta', label: 'Beta', path: 'ai-manager/clinical-platform/beta/programme.json', collection: 'taskScripts' },
   { id: 'release-blockers', label: 'Release blockers', path: 'ai-manager/clinical-platform/release/v1-release-candidate.json', collection: 'blockers' },
   { id: 'technical-findings', label: 'Independent technical findings', path: 'ai-manager/clinical-platform/reviews/independent-review-findings.json', collection: 'findings' },
@@ -35,9 +41,18 @@ function compactItem(item) {
 export function deriveProjectSnapshot(repositoryRoot, store) {
   const datasets = datasetDefinitions.map((definition) => {
     const source = readJson(repositoryRoot, definition.path)
-    const records = Array.isArray(source[definition.collection]) ? source[definition.collection] : []
+    const collection = source[definition.collection]
+    const records = Array.isArray(collection) ? collection.filter((item) => !definition.filterField || item[definition.filterField] === definition.filterValue) : []
+    const count = Array.isArray(collection)
+      ? records.length
+      : typeof collection === 'number'
+        ? collection
+        : collection && typeof collection === 'object'
+          ? Object.values(collection).reduce((total, value) => total + (typeof value === 'number' ? value : 0), 0)
+          : 0
     const summary = Object.fromEntries(Object.entries(source).filter(([, value]) => ['number', 'string', 'boolean'].includes(typeof value)))
-    return { id: definition.id, label: definition.label, sourcePath: definition.path, count: records.length, summary, items: records.slice(0, 500).map(compactItem) }
+    if (collection && typeof collection === 'object' && !Array.isArray(collection)) summary.breakdown = Object.entries(collection).map(([key, value]) => `${key}:${value}`).join(', ')
+    return { id: definition.id, label: definition.label, sourcePath: definition.path, count, summary, items: records.slice(0, 500).map(compactItem) }
   })
   const evidence = readJson(repositoryRoot, 'reports/clinical-platform/evidence-hub-population.json')
   const cases = readJson(repositoryRoot, 'reports/guided-cases/summary.json')
@@ -56,8 +71,8 @@ export function deriveProjectSnapshot(repositoryRoot, store) {
       releaseBlockers: release.blockers.length,
       publicCases: cases.records.filter((item) => item.lifecycleState === 'published').length,
       privateCases: cases.records.filter((item) => item.lifecycleState !== 'published').length,
-      evidenceRecords: Array.isArray(evidence.evidenceRecords) ? evidence.evidenceRecords.length : 0,
-      evidenceProposals: Array.isArray(evidence.relationships) ? evidence.relationships.length : 0,
+      evidenceRecords: Array.isArray(evidence.evidenceRecords) ? evidence.evidenceRecords.length : Number(evidence.evidenceRecords ?? 0),
+      evidenceProposals: Array.isArray(evidence.relationships) ? evidence.relationships.length : Number(evidence.relationships ?? 0),
     },
     datasets,
     documents: database.documents.map(({ relativePath, ...document }) => document),

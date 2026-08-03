@@ -78,6 +78,14 @@ function renderDocuments(documents) {
       preview.textContent = 'Generate safe text preview'
       preview.addEventListener('click', () => recordAction('queue-extraction', documentRecord.id))
       actions.append(download, preview)
+      if (documentRecord.derivedFiles.some((item) => item.type === 'safe-text-preview')) {
+        const viewPreview = document.createElement('a')
+        viewPreview.href = `/api/documents/${documentRecord.id}/preview`
+        viewPreview.textContent = 'View safe text preview'
+        viewPreview.target = '_blank'
+        viewPreview.rel = 'noopener'
+        actions.append(viewPreview)
+      }
     }
     const note = document.createElement('button')
     note.type = 'button'
@@ -207,6 +215,17 @@ for (const tab of tabs) {
 }
 
 byId('dataset-filter').addEventListener('input', () => { if (state.snapshot) renderDatasets(state.snapshot.datasets) })
+byId('action-form').addEventListener('submit', async (event) => {
+  event.preventDefault()
+  const form = new FormData(event.currentTarget)
+  const payload = Object.fromEntries(['type', 'targetType', 'targetId', 'exactRevisionKey', 'note'].map((key) => [key, form.get(key)]))
+  try {
+    const action = await api('/api/actions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+    setStatus(`Action ${action.type} recorded with grantsApproval=false.`)
+    event.currentTarget.reset()
+    await refresh()
+  } catch (error) { setStatus(error.message, true) }
+})
 byId('upload-form').addEventListener('submit', async (event) => {
   event.preventDefault()
   const form = new FormData(event.currentTarget)

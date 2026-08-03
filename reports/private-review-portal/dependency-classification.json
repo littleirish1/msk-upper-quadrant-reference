@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-08-03",
+  "nodeVersion": "20.20.2",
+  "npmAuditReportVersion": 2,
+  "lockfileSha256": "d048e98c669ce34ca7e0cf7622ebd370d52622117d6104c39822ecb2f7363799",
+  "summary": {
+    "critical": 0,
+    "high": 11,
+    "moderate": 0,
+    "low": 0,
+    "totalDependencies": 585,
+    "productionRuntimeReachable": 0,
+    "automaticSafeFixesAvailable": 0
+  },
+  "deploymentContext": {
+    "learnerApplication": "Next.js static export published as inert files; no Next.js server runtime is deployed",
+    "privatePortal": "separate Node.js standard-library runtime; it imports none of the audited packages",
+    "contentBoundary": "MDX, Markdown, YAML, CSS and glob patterns are tracked, trusted repository inputs; the private upload system never sends uploaded content to these toolchains"
+  },
+  "findings": [
+    {
+      "package": "next",
+      "severity": "high",
+      "direct": true,
+      "classification": "build-only-for-static-export",
+      "productionRuntimeReachable": false,
+      "safeRemediation": false,
+      "decision": "defer-major-upgrade",
+      "reason": "npm proposes Next 16.2.12, a semver-major framework migration. The affected server request paths are absent from the exported static deployment, but the upgrade still requires an isolated human risk decision and regression programme."
+    },
+    {
+      "package": "next-mdx-remote",
+      "severity": "high",
+      "direct": true,
+      "classification": "build-only-trusted-content",
+      "productionRuntimeReachable": false,
+      "safeRemediation": false,
+      "decision": "defer-major-upgrade",
+      "reason": "Version 6 is semver-major. Current use processes tracked trusted MDX; private uploads are never rendered as MDX."
+    },
+    {
+      "package": "postcss",
+      "severity": "high",
+      "direct": true,
+      "classification": "build-only-trusted-css",
+      "productionRuntimeReachable": false,
+      "safeRemediation": false,
+      "decision": "defer-framework-coupled-upgrade",
+      "reason": "The audited instances process tracked CSS during the build. npm couples the complete remediation to the Next major upgrade."
+    },
+    {
+      "package": "eslint-config-next",
+      "severity": "high",
+      "direct": true,
+      "classification": "lint-only",
+      "productionRuntimeReachable": false,
+      "safeRemediation": false,
+      "decision": "defer-major-upgrade",
+      "reason": "npm proposes a semver-major lint/framework migration."
+    },
+    {
+      "package": "@next/eslint-plugin-next",
+      "severity": "high",
+      "direct": false,
+      "classification": "lint-only-transitive",
+      "productionRuntimeReachable": false,
+      "safeRemediation": false,
+      "decision": "defer-parent-major-upgrade",
+      "reason": "Transitive through eslint-config-next and remediated only by its proposed major upgrade."
+    },
+    {
+      "package": "glob",
+      "severity": "high",
+      "direct": false,
+      "classification": "lint-cli-transitive",
+      "productionRuntimeReachable": false,
+      "safeRemediation": false,
+      "decision": "defer-parent-major-upgrade",
+      "reason": "The vulnerable command-execution mode is not invoked; the dependency is transitive through lint tooling."
+    },
+    {
+      "package": "@typescript-eslint/parser",
+      "severity": "high",
+      "direct": false,
+      "classification": "lint-only-transitive",
+      "productionRuntimeReachable": false,
+      "safeRemediation": false,
+      "decision": "defer-toolchain-upgrade",
+      "reason": "npm's lockfile-only dry run changed no packages; upgrade must remain coupled to tested lint-toolchain compatibility."
+    },
+    {
+      "package": "@typescript-eslint/typescript-estree",
+      "severity": "high",
+      "direct": false,
+      "classification": "lint-only-transitive",
+      "productionRuntimeReachable": false,
+      "safeRemediation": false,
+      "decision": "defer-toolchain-upgrade",
+      "reason": "Transitive parser component with no deployed runtime path."
+    },
+    {
+      "package": "minimatch",
+      "severity": "high",
+      "direct": false,
+      "classification": "lint-pattern-transitive",
+      "productionRuntimeReachable": false,
+      "safeRemediation": false,
+      "decision": "defer-toolchain-upgrade",
+      "reason": "Receives trusted repository/tooling patterns and is not deployed; npm's safe dry run made no change."
+    },
+    {
+      "package": "brace-expansion",
+      "severity": "high",
+      "direct": false,
+      "classification": "build-and-lint-transitive",
+      "productionRuntimeReachable": false,
+      "safeRemediation": false,
+      "decision": "defer-tested-parent-upgrades",
+      "reason": "Receives trusted repository patterns and is absent from both the static output runtime and private portal runtime."
+    },
+    {
+      "package": "js-yaml",
+      "severity": "high",
+      "direct": false,
+      "classification": "build-only-trusted-frontmatter",
+      "productionRuntimeReachable": false,
+      "safeRemediation": false,
+      "decision": "defer-tested-parent-upgrades",
+      "reason": "Processes tracked repository frontmatter only; uploaded documents are never parsed through it, and npm's safe dry run made no change."
+    }
+  ],
+  "reviewContext": {
+    "finalIndependentReviewerConfirmed": "11 high, 0 critical; findings unchanged and accurate",
+    "reviewerDecision": "ready-for-human-merge-decision",
+    "automaticFixDryRun": "0 added, 0 removed, 0 changed",
+    "riskBoundary": "No broad or semver-major upgrade was attempted. Future upgrades require a separately reviewed dependency-remediation milestone."
+  },
+  "outdatedDirectPackages": [
+    "@tailwindcss/typography",
+    "@types/node",
+    "@types/react",
+    "@types/react-dom",
+    "autoprefixer",
+    "eslint",
+    "eslint-config-next",
+    "flexsearch",
+    "lucide-react",
+    "next",
+    "next-mdx-remote",
+    "next-themes",
+    "react",
+    "react-dom",
+    "tailwind-merge",
+    "tailwindcss",
+    "typescript"
+  ]
+}

@@ -85,6 +85,32 @@
           <h2>Review queues and governed systems</h2>
           <label class="filter">Filter <input id="dataset-filter" type="search" placeholder="3D, movement, MCQ, cases…"></label>
           <div id="queue-datasets" class="cards"></div>
+          <section class="action-composer" aria-labelledby="action-title">
+            <h3 id="action-title">Record an authorised review action</h3>
+            <p>Actions create a private audit record only. They never grant an approval.</p>
+            <form id="action-form" class="form-grid">
+              <label>Action
+                <select name="type" required>
+                  <option value="queue-extraction">Queue extraction</option>
+                  <option value="queue-proposal">Queue evidence-to-module proposal</option>
+                  <option value="link-exact-revision">Link to exact revision</option>
+                  <option value="add-note">Add note</option>
+                  <option value="accept-proposal">Accept proposal for further human review</option>
+                  <option value="reject-proposal">Reject proposal</option>
+                  <option value="defer-proposal">Defer proposal</option>
+                  <option value="create-human-review-task">Create human-review task</option>
+                  <option value="request-focused-packet">Request focused packet</option>
+                  <option value="mark-superseded">Mark superseded</option>
+                  <option value="archive">Archive without deleting original</option>
+                </select>
+              </label>
+              <label>Target type <input name="targetType" maxlength="80" required></label>
+              <label class="wide">Target ID <input name="targetId" maxlength="180" required></label>
+              <label class="wide">Exact-revision key, when required <input name="exactRevisionKey" maxlength="300"></label>
+              <label class="wide">Note <textarea name="note" rows="3" maxlength="3000"></textarea></label>
+              <button type="submit">Record non-approval action</button>
+            </form>
+          </section>
         </section>
 
         <section id="future-panel" role="tabpanel" aria-labelledby="future-tab" hidden>

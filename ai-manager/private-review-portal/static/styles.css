@@ -16,8 +16,8 @@
 * { box-sizing: border-box; }
 html { background: var(--paper); color: var(--ink); }
 body { margin: 0; min-width: 280px; }
-button, input, textarea { font: inherit; }
-button, input, textarea { min-height: 44px; }
+button, input, textarea, select { font: inherit; }
+button, input, textarea, select { min-height: 44px; }
 button { border: 0; border-radius: .55rem; padding: .7rem 1rem; background: var(--accent); color: white; cursor: pointer; font-weight: 700; }
 button:hover { background: var(--accent-dark); }
 button.secondary { color: var(--ink); background: transparent; border: 1px solid var(--line); }
@@ -28,10 +28,11 @@ button.secondary { color: var(--ink); background: transparent; border: 1px solid
 main { width: min(1200px, calc(100% - 2rem)); margin: 2rem auto 5rem; }
 .login-card { width: min(520px, 100%); margin: 10vh auto; padding: clamp(1.2rem, 5vw, 2.5rem); background: var(--surface); border: 1px solid var(--line); border-radius: 1rem; box-shadow: 0 1rem 3rem rgb(0 0 0 / .08); }
 .login-card label, .form-grid label { display: grid; gap: .4rem; font-weight: 700; }
-input, textarea { width: 100%; border: 1px solid var(--line); border-radius: .5rem; padding: .65rem; background: var(--surface); color: var(--ink); }
+input, textarea, select { width: 100%; border: 1px solid var(--line); border-radius: .5rem; padding: .65rem; background: var(--surface); color: var(--ink); }
 .login-card button { width: 100%; margin-top: 1rem; }
 .eyebrow { color: var(--accent-dark); font-size: .76rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .portal-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.portal-heading .secondary { white-space: nowrap; }
 .portal-heading h1, .login-card h1 { margin-top: 0; }
 .tabs { display: flex; gap: .35rem; overflow-x: auto; padding: .5rem 0 1rem; border-bottom: 1px solid var(--line); }
 .tabs button { flex: 0 0 auto; background: transparent; color: var(--muted); border: 1px solid transparent; }
@@ -58,8 +59,10 @@ progress { width: 100%; accent-color: var(--accent); }
 .status { min-height: 1.5em; color: var(--muted); }
 .status.error { color: var(--danger); font-weight: 700; }
 .filter { display: grid; grid-template-columns: max-content minmax(10rem, 24rem); gap: .7rem; align-items: center; }
+.action-composer { margin-top: 1.5rem; padding: 1rem; border: 1px solid var(--line); border-radius: .8rem; }
 .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .7rem; }
 .actions button { font-size: .86rem; min-height: 40px; }
+.actions a { display: inline-flex; min-height: 40px; align-items: center; padding: .55rem .7rem; border: 1px solid var(--line); border-radius: .5rem; color: var(--accent-dark); font-size: .86rem; font-weight: 700; }
 
 @media (max-width: 620px) {
   main { width: min(100% - 1rem, 1200px); margin-top: 1rem; }

@@ -121,6 +121,9 @@ try {
     assert.equal(dashboardBody.headline.reviewTargets, 96)
     assert.equal(dashboardBody.headline.pendingReviews, 431)
     assert.equal(dashboardBody.headline.releaseBlockers, 500)
+    assert.equal(dashboardBody.headline.evidenceRecords, 3)
+    assert.equal(dashboardBody.datasets.find((dataset) => dataset.id === 'source-clearance').count, 12)
+    assert.equal(dashboardBody.datasets.find((dataset) => dataset.id === 'dependencies').count, 11)
     const missingCsrf = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'add-note' }) })
     assert.equal(missingCsrf.status, 403)
     const upload = await request('/api/uploads', {
@@ -170,6 +173,7 @@ try {
   assert.ok(!tracked.includes('msk-private-review-data'))
   const portalHtml = fs.readFileSync(path.join(repositoryRoot, 'ai-manager', 'private-review-portal', 'static', 'index.html'), 'utf8')
   assert.match(portalHtml, /capture="environment"/)
+  for (const actionType of ['queue-extraction', 'queue-proposal', 'link-exact-revision', 'add-note', 'accept-proposal', 'reject-proposal', 'defer-proposal', 'create-human-review-task', 'request-focused-packet', 'mark-superseded', 'archive']) assert.match(portalHtml, new RegExp(`value="${actionType}"`))
   for (const script of ['tailscale-serve-start.ps1', 'tailscale-serve-stop.ps1', 'tailscale-serve-reset.ps1']) {
     const content = fs.readFileSync(path.join(repositoryRoot, 'scripts', 'private-review-portal', script), 'utf8')
     assert.ok(!/\bfunnel\s+(?:on|reset|--bg|--https)/i.test(content), `${script} must never configure Funnel`)
