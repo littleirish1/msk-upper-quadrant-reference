@@ -1,0 +1,14 @@
+# Keep generated and source text byte-stable across Windows and Linux worktrees.
+* text=auto eol=lf
+
+# Never apply text conversion to binary artifacts.
+*.gif binary
+*.ico binary
+*.jpeg binary
+*.jpg binary
+*.pdf binary
+*.png binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.zip binary
