@@ -4,9 +4,12 @@
   "automated": {
     "routeCount": 67,
     "htmlFileCount": 67,
-    "javascriptFileCount": 27,
-    "totalJavascriptBytes": 821521,
-    "largestJavascriptBytes": 172834,
+    "performanceBudget": {
+      "totalJavascriptLimitBytes": 2097152,
+      "largestJavascriptChunkLimitBytes": 262144,
+      "enforcementScript": "scripts/programmes/check-performance-budget.mjs",
+      "observedBuildMetricsTracked": false
+    },
     "checks": [
       {
         "id": "single-main-landmark-and-skip-link",
@@ -31,12 +34,12 @@
       {
         "id": "javascript-total-under-2-mib",
         "status": "pass",
-        "evidence": "821521 bytes"
+        "evidence": "scripts/programmes/check-performance-budget.mjs; limit 2097152 bytes"
       },
       {
         "id": "javascript-chunk-under-256-kib",
         "status": "pass",
-        "evidence": "172834 bytes"
+        "evidence": "scripts/programmes/check-performance-budget.mjs; limit 262144 bytes"
       }
     ]
   },

@@ -12,9 +12,12 @@ export const qualityGateSchema = z.object({
   automated: z.object({
     routeCount: z.number().int().nonnegative(),
     htmlFileCount: z.number().int().nonnegative(),
-    javascriptFileCount: z.number().int().nonnegative(),
-    totalJavascriptBytes: z.number().int().nonnegative(),
-    largestJavascriptBytes: z.number().int().nonnegative(),
+    performanceBudget: z.object({
+      totalJavascriptLimitBytes: z.number().int().positive(),
+      largestJavascriptChunkLimitBytes: z.number().int().positive(),
+      enforcementScript: z.literal('scripts/programmes/check-performance-budget.mjs'),
+      observedBuildMetricsTracked: z.literal(false),
+    }),
     checks: z.array(checkSchema),
   }),
   manualMatrix: z.array(z.object({

@@ -1,21 +1,8 @@
 import { spawnSync } from 'node:child_process'
+import { repositoryContent } from './currentness-git-state.mjs'
 
 const npmCli = process.env.npm_execpath
 if (!npmCli) throw new Error('npm_execpath is unavailable; run this check through npm.')
-const git = (args) => {
-  const result = spawnSync('git', args, { cwd: process.cwd(), encoding: 'utf8' })
-  if (result.error) throw result.error
-  if (result.status !== 0) throw new Error(result.stderr || `Git command failed: ${args.join(' ')}`)
-  return result.stdout.replace(/\r\n/g, '\n')
-}
-const repositoryContent = () => {
-  return JSON.stringify({
-    unstagedPatch: git(['diff', '--binary', '--full-index', '--no-ext-diff']),
-    stagedPatch: git(['diff', '--cached', '--binary', '--full-index', '--no-ext-diff']),
-    untrackedFiles: git(['ls-files', '--others', '--exclude-standard']).split('\n').filter(Boolean).sort(),
-  })
-}
-
 const before = repositoryContent()
 const generation = spawnSync(process.execPath, [npmCli, 'run', 'clinical-platform:generate'], { cwd: process.cwd(), encoding: 'utf8', stdio: 'inherit' })
 if (generation.error) throw generation.error

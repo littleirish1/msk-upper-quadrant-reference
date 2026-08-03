@@ -17,13 +17,17 @@ const scripts = collect(path.join(out, '_next'), '.js')
 const html = collect(out, '.html')
 const sizes = scripts.map((file) => fs.statSync(file).size)
 const routeCount = html.length
+const totalJavascriptLimitBytes = 2 * 1024 * 1024
+const largestJavascriptChunkLimitBytes = 256 * 1024
+const totalJavascriptBytes = sizes.reduce((sum, size) => sum + size, 0)
+const largestJavascriptBytes = Math.max(0, ...sizes)
 const checks = [
   { id: 'single-main-landmark-and-skip-link', status: source('src/app/layout.tsx').includes('href="#main-content"') && source('src/app/layout.tsx').includes('id="main-content"') ? 'pass' : 'fail', evidence: 'src/app/layout.tsx' },
   { id: 'visible-keyboard-focus', status: source('src/app/globals.css').includes(':focus-visible') ? 'pass' : 'fail', evidence: 'src/app/globals.css' },
   { id: 'case-mode-keyboard-tabs', status: source('src/components/cases/CaseModeExperience.tsx').includes('moveModeFocus') && source('src/components/cases/CaseModeExperience.tsx').includes('tabIndex={mode === item.id ? 0 : -1}') ? 'pass' : 'fail', evidence: 'src/components/cases/CaseModeExperience.tsx' },
   { id: 'minimum-touch-target-token', status: !source('src/components/cases/CaseModeExperience.tsx').includes('min-h-10') ? 'pass' : 'fail', evidence: 'src/components/cases/CaseModeExperience.tsx' },
-  { id: 'javascript-total-under-2-mib', status: sizes.reduce((sum, size) => sum + size, 0) <= 2 * 1024 * 1024 ? 'pass' : 'fail', evidence: `${sizes.reduce((sum, size) => sum + size, 0)} bytes` },
-  { id: 'javascript-chunk-under-256-kib', status: Math.max(0, ...sizes) <= 256 * 1024 ? 'pass' : 'fail', evidence: `${Math.max(0, ...sizes)} bytes` },
+  { id: 'javascript-total-under-2-mib', status: totalJavascriptBytes <= totalJavascriptLimitBytes ? 'pass' : 'fail', evidence: 'scripts/programmes/check-performance-budget.mjs; limit 2097152 bytes' },
+  { id: 'javascript-chunk-under-256-kib', status: largestJavascriptBytes <= largestJavascriptChunkLimitBytes ? 'pass' : 'fail', evidence: 'scripts/programmes/check-performance-budget.mjs; limit 262144 bytes' },
 ]
 
 const viewports = ['320x568', '375x667', '768x1024', '1024x768', '1440x900']
@@ -33,9 +37,12 @@ const report = {
   automated: {
     routeCount,
     htmlFileCount: html.length,
-    javascriptFileCount: scripts.length,
-    totalJavascriptBytes: sizes.reduce((sum, size) => sum + size, 0),
-    largestJavascriptBytes: Math.max(0, ...sizes),
+    performanceBudget: {
+      totalJavascriptLimitBytes,
+      largestJavascriptChunkLimitBytes,
+      enforcementScript: 'scripts/programmes/check-performance-budget.mjs',
+      observedBuildMetricsTracked: false,
+    },
     checks,
   },
   manualMatrix: viewports.flatMap((viewport) => ['light', 'dark'].map((theme) => ({ viewport, theme, status: 'manual-required' }))),
