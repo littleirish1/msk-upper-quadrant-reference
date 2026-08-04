@@ -65,6 +65,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Production build
+        run: npm run build
+
       - name: Focused platform and portal tests
         run: |
           npm run check:gate17-risk-adoption
@@ -78,9 +81,6 @@ jobs:
           npm run cases:check
           npm run test:currentness
           npm run check:clinical-platform-currentness
-
-      - name: Production build
-        run: npm run build
 
       - name: Complete preflight
         run: npm run preflight
