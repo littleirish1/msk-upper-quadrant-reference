@@ -1,0 +1,97 @@
+name: Private review Linux Gate 5
+
+on:
+  push:
+    branches:
+      - feature/v1-private-review-portal-integration
+
+permissions:
+  contents: read
+
+concurrency:
+  group: private-review-linux-gate-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Exact candidate validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      BASE_CANDIDATE_SHA: 35e3d7d491388c44ea4eadad0cd9b15614e2273a
+      WORKFLOW_PATH: .github/workflows/private-review-linux-gate.yml
+
+    steps:
+      - name: Check out exact pushed revision
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Prove workflow-only descendant and record environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = "refs/heads/feature/v1-private-review-portal-integration"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git merge-base --is-ancestor "$BASE_CANDIDATE_SHA" HEAD
+          mapfile -t changed_paths < <(git diff --name-only "$BASE_CANDIDATE_SHA" HEAD)
+          test "${#changed_paths[@]}" -eq 1
+          test "${changed_paths[0]}" = "$WORKFLOW_PATH"
+          printf 'commit=%s\n' "$(git rev-parse HEAD)"
+          printf 'tree=%s\n' "$(git rev-parse 'HEAD^{tree}')"
+          printf 'runner_image_os=%s\n' "${ImageOS:-unknown}"
+          printf 'runner_image_version=%s\n' "${ImageVersion:-unknown}"
+          uname -a
+
+      - name: Set up Node 20.20.2
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.20.2
+          cache: npm
+
+      - name: Record Node and npm versions
+        run: |
+          node --version
+          npm --version
+          npm config get cache
+
+      - name: Clean dependency install
+        run: npm ci
+
+      - name: Type-check
+        run: npm run type-check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Focused platform and portal tests
+        run: |
+          npm run check:gate17-risk-adoption
+          npm run test:private-portal
+          npm run test:clinical-platform
+          npm run test:mdx
+          npm run test:conditions
+
+      - name: Deterministic generation and currentness
+        run: |
+          npm run cases:check
+          npm run test:currentness
+          npm run check:clinical-platform-currentness
+
+      - name: Production build
+        run: npm run build
+
+      - name: Complete preflight
+        run: npm run preflight
+
+      - name: Public and private output separation
+        run: npm run check:private-separation
+
+      - name: Prove tracked Git content stayed clean
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          git diff --cached --exit-code
+          test -z "$(git status --porcelain --untracked-files=no)"
