@@ -5,6 +5,6 @@
   "deploymentAttempted": false,
   "pushAttempted": false,
   "tagAttempted": false,
-  "evaluatedBlockerCount": 500,
+  "evaluatedBlockerCount": 846,
   "stopReason": "open-release-gates"
 }

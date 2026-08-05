@@ -18,6 +18,12 @@
     "recipes": 9,
     "regions": 11,
     "rules": 17,
+    "shoulderMcqs": 10,
+    "shoulderModules": 36,
+    "shoulderMovement": 20,
+    "shoulderRules": 12,
+    "shoulderSources": 10,
+    "shoulderTruth": 3,
     "transcripts": 6,
     "truthRecords": 9
   },
@@ -1206,6 +1212,655 @@
         "revision": 1
       }
     ],
+    "shoulderMcqs": [
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder-slice.01",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder-slice.02",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder-slice.03",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder-slice.04",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder-slice.05",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder-slice.06",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder-slice.07",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder-slice.08",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder-slice.09",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "mcq-slot.shoulder-slice.10",
+        "lifecycle": "source-insufficient",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "shoulderModules": [
+      {
+        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "id": "module.shoulder.anatomy.scapula",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "id": "module.shoulder.anatomy.clavicle",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "id": "module.shoulder.anatomy.proximal-humerus",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "id": "module.shoulder.anatomy.glenohumeral-joint",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "id": "module.shoulder.anatomy.acromioclavicular-joint",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "id": "module.shoulder.anatomy.sternoclavicular-joint",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "id": "module.shoulder.anatomy.scapulothoracic-articulation",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+        "id": "module.shoulder.anatomy.capsule",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "id": "module.shoulder.anatomy.labrum",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "id": "module.shoulder.anatomy.key-ligaments",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "id": "module.shoulder.anatomy.rotator-cuff",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "id": "module.shoulder.anatomy.deltoid",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "id": "module.shoulder.anatomy.biceps-long-head",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "id": "module.shoulder.anatomy.scapular-muscles",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "id": "module.shoulder.anatomy.nerve-relationships",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "id": "module.shoulder.anatomy.landmarks",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "id": "module.shoulder.presentation.rcrsp",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+        "id": "module.shoulder.presentation.adhesive-capsulitis",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "id": "module.shoulder.presentation.instability",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "id": "module.shoulder.presentation.acute-traumatic",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "id": "module.shoulder.presentation.acromioclavicular",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "id": "module.shoulder.presentation.cervical-neurological-mimic",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "id": "module.shoulder.presentation.referred-systemic",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+        "id": "module.shoulder.presentation.atypical-variant",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+        "id": "module.shoulder.assessment.pain-location-behaviour",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+        "id": "module.shoulder.assessment.irritability",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+        "id": "module.shoulder.assessment.functional-limitation",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+        "id": "module.shoulder.assessment.sleep-night-symptoms",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+        "id": "module.shoulder.assessment.range-pattern",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+        "id": "module.shoulder.assessment.strength-pattern",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "id": "module.shoulder.assessment.neurological-screen",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+        "id": "module.shoulder.assessment.red-flag-screen",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+        "id": "module.shoulder.assessment.test-findings",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+        "id": "module.shoulder.assessment.relevant-negatives",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "id": "module.shoulder.management.principles",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+        "id": "module.shoulder.prognosis.reassessment",
+        "lifecycle": "draft",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "shoulderMovement": [
+      {
+        "hash": null,
+        "id": "movement.shoulder.joint.flexion",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.joint.extension",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.joint.abduction",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.joint.adduction",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.joint.external-rotation",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.joint.internal-rotation",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.joint.horizontal-flexion-extension",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.joint.scapular-upward-downward-rotation",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.joint.scapular-protraction-retraction",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.joint.scapular-elevation-depression",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.functional.reaching-overhead",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.functional.hand-behind-head",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.functional.hand-behind-back",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.functional.dressing",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.functional.grooming",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.functional.lifting-carrying",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.functional.pushing-pulling",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.functional.throwing",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.functional.sleeping-positioning",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "movement.shoulder.functional.work-overhead",
+        "lifecycle": "planned",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "shoulderRules": [
+      {
+        "hash": null,
+        "id": "rule.shoulder.laterality",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.shoulder.anatomical-distribution",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.shoulder.active-passive-pattern",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.shoulder.strength-pattern",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.shoulder.neurological-consistency",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.shoulder.trauma-dependency",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.shoulder.instability-dependency",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.shoulder.red-flag-escalation",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.shoulder.movement-compatibility",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.shoulder.disclosure-stage",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.shoulder.evidence-publication",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      },
+      {
+        "hash": null,
+        "id": "rule.shoulder.asset-licensing",
+        "lifecycle": "draft",
+        "publication": "disabled",
+        "revision": 1
+      }
+    ],
+    "shoulderSources": [
+      {
+        "hash": "sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "id": "source.repository.shoulder.rotator-cuff-reference",
+        "lifecycle": "baseline-carried-forward",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "sha256:0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+        "id": "source.repository.shoulder.adhesive-capsulitis-reference",
+        "lifecycle": "baseline-carried-forward",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "id": "source.repository.shoulder.acromioclavicular-reference",
+        "lifecycle": "baseline-carried-forward",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "sha256:a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "id": "source.repository.shoulder.instability-reference",
+        "lifecycle": "baseline-carried-forward",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "sha256:d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "id": "source.repository.shoulder.cervical-mimic-reference",
+        "lifecycle": "baseline-carried-forward",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "sha256:f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+        "id": "source.repository.shoulder.case-04",
+        "lifecycle": "baseline-carried-forward",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "sha256:af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+        "id": "source.repository.shoulder.case-05",
+        "lifecycle": "baseline-carried-forward",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "sha256:07f5bc8680f66a8a9ceb7e1c53a3c90327df228506284bdda558c2187d737b25",
+        "id": "src-07f5bc8680f6",
+        "lifecycle": "restricted-pending-clearance",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "sha256:09c409d4ae267d9a7fbb70f72a26ac2b88c8d69649fe8b5dade0cf9ada7d83e9",
+        "id": "src-09c409d4ae26",
+        "lifecycle": "review-required",
+        "publication": "private",
+        "revision": 1
+      },
+      {
+        "hash": "sha256:0b5b2e3de9c6df86edb9ee7e29745758b8cba955eb2a7e4f058ea5fc001aef5c",
+        "id": "src-0b5b2e3de9c6",
+        "lifecycle": "review-required",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
+    "shoulderTruth": [
+      {
+        "hash": "6d6a29a04802baad8d33e87af7e6a35dd51106c0a891c8a35cea60c56331c69f",
+        "id": "patient-truth.shoulder.case-04",
+        "lifecycle": "baseline-carried-forward",
+        "publication": "baseline-public-mode",
+        "revision": 1
+      },
+      {
+        "hash": "9109db5737c02fb0551d1da8f4a7944bca9e30fc32ceab946e75add16fff5bb7",
+        "id": "patient-truth.shoulder.case-05",
+        "lifecycle": "baseline-carried-forward",
+        "publication": "baseline-public-mode",
+        "revision": 1
+      },
+      {
+        "hash": "0e3e904a488905e9623459d094041980e2b39c0094b59cdc9b42db2909b2d7fd",
+        "id": "patient-truth.shoulder.pilot-02",
+        "lifecycle": "review-required",
+        "publication": "private",
+        "revision": 1
+      }
+    ],
     "transcripts": [
       {
         "hash": "b05d849dee55d349ef01710e284f88e2b147590f3813b82f3ded5503df28cd80",
@@ -1329,6 +1984,7 @@
     "licensing": 8,
     "movement": 26,
     "publicationDecision": 69,
+    "shoulderReview": 100,
     "source": 3,
     "staleApproval": 0
   },
@@ -1694,6 +2350,108 @@
       "recipe.thoracic.case-06.baseline",
       "recipe.wrist-hand.pilot-03.baseline"
     ],
+    "shoulderReview": [
+      "task.shoulder.asset.shoulder-accessibility",
+      "task.shoulder.asset.shoulder-anatomy",
+      "task.shoulder.asset.shoulder-licence",
+      "task.shoulder.asset.shoulder-performance",
+      "task.shoulder.asset.shoulder-source",
+      "task.shoulder.case-preview.shoulder-case-04",
+      "task.shoulder.case-preview.shoulder-case-05",
+      "task.shoulder.evidence.shoulder-assessment",
+      "task.shoulder.evidence.shoulder-communication",
+      "task.shoulder.evidence.shoulder-differential",
+      "task.shoulder.evidence.shoulder-management",
+      "task.shoulder.evidence.shoulder-movement",
+      "task.shoulder.evidence.shoulder-presentation",
+      "task.shoulder.evidence.shoulder-prognosis",
+      "task.shoulder.evidence.shoulder-red-flags",
+      "task.shoulder.evidence.shoulder-terminology",
+      "task.shoulder.mcq.shoulder-slice-01",
+      "task.shoulder.mcq.shoulder-slice-02",
+      "task.shoulder.mcq.shoulder-slice-03",
+      "task.shoulder.mcq.shoulder-slice-04",
+      "task.shoulder.mcq.shoulder-slice-05",
+      "task.shoulder.mcq.shoulder-slice-06",
+      "task.shoulder.mcq.shoulder-slice-07",
+      "task.shoulder.mcq.shoulder-slice-08",
+      "task.shoulder.mcq.shoulder-slice-09",
+      "task.shoulder.mcq.shoulder-slice-10",
+      "task.shoulder.module.anatomy-acromioclavicular-joint",
+      "task.shoulder.module.anatomy-biceps-long-head",
+      "task.shoulder.module.anatomy-capsule",
+      "task.shoulder.module.anatomy-clavicle",
+      "task.shoulder.module.anatomy-deltoid",
+      "task.shoulder.module.anatomy-glenohumeral-joint",
+      "task.shoulder.module.anatomy-key-ligaments",
+      "task.shoulder.module.anatomy-labrum",
+      "task.shoulder.module.anatomy-landmarks",
+      "task.shoulder.module.anatomy-nerve-relationships",
+      "task.shoulder.module.anatomy-proximal-humerus",
+      "task.shoulder.module.anatomy-rotator-cuff",
+      "task.shoulder.module.anatomy-scapula",
+      "task.shoulder.module.anatomy-scapular-muscles",
+      "task.shoulder.module.anatomy-scapulothoracic-articulation",
+      "task.shoulder.module.anatomy-sternoclavicular-joint",
+      "task.shoulder.module.assessment-functional-limitation",
+      "task.shoulder.module.assessment-irritability",
+      "task.shoulder.module.assessment-neurological-screen",
+      "task.shoulder.module.assessment-pain-location-behaviour",
+      "task.shoulder.module.assessment-range-pattern",
+      "task.shoulder.module.assessment-red-flag-screen",
+      "task.shoulder.module.assessment-relevant-negatives",
+      "task.shoulder.module.assessment-sleep-night-symptoms",
+      "task.shoulder.module.assessment-strength-pattern",
+      "task.shoulder.module.assessment-test-findings",
+      "task.shoulder.module.management-principles",
+      "task.shoulder.module.presentation-acromioclavicular",
+      "task.shoulder.module.presentation-acute-traumatic",
+      "task.shoulder.module.presentation-adhesive-capsulitis",
+      "task.shoulder.module.presentation-atypical-variant",
+      "task.shoulder.module.presentation-cervical-neurological-mimic",
+      "task.shoulder.module.presentation-instability",
+      "task.shoulder.module.presentation-rcrsp",
+      "task.shoulder.module.presentation-referred-systemic",
+      "task.shoulder.module.prognosis-reassessment",
+      "task.shoulder.movement.functional-dressing",
+      "task.shoulder.movement.functional-grooming",
+      "task.shoulder.movement.functional-hand-behind-back",
+      "task.shoulder.movement.functional-hand-behind-head",
+      "task.shoulder.movement.functional-lifting-carrying",
+      "task.shoulder.movement.functional-pushing-pulling",
+      "task.shoulder.movement.functional-reaching-overhead",
+      "task.shoulder.movement.functional-sleeping-positioning",
+      "task.shoulder.movement.functional-throwing",
+      "task.shoulder.movement.functional-work-overhead",
+      "task.shoulder.movement.joint-abduction",
+      "task.shoulder.movement.joint-adduction",
+      "task.shoulder.movement.joint-extension",
+      "task.shoulder.movement.joint-external-rotation",
+      "task.shoulder.movement.joint-flexion",
+      "task.shoulder.movement.joint-horizontal-flexion-extension",
+      "task.shoulder.movement.joint-internal-rotation",
+      "task.shoulder.movement.joint-scapular-elevation-depression",
+      "task.shoulder.movement.joint-scapular-protraction-retraction",
+      "task.shoulder.movement.joint-scapular-upward-downward-rotation",
+      "task.shoulder.rule.shoulder-active-passive-pattern",
+      "task.shoulder.rule.shoulder-anatomical-distribution",
+      "task.shoulder.rule.shoulder-asset-licensing",
+      "task.shoulder.rule.shoulder-disclosure-stage",
+      "task.shoulder.rule.shoulder-evidence-publication",
+      "task.shoulder.rule.shoulder-instability-dependency",
+      "task.shoulder.rule.shoulder-laterality",
+      "task.shoulder.rule.shoulder-movement-compatibility",
+      "task.shoulder.rule.shoulder-neurological-consistency",
+      "task.shoulder.rule.shoulder-red-flag-escalation",
+      "task.shoulder.rule.shoulder-strength-pattern",
+      "task.shoulder.rule.shoulder-trauma-dependency",
+      "task.shoulder.source.src-07f5bc8680f6",
+      "task.shoulder.source.src-09c409d4ae26",
+      "task.shoulder.source.src-0b5b2e3de9c6",
+      "task.shoulder.truth.shoulder-case-04",
+      "task.shoulder.truth.shoulder-case-05",
+      "task.shoulder.truth.shoulder-pilot-02"
+    ],
     "source": [
       "source.repository.evidence-pilot-lateral-ankle-sprain",
       "source.repository.evidence-pilot-rcrsp",
@@ -1701,5 +2459,1008 @@
     ],
     "staleApproval": []
   },
-  "schemaVersion": 1
+  "schemaVersion": 1,
+  "shoulderWorkspace": {
+    "actions": [
+      "inspect-exact-revision",
+      "filter-review-queue",
+      "draft-ephemeral-note",
+      "preview-public-safe-projection",
+      "download-focused-review-packet"
+    ],
+    "authority": "private-shoulder-authoring-workspace",
+    "autonomousApprovalAllowed": false,
+    "privateAuthoringOnly": true,
+    "providerCallsEnabled": false,
+    "publicRoute": null,
+    "reviewTasks": [
+      {
+        "domain": "source-clearance",
+        "publicEligibility": false,
+        "reason": "Source identity is recorded, but private evidence processing clearance is absent.",
+        "requiredDecision": "Record a checksum-scoped source-clearance decision without copying source content.",
+        "state": "blocked",
+        "targetId": "src-07f5bc8680f6",
+        "taskId": "task.shoulder.source.src-07f5bc8680f6"
+      },
+      {
+        "domain": "source-clearance",
+        "publicEligibility": false,
+        "reason": "Source identity is recorded, but private evidence processing clearance is absent.",
+        "requiredDecision": "Record a checksum-scoped source-clearance decision without copying source content.",
+        "state": "blocked",
+        "targetId": "src-09c409d4ae26",
+        "taskId": "task.shoulder.source.src-09c409d4ae26"
+      },
+      {
+        "domain": "source-clearance",
+        "publicEligibility": false,
+        "reason": "Source identity is recorded, but private evidence processing clearance is absent.",
+        "requiredDecision": "Record a checksum-scoped source-clearance decision without copying source content.",
+        "state": "blocked",
+        "targetId": "src-0b5b2e3de9c6",
+        "taskId": "task.shoulder.source.src-0b5b2e3de9c6"
+      },
+      {
+        "domain": "evidence",
+        "publicEligibility": false,
+        "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+        "requiredDecision": "Verify source metadata, exact locator, appraisal and evidence interpretation.",
+        "state": "blocked",
+        "targetId": "gap.question.shoulder.terminology",
+        "taskId": "task.shoulder.evidence.shoulder-terminology"
+      },
+      {
+        "domain": "evidence",
+        "publicEligibility": false,
+        "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+        "requiredDecision": "Verify source metadata, exact locator, appraisal and evidence interpretation.",
+        "state": "blocked",
+        "targetId": "gap.question.shoulder.presentation",
+        "taskId": "task.shoulder.evidence.shoulder-presentation"
+      },
+      {
+        "domain": "evidence",
+        "publicEligibility": false,
+        "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+        "requiredDecision": "Verify source metadata, exact locator, appraisal and evidence interpretation.",
+        "state": "blocked",
+        "targetId": "gap.question.shoulder.assessment",
+        "taskId": "task.shoulder.evidence.shoulder-assessment"
+      },
+      {
+        "domain": "evidence",
+        "publicEligibility": false,
+        "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+        "requiredDecision": "Verify source metadata, exact locator, appraisal and evidence interpretation.",
+        "state": "blocked",
+        "targetId": "gap.question.shoulder.differential",
+        "taskId": "task.shoulder.evidence.shoulder-differential"
+      },
+      {
+        "domain": "evidence",
+        "publicEligibility": false,
+        "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+        "requiredDecision": "Verify source metadata, exact locator, appraisal and evidence interpretation.",
+        "state": "blocked",
+        "targetId": "gap.question.shoulder.red-flags",
+        "taskId": "task.shoulder.evidence.shoulder-red-flags"
+      },
+      {
+        "domain": "evidence",
+        "publicEligibility": false,
+        "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+        "requiredDecision": "Verify source metadata, exact locator, appraisal and evidence interpretation.",
+        "state": "blocked",
+        "targetId": "gap.question.shoulder.movement",
+        "taskId": "task.shoulder.evidence.shoulder-movement"
+      },
+      {
+        "domain": "evidence",
+        "publicEligibility": false,
+        "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+        "requiredDecision": "Verify source metadata, exact locator, appraisal and evidence interpretation.",
+        "state": "blocked",
+        "targetId": "gap.question.shoulder.management",
+        "taskId": "task.shoulder.evidence.shoulder-management"
+      },
+      {
+        "domain": "evidence",
+        "publicEligibility": false,
+        "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+        "requiredDecision": "Verify source metadata, exact locator, appraisal and evidence interpretation.",
+        "state": "blocked",
+        "targetId": "gap.question.shoulder.prognosis",
+        "taskId": "task.shoulder.evidence.shoulder-prognosis"
+      },
+      {
+        "domain": "evidence",
+        "publicEligibility": false,
+        "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+        "requiredDecision": "Verify source metadata, exact locator, appraisal and evidence interpretation.",
+        "state": "blocked",
+        "targetId": "gap.question.shoulder.communication",
+        "taskId": "task.shoulder.evidence.shoulder-communication"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.scapula",
+        "taskId": "task.shoulder.module.anatomy-scapula"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.clavicle",
+        "taskId": "task.shoulder.module.anatomy-clavicle"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.proximal-humerus",
+        "taskId": "task.shoulder.module.anatomy-proximal-humerus"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.glenohumeral-joint",
+        "taskId": "task.shoulder.module.anatomy-glenohumeral-joint"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.acromioclavicular-joint",
+        "taskId": "task.shoulder.module.anatomy-acromioclavicular-joint"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.sternoclavicular-joint",
+        "taskId": "task.shoulder.module.anatomy-sternoclavicular-joint"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.scapulothoracic-articulation",
+        "taskId": "task.shoulder.module.anatomy-scapulothoracic-articulation"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.capsule",
+        "taskId": "task.shoulder.module.anatomy-capsule"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.labrum",
+        "taskId": "task.shoulder.module.anatomy-labrum"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.key-ligaments",
+        "taskId": "task.shoulder.module.anatomy-key-ligaments"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.rotator-cuff",
+        "taskId": "task.shoulder.module.anatomy-rotator-cuff"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.deltoid",
+        "taskId": "task.shoulder.module.anatomy-deltoid"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.biceps-long-head",
+        "taskId": "task.shoulder.module.anatomy-biceps-long-head"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.scapular-muscles",
+        "taskId": "task.shoulder.module.anatomy-scapular-muscles"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.nerve-relationships",
+        "taskId": "task.shoulder.module.anatomy-nerve-relationships"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.anatomy.landmarks",
+        "taskId": "task.shoulder.module.anatomy-landmarks"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.presentation.rcrsp",
+        "taskId": "task.shoulder.module.presentation-rcrsp"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.presentation.adhesive-capsulitis",
+        "taskId": "task.shoulder.module.presentation-adhesive-capsulitis"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.presentation.instability",
+        "taskId": "task.shoulder.module.presentation-instability"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.presentation.acute-traumatic",
+        "taskId": "task.shoulder.module.presentation-acute-traumatic"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.presentation.acromioclavicular",
+        "taskId": "task.shoulder.module.presentation-acromioclavicular"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.presentation.cervical-neurological-mimic",
+        "taskId": "task.shoulder.module.presentation-cervical-neurological-mimic"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.presentation.referred-systemic",
+        "taskId": "task.shoulder.module.presentation-referred-systemic"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.presentation.atypical-variant",
+        "taskId": "task.shoulder.module.presentation-atypical-variant"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.assessment.pain-location-behaviour",
+        "taskId": "task.shoulder.module.assessment-pain-location-behaviour"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.assessment.irritability",
+        "taskId": "task.shoulder.module.assessment-irritability"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.assessment.functional-limitation",
+        "taskId": "task.shoulder.module.assessment-functional-limitation"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.assessment.sleep-night-symptoms",
+        "taskId": "task.shoulder.module.assessment-sleep-night-symptoms"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.assessment.range-pattern",
+        "taskId": "task.shoulder.module.assessment-range-pattern"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.assessment.strength-pattern",
+        "taskId": "task.shoulder.module.assessment-strength-pattern"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.assessment.neurological-screen",
+        "taskId": "task.shoulder.module.assessment-neurological-screen"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.assessment.red-flag-screen",
+        "taskId": "task.shoulder.module.assessment-red-flag-screen"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.assessment.test-findings",
+        "taskId": "task.shoulder.module.assessment-test-findings"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.assessment.relevant-negatives",
+        "taskId": "task.shoulder.module.assessment-relevant-negatives"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.management.principles",
+        "taskId": "task.shoulder.module.management-principles"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The module is an empty governed review slot.",
+        "requiredDecision": "Author and clinically review exact source-supported wording.",
+        "state": "required",
+        "targetId": "module.shoulder.prognosis.reassessment",
+        "taskId": "task.shoulder.module.prognosis-reassessment"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "40 truth domains remain explicit gaps.",
+        "requiredDecision": "Review atomic truth values against the exact case revision and source.",
+        "state": "ready-for-human-review",
+        "targetId": "patient-truth.shoulder.case-04",
+        "taskId": "task.shoulder.truth.shoulder-case-04"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "40 truth domains remain explicit gaps.",
+        "requiredDecision": "Review atomic truth values against the exact case revision and source.",
+        "state": "ready-for-human-review",
+        "targetId": "patient-truth.shoulder.case-05",
+        "taskId": "task.shoulder.truth.shoulder-case-05"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "40 truth domains remain explicit gaps.",
+        "requiredDecision": "Review atomic truth values against the exact case revision and source.",
+        "state": "blocked",
+        "targetId": "patient-truth.shoulder.pilot-02",
+        "taskId": "task.shoulder.truth.shoulder-pilot-02"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The compatibility rule is disabled and contains no clinical assertion.",
+        "requiredDecision": "Provide evidence and exact-revision clinical approval before enabling.",
+        "state": "blocked",
+        "targetId": "rule.shoulder.laterality",
+        "taskId": "task.shoulder.rule.shoulder-laterality"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The compatibility rule is disabled and contains no clinical assertion.",
+        "requiredDecision": "Provide evidence and exact-revision clinical approval before enabling.",
+        "state": "blocked",
+        "targetId": "rule.shoulder.anatomical-distribution",
+        "taskId": "task.shoulder.rule.shoulder-anatomical-distribution"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The compatibility rule is disabled and contains no clinical assertion.",
+        "requiredDecision": "Provide evidence and exact-revision clinical approval before enabling.",
+        "state": "blocked",
+        "targetId": "rule.shoulder.active-passive-pattern",
+        "taskId": "task.shoulder.rule.shoulder-active-passive-pattern"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The compatibility rule is disabled and contains no clinical assertion.",
+        "requiredDecision": "Provide evidence and exact-revision clinical approval before enabling.",
+        "state": "blocked",
+        "targetId": "rule.shoulder.strength-pattern",
+        "taskId": "task.shoulder.rule.shoulder-strength-pattern"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The compatibility rule is disabled and contains no clinical assertion.",
+        "requiredDecision": "Provide evidence and exact-revision clinical approval before enabling.",
+        "state": "blocked",
+        "targetId": "rule.shoulder.neurological-consistency",
+        "taskId": "task.shoulder.rule.shoulder-neurological-consistency"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The compatibility rule is disabled and contains no clinical assertion.",
+        "requiredDecision": "Provide evidence and exact-revision clinical approval before enabling.",
+        "state": "blocked",
+        "targetId": "rule.shoulder.trauma-dependency",
+        "taskId": "task.shoulder.rule.shoulder-trauma-dependency"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The compatibility rule is disabled and contains no clinical assertion.",
+        "requiredDecision": "Provide evidence and exact-revision clinical approval before enabling.",
+        "state": "blocked",
+        "targetId": "rule.shoulder.instability-dependency",
+        "taskId": "task.shoulder.rule.shoulder-instability-dependency"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The compatibility rule is disabled and contains no clinical assertion.",
+        "requiredDecision": "Provide evidence and exact-revision clinical approval before enabling.",
+        "state": "blocked",
+        "targetId": "rule.shoulder.red-flag-escalation",
+        "taskId": "task.shoulder.rule.shoulder-red-flag-escalation"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The compatibility rule is disabled and contains no clinical assertion.",
+        "requiredDecision": "Provide evidence and exact-revision clinical approval before enabling.",
+        "state": "blocked",
+        "targetId": "rule.shoulder.movement-compatibility",
+        "taskId": "task.shoulder.rule.shoulder-movement-compatibility"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The compatibility rule is disabled and contains no clinical assertion.",
+        "requiredDecision": "Provide evidence and exact-revision clinical approval before enabling.",
+        "state": "blocked",
+        "targetId": "rule.shoulder.disclosure-stage",
+        "taskId": "task.shoulder.rule.shoulder-disclosure-stage"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The compatibility rule is disabled and contains no clinical assertion.",
+        "requiredDecision": "Provide evidence and exact-revision clinical approval before enabling.",
+        "state": "blocked",
+        "targetId": "rule.shoulder.evidence-publication",
+        "taskId": "task.shoulder.rule.shoulder-evidence-publication"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "The compatibility rule is disabled and contains no clinical assertion.",
+        "requiredDecision": "Provide evidence and exact-revision clinical approval before enabling.",
+        "state": "blocked",
+        "targetId": "rule.shoulder.asset-licensing",
+        "taskId": "task.shoulder.rule.shoulder-asset-licensing"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.joint.flexion",
+        "taskId": "task.shoulder.movement.joint-flexion"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.joint.extension",
+        "taskId": "task.shoulder.movement.joint-extension"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.joint.abduction",
+        "taskId": "task.shoulder.movement.joint-abduction"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.joint.adduction",
+        "taskId": "task.shoulder.movement.joint-adduction"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.joint.external-rotation",
+        "taskId": "task.shoulder.movement.joint-external-rotation"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.joint.internal-rotation",
+        "taskId": "task.shoulder.movement.joint-internal-rotation"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.joint.horizontal-flexion-extension",
+        "taskId": "task.shoulder.movement.joint-horizontal-flexion-extension"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.joint.scapular-upward-downward-rotation",
+        "taskId": "task.shoulder.movement.joint-scapular-upward-downward-rotation"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.joint.scapular-protraction-retraction",
+        "taskId": "task.shoulder.movement.joint-scapular-protraction-retraction"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.joint.scapular-elevation-depression",
+        "taskId": "task.shoulder.movement.joint-scapular-elevation-depression"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.functional.reaching-overhead",
+        "taskId": "task.shoulder.movement.functional-reaching-overhead"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.functional.hand-behind-head",
+        "taskId": "task.shoulder.movement.functional-hand-behind-head"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.functional.hand-behind-back",
+        "taskId": "task.shoulder.movement.functional-hand-behind-back"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.functional.dressing",
+        "taskId": "task.shoulder.movement.functional-dressing"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.functional.grooming",
+        "taskId": "task.shoulder.movement.functional-grooming"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.functional.lifting-carrying",
+        "taskId": "task.shoulder.movement.functional-lifting-carrying"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.functional.pushing-pulling",
+        "taskId": "task.shoulder.movement.functional-pushing-pulling"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.functional.throwing",
+        "taskId": "task.shoulder.movement.functional-throwing"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.functional.sleeping-positioning",
+        "taskId": "task.shoulder.movement.functional-sleeping-positioning"
+      },
+      {
+        "domain": "movement",
+        "publicEligibility": false,
+        "reason": "Movement claims and relationships are not approved.",
+        "requiredDecision": "Map exact evidence, write accessible content, and complete movement/anatomy review.",
+        "state": "blocked",
+        "targetId": "movement.shoulder.functional.work-overhead",
+        "taskId": "task.shoulder.movement.functional-work-overhead"
+      },
+      {
+        "domain": "technical",
+        "publicEligibility": false,
+        "reason": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+        "requiredDecision": "Complete and record the named review task for the exact asset revision.",
+        "state": "blocked",
+        "targetId": "asset3d.shoulder.review-slot",
+        "taskId": "task.shoulder.asset.shoulder-source"
+      },
+      {
+        "domain": "rights",
+        "publicEligibility": false,
+        "reason": "Verify creator, licence, permitted use and required attribution.",
+        "requiredDecision": "Complete and record the named review task for the exact asset revision.",
+        "state": "blocked",
+        "targetId": "asset3d.shoulder.review-slot",
+        "taskId": "task.shoulder.asset.shoulder-licence"
+      },
+      {
+        "domain": "anatomy",
+        "publicEligibility": false,
+        "reason": "Map and clinically review every structure label against the exact asset revision.",
+        "requiredDecision": "Complete and record the named review task for the exact asset revision.",
+        "state": "blocked",
+        "targetId": "asset3d.shoulder.review-slot",
+        "taskId": "task.shoulder.asset.shoulder-anatomy"
+      },
+      {
+        "domain": "accessibility",
+        "publicEligibility": false,
+        "reason": "Approve keyboard controls, text relationships, transcript and non-WebGL fallback.",
+        "requiredDecision": "Complete and record the named review task for the exact asset revision.",
+        "state": "blocked",
+        "targetId": "asset3d.shoulder.review-slot",
+        "taskId": "task.shoulder.asset.shoulder-accessibility"
+      },
+      {
+        "domain": "technical",
+        "publicEligibility": false,
+        "reason": "Verify mobile triangle, texture, decoded-byte and route-bundle budgets.",
+        "requiredDecision": "Complete and record the named review task for the exact asset revision.",
+        "state": "blocked",
+        "targetId": "asset3d.shoulder.review-slot",
+        "taskId": "task.shoulder.asset.shoulder-performance"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "No cleared and appraised source supports an authored question.",
+        "requiredDecision": "Author only after evidence and source clearance, then obtain clinical, accessibility and publication review.",
+        "state": "blocked",
+        "targetId": "mcq-slot.shoulder-slice.01",
+        "taskId": "task.shoulder.mcq.shoulder-slice-01"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "No cleared and appraised source supports an authored question.",
+        "requiredDecision": "Author only after evidence and source clearance, then obtain clinical, accessibility and publication review.",
+        "state": "blocked",
+        "targetId": "mcq-slot.shoulder-slice.02",
+        "taskId": "task.shoulder.mcq.shoulder-slice-02"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "No cleared and appraised source supports an authored question.",
+        "requiredDecision": "Author only after evidence and source clearance, then obtain clinical, accessibility and publication review.",
+        "state": "blocked",
+        "targetId": "mcq-slot.shoulder-slice.03",
+        "taskId": "task.shoulder.mcq.shoulder-slice-03"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "No cleared and appraised source supports an authored question.",
+        "requiredDecision": "Author only after evidence and source clearance, then obtain clinical, accessibility and publication review.",
+        "state": "blocked",
+        "targetId": "mcq-slot.shoulder-slice.04",
+        "taskId": "task.shoulder.mcq.shoulder-slice-04"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "No cleared and appraised source supports an authored question.",
+        "requiredDecision": "Author only after evidence and source clearance, then obtain clinical, accessibility and publication review.",
+        "state": "blocked",
+        "targetId": "mcq-slot.shoulder-slice.05",
+        "taskId": "task.shoulder.mcq.shoulder-slice-05"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "No cleared and appraised source supports an authored question.",
+        "requiredDecision": "Author only after evidence and source clearance, then obtain clinical, accessibility and publication review.",
+        "state": "blocked",
+        "targetId": "mcq-slot.shoulder-slice.06",
+        "taskId": "task.shoulder.mcq.shoulder-slice-06"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "No cleared and appraised source supports an authored question.",
+        "requiredDecision": "Author only after evidence and source clearance, then obtain clinical, accessibility and publication review.",
+        "state": "blocked",
+        "targetId": "mcq-slot.shoulder-slice.07",
+        "taskId": "task.shoulder.mcq.shoulder-slice-07"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "No cleared and appraised source supports an authored question.",
+        "requiredDecision": "Author only after evidence and source clearance, then obtain clinical, accessibility and publication review.",
+        "state": "blocked",
+        "targetId": "mcq-slot.shoulder-slice.08",
+        "taskId": "task.shoulder.mcq.shoulder-slice-08"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "No cleared and appraised source supports an authored question.",
+        "requiredDecision": "Author only after evidence and source clearance, then obtain clinical, accessibility and publication review.",
+        "state": "blocked",
+        "targetId": "mcq-slot.shoulder-slice.09",
+        "taskId": "task.shoulder.mcq.shoulder-slice-09"
+      },
+      {
+        "domain": "clinical",
+        "publicEligibility": false,
+        "reason": "No cleared and appraised source supports an authored question.",
+        "requiredDecision": "Author only after evidence and source clearance, then obtain clinical, accessibility and publication review.",
+        "state": "blocked",
+        "targetId": "mcq-slot.shoulder-slice.10",
+        "taskId": "task.shoulder.mcq.shoulder-slice-10"
+      },
+      {
+        "domain": "technical",
+        "publicEligibility": false,
+        "reason": "The public baseline case modes are technically available.",
+        "requiredDecision": "Review grounded conversation behavior, staged disclosure and diagnosis reveal for this exact truth hash.",
+        "state": "ready-for-human-review",
+        "targetId": "case.shoulder.case-04",
+        "taskId": "task.shoulder.case-preview.shoulder-case-04"
+      },
+      {
+        "domain": "technical",
+        "publicEligibility": false,
+        "reason": "The public baseline case modes are technically available.",
+        "requiredDecision": "Review grounded conversation behavior, staged disclosure and diagnosis reveal for this exact truth hash.",
+        "state": "ready-for-human-review",
+        "targetId": "case.shoulder.case-05",
+        "taskId": "task.shoulder.case-preview.shoulder-case-05"
+      }
+    ],
+    "schemaVersion": 1,
+    "sections": [
+      {
+        "id": "source-inventory",
+        "label": "Shoulder source inventory",
+        "queueCount": 0,
+        "recordCount": 10
+      },
+      {
+        "id": "ingestion-proposals",
+        "label": "Ingestion proposals",
+        "queueCount": 0,
+        "recordCount": 0
+      },
+      {
+        "id": "evidence-hub",
+        "label": "Evidence Hub records and gaps",
+        "queueCount": 0,
+        "recordCount": 13
+      },
+      {
+        "id": "module-editor",
+        "label": "Clinical module editor",
+        "queueCount": 36,
+        "recordCount": 36
+      },
+      {
+        "id": "truth-record-editor",
+        "label": "Patient Truth Record editor",
+        "queueCount": 0,
+        "recordCount": 3
+      },
+      {
+        "id": "compatibility-rules",
+        "label": "Compatibility rules",
+        "queueCount": 0,
+        "recordCount": 12
+      },
+      {
+        "id": "case-preview",
+        "label": "Guided, Conversation and Hybrid preview",
+        "queueCount": 0,
+        "recordCount": 2
+      },
+      {
+        "id": "conversation-review",
+        "label": "Conversation transcript review",
+        "queueCount": 0,
+        "recordCount": 2
+      },
+      {
+        "id": "movement-editor",
+        "label": "Movement editor",
+        "queueCount": 22,
+        "recordCount": 20
+      },
+      {
+        "id": "three-d-licensing",
+        "label": "3D asset and licensing queue",
+        "queueCount": 0,
+        "recordCount": 16
+      },
+      {
+        "id": "mcq-editor",
+        "label": "MCQ editor",
+        "queueCount": 10,
+        "recordCount": 10
+      },
+      {
+        "id": "exact-revision-review",
+        "label": "Exact-revision review queue",
+        "queueCount": 100,
+        "recordCount": 100
+      },
+      {
+        "id": "evidence-gaps",
+        "label": "Evidence gaps",
+        "queueCount": 0,
+        "recordCount": 9
+      },
+      {
+        "id": "focused-packet",
+        "label": "Focused review packet",
+        "queueCount": 0,
+        "recordCount": 1
+      }
+    ]
+  }
 }

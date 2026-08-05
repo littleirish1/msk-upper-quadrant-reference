@@ -15,6 +15,11 @@ const definitions = [
   { group: 'movement', entityType: 'movement', reviews: ['movement', 'anatomy', 'clinical', 'evidence', 'accessibility', 'publication'] },
   { group: 'anatomy3d', entityType: 'anatomy-3d', reviews: ['anatomy', 'clinical', 'licensing', 'accessibility', 'publication'] },
   { group: 'evidence', entityType: 'evidence', reviews: ['source', 'evidence', 'publication'] },
+  { group: 'shoulderSources', entityType: 'evidence', reviews: ['source', 'evidence', 'publication'] },
+  { group: 'shoulderModules', entityType: 'module', reviews: ['clinical', 'evidence', 'publication'] },
+  { group: 'shoulderRules', entityType: 'rule', reviews: ['clinical', 'safety', 'evidence', 'publication'] },
+  { group: 'shoulderMovement', entityType: 'movement', reviews: ['movement', 'anatomy', 'clinical', 'evidence', 'accessibility', 'publication'] },
+  { group: 'shoulderMcqs', entityType: 'mcq', reviews: ['clinical', 'evidence', 'accessibility', 'publication'] },
 ]
 
 const records = definitions.flatMap(({ group, entityType, reviews }) => (snapshot.groups[group] ?? []).map((item) => ({ item, entityType, reviews })))

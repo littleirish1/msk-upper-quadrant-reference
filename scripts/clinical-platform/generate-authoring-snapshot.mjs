@@ -17,6 +17,13 @@ const anatomy3d = read('ai-manager/clinical-platform/anatomy-3d/registry.json').
 const dependency = read('reports/governance/dependency-risk-register.json')
 const legacy = read('reports/clinical-platform/legacy-case-reconciliation.json').records
 const beta = read('ai-manager/clinical-platform/beta/programme.json')
+const shoulderWorkspace = read('ai-manager/clinical-platform/shoulder/authoring-workspace.json')
+const shoulderSources = read('ai-manager/clinical-platform/shoulder/source-inventory.json').records
+const shoulderModules = read('ai-manager/clinical-platform/shoulder/module-library.json').modules
+const shoulderTruth = read('ai-manager/clinical-platform/shoulder/truth-record-status.json').records
+const shoulderRules = read('ai-manager/clinical-platform/shoulder/compatibility-rules.json').rules
+const shoulderMovement = read('ai-manager/clinical-platform/shoulder/movement-library.json').records
+const shoulderMcqs = read('ai-manager/clinical-platform/shoulder/mcq-plan.json').records
 
 const groups = {
   modules: modules.map((item) => record(item.id, item.revision, item.lifecycle, item.relationships.sources[0]?.hash, item.publicationState)),
@@ -32,6 +39,12 @@ const groups = {
   anatomy3d: anatomy3d.map((item) => record(item.id, item.revision, 'blocked', item.assetHash, 'private')),
   legacy: legacy.map((item) => record(`legacy.${item.stationId}`, 1, item.classification, item.sourceRevision, item.publicEligibility ? 'baseline-public' : 'private')),
   betaTasks: beta.taskScripts.map((item) => record(item.taskId, item.revision, item.status, null, 'private')),
+  shoulderSources: shoulderSources.map((item) => record(item.sourceId, 1, item.reviewState, item.checksum, 'private')),
+  shoulderModules: shoulderModules.map((item) => record(item.id, item.revision, item.lifecycle, item.relationships.sources[0]?.hash, item.publicationState)),
+  shoulderTruth: shoulderTruth.map((item) => record(item.recordId, item.caseRevision, item.reviewState, item.authoritativeHash, item.publicModeEligibility ? 'baseline-public-mode' : 'private')),
+  shoulderRules: shoulderRules.map((item) => record(item.id, item.revision, item.lifecycle, item.approval.ruleHash, item.enabled ? 'enabled' : 'disabled')),
+  shoulderMovement: shoulderMovement.map((item) => record(item.id, item.revision, item.lifecycle, null, 'private')),
+  shoulderMcqs: shoulderMcqs.map((item) => record(item.id, 1, item.lifecycle, null, 'private')),
 }
 
 const queues = {
@@ -46,6 +59,7 @@ const queues = {
   betaIssue: ['beta.programme.real-results-pending', ...beta.taskScripts.map((item) => item.taskId)],
   dependencyRisk: dependency.risks.filter((item) => item.status !== 'resolved').map((item) => item.riskId),
   publicationDecision: [...modules.map((item) => item.id), ...recipes.map((item) => item.recipeId), ...movement.map((item) => item.id), ...anatomy3d.map((item) => item.id), ...mcqs.map((item) => item.id)],
+  shoulderReview: shoulderWorkspace.reviewTasks.map((item) => item.taskId),
 }
 for (const value of Object.values(queues)) value.sort()
 const snapshot = {
@@ -59,6 +73,7 @@ const snapshot = {
   queues,
   queueCounts: Object.fromEntries(Object.entries(queues).map(([key, values]) => [key, values.length])),
   actions: ['inspect-exact-revision', 'filter-queues', 'draft-ephemeral-note', 'download-review-packet'],
+  shoulderWorkspace,
 }
 fs.mkdirSync(path.dirname(output), { recursive: true })
 fs.writeFileSync(output, `${JSON.stringify(sortKeys(snapshot), null, 2)}\n`, 'utf8')

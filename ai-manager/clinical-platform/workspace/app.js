@@ -3,6 +3,7 @@ const counts = document.querySelector('#counts')
 const queues = document.querySelector('#queues')
 const tableWrap = document.querySelector('#table-wrap')
 const activeLabel = document.querySelector('#active-label')
+const shoulderSections = document.querySelector('#shoulder-sections')
 
 const response = await fetch('/api/snapshot', { cache: 'no-store' })
 if (!response.ok) throw new Error(`Snapshot unavailable (${response.status})`)
@@ -24,13 +25,32 @@ document.querySelector('#download').addEventListener('click', () => {
   link.click()
   URL.revokeObjectURL(link.href)
 })
+document.querySelector('#download-shoulder').addEventListener('click', () => downloadPacket({
+  schemaVersion: 1,
+  generatedFrom: state.snapshot.shoulderWorkspace.authority,
+  workspace: state.snapshot.shoulderWorkspace,
+  records: Object.entries(state.snapshot.groups)
+    .filter(([group]) => group.startsWith('shoulder'))
+    .flatMap(([group, items]) => items.map((item) => ({ group, ...item }))),
+  reviewerNote: document.querySelector('#note').value,
+  humanDecisionRecorded: false,
+  publicationActionAllowed: false,
+}, 'shoulder-review-packet.json'))
 
 function render() {
   counts.innerHTML = Object.entries(state.snapshot.counts).map(([label, value]) => `<article><strong>${value}</strong><span>${escapeHtml(label)}</span></article>`).join('')
+  shoulderSections.innerHTML = state.snapshot.shoulderWorkspace.sections.map((section) => `<article><strong>${section.recordCount}</strong><span>${escapeHtml(section.label)}</span><small>${section.queueCount} queued</small></article>`).join('')
   queues.innerHTML = Object.entries(state.snapshot.queueCounts).map(([label, value]) => `<button type="button" data-queue="${escapeHtml(label)}" aria-pressed="${state.queue === label}"><span>${escapeHtml(label)}</span><strong>${value}</strong></button>`).join('')
   queues.querySelectorAll('button').forEach((button) => button.addEventListener('click', () => { state.queue = state.queue === button.dataset.queue ? null : button.dataset.queue; render() }))
   activeLabel.textContent = state.queue ? `${state.queue} queue` : 'Inventory'
   renderTable()
+}
+
+function downloadPacket(packet, filename) {
+  const blob = new Blob([`${JSON.stringify(packet, null, 2)}\n`], { type: 'application/json' })
+  const link = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: filename })
+  link.click()
+  URL.revokeObjectURL(link.href)
 }
 
 function selectedRecords() {
