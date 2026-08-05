@@ -13,6 +13,31 @@ const blockers = [
   'Source, creator, licence, permitted use and attribution are unknown.',
   'Anatomy, clinical, accessibility, performance and publication review are pending.',
 ]
+const shoulderStructures = [
+  ['scapula', 'bone', 'Scapula'],
+  ['clavicle', 'bone', 'Clavicle'],
+  ['proximal-humerus', 'bone', 'Proximal humerus'],
+  ['glenoid', 'articular-surface', 'Glenoid'],
+  ['acromion', 'landmark', 'Acromion'],
+  ['coracoid', 'landmark', 'Coracoid'],
+  ['ac-joint', 'joint', 'Acromioclavicular joint'],
+  ['sc-joint', 'joint', 'Sternoclavicular joint'],
+  ['rotator-cuff-muscles', 'muscle', 'Rotator cuff muscles'],
+  ['rotator-cuff-tendons', 'tendon', 'Rotator cuff tendons'],
+  ['deltoid', 'muscle', 'Deltoid'],
+  ['biceps-long-head', 'tendon', 'Long head of biceps tendon'],
+  ['scapular-muscles', 'muscle', 'Key scapular muscles'],
+  ['shoulder-ligaments', 'ligament', 'Relevant shoulder ligaments'],
+  ['shoulder-nerves', 'nerve', 'Clinically relevant nerves'],
+  ['shoulder-landmarks', 'landmark', 'Major shoulder landmarks'],
+]
+const acquisitionTasks = [
+  ['source', 'Identify a technically suitable shoulder asset without downloading it into the public repository.'],
+  ['licence', 'Verify creator, licence, permitted use and required attribution.'],
+  ['anatomy', 'Map and clinically review every structure label against the exact asset revision.'],
+  ['accessibility', 'Approve keyboard controls, text relationships, transcript and non-WebGL fallback.'],
+  ['performance', 'Verify mobile triangle, texture, decoded-byte and route-bundle budgets.'],
+]
 
 const assets = regions.map((region) => schemas.anatomy3dAssetSchema.parse({
   schemaVersion: 1,
@@ -28,6 +53,23 @@ const assets = regions.map((region) => schemas.anatomy3dAssetSchema.parse({
   permittedUse: 'none',
   attribution: 'required before use',
   structures: [],
+  plannedStructures: region === 'shoulder' ? shoulderStructures.map(([slug, type, label]) => ({
+    id: `structure.shoulder.${slug}`,
+    type,
+    label,
+    reviewState: 'required',
+  })) : [],
+  acquisitionTasks: acquisitionTasks.map(([slug, label]) => ({
+    id: `task.3d.${region}.${slug}`,
+    label,
+    status: 'required',
+  })),
+  fallback: {
+    status: 'text-only-review-placeholder',
+    summary: 'No licensed and reviewed three-dimensional asset is available. Use approved text references while acquisition and accessibility review remain open.',
+    diagramAssetId: null,
+    publicEligibility: false,
+  },
   interactions,
   relatedMovementIds: [],
   relatedConditionIds: [],
@@ -48,6 +90,7 @@ const report = {
   structureTypesSupported: schemas.anatomyStructureTypeSchema.options,
   interactionsSupported: interactions,
   nonVisualEquivalentsRequired: assets.length,
+  shoulderPlannedStructures: assets.find((asset) => asset.region === 'shoulder').plannedStructures.length,
   licenceBlockers: assets.length,
   lazyLoadRequired: true,
   unrelatedRouteBundleBytes: 0,

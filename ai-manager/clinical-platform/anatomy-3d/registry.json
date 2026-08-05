@@ -1,6 +1,33 @@
 {
   "assets": [
     {
+      "acquisitionTasks": [
+        {
+          "id": "task.3d.cervical.source",
+          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.cervical.licence",
+          "label": "Verify creator, licence, permitted use and required attribution.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.cervical.anatomy",
+          "label": "Map and clinically review every structure label against the exact asset revision.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.cervical.accessibility",
+          "label": "Approve keyboard controls, text relationships, transcript and non-WebGL fallback.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.cervical.performance",
+          "label": "Verify mobile triangle, texture, decoded-byte and route-bundle budgets.",
+          "status": "required"
+        }
+      ],
       "assetHash": null,
       "assetPath": null,
       "attribution": "required before use",
@@ -18,6 +45,12 @@
         "unrelatedRouteBundleBytes": 0
       },
       "creator": "unknown",
+      "fallback": {
+        "diagramAssetId": null,
+        "publicEligibility": false,
+        "status": "text-only-review-placeholder",
+        "summary": "No licensed and reviewed three-dimensional asset is available. Use approved text references while acquisition and accessibility review remain open."
+      },
       "id": "asset3d.cervical.review-slot",
       "interactions": [
         "rotate",
@@ -43,6 +76,7 @@
         "webglFallbackRequired": true
       },
       "permittedUse": "none",
+      "plannedStructures": [],
       "publicEligibility": false,
       "region": "cervical",
       "relatedCaseIds": [],
@@ -64,6 +98,33 @@
       "title": "cervical governed 3D review slot"
     },
     {
+      "acquisitionTasks": [
+        {
+          "id": "task.3d.shoulder.source",
+          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.shoulder.licence",
+          "label": "Verify creator, licence, permitted use and required attribution.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.shoulder.anatomy",
+          "label": "Map and clinically review every structure label against the exact asset revision.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.shoulder.accessibility",
+          "label": "Approve keyboard controls, text relationships, transcript and non-WebGL fallback.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.shoulder.performance",
+          "label": "Verify mobile triangle, texture, decoded-byte and route-bundle budgets.",
+          "status": "required"
+        }
+      ],
       "assetHash": null,
       "assetPath": null,
       "attribution": "required before use",
@@ -81,6 +142,12 @@
         "unrelatedRouteBundleBytes": 0
       },
       "creator": "unknown",
+      "fallback": {
+        "diagramAssetId": null,
+        "publicEligibility": false,
+        "status": "text-only-review-placeholder",
+        "summary": "No licensed and reviewed three-dimensional asset is available. Use approved text references while acquisition and accessibility review remain open."
+      },
       "id": "asset3d.shoulder.review-slot",
       "interactions": [
         "rotate",
@@ -106,6 +173,104 @@
         "webglFallbackRequired": true
       },
       "permittedUse": "none",
+      "plannedStructures": [
+        {
+          "id": "structure.shoulder.scapula",
+          "label": "Scapula",
+          "reviewState": "required",
+          "type": "bone"
+        },
+        {
+          "id": "structure.shoulder.clavicle",
+          "label": "Clavicle",
+          "reviewState": "required",
+          "type": "bone"
+        },
+        {
+          "id": "structure.shoulder.proximal-humerus",
+          "label": "Proximal humerus",
+          "reviewState": "required",
+          "type": "bone"
+        },
+        {
+          "id": "structure.shoulder.glenoid",
+          "label": "Glenoid",
+          "reviewState": "required",
+          "type": "articular-surface"
+        },
+        {
+          "id": "structure.shoulder.acromion",
+          "label": "Acromion",
+          "reviewState": "required",
+          "type": "landmark"
+        },
+        {
+          "id": "structure.shoulder.coracoid",
+          "label": "Coracoid",
+          "reviewState": "required",
+          "type": "landmark"
+        },
+        {
+          "id": "structure.shoulder.ac-joint",
+          "label": "Acromioclavicular joint",
+          "reviewState": "required",
+          "type": "joint"
+        },
+        {
+          "id": "structure.shoulder.sc-joint",
+          "label": "Sternoclavicular joint",
+          "reviewState": "required",
+          "type": "joint"
+        },
+        {
+          "id": "structure.shoulder.rotator-cuff-muscles",
+          "label": "Rotator cuff muscles",
+          "reviewState": "required",
+          "type": "muscle"
+        },
+        {
+          "id": "structure.shoulder.rotator-cuff-tendons",
+          "label": "Rotator cuff tendons",
+          "reviewState": "required",
+          "type": "tendon"
+        },
+        {
+          "id": "structure.shoulder.deltoid",
+          "label": "Deltoid",
+          "reviewState": "required",
+          "type": "muscle"
+        },
+        {
+          "id": "structure.shoulder.biceps-long-head",
+          "label": "Long head of biceps tendon",
+          "reviewState": "required",
+          "type": "tendon"
+        },
+        {
+          "id": "structure.shoulder.scapular-muscles",
+          "label": "Key scapular muscles",
+          "reviewState": "required",
+          "type": "muscle"
+        },
+        {
+          "id": "structure.shoulder.shoulder-ligaments",
+          "label": "Relevant shoulder ligaments",
+          "reviewState": "required",
+          "type": "ligament"
+        },
+        {
+          "id": "structure.shoulder.shoulder-nerves",
+          "label": "Clinically relevant nerves",
+          "reviewState": "required",
+          "type": "nerve"
+        },
+        {
+          "id": "structure.shoulder.shoulder-landmarks",
+          "label": "Major shoulder landmarks",
+          "reviewState": "required",
+          "type": "landmark"
+        }
+      ],
       "publicEligibility": false,
       "region": "shoulder",
       "relatedCaseIds": [],
@@ -127,6 +292,33 @@
       "title": "shoulder governed 3D review slot"
     },
     {
+      "acquisitionTasks": [
+        {
+          "id": "task.3d.elbow.source",
+          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.elbow.licence",
+          "label": "Verify creator, licence, permitted use and required attribution.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.elbow.anatomy",
+          "label": "Map and clinically review every structure label against the exact asset revision.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.elbow.accessibility",
+          "label": "Approve keyboard controls, text relationships, transcript and non-WebGL fallback.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.elbow.performance",
+          "label": "Verify mobile triangle, texture, decoded-byte and route-bundle budgets.",
+          "status": "required"
+        }
+      ],
       "assetHash": null,
       "assetPath": null,
       "attribution": "required before use",
@@ -144,6 +336,12 @@
         "unrelatedRouteBundleBytes": 0
       },
       "creator": "unknown",
+      "fallback": {
+        "diagramAssetId": null,
+        "publicEligibility": false,
+        "status": "text-only-review-placeholder",
+        "summary": "No licensed and reviewed three-dimensional asset is available. Use approved text references while acquisition and accessibility review remain open."
+      },
       "id": "asset3d.elbow.review-slot",
       "interactions": [
         "rotate",
@@ -169,6 +367,7 @@
         "webglFallbackRequired": true
       },
       "permittedUse": "none",
+      "plannedStructures": [],
       "publicEligibility": false,
       "region": "elbow",
       "relatedCaseIds": [],
@@ -190,6 +389,33 @@
       "title": "elbow governed 3D review slot"
     },
     {
+      "acquisitionTasks": [
+        {
+          "id": "task.3d.wrist-hand.source",
+          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.wrist-hand.licence",
+          "label": "Verify creator, licence, permitted use and required attribution.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.wrist-hand.anatomy",
+          "label": "Map and clinically review every structure label against the exact asset revision.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.wrist-hand.accessibility",
+          "label": "Approve keyboard controls, text relationships, transcript and non-WebGL fallback.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.wrist-hand.performance",
+          "label": "Verify mobile triangle, texture, decoded-byte and route-bundle budgets.",
+          "status": "required"
+        }
+      ],
       "assetHash": null,
       "assetPath": null,
       "attribution": "required before use",
@@ -207,6 +433,12 @@
         "unrelatedRouteBundleBytes": 0
       },
       "creator": "unknown",
+      "fallback": {
+        "diagramAssetId": null,
+        "publicEligibility": false,
+        "status": "text-only-review-placeholder",
+        "summary": "No licensed and reviewed three-dimensional asset is available. Use approved text references while acquisition and accessibility review remain open."
+      },
       "id": "asset3d.wrist-hand.review-slot",
       "interactions": [
         "rotate",
@@ -232,6 +464,7 @@
         "webglFallbackRequired": true
       },
       "permittedUse": "none",
+      "plannedStructures": [],
       "publicEligibility": false,
       "region": "wrist-hand",
       "relatedCaseIds": [],
@@ -253,6 +486,33 @@
       "title": "wrist hand governed 3D review slot"
     },
     {
+      "acquisitionTasks": [
+        {
+          "id": "task.3d.lumbar.source",
+          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.lumbar.licence",
+          "label": "Verify creator, licence, permitted use and required attribution.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.lumbar.anatomy",
+          "label": "Map and clinically review every structure label against the exact asset revision.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.lumbar.accessibility",
+          "label": "Approve keyboard controls, text relationships, transcript and non-WebGL fallback.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.lumbar.performance",
+          "label": "Verify mobile triangle, texture, decoded-byte and route-bundle budgets.",
+          "status": "required"
+        }
+      ],
       "assetHash": null,
       "assetPath": null,
       "attribution": "required before use",
@@ -270,6 +530,12 @@
         "unrelatedRouteBundleBytes": 0
       },
       "creator": "unknown",
+      "fallback": {
+        "diagramAssetId": null,
+        "publicEligibility": false,
+        "status": "text-only-review-placeholder",
+        "summary": "No licensed and reviewed three-dimensional asset is available. Use approved text references while acquisition and accessibility review remain open."
+      },
       "id": "asset3d.lumbar.review-slot",
       "interactions": [
         "rotate",
@@ -295,6 +561,7 @@
         "webglFallbackRequired": true
       },
       "permittedUse": "none",
+      "plannedStructures": [],
       "publicEligibility": false,
       "region": "lumbar",
       "relatedCaseIds": [],
@@ -316,6 +583,33 @@
       "title": "lumbar governed 3D review slot"
     },
     {
+      "acquisitionTasks": [
+        {
+          "id": "task.3d.hip.source",
+          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.hip.licence",
+          "label": "Verify creator, licence, permitted use and required attribution.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.hip.anatomy",
+          "label": "Map and clinically review every structure label against the exact asset revision.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.hip.accessibility",
+          "label": "Approve keyboard controls, text relationships, transcript and non-WebGL fallback.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.hip.performance",
+          "label": "Verify mobile triangle, texture, decoded-byte and route-bundle budgets.",
+          "status": "required"
+        }
+      ],
       "assetHash": null,
       "assetPath": null,
       "attribution": "required before use",
@@ -333,6 +627,12 @@
         "unrelatedRouteBundleBytes": 0
       },
       "creator": "unknown",
+      "fallback": {
+        "diagramAssetId": null,
+        "publicEligibility": false,
+        "status": "text-only-review-placeholder",
+        "summary": "No licensed and reviewed three-dimensional asset is available. Use approved text references while acquisition and accessibility review remain open."
+      },
       "id": "asset3d.hip.review-slot",
       "interactions": [
         "rotate",
@@ -358,6 +658,7 @@
         "webglFallbackRequired": true
       },
       "permittedUse": "none",
+      "plannedStructures": [],
       "publicEligibility": false,
       "region": "hip",
       "relatedCaseIds": [],
@@ -379,6 +680,33 @@
       "title": "hip governed 3D review slot"
     },
     {
+      "acquisitionTasks": [
+        {
+          "id": "task.3d.knee.source",
+          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.knee.licence",
+          "label": "Verify creator, licence, permitted use and required attribution.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.knee.anatomy",
+          "label": "Map and clinically review every structure label against the exact asset revision.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.knee.accessibility",
+          "label": "Approve keyboard controls, text relationships, transcript and non-WebGL fallback.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.knee.performance",
+          "label": "Verify mobile triangle, texture, decoded-byte and route-bundle budgets.",
+          "status": "required"
+        }
+      ],
       "assetHash": null,
       "assetPath": null,
       "attribution": "required before use",
@@ -396,6 +724,12 @@
         "unrelatedRouteBundleBytes": 0
       },
       "creator": "unknown",
+      "fallback": {
+        "diagramAssetId": null,
+        "publicEligibility": false,
+        "status": "text-only-review-placeholder",
+        "summary": "No licensed and reviewed three-dimensional asset is available. Use approved text references while acquisition and accessibility review remain open."
+      },
       "id": "asset3d.knee.review-slot",
       "interactions": [
         "rotate",
@@ -421,6 +755,7 @@
         "webglFallbackRequired": true
       },
       "permittedUse": "none",
+      "plannedStructures": [],
       "publicEligibility": false,
       "region": "knee",
       "relatedCaseIds": [],
@@ -442,6 +777,33 @@
       "title": "knee governed 3D review slot"
     },
     {
+      "acquisitionTasks": [
+        {
+          "id": "task.3d.ankle-foot.source",
+          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.ankle-foot.licence",
+          "label": "Verify creator, licence, permitted use and required attribution.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.ankle-foot.anatomy",
+          "label": "Map and clinically review every structure label against the exact asset revision.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.ankle-foot.accessibility",
+          "label": "Approve keyboard controls, text relationships, transcript and non-WebGL fallback.",
+          "status": "required"
+        },
+        {
+          "id": "task.3d.ankle-foot.performance",
+          "label": "Verify mobile triangle, texture, decoded-byte and route-bundle budgets.",
+          "status": "required"
+        }
+      ],
       "assetHash": null,
       "assetPath": null,
       "attribution": "required before use",
@@ -459,6 +821,12 @@
         "unrelatedRouteBundleBytes": 0
       },
       "creator": "unknown",
+      "fallback": {
+        "diagramAssetId": null,
+        "publicEligibility": false,
+        "status": "text-only-review-placeholder",
+        "summary": "No licensed and reviewed three-dimensional asset is available. Use approved text references while acquisition and accessibility review remain open."
+      },
       "id": "asset3d.ankle-foot.review-slot",
       "interactions": [
         "rotate",
@@ -484,6 +852,7 @@
         "webglFallbackRequired": true
       },
       "permittedUse": "none",
+      "plannedStructures": [],
       "publicEligibility": false,
       "region": "ankle-foot",
       "relatedCaseIds": [],

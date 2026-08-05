@@ -22,6 +22,7 @@
   "publicRoutes": 0,
   "regionalSceneSlots": 8,
   "schemaVersion": 1,
+  "shoulderPlannedStructures": 16,
   "structureTypesSupported": [
     "bone",
     "joint",

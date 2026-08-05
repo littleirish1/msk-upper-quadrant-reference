@@ -1,0 +1,29 @@
+{
+  "authority": "private-shoulder-movement-case-links",
+  "records": [
+    {
+      "caseId": "case.shoulder.case-04",
+      "evidenceGap": "The existing presentation mentions the activity, but no movement interpretation is approved.",
+      "proposedMovementIds": [
+        "movement.shoulder.functional.lifting-carrying",
+        "movement.shoulder.functional.reaching-overhead",
+        "movement.shoulder.functional.sleeping-positioning",
+        "movement.shoulder.functional.throwing"
+      ],
+      "publicEligibility": false,
+      "relationshipState": "review-required"
+    },
+    {
+      "caseId": "case.shoulder.case-05",
+      "evidenceGap": "The existing presentation mentions the activity, but no movement interpretation is approved.",
+      "proposedMovementIds": [
+        "movement.shoulder.functional.dressing",
+        "movement.shoulder.functional.hand-behind-back",
+        "movement.shoulder.functional.sleeping-positioning"
+      ],
+      "publicEligibility": false,
+      "relationshipState": "review-required"
+    }
+  ],
+  "schemaVersion": 1
+}

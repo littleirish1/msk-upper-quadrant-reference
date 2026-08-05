@@ -1,0 +1,9 @@
+{
+  "answerLeakageSurfaces": 0,
+  "authoredQuestions": 0,
+  "evidenceLinkedQuestions": 0,
+  "publicQuestions": 0,
+  "schemaVersion": 1,
+  "sourceInsufficientSlots": 10,
+  "targetSlots": 10
+}

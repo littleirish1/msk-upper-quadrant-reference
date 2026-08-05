@@ -1,0 +1,909 @@
+{
+  "authority": "governed-movement-library",
+  "records": [
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.joint.flexion"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.joint.flexion",
+      "jointMovement": {
+        "antagonists": [],
+        "arthrokinematics": [],
+        "axis": null,
+        "plane": null,
+        "primeMovers": [],
+        "stabilisers": [],
+        "supportedRanges": [],
+        "synergists": []
+      },
+      "kind": "joint",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Flexion",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "flexion",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.joint.extension"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.joint.extension",
+      "jointMovement": {
+        "antagonists": [],
+        "arthrokinematics": [],
+        "axis": null,
+        "plane": null,
+        "primeMovers": [],
+        "stabilisers": [],
+        "supportedRanges": [],
+        "synergists": []
+      },
+      "kind": "joint",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Extension",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "extension",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.joint.abduction"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.joint.abduction",
+      "jointMovement": {
+        "antagonists": [],
+        "arthrokinematics": [],
+        "axis": null,
+        "plane": null,
+        "primeMovers": [],
+        "stabilisers": [],
+        "supportedRanges": [],
+        "synergists": []
+      },
+      "kind": "joint",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Abduction",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "abduction",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.joint.adduction"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.joint.adduction",
+      "jointMovement": {
+        "antagonists": [],
+        "arthrokinematics": [],
+        "axis": null,
+        "plane": null,
+        "primeMovers": [],
+        "stabilisers": [],
+        "supportedRanges": [],
+        "synergists": []
+      },
+      "kind": "joint",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Adduction",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "adduction",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.joint.external-rotation"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.joint.external-rotation",
+      "jointMovement": {
+        "antagonists": [],
+        "arthrokinematics": [],
+        "axis": null,
+        "plane": null,
+        "primeMovers": [],
+        "stabilisers": [],
+        "supportedRanges": [],
+        "synergists": []
+      },
+      "kind": "joint",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "External rotation",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "external-rotation",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.joint.internal-rotation"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.joint.internal-rotation",
+      "jointMovement": {
+        "antagonists": [],
+        "arthrokinematics": [],
+        "axis": null,
+        "plane": null,
+        "primeMovers": [],
+        "stabilisers": [],
+        "supportedRanges": [],
+        "synergists": []
+      },
+      "kind": "joint",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Internal rotation",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "internal-rotation",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.joint.horizontal-flexion-extension"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.joint.horizontal-flexion-extension",
+      "jointMovement": {
+        "antagonists": [],
+        "arthrokinematics": [],
+        "axis": null,
+        "plane": null,
+        "primeMovers": [],
+        "stabilisers": [],
+        "supportedRanges": [],
+        "synergists": []
+      },
+      "kind": "joint",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Horizontal flexion and extension",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "horizontal-flexion-extension",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.joint.scapular-upward-downward-rotation"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.joint.scapular-upward-downward-rotation",
+      "jointMovement": {
+        "antagonists": [],
+        "arthrokinematics": [],
+        "axis": null,
+        "plane": null,
+        "primeMovers": [],
+        "stabilisers": [],
+        "supportedRanges": [],
+        "synergists": []
+      },
+      "kind": "joint",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Scapular upward and downward rotation",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "scapular-upward-downward-rotation",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.joint.scapular-protraction-retraction"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.joint.scapular-protraction-retraction",
+      "jointMovement": {
+        "antagonists": [],
+        "arthrokinematics": [],
+        "axis": null,
+        "plane": null,
+        "primeMovers": [],
+        "stabilisers": [],
+        "supportedRanges": [],
+        "synergists": []
+      },
+      "kind": "joint",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Scapular protraction and retraction",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "scapular-protraction-retraction",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.joint.scapular-elevation-depression"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.joint.scapular-elevation-depression",
+      "jointMovement": {
+        "antagonists": [],
+        "arthrokinematics": [],
+        "axis": null,
+        "plane": null,
+        "primeMovers": [],
+        "stabilisers": [],
+        "supportedRanges": [],
+        "synergists": []
+      },
+      "kind": "joint",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Scapular elevation and depression",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "scapular-elevation-depression",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.functional.reaching-overhead"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.functional.reaching-overhead",
+      "jointMovement": null,
+      "kind": "functional",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Reaching overhead",
+      "relatedCaseIds": [
+        "case.shoulder.case-04"
+      ],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "reaching-overhead",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.functional.hand-behind-head"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.functional.hand-behind-head",
+      "jointMovement": null,
+      "kind": "functional",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Hand behind head",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "hand-behind-head",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.functional.hand-behind-back"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.functional.hand-behind-back",
+      "jointMovement": null,
+      "kind": "functional",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Hand behind back",
+      "relatedCaseIds": [
+        "case.shoulder.case-05"
+      ],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "hand-behind-back",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.functional.dressing"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.functional.dressing",
+      "jointMovement": null,
+      "kind": "functional",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Dressing",
+      "relatedCaseIds": [
+        "case.shoulder.case-05"
+      ],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "dressing",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.functional.grooming"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.functional.grooming",
+      "jointMovement": null,
+      "kind": "functional",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Grooming",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "grooming",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.functional.lifting-carrying"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.functional.lifting-carrying",
+      "jointMovement": null,
+      "kind": "functional",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Lifting and carrying",
+      "relatedCaseIds": [
+        "case.shoulder.case-04"
+      ],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "lifting-carrying",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.functional.pushing-pulling"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.functional.pushing-pulling",
+      "jointMovement": null,
+      "kind": "functional",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Pushing and pulling",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "pushing-pulling",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.functional.throwing"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.functional.throwing",
+      "jointMovement": null,
+      "kind": "functional",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Throwing",
+      "relatedCaseIds": [
+        "case.shoulder.case-04"
+      ],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "throwing",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.functional.sleeping-positioning"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.functional.sleeping-positioning",
+      "jointMovement": null,
+      "kind": "functional",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Sleeping and positioning",
+      "relatedCaseIds": [
+        "case.shoulder.case-04",
+        "case.shoulder.case-05"
+      ],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "sleeping-positioning",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    },
+    {
+      "accessibleTranscript": "No reviewed movement description is available for this private authoring slot.",
+      "compensations": [],
+      "evidenceGapIds": [
+        "gap.movement.shoulder.functional.work-overhead"
+      ],
+      "evidenceRecordIds": [],
+      "id": "movement.shoulder.functional.work-overhead",
+      "jointMovement": null,
+      "kind": "functional",
+      "lifecycle": "planned",
+      "linked3dStructureIds": [],
+      "normalVariation": [],
+      "painfulPatterns": [],
+      "patientFindingModuleIds": [],
+      "phases": [],
+      "publicEligibility": false,
+      "publicLabel": "Work-related overhead tasks",
+      "relatedCaseIds": [],
+      "relatedConditionIds": [],
+      "relatedTestIds": [],
+      "reviews": {
+        "accessibility": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "evidence": "required",
+        "movement": "required",
+        "publication": "required"
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "sequence": [],
+      "slug": "work-overhead",
+      "tutorExplanation": null,
+      "unresolvedIssues": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required."
+      ]
+    }
+  ],
+  "schemaVersion": 1
+}

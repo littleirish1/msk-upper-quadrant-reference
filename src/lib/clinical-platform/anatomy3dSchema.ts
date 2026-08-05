@@ -39,6 +39,23 @@ export const anatomy3dAssetSchema = z.strictObject({
     accessibleDescription: z.string().min(1),
     reviewState: z.enum(['required', 'approved', 'stale', 'blocked']),
   })),
+  plannedStructures: z.array(z.strictObject({
+    id: z.string().regex(/^structure\./),
+    type: anatomyStructureTypeSchema,
+    label: z.string().min(1),
+    reviewState: z.literal('required'),
+  })),
+  acquisitionTasks: z.array(z.strictObject({
+    id: z.string().regex(/^task\.3d\./),
+    label: z.string().min(1),
+    status: z.literal('required'),
+  })),
+  fallback: z.strictObject({
+    status: z.literal('text-only-review-placeholder'),
+    summary: z.string().min(1),
+    diagramAssetId: z.string().min(1).nullable(),
+    publicEligibility: z.literal(false),
+  }),
   interactions: z.array(z.enum([
     'rotate', 'zoom', 'pan', 'reset', 'isolate', 'hide-show', 'transparency',
     'select', 'labels', 'origin-insertion', 'muscle-actions', 'related-content', 'keyboard-controls',
@@ -86,6 +103,9 @@ export const anatomy3dAssetSchema = z.strictObject({
   }
   if (!asset.assetPath && asset.structures.length > 0) {
     context.addIssue({ code: 'custom', path: ['structures'], message: 'placeholder scenes cannot invent anatomy labels' })
+  }
+  if (!asset.assetPath && asset.acquisitionTasks.length === 0) {
+    context.addIssue({ code: 'custom', path: ['acquisitionTasks'], message: 'placeholder scenes require an explicit acquisition and review queue' })
   }
 })
 

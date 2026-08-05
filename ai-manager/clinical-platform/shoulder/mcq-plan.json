@@ -1,0 +1,193 @@
+{
+  "authoredQuestionCount": 0,
+  "authority": "governed-shoulder-mcq-plan",
+  "clinicalApprovalCreated": false,
+  "publicQuestionCount": 0,
+  "records": [
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required."
+      ],
+      "competenceClaimAllowed": false,
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder-slice.01",
+      "learningObjective": "Review shoulder bone and joint anatomy",
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "reviewState": "review-required",
+      "targetContentIds": [
+        "module.shoulder.anatomy.scapula",
+        "module.shoulder.anatomy.glenohumeral-joint"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required."
+      ],
+      "competenceClaimAllowed": false,
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder-slice.02",
+      "learningObjective": "Review shoulder muscle-role anatomy",
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "reviewState": "review-required",
+      "targetContentIds": [
+        "module.shoulder.anatomy.rotator-cuff",
+        "module.shoulder.anatomy.deltoid"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required."
+      ],
+      "competenceClaimAllowed": false,
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder-slice.03",
+      "learningObjective": "Compare the governed RCRSP presentation record",
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "reviewState": "review-required",
+      "targetContentIds": [
+        "module.shoulder.presentation.rcrsp"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required."
+      ],
+      "competenceClaimAllowed": false,
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder-slice.04",
+      "learningObjective": "Compare the governed stiffness presentation record",
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "reviewState": "review-required",
+      "targetContentIds": [
+        "module.shoulder.presentation.adhesive-capsulitis"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required."
+      ],
+      "competenceClaimAllowed": false,
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder-slice.05",
+      "learningObjective": "Review differential-discriminator requirements",
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "reviewState": "review-required",
+      "targetContentIds": [
+        "module.shoulder.presentation.cervical-neurological-mimic"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required."
+      ],
+      "competenceClaimAllowed": false,
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder-slice.06",
+      "learningObjective": "Review red-flag and escalation requirements",
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "reviewState": "review-required",
+      "targetContentIds": [
+        "module.shoulder.assessment.red-flag-screen"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required."
+      ],
+      "competenceClaimAllowed": false,
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder-slice.07",
+      "learningObjective": "Review shoulder assessment-domain requirements",
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "reviewState": "review-required",
+      "targetContentIds": [
+        "module.shoulder.assessment.range-pattern",
+        "module.shoulder.assessment.strength-pattern"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required."
+      ],
+      "competenceClaimAllowed": false,
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder-slice.08",
+      "learningObjective": "Review movement-record requirements",
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "reviewState": "review-required",
+      "targetContentIds": [
+        "movement.shoulder.functional.reaching-overhead"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required."
+      ],
+      "competenceClaimAllowed": false,
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder-slice.09",
+      "learningObjective": "Review management evidence requirements",
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "reviewState": "review-required",
+      "targetContentIds": [
+        "module.shoulder.management.principles"
+      ]
+    },
+    {
+      "answerRevealPolicy": "after-submission",
+      "authoredContent": null,
+      "blockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required."
+      ],
+      "competenceClaimAllowed": false,
+      "evidenceRecordIds": [],
+      "id": "mcq-slot.shoulder-slice.10",
+      "learningObjective": "Review prognosis evidence requirements",
+      "lifecycle": "source-insufficient",
+      "publicEligibility": false,
+      "reviewState": "review-required",
+      "targetContentIds": [
+        "module.shoulder.prognosis.reassessment"
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetCount": 10
+}
