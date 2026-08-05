@@ -195,6 +195,14 @@ try {
     ].join('\n'),
   }, 'personal patient identifier in a code string')
 
+  expectPass('separate-code-strings-do-not-form-an-identifier', {
+    'implementation/src/lib/example.ts': [
+      "export const category = 'case'",
+      "export const machineToken = 'identifierFixture'",
+      '',
+    ].join('\n'),
+  })
+
   const sha256WithNhsShapedDigits = `${['943', '476', '5919'].join('')}${'a'.repeat(54)}`
   expectPass('sha256-manifest-hash-field', {
     'SHA256SUMS.txt': `${sha256WithNhsShapedDigits}  safe-report.txt\n`,

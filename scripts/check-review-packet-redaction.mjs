@@ -385,7 +385,7 @@ function extractCodeReviewText(text, fileName) {
       values.push(scanner.getTokenText())
     }
   }
-  return values.join('\n')
+  return values.join('\n;\n')
 }
 
 function extractHtmlReviewText(text) {
