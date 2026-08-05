@@ -5569,7 +5569,7 @@
       "sourceClearanceState": "review-required",
       "sources": [
         {
-          "checksum": "sha256:54c47d14db823f61983025e43f5f31ca5b27fb16ba9172b7c170278d2ba9a615",
+          "checksum": "sha256:fa34ba83560852f66a09d326f3fbe83732cb90a25785e3c9d70d40717b929c3b",
           "provenanceStatus": "repository-tracked",
           "repositoryPath": "content/evidence-hub/evidence/evidence-repository-evidence-pilot-rcrsp.json",
           "revision": "1",
@@ -5608,6 +5608,64 @@
       "supersededBy": [],
       "supersedes": [],
       "title": "Registered legacy source catalogue"
+    },
+    {
+      "blockers": [
+        "Evidence Hub record is private and requires exact-revision review."
+      ],
+      "clinicalReviewState": "required",
+      "contentType": "evidence-hub-record",
+      "destinationRoute": null,
+      "duplicateOf": null,
+      "evidenceReviewState": "required",
+      "id": "inventory.guided-case.shoulder.case-04",
+      "lifecycleState": "draft",
+      "nextAction": "Complete the Evidence Hub review workflow without creating a public route.",
+      "publicationState": "private",
+      "region": "shoulder",
+      "schemaVersion": 1,
+      "sourceClearanceState": "review-required",
+      "sources": [
+        {
+          "checksum": "sha256:b340ada193b2c1fcb99ef3eb4795c8949bc3e0259ba789eb6a22cb0143140ea7",
+          "provenanceStatus": "repository-tracked",
+          "repositoryPath": "content/evidence-hub/guided-cases/guided-case.shoulder.case-04.json",
+          "revision": "1",
+          "sourceId": "guided-case.shoulder.case-04"
+        }
+      ],
+      "supersededBy": [],
+      "supersedes": [],
+      "title": "guided-case.shoulder.case-04"
+    },
+    {
+      "blockers": [
+        "Evidence Hub record is private and requires exact-revision review."
+      ],
+      "clinicalReviewState": "required",
+      "contentType": "evidence-hub-record",
+      "destinationRoute": null,
+      "duplicateOf": null,
+      "evidenceReviewState": "required",
+      "id": "inventory.guided-case.shoulder.case-05",
+      "lifecycleState": "draft",
+      "nextAction": "Complete the Evidence Hub review workflow without creating a public route.",
+      "publicationState": "private",
+      "region": "shoulder",
+      "schemaVersion": 1,
+      "sourceClearanceState": "review-required",
+      "sources": [
+        {
+          "checksum": "sha256:e80e3ba996a988944065d44017f185a6e7e533e0a7388c71a55b665a9acf5b49",
+          "provenanceStatus": "repository-tracked",
+          "repositoryPath": "content/evidence-hub/guided-cases/guided-case.shoulder.case-05.json",
+          "revision": "1",
+          "sourceId": "guided-case.shoulder.case-05"
+        }
+      ],
+      "supersededBy": [],
+      "supersedes": [],
+      "title": "guided-case.shoulder.case-05"
     },
     {
       "blockers": [
@@ -10071,7 +10129,7 @@
       "anatomy": 9,
       "condition": 33,
       "differential-red-flag": 1,
-      "evidence-hub-record": 3,
+      "evidence-hub-record": 5,
       "evidence-source": 133,
       "guided-case": 9,
       "learning-record": 6,
@@ -10087,11 +10145,11 @@
     "byPublicationState": {
       "blocked": 4,
       "planned": 5,
-      "private": 202,
+      "private": 204,
       "public": 137
     },
     "publicItems": 137,
-    "total": 348,
+    "total": 350,
     "unaccountedLegacyItems": 41
   }
 }
