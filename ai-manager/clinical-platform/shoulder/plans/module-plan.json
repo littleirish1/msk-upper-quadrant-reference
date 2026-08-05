@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "authority": "private-shoulder-module-plan",
+  "records": [
+    { "id": "module.shoulder.anatomy.scapula", "group": "anatomy", "type": "anatomy-relationship", "label": "Scapula", "sourceId": "source.repository.shoulder.acromioclavicular-reference" },
+    { "id": "module.shoulder.anatomy.clavicle", "group": "anatomy", "type": "anatomy-relationship", "label": "Clavicle", "sourceId": "source.repository.shoulder.acromioclavicular-reference" },
+    { "id": "module.shoulder.anatomy.proximal-humerus", "group": "anatomy", "type": "anatomy-relationship", "label": "Proximal humerus", "sourceId": "source.repository.shoulder.rotator-cuff-reference" },
+    { "id": "module.shoulder.anatomy.glenohumeral-joint", "group": "anatomy", "type": "anatomy-relationship", "label": "Glenohumeral joint", "sourceId": "source.repository.shoulder.instability-reference" },
+    { "id": "module.shoulder.anatomy.acromioclavicular-joint", "group": "anatomy", "type": "anatomy-relationship", "label": "Acromioclavicular joint", "sourceId": "source.repository.shoulder.acromioclavicular-reference" },
+    { "id": "module.shoulder.anatomy.sternoclavicular-joint", "group": "anatomy", "type": "anatomy-relationship", "label": "Sternoclavicular joint", "sourceId": "source.repository.shoulder.acromioclavicular-reference" },
+    { "id": "module.shoulder.anatomy.scapulothoracic-articulation", "group": "anatomy", "type": "anatomy-relationship", "label": "Scapulothoracic articulation", "sourceId": "source.repository.shoulder.rotator-cuff-reference" },
+    { "id": "module.shoulder.anatomy.capsule", "group": "anatomy", "type": "anatomy-relationship", "label": "Shoulder capsule", "sourceId": "source.repository.shoulder.adhesive-capsulitis-reference" },
+    { "id": "module.shoulder.anatomy.labrum", "group": "anatomy", "type": "anatomy-relationship", "label": "Shoulder labrum", "sourceId": "source.repository.shoulder.instability-reference" },
+    { "id": "module.shoulder.anatomy.key-ligaments", "group": "anatomy", "type": "anatomy-relationship", "label": "Key shoulder ligaments", "sourceId": "source.repository.shoulder.instability-reference" },
+    { "id": "module.shoulder.anatomy.rotator-cuff", "group": "anatomy", "type": "muscle-role", "label": "Rotator cuff", "sourceId": "source.repository.shoulder.rotator-cuff-reference" },
+    { "id": "module.shoulder.anatomy.deltoid", "group": "anatomy", "type": "muscle-role", "label": "Deltoid", "sourceId": "source.repository.shoulder.rotator-cuff-reference" },
+    { "id": "module.shoulder.anatomy.biceps-long-head", "group": "anatomy", "type": "anatomy-relationship", "label": "Long head of biceps", "sourceId": "source.repository.shoulder.rotator-cuff-reference" },
+    { "id": "module.shoulder.anatomy.scapular-muscles", "group": "anatomy", "type": "muscle-role", "label": "Major scapular muscles", "sourceId": "source.repository.shoulder.rotator-cuff-reference" },
+    { "id": "module.shoulder.anatomy.nerve-relationships", "group": "anatomy", "type": "anatomy-relationship", "label": "Relevant nerve relationships", "sourceId": "source.repository.shoulder.cervical-mimic-reference" },
+    { "id": "module.shoulder.anatomy.landmarks", "group": "anatomy", "type": "anatomy-relationship", "label": "Clinically relevant landmarks", "sourceId": "source.repository.shoulder.acromioclavicular-reference" },
+
+    { "id": "module.shoulder.presentation.rcrsp", "group": "presentation", "type": "condition-presentation", "label": "Rotator cuff related shoulder pain", "sourceId": "source.repository.shoulder.rotator-cuff-reference" },
+    { "id": "module.shoulder.presentation.adhesive-capsulitis", "group": "presentation", "type": "condition-presentation", "label": "Adhesive capsulitis", "sourceId": "source.repository.shoulder.adhesive-capsulitis-reference" },
+    { "id": "module.shoulder.presentation.instability", "group": "presentation", "type": "condition-presentation", "label": "Shoulder instability", "sourceId": "source.repository.shoulder.instability-reference" },
+    { "id": "module.shoulder.presentation.acute-traumatic", "group": "presentation", "type": "condition-variant", "label": "Acute traumatic shoulder presentation", "sourceId": "source.repository.shoulder.acromioclavicular-reference" },
+    { "id": "module.shoulder.presentation.acromioclavicular", "group": "presentation", "type": "condition-presentation", "label": "Acromioclavicular presentation", "sourceId": "source.repository.shoulder.acromioclavicular-reference" },
+    { "id": "module.shoulder.presentation.cervical-neurological-mimic", "group": "presentation", "type": "differential-discriminator", "label": "Cervical or neurological mimic", "sourceId": "source.repository.shoulder.cervical-mimic-reference" },
+    { "id": "module.shoulder.presentation.referred-systemic", "group": "presentation", "type": "condition-variant", "label": "Referred or systemic presentation", "sourceId": "source.repository.shoulder.cervical-mimic-reference" },
+    { "id": "module.shoulder.presentation.atypical-variant", "group": "presentation", "type": "condition-variant", "label": "Source-supported atypical variant", "sourceId": "source.repository.shoulder.case-04" },
+
+    { "id": "module.shoulder.assessment.pain-location-behaviour", "group": "assessment", "type": "symptom", "label": "Pain location and behaviour", "sourceId": "source.repository.shoulder.case-04" },
+    { "id": "module.shoulder.assessment.irritability", "group": "assessment", "type": "symptom", "label": "Irritability", "sourceId": "source.repository.shoulder.case-04" },
+    { "id": "module.shoulder.assessment.functional-limitation", "group": "assessment", "type": "function", "label": "Functional limitation", "sourceId": "source.repository.shoulder.case-05" },
+    { "id": "module.shoulder.assessment.sleep-night-symptoms", "group": "assessment", "type": "symptom", "label": "Sleep and night symptoms", "sourceId": "source.repository.shoulder.case-05" },
+    { "id": "module.shoulder.assessment.range-pattern", "group": "assessment", "type": "movement-finding", "label": "Range-of-motion pattern", "sourceId": "source.repository.shoulder.case-05" },
+    { "id": "module.shoulder.assessment.strength-pattern", "group": "assessment", "type": "objective-finding", "label": "Strength pattern", "sourceId": "source.repository.shoulder.case-04" },
+    { "id": "module.shoulder.assessment.neurological-screen", "group": "assessment", "type": "neurological-finding", "label": "Neurological screen", "sourceId": "source.repository.shoulder.cervical-mimic-reference" },
+    { "id": "module.shoulder.assessment.red-flag-screen", "group": "assessment", "type": "red-flag", "label": "Red-flag screen", "sourceId": "source.repository.shoulder.case-05" },
+    { "id": "module.shoulder.assessment.test-findings", "group": "assessment", "type": "test-finding", "label": "Test findings", "sourceId": "source.repository.shoulder.case-04" },
+    { "id": "module.shoulder.assessment.relevant-negatives", "group": "assessment", "type": "relevant-negative", "label": "Relevant negative findings", "sourceId": "source.repository.shoulder.case-05" },
+
+    { "id": "module.shoulder.management.principles", "group": "management-prognosis", "type": "management", "label": "Management principles", "sourceId": "source.repository.shoulder.rotator-cuff-reference" },
+    { "id": "module.shoulder.prognosis.reassessment", "group": "management-prognosis", "type": "prognosis", "label": "Prognosis and reassessment", "sourceId": "source.repository.shoulder.adhesive-capsulitis-reference" }
+  ]
+}

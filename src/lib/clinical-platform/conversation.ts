@@ -40,15 +40,26 @@ export interface AdapterOutput {
 
 const intentPatterns: Array<{ intentId: string; patterns: RegExp[] }> = [
   { intentId: 'presenting-complaint', patterns: [/what brings you/i, /tell me (?:more|what happened)/i, /presenting complaint/i, /why are you here/i] },
+  { intentId: 'symptom-location', patterns: [/where (?:is|does).*\b(?:pain|hurt|symptom)/i, /point to (?:the|your) (?:pain|symptom)/i, /pain location/i] },
+  { intentId: 'laterality', patterns: [/which side/i, /left or right/i, /what side/i] },
+  { intentId: 'distribution', patterns: [/does (?:it|the pain) (?:spread|travel|radiate)/i, /where.*spread/i, /distribution/i] },
+  { intentId: 'quality', patterns: [/what does (?:it|the pain) feel like/i, /describe (?:it|the pain)/i, /pain quality/i] },
+  { intentId: 'intensity', patterns: [/how (?:bad|severe|strong)/i, /out of ten/i, /pain score/i] },
+  { intentId: 'irritability', patterns: [/how easily.*provok/i, /how long.*settle/i, /irritab/i] },
+  { intentId: 'onset', patterns: [/how did (?:it|this) start/i, /sudden or gradual/i, /onset/i] },
+  { intentId: 'mechanism', patterns: [/injur|trauma|accident|fall|collision|mechanism/i] },
+  { intentId: 'progression', patterns: [/getting (?:better|worse)/i, /chang(?:e|ed|ing) over time/i, /progress/i] },
+  { intentId: 'twenty-four-hour-pattern', patterns: [/night|sleep|morning|during the day|24.hour/i] },
   { intentId: 'medication', patterns: [/medicat(?:ion|ons|on)/i, /\bmeds?\b/i, /tablet/i] },
   { intentId: 'medical-history', patterns: [/medical history/i, /health condition/i, /past history/i] },
   { intentId: 'red-flag-history', patterns: [/red flag/i, /weight loss/i, /fever/i, /night sweat/i] },
   { intentId: 'bladder-bowel-saddle', patterns: [/bladder/i, /bowel/i, /saddle/i] },
+  { intentId: 'neurological-finding', patterns: [/numb|tingl|pins and needles|weakness in (?:the|your) arm|neck symptom/i] },
   { intentId: 'function', patterns: [/function/i, /daily activit/i, /work/i, /sport/i] },
   { intentId: 'aggravating-factor', patterns: [/worse/i, /aggravat/i, /bring.*on/i] },
   { intentId: 'easing-factor', patterns: [/better/i, /eas(?:e|ing)/i, /relie/i] },
   { intentId: 'duration', patterns: [/how long/i, /duration/i, /when.*start/i] },
-  { intentId: 'objective-request', patterns: [/examin/i, /objective/i, /test result/i] },
+  { intentId: 'objective-request', patterns: [/examin/i, /objective/i, /special test/i, /test result/i] },
 ]
 
 const injectionPattern = /ignore (?:all |the )?(?:previous|above)|system prompt|developer message|reveal hidden|print.*truth|jailbreak/i

@@ -1,0 +1,14 @@
+{
+  "clinicalAssertionsCreated": 0,
+  "evidenceLinkedModules": 0,
+  "groups": {
+    "anatomy": 16,
+    "assessment": 10,
+    "management-prognosis": 2,
+    "presentation": 8
+  },
+  "publicModules": 0,
+  "reviewRequired": 36,
+  "schemaVersion": 1,
+  "total": 36
+}

@@ -1,0 +1,415 @@
+{
+  "authority": "clinical-compatibility-rules",
+  "revision": 1,
+  "rules": [
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Laterality consistency remains a disabled review slot; no clinical rule is encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human source, evidence and clinical review is required before enabling Laterality consistency."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule.shoulder.laterality"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.shoulder.laterality",
+      "kind": "laterality",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {
+          "region": "shoulder"
+        }
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Anatomical distribution consistency remains a disabled review slot; no clinical rule is encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human source, evidence and clinical review is required before enabling Anatomical distribution consistency."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule.shoulder.anatomical-distribution"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.shoulder.anatomical-distribution",
+      "kind": "anatomy-distribution",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {
+          "region": "shoulder"
+        }
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Active and passive movement pattern remains a disabled review slot; no clinical rule is encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human source, evidence and clinical review is required before enabling Active and passive movement pattern."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule.shoulder.active-passive-pattern"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.shoulder.active-passive-pattern",
+      "kind": "subjective-objective-consistency",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {
+          "region": "shoulder"
+        }
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Strength finding consistency remains a disabled review slot; no clinical rule is encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human source, evidence and clinical review is required before enabling Strength finding consistency."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule.shoulder.strength-pattern"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.shoulder.strength-pattern",
+      "kind": "subjective-objective-consistency",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {
+          "region": "shoulder"
+        }
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Neurological consistency remains a disabled review slot; no clinical rule is encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human source, evidence and clinical review is required before enabling Neurological consistency."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule.shoulder.neurological-consistency"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.shoulder.neurological-consistency",
+      "kind": "diagnosis-differential-consistency",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {
+          "region": "shoulder"
+        }
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Trauma dependency remains a disabled review slot; no clinical rule is encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human source, evidence and clinical review is required before enabling Trauma dependency."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule.shoulder.trauma-dependency"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.shoulder.trauma-dependency",
+      "kind": "timing",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {
+          "region": "shoulder"
+        }
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Instability dependency remains a disabled review slot; no clinical rule is encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human source, evidence and clinical review is required before enabling Instability dependency."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule.shoulder.instability-dependency"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.shoulder.instability-dependency",
+      "kind": "requires",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {
+          "region": "shoulder"
+        }
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Red-flag escalation remains a disabled review slot; no clinical rule is encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human source, evidence and clinical review is required before enabling Red-flag escalation."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule.shoulder.red-flag-escalation"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.shoulder.red-flag-escalation",
+      "kind": "escalation",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {
+          "region": "shoulder"
+        }
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Movement compatibility remains a disabled review slot; no clinical rule is encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human source, evidence and clinical review is required before enabling Movement compatibility."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule.shoulder.movement-compatibility"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.shoulder.movement-compatibility",
+      "kind": "movement",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {
+          "region": "shoulder"
+        }
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Case-stage disclosure remains a disabled review slot; no clinical rule is encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human source, evidence and clinical review is required before enabling Case-stage disclosure."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule.shoulder.disclosure-stage"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.shoulder.disclosure-stage",
+      "kind": "conditional-permission",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {
+          "region": "shoulder"
+        }
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Evidence and publication eligibility remains a disabled review slot; no clinical rule is encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human source, evidence and clinical review is required before enabling Evidence and publication eligibility."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule.shoulder.evidence-publication"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.shoulder.evidence-publication",
+      "kind": "conditional-permission",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {
+          "region": "shoulder"
+        }
+      }
+    },
+    {
+      "approval": {
+        "approvedRevision": null,
+        "clinicalReview": "required",
+        "evidenceReview": "required",
+        "ruleHash": null
+      },
+      "effect": {
+        "escalationRequirement": null,
+        "impliesModuleIds": [],
+        "message": "Three-dimensional asset licensing eligibility remains a disabled review slot; no clinical rule is encoded.",
+        "prohibitsModuleIds": [],
+        "requiresModuleIds": [],
+        "reviewRequirement": "Human source, evidence and clinical review is required before enabling Three-dimensional asset licensing eligibility."
+      },
+      "enabled": false,
+      "evidenceGapIds": [
+        "gap.rule.shoulder.asset-licensing"
+      ],
+      "evidenceRecordIds": [],
+      "id": "rule.shoulder.asset-licensing",
+      "kind": "publication-licensing-dependency",
+      "lifecycle": "draft",
+      "revision": 1,
+      "schemaVersion": 1,
+      "severity": "error",
+      "when": {
+        "allModuleIds": [],
+        "anyModuleIds": [],
+        "contextEquals": {
+          "region": "shoulder"
+        }
+      }
+    }
+  ],
+  "schemaVersion": 1
+}

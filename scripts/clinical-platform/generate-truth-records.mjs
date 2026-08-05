@@ -73,8 +73,8 @@ const records = sources.map(({ file, kind }) => {
         source: baseSource,
         disclosureStage: 'final-reveal',
         volunteered: false,
-        retrievalIntents: [domain],
-        synonyms: [],
+        retrievalIntents: [domain, ...(source.region === 'shoulder' ? shoulderIntentAliases(domain) : [])],
+        synonyms: source.region === 'shoulder' ? shoulderIntentAliases(domain) : [],
         patientKnowledge: 'does-not-know',
         uncertainty: 'not-applicable',
         clinicalRole: 'diagnosis',
@@ -154,6 +154,24 @@ const report = {
   implicitNegatives: 0,
   publicRoutesChanged: 0,
   clinicalMeaningChanged: false,
+}
+
+function shoulderIntentAliases(domain) {
+  const aliases = {
+    'symptom-location': ['pain-location', 'where-pain'],
+    laterality: ['which-side'],
+    distribution: ['pain-spread', 'radiation'],
+    quality: ['pain-quality'],
+    intensity: ['pain-severity', 'pain-score'],
+    irritability: ['symptom-irritability'],
+    onset: ['symptom-onset'],
+    mechanism: ['injury-mechanism', 'trauma-history'],
+    progression: ['symptom-progression'],
+    'twenty-four-hour-pattern': ['night-symptoms', 'sleep'],
+    'neurological-finding': ['arm-neurology', 'cervical-symptoms'],
+    'red-flag-history': ['safety-screen'],
+  }
+  return aliases[domain] ?? []
 }
 
 writeJson(outputFile, library)

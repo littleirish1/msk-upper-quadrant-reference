@@ -1,0 +1,40 @@
+{
+  "authority": "shoulder-case-mode-status",
+  "privatePilots": [
+    {
+      "blocker": "Draft case remains excluded until exact-revision human review and publication approval.",
+      "caseId": "case.shoulder.pilot-02",
+      "modes": [],
+      "publicEligibility": false
+    }
+  ],
+  "publicCases": [
+    {
+      "caseId": "case.shoulder.case-04",
+      "conversationGrounding": "exact-truth-hash",
+      "diagnosisBoundary": "governed-reveal-only",
+      "modes": [
+        "guided",
+        "conversation",
+        "hybrid"
+      ],
+      "networkProviderCalls": 0,
+      "persistedLearnerText": false,
+      "truthHash": "6d6a29a04802baad8d33e87af7e6a35dd51106c0a891c8a35cea60c56331c69f"
+    },
+    {
+      "caseId": "case.shoulder.case-05",
+      "conversationGrounding": "exact-truth-hash",
+      "diagnosisBoundary": "governed-reveal-only",
+      "modes": [
+        "guided",
+        "conversation",
+        "hybrid"
+      ],
+      "networkProviderCalls": 0,
+      "persistedLearnerText": false,
+      "truthHash": "9109db5737c02fb0551d1da8f4a7944bca9e30fc32ceab946e75add16fff5bb7"
+    }
+  ],
+  "schemaVersion": 1
+}

@@ -1,0 +1,3826 @@
+{
+  "authority": "clinical-module-library",
+  "generatedFrom": [
+    "ai-manager/clinical-platform/shoulder/plans/module-plan.json",
+    "ai-manager/clinical-platform/shoulder/source-inventory.json"
+  ],
+  "modules": [
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.scapula",
+      "internalLabel": "Scapula review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Scapula",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.scapula"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+            "recordId": "source.repository.shoulder.acromioclavicular-reference",
+            "repositoryPath": "content/shoulder/acromioclavicular-joint.mdx#overview-pathophysiology",
+            "revision": "sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Scapula; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "anatomy-relationship"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.clavicle",
+      "internalLabel": "Clavicle review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Clavicle",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.clavicle"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+            "recordId": "source.repository.shoulder.acromioclavicular-reference",
+            "repositoryPath": "content/shoulder/acromioclavicular-joint.mdx#overview-pathophysiology",
+            "revision": "sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Clavicle; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "anatomy-relationship"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.proximal-humerus",
+      "internalLabel": "Proximal humerus review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Proximal humerus",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.proximal-humerus"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+            "recordId": "source.repository.shoulder.rotator-cuff-reference",
+            "repositoryPath": "content/shoulder/rotator-cuff-tendinopathy.mdx#overview-pathophysiology",
+            "revision": "sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Proximal humerus; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "anatomy-relationship"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.glenohumeral-joint",
+      "internalLabel": "Glenohumeral joint review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Glenohumeral joint",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.glenohumeral-joint"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+            "recordId": "source.repository.shoulder.instability-reference",
+            "repositoryPath": "content/shoulder/shoulder-instability.mdx#overview-pathophysiology",
+            "revision": "sha256:a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Glenohumeral joint; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "anatomy-relationship"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.acromioclavicular-joint",
+      "internalLabel": "Acromioclavicular joint review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Acromioclavicular joint",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.acromioclavicular-joint"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+            "recordId": "source.repository.shoulder.acromioclavicular-reference",
+            "repositoryPath": "content/shoulder/acromioclavicular-joint.mdx#overview-pathophysiology",
+            "revision": "sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Acromioclavicular joint; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "anatomy-relationship"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.sternoclavicular-joint",
+      "internalLabel": "Sternoclavicular joint review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Sternoclavicular joint",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.sternoclavicular-joint"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+            "recordId": "source.repository.shoulder.acromioclavicular-reference",
+            "repositoryPath": "content/shoulder/acromioclavicular-joint.mdx#overview-pathophysiology",
+            "revision": "sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Sternoclavicular joint; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "anatomy-relationship"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.scapulothoracic-articulation",
+      "internalLabel": "Scapulothoracic articulation review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Scapulothoracic articulation",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.scapulothoracic-articulation"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+            "recordId": "source.repository.shoulder.rotator-cuff-reference",
+            "repositoryPath": "content/shoulder/rotator-cuff-tendinopathy.mdx#overview-pathophysiology",
+            "revision": "sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Scapulothoracic articulation; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "anatomy-relationship"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.capsule",
+      "internalLabel": "Shoulder capsule review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Shoulder capsule",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.capsule"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+            "recordId": "source.repository.shoulder.adhesive-capsulitis-reference",
+            "repositoryPath": "content/shoulder/adhesive-capsulitis.mdx#overview-pathophysiology",
+            "revision": "sha256:0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Shoulder capsule; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "anatomy-relationship"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.labrum",
+      "internalLabel": "Shoulder labrum review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Shoulder labrum",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.labrum"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+            "recordId": "source.repository.shoulder.instability-reference",
+            "repositoryPath": "content/shoulder/shoulder-instability.mdx#overview-pathophysiology",
+            "revision": "sha256:a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Shoulder labrum; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "anatomy-relationship"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.key-ligaments",
+      "internalLabel": "Key shoulder ligaments review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Key shoulder ligaments",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.key-ligaments"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+            "recordId": "source.repository.shoulder.instability-reference",
+            "repositoryPath": "content/shoulder/shoulder-instability.mdx#overview-pathophysiology",
+            "revision": "sha256:a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Key shoulder ligaments; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "anatomy-relationship"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.rotator-cuff",
+      "internalLabel": "Rotator cuff review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Rotator cuff",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.rotator-cuff"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+            "recordId": "source.repository.shoulder.rotator-cuff-reference",
+            "repositoryPath": "content/shoulder/rotator-cuff-tendinopathy.mdx#overview-pathophysiology",
+            "revision": "sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Rotator cuff; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "muscle-role"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.deltoid",
+      "internalLabel": "Deltoid review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Deltoid",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.deltoid"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+            "recordId": "source.repository.shoulder.rotator-cuff-reference",
+            "repositoryPath": "content/shoulder/rotator-cuff-tendinopathy.mdx#overview-pathophysiology",
+            "revision": "sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Deltoid; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "muscle-role"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.biceps-long-head",
+      "internalLabel": "Long head of biceps review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Long head of biceps",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.biceps-long-head"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+            "recordId": "source.repository.shoulder.rotator-cuff-reference",
+            "repositoryPath": "content/shoulder/rotator-cuff-tendinopathy.mdx#overview-pathophysiology",
+            "revision": "sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Long head of biceps; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "anatomy-relationship"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.scapular-muscles",
+      "internalLabel": "Major scapular muscles review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Major scapular muscles",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.scapular-muscles"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+            "recordId": "source.repository.shoulder.rotator-cuff-reference",
+            "repositoryPath": "content/shoulder/rotator-cuff-tendinopathy.mdx#overview-pathophysiology",
+            "revision": "sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Major scapular muscles; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "muscle-role"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.nerve-relationships",
+      "internalLabel": "Relevant nerve relationships review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Relevant nerve relationships",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.nerve-relationships"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+            "recordId": "source.repository.shoulder.cervical-mimic-reference",
+            "repositoryPath": "content/cervical/cervical-radiculopathy.mdx#overview-pathophysiology",
+            "revision": "sha256:d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Relevant nerve relationships; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "anatomy-relationship"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.anatomy.landmarks",
+      "internalLabel": "Clinically relevant landmarks review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Clinically relevant landmarks",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.anatomy.landmarks"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+            "recordId": "source.repository.shoulder.acromioclavicular-reference",
+            "repositoryPath": "content/shoulder/acromioclavicular-joint.mdx#overview-pathophysiology",
+            "revision": "sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Clinically relevant landmarks; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "anatomy-relationship"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.presentation.rcrsp",
+      "internalLabel": "Rotator cuff related shoulder pain review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Rotator cuff related shoulder pain",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.presentation.rcrsp"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+            "recordId": "source.repository.shoulder.rotator-cuff-reference",
+            "repositoryPath": "content/shoulder/rotator-cuff-tendinopathy.mdx#overview-pathophysiology",
+            "revision": "sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Rotator cuff related shoulder pain; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "condition-presentation"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.presentation.adhesive-capsulitis",
+      "internalLabel": "Adhesive capsulitis review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Adhesive capsulitis",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.presentation.adhesive-capsulitis"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+            "recordId": "source.repository.shoulder.adhesive-capsulitis-reference",
+            "repositoryPath": "content/shoulder/adhesive-capsulitis.mdx#overview-pathophysiology",
+            "revision": "sha256:0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Adhesive capsulitis; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "condition-presentation"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.presentation.instability",
+      "internalLabel": "Shoulder instability review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Shoulder instability",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.presentation.instability"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+            "recordId": "source.repository.shoulder.instability-reference",
+            "repositoryPath": "content/shoulder/shoulder-instability.mdx#overview-pathophysiology",
+            "revision": "sha256:a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Shoulder instability; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "condition-presentation"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.presentation.acute-traumatic",
+      "internalLabel": "Acute traumatic shoulder presentation review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Acute traumatic shoulder presentation",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.presentation.acute-traumatic"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+            "recordId": "source.repository.shoulder.acromioclavicular-reference",
+            "repositoryPath": "content/shoulder/acromioclavicular-joint.mdx#overview-pathophysiology",
+            "revision": "sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Acute traumatic shoulder presentation; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "condition-variant"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.presentation.acromioclavicular",
+      "internalLabel": "Acromioclavicular presentation review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Acromioclavicular presentation",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.presentation.acromioclavicular"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+            "recordId": "source.repository.shoulder.acromioclavicular-reference",
+            "repositoryPath": "content/shoulder/acromioclavicular-joint.mdx#overview-pathophysiology",
+            "revision": "sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Acromioclavicular presentation; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "condition-presentation"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.presentation.cervical-neurological-mimic",
+      "internalLabel": "Cervical or neurological mimic review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Cervical or neurological mimic",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.presentation.cervical-neurological-mimic"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+            "recordId": "source.repository.shoulder.cervical-mimic-reference",
+            "repositoryPath": "content/cervical/cervical-radiculopathy.mdx#overview-pathophysiology",
+            "revision": "sha256:d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Cervical or neurological mimic; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "differential-discriminator"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.presentation.referred-systemic",
+      "internalLabel": "Referred or systemic presentation review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Referred or systemic presentation",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.presentation.referred-systemic"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+            "recordId": "source.repository.shoulder.cervical-mimic-reference",
+            "repositoryPath": "content/cervical/cervical-radiculopathy.mdx#overview-pathophysiology",
+            "revision": "sha256:d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Referred or systemic presentation; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "condition-variant"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.presentation.atypical-variant",
+      "internalLabel": "Source-supported atypical variant review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Source-supported atypical variant",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.presentation.atypical-variant"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+            "recordId": "source.repository.shoulder.case-04",
+            "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-04.json#learnerPresentation",
+            "revision": "sha256:f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Source-supported atypical variant; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "condition-variant"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.assessment.pain-location-behaviour",
+      "internalLabel": "Pain location and behaviour review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Pain location and behaviour",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.assessment.pain-location-behaviour"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+            "recordId": "source.repository.shoulder.case-04",
+            "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-04.json#learnerPresentation",
+            "revision": "sha256:f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Pain location and behaviour; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "symptom"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.assessment.irritability",
+      "internalLabel": "Irritability review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Irritability",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.assessment.irritability"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+            "recordId": "source.repository.shoulder.case-04",
+            "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-04.json#learnerPresentation",
+            "revision": "sha256:f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Irritability; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "symptom"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.assessment.functional-limitation",
+      "internalLabel": "Functional limitation review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Functional limitation",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.assessment.functional-limitation"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+            "recordId": "source.repository.shoulder.case-05",
+            "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-05.json#learnerPresentation",
+            "revision": "sha256:af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Functional limitation; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "function"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.assessment.sleep-night-symptoms",
+      "internalLabel": "Sleep and night symptoms review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Sleep and night symptoms",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.assessment.sleep-night-symptoms"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+            "recordId": "source.repository.shoulder.case-05",
+            "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-05.json#learnerPresentation",
+            "revision": "sha256:af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Sleep and night symptoms; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "symptom"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.assessment.range-pattern",
+      "internalLabel": "Range-of-motion pattern review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Range-of-motion pattern",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.assessment.range-pattern"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+            "recordId": "source.repository.shoulder.case-05",
+            "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-05.json#learnerPresentation",
+            "revision": "sha256:af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Range-of-motion pattern; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "movement-finding"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.assessment.strength-pattern",
+      "internalLabel": "Strength pattern review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Strength pattern",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.assessment.strength-pattern"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+            "recordId": "source.repository.shoulder.case-04",
+            "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-04.json#learnerPresentation",
+            "revision": "sha256:f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Strength pattern; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "objective-finding"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.assessment.neurological-screen",
+      "internalLabel": "Neurological screen review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Neurological screen",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.assessment.neurological-screen"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+            "recordId": "source.repository.shoulder.cervical-mimic-reference",
+            "repositoryPath": "content/cervical/cervical-radiculopathy.mdx#overview-pathophysiology",
+            "revision": "sha256:d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Neurological screen; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "neurological-finding"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.assessment.red-flag-screen",
+      "internalLabel": "Red-flag screen review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Red-flag screen",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.assessment.red-flag-screen"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+            "recordId": "source.repository.shoulder.case-05",
+            "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-05.json#learnerPresentation",
+            "revision": "sha256:af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Red-flag screen; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "red-flag"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.assessment.test-findings",
+      "internalLabel": "Test findings review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Test findings",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.assessment.test-findings"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+            "recordId": "source.repository.shoulder.case-04",
+            "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-04.json#learnerPresentation",
+            "revision": "sha256:f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Test findings; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "test-finding"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.assessment.relevant-negatives",
+      "internalLabel": "Relevant negative findings review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Relevant negative findings",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.assessment.relevant-negatives"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+            "recordId": "source.repository.shoulder.case-05",
+            "repositoryPath": "content/guided-cases/records/published/case.shoulder.case-05.json#learnerPresentation",
+            "revision": "sha256:af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Relevant negative findings; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "relevant-negative"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.management.principles",
+      "internalLabel": "Management principles review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Management principles",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.management.principles"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+            "recordId": "source.repository.shoulder.rotator-cuff-reference",
+            "repositoryPath": "content/shoulder/rotator-cuff-tendinopathy.mdx#overview-pathophysiology",
+            "revision": "sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Management principles; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "management"
+    },
+    {
+      "applicability": {
+        "limitations": [
+          "Applicability is not established until source, evidence and clinical review are complete."
+        ],
+        "populations": [],
+        "regions": [
+          "shoulder"
+        ],
+        "settings": [
+          "education authoring review"
+        ]
+      },
+      "companions": {
+        "prohibited": [],
+        "required": []
+      },
+      "constraints": {
+        "escalation": [],
+        "severity": [],
+        "temporal": []
+      },
+      "difficulty": "not-rated",
+      "fieldClassifications": {
+        "applicability": "internal-only",
+        "companions": "internal-only",
+        "constraints": "internal-only",
+        "difficulty": "internal-only",
+        "fieldClassifications": "internal-only",
+        "flags": "internal-only",
+        "id": "public-immediate",
+        "internalLabel": "internal-only",
+        "lifecycle": "public-immediate",
+        "patientPhrasing": "public-immediate",
+        "publicationState": "internal-only",
+        "publicLabel": "public-immediate",
+        "questionMappings": "internal-only",
+        "relationships": "internal-only",
+        "reviews": "human-review-required",
+        "revision": "public-immediate",
+        "schemaVersion": "public-immediate",
+        "structuredMeaning": "public-immediate",
+        "synonyms": "internal-only",
+        "tutorPhrasing": "public-after-reveal",
+        "type": "public-immediate"
+      },
+      "flags": {
+        "aiAssisted": true,
+        "humanEdited": false,
+        "requiresHumanReview": true
+      },
+      "id": "module.shoulder.prognosis.reassessment",
+      "internalLabel": "Prognosis and reassessment review slot",
+      "lifecycle": "draft",
+      "patientPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "publicationState": "private",
+      "publicLabel": "Prognosis and reassessment",
+      "questionMappings": [],
+      "relationships": {
+        "evidenceGapIds": [
+          "gap.module.shoulder.prognosis.reassessment"
+        ],
+        "evidenceRecordIds": [],
+        "sources": [
+          {
+            "hash": "0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+            "recordId": "source.repository.shoulder.adhesive-capsulitis-reference",
+            "repositoryPath": "content/shoulder/adhesive-capsulitis.mdx#overview-pathophysiology",
+            "revision": "sha256:0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45"
+          }
+        ]
+      },
+      "reviews": {
+        "approvalHash": null,
+        "approvedRevision": null,
+        "clinical": "required",
+        "evidence": "required",
+        "limitations": [
+          "The module contains an authoring slot only and no approved clinical assertion.",
+          "A repository baseline source may preserve existing wording but does not approve this module revision."
+        ],
+        "nextReviewDate": null,
+        "publication": "required",
+        "source": "baseline-carried-forward",
+        "unresolvedIssues": [
+          "Map exact evidence locators and claims after source clearance.",
+          "Complete exact-revision clinical, evidence and publication review."
+        ]
+      },
+      "revision": 1,
+      "schemaVersion": 1,
+      "structuredMeaning": {
+        "kind": "structured-fact",
+        "sourceCaseId": null,
+        "value": "Governed review slot for Prognosis and reassessment; no clinical assertion is encoded."
+      },
+      "synonyms": [],
+      "tutorPhrasing": {
+        "approved": [],
+        "status": "review-required"
+      },
+      "type": "prognosis"
+    }
+  ],
+  "schemaVersion": 1
+}

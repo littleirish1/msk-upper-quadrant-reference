@@ -1,0 +1,76 @@
+{
+  "authority": "shoulder-truth-record-status",
+  "records": [
+    {
+      "authoritativeHash": "6d6a29a04802baad8d33e87af7e6a35dd51106c0a891c8a35cea60c56331c69f",
+      "caseId": "case.shoulder.case-04",
+      "caseRevision": 1,
+      "conversationAsset": "/case-conversations/0eb06c464c8b38af5351cd16.json",
+      "diagnosisWithheldUntilReveal": true,
+      "domainCount": 42,
+      "explicitGapCount": 40,
+      "informationUnavailableBehaviour": true,
+      "lifecycle": "baseline-published",
+      "missingDomains": [],
+      "publicModeEligibility": true,
+      "recordId": "patient-truth.shoulder.case-04",
+      "reviewState": "baseline-carried-forward",
+      "stateCounts": {
+        "intentionally-withheld": 2,
+        "not-yet-assessed": 9,
+        "positive": 2,
+        "unavailable-in-case": 29
+      }
+    },
+    {
+      "authoritativeHash": "9109db5737c02fb0551d1da8f4a7944bca9e30fc32ceab946e75add16fff5bb7",
+      "caseId": "case.shoulder.case-05",
+      "caseRevision": 1,
+      "conversationAsset": "/case-conversations/fb03e02618f0d6ccdcbb7797.json",
+      "diagnosisWithheldUntilReveal": true,
+      "domainCount": 42,
+      "explicitGapCount": 40,
+      "informationUnavailableBehaviour": true,
+      "lifecycle": "baseline-published",
+      "missingDomains": [],
+      "publicModeEligibility": true,
+      "recordId": "patient-truth.shoulder.case-05",
+      "reviewState": "baseline-carried-forward",
+      "stateCounts": {
+        "intentionally-withheld": 2,
+        "not-yet-assessed": 9,
+        "positive": 2,
+        "unavailable-in-case": 29
+      }
+    },
+    {
+      "authoritativeHash": "0e3e904a488905e9623459d094041980e2b39c0094b59cdc9b42db2909b2d7fd",
+      "caseId": "case.shoulder.pilot-02",
+      "caseRevision": 1,
+      "conversationAsset": null,
+      "diagnosisWithheldUntilReveal": true,
+      "domainCount": 42,
+      "explicitGapCount": 40,
+      "informationUnavailableBehaviour": true,
+      "lifecycle": "draft",
+      "missingDomains": [],
+      "publicModeEligibility": false,
+      "recordId": "patient-truth.shoulder.pilot-02",
+      "reviewState": "review-required",
+      "stateCounts": {
+        "intentionally-withheld": 2,
+        "not-yet-assessed": 9,
+        "positive": 2,
+        "unavailable-in-case": 29
+      }
+    }
+  ],
+  "schemaVersion": 1,
+  "summary": {
+    "baselinePublic": 2,
+    "implicitNegatives": 0,
+    "privateDrafts": 1,
+    "records": 3,
+    "valuesInvented": 0
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "clinicalRulesInvented": 0,
+  "disabledCompatibilityRules": 12,
+  "enabledShoulderRules": 0,
+  "explicitTruthGaps": 120,
+  "privateShoulderPilots": 1,
+  "publicShoulderCases": 2,
+  "schemaVersion": 1,
+  "truthRecords": 3
+}

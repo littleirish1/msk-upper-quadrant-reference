@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "authority": "private-shoulder-compatibility-plan",
+  "records": [
+    { "id": "rule.shoulder.laterality", "kind": "laterality", "label": "Laterality consistency" },
+    { "id": "rule.shoulder.anatomical-distribution", "kind": "anatomy-distribution", "label": "Anatomical distribution consistency" },
+    { "id": "rule.shoulder.active-passive-pattern", "kind": "subjective-objective-consistency", "label": "Active and passive movement pattern" },
+    { "id": "rule.shoulder.strength-pattern", "kind": "subjective-objective-consistency", "label": "Strength finding consistency" },
+    { "id": "rule.shoulder.neurological-consistency", "kind": "diagnosis-differential-consistency", "label": "Neurological consistency" },
+    { "id": "rule.shoulder.trauma-dependency", "kind": "timing", "label": "Trauma dependency" },
+    { "id": "rule.shoulder.instability-dependency", "kind": "requires", "label": "Instability dependency" },
+    { "id": "rule.shoulder.red-flag-escalation", "kind": "escalation", "label": "Red-flag escalation" },
+    { "id": "rule.shoulder.movement-compatibility", "kind": "movement", "label": "Movement compatibility" },
+    { "id": "rule.shoulder.disclosure-stage", "kind": "conditional-permission", "label": "Case-stage disclosure" },
+    { "id": "rule.shoulder.evidence-publication", "kind": "conditional-permission", "label": "Evidence and publication eligibility" },
+    { "id": "rule.shoulder.asset-licensing", "kind": "publication-licensing-dependency", "label": "Three-dimensional asset licensing eligibility" }
+  ]
+}
