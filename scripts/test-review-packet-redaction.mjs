@@ -128,6 +128,44 @@ try {
     ].join('\n'),
   })
 
+  expectPass('patch-governed-candidate-machine-id', {
+    'implementation.patch': [
+      'diff --git a/reports/release/example.json b/reports/release/example.json',
+      `index ${'1'.repeat(40)}..${'2'.repeat(40)} 100644`,
+      '--- a/reports/release/example.json',
+      '+++ b/reports/release/example.json',
+      '@@ -1 +1 @@',
+      '-{"candidateId":"release.fixture.previous"}',
+      '+{"candidateId":"release.fixture.current"}',
+      '',
+    ].join('\n'),
+  })
+
+  expectFail('patch-personal-candidate-identifier', {
+    'implementation.patch': [
+      'diff --git a/review.txt b/review.txt',
+      `index ${'1'.repeat(40)}..${'2'.repeat(40)} 100644`,
+      '--- a/review.txt',
+      '+++ b/review.txt',
+      '@@ -0,0 +1 @@',
+      '+candidate id: CANDIDATE-12345',
+      '',
+    ].join('\n'),
+  }, 'personal candidate identifier in a patch')
+
+  expectFail('json-patch-personal-candidate-identifier', {
+    'implementation.patch': [
+      'diff --git a/reports/release/example.json b/reports/release/example.json',
+      `index ${'1'.repeat(40)}..${'2'.repeat(40)} 100644`,
+      '--- a/reports/release/example.json',
+      '+++ b/reports/release/example.json',
+      '@@ -1 +1 @@',
+      '-{"candidateId":"CANDIDATE-12344"}',
+      '+{"candidateId":"CANDIDATE-12345"}',
+      '',
+    ].join('\n'),
+  }, 'personal candidate identifier in a JSON patch')
+
   const sha256WithNhsShapedDigits = `${['943', '476', '5919'].join('')}${'a'.repeat(54)}`
   expectPass('sha256-manifest-hash-field', {
     'SHA256SUMS.txt': `${sha256WithNhsShapedDigits}  safe-report.txt\n`,

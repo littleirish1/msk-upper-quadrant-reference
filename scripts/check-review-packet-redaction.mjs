@@ -58,6 +58,7 @@ const securityToolingCategoryAllowances = new Map([
     'credential-value',
     'nhs-number',
     'patient-or-hospital-identifier',
+    'student-or-candidate-identifier',
     'telephone-number',
     'unc-path',
   ])],
@@ -129,6 +130,7 @@ for (const file of collectFiles(packetDir)) {
       pattern.lastIndex = 0
       if (pattern.test(section.text)) fail(relative + ': credential value detected')
     }
+    scanJsonCandidateIdAssignments(section.text, relative, section.repositoryPath)
     const governedTexts = governedEvidenceTexts(relative, section)
     for (const governedText of governedTexts) for (const category of scanReviewPacketSensitiveText(
       governedText,
@@ -137,7 +139,8 @@ for (const file of collectFiles(packetDir)) {
     )) {
       if (securityToolingAllowance(section.repositoryPath || relative)?.has(category)) continue
       if (relative.endsWith('.patch') && section.repositoryPath?.startsWith('ai-manager/reports/source-intake-pilot/') && category === 'uk-postcode') continue
-      fail(relative + ': governed sensitive-data pattern detected (' + category + ')')
+      const sectionLabel = section.repositoryPath ? ` [${section.repositoryPath}]` : ''
+      fail(relative + sectionLabel + ': governed sensitive-data pattern detected (' + category + ')')
     }
   }
 
@@ -169,6 +172,15 @@ if (complete) {
 }
 
 finish()
+
+function scanJsonCandidateIdAssignments(text, packetPath, repositoryPath) {
+  if (!/\.json$/iu.test(repositoryPath || '')) return
+  for (const match of text.matchAll(/["']candidateId["']\s*:\s*["']([^"'\r\n]+)["']/giu)) {
+    if (/^[a-z][a-z0-9-]*(?:\.[a-z0-9-]+)+$/u.test(match[1])) continue
+    const sectionLabel = repositoryPath ? ` [${repositoryPath}]` : ''
+    fail(packetPath + sectionLabel + ': non-machine candidate identifier detected')
+  }
+}
 
 function scanCredentialRules(text, relative) {
   const sections = relative === '05-filtered-full-diff.patch'
@@ -349,7 +361,8 @@ function extractCodeReviewText(text, fileName) {
   )
   const values = []
   const visit = (node) => {
-    if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) {
+    if ((ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node))
+      && !(ts.isPropertyAssignment(node.parent) && node.parent.name === node)) {
       values.push(node.text)
     } else if (ts.isTemplateExpression(node)) {
       values.push(node.getText(sourceFile))
