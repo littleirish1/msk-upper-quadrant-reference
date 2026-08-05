@@ -1286,161 +1286,161 @@
     ],
     "shoulderModules": [
       {
-        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "hash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "id": "module.shoulder.anatomy.scapula",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "hash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "id": "module.shoulder.anatomy.clavicle",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "hash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "id": "module.shoulder.anatomy.proximal-humerus",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "hash": "25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
         "id": "module.shoulder.anatomy.glenohumeral-joint",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "hash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "id": "module.shoulder.anatomy.acromioclavicular-joint",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "hash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "id": "module.shoulder.anatomy.sternoclavicular-joint",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "hash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "id": "module.shoulder.anatomy.scapulothoracic-articulation",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+        "hash": "d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
         "id": "module.shoulder.anatomy.capsule",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "hash": "25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
         "id": "module.shoulder.anatomy.labrum",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "hash": "25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
         "id": "module.shoulder.anatomy.key-ligaments",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "hash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "id": "module.shoulder.anatomy.rotator-cuff",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "hash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "id": "module.shoulder.anatomy.deltoid",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "hash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "id": "module.shoulder.anatomy.biceps-long-head",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "hash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "id": "module.shoulder.anatomy.scapular-muscles",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "hash": "2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
         "id": "module.shoulder.anatomy.nerve-relationships",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "hash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "id": "module.shoulder.anatomy.landmarks",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "hash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "id": "module.shoulder.presentation.rcrsp",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+        "hash": "d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
         "id": "module.shoulder.presentation.adhesive-capsulitis",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "hash": "25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
         "id": "module.shoulder.presentation.instability",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "hash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "id": "module.shoulder.presentation.acute-traumatic",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "hash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "id": "module.shoulder.presentation.acromioclavicular",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "hash": "2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
         "id": "module.shoulder.presentation.cervical-neurological-mimic",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "hash": "2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
         "id": "module.shoulder.presentation.referred-systemic",
         "lifecycle": "draft",
         "publication": "private",
@@ -1496,7 +1496,7 @@
         "revision": 1
       },
       {
-        "hash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "hash": "2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
         "id": "module.shoulder.assessment.neurological-screen",
         "lifecycle": "draft",
         "publication": "private",
@@ -1524,14 +1524,14 @@
         "revision": 1
       },
       {
-        "hash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "hash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "id": "module.shoulder.management.principles",
         "lifecycle": "draft",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+        "hash": "d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
         "id": "module.shoulder.prognosis.reassessment",
         "lifecycle": "draft",
         "publication": "private",
@@ -1768,35 +1768,35 @@
     ],
     "shoulderSources": [
       {
-        "hash": "sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "hash": "sha256:32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "id": "source.repository.shoulder.rotator-cuff-reference",
         "lifecycle": "baseline-carried-forward",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "sha256:0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+        "hash": "sha256:d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
         "id": "source.repository.shoulder.adhesive-capsulitis-reference",
         "lifecycle": "baseline-carried-forward",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "hash": "sha256:12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "id": "source.repository.shoulder.acromioclavicular-reference",
         "lifecycle": "baseline-carried-forward",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "sha256:a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "hash": "sha256:25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
         "id": "source.repository.shoulder.instability-reference",
         "lifecycle": "baseline-carried-forward",
         "publication": "private",
         "revision": 1
       },
       {
-        "hash": "sha256:d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "hash": "sha256:2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
         "id": "source.repository.shoulder.cervical-mimic-reference",
         "lifecycle": "baseline-carried-forward",
         "publication": "private",

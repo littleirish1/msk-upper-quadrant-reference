@@ -614,8 +614,8 @@
         "entityType": "evidence",
         "entityId": "source.repository.shoulder.acromioclavicular-reference",
         "revision": 1,
-        "contentHash": "806d6c9704d4251582572f314f65f625026b3b9f28d9d7e85537f864d9a04105",
-        "exactRevisionKey": "evidence:source.repository.shoulder.acromioclavicular-reference@1#sha256:806d6c9704d4251582572f314f65f625026b3b9f28d9d7e85537f864d9a04105",
+        "contentHash": "e275380341f54ca3ebcf219c777cdcaf5757c2a1e66f57112bb03077775b6648",
+        "exactRevisionKey": "evidence:source.repository.shoulder.acromioclavicular-reference@1#sha256:e275380341f54ca3ebcf219c777cdcaf5757c2a1e66f57112bb03077775b6648",
         "publicationState": "private"
       },
       "decisions": [
@@ -656,8 +656,8 @@
         "entityType": "evidence",
         "entityId": "source.repository.shoulder.adhesive-capsulitis-reference",
         "revision": 1,
-        "contentHash": "9e9c8079f40e9f19104eb3a83cea25beeb4bf662a5d498703fe617d6456f0b65",
-        "exactRevisionKey": "evidence:source.repository.shoulder.adhesive-capsulitis-reference@1#sha256:9e9c8079f40e9f19104eb3a83cea25beeb4bf662a5d498703fe617d6456f0b65",
+        "contentHash": "9a133adb3ccf010c97102ad031eadd781a0fff4e595b5d70b3142d925ce7ae86",
+        "exactRevisionKey": "evidence:source.repository.shoulder.adhesive-capsulitis-reference@1#sha256:9a133adb3ccf010c97102ad031eadd781a0fff4e595b5d70b3142d925ce7ae86",
         "publicationState": "private"
       },
       "decisions": [
@@ -782,8 +782,8 @@
         "entityType": "evidence",
         "entityId": "source.repository.shoulder.cervical-mimic-reference",
         "revision": 1,
-        "contentHash": "9aa5f44c9b1dd0e06420c6462f4c3794787407f75131e9d9e8f4ba221f4f5f02",
-        "exactRevisionKey": "evidence:source.repository.shoulder.cervical-mimic-reference@1#sha256:9aa5f44c9b1dd0e06420c6462f4c3794787407f75131e9d9e8f4ba221f4f5f02",
+        "contentHash": "7ca7f0848f6fc371f2173c8ce97aac2e7e3625f8eb3331eafc3287400fafe7f6",
+        "exactRevisionKey": "evidence:source.repository.shoulder.cervical-mimic-reference@1#sha256:7ca7f0848f6fc371f2173c8ce97aac2e7e3625f8eb3331eafc3287400fafe7f6",
         "publicationState": "private"
       },
       "decisions": [
@@ -824,8 +824,8 @@
         "entityType": "evidence",
         "entityId": "source.repository.shoulder.instability-reference",
         "revision": 1,
-        "contentHash": "13444ccf95a9c1d4cd5b13d032f9a95f06f33f36bf51b8d9454ee9b21327eddb",
-        "exactRevisionKey": "evidence:source.repository.shoulder.instability-reference@1#sha256:13444ccf95a9c1d4cd5b13d032f9a95f06f33f36bf51b8d9454ee9b21327eddb",
+        "contentHash": "e31125869d36ee04c2e4a4fd711f9afe357098fdac930d7234122b3bdfcc8e95",
+        "exactRevisionKey": "evidence:source.repository.shoulder.instability-reference@1#sha256:e31125869d36ee04c2e4a4fd711f9afe357098fdac930d7234122b3bdfcc8e95",
         "publicationState": "private"
       },
       "decisions": [
@@ -866,8 +866,8 @@
         "entityType": "evidence",
         "entityId": "source.repository.shoulder.rotator-cuff-reference",
         "revision": 1,
-        "contentHash": "0c7afe4ecf3ed5b4a281c5d8b1c27914ec696fb783c068615f12ecd882e10532",
-        "exactRevisionKey": "evidence:source.repository.shoulder.rotator-cuff-reference@1#sha256:0c7afe4ecf3ed5b4a281c5d8b1c27914ec696fb783c068615f12ecd882e10532",
+        "contentHash": "0cffa9448f24db798099212d5f67f123a6358eeadefce7901d7c9dbbad6f4acb",
+        "exactRevisionKey": "evidence:source.repository.shoulder.rotator-cuff-reference@1#sha256:0cffa9448f24db798099212d5f67f123a6358eeadefce7901d7c9dbbad6f4acb",
         "publicationState": "private"
       },
       "decisions": [
@@ -2690,8 +2690,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.acromioclavicular-joint",
         "revision": 1,
-        "contentHash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
-        "exactRevisionKey": "module:module.shoulder.anatomy.acromioclavicular-joint@1#sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "contentHash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
+        "exactRevisionKey": "module:module.shoulder.anatomy.acromioclavicular-joint@1#sha256:12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "publicationState": "private"
       },
       "decisions": [
@@ -2732,8 +2732,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.biceps-long-head",
         "revision": 1,
-        "contentHash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
-        "exactRevisionKey": "module:module.shoulder.anatomy.biceps-long-head@1#sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "contentHash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
+        "exactRevisionKey": "module:module.shoulder.anatomy.biceps-long-head@1#sha256:32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "publicationState": "private"
       },
       "decisions": [
@@ -2774,8 +2774,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.capsule",
         "revision": 1,
-        "contentHash": "0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
-        "exactRevisionKey": "module:module.shoulder.anatomy.capsule@1#sha256:0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+        "contentHash": "d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
+        "exactRevisionKey": "module:module.shoulder.anatomy.capsule@1#sha256:d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
         "publicationState": "private"
       },
       "decisions": [
@@ -2816,8 +2816,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.clavicle",
         "revision": 1,
-        "contentHash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
-        "exactRevisionKey": "module:module.shoulder.anatomy.clavicle@1#sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "contentHash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
+        "exactRevisionKey": "module:module.shoulder.anatomy.clavicle@1#sha256:12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "publicationState": "private"
       },
       "decisions": [
@@ -2858,8 +2858,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.deltoid",
         "revision": 1,
-        "contentHash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
-        "exactRevisionKey": "module:module.shoulder.anatomy.deltoid@1#sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "contentHash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
+        "exactRevisionKey": "module:module.shoulder.anatomy.deltoid@1#sha256:32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "publicationState": "private"
       },
       "decisions": [
@@ -2900,8 +2900,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.glenohumeral-joint",
         "revision": 1,
-        "contentHash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
-        "exactRevisionKey": "module:module.shoulder.anatomy.glenohumeral-joint@1#sha256:a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "contentHash": "25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
+        "exactRevisionKey": "module:module.shoulder.anatomy.glenohumeral-joint@1#sha256:25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
         "publicationState": "private"
       },
       "decisions": [
@@ -2942,8 +2942,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.key-ligaments",
         "revision": 1,
-        "contentHash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
-        "exactRevisionKey": "module:module.shoulder.anatomy.key-ligaments@1#sha256:a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "contentHash": "25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
+        "exactRevisionKey": "module:module.shoulder.anatomy.key-ligaments@1#sha256:25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
         "publicationState": "private"
       },
       "decisions": [
@@ -2984,8 +2984,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.labrum",
         "revision": 1,
-        "contentHash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
-        "exactRevisionKey": "module:module.shoulder.anatomy.labrum@1#sha256:a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "contentHash": "25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
+        "exactRevisionKey": "module:module.shoulder.anatomy.labrum@1#sha256:25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
         "publicationState": "private"
       },
       "decisions": [
@@ -3026,8 +3026,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.landmarks",
         "revision": 1,
-        "contentHash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
-        "exactRevisionKey": "module:module.shoulder.anatomy.landmarks@1#sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "contentHash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
+        "exactRevisionKey": "module:module.shoulder.anatomy.landmarks@1#sha256:12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "publicationState": "private"
       },
       "decisions": [
@@ -3068,8 +3068,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.nerve-relationships",
         "revision": 1,
-        "contentHash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
-        "exactRevisionKey": "module:module.shoulder.anatomy.nerve-relationships@1#sha256:d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "contentHash": "2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
+        "exactRevisionKey": "module:module.shoulder.anatomy.nerve-relationships@1#sha256:2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
         "publicationState": "private"
       },
       "decisions": [
@@ -3110,8 +3110,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.proximal-humerus",
         "revision": 1,
-        "contentHash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
-        "exactRevisionKey": "module:module.shoulder.anatomy.proximal-humerus@1#sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "contentHash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
+        "exactRevisionKey": "module:module.shoulder.anatomy.proximal-humerus@1#sha256:32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "publicationState": "private"
       },
       "decisions": [
@@ -3152,8 +3152,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.rotator-cuff",
         "revision": 1,
-        "contentHash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
-        "exactRevisionKey": "module:module.shoulder.anatomy.rotator-cuff@1#sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "contentHash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
+        "exactRevisionKey": "module:module.shoulder.anatomy.rotator-cuff@1#sha256:32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "publicationState": "private"
       },
       "decisions": [
@@ -3194,8 +3194,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.scapula",
         "revision": 1,
-        "contentHash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
-        "exactRevisionKey": "module:module.shoulder.anatomy.scapula@1#sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "contentHash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
+        "exactRevisionKey": "module:module.shoulder.anatomy.scapula@1#sha256:12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "publicationState": "private"
       },
       "decisions": [
@@ -3236,8 +3236,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.scapular-muscles",
         "revision": 1,
-        "contentHash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
-        "exactRevisionKey": "module:module.shoulder.anatomy.scapular-muscles@1#sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "contentHash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
+        "exactRevisionKey": "module:module.shoulder.anatomy.scapular-muscles@1#sha256:32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "publicationState": "private"
       },
       "decisions": [
@@ -3278,8 +3278,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.scapulothoracic-articulation",
         "revision": 1,
-        "contentHash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
-        "exactRevisionKey": "module:module.shoulder.anatomy.scapulothoracic-articulation@1#sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "contentHash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
+        "exactRevisionKey": "module:module.shoulder.anatomy.scapulothoracic-articulation@1#sha256:32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "publicationState": "private"
       },
       "decisions": [
@@ -3320,8 +3320,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.anatomy.sternoclavicular-joint",
         "revision": 1,
-        "contentHash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
-        "exactRevisionKey": "module:module.shoulder.anatomy.sternoclavicular-joint@1#sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "contentHash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
+        "exactRevisionKey": "module:module.shoulder.anatomy.sternoclavicular-joint@1#sha256:12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "publicationState": "private"
       },
       "decisions": [
@@ -3446,8 +3446,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.assessment.neurological-screen",
         "revision": 1,
-        "contentHash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
-        "exactRevisionKey": "module:module.shoulder.assessment.neurological-screen@1#sha256:d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "contentHash": "2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
+        "exactRevisionKey": "module:module.shoulder.assessment.neurological-screen@1#sha256:2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
         "publicationState": "private"
       },
       "decisions": [
@@ -3866,8 +3866,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.management.principles",
         "revision": 1,
-        "contentHash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
-        "exactRevisionKey": "module:module.shoulder.management.principles@1#sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "contentHash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
+        "exactRevisionKey": "module:module.shoulder.management.principles@1#sha256:32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "publicationState": "private"
       },
       "decisions": [
@@ -3908,8 +3908,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.presentation.acromioclavicular",
         "revision": 1,
-        "contentHash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
-        "exactRevisionKey": "module:module.shoulder.presentation.acromioclavicular@1#sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "contentHash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
+        "exactRevisionKey": "module:module.shoulder.presentation.acromioclavicular@1#sha256:12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "publicationState": "private"
       },
       "decisions": [
@@ -3950,8 +3950,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.presentation.acute-traumatic",
         "revision": 1,
-        "contentHash": "40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
-        "exactRevisionKey": "module:module.shoulder.presentation.acute-traumatic@1#sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+        "contentHash": "12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
+        "exactRevisionKey": "module:module.shoulder.presentation.acute-traumatic@1#sha256:12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
         "publicationState": "private"
       },
       "decisions": [
@@ -3992,8 +3992,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.presentation.adhesive-capsulitis",
         "revision": 1,
-        "contentHash": "0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
-        "exactRevisionKey": "module:module.shoulder.presentation.adhesive-capsulitis@1#sha256:0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+        "contentHash": "d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
+        "exactRevisionKey": "module:module.shoulder.presentation.adhesive-capsulitis@1#sha256:d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
         "publicationState": "private"
       },
       "decisions": [
@@ -4076,8 +4076,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.presentation.cervical-neurological-mimic",
         "revision": 1,
-        "contentHash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
-        "exactRevisionKey": "module:module.shoulder.presentation.cervical-neurological-mimic@1#sha256:d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "contentHash": "2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
+        "exactRevisionKey": "module:module.shoulder.presentation.cervical-neurological-mimic@1#sha256:2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
         "publicationState": "private"
       },
       "decisions": [
@@ -4118,8 +4118,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.presentation.instability",
         "revision": 1,
-        "contentHash": "a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
-        "exactRevisionKey": "module:module.shoulder.presentation.instability@1#sha256:a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+        "contentHash": "25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
+        "exactRevisionKey": "module:module.shoulder.presentation.instability@1#sha256:25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
         "publicationState": "private"
       },
       "decisions": [
@@ -4160,8 +4160,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.presentation.rcrsp",
         "revision": 1,
-        "contentHash": "3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
-        "exactRevisionKey": "module:module.shoulder.presentation.rcrsp@1#sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+        "contentHash": "32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
+        "exactRevisionKey": "module:module.shoulder.presentation.rcrsp@1#sha256:32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
         "publicationState": "private"
       },
       "decisions": [
@@ -4202,8 +4202,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.presentation.referred-systemic",
         "revision": 1,
-        "contentHash": "d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
-        "exactRevisionKey": "module:module.shoulder.presentation.referred-systemic@1#sha256:d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+        "contentHash": "2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
+        "exactRevisionKey": "module:module.shoulder.presentation.referred-systemic@1#sha256:2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
         "publicationState": "private"
       },
       "decisions": [
@@ -4244,8 +4244,8 @@
         "entityType": "module",
         "entityId": "module.shoulder.prognosis.reassessment",
         "revision": 1,
-        "contentHash": "0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
-        "exactRevisionKey": "module:module.shoulder.prognosis.reassessment@1#sha256:0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+        "contentHash": "d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
+        "exactRevisionKey": "module:module.shoulder.prognosis.reassessment@1#sha256:d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
         "publicationState": "private"
       },
       "decisions": [
