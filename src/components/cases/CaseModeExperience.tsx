@@ -1,6 +1,6 @@
 'use client'
 
-import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from 'react'
+import { FormEvent, KeyboardEvent, type ReactNode, useEffect, useRef, useState } from 'react'
 import { Bot, MessageCircle, RotateCcw, Send, Sparkles, UserRound } from 'lucide-react'
 import { CaseReasoningPrompt } from './CaseReasoningPrompt'
 import {
@@ -20,6 +20,7 @@ interface Props {
   truthHash: string
   conversationAssetPath: string
   enhancedFeedbackAvailable?: boolean
+  guidedPresentation?: ReactNode
 }
 
 interface Message {
@@ -51,6 +52,7 @@ export function CaseModeExperience({
   truthHash,
   conversationAssetPath,
   enhancedFeedbackAvailable = false,
+  guidedPresentation,
 }: Props) {
   const [mode, setMode] = useState<CaseMode>('guided')
   const [projection, setProjection] = useState<ConversationProjection | null>(null)
@@ -111,6 +113,12 @@ export function CaseModeExperience({
       { id: base + 1, role: 'patient', text: answer.response },
     ])
     setComposer('')
+  }
+
+  function submitQuestionOnEnter(event: KeyboardEvent<HTMLTextAreaElement>) {
+    if (event.key !== 'Enter' || event.shiftKey || event.nativeEvent.isComposing) return
+    event.preventDefault()
+    event.currentTarget.form?.requestSubmit()
   }
 
   function askSuggested(question: string) {
@@ -174,6 +182,7 @@ export function CaseModeExperience({
 
       {mode === 'guided' ? (
         <div id="panel-guided" role="tabpanel" aria-labelledby="mode-guided">
+          {guidedPresentation}
           <CaseReasoningPrompt displayTitle={displayTitle} revealId={revealId} enhancedFeedbackAvailable={enhancedFeedbackAvailable} />
         </div>
       ) : (
@@ -206,10 +215,10 @@ export function CaseModeExperience({
                 <form onSubmit={submitQuestion} className="border-t border-surface-200 p-4 dark:border-surface-800 sm:p-5">
                   <label htmlFor="patient-question" className="text-sm font-semibold">Ask one focused question</label>
                   <div className="mt-2 flex gap-2">
-                    <textarea id="patient-question" value={composer} onChange={(event) => setComposer(event.target.value)} rows={2} maxLength={400} className="min-h-12 flex-1 resize-y rounded-xl border border-surface-300 bg-white px-3 py-2 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 dark:border-surface-700 dark:bg-surface-950" placeholder="Ask about the patient’s experience or history…" />
+                    <textarea id="patient-question" value={composer} onChange={(event) => setComposer(event.target.value)} onKeyDown={submitQuestionOnEnter} enterKeyHint="send" rows={2} maxLength={400} className="min-h-12 flex-1 resize-y rounded-xl border border-surface-300 bg-white px-3 py-2 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 dark:border-surface-700 dark:bg-surface-950" placeholder="Ask about the patient’s experience or history…" />
                     <button type="submit" disabled={!composer.trim()} className="min-h-12 self-stretch rounded-xl bg-brand-600 px-4 font-semibold text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-50"><Send className="h-5 w-5" aria-hidden /><span className="sr-only">Send question</span></button>
                   </div>
-                  <p className="mt-2 text-xs text-surface-500">Nothing is saved. Ask one question at a time; unavailable information is stated explicitly.</p>
+                  <p className="mt-2 text-xs text-surface-500">Press Enter to send or Shift+Enter for a new line. Nothing is saved; unavailable information is stated explicitly.</p>
                 </form>
               </>
             )}
@@ -251,12 +260,6 @@ export function CaseModeExperience({
         </section>
       )}
 
-      {mode !== 'guided' && (
-        <section aria-labelledby="reasoning-review-title">
-          <h2 id="reasoning-review-title" className="sr-only">Reasoning review and governed reveal</h2>
-          <CaseReasoningPrompt displayTitle={displayTitle} revealId={revealId} enhancedFeedbackAvailable={enhancedFeedbackAvailable} />
-        </section>
-      )}
     </div>
   )
 }

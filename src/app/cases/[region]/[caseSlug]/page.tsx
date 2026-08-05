@@ -112,29 +112,6 @@ export default async function GuidedCasePage({ params }: Props) {
           </div>
         </div>
 
-        {casePresentationContent && (
-          <section className="mb-6 rounded-xl border border-surface-200 bg-white p-5 shadow-sm dark:border-surface-800 dark:bg-surface-900">
-            <p className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">
-              Case presentation
-            </p>
-            <h2 className="mt-2 text-xl font-semibold text-surface-900 dark:text-surface-50">
-              What you know so far
-            </h2>
-            <div className="prose-clinical mt-4 max-w-none">
-              <MDXRemote
-                source={casePresentationContent}
-                components={mdxComponents}
-                options={{
-                  mdxOptions: {
-                    remarkPlugins: [remarkGfm],
-                    rehypePlugins: [rehypeSlug],
-                  },
-                }}
-              />
-            </div>
-          </section>
-        )}
-
         <CaseModeExperience
           displayTitle={displayTitle}
           revealId={revealId}
@@ -142,6 +119,28 @@ export default async function GuidedCasePage({ params }: Props) {
           truthHash={conversationAsset.truthHash}
           conversationAssetPath={conversationAsset.assetPath}
           enhancedFeedbackAvailable={caseSlug === 'cervical-radiculopathy-case-01'}
+          guidedPresentation={casePresentationContent ? (
+            <section className="mb-6 rounded-xl border border-surface-200 bg-white p-5 shadow-sm dark:border-surface-800 dark:bg-surface-900">
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">
+                Case presentation
+              </p>
+              <h2 className="mt-2 text-xl font-semibold text-surface-900 dark:text-surface-50">
+                What you know so far
+              </h2>
+              <div className="prose-clinical mt-4 max-w-none">
+                <MDXRemote
+                  source={casePresentationContent}
+                  components={mdxComponents}
+                  options={{
+                    mdxOptions: {
+                      remarkPlugins: [remarkGfm],
+                      rehypePlugins: [rehypeSlug],
+                    },
+                  }}
+                />
+              </div>
+            </section>
+          ) : null}
         />
       </div>
     </div>
