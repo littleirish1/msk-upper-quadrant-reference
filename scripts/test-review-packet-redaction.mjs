@@ -166,6 +166,35 @@ try {
     ].join('\n'),
   }, 'personal candidate identifier in a JSON patch')
 
+  expectPass('exact-json-governed-machine-id', {
+    'implementation/reports/governance/example.json': JSON.stringify({
+      recordId: 'release.fixture.current',
+      status: 'blocked',
+    }),
+  })
+
+  expectFail('exact-json-arbitrary-jwt-like-value', {
+    'implementation/reports/governance/example.json': JSON.stringify({
+      note: ['firstlongfixture', 'secondlongfixture', 'thirdlongfixture'].join('.'),
+    }),
+  }, 'JWT-like value outside a governed JSON machine-ID field')
+
+  expectPass('template-expression-machine-property', {
+    'implementation/src/lib/example.ts': [
+      'export function machineId(source: { caseId: string }) {',
+      '  return `patient-truth.${source.caseId}`',
+      '}',
+      '',
+    ].join('\n'),
+  })
+
+  expectFail('code-string-personal-patient-identifier', {
+    'implementation/src/lib/example.ts': [
+      "export const note = 'patient id: PERSON-12345'",
+      '',
+    ].join('\n'),
+  }, 'personal patient identifier in a code string')
+
   const sha256WithNhsShapedDigits = `${['943', '476', '5919'].join('')}${'a'.repeat(54)}`
   expectPass('sha256-manifest-hash-field', {
     'SHA256SUMS.txt': `${sha256WithNhsShapedDigits}  safe-report.txt\n`,

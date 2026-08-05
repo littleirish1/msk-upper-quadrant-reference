@@ -50,7 +50,7 @@ const securityToolingCategoryAllowances = new Map([
   ['ai-manager/scripts/test-source-intake-validation.mjs', new Set(['unc-path'])],
   ['ai-manager/scripts/validate-source-intake-pilot.mjs', new Set(['uk-postcode', 'unc-path'])],
   ['ai-manager/tests/test_source_intake_hardening.py', new Set(['contact-or-correspondence-block'])],
-  ['scripts/check-review-packet-redaction.mjs', new Set(['unc-path'])],
+  ['scripts/check-review-packet-redaction.mjs', new Set(['student-or-candidate-identifier', 'unc-path'])],
   ['scripts/programmes/test-release-governance.mjs', new Set(['unc-path'])],
   ['scripts/test-review-packet-exactness.mjs', new Set(['patient-or-hospital-identifier', 'unc-path'])],
   ['scripts/test-review-packet-redaction.mjs', new Set([
@@ -346,7 +346,7 @@ function extractCodeReviewText(text, fileName) {
   const source = stripPatchSyntax(text)
   if (/\.json5?$/iu.test(fileName)) {
     try {
-      return jsonStringValues(JSON.parse(source)).join('\n')
+      return jsonGovernedReviewValues(JSON.parse(source)).join('\n')
     } catch {
       // Fall through to the tolerant TypeScript parser for JSON5 or patch fragments.
     }
@@ -365,7 +365,10 @@ function extractCodeReviewText(text, fileName) {
       && !(ts.isPropertyAssignment(node.parent) && node.parent.name === node)) {
       values.push(node.text)
     } else if (ts.isTemplateExpression(node)) {
-      values.push(node.getText(sourceFile))
+      values.push(
+        node.head.rawText ?? node.head.text,
+        ...node.templateSpans.map((span) => span.literal.rawText ?? span.literal.text),
+      )
     }
     ts.forEachChild(node, visit)
   }
