@@ -1,0 +1,188 @@
+{
+  "authority": "private-shoulder-evidence-map",
+  "claims": [],
+  "clinicalQuestions": [
+    {
+      "id": "question.shoulder.terminology",
+      "status": "evidence-review-required",
+      "topic": "Terminology and classification"
+    },
+    {
+      "id": "question.shoulder.presentation",
+      "status": "evidence-review-required",
+      "topic": "Clinical presentation and important variants"
+    },
+    {
+      "id": "question.shoulder.assessment",
+      "status": "evidence-review-required",
+      "topic": "Assessment and diagnostic-test limitations"
+    },
+    {
+      "id": "question.shoulder.differential",
+      "status": "evidence-review-required",
+      "topic": "Differential diagnosis and cervical or neurological mimics"
+    },
+    {
+      "id": "question.shoulder.red-flags",
+      "status": "evidence-review-required",
+      "topic": "Red flags and escalation"
+    },
+    {
+      "id": "question.shoulder.movement",
+      "status": "evidence-review-required",
+      "topic": "Movement and functional limitation"
+    },
+    {
+      "id": "question.shoulder.management",
+      "status": "evidence-review-required",
+      "topic": "Management principles"
+    },
+    {
+      "id": "question.shoulder.prognosis",
+      "status": "evidence-review-required",
+      "topic": "Prognosis and reassessment"
+    },
+    {
+      "id": "question.shoulder.communication",
+      "status": "evidence-review-required",
+      "topic": "Patient communication"
+    }
+  ],
+  "conditionIds": [
+    "condition.shoulder.rcrsp",
+    "condition.shoulder.adhesive-capsulitis"
+  ],
+  "conflicts": [],
+  "diagnosticTestEvidence": [],
+  "evidenceSummaries": [],
+  "gaps": [
+    {
+      "blocksClaims": true,
+      "blocksPublication": true,
+      "id": "gap.question.shoulder.terminology",
+      "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+      "requiredReview": [
+        "source-clearance",
+        "evidence",
+        "clinical"
+      ],
+      "topic": "Terminology and classification"
+    },
+    {
+      "blocksClaims": true,
+      "blocksPublication": true,
+      "id": "gap.question.shoulder.presentation",
+      "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+      "requiredReview": [
+        "source-clearance",
+        "evidence",
+        "clinical"
+      ],
+      "topic": "Clinical presentation and important variants"
+    },
+    {
+      "blocksClaims": true,
+      "blocksPublication": true,
+      "id": "gap.question.shoulder.assessment",
+      "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+      "requiredReview": [
+        "source-clearance",
+        "evidence",
+        "clinical"
+      ],
+      "topic": "Assessment and diagnostic-test limitations"
+    },
+    {
+      "blocksClaims": true,
+      "blocksPublication": true,
+      "id": "gap.question.shoulder.differential",
+      "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+      "requiredReview": [
+        "source-clearance",
+        "evidence",
+        "clinical"
+      ],
+      "topic": "Differential diagnosis and cervical or neurological mimics"
+    },
+    {
+      "blocksClaims": true,
+      "blocksPublication": true,
+      "id": "gap.question.shoulder.red-flags",
+      "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+      "requiredReview": [
+        "source-clearance",
+        "evidence",
+        "clinical"
+      ],
+      "topic": "Red flags and escalation"
+    },
+    {
+      "blocksClaims": true,
+      "blocksPublication": true,
+      "id": "gap.question.shoulder.movement",
+      "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+      "requiredReview": [
+        "source-clearance",
+        "evidence",
+        "clinical"
+      ],
+      "topic": "Movement and functional limitation"
+    },
+    {
+      "blocksClaims": true,
+      "blocksPublication": true,
+      "id": "gap.question.shoulder.management",
+      "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+      "requiredReview": [
+        "source-clearance",
+        "evidence",
+        "clinical"
+      ],
+      "topic": "Management principles"
+    },
+    {
+      "blocksClaims": true,
+      "blocksPublication": true,
+      "id": "gap.question.shoulder.prognosis",
+      "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+      "requiredReview": [
+        "source-clearance",
+        "evidence",
+        "clinical"
+      ],
+      "topic": "Prognosis and reassessment"
+    },
+    {
+      "blocksClaims": true,
+      "blocksPublication": true,
+      "id": "gap.question.shoulder.communication",
+      "reason": "No selected source is cleared, locator-verified and appraised for a new shoulder claim in this task.",
+      "requiredReview": [
+        "source-clearance",
+        "evidence",
+        "clinical"
+      ],
+      "topic": "Patient communication"
+    }
+  ],
+  "guidedCaseIds": [
+    "guided-case.shoulder.case-04",
+    "guided-case.shoulder.case-05"
+  ],
+  "privateAuthoringOnly": true,
+  "publicEligibility": false,
+  "reviewState": "review-required",
+  "schemaVersion": 1,
+  "sourceRevisionIds": [
+    "source.repository.shoulder.acromioclavicular-reference@sha256:40d823481e0db467a0bf724a43645d1db682ffc46e2a46c443cc78e1c54c2596",
+    "source.repository.shoulder.adhesive-capsulitis-reference@sha256:0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+    "source.repository.shoulder.case-04@sha256:f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+    "source.repository.shoulder.case-05@sha256:af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+    "source.repository.shoulder.cervical-mimic-reference@sha256:d94c635472d2047f128f0de0f61370dcd2e88a859980f0a2b0499252672bec76",
+    "source.repository.shoulder.instability-reference@sha256:a16ad3177df159f48ccaf9560e1c7c047b756f52b1bcfa2c071c517642dbd2b3",
+    "source.repository.shoulder.rotator-cuff-reference@sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+    "src-07f5bc8680f6@sha256:07f5bc8680f66a8a9ceb7e1c53a3c90327df228506284bdda558c2187d737b25",
+    "src-09c409d4ae26@sha256:09c409d4ae267d9a7fbb70f72a26ac2b88c8d69649fe8b5dade0cf9ada7d83e9",
+    "src-0b5b2e3de9c6@sha256:0b5b2e3de9c6df86edb9ee7e29745758b8cba955eb2a7e4f058ea5fc001aef5c"
+  ]
+}

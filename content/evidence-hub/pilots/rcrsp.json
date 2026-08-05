@@ -1,12 +1,15 @@
 {
-  "schemaVersion": 1,
-  "pilotId": "pilot.shoulder.rcrsp",
-  "title": "Rotator Cuff Related Shoulder Pain",
-  "pilotStatus": "placeholder",
-  "lifecycleStatus": "draft",
-  "reviewStatus": "unreviewed",
-  "publicEligibility": false,
+  "entityIds": [
+    "condition.shoulder.rcrsp",
+    "guided-case.shoulder.case-04"
+  ],
   "ingestionAllowed": false,
-  "entityIds": [],
-  "notes": "Empty workflow placeholder. No evidence has been ingested or approved."
+  "lifecycleStatus": "draft",
+  "notes": "Private structural pilot only. Claims, source clearance, evidence review, clinical review and publication approval remain outstanding.",
+  "pilotId": "pilot.shoulder.rcrsp",
+  "pilotStatus": "active",
+  "publicEligibility": false,
+  "reviewStatus": "structural-review",
+  "schemaVersion": 1,
+  "title": "Rotator Cuff Related Shoulder Pain"
 }

@@ -1,0 +1,76 @@
+{
+  "anatomyIds": [],
+  "changeSummary": "Registered a private revision-pinned case relationship without changing the published guided case.",
+  "clinicalTestIds": [],
+  "createdAt": "2026-08-05",
+  "diagnosisRevealStageId": "diagnosis-reveal",
+  "difficulty": "early-intermediate",
+  "entityType": "guided-case",
+  "estimatedTime": "10-15 minutes",
+  "exerciseIds": [],
+  "id": "guided-case.shoulder.case-04",
+  "internalTitle": "Shoulder Case 01: Lateral Shoulder Pain",
+  "learningModeIds": [],
+  "lifecycleStatus": "draft",
+  "linkedConditionId": "condition.shoulder.rcrsp",
+  "mediaAssetIds": [],
+  "neutralPublicSlug": "case-04-lateral-shoulder-pain-overhead-activity",
+  "neutralTitle": "Lateral shoulder pain with overhead activity",
+  "outcomeMeasureIds": [],
+  "provenance": [
+    {
+      "checksum": "sha256:f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
+      "clearanceScope": [
+        "private-topic-mapping"
+      ],
+      "eligibilityStatus": "metadata-only",
+      "locationCategory": "repository-reviewed-source",
+      "locator": "content/guided-cases/records/published/case.shoulder.case-04.json",
+      "sourceId": "case.shoulder.case-04"
+    }
+  ],
+  "publicEligibility": false,
+  "region": "shoulder",
+  "reviewStatus": "structural-review",
+  "revision": 1,
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "claimIds": [],
+      "id": "initial-hypothesis-1",
+      "prompt": "What is your leading clinical hypothesis, and what features support it?",
+      "revealPolicy": "learner-action",
+      "type": "differential"
+    },
+    {
+      "claimIds": [],
+      "id": "differential-diagnosis-2",
+      "prompt": "What are three important differentials you would keep in mind?",
+      "revealPolicy": "learner-action",
+      "type": "differential"
+    },
+    {
+      "claimIds": [],
+      "id": "objective-assessment-3",
+      "prompt": "What would you want to assess objectively?",
+      "revealPolicy": "learner-action",
+      "type": "examination"
+    },
+    {
+      "claimIds": [],
+      "id": "management-reasoning-4",
+      "prompt": "What would your early management focus on?",
+      "revealPolicy": "learner-action",
+      "type": "management"
+    },
+    {
+      "claimIds": [],
+      "id": "diagnosis-reveal",
+      "prompt": "Use the governed case reveal only after the learner requests the final comparison.",
+      "revealPolicy": "diagnosis-reveal",
+      "type": "expert-comparison"
+    }
+  ],
+  "supersedesRevision": null,
+  "updatedAt": "2026-08-05"
+}

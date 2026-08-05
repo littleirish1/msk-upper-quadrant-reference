@@ -1,4 +1,29 @@
 {
-  "schemaVersion": 1,
-  "relationships": []
+  "relationships": [
+    {
+      "fromId": "guided-case.shoulder.case-04",
+      "fromRevision": 1,
+      "id": "relationship.guided-case.shoulder.case-04.condition-reveal",
+      "lifecycleStatus": "draft",
+      "revealStageId": "diagnosis-reveal",
+      "reviewStatus": "structural-review",
+      "role": "references",
+      "schemaVersion": 1,
+      "toId": "condition.shoulder.rcrsp",
+      "toRevision": 1
+    },
+    {
+      "fromId": "guided-case.shoulder.case-05",
+      "fromRevision": 1,
+      "id": "relationship.guided-case.shoulder.case-05.condition-reveal",
+      "lifecycleStatus": "draft",
+      "revealStageId": "diagnosis-reveal",
+      "reviewStatus": "structural-review",
+      "role": "references",
+      "schemaVersion": 1,
+      "toId": "condition.shoulder.adhesive-capsulitis",
+      "toRevision": 1
+    }
+  ],
+  "schemaVersion": 1
 }

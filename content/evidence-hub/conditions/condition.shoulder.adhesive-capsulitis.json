@@ -1,0 +1,47 @@
+{
+  "anatomyIds": [],
+  "changeSummary": "Registered a private shoulder condition shell and explicit evidence gaps; no clinical claim or approval was created.",
+  "claimIds": [],
+  "clinicalTestIds": [],
+  "codes": {},
+  "createdAt": "2026-08-05",
+  "entityType": "condition",
+  "exerciseIds": [],
+  "guidedCaseIds": [],
+  "id": "condition.shoulder.adhesive-capsulitis",
+  "lifecycleStatus": "draft",
+  "mediaAssetIds": [],
+  "outcomeMeasureIds": [],
+  "provenance": [
+    {
+      "checksum": "sha256:0b1c452c7ec39133daccc2b0dd2cf4bb949e3508b95ed5be58924c0320412a45",
+      "clearanceScope": [
+        "private-topic-mapping"
+      ],
+      "eligibilityStatus": "metadata-only",
+      "locationCategory": "repository-reviewed-source",
+      "locator": "content/shoulder/adhesive-capsulitis.mdx#overview-pathophysiology",
+      "sourceId": "source.repository.shoulder.adhesive-capsulitis-reference"
+    }
+  ],
+  "publicEligibility": false,
+  "region": "shoulder",
+  "relatedContentIds": [],
+  "reviewStatus": "structural-review",
+  "reviewSummary": {
+    "reviewDue": null,
+    "reviewedRevision": null
+  },
+  "revision": 1,
+  "schemaVersion": 1,
+  "sectionClaims": {},
+  "slug": "adhesive-capsulitis",
+  "supersedesRevision": null,
+  "synonyms": [],
+  "tags": [
+    "shoulder",
+    "private-evidence-workflow"
+  ],
+  "title": "Adhesive capsulitis",
+  "updatedAt": "2026-08-05"
+}

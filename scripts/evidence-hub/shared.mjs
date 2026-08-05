@@ -8,6 +8,7 @@ export const HUB_LIB_DIR = path.join(ROOT, 'src', 'lib', 'evidence-hub')
 export const ENTITY_DIRECTORIES = new Map([
   ['evidence', 'evidence'],
   ['claims', 'claim'],
+  ['conditions', 'condition'],
   ['references', 'reference'],
   ['anatomy', 'anatomy'],
   ['exercises', 'exercise'],

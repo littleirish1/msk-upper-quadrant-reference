@@ -1,0 +1,90 @@
+{
+  "anatomyIds": [],
+  "changeSummary": "Registered a private revision-pinned case relationship without changing the published guided case.",
+  "clinicalTestIds": [],
+  "createdAt": "2026-08-05",
+  "diagnosisRevealStageId": "diagnosis-reveal",
+  "difficulty": "early-intermediate",
+  "entityType": "guided-case",
+  "estimatedTime": "10-15 minutes",
+  "exerciseIds": [],
+  "id": "guided-case.shoulder.case-05",
+  "internalTitle": "Shoulder Case 02: Progressive Shoulder Stiffness",
+  "learningModeIds": [],
+  "lifecycleStatus": "draft",
+  "linkedConditionId": "condition.shoulder.adhesive-capsulitis",
+  "mediaAssetIds": [],
+  "neutralPublicSlug": "case-05-progressive-shoulder-stiffness",
+  "neutralTitle": "Progressive shoulder stiffness",
+  "outcomeMeasureIds": [],
+  "provenance": [
+    {
+      "checksum": "sha256:af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
+      "clearanceScope": [
+        "private-topic-mapping"
+      ],
+      "eligibilityStatus": "metadata-only",
+      "locationCategory": "repository-reviewed-source",
+      "locator": "content/guided-cases/records/published/case.shoulder.case-05.json",
+      "sourceId": "case.shoulder.case-05"
+    }
+  ],
+  "publicEligibility": false,
+  "region": "shoulder",
+  "reviewStatus": "structural-review",
+  "revision": 1,
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "claimIds": [],
+      "id": "initial-hypothesis-1",
+      "prompt": "What is your leading clinical hypothesis, and what features support it?",
+      "revealPolicy": "learner-action",
+      "type": "differential"
+    },
+    {
+      "claimIds": [],
+      "id": "differential-diagnosis-2",
+      "prompt": "What are your top three differentials, and what would make each more or less likely?",
+      "revealPolicy": "learner-action",
+      "type": "differential"
+    },
+    {
+      "claimIds": [],
+      "id": "red-flag-escalation-3",
+      "prompt": "What red flags or serious pathology considerations would you screen for?",
+      "revealPolicy": "learner-action",
+      "type": "red-flags"
+    },
+    {
+      "claimIds": [],
+      "id": "objective-assessment-4",
+      "prompt": "What would you prioritise in your objective assessment?",
+      "revealPolicy": "learner-action",
+      "type": "examination"
+    },
+    {
+      "claimIds": [],
+      "id": "objective-assessment-5",
+      "prompt": "What objective findings would fit your leading hypothesis?",
+      "revealPolicy": "learner-action",
+      "type": "examination"
+    },
+    {
+      "claimIds": [],
+      "id": "management-reasoning-6",
+      "prompt": "What would your early management focus on, and why?",
+      "revealPolicy": "learner-action",
+      "type": "management"
+    },
+    {
+      "claimIds": [],
+      "id": "diagnosis-reveal",
+      "prompt": "Use the governed case reveal only after the learner requests the final comparison.",
+      "revealPolicy": "diagnosis-reveal",
+      "type": "expert-comparison"
+    }
+  ],
+  "supersedesRevision": null,
+  "updatedAt": "2026-08-05"
+}

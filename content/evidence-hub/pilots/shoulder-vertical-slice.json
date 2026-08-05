@@ -1,0 +1,17 @@
+{
+  "entityIds": [
+    "condition.shoulder.adhesive-capsulitis",
+    "condition.shoulder.rcrsp",
+    "guided-case.shoulder.case-04",
+    "guided-case.shoulder.case-05"
+  ],
+  "ingestionAllowed": false,
+  "lifecycleStatus": "draft",
+  "notes": "Private structural integration manifest. It creates no clinical claim, evidence approval, source clearance or publication approval.",
+  "pilotId": "pilot.shoulder.vertical-slice",
+  "pilotStatus": "active",
+  "publicEligibility": false,
+  "reviewStatus": "structural-review",
+  "schemaVersion": 1,
+  "title": "Shoulder vertical slice"
+}

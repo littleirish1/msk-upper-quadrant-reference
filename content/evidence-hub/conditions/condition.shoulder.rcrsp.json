@@ -1,0 +1,47 @@
+{
+  "anatomyIds": [],
+  "changeSummary": "Registered a private shoulder condition shell and explicit evidence gaps; no clinical claim or approval was created.",
+  "claimIds": [],
+  "clinicalTestIds": [],
+  "codes": {},
+  "createdAt": "2026-08-05",
+  "entityType": "condition",
+  "exerciseIds": [],
+  "guidedCaseIds": [],
+  "id": "condition.shoulder.rcrsp",
+  "lifecycleStatus": "draft",
+  "mediaAssetIds": [],
+  "outcomeMeasureIds": [],
+  "provenance": [
+    {
+      "checksum": "sha256:3fd7a3c065b0c3789bbd19a23a290b3c3f5ed79772ed09b114dfc4b846aba48f",
+      "clearanceScope": [
+        "private-topic-mapping"
+      ],
+      "eligibilityStatus": "metadata-only",
+      "locationCategory": "repository-reviewed-source",
+      "locator": "content/shoulder/rotator-cuff-tendinopathy.mdx#overview-pathophysiology",
+      "sourceId": "source.repository.shoulder.rotator-cuff-reference"
+    }
+  ],
+  "publicEligibility": false,
+  "region": "shoulder",
+  "relatedContentIds": [],
+  "reviewStatus": "structural-review",
+  "reviewSummary": {
+    "reviewDue": null,
+    "reviewedRevision": null
+  },
+  "revision": 1,
+  "schemaVersion": 1,
+  "sectionClaims": {},
+  "slug": "rcrsp",
+  "supersedesRevision": null,
+  "synonyms": [],
+  "tags": [
+    "shoulder",
+    "private-evidence-workflow"
+  ],
+  "title": "Rotator cuff related shoulder pain",
+  "updatedAt": "2026-08-05"
+}
