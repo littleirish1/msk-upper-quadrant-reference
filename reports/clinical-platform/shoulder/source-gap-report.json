@@ -1,0 +1,117 @@
+{
+  "authority": "shoulder-source-gap-report",
+  "claimsPermitted": 0,
+  "eligibleEvidenceSourceCount": 0,
+  "nextActions": [
+    "Complete source-clearance review for selected intake records.",
+    "Verify bibliographic metadata and exact locators without importing source bodies.",
+    "Complete evidence appraisal and clinician review before drafting claims."
+  ],
+  "schemaVersion": 1,
+  "sourceCount": 10,
+  "topicCoverage": [
+    {
+      "blocker": "No selected source is cleared and reviewed for new evidence claims in this task.",
+      "cataloguedSourceIds": [
+        "source.repository.shoulder.case-04",
+        "source.repository.shoulder.instability-reference",
+        "source.repository.shoulder.rotator-cuff-reference",
+        "src-07f5bc8680f6",
+        "src-09c409d4ae26",
+        "src-0b5b2e3de9c6"
+      ],
+      "clearedForPrivateEvidenceProcessing": 0,
+      "status": "source-and-evidence-review-required",
+      "topic": "shoulder-anatomy"
+    },
+    {
+      "blocker": "No selected source is cleared and reviewed for new evidence claims in this task.",
+      "cataloguedSourceIds": [
+        "source.repository.shoulder.case-04",
+        "source.repository.shoulder.rotator-cuff-reference",
+        "src-0b5b2e3de9c6"
+      ],
+      "clearedForPrivateEvidenceProcessing": 0,
+      "status": "source-and-evidence-review-required",
+      "topic": "rotator-cuff-related-shoulder-pain"
+    },
+    {
+      "blocker": "No selected source is cleared and reviewed for new evidence claims in this task.",
+      "cataloguedSourceIds": [
+        "source.repository.shoulder.adhesive-capsulitis-reference",
+        "source.repository.shoulder.case-05"
+      ],
+      "clearedForPrivateEvidenceProcessing": 0,
+      "status": "source-and-evidence-review-required",
+      "topic": "adhesive-capsulitis"
+    },
+    {
+      "blocker": "No selected source is cleared and reviewed for new evidence claims in this task.",
+      "cataloguedSourceIds": [
+        "source.repository.shoulder.instability-reference"
+      ],
+      "clearedForPrivateEvidenceProcessing": 0,
+      "status": "source-and-evidence-review-required",
+      "topic": "instability"
+    },
+    {
+      "blocker": "No selected source is cleared and reviewed for new evidence claims in this task.",
+      "cataloguedSourceIds": [
+        "source.repository.shoulder.acromioclavicular-reference"
+      ],
+      "clearedForPrivateEvidenceProcessing": 0,
+      "status": "source-and-evidence-review-required",
+      "topic": "acute-traumatic-presentation"
+    },
+    {
+      "blocker": "No selected source is cleared and reviewed for new evidence claims in this task.",
+      "cataloguedSourceIds": [
+        "source.repository.shoulder.cervical-mimic-reference",
+        "src-07f5bc8680f6"
+      ],
+      "clearedForPrivateEvidenceProcessing": 0,
+      "status": "source-and-evidence-review-required",
+      "topic": "cervical-neurological-mimics"
+    },
+    {
+      "blocker": "No selected source is cleared and reviewed for new evidence claims in this task.",
+      "cataloguedSourceIds": [],
+      "clearedForPrivateEvidenceProcessing": 0,
+      "status": "source-and-evidence-review-required",
+      "topic": "red-flags"
+    },
+    {
+      "blocker": "No selected source is cleared and reviewed for new evidence claims in this task.",
+      "cataloguedSourceIds": [],
+      "clearedForPrivateEvidenceProcessing": 0,
+      "status": "source-and-evidence-review-required",
+      "topic": "diagnostic-tests"
+    },
+    {
+      "blocker": "No selected source is cleared and reviewed for new evidence claims in this task.",
+      "cataloguedSourceIds": [],
+      "clearedForPrivateEvidenceProcessing": 0,
+      "status": "source-and-evidence-review-required",
+      "topic": "movement-functional-limitation"
+    },
+    {
+      "blocker": "No selected source is cleared and reviewed for new evidence claims in this task.",
+      "cataloguedSourceIds": [
+        "source.repository.shoulder.adhesive-capsulitis-reference",
+        "source.repository.shoulder.rotator-cuff-reference"
+      ],
+      "clearedForPrivateEvidenceProcessing": 0,
+      "status": "source-and-evidence-review-required",
+      "topic": "management-prognosis"
+    },
+    {
+      "blocker": "No selected source is cleared and reviewed for new evidence claims in this task.",
+      "cataloguedSourceIds": [
+        "src-07f5bc8680f6"
+      ],
+      "clearedForPrivateEvidenceProcessing": 0,
+      "status": "source-and-evidence-review-required",
+      "topic": "patient-communication"
+    }
+  ]
+}
