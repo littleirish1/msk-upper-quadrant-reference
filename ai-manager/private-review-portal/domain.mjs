@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { deriveStudioSummary, loadContentRegistry } from './content-studio.mjs'
 
 function readJson(root, relative) {
   return JSON.parse(fs.readFileSync(path.join(root, ...relative.split('/')), 'utf8'))
@@ -59,6 +60,7 @@ export function deriveProjectSnapshot(repositoryRoot, store) {
   const reviews = readJson(repositoryRoot, 'ai-manager/clinical-platform/reviews/review-ledger.json')
   const release = readJson(repositoryRoot, 'ai-manager/clinical-platform/release/v1-release-candidate.json')
   const database = store.read()
+  const registry = loadContentRegistry({ repositoryRoot, store })
   return {
     generatedAt: new Date().toISOString(),
     authority: 'derived-read-only-from-repository-and-private-database',
@@ -75,6 +77,15 @@ export function deriveProjectSnapshot(repositoryRoot, store) {
       evidenceProposals: Array.isArray(evidence.relationships) ? evidence.relationships.length : Number(evidence.relationships ?? 0),
     },
     datasets,
+    studio: {
+      schemaVersion: registry.schemaVersion,
+      summary: deriveStudioSummary(registry),
+      regions: registry.regions,
+      contentTypes: registry.contentTypes,
+      extraMaterialTypes: registry.extraMaterialTypes,
+      items: registry.items.map(({ currentContent, ...item }) => item),
+      grantsApproval: false,
+    },
     documents: database.documents.map(({ relativePath, ...document }) => document),
     actions: database.actions,
     futureItems: database.futureItems,

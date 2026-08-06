@@ -1,4 +1,4 @@
-const state = { csrf: null, snapshot: null }
+const state = { csrf: null, snapshot: null, currentItem: null }
 const byId = (id) => document.getElementById(id)
 const text = (value) => document.createTextNode(String(value ?? ''))
 
@@ -17,13 +17,17 @@ function setStatus(message, error = false) {
   element.classList.toggle('error', error)
 }
 
+function humanise(value) {
+  return String(value ?? '').replaceAll('-', ' ').replace(/([A-Z])/g, ' $1').trim()
+}
+
 function metric(label, value) {
   const element = document.createElement('div')
   element.className = 'metric'
   const strong = document.createElement('strong')
   strong.append(text(value))
   const span = document.createElement('span')
-  span.append(text(label))
+  span.append(text(humanise(label)))
   element.append(strong, span)
   return element
 }
@@ -45,78 +49,247 @@ function detailCard(title, entries, className = '') {
   return card
 }
 
-function renderSnapshot() {
-  const { headline, datasets, documents, futureItems } = state.snapshot
-  const headlineElement = byId('headline')
-  headlineElement.replaceChildren(...Object.entries(headline).map(([label, value]) => metric(label.replace(/([A-Z])/g, ' $1').toLowerCase(), value)))
-  byId('datasets').replaceChildren(...datasets.map((dataset) => detailCard(dataset.label, [['Records', dataset.count], ...Object.entries(dataset.summary).slice(0, 3)])))
-  renderDocuments(documents)
-  renderDatasets(datasets)
-  byId('future-items').replaceChildren(...futureItems.map((item) => detailCard(item.title, [
-    ['Status', item.status], ['Priority', item.priority], ['Owner role', item.ownerRole], ['Milestone', item.milestone], ['Blockers', item.blockers.join(', ') || 'None'], ['Next action', item.nextAction],
-  ])))
+function option(value, label = humanise(value)) {
+  const element = document.createElement('option')
+  element.value = value
+  element.textContent = label
+  return element
 }
 
-function renderDocuments(documents) {
+function uniqueSorted(values) {
+  return [...new Set(values.filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b)))
+}
+
+function populateSelect(select, values, keepFirst = true) {
+  const first = keepFirst ? select.firstElementChild : null
+  select.replaceChildren(...(first ? [first] : []), ...values.map((value) => typeof value === 'string' ? option(value) : option(value.id, value.label)))
+}
+
+function renderDashboard() {
+  const studio = state.snapshot.studio
+  byId('studio-metrics').replaceChildren(...Object.entries(studio.summary).map(([label, value]) => metric(label, value)))
+  const currentCounts = new Map()
+  for (const item of studio.items) currentCounts.set(item.region, (currentCounts.get(item.region) ?? 0) + 1)
+  byId('region-summary').replaceChildren(...studio.regions.map((region) => detailCard(region.label, [
+    ['Availability', region.availability],
+    ['Loaded records', currentCounts.get(region.id) ?? 0],
+  ], currentCounts.has(region.id) ? '' : 'muted-card')))
+}
+
+function renderDocuments() {
+  const documents = state.snapshot.documents
   if (!documents.length) {
     byId('documents').replaceChildren(detailCard('No private documents', [['Next action', 'Upload synthetic or permitted project material.']]))
     return
   }
-  const cards = documents.map((documentRecord) => {
-    const card = detailCard(documentRecord.sourceMetadata.title || documentRecord.originalName, [
-      ['Filename', documentRecord.originalName], ['Type', documentRecord.detectedType], ['Size', `${documentRecord.bytes} bytes`], ['SHA-256', documentRecord.sha256], ['Scan', documentRecord.scan.status], ['Quarantine', documentRecord.quarantine], ['Extraction', documentRecord.extraction], ['Duplicate of', documentRecord.duplicateOf || 'No'],
+  byId('documents').replaceChildren(...documents.map((record) => {
+    const card = detailCard(record.sourceMetadata.title || record.originalName, [
+      ['Private ID', record.id], ['Filename', record.originalName], ['Type', record.detectedType], ['Size', `${record.bytes} bytes`], ['SHA-256', record.sha256], ['Scan', record.scan.status], ['Quarantine', record.quarantine], ['Extraction', record.extraction],
     ])
     const actions = document.createElement('div')
     actions.className = 'actions'
-    if (documentRecord.scan.status === 'clean') {
+    if (record.scan.status === 'clean') {
       const download = document.createElement('a')
-      download.href = `/api/documents/${documentRecord.id}/download`
+      download.href = `/api/documents/${record.id}/download`
       download.textContent = 'Download original'
-      download.className = 'button-link'
       const preview = document.createElement('button')
       preview.type = 'button'
       preview.textContent = 'Generate safe text preview'
-      preview.addEventListener('click', () => recordAction('queue-extraction', documentRecord.id))
+      preview.addEventListener('click', () => recordDocumentAction('queue-extraction', record.id))
       actions.append(download, preview)
-      if (documentRecord.derivedFiles.some((item) => item.type === 'safe-text-preview')) {
+      if (record.derivedFiles.some((item) => item.type === 'safe-text-preview')) {
         const viewPreview = document.createElement('a')
-        viewPreview.href = `/api/documents/${documentRecord.id}/preview`
+        viewPreview.href = `/api/documents/${record.id}/preview`
         viewPreview.textContent = 'View safe text preview'
         viewPreview.target = '_blank'
         viewPreview.rel = 'noopener'
         actions.append(viewPreview)
       }
     }
-    const note = document.createElement('button')
-    note.type = 'button'
-    note.textContent = 'Add review note'
-    note.addEventListener('click', () => recordAction('add-note', documentRecord.id, 'Review note requested from portal list.'))
-    actions.append(note)
     card.append(actions)
     return card
-  })
-  byId('documents').replaceChildren(...cards)
-}
-
-function renderDatasets(datasets) {
-  const query = byId('dataset-filter').value.toLowerCase().trim()
-  const visible = datasets.filter((dataset) => !query || `${dataset.id} ${dataset.label}`.toLowerCase().includes(query))
-  byId('queue-datasets').replaceChildren(...visible.map((dataset) => {
-    const entries = [['Derived count', dataset.count], ['Authoritative source', dataset.sourcePath]]
-    for (const item of dataset.items.slice(0, 5)) entries.push(['Item', Object.values(item).filter((value) => typeof value !== 'object').slice(0, 4).join(' · ')])
-    return detailCard(dataset.label, entries)
   }))
 }
 
-async function refresh() {
-  state.snapshot = await api('/api/dashboard')
-  renderSnapshot()
+function contentFilters() {
+  return Object.fromEntries(new FormData(byId('content-filters')).entries())
 }
 
-async function recordAction(type, targetId, note = '') {
+function renderContentLibrary() {
+  const filters = contentFilters()
+  const query = filters.query.toLowerCase().trim()
+  const items = state.snapshot.studio.items.filter((item) => {
+    if (filters.region && item.region !== filters.region) return false
+    if (filters.contentType && item.contentType !== filters.contentType) return false
+    if (filters.lifecycle && item.lifecycle !== filters.lifecycle) return false
+    if (filters.publicationState && item.publicationState !== filters.publicationState) return false
+    if (filters.blockerState === 'blocked' && !item.blockers.length) return false
+    if (filters.blockerState === 'clear' && item.blockers.length) return false
+    return !query || `${item.id} ${item.title}`.toLowerCase().includes(query)
+  })
+  byId('content-result-count').textContent = `${items.length} of ${state.snapshot.studio.items.length} loaded items`
+  if (!items.length) {
+    byId('content-results').replaceChildren(detailCard('No matching items', [['Suggestion', 'Change or clear one or more filters.']]))
+    return
+  }
+  byId('content-results').replaceChildren(...items.map((item) => {
+    const card = detailCard(item.title, [
+      ['Region', humanise(item.region)], ['Type', humanise(item.contentType)], ['Lifecycle', item.lifecycle], ['Publication', item.publicationState], ['Completeness', `${item.completeness.score}%`], ['Blockers', item.blockers.length],
+    ])
+    const button = document.createElement('button')
+    button.type = 'button'
+    button.textContent = 'Review exact item'
+    button.addEventListener('click', () => openItem(item.id))
+    card.append(button)
+    return card
+  }))
+}
+
+function section(title, content) {
+  const wrapper = document.createElement('section')
+  wrapper.className = 'detail-section'
+  const heading = document.createElement('h3')
+  heading.append(text(title))
+  wrapper.append(heading, content)
+  return wrapper
+}
+
+function stringList(values, emptyText = 'None recorded') {
+  if (!values?.length) {
+    const paragraph = document.createElement('p')
+    paragraph.className = 'muted'
+    paragraph.append(text(emptyText))
+    return paragraph
+  }
+  const list = document.createElement('ul')
+  for (const value of values) {
+    const item = document.createElement('li')
+    item.append(text(typeof value === 'string' ? value : JSON.stringify(value)))
+    list.append(item)
+  }
+  return list
+}
+
+function reviewForm(item) {
+  const form = document.createElement('form')
+  form.className = 'form-grid review-form'
+  const actionLabel = document.createElement('label')
+  actionLabel.append(text('Permitted action'))
+  const action = document.createElement('select')
+  action.name = 'type'
+  action.append(option('add-note', 'Add private reviewer note'), option('create-human-review-task', 'Create human review task'))
+  actionLabel.append(action)
+  const noteLabel = document.createElement('label')
+  noteLabel.className = 'wide'
+  noteLabel.append(text('Note or task instruction'))
+  const note = document.createElement('textarea')
+  note.name = 'note'
+  note.maxLength = 3000
+  note.rows = 4
+  note.required = true
+  noteLabel.append(note)
+  const button = document.createElement('button')
+  button.type = 'submit'
+  button.textContent = 'Record against exact revision'
+  form.append(actionLabel, noteLabel, button)
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault()
+    const values = new FormData(form)
+    try {
+      const recorded = await api('/api/actions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: values.get('type'), targetType: 'content-item', targetId: item.id, exactRevisionKey: item.revisionHash, note: values.get('note') }) })
+      setStatus(`${humanise(recorded.type)} recorded with grantsApproval=false.`)
+      form.reset()
+      await refresh()
+      await openItem(item.id, false)
+    } catch (error) { setStatus(error.message, true) }
+  })
+  return form
+}
+
+function renderItemDetail(item) {
+  const container = document.createElement('article')
+  container.className = 'item-detail'
+  const title = document.createElement('h3')
+  title.append(text(item.title))
+  const metadata = detailCard('Metadata', [
+    ['Exact ID', item.id], ['Region', item.region], ['Content type', item.contentType], ['Lifecycle', item.lifecycle], ['Publication state', item.publicationState], ['Revision hash', item.revisionHash], ['Completeness', `${item.completeness.score}% · ${item.completeness.status}`], ['grantsApproval', item.grantsApproval],
+  ])
+  const review = detailCard('Review requirements', [
+    ['Clinical', item.clinicalReview], ['Evidence', item.evidenceReview], ['Accessibility', item.accessibilityReview], ['Licensing/source', item.licensingReview],
+  ])
+  const current = document.createElement('pre')
+  current.className = 'content-preview'
+  current.append(text(JSON.stringify(item.currentContent, null, 2)))
+  container.append(title, metadata, review, section('Missing or incomplete fields', stringList(item.completeness.missingFields)), section('Blockers', stringList(item.blockers)), section('Existing human-review tasks', stringList(item.reviewTasks)), section('Authoritative source links', stringList(item.sourceLinks)), section('Current governed content (read-only)', current))
+  if (item.learnerPreview) {
+    const preview = document.createElement('div')
+    const label = document.createElement('strong')
+    label.append(text(item.learnerPreview.label))
+    const route = document.createElement('code')
+    route.append(text(item.learnerPreview.route))
+    preview.append(label, document.createElement('br'), route)
+    container.append(section('Existing learner-facing preview reference', preview))
+  }
+  container.append(section('Private review action', reviewForm(item)))
+  byId('item-detail').replaceChildren(container)
+}
+
+async function openItem(id, changeTab = true) {
   try {
-    const action = await api('/api/actions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type, targetType: 'document', targetId, note }) })
-    setStatus(`Action recorded: ${action.type}. This did not grant approval.`)
+    state.currentItem = await api(`/api/content/${encodeURIComponent(id)}`)
+    renderItemDetail(state.currentItem)
+    if (changeTab) selectTab(byId('detail-tab'))
+  } catch (error) { setStatus(error.message, true) }
+}
+
+function renderExtraMaterials() {
+  const items = state.snapshot.studio.items.filter((item) => item.contentType === 'extra-materials')
+  byId('extra-materials').replaceChildren(...(items.length ? items.map((item) => {
+    const card = detailCard(item.title, [['Region', humanise(item.region)], ['Type', item.currentContent?.materialType ?? 'registered material'], ['Publication', item.publicationState], ['Revision', item.revisionHash]])
+    const button = document.createElement('button')
+    button.type = 'button'
+    button.textContent = 'Review registration'
+    button.addEventListener('click', () => openItem(item.id))
+    card.append(button)
+    return card
+  }) : [detailCard('No Extra Materials registered', [['State', 'Private registry is ready for metadata-only registrations.']])]))
+}
+
+function renderFutureItems() {
+  byId('future-items').replaceChildren(...state.snapshot.futureItems.map((item) => detailCard(item.title, [
+    ['Status', item.status], ['Priority', item.priority], ['Owner role', item.ownerRole], ['Milestone', item.milestone], ['Blockers', item.blockers.join(', ') || 'None'], ['Next action', item.nextAction],
+  ])))
+}
+
+function configureForms() {
+  const studio = state.snapshot.studio
+  const form = byId('content-filters')
+  populateSelect(form.elements.region, studio.regions)
+  populateSelect(form.elements.contentType, studio.contentTypes)
+  populateSelect(form.elements.lifecycle, uniqueSorted(studio.items.map((item) => item.lifecycle)))
+  populateSelect(form.elements.publicationState, uniqueSorted(studio.items.map((item) => item.publicationState)))
+  populateSelect(byId('material-form').elements.materialType, studio.extraMaterialTypes, false)
+  populateSelect(byId('material-form').elements.region, studio.regions, false)
+}
+
+function renderSnapshot(firstLoad = false) {
+  if (firstLoad) configureForms()
+  renderDashboard()
+  renderContentLibrary()
+  renderDocuments()
+  renderExtraMaterials()
+  renderFutureItems()
+}
+
+async function refresh(firstLoad = false) {
+  state.snapshot = await api('/api/dashboard')
+  renderSnapshot(firstLoad)
+}
+
+async function recordDocumentAction(type, targetId) {
+  try {
+    const action = await api('/api/actions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type, targetType: 'document', targetId }) })
+    setStatus(`Document action recorded: ${action.type}. This did not grant approval.`)
     await refresh()
   } catch (error) { setStatus(error.message, true) }
 }
@@ -178,7 +351,7 @@ byId('login-form').addEventListener('submit', async (event) => {
     byId('passphrase').value = ''
     byId('login-view').hidden = true
     byId('portal-view').hidden = false
-    await refresh()
+    await refresh(true)
     byId('dashboard-tab').focus()
   } catch (error) { status.textContent = error.message; status.classList.add('error') }
 })
@@ -187,6 +360,7 @@ byId('logout').addEventListener('click', async () => {
   try { await api('/api/logout', { method: 'POST' }) } catch {}
   state.csrf = null
   state.snapshot = null
+  state.currentItem = null
   byId('portal-view').hidden = true
   byId('login-view').hidden = false
   byId('login-status').textContent = 'Signed out.'
@@ -214,14 +388,13 @@ for (const tab of tabs) {
   })
 }
 
-byId('dataset-filter').addEventListener('input', () => { if (state.snapshot) renderDatasets(state.snapshot.datasets) })
-byId('action-form').addEventListener('submit', async (event) => {
+byId('content-filters').addEventListener('input', () => { if (state.snapshot) renderContentLibrary() })
+byId('material-form').addEventListener('submit', async (event) => {
   event.preventDefault()
-  const form = new FormData(event.currentTarget)
-  const payload = Object.fromEntries(['type', 'targetType', 'targetId', 'exactRevisionKey', 'note'].map((key) => [key, form.get(key)]))
+  const payload = Object.fromEntries(new FormData(event.currentTarget).entries())
   try {
-    const action = await api('/api/actions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-    setStatus(`Action ${action.type} recorded with grantsApproval=false.`)
+    const material = await api('/api/extra-materials', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+    setStatus(`Extra Material registered privately: ${material.title}. grantsApproval=false.`)
     event.currentTarget.reset()
     await refresh()
   } catch (error) { setStatus(error.message, true) }
@@ -241,5 +414,5 @@ api('/api/session').then(async (session) => {
   state.csrf = session.csrf
   byId('login-view').hidden = true
   byId('portal-view').hidden = false
-  await refresh()
+  await refresh(true)
 }).catch(() => {})

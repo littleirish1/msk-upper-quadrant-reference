@@ -1,0 +1,1379 @@
+CONTENT REVIEW STUDIO — PRE-COMMIT REVIEW PACKET
+Generated: 2026-08-06 08:23:56
+
+====================
+GIT STATUS
+====================
+## main...origin/main
+ M ai-manager/private-review-portal/README.md
+ M ai-manager/private-review-portal/domain.mjs
+ M ai-manager/private-review-portal/server.mjs
+ M ai-manager/private-review-portal/static/app.js
+ M ai-manager/private-review-portal/static/index.html
+ M ai-manager/private-review-portal/static/styles.css
+ M ai-manager/private-review-portal/store.mjs
+ M scripts/private-review-portal/check-public-private-separation.mjs
+ M scripts/private-review-portal/test-portal.mjs
+?? ai-manager/private-review-portal/content-studio-config.json
+?? ai-manager/private-review-portal/content-studio.mjs
+?? content-review-studio-review-packet.txt
+?? docs/reviews/current/platform-v2-independent-review/
+
+====================
+RECENT COMMITS
+====================
+08a1882 (HEAD -> main, origin/main, origin/HEAD) Fix case mode conversation controls
+d5e4c5d (feature/shoulder-complete-vertical-slice) Prevent cross-literal review scan matches
+dafed7f Harden structured review artifact scanning
+d7130e7 Harden exact patch redaction review
+c3db957 Test private shoulder Evidence Hub population
+
+====================
+TRACKED DIFF STAT
+====================
+ ai-manager/private-review-portal/README.md         |  18 +-
+ ai-manager/private-review-portal/domain.mjs        |  11 +
+ ai-manager/private-review-portal/server.mjs        |  59 ++++-
+ ai-manager/private-review-portal/static/app.js     | 271 +++++++++++++++++----
+ ai-manager/private-review-portal/static/index.html |  99 ++++----
+ ai-manager/private-review-portal/static/styles.css |  14 ++
+ ai-manager/private-review-portal/store.mjs         |  22 +-
+ .../check-public-private-separation.mjs            |  10 +-
+ scripts/private-review-portal/test-portal.mjs      |  89 +++++--
+ 9 files changed, 470 insertions(+), 123 deletions(-)
+
+====================
+FULL TRACKED DIFF
+====================
+diff --git a/ai-manager/private-review-portal/README.md b/ai-manager/private-review-portal/README.md
+index 0e4216c..8ce369e 100644
+--- a/ai-manager/private-review-portal/README.md
++++ b/ai-manager/private-review-portal/README.md
+@@ -1,15 +1,23 @@
+-# MSK Private Review Portal
++# MSK Private Review Portal and Content Review Studio
+ 
+ This is a separate Node.js runtime for private research and project review. It is not a Next.js route and is never part of the learner/static export. It binds to an explicit loopback address only. Remote access, when available, is an authenticated Tailnet HTTPS proxy created by Tailscale Serve; Funnel is prohibited.
+ 
+ ## Safety boundary
+ 
+ - Do not upload patient-identifiable, Trust-confidential or clinical-record material.
+-- Uploading, linking, accepting or reviewing a proposal never grants clinical, evidence, source-clearance, licensing, accessibility, beta, publication, release or deployment approval.
++- Uploading, registering material, adding a note or creating a task never grants clinical, evidence, source-clearance, licensing, accessibility, beta, publication, release or deployment approval.
+ - The portal reads authoritative governed repository records at request time. It does not copy or mutate clinical truth.
+ - Originals, derived files, audit logs and the private database stay outside Git.
+ - A passphrase of at least 16 characters is mandatory and is read only from `MSK_REVIEW_PORTAL_PASSPHRASE`.
+ 
++## Content Review Studio
++
++The first Studio phase is a generic private registry, not a shoulder application. Regions and content types are declared in `content-studio-config.json`; the browser renders those values without region-specific UI code. The first read-only adapter loads current shoulder cases, conditions, movement slots, anatomy and module records, planned 3D structures, MCQ slots, evidence/source records and compatibility rules without modifying their source files. Additional adapters can return the same registry contract for any configured region or collection.
++
++Every item exposes an exact ID, region, content type, lifecycle, publication state, four review states, blockers, human-review tasks, source links, revision hash, completeness and an optional existing learner-route reference. The dashboard and library derive their counts and filters from those records. Missing or ambiguous authority is represented as not recorded or required; it is never inferred as approved.
++
++The only Content Studio mutations in this phase are private reviewer notes, human-review tasks and metadata-only Extra Materials registrations. Approval changes, publication changes, clinical or evidence editing and deletion are not implemented. Notes and tasks require the current item revision hash and fail on stale revisions. Extra Materials may classify a PDF, PowerPoint, image, video, legacy HTML or teaching note and may link an already quarantined private document; the registration remains in the external database with `publicationState: private` and `grantsApproval: false`.
++
+ ## Private storage
+ 
+ The Windows default is `C:\dev\msk-private-review-data\`. Override it with `MSK_REVIEW_PORTAL_DATA_ROOT`; the runtime rejects a root inside the repository.
+@@ -67,9 +75,9 @@ Authorised browser on loopback/Tailnet
+   -> separate derived preview (safe plain text only)
+   -> external JSON database + append-only JSONL audit
+ 
+-Governed repository JSON --read-only--> derived dashboard counts
+-Private database ----------private----> documents/actions/Future Build
++Governed repository JSON --read-only--> generic content registry + derived counts
++Private database ----------private----> documents/notes/tasks/Extra Materials/Future Build
+ Next.js learner build <---- no imports, routes, records or runtime code
+ ```
+ 
+-Primary threats and controls include public/static leakage (separate runtime plus output scans), traversal and malicious filenames (UUID storage and root-constrained resolution), active content (strict allowlist/magic checks/no active rendering), malware (quarantine and fail-closed scanner state), cross-site actions (Origin/CSRF/SameSite), credential guessing (environment secret/rate limits/timing-safe verification), stale approval (ledger-backed exact-revision validation), and accidental authority escalation (`grantsApproval` is always false and governed states are read-only).
++Primary threats and controls include public/static leakage (separate runtime plus output scans), traversal and malicious filenames (UUID storage and root-constrained resolution), active content (strict allowlist/magic checks/no active rendering), malware (quarantine and fail-closed scanner state), cross-site actions (Origin/CSRF/SameSite), credential guessing (environment secret/rate limits/timing-safe verification), stale review writes (current registry revision hashes are mandatory), and accidental authority escalation (`grantsApproval` is always false and governed states are read-only).
+diff --git a/ai-manager/private-review-portal/domain.mjs b/ai-manager/private-review-portal/domain.mjs
+index a49ad5a..dac7bf1 100644
+--- a/ai-manager/private-review-portal/domain.mjs
++++ b/ai-manager/private-review-portal/domain.mjs
+@@ -1,5 +1,6 @@
+ import fs from 'node:fs'
+ import path from 'node:path'
++import { deriveStudioSummary, loadContentRegistry } from './content-studio.mjs'
+ 
+ function readJson(root, relative) {
+   return JSON.parse(fs.readFileSync(path.join(root, ...relative.split('/')), 'utf8'))
+@@ -59,6 +60,7 @@ export function deriveProjectSnapshot(repositoryRoot, store) {
+   const reviews = readJson(repositoryRoot, 'ai-manager/clinical-platform/reviews/review-ledger.json')
+   const release = readJson(repositoryRoot, 'ai-manager/clinical-platform/release/v1-release-candidate.json')
+   const database = store.read()
++  const registry = loadContentRegistry({ repositoryRoot, store })
+   return {
+     generatedAt: new Date().toISOString(),
+     authority: 'derived-read-only-from-repository-and-private-database',
+@@ -75,6 +77,15 @@ export function deriveProjectSnapshot(repositoryRoot, store) {
+       evidenceProposals: Array.isArray(evidence.relationships) ? evidence.relationships.length : Number(evidence.relationships ?? 0),
+     },
+     datasets,
++    studio: {
++      schemaVersion: registry.schemaVersion,
++      summary: deriveStudioSummary(registry),
++      regions: registry.regions,
++      contentTypes: registry.contentTypes,
++      extraMaterialTypes: registry.extraMaterialTypes,
++      items: registry.items.map(({ currentContent, ...item }) => item),
++      grantsApproval: false,
++    },
+     documents: database.documents.map(({ relativePath, ...document }) => document),
+     actions: database.actions,
+     futureItems: database.futureItems,
+diff --git a/ai-manager/private-review-portal/server.mjs b/ai-manager/private-review-portal/server.mjs
+index c84a0ec..f8ad58d 100644
+--- a/ai-manager/private-review-portal/server.mjs
++++ b/ai-manager/private-review-portal/server.mjs
+@@ -4,7 +4,8 @@ import http from 'node:http'
+ import path from 'node:path'
+ import { fileURLToPath } from 'node:url'
+ import { loadConfig } from './config.mjs'
+-import { deriveProjectSnapshot, exactRevisionExists, initializeFutureBuild } from './domain.mjs'
++import { contentRevisionHash, findContentItem, loadContentRegistry, loadStudioConfig } from './content-studio.mjs'
++import { deriveProjectSnapshot, initializeFutureBuild } from './domain.mjs'
+ import { regenerateSafePreview } from './derived.mjs'
+ import { intakeUpload } from './intake.mjs'
+ import { PrivateStore, resolveInside } from './store.mjs'
+@@ -17,7 +18,7 @@ const staticRoutes = new Map([
+   ['/app.js', ['app.js', 'text/javascript; charset=utf-8']],
+   ['/styles.css', ['styles.css', 'text/css; charset=utf-8']],
+ ])
+-const actionTypes = new Set(['queue-extraction', 'queue-proposal', 'link-exact-revision', 'add-note', 'accept-proposal', 'reject-proposal', 'defer-proposal', 'create-human-review-task', 'request-focused-packet', 'mark-superseded', 'archive'])
++const actionTypes = new Set(['queue-extraction', 'add-note', 'create-human-review-task'])
+ 
+ function respond(response, status, headers = {}, body = '') {
+   response.writeHead(status, { ...securityHeaders, ...headers })
+@@ -61,9 +62,23 @@ function safeActionPayload(input) {
+   }
+ }
+ 
++function safeExtraMaterial(input, studioConfig) {
++  const clean = (value, maximum = 1000) => String(value ?? '').normalize('NFKC').replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, maximum)
++  const materialType = clean(input.materialType, 40)
++  const region = clean(input.region, 80)
++  if (!studioConfig.extraMaterialTypes.includes(materialType)) throw new Error('Unknown extra-material type.')
++  if (!studioConfig.regions.some((item) => item.id === region)) throw new Error('Unknown Content Studio region.')
++  const title = clean(input.title, 180)
++  if (!title) throw new Error('Extra-material title is required.')
++  const documentId = clean(input.documentId, 80)
++  if (documentId && !/^[a-f0-9-]{36}$/.test(documentId)) throw new Error('Invalid private document identifier.')
++  return { title, materialType, region, documentId: documentId || null, notes: clean(input.notes, 3000) }
++}
++
+ export function createPortalServer(options = {}) {
+   const config = options.config ?? loadConfig()
+   const store = options.store ?? new PrivateStore(config.dataRoot)
++  const studioConfig = options.studioConfig ?? loadStudioConfig()
+   initializeFutureBuild(store)
+   const sessions = options.sessions ?? new SessionStore(config)
+   const verifyPassphrase = options.verifyPassphrase ?? createPassphraseVerifier(config.passphrase)
+@@ -121,6 +136,33 @@ export function createPortalServer(options = {}) {
+       }
+       if (request.method === 'GET' && url.pathname === '/api/dashboard') return json(response, 200, deriveProjectSnapshot(config.repositoryRoot, store))
+ 
++      const contentDetail = url.pathname.match(/^\/api\/content\/([^/]+)$/)
++      if (request.method === 'GET' && contentDetail) {
++        const registry = loadContentRegistry({ repositoryRoot: config.repositoryRoot, store, config: studioConfig })
++        const item = findContentItem(registry, decodeURIComponent(contentDetail[1]))
++        if (!item) return json(response, 404, { error: 'content-item-not-found', requestId })
++        return json(response, 200, item)
++      }
++
++      if (request.method === 'POST' && url.pathname === '/api/extra-materials') {
++        const body = await readJsonBody(request, config.jsonBodyBytes)
++        const payload = safeExtraMaterial(body, studioConfig)
++        if (payload.documentId && !store.read().documents.some((item) => item.id === payload.documentId)) return json(response, 400, { error: 'private-document-not-found', requestId })
++        const material = {
++          id: `extra-material.${crypto.randomUUID()}`,
++          ...payload,
++          lifecycle: 'registered',
++          publicationState: 'private',
++          createdAt: new Date().toISOString(),
++          actorRole: session.role,
++          grantsApproval: false,
++        }
++        material.revisionHash = contentRevisionHash(material)
++        store.addExtraMaterial(material)
++        store.audit('extra-material-registered', { requestId, materialId: material.id, materialType: material.materialType, grantsApproval: false })
++        return json(response, 201, material)
++      }
++
+       if (request.method === 'POST' && url.pathname === '/api/uploads') {
+         const filename = request.headers['x-file-name']
+         if (typeof filename !== 'string') return json(response, 400, { error: 'filename-required', requestId })
+@@ -168,7 +210,16 @@ export function createPortalServer(options = {}) {
+         const body = await readJsonBody(request, config.jsonBodyBytes)
+         if (!actionTypes.has(body.type)) return json(response, 400, { error: 'action-not-permitted', requestId })
+         const payload = safeActionPayload(body)
+-        if (body.type === 'link-exact-revision' && !exactRevisionExists(config.repositoryRoot, payload.exactRevisionKey)) return json(response, 400, { error: 'unknown-exact-revision', requestId })
++        if (body.type === 'queue-extraction') {
++          if (payload.targetType !== 'document' || !store.read().documents.some((item) => item.id === payload.targetId)) return json(response, 400, { error: 'private-document-not-found', requestId })
++        } else if (payload.targetType === 'content-item') {
++          const registry = loadContentRegistry({ repositoryRoot: config.repositoryRoot, store, config: studioConfig })
++          const item = findContentItem(registry, payload.targetId)
++          if (!item) return json(response, 400, { error: 'content-item-not-found', requestId })
++          if (payload.exactRevisionKey !== item.revisionHash) return json(response, 409, { error: 'stale-content-revision', requestId })
++        } else if (payload.targetType !== 'document' || !store.read().documents.some((item) => item.id === payload.targetId)) {
++          return json(response, 400, { error: 'review-target-not-found', requestId })
++        }
+         const action = { id: crypto.randomUUID(), type: body.type, ...payload, actorRole: session.role, createdAt: new Date().toISOString(), grantsApproval: false, status: 'recorded' }
+         if (body.type === 'queue-extraction') {
+           try {
+@@ -179,8 +230,6 @@ export function createPortalServer(options = {}) {
+             action.note = `${action.note} ${error.message}`.trim().slice(0, 3000)
+           }
+         }
+-        if (body.type === 'archive') store.updateDocumentWorkflow(payload.targetId, { archivedAt: new Date().toISOString() })
+-        if (body.type === 'mark-superseded') store.updateDocumentWorkflow(payload.targetId, { supersededBy: payload.exactRevisionKey || 'pending-replacement' })
+         store.addAction(action)
+         store.audit('review-action-recorded', { requestId, actionId: action.id, type: action.type, targetId: action.targetId, grantsApproval: false })
+         return json(response, 201, action)
+diff --git a/ai-manager/private-review-portal/static/app.js b/ai-manager/private-review-portal/static/app.js
+index 75d6ae3..2b87406 100644
+--- a/ai-manager/private-review-portal/static/app.js
++++ b/ai-manager/private-review-portal/static/app.js
+@@ -1,4 +1,4 @@
+-const state = { csrf: null, snapshot: null }
++const state = { csrf: null, snapshot: null, currentItem: null }
+ const byId = (id) => document.getElementById(id)
+ const text = (value) => document.createTextNode(String(value ?? ''))
+ 
+@@ -17,13 +17,17 @@ function setStatus(message, error = false) {
+   element.classList.toggle('error', error)
+ }
+ 
++function humanise(value) {
++  return String(value ?? '').replaceAll('-', ' ').replace(/([A-Z])/g, ' $1').trim()
++}
++
+ function metric(label, value) {
+   const element = document.createElement('div')
+   element.className = 'metric'
+   const strong = document.createElement('strong')
+   strong.append(text(value))
+   const span = document.createElement('span')
+-  span.append(text(label))
++  span.append(text(humanise(label)))
+   element.append(strong, span)
+   return element
+ }
+@@ -45,78 +49,247 @@ function detailCard(title, entries, className = '') {
+   return card
+ }
+ 
+-function renderSnapshot() {
+-  const { headline, datasets, documents, futureItems } = state.snapshot
+-  const headlineElement = byId('headline')
+-  headlineElement.replaceChildren(...Object.entries(headline).map(([label, value]) => metric(label.replace(/([A-Z])/g, ' $1').toLowerCase(), value)))
+-  byId('datasets').replaceChildren(...datasets.map((dataset) => detailCard(dataset.label, [['Records', dataset.count], ...Object.entries(dataset.summary).slice(0, 3)])))
+-  renderDocuments(documents)
+-  renderDatasets(datasets)
+-  byId('future-items').replaceChildren(...futureItems.map((item) => detailCard(item.title, [
+-    ['Status', item.status], ['Priority', item.priority], ['Owner role', item.ownerRole], ['Milestone', item.milestone], ['Blockers', item.blockers.join(', ') || 'None'], ['Next action', item.nextAction],
+-  ])))
++function option(value, label = humanise(value)) {
++  const element = document.createElement('option')
++  element.value = value
++  element.textContent = label
++  return element
++}
++
++function uniqueSorted(values) {
++  return [...new Set(values.filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b)))
+ }
+ 
+-function renderDocuments(documents) {
++function populateSelect(select, values, keepFirst = true) {
++  const first = keepFirst ? select.firstElementChild : null
++  select.replaceChildren(...(first ? [first] : []), ...values.map((value) => typeof value === 'string' ? option(value) : option(value.id, value.label)))
++}
++
++function renderDashboard() {
++  const studio = state.snapshot.studio
++  byId('studio-metrics').replaceChildren(...Object.entries(studio.summary).map(([label, value]) => metric(label, value)))
++  const currentCounts = new Map()
++  for (const item of studio.items) currentCounts.set(item.region, (currentCounts.get(item.region) ?? 0) + 1)
++  byId('region-summary').replaceChildren(...studio.regions.map((region) => detailCard(region.label, [
++    ['Availability', region.availability],
++    ['Loaded records', currentCounts.get(region.id) ?? 0],
++  ], currentCounts.has(region.id) ? '' : 'muted-card')))
++}
++
++function renderDocuments() {
++  const documents = state.snapshot.documents
+   if (!documents.length) {
+     byId('documents').replaceChildren(detailCard('No private documents', [['Next action', 'Upload synthetic or permitted project material.']]))
+     return
+   }
+-  const cards = documents.map((documentRecord) => {
+-    const card = detailCard(documentRecord.sourceMetadata.title || documentRecord.originalName, [
+-      ['Filename', documentRecord.originalName], ['Type', documentRecord.detectedType], ['Size', `${documentRecord.bytes} bytes`], ['SHA-256', documentRecord.sha256], ['Scan', documentRecord.scan.status], ['Quarantine', documentRecord.quarantine], ['Extraction', documentRecord.extraction], ['Duplicate of', documentRecord.duplicateOf || 'No'],
++  byId('documents').replaceChildren(...documents.map((record) => {
++    const card = detailCard(record.sourceMetadata.title || record.originalName, [
++      ['Private ID', record.id], ['Filename', record.originalName], ['Type', record.detectedType], ['Size', `${record.bytes} bytes`], ['SHA-256', record.sha256], ['Scan', record.scan.status], ['Quarantine', record.quarantine], ['Extraction', record.extraction],
+     ])
+     const actions = document.createElement('div')
+     actions.className = 'actions'
+-    if (documentRecord.scan.status === 'clean') {
++    if (record.scan.status === 'clean') {
+       const download = document.createElement('a')
+-      download.href = `/api/documents/${documentRecord.id}/download`
++      download.href = `/api/documents/${record.id}/download`
+       download.textContent = 'Download original'
+-      download.className = 'button-link'
+       const preview = document.createElement('button')
+       preview.type = 'button'
+       preview.textContent = 'Generate safe text preview'
+-      preview.addEventListener('click', () => recordAction('queue-extraction', documentRecord.id))
++      preview.addEventListener('click', () => recordDocumentAction('queue-extraction', record.id))
+       actions.append(download, preview)
+-      if (documentRecord.derivedFiles.some((item) => item.type === 'safe-text-preview')) {
++      if (record.derivedFiles.some((item) => item.type === 'safe-text-preview')) {
+         const viewPreview = document.createElement('a')
+-        viewPreview.href = `/api/documents/${documentRecord.id}/preview`
++        viewPreview.href = `/api/documents/${record.id}/preview`
+         viewPreview.textContent = 'View safe text preview'
+         viewPreview.target = '_blank'
+         viewPreview.rel = 'noopener'
+         actions.append(viewPreview)
+       }
+     }
+-    const note = document.createElement('button')
+-    note.type = 'button'
+-    note.textContent = 'Add review note'
+-    note.addEventListener('click', () => recordAction('add-note', documentRecord.id, 'Review note requested from portal list.'))
+-    actions.append(note)
+     card.append(actions)
+     return card
+-  })
+-  byId('documents').replaceChildren(...cards)
++  }))
+ }
+ 
+-function renderDatasets(datasets) {
+-  const query = byId('dataset-filter').value.toLowerCase().trim()
+-  const visible = datasets.filter((dataset) => !query || `${dataset.id} ${dataset.label}`.toLowerCase().includes(query))
+-  byId('queue-datasets').replaceChildren(...visible.map((dataset) => {
+-    const entries = [['Derived count', dataset.count], ['Authoritative source', dataset.sourcePath]]
+-    for (const item of dataset.items.slice(0, 5)) entries.push(['Item', Object.values(item).filter((value) => typeof value !== 'object').slice(0, 4).join(' · ')])
+-    return detailCard(dataset.label, entries)
++function contentFilters() {
++  return Object.fromEntries(new FormData(byId('content-filters')).entries())
++}
++
++function renderContentLibrary() {
++  const filters = contentFilters()
++  const query = filters.query.toLowerCase().trim()
++  const items = state.snapshot.studio.items.filter((item) => {
++    if (filters.region && item.region !== filters.region) return false
++    if (filters.contentType && item.contentType !== filters.contentType) return false
++    if (filters.lifecycle && item.lifecycle !== filters.lifecycle) return false
++    if (filters.publicationState && item.publicationState !== filters.publicationState) return false
++    if (filters.blockerState === 'blocked' && !item.blockers.length) return false
++    if (filters.blockerState === 'clear' && item.blockers.length) return false
++    return !query || `${item.id} ${item.title}`.toLowerCase().includes(query)
++  })
++  byId('content-result-count').textContent = `${items.length} of ${state.snapshot.studio.items.length} loaded items`
++  if (!items.length) {
++    byId('content-results').replaceChildren(detailCard('No matching items', [['Suggestion', 'Change or clear one or more filters.']]))
++    return
++  }
++  byId('content-results').replaceChildren(...items.map((item) => {
++    const card = detailCard(item.title, [
++      ['Region', humanise(item.region)], ['Type', humanise(item.contentType)], ['Lifecycle', item.lifecycle], ['Publication', item.publicationState], ['Completeness', `${item.completeness.score}%`], ['Blockers', item.blockers.length],
++    ])
++    const button = document.createElement('button')
++    button.type = 'button'
++    button.textContent = 'Review exact item'
++    button.addEventListener('click', () => openItem(item.id))
++    card.append(button)
++    return card
+   }))
+ }
+ 
+-async function refresh() {
++function section(title, content) {
++  const wrapper = document.createElement('section')
++  wrapper.className = 'detail-section'
++  const heading = document.createElement('h3')
++  heading.append(text(title))
++  wrapper.append(heading, content)
++  return wrapper
++}
++
++function stringList(values, emptyText = 'None recorded') {
++  if (!values?.length) {
++    const paragraph = document.createElement('p')
++    paragraph.className = 'muted'
++    paragraph.append(text(emptyText))
++    return paragraph
++  }
++  const list = document.createElement('ul')
++  for (const value of values) {
++    const item = document.createElement('li')
++    item.append(text(typeof value === 'string' ? value : JSON.stringify(value)))
++    list.append(item)
++  }
++  return list
++}
++
++function reviewForm(item) {
++  const form = document.createElement('form')
++  form.className = 'form-grid review-form'
++  const actionLabel = document.createElement('label')
++  actionLabel.append(text('Permitted action'))
++  const action = document.createElement('select')
++  action.name = 'type'
++  action.append(option('add-note', 'Add private reviewer note'), option('create-human-review-task', 'Create human review task'))
++  actionLabel.append(action)
++  const noteLabel = document.createElement('label')
++  noteLabel.className = 'wide'
++  noteLabel.append(text('Note or task instruction'))
++  const note = document.createElement('textarea')
++  note.name = 'note'
++  note.maxLength = 3000
++  note.rows = 4
++  note.required = true
++  noteLabel.append(note)
++  const button = document.createElement('button')
++  button.type = 'submit'
++  button.textContent = 'Record against exact revision'
++  form.append(actionLabel, noteLabel, button)
++  form.addEventListener('submit', async (event) => {
++    event.preventDefault()
++    const values = new FormData(form)
++    try {
++      const recorded = await api('/api/actions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: values.get('type'), targetType: 'content-item', targetId: item.id, exactRevisionKey: item.revisionHash, note: values.get('note') }) })
++      setStatus(`${humanise(recorded.type)} recorded with grantsApproval=false.`)
++      form.reset()
++      await refresh()
++      await openItem(item.id, false)
++    } catch (error) { setStatus(error.message, true) }
++  })
++  return form
++}
++
++function renderItemDetail(item) {
++  const container = document.createElement('article')
++  container.className = 'item-detail'
++  const title = document.createElement('h3')
++  title.append(text(item.title))
++  const metadata = detailCard('Metadata', [
++    ['Exact ID', item.id], ['Region', item.region], ['Content type', item.contentType], ['Lifecycle', item.lifecycle], ['Publication state', item.publicationState], ['Revision hash', item.revisionHash], ['Completeness', `${item.completeness.score}% · ${item.completeness.status}`], ['grantsApproval', item.grantsApproval],
++  ])
++  const review = detailCard('Review requirements', [
++    ['Clinical', item.clinicalReview], ['Evidence', item.evidenceReview], ['Accessibility', item.accessibilityReview], ['Licensing/source', item.licensingReview],
++  ])
++  const current = document.createElement('pre')
++  current.className = 'content-preview'
++  current.append(text(JSON.stringify(item.currentContent, null, 2)))
++  container.append(title, metadata, review, section('Missing or incomplete fields', stringList(item.completeness.missingFields)), section('Blockers', stringList(item.blockers)), section('Existing human-review tasks', stringList(item.reviewTasks)), section('Authoritative source links', stringList(item.sourceLinks)), section('Current governed content (read-only)', current))
++  if (item.learnerPreview) {
++    const preview = document.createElement('div')
++    const label = document.createElement('strong')
++    label.append(text(item.learnerPreview.label))
++    const route = document.createElement('code')
++    route.append(text(item.learnerPreview.route))
++    preview.append(label, document.createElement('br'), route)
++    container.append(section('Existing learner-facing preview reference', preview))
++  }
++  container.append(section('Private review action', reviewForm(item)))
++  byId('item-detail').replaceChildren(container)
++}
++
++async function openItem(id, changeTab = true) {
++  try {
++    state.currentItem = await api(`/api/content/${encodeURIComponent(id)}`)
++    renderItemDetail(state.currentItem)
++    if (changeTab) selectTab(byId('detail-tab'))
++  } catch (error) { setStatus(error.message, true) }
++}
++
++function renderExtraMaterials() {
++  const items = state.snapshot.studio.items.filter((item) => item.contentType === 'extra-materials')
++  byId('extra-materials').replaceChildren(...(items.length ? items.map((item) => {
++    const card = detailCard(item.title, [['Region', humanise(item.region)], ['Type', item.currentContent?.materialType ?? 'registered material'], ['Publication', item.publicationState], ['Revision', item.revisionHash]])
++    const button = document.createElement('button')
++    button.type = 'button'
++    button.textContent = 'Review registration'
++    button.addEventListener('click', () => openItem(item.id))
++    card.append(button)
++    return card
++  }) : [detailCard('No Extra Materials registered', [['State', 'Private registry is ready for metadata-only registrations.']])]))
++}
++
++function renderFutureItems() {
++  byId('future-items').replaceChildren(...state.snapshot.futureItems.map((item) => detailCard(item.title, [
++    ['Status', item.status], ['Priority', item.priority], ['Owner role', item.ownerRole], ['Milestone', item.milestone], ['Blockers', item.blockers.join(', ') || 'None'], ['Next action', item.nextAction],
++  ])))
++}
++
++function configureForms() {
++  const studio = state.snapshot.studio
++  const form = byId('content-filters')
++  populateSelect(form.elements.region, studio.regions)
++  populateSelect(form.elements.contentType, studio.contentTypes)
++  populateSelect(form.elements.lifecycle, uniqueSorted(studio.items.map((item) => item.lifecycle)))
++  populateSelect(form.elements.publicationState, uniqueSorted(studio.items.map((item) => item.publicationState)))
++  populateSelect(byId('material-form').elements.materialType, studio.extraMaterialTypes, false)
++  populateSelect(byId('material-form').elements.region, studio.regions, false)
++}
++
++function renderSnapshot(firstLoad = false) {
++  if (firstLoad) configureForms()
++  renderDashboard()
++  renderContentLibrary()
++  renderDocuments()
++  renderExtraMaterials()
++  renderFutureItems()
++}
++
++async function refresh(firstLoad = false) {
+   state.snapshot = await api('/api/dashboard')
+-  renderSnapshot()
++  renderSnapshot(firstLoad)
+ }
+ 
+-async function recordAction(type, targetId, note = '') {
++async function recordDocumentAction(type, targetId) {
+   try {
+-    const action = await api('/api/actions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type, targetType: 'document', targetId, note }) })
+-    setStatus(`Action recorded: ${action.type}. This did not grant approval.`)
++    const action = await api('/api/actions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type, targetType: 'document', targetId }) })
++    setStatus(`Document action recorded: ${action.type}. This did not grant approval.`)
+     await refresh()
+   } catch (error) { setStatus(error.message, true) }
+ }
+@@ -178,7 +351,7 @@ byId('login-form').addEventListener('submit', async (event) => {
+     byId('passphrase').value = ''
+     byId('login-view').hidden = true
+     byId('portal-view').hidden = false
+-    await refresh()
++    await refresh(true)
+     byId('dashboard-tab').focus()
+   } catch (error) { status.textContent = error.message; status.classList.add('error') }
+ })
+@@ -187,6 +360,7 @@ byId('logout').addEventListener('click', async () => {
+   try { await api('/api/logout', { method: 'POST' }) } catch {}
+   state.csrf = null
+   state.snapshot = null
++  state.currentItem = null
+   byId('portal-view').hidden = true
+   byId('login-view').hidden = false
+   byId('login-status').textContent = 'Signed out.'
+@@ -214,14 +388,13 @@ for (const tab of tabs) {
+   })
+ }
+ 
+-byId('dataset-filter').addEventListener('input', () => { if (state.snapshot) renderDatasets(state.snapshot.datasets) })
+-byId('action-form').addEventListener('submit', async (event) => {
++byId('content-filters').addEventListener('input', () => { if (state.snapshot) renderContentLibrary() })
++byId('material-form').addEventListener('submit', async (event) => {
+   event.preventDefault()
+-  const form = new FormData(event.currentTarget)
+-  const payload = Object.fromEntries(['type', 'targetType', 'targetId', 'exactRevisionKey', 'note'].map((key) => [key, form.get(key)]))
++  const payload = Object.fromEntries(new FormData(event.currentTarget).entries())
+   try {
+-    const action = await api('/api/actions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+-    setStatus(`Action ${action.type} recorded with grantsApproval=false.`)
++    const material = await api('/api/extra-materials', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
++    setStatus(`Extra Material registered privately: ${material.title}. grantsApproval=false.`)
+     event.currentTarget.reset()
+     await refresh()
+   } catch (error) { setStatus(error.message, true) }
+@@ -241,5 +414,5 @@ api('/api/session').then(async (session) => {
+   state.csrf = session.csrf
+   byId('login-view').hidden = true
+   byId('portal-view').hidden = false
+-  await refresh()
++  await refresh(true)
+ }).catch(() => {})
+diff --git a/ai-manager/private-review-portal/static/index.html b/ai-manager/private-review-portal/static/index.html
+index 10a962d..c084fc1 100644
+--- a/ai-manager/private-review-portal/static/index.html
++++ b/ai-manager/private-review-portal/static/index.html
+@@ -4,20 +4,20 @@
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+-    <title>MSK Private Review Portal</title>
++    <title>MSK Content Review Studio</title>
+     <link rel="stylesheet" href="/styles.css">
+     <script src="/app.js" defer></script>
+   </head>
+   <body>
+-    <a class="skip-link" href="#main">Skip to portal content</a>
++    <a class="skip-link" href="#main">Skip to private review content</a>
+     <header class="notice" role="note">
+       <strong>Private research and project workspace.</strong>
+-      Patient-identifiable, Trust-confidential and clinical-record uploads are prohibited. Uploading or acting here does not create clinical, evidence, source, licensing, accessibility, beta, publication or release approval.
++      Patient-identifiable, Trust-confidential and clinical-record uploads are prohibited. Notes and tasks recorded here grant no clinical, evidence, source, licensing, accessibility, beta, publication or release approval.
+     </header>
+     <main id="main">
+       <section id="login-view" class="login-card" aria-labelledby="login-title">
+         <p class="eyebrow">Tailnet / loopback only</p>
+-        <h1 id="login-title">Private Review Portal</h1>
++        <h1 id="login-title">Content Review Studio</h1>
+         <p>Use the environment-configured review passphrase. It is never stored in this browser.</p>
+         <form id="login-form">
+           <label for="passphrase">Review passphrase</label>
+@@ -30,32 +30,69 @@
+       <section id="portal-view" hidden>
+         <div class="portal-heading">
+           <div>
+-            <p class="eyebrow">Exact-revision governance</p>
+-            <h1>MSK project review</h1>
++            <p class="eyebrow">Region-agnostic · exact revision · grantsApproval: false</p>
++            <h1>MSK Content Review Studio</h1>
+           </div>
+           <button id="logout" class="secondary" type="button">Sign out</button>
+         </div>
+ 
+-        <nav class="tabs" aria-label="Portal sections">
++        <nav class="tabs" aria-label="Studio sections">
+           <button type="button" role="tab" aria-selected="true" aria-controls="dashboard-panel" id="dashboard-tab" data-panel="dashboard-panel">Dashboard</button>
++          <button type="button" role="tab" aria-selected="false" aria-controls="content-panel" id="content-tab" data-panel="content-panel" tabindex="-1">Content library</button>
++          <button type="button" role="tab" aria-selected="false" aria-controls="detail-panel" id="detail-tab" data-panel="detail-panel" tabindex="-1">Item detail</button>
++          <button type="button" role="tab" aria-selected="false" aria-controls="materials-panel" id="materials-tab" data-panel="materials-panel" tabindex="-1">Extra Materials</button>
+           <button type="button" role="tab" aria-selected="false" aria-controls="upload-panel" id="upload-tab" data-panel="upload-panel" tabindex="-1">Upload</button>
+-          <button type="button" role="tab" aria-selected="false" aria-controls="library-panel" id="library-tab" data-panel="library-panel" tabindex="-1">Library</button>
+-          <button type="button" role="tab" aria-selected="false" aria-controls="queues-panel" id="queues-tab" data-panel="queues-panel" tabindex="-1">Review queues</button>
++          <button type="button" role="tab" aria-selected="false" aria-controls="documents-panel" id="documents-tab" data-panel="documents-panel" tabindex="-1">Documents</button>
+           <button type="button" role="tab" aria-selected="false" aria-controls="future-panel" id="future-tab" data-panel="future-panel" tabindex="-1">Future Build</button>
+         </nav>
+ 
+         <div id="global-status" class="status" role="status" aria-live="polite"></div>
+ 
+         <section id="dashboard-panel" role="tabpanel" aria-labelledby="dashboard-tab">
+-          <h2>Derived project position</h2>
+-          <p>Counts come from authoritative repository records and the external private database; they are not approval assertions.</p>
+-          <div id="headline" class="metrics" aria-live="polite"></div>
+-          <div id="datasets" class="cards"></div>
++          <h2>Review position</h2>
++          <p>Every count is derived from authoritative repository records and the external private database. A green count is not an approval.</p>
++          <div id="studio-metrics" class="metrics" aria-live="polite"></div>
++          <h3>Configured regions</h3>
++          <div id="region-summary" class="cards compact-cards"></div>
++        </section>
++
++        <section id="content-panel" role="tabpanel" aria-labelledby="content-tab" hidden>
++          <h2>Content library</h2>
++          <p>Shoulder is the first loaded adapter. Region and content-type choices come from configuration, not reviewer UI code.</p>
++          <form id="content-filters" class="filter-grid" aria-label="Content filters">
++            <label>Search <input name="query" type="search" placeholder="Title or exact ID"></label>
++            <label>Region <select name="region"><option value="">All regions</option></select></label>
++            <label>Content type <select name="contentType"><option value="">All content types</option></select></label>
++            <label>Lifecycle <select name="lifecycle"><option value="">All lifecycle states</option></select></label>
++            <label>Publication <select name="publicationState"><option value="">All publication states</option></select></label>
++            <label>Blockers <select name="blockerState"><option value="">Any blocker state</option><option value="blocked">Blocked</option><option value="clear">No blockers</option></select></label>
++          </form>
++          <p id="content-result-count" class="muted"></p>
++          <div id="content-results" class="cards"></div>
++        </section>
++
++        <section id="detail-panel" role="tabpanel" aria-labelledby="detail-tab" hidden>
++          <h2>Item detail</h2>
++          <div id="item-detail" class="empty-state">Choose an item from the Content library. No approval or publication control is available in this phase.</div>
++        </section>
++
++        <section id="materials-panel" role="tabpanel" aria-labelledby="materials-tab" hidden>
++          <h2>Extra Materials</h2>
++          <p>Register private review references to PDFs, PowerPoints, images, videos, legacy HTML or teaching notes. Registration does not copy material into Git or make it public.</p>
++          <form id="material-form" class="form-grid">
++            <label>Title <input name="title" maxlength="180" required></label>
++            <label>Material type <select name="materialType" required></select></label>
++            <label>Region or collection <select name="region" required></select></label>
++            <label>Private document ID, optional <input name="documentId" maxlength="80" placeholder="Link an uploaded private document"></label>
++            <label class="wide">Private notes <textarea name="notes" rows="3" maxlength="3000"></textarea></label>
++            <button type="submit">Register privately</button>
++          </form>
++          <div id="extra-materials" class="cards"></div>
+         </section>
+ 
+         <section id="upload-panel" role="tabpanel" aria-labelledby="upload-tab" hidden>
+           <h2>Secure mobile intake</h2>
+-          <p>Allowed: PDF, PPTX, DOCX, Markdown, TXT, CSV, PNG, JPEG and WebP. Files stream to quarantine and are not released without a clean malware scan.</p>
++          <p>Allowed uploads: PDF, PPTX, DOCX, Markdown, TXT, CSV, PNG, JPEG and WebP. Files stream to private quarantine and are not released without a clean malware scan.</p>
+           <form id="upload-form">
+             <div class="form-grid">
+               <label>Title <input name="title" maxlength="160"></label>
+@@ -76,43 +113,11 @@
+           <div id="upload-list" class="upload-list" aria-live="polite"></div>
+         </section>
+ 
+-        <section id="library-panel" role="tabpanel" aria-labelledby="library-tab" hidden>
++        <section id="documents-panel" role="tabpanel" aria-labelledby="documents-tab" hidden>
+           <h2>Document library and quarantine</h2>
+           <div id="documents" class="cards"></div>
+         </section>
+ 
+-        <section id="queues-panel" role="tabpanel" aria-labelledby="queues-tab" hidden>
+-          <h2>Review queues and governed systems</h2>
+-          <label class="filter">Filter <input id="dataset-filter" type="search" placeholder="3D, movement, MCQ, cases…"></label>
+-          <div id="queue-datasets" class="cards"></div>
+-          <section class="action-composer" aria-labelledby="action-title">
+-            <h3 id="action-title">Record an authorised review action</h3>
+-            <p>Actions create a private audit record only. They never grant an approval.</p>
+-            <form id="action-form" class="form-grid">
+-              <label>Action
+-                <select name="type" required>
+-                  <option value="queue-extraction">Queue extraction</option>
+-                  <option value="queue-proposal">Queue evidence-to-module proposal</option>
+-                  <option value="link-exact-revision">Link to exact revision</option>
+-                  <option value="add-note">Add note</option>
+-                  <option value="accept-proposal">Accept proposal for further human review</option>
+-                  <option value="reject-proposal">Reject proposal</option>
+-                  <option value="defer-proposal">Defer proposal</option>
+-                  <option value="create-human-review-task">Create human-review task</option>
+-                  <option value="request-focused-packet">Request focused packet</option>
+-                  <option value="mark-superseded">Mark superseded</option>
+-                  <option value="archive">Archive without deleting original</option>
+-                </select>
+-              </label>
+-              <label>Target type <input name="targetType" maxlength="80" required></label>
+-              <label class="wide">Target ID <input name="targetId" maxlength="180" required></label>
+-              <label class="wide">Exact-revision key, when required <input name="exactRevisionKey" maxlength="300"></label>
+-              <label class="wide">Note <textarea name="note" rows="3" maxlength="3000"></textarea></label>
+-              <button type="submit">Record non-approval action</button>
+-            </form>
+-          </section>
+-        </section>
+-
+         <section id="future-panel" role="tabpanel" aria-labelledby="future-tab" hidden>
+           <h2>Future Build workspace</h2>
+           <p>Planning records remain private and do not grant approval. Every item requires an authorised owner and exact-revision work packet.</p>
+diff --git a/ai-manager/private-review-portal/static/styles.css b/ai-manager/private-review-portal/static/styles.css
+index bbd3d39..679b54f 100644
+--- a/ai-manager/private-review-portal/static/styles.css
++++ b/ai-manager/private-review-portal/static/styles.css
+@@ -63,6 +63,19 @@ progress { width: 100%; accent-color: var(--accent); }
+ .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .7rem; }
+ .actions button { font-size: .86rem; min-height: 40px; }
+ .actions a { display: inline-flex; min-height: 40px; align-items: center; padding: .55rem .7rem; border: 1px solid var(--line); border-radius: .5rem; color: var(--accent-dark); font-size: .86rem; font-weight: 700; }
++.filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .7rem; padding: 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: .8rem; }
++.filter-grid label { display: grid; gap: .35rem; font-weight: 700; }
++.compact-cards { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
++.muted-card { opacity: .72; }
++.empty-state { padding: 2rem; border: 1px dashed var(--line); border-radius: .8rem; color: var(--muted); }
++.item-detail { display: grid; gap: 1rem; }
++.item-detail > h3 { font-size: 1.5rem; margin-bottom: 0; }
++.detail-section { padding: 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: .8rem; }
++.detail-section h3 { margin-top: 0; }
++.detail-section ul { margin-bottom: 0; padding-left: 1.2rem; }
++.content-preview { max-height: 34rem; overflow: auto; padding: 1rem; border-radius: .55rem; background: #10201b; color: #e9fff7; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .82rem; }
++.review-form { margin-bottom: 0; }
++code { overflow-wrap: anywhere; }
+ 
+ @media (max-width: 620px) {
+   main { width: min(100% - 1rem, 1200px); margin-top: 1rem; }
+@@ -73,6 +86,7 @@ progress { width: 100%; accent-color: var(--accent); }
+   .cards { grid-template-columns: 1fr; }
+   .card dl { grid-template-columns: 1fr; gap: .1rem; }
+   .card dd { margin-bottom: .45rem; }
++  .filter-grid { grid-template-columns: 1fr; }
+ }
+ 
+ @media (prefers-reduced-motion: reduce) {
+diff --git a/ai-manager/private-review-portal/store.mjs b/ai-manager/private-review-portal/store.mjs
+index 9d7d64f..1b06f42 100644
+--- a/ai-manager/private-review-portal/store.mjs
++++ b/ai-manager/private-review-portal/store.mjs
+@@ -25,11 +25,19 @@ export class PrivateStore {
+     for (const folder of privateFolders) fs.mkdirSync(resolveInside(this.root, folder), { recursive: true })
+     this.databaseFile = resolveInside(this.root, 'database', 'portal.json')
+     this.auditFile = resolveInside(this.root, 'logs', 'audit.jsonl')
+-    if (!fs.existsSync(this.databaseFile)) writeJsonAtomic(this.databaseFile, { schemaVersion: 1, documents: [], actions: [], futureItems: [] })
++    if (!fs.existsSync(this.databaseFile)) writeJsonAtomic(this.databaseFile, { schemaVersion: 2, documents: [], actions: [], futureItems: [], extraMaterials: [] })
+   }
+ 
+   read() {
+-    return JSON.parse(fs.readFileSync(this.databaseFile, 'utf8'))
++    const database = JSON.parse(fs.readFileSync(this.databaseFile, 'utf8'))
++    return {
++      ...database,
++      schemaVersion: Math.max(2, Number(database.schemaVersion ?? 1)),
++      documents: database.documents ?? [],
++      actions: database.actions ?? [],
++      futureItems: database.futureItems ?? [],
++      extraMaterials: database.extraMaterials ?? [],
++    }
+   }
+ 
+   mutate(mutator) {
+@@ -65,6 +73,16 @@ export class PrivateStore {
+     })
+   }
+ 
++  addExtraMaterial(material) {
++    return this.mutate((database) => {
++      database.schemaVersion = 2
++      database.extraMaterials ??= []
++      if (database.extraMaterials.some((item) => item.id === material.id)) throw new Error('Generated extra-material identifier collision.')
++      database.extraMaterials.push(structuredClone(material))
++      return material
++    })
++  }
++
+   replaceFutureItems(items) {
+     return this.mutate((database) => {
+       database.futureItems = structuredClone(items)
+diff --git a/scripts/private-review-portal/check-public-private-separation.mjs b/scripts/private-review-portal/check-public-private-separation.mjs
+index 439c7c0..6d401a0 100644
+--- a/scripts/private-review-portal/check-public-private-separation.mjs
++++ b/scripts/private-review-portal/check-public-private-separation.mjs
+@@ -8,9 +8,15 @@ const sourceRoot = path.join(root, 'src')
+ const forbidden = [
+   'private-review-portal',
+   'Private Review Portal',
++  'Content Review Studio',
+   'msk-private-review-data',
+   'MSK_REVIEW_PORTAL_',
+   '/api/uploads',
++  '/api/content/',
++  'movement.shoulder.joint.flexion',
++  'mcq-slot.shoulder-slice.01',
++  '3d-plan.structure.shoulder.scapula',
++  'extra-material.',
+   'msk_review_session',
+   '.ts.net',
+   '127.0.0.1:4379',
+@@ -38,6 +44,8 @@ function filesUnder(directory) {
+ const violations = []
+ for (const directory of [...scanRoots, sourceRoot]) {
+   for (const file of filesUnder(directory)) {
++    const relativePath = path.relative(root, file).replaceAll('\\', '/')
++    if (directory !== sourceRoot && /(?:private-review-portal|content-review-studio|reviewer-studio)/i.test(relativePath)) violations.push(`${relativePath} is a reviewer-only path in public output`)
+     if (!textExtensions.has(path.extname(file).toLowerCase()) && directory !== sourceRoot) continue
+     const content = fs.readFileSync(file, 'utf8')
+     for (const marker of forbidden) if (content.includes(marker)) violations.push(`${path.relative(root, file)} contains ${JSON.stringify(marker)}`)
+@@ -50,4 +58,4 @@ for (const file of tracked.stdout.split(/\r?\n/).filter(Boolean)) {
+   if (/\.(?:pdf|pptx|docx|png|jpe?g|webp|sqlite|db)$/i.test(file)) violations.push(`${file} is a private-data file tracked under the portal runtime`)
+ }
+ if (violations.length) throw new Error(`Public/private separation failed:\n${violations.join('\n')}`)
+-console.log(`Public/private separation passed: scanned ${scanRoots.length} public roots plus learner source for ${forbidden.length} private markers; no private document formats are tracked under the portal runtime.`)
++console.log(`Public/private separation passed: scanned ${scanRoots.length} public roots plus learner source for ${forbidden.length} private markers and reviewer-only paths; no private document formats are tracked under the portal runtime.`)
+diff --git a/scripts/private-review-portal/test-portal.mjs b/scripts/private-review-portal/test-portal.mjs
+index 2a35971..7232a8d 100644
+--- a/scripts/private-review-portal/test-portal.mjs
++++ b/scripts/private-review-portal/test-portal.mjs
+@@ -1,9 +1,11 @@
+ import assert from 'node:assert/strict'
++import crypto from 'node:crypto'
+ import fs from 'node:fs'
+ import os from 'node:os'
+ import path from 'node:path'
+ import { Readable } from 'node:stream'
+ import { loadConfig, repositoryRoot } from '../../ai-manager/private-review-portal/config.mjs'
++import { createRegistryItem, createShoulderAdapter, deriveStudioSummary, loadContentRegistry, loadStudioConfig } from '../../ai-manager/private-review-portal/content-studio.mjs'
+ import { intakeUpload } from '../../ai-manager/private-review-portal/intake.mjs'
+ import { allowedExtensions, inspectFile, sanitizeFilename } from '../../ai-manager/private-review-portal/mime.mjs'
+ import { createPortalServer } from '../../ai-manager/private-review-portal/server.mjs'
+@@ -12,6 +14,19 @@ import { PrivateStore, privateFolders, resolveInside } from '../../ai-manager/pr
+ 
+ const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'msk-private-portal-test-'))
+ const passphrase = 'synthetic-review-passphrase-2026'
++const shoulderSourcePaths = [
++  'reports/guided-cases/summary.json',
++  'ai-manager/clinical-platform/shoulder/movement-library.json',
++  'ai-manager/clinical-platform/shoulder/module-library.json',
++  'ai-manager/clinical-platform/anatomy-3d/registry.json',
++  'ai-manager/clinical-platform/shoulder/mcq-plan.json',
++  'ai-manager/clinical-platform/shoulder/source-inventory.json',
++  'ai-manager/clinical-platform/shoulder/evidence-map.json',
++  'ai-manager/clinical-platform/shoulder/compatibility-rules.json',
++  ...fs.readdirSync(path.join(repositoryRoot, 'content', 'shoulder')).filter((name) => name.endsWith('.mdx')).sort().map((name) => `content/shoulder/${name}`),
++]
++const sourceHashes = () => Object.fromEntries(shoulderSourcePaths.map((relativePath) => [relativePath, crypto.createHash('sha256').update(fs.readFileSync(path.join(repositoryRoot, ...relativePath.split('/')))).digest('hex')]))
++const originalSourceHashes = sourceHashes()
+ const writeFixture = (name, bytes) => {
+   const file = path.join(temporaryRoot, name)
+   fs.writeFileSync(file, bytes)
+@@ -51,6 +66,26 @@ try {
+   const store = new PrivateStore(path.join(temporaryRoot, 'private-data'))
+   assert.deepEqual(privateFolders.filter((folder) => fs.existsSync(path.join(store.root, folder))), privateFolders)
+   assert.throws(() => resolveInside(store.root, '..', 'escape'), /escapes/)
++  const studioConfig = loadStudioConfig()
++  for (const region of ['cervical', 'thoracic', 'shoulder', 'elbow', 'wrist-hand', 'lumbar', 'hip', 'knee', 'ankle-foot', 'neuro', 'anatomy-only', 'non-region-specific']) assert.ok(studioConfig.regions.some((item) => item.id === region))
++  for (const contentType of ['cases', 'conditions', 'movements', 'anatomy', '3d-assets', 'mcqs', 'evidence', 'extra-materials', 'modules', 'compatibility-rules']) assert.ok(studioConfig.contentTypes.includes(contentType))
++  const registry = loadContentRegistry({ repositoryRoot, store })
++  assert.equal(registry.items.filter((item) => item.region === 'shoulder' && item.contentType === 'movements').length, 20)
++  assert.equal(registry.items.filter((item) => item.region === 'shoulder' && item.contentType === '3d-assets').length, 16)
++  assert.ok(registry.items.filter((item) => item.contentType === '3d-assets').every((item) => item.currentContent.assetPath === null && item.currentContent.actualStructureCount === 0))
++  assert.equal(registry.items.filter((item) => item.region === 'shoulder' && item.contentType === 'mcqs').length, 10)
++  assert.ok(registry.items.filter((item) => item.contentType === 'mcqs').every((item) => item.currentContent.authoredContent === null))
++  assert.equal(registry.items.filter((item) => item.region === 'shoulder' && item.contentType === 'compatibility-rules').length, 12)
++  assert.ok(registry.items.filter((item) => item.contentType === 'cases' && item.learnerPreview).every((item) => item.learnerPreview.route.startsWith(`/cases/${item.region}/`)))
++  assert.ok(registry.items.filter((item) => item.contentType === 'compatibility-rules').every((item) => item.currentContent.enabled === false))
++  assert.equal(deriveStudioSummary(registry).readyForApproval, 0)
++  assert.ok(registry.items.every((item) => item.grantsApproval === false))
++  const publicationSnapshot = Object.fromEntries(registry.items.map((item) => [item.id, item.publicationState]))
++
++  const mockConfig = { ...studioConfig, regions: [...studioConfig.regions, { id: 'mock-region', label: 'Mock region', availability: 'test-only' }] }
++  const mockAdapter = { id: 'mock-adapter', regions: ['mock-region'], load: () => [createRegistryItem({ id: 'mock.item.1', region: 'mock-region', contentType: 'modules', title: 'Synthetic registry fixture', lifecycle: 'draft', publicationState: 'private', clinicalReview: 'required', evidenceReview: 'required', accessibilityReview: 'required', licensingReview: 'required', blockers: ['synthetic-test-blocker'], sourceLinks: [], currentContent: { synthetic: true }, missingFields: ['synthetic content'] })] }
++  const mockRegistry = loadContentRegistry({ repositoryRoot, store, adapters: [createShoulderAdapter(), mockAdapter], config: mockConfig })
++  assert.ok(mockRegistry.items.some((item) => item.region === 'mock-region'))
+   const config = {
+     ...loadConfig({
+       MSK_REVIEW_PORTAL_PASSPHRASE: passphrase,
+@@ -118,12 +153,26 @@ try {
+     assert.equal(authenticated.status, 200)
+     const dashboard = await request('/api/dashboard', { headers: { Cookie: cookie } })
+     const dashboardBody = await dashboard.json()
+-    assert.equal(dashboardBody.headline.reviewTargets, 96)
+-    assert.equal(dashboardBody.headline.pendingReviews, 431)
+-    assert.equal(dashboardBody.headline.releaseBlockers, 500)
+-    assert.equal(dashboardBody.headline.evidenceRecords, 3)
+-    assert.equal(dashboardBody.datasets.find((dataset) => dataset.id === 'source-clearance').count, 12)
+-    assert.equal(dashboardBody.datasets.find((dataset) => dataset.id === 'dependencies').count, 11)
++    const reviewLedger = JSON.parse(fs.readFileSync(path.join(repositoryRoot, 'ai-manager', 'clinical-platform', 'reviews', 'review-ledger.json'), 'utf8'))
++    const releaseCandidate = JSON.parse(fs.readFileSync(path.join(repositoryRoot, 'ai-manager', 'clinical-platform', 'release', 'v1-release-candidate.json'), 'utf8'))
++    const evidencePopulation = JSON.parse(fs.readFileSync(path.join(repositoryRoot, 'reports', 'clinical-platform', 'evidence-hub-population.json'), 'utf8'))
++    const reviewQueues = JSON.parse(fs.readFileSync(path.join(repositoryRoot, 'reports', 'clinical-platform', 'review-queues.json'), 'utf8'))
++    const dependencies = JSON.parse(fs.readFileSync(path.join(repositoryRoot, 'reports', 'private-review-portal', 'dependency-classification.json'), 'utf8'))
++    assert.equal(dashboardBody.headline.reviewTargets, reviewLedger.reviews.length)
++    assert.equal(dashboardBody.headline.pendingReviews, reviewLedger.reviews.reduce((total, item) => total + item.decisions.filter((decision) => decision.state !== 'approved').length, 0))
++    assert.equal(dashboardBody.headline.releaseBlockers, releaseCandidate.blockers.length)
++    assert.equal(dashboardBody.headline.evidenceRecords, Array.isArray(evidencePopulation.evidenceRecords) ? evidencePopulation.evidenceRecords.length : Number(evidencePopulation.evidenceRecords))
++    assert.equal(dashboardBody.datasets.find((dataset) => dataset.id === 'source-clearance').count, reviewQueues.queue.filter((item) => item.reviewKind === 'source').length)
++    assert.equal(dashboardBody.datasets.find((dataset) => dataset.id === 'dependencies').count, dependencies.findings.length)
++    assert.equal(dashboardBody.studio.summary.totalItems, registry.items.length)
++    assert.equal(dashboardBody.studio.summary.readyForApproval, 0)
++    assert.ok(dashboardBody.studio.items.every((item) => item.currentContent === undefined && item.grantsApproval === false))
++    const movementSummary = dashboardBody.studio.items.find((item) => item.contentType === 'movements')
++    const contentDetail = await request(`/api/content/${encodeURIComponent(movementSummary.id)}`, { headers: { Cookie: cookie } })
++    assert.equal(contentDetail.status, 200)
++    const contentItem = await contentDetail.json()
++    assert.equal(contentItem.id, movementSummary.id)
++    assert.equal(contentItem.currentContent.publicEligibility, false)
+     const missingCsrf = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'add-note' }) })
+     assert.equal(missingCsrf.status, 403)
+     const upload = await request('/api/uploads', {
+@@ -133,15 +182,21 @@ try {
+     })
+     assert.equal(upload.status, 201)
+     const uploaded = await upload.json()
+-    const action = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'accept-proposal', targetType: 'document', targetId: uploaded.id, note: 'Technical disposition only' }) })
++    const prohibited = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'accept-proposal', targetType: 'document', targetId: uploaded.id, note: 'Must remain prohibited' }) })
++    assert.equal(prohibited.status, 400)
++    const staleAction = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'add-note', targetType: 'content-item', targetId: contentItem.id, exactRevisionKey: 'sha256:stale', note: 'Synthetic stale action' }) })
++    assert.equal(staleAction.status, 409)
++    const action = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'add-note', targetType: 'content-item', targetId: contentItem.id, exactRevisionKey: contentItem.revisionHash, note: 'Private synthetic review note' }) })
+     assert.equal(action.status, 201)
+     assert.equal((await action.json()).grantsApproval, false)
+-    const unknownRevision = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'link-exact-revision', targetType: 'document', targetId: uploaded.id, exactRevisionKey: 'unknown@1#sha256:none' }) })
+-    assert.equal(unknownRevision.status, 400)
+-    const exactRevisionKey = dashboardBody.datasets.find((dataset) => dataset.id === 'reviews').items[0].target.exactRevisionKey
+-    const knownRevision = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'link-exact-revision', targetType: 'document', targetId: uploaded.id, exactRevisionKey }) })
+-    assert.equal(knownRevision.status, 201)
+-    assert.equal((await knownRevision.json()).grantsApproval, false)
++    const task = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'create-human-review-task', targetType: 'content-item', targetId: contentItem.id, exactRevisionKey: contentItem.revisionHash, note: 'Private synthetic review task' }) })
++    assert.equal(task.status, 201)
++    assert.equal((await task.json()).grantsApproval, false)
++    const materialResponse = await request('/api/extra-materials', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ title: 'Synthetic teaching reference', materialType: 'teaching-notes', region: 'non-region-specific', documentId: uploaded.id, notes: 'Private metadata only' }) })
++    assert.equal(materialResponse.status, 201)
++    const material = await materialResponse.json()
++    assert.equal(material.publicationState, 'private')
++    assert.equal(material.grantsApproval, false)
+     const extraction = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'queue-extraction', targetType: 'document', targetId: uploaded.id }) })
+     assert.equal((await extraction.json()).status, 'safe-text-preview-generated')
+     const regeneration = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'queue-extraction', targetType: 'document', targetId: uploaded.id }) })
+@@ -172,8 +227,14 @@ try {
+   })
+   assert.ok(!tracked.includes('msk-private-review-data'))
+   const portalHtml = fs.readFileSync(path.join(repositoryRoot, 'ai-manager', 'private-review-portal', 'static', 'index.html'), 'utf8')
++  const portalApp = fs.readFileSync(path.join(repositoryRoot, 'ai-manager', 'private-review-portal', 'static', 'app.js'), 'utf8')
+   assert.match(portalHtml, /capture="environment"/)
+-  for (const actionType of ['queue-extraction', 'queue-proposal', 'link-exact-revision', 'add-note', 'accept-proposal', 'reject-proposal', 'defer-proposal', 'create-human-review-task', 'request-focused-packet', 'mark-superseded', 'archive']) assert.match(portalHtml, new RegExp(`value="${actionType}"`))
++  assert.match(portalHtml, /MSK Content Review Studio/)
++  for (const actionType of ['add-note', 'create-human-review-task']) assert.match(portalApp, new RegExp(`['"]${actionType}['"]`))
++  for (const prohibitedAction of ['accept-proposal', 'reject-proposal', 'defer-proposal', 'mark-superseded', 'archive']) assert.doesNotMatch(portalApp, new RegExp(`['"]${prohibitedAction}['"]`))
++  assert.doesNotMatch(portalApp, /mock-region/)
++  assert.deepEqual(Object.fromEntries(loadContentRegistry({ repositoryRoot, store }).items.filter((item) => publicationSnapshot[item.id] !== undefined).map((item) => [item.id, item.publicationState])), publicationSnapshot)
++  assert.deepEqual(sourceHashes(), originalSourceHashes)
+   for (const script of ['tailscale-serve-start.ps1', 'tailscale-serve-stop.ps1', 'tailscale-serve-reset.ps1']) {
+     const content = fs.readFileSync(path.join(repositoryRoot, 'scripts', 'private-review-portal', script), 'utf8')
+     assert.ok(!/\bfunnel\s+(?:on|reset|--bg|--https)/i.test(content), `${script} must never configure Funnel`)
+
+========================================================
+UNTRACKED: content-studio-config.json
+========================================================
+{
+  "schemaVersion": 1,
+  "regions": [
+    { "id": "cervical", "label": "Cervical", "availability": "current" },
+    { "id": "thoracic", "label": "Thoracic", "availability": "current" },
+    { "id": "shoulder", "label": "Shoulder", "availability": "current" },
+    { "id": "elbow", "label": "Elbow", "availability": "current" },
+    { "id": "wrist-hand", "label": "Wrist and hand", "availability": "current" },
+    { "id": "lumbar", "label": "Lumbar", "availability": "planned" },
+    { "id": "hip", "label": "Hip", "availability": "planned" },
+    { "id": "knee", "label": "Knee", "availability": "planned" },
+    { "id": "ankle-foot", "label": "Ankle and foot", "availability": "planned" },
+    { "id": "neuro", "label": "Neurology", "availability": "planned" },
+    { "id": "anatomy-only", "label": "Anatomy-only collections", "availability": "collection" },
+    { "id": "non-region-specific", "label": "Non-region-specific", "availability": "collection" }
+  ],
+  "contentTypes": [
+    "cases",
+    "conditions",
+    "movements",
+    "anatomy",
+    "3d-assets",
+    "mcqs",
+    "evidence",
+    "extra-materials",
+    "modules",
+    "compatibility-rules"
+  ],
+  "extraMaterialTypes": [
+    "pdf",
+    "powerpoint",
+    "image",
+    "video",
+    "legacy-html",
+    "teaching-notes"
+  ]
+}
+
+
+========================================================
+UNTRACKED: content-studio.mjs
+========================================================
+import crypto from 'node:crypto'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const portalDirectory = path.dirname(fileURLToPath(import.meta.url))
+const defaultConfigPath = path.join(portalDirectory, 'content-studio-config.json')
+
+function readJson(root, relativePath) {
+  return JSON.parse(fs.readFileSync(path.join(root, ...relativePath.split('/')), 'utf8'))
+}
+
+function hashValue(value) {
+  const bytes = typeof value === 'string' || Buffer.isBuffer(value) ? value : JSON.stringify(value)
+  return `sha256:${crypto.createHash('sha256').update(bytes).digest('hex')}`
+}
+
+function compactText(value, fallback = 'not-recorded') {
+  const text = String(value ?? '').trim()
+  return text || fallback
+}
+
+function unique(values) {
+  return [...new Set(values.filter(Boolean).map((value) => String(value)))]
+}
+
+function reviewState(value, fallback = 'not-recorded') {
+  if (value && typeof value === 'object') return compactText(value.state ?? value.status, fallback)
+  return compactText(value, fallback)
+}
+
+function requiredReviewBlockers(states) {
+  const complete = new Set(['approved', 'published', 'baseline-reviewed', 'baseline-preserved', 'baseline-public-content', 'not-applicable'])
+  return Object.entries(states)
+    .filter(([, state]) => !complete.has(state))
+    .map(([review]) => `${review.replace('Review', '-review')}-required`)
+}
+
+function completeness(missingFields) {
+  const missing = unique(missingFields)
+  const score = Math.max(0, Math.round(((8 - Math.min(8, missing.length)) / 8) * 100))
+  return { status: missing.length ? 'incomplete' : 'complete', score, missingFields: missing }
+}
+
+function makeItem(input) {
+  const reviews = {
+    clinicalReview: reviewState(input.clinicalReview),
+    evidenceReview: reviewState(input.evidenceReview),
+    accessibilityReview: reviewState(input.accessibilityReview),
+    licensingReview: reviewState(input.licensingReview),
+  }
+  const item = {
+    id: compactText(input.id, ''),
+    region: compactText(input.region, ''),
+    contentType: compactText(input.contentType, ''),
+    title: compactText(input.title, input.id),
+    lifecycle: compactText(input.lifecycle, 'unknown'),
+    publicationState: compactText(input.publicationState, 'private'),
+    ...reviews,
+    blockers: unique([...(input.blockers ?? []), ...requiredReviewBlockers(reviews)]),
+    reviewTasks: Array.isArray(input.reviewTasks) ? structuredClone(input.reviewTasks) : [],
+    sourceLinks: unique(input.sourceLinks ?? []),
+    revisionHash: compactText(input.revisionHash, hashValue(input.currentContent ?? input)),
+    completeness: completeness(input.missingFields ?? []),
+    currentContent: structuredClone(input.currentContent ?? {}),
+    learnerPreview: input.learnerPreview ? structuredClone(input.learnerPreview) : null,
+    grantsApproval: false,
+  }
+  if (!item.id || !item.region || !item.contentType) throw new Error('Content registry items require id, region and contentType.')
+  return item
+}
+
+export const createRegistryItem = makeItem
+
+function frontmatterValue(source, name) {
+  const match = source.match(new RegExp(`^${name}:\\s*["']?([^\\r\\n"']+)["']?\\s*$`, 'm'))
+  return match?.[1]?.trim() ?? null
+}
+
+function taskIndex(workspace) {
+  const index = new Map()
+  for (const task of workspace.reviewTasks ?? []) {
+    const tasks = index.get(task.targetId) ?? []
+    tasks.push(task)
+    index.set(task.targetId, tasks)
+  }
+  return index
+}
+
+function findPublicCaseRoutes(repositoryRoot) {
+  const records = readJson(repositoryRoot, 'src/data/public-case-registry.json')
+  return new Map(records.map((record) => [record.caseId, `/cases/${record.region}/${record.publicSlug}`]))
+}
+
+export function loadStudioConfig(configPath = defaultConfigPath) {
+  const config = JSON.parse(fs.readFileSync(configPath, 'utf8'))
+  if (!Array.isArray(config.regions) || !Array.isArray(config.contentTypes)) throw new Error('Content Studio configuration is invalid.')
+  const regionIds = config.regions.map((region) => region.id)
+  if (new Set(regionIds).size !== regionIds.length) throw new Error('Content Studio region identifiers must be unique.')
+  return config
+}
+
+export function createShoulderAdapter() {
+  return {
+    id: 'shoulder-read-only',
+    regions: ['shoulder'],
+    load({ repositoryRoot }) {
+      const region = 'shoulder'
+      const workspace = readJson(repositoryRoot, 'ai-manager/clinical-platform/shoulder/authoring-workspace.json')
+      const tasks = taskIndex(workspace)
+      const caseRoutes = findPublicCaseRoutes(repositoryRoot)
+      const items = []
+
+      const cases = readJson(repositoryRoot, 'reports/guided-cases/summary.json').records.filter((record) => record.region === region)
+      for (const record of cases) {
+        const route = caseRoutes.get(record.caseId)
+        items.push(makeItem({
+          id: record.caseId,
+          region,
+          contentType: 'cases',
+          title: record.neutralTitle,
+          lifecycle: record.lifecycleState,
+          publicationState: record.lifecycleState === 'published' && record.publicationEligibility ? 'published' : 'private',
+          clinicalReview: record.clinicalReviewStatus,
+          evidenceReview: record.evidenceReviewStatus,
+          accessibilityReview: 'not-recorded',
+          licensingReview: record.sourceClearanceStatus,
+          blockers: [record.unresolvedEvidenceGapCount ? `${record.unresolvedEvidenceGapCount}-unresolved-evidence-gaps` : null, record.unresolvedIssueCount ? `${record.unresolvedIssueCount}-unresolved-issues` : null],
+          reviewTasks: tasks.get(record.caseId),
+          sourceLinks: ['reports/guided-cases/summary.json', 'src/data/public-case-registry.json'],
+          revisionHash: `sha256:${record.contentHash}`,
+          currentContent: record,
+          learnerPreview: route ? { route, label: 'Open existing learner case' } : null,
+          missingFields: [record.unresolvedEvidenceGapCount ? 'evidence gaps' : null],
+        }))
+      }
+
+      const conditionDirectory = path.join(repositoryRoot, 'content', region)
+      for (const filename of fs.readdirSync(conditionDirectory).filter((name) => name.endsWith('.mdx')).sort()) {
+        const relativePath = `content/${region}/${filename}`
+        const source = fs.readFileSync(path.join(conditionDirectory, filename), 'utf8')
+        const slug = filename.slice(0, -4)
+        const title = frontmatterValue(source, 'title') ?? slug
+        items.push(makeItem({
+          id: `condition.${region}.${slug}`,
+          region,
+          contentType: 'conditions',
+          title,
+          lifecycle: 'published',
+          publicationState: 'published',
+          clinicalReview: 'baseline-public-content',
+          evidenceReview: frontmatterValue(source, 'evidence_level') ?? 'not-recorded',
+          accessibilityReview: 'not-recorded',
+          licensingReview: 'baseline-public-content',
+          sourceLinks: [relativePath],
+          revisionHash: hashValue(source),
+          currentContent: { repositoryPath: relativePath, frontmatter: { title, region: frontmatterValue(source, 'region'), category: frontmatterValue(source, 'category'), lastUpdated: frontmatterValue(source, 'lastUpdated'), evidenceLevel: frontmatterValue(source, 'evidence_level') } },
+          learnerPreview: { route: `/${region}/${slug}`, label: 'Open existing learner condition' },
+          missingFields: [],
+        }))
+      }
+
+      const movementPath = 'ai-manager/clinical-platform/shoulder/movement-library.json'
+      for (const record of readJson(repositoryRoot, movementPath).records) {
+        items.push(makeItem({
+          id: record.id, region, contentType: 'movements', title: record.publicLabel, lifecycle: record.lifecycle, publicationState: record.publicEligibility ? 'eligible' : 'private',
+          clinicalReview: record.reviews?.clinical, evidenceReview: record.reviews?.evidence, accessibilityReview: record.reviews?.accessibility, licensingReview: 'not-recorded',
+          blockers: record.unresolvedIssues, reviewTasks: tasks.get(record.id), sourceLinks: [movementPath], revisionHash: hashValue(record), currentContent: record,
+          missingFields: [record.jointMovement?.axis == null ? 'axis' : null, record.jointMovement?.plane == null ? 'plane' : null, !record.evidenceRecordIds?.length ? 'evidence records' : null, !record.tutorExplanation ? 'tutor explanation' : null],
+        }))
+      }
+
+      const modulePath = 'ai-manager/clinical-platform/shoulder/module-library.json'
+      for (const record of readJson(repositoryRoot, modulePath).modules) {
+        const isAnatomy = record.type === 'anatomy-relationship'
+        items.push(makeItem({
+          id: record.id, region, contentType: isAnatomy ? 'anatomy' : 'modules', title: record.publicLabel, lifecycle: record.lifecycle, publicationState: record.publicationState,
+          clinicalReview: record.reviews?.clinical, evidenceReview: record.reviews?.evidence, accessibilityReview: 'not-recorded', licensingReview: record.reviews?.source,
+          blockers: record.reviews?.unresolvedIssues, reviewTasks: tasks.get(record.id), sourceLinks: [modulePath, ...(record.relationships?.sources ?? []).map((source) => source.repositoryPath)], revisionHash: hashValue(record), currentContent: record,
+          missingFields: [record.flags?.requiresHumanReview ? 'human review' : null, !record.relationships?.evidenceRecordIds?.length ? 'evidence records' : null],
+        }))
+      }
+
+      const assetPath = 'ai-manager/clinical-platform/anatomy-3d/registry.json'
+      const shoulderSlot = readJson(repositoryRoot, assetPath).assets.find((asset) => asset.region === region)
+      if (shoulderSlot) {
+        for (const plan of shoulderSlot.plannedStructures ?? []) {
+          items.push(makeItem({
+            id: `3d-plan.${plan.id}`, region, contentType: '3d-assets', title: plan.label, lifecycle: 'planned', publicationState: 'private',
+            clinicalReview: shoulderSlot.reviews?.clinical, evidenceReview: shoulderSlot.reviews?.provenance, accessibilityReview: shoulderSlot.reviews?.accessibility, licensingReview: shoulderSlot.reviews?.licence,
+            blockers: shoulderSlot.blockers, reviewTasks: tasks.get(shoulderSlot.id), sourceLinks: [assetPath], revisionHash: hashValue({ slot: shoulderSlot.id, revision: shoulderSlot.revision, plan }),
+            currentContent: { plan, assetSlotId: shoulderSlot.id, assetPath: shoulderSlot.assetPath, assetHash: shoulderSlot.assetHash, actualStructureCount: shoulderSlot.structures?.length ?? 0 },
+            missingFields: [!shoulderSlot.assetPath ? '3D asset' : null, !shoulderSlot.assetHash ? 'asset hash' : null, 'source and licence'],
+          }))
+        }
+      }
+
+      const mcqPath = 'ai-manager/clinical-platform/shoulder/mcq-plan.json'
+      for (const record of readJson(repositoryRoot, mcqPath).records) {
+        items.push(makeItem({
+          id: record.id, region, contentType: 'mcqs', title: record.learningObjective, lifecycle: record.lifecycle, publicationState: record.publicEligibility ? 'eligible' : 'private',
+          clinicalReview: record.reviewState, evidenceReview: record.reviewState, accessibilityReview: record.reviewState, licensingReview: record.reviewState,
+          blockers: record.blockers, reviewTasks: tasks.get(record.id), sourceLinks: [mcqPath], revisionHash: hashValue(record), currentContent: record,
+          missingFields: [record.authoredContent == null ? 'authored question' : null, !record.evidenceRecordIds?.length ? 'evidence records' : null],
+        }))
+      }
+
+      const sourcePath = 'ai-manager/clinical-platform/shoulder/source-inventory.json'
+      for (const record of readJson(repositoryRoot, sourcePath).records) {
+        items.push(makeItem({
+          id: record.sourceId, region, contentType: 'evidence', title: record.title, lifecycle: record.reviewState, publicationState: record.publicEvidenceEligible ? 'eligible' : 'private',
+          clinicalReview: 'not-recorded', evidenceReview: record.reviewState, accessibilityReview: 'not-applicable', licensingReview: record.sourceClearanceState,
+          blockers: record.limitations, reviewTasks: tasks.get(record.sourceId), sourceLinks: [sourcePath, ...(record.locators ?? [])], revisionHash: record.checksum, currentContent: record,
+          missingFields: [!record.evidenceProcessingEligible ? 'evidence processing clearance' : null, !record.publicEvidenceEligible ? 'public evidence eligibility' : null],
+        }))
+      }
+      const evidenceMapPath = 'ai-manager/clinical-platform/shoulder/evidence-map.json'
+      for (const gap of readJson(repositoryRoot, evidenceMapPath).gaps ?? []) {
+        items.push(makeItem({
+          id: gap.id, region, contentType: 'evidence', title: gap.topic, lifecycle: 'evidence-gap', publicationState: 'private',
+          clinicalReview: gap.requiredReview?.includes('clinical') ? 'required' : 'not-applicable', evidenceReview: gap.requiredReview?.includes('evidence') ? 'required' : 'not-applicable', accessibilityReview: 'not-applicable', licensingReview: gap.requiredReview?.includes('source-clearance') ? 'required' : 'not-applicable',
+          blockers: [gap.reason], reviewTasks: tasks.get(gap.id), sourceLinks: [evidenceMapPath], revisionHash: hashValue(gap), currentContent: gap, missingFields: ['cleared evidence'],
+        }))
+      }
+
+      const rulePath = 'ai-manager/clinical-platform/shoulder/compatibility-rules.json'
+      for (const record of readJson(repositoryRoot, rulePath).rules) {
+        items.push(makeItem({
+          id: record.id, region, contentType: 'compatibility-rules', title: record.kind, lifecycle: record.lifecycle, publicationState: record.enabled ? 'enabled' : 'private-disabled',
+          clinicalReview: record.approval?.clinicalReview, evidenceReview: record.approval?.evidenceReview, accessibilityReview: 'not-applicable', licensingReview: 'not-applicable',
+          blockers: [record.effect?.reviewRequirement, !record.enabled ? 'rule-disabled' : null], reviewTasks: tasks.get(record.id), sourceLinks: [rulePath], revisionHash: hashValue(record), currentContent: record,
+          missingFields: [!record.enabled ? 'enablement approval' : null, !record.approval?.approvedRevision ? 'approved revision' : null],
+        }))
+      }
+      return items
+    },
+  }
+}
+
+function loadExtraMaterials(store) {
+  return (store.read().extraMaterials ?? []).map((record) => makeItem({
+    id: record.id,
+    region: record.region,
+    contentType: 'extra-materials',
+    title: record.title,
+    lifecycle: record.lifecycle,
+    publicationState: 'private',
+    clinicalReview: 'not-recorded', evidenceReview: 'not-recorded', accessibilityReview: 'not-recorded', licensingReview: 'not-recorded',
+    blockers: ['private-review-only'], reviewTasks: [], sourceLinks: record.documentId ? [`private-document:${record.documentId}`] : [], revisionHash: record.revisionHash,
+    currentContent: record, missingFields: [record.documentId ? null : 'linked private document'],
+  }))
+}
+
+export function loadContentRegistry({ repositoryRoot, store, adapters = [createShoulderAdapter()], config = loadStudioConfig() }) {
+  const allowedRegions = new Set(config.regions.map((region) => region.id))
+  const allowedTypes = new Set(config.contentTypes)
+  const items = [...adapters.flatMap((adapter) => adapter.load({ repositoryRoot, store, config })), ...loadExtraMaterials(store)]
+  for (const item of items) {
+    if (!allowedRegions.has(item.region)) throw new Error(`Unconfigured Content Studio region: ${item.region}`)
+    if (!allowedTypes.has(item.contentType)) throw new Error(`Unconfigured Content Studio content type: ${item.contentType}`)
+  }
+  const ids = items.map((item) => item.id)
+  if (new Set(ids).size !== ids.length) throw new Error('Content Studio item identifiers must be unique.')
+  return { schemaVersion: config.schemaVersion, regions: config.regions, contentTypes: config.contentTypes, extraMaterialTypes: config.extraMaterialTypes, items }
+}
+
+export function filterContentRegistry(registry, filters = {}) {
+  const query = compactText(filters.query, '').toLowerCase()
+  return registry.items.filter((item) => {
+    if (filters.region && item.region !== filters.region) return false
+    if (filters.contentType && item.contentType !== filters.contentType) return false
+    if (filters.lifecycle && item.lifecycle !== filters.lifecycle) return false
+    if (filters.publicationState && item.publicationState !== filters.publicationState) return false
+    if (filters.blockerState === 'blocked' && !item.blockers.length) return false
+    if (filters.blockerState === 'clear' && item.blockers.length) return false
+    return !query || `${item.id} ${item.title}`.toLowerCase().includes(query)
+  })
+}
+
+export function deriveStudioSummary(registry) {
+  const reviewPending = (item) => [item.clinicalReview, item.evidenceReview, item.accessibilityReview, item.licensingReview].some((state) => !['approved', 'published', 'baseline-reviewed', 'baseline-preserved', 'baseline-public-content', 'not-applicable'].includes(state))
+  return {
+    totalItems: registry.items.length,
+    awaitingReview: registry.items.filter(reviewPending).length,
+    blockedItems: registry.items.filter((item) => item.blockers.length > 0).length,
+    missingEvidence: registry.items.filter((item) => item.evidenceReview === 'required' || item.evidenceReview === 'review-required' || item.completeness.missingFields.some((field) => /evidence|source/i.test(field))).length,
+    incompleteContent: registry.items.filter((item) => item.completeness.status === 'incomplete').length,
+    readyForApproval: registry.items.filter((item) => item.publicationState !== 'published' && !item.blockers.length && !reviewPending(item) && item.completeness.status === 'complete').length,
+  }
+}
+
+export function findContentItem(registry, id) {
+  return registry.items.find((item) => item.id === id) ?? null
+}
+
+export function contentRevisionHash(value) {
+  return hashValue(value)
+}
+
+
+====================
+CHANGED FILE LIST
+====================
+M	ai-manager/private-review-portal/README.md
+M	ai-manager/private-review-portal/domain.mjs
+M	ai-manager/private-review-portal/server.mjs
+M	ai-manager/private-review-portal/static/app.js
+M	ai-manager/private-review-portal/static/index.html
+M	ai-manager/private-review-portal/static/styles.css
+M	ai-manager/private-review-portal/store.mjs
+M	scripts/private-review-portal/check-public-private-separation.mjs
+M	scripts/private-review-portal/test-portal.mjs
+
+====================
+UNTRACKED FILE LIST
+====================
+ai-manager/private-review-portal/content-studio-config.json
+ai-manager/private-review-portal/content-studio.mjs
+content-review-studio-review-packet.txt
+docs/reviews/current/platform-v2-independent-review/AI_MANAGER_BOUNDARY_REVIEW.md
+docs/reviews/current/platform-v2-independent-review/CLINICAL_SAFETY_REPORT.md
+docs/reviews/current/platform-v2-independent-review/COMMIT_GRAPH.txt
+docs/reviews/current/platform-v2-independent-review/DEPENDENCY_SECURITY_REPORT.md
+docs/reviews/current/platform-v2-independent-review/DIFF_STAT.txt
+docs/reviews/current/platform-v2-independent-review/FILE_MANIFEST_SHA256.txt
+docs/reviews/current/platform-v2-independent-review/LEARNING_ENGINE_REVIEW.md
+docs/reviews/current/platform-v2-independent-review/MANUAL_REVIEW_CHECKLIST.md
+docs/reviews/current/platform-v2-independent-review/NAME_STATUS.txt
+docs/reviews/current/platform-v2-independent-review/PATCH_COVERAGE.txt
+docs/reviews/current/platform-v2-independent-review/PLATFORM_V2.patch
+docs/reviews/current/platform-v2-independent-review/REDACTION_SCAN.txt
+docs/reviews/current/platform-v2-independent-review/REVIEW_CLAIM.md
+docs/reviews/current/platform-v2-independent-review/REVIEW_FINDINGS_TEMPLATE.md
+docs/reviews/current/platform-v2-independent-review/ROUTE_AND_BOUNDARY_REPORT.md
+docs/reviews/current/platform-v2-independent-review/VALIDATION.txt

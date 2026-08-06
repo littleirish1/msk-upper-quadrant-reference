@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
-    <title>MSK Private Review Portal</title>
+    <title>MSK Content Review Studio</title>
     <link rel="stylesheet" href="/styles.css">
     <script src="/app.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to portal content</a>
+    <a class="skip-link" href="#main">Skip to private review content</a>
     <header class="notice" role="note">
       <strong>Private research and project workspace.</strong>
-      Patient-identifiable, Trust-confidential and clinical-record uploads are prohibited. Uploading or acting here does not create clinical, evidence, source, licensing, accessibility, beta, publication or release approval.
+      Patient-identifiable, Trust-confidential and clinical-record uploads are prohibited. Notes and tasks recorded here grant no clinical, evidence, source, licensing, accessibility, beta, publication or release approval.
     </header>
     <main id="main">
       <section id="login-view" class="login-card" aria-labelledby="login-title">
         <p class="eyebrow">Tailnet / loopback only</p>
-        <h1 id="login-title">Private Review Portal</h1>
+        <h1 id="login-title">Content Review Studio</h1>
         <p>Use the environment-configured review passphrase. It is never stored in this browser.</p>
         <form id="login-form">
           <label for="passphrase">Review passphrase</label>
@@ -30,32 +30,69 @@
       <section id="portal-view" hidden>
         <div class="portal-heading">
           <div>
-            <p class="eyebrow">Exact-revision governance</p>
-            <h1>MSK project review</h1>
+            <p class="eyebrow">Region-agnostic · exact revision · grantsApproval: false</p>
+            <h1>MSK Content Review Studio</h1>
           </div>
           <button id="logout" class="secondary" type="button">Sign out</button>
         </div>
 
-        <nav class="tabs" aria-label="Portal sections">
+        <nav class="tabs" aria-label="Studio sections">
           <button type="button" role="tab" aria-selected="true" aria-controls="dashboard-panel" id="dashboard-tab" data-panel="dashboard-panel">Dashboard</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="content-panel" id="content-tab" data-panel="content-panel" tabindex="-1">Content library</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="detail-panel" id="detail-tab" data-panel="detail-panel" tabindex="-1">Item detail</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="materials-panel" id="materials-tab" data-panel="materials-panel" tabindex="-1">Extra Materials</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="upload-panel" id="upload-tab" data-panel="upload-panel" tabindex="-1">Upload</button>
-          <button type="button" role="tab" aria-selected="false" aria-controls="library-panel" id="library-tab" data-panel="library-panel" tabindex="-1">Library</button>
-          <button type="button" role="tab" aria-selected="false" aria-controls="queues-panel" id="queues-tab" data-panel="queues-panel" tabindex="-1">Review queues</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="documents-panel" id="documents-tab" data-panel="documents-panel" tabindex="-1">Documents</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="future-panel" id="future-tab" data-panel="future-panel" tabindex="-1">Future Build</button>
         </nav>
 
         <div id="global-status" class="status" role="status" aria-live="polite"></div>
 
         <section id="dashboard-panel" role="tabpanel" aria-labelledby="dashboard-tab">
-          <h2>Derived project position</h2>
-          <p>Counts come from authoritative repository records and the external private database; they are not approval assertions.</p>
-          <div id="headline" class="metrics" aria-live="polite"></div>
-          <div id="datasets" class="cards"></div>
+          <h2>Review position</h2>
+          <p>Every count is derived from authoritative repository records and the external private database. A green count is not an approval.</p>
+          <div id="studio-metrics" class="metrics" aria-live="polite"></div>
+          <h3>Configured regions</h3>
+          <div id="region-summary" class="cards compact-cards"></div>
+        </section>
+
+        <section id="content-panel" role="tabpanel" aria-labelledby="content-tab" hidden>
+          <h2>Content library</h2>
+          <p>Shoulder is the first loaded adapter. Region and content-type choices come from configuration, not reviewer UI code.</p>
+          <form id="content-filters" class="filter-grid" aria-label="Content filters">
+            <label>Search <input name="query" type="search" placeholder="Title or exact ID"></label>
+            <label>Region <select name="region"><option value="">All regions</option></select></label>
+            <label>Content type <select name="contentType"><option value="">All content types</option></select></label>
+            <label>Lifecycle <select name="lifecycle"><option value="">All lifecycle states</option></select></label>
+            <label>Publication <select name="publicationState"><option value="">All publication states</option></select></label>
+            <label>Blockers <select name="blockerState"><option value="">Any blocker state</option><option value="blocked">Blocked</option><option value="clear">No blockers</option></select></label>
+          </form>
+          <p id="content-result-count" class="muted"></p>
+          <div id="content-results" class="cards"></div>
+        </section>
+
+        <section id="detail-panel" role="tabpanel" aria-labelledby="detail-tab" hidden>
+          <h2>Item detail</h2>
+          <div id="item-detail" class="empty-state">Choose an item from the Content library. No approval or publication control is available in this phase.</div>
+        </section>
+
+        <section id="materials-panel" role="tabpanel" aria-labelledby="materials-tab" hidden>
+          <h2>Extra Materials</h2>
+          <p>Register private review references to PDFs, PowerPoints, images, videos, legacy HTML or teaching notes. Registration does not copy material into Git or make it public.</p>
+          <form id="material-form" class="form-grid">
+            <label>Title <input name="title" maxlength="180" required></label>
+            <label>Material type <select name="materialType" required></select></label>
+            <label>Region or collection <select name="region" required></select></label>
+            <label>Private document ID, optional <input name="documentId" maxlength="80" placeholder="Link an uploaded private document"></label>
+            <label class="wide">Private notes <textarea name="notes" rows="3" maxlength="3000"></textarea></label>
+            <button type="submit">Register privately</button>
+          </form>
+          <div id="extra-materials" class="cards"></div>
         </section>
 
         <section id="upload-panel" role="tabpanel" aria-labelledby="upload-tab" hidden>
           <h2>Secure mobile intake</h2>
-          <p>Allowed: PDF, PPTX, DOCX, Markdown, TXT, CSV, PNG, JPEG and WebP. Files stream to quarantine and are not released without a clean malware scan.</p>
+          <p>Allowed uploads: PDF, PPTX, DOCX, Markdown, TXT, CSV, PNG, JPEG and WebP. Files stream to private quarantine and are not released without a clean malware scan.</p>
           <form id="upload-form">
             <div class="form-grid">
               <label>Title <input name="title" maxlength="160"></label>
@@ -76,41 +113,9 @@
           <div id="upload-list" class="upload-list" aria-live="polite"></div>
         </section>
 
-        <section id="library-panel" role="tabpanel" aria-labelledby="library-tab" hidden>
+        <section id="documents-panel" role="tabpanel" aria-labelledby="documents-tab" hidden>
           <h2>Document library and quarantine</h2>
           <div id="documents" class="cards"></div>
-        </section>
-
-        <section id="queues-panel" role="tabpanel" aria-labelledby="queues-tab" hidden>
-          <h2>Review queues and governed systems</h2>
-          <label class="filter">Filter <input id="dataset-filter" type="search" placeholder="3D, movement, MCQ, cases…"></label>
-          <div id="queue-datasets" class="cards"></div>
-          <section class="action-composer" aria-labelledby="action-title">
-            <h3 id="action-title">Record an authorised review action</h3>
-            <p>Actions create a private audit record only. They never grant an approval.</p>
-            <form id="action-form" class="form-grid">
-              <label>Action
-                <select name="type" required>
-                  <option value="queue-extraction">Queue extraction</option>
-                  <option value="queue-proposal">Queue evidence-to-module proposal</option>
-                  <option value="link-exact-revision">Link to exact revision</option>
-                  <option value="add-note">Add note</option>
-                  <option value="accept-proposal">Accept proposal for further human review</option>
-                  <option value="reject-proposal">Reject proposal</option>
-                  <option value="defer-proposal">Defer proposal</option>
-                  <option value="create-human-review-task">Create human-review task</option>
-                  <option value="request-focused-packet">Request focused packet</option>
-                  <option value="mark-superseded">Mark superseded</option>
-                  <option value="archive">Archive without deleting original</option>
-                </select>
-              </label>
-              <label>Target type <input name="targetType" maxlength="80" required></label>
-              <label class="wide">Target ID <input name="targetId" maxlength="180" required></label>
-              <label class="wide">Exact-revision key, when required <input name="exactRevisionKey" maxlength="300"></label>
-              <label class="wide">Note <textarea name="note" rows="3" maxlength="3000"></textarea></label>
-              <button type="submit">Record non-approval action</button>
-            </form>
-          </section>
         </section>
 
         <section id="future-panel" role="tabpanel" aria-labelledby="future-tab" hidden>

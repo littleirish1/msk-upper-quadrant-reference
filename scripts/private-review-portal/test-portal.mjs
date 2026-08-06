@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict'
+import crypto from 'node:crypto'
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { Readable } from 'node:stream'
 import { loadConfig, repositoryRoot } from '../../ai-manager/private-review-portal/config.mjs'
+import { createRegistryItem, createShoulderAdapter, deriveStudioSummary, loadContentRegistry, loadStudioConfig } from '../../ai-manager/private-review-portal/content-studio.mjs'
 import { intakeUpload } from '../../ai-manager/private-review-portal/intake.mjs'
 import { allowedExtensions, inspectFile, sanitizeFilename } from '../../ai-manager/private-review-portal/mime.mjs'
 import { createPortalServer } from '../../ai-manager/private-review-portal/server.mjs'
@@ -12,6 +14,19 @@ import { PrivateStore, privateFolders, resolveInside } from '../../ai-manager/pr
 
 const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'msk-private-portal-test-'))
 const passphrase = 'synthetic-review-passphrase-2026'
+const shoulderSourcePaths = [
+  'reports/guided-cases/summary.json',
+  'ai-manager/clinical-platform/shoulder/movement-library.json',
+  'ai-manager/clinical-platform/shoulder/module-library.json',
+  'ai-manager/clinical-platform/anatomy-3d/registry.json',
+  'ai-manager/clinical-platform/shoulder/mcq-plan.json',
+  'ai-manager/clinical-platform/shoulder/source-inventory.json',
+  'ai-manager/clinical-platform/shoulder/evidence-map.json',
+  'ai-manager/clinical-platform/shoulder/compatibility-rules.json',
+  ...fs.readdirSync(path.join(repositoryRoot, 'content', 'shoulder')).filter((name) => name.endsWith('.mdx')).sort().map((name) => `content/shoulder/${name}`),
+]
+const sourceHashes = () => Object.fromEntries(shoulderSourcePaths.map((relativePath) => [relativePath, crypto.createHash('sha256').update(fs.readFileSync(path.join(repositoryRoot, ...relativePath.split('/')))).digest('hex')]))
+const originalSourceHashes = sourceHashes()
 const writeFixture = (name, bytes) => {
   const file = path.join(temporaryRoot, name)
   fs.writeFileSync(file, bytes)
@@ -51,6 +66,26 @@ try {
   const store = new PrivateStore(path.join(temporaryRoot, 'private-data'))
   assert.deepEqual(privateFolders.filter((folder) => fs.existsSync(path.join(store.root, folder))), privateFolders)
   assert.throws(() => resolveInside(store.root, '..', 'escape'), /escapes/)
+  const studioConfig = loadStudioConfig()
+  for (const region of ['cervical', 'thoracic', 'shoulder', 'elbow', 'wrist-hand', 'lumbar', 'hip', 'knee', 'ankle-foot', 'neuro', 'anatomy-only', 'non-region-specific']) assert.ok(studioConfig.regions.some((item) => item.id === region))
+  for (const contentType of ['cases', 'conditions', 'movements', 'anatomy', '3d-assets', 'mcqs', 'evidence', 'extra-materials', 'modules', 'compatibility-rules']) assert.ok(studioConfig.contentTypes.includes(contentType))
+  const registry = loadContentRegistry({ repositoryRoot, store })
+  assert.equal(registry.items.filter((item) => item.region === 'shoulder' && item.contentType === 'movements').length, 20)
+  assert.equal(registry.items.filter((item) => item.region === 'shoulder' && item.contentType === '3d-assets').length, 16)
+  assert.ok(registry.items.filter((item) => item.contentType === '3d-assets').every((item) => item.currentContent.assetPath === null && item.currentContent.actualStructureCount === 0))
+  assert.equal(registry.items.filter((item) => item.region === 'shoulder' && item.contentType === 'mcqs').length, 10)
+  assert.ok(registry.items.filter((item) => item.contentType === 'mcqs').every((item) => item.currentContent.authoredContent === null))
+  assert.equal(registry.items.filter((item) => item.region === 'shoulder' && item.contentType === 'compatibility-rules').length, 12)
+  assert.ok(registry.items.filter((item) => item.contentType === 'cases' && item.learnerPreview).every((item) => item.learnerPreview.route.startsWith(`/cases/${item.region}/`)))
+  assert.ok(registry.items.filter((item) => item.contentType === 'compatibility-rules').every((item) => item.currentContent.enabled === false))
+  assert.equal(deriveStudioSummary(registry).readyForApproval, 0)
+  assert.ok(registry.items.every((item) => item.grantsApproval === false))
+  const publicationSnapshot = Object.fromEntries(registry.items.map((item) => [item.id, item.publicationState]))
+
+  const mockConfig = { ...studioConfig, regions: [...studioConfig.regions, { id: 'mock-region', label: 'Mock region', availability: 'test-only' }] }
+  const mockAdapter = { id: 'mock-adapter', regions: ['mock-region'], load: () => [createRegistryItem({ id: 'mock.item.1', region: 'mock-region', contentType: 'modules', title: 'Synthetic registry fixture', lifecycle: 'draft', publicationState: 'private', clinicalReview: 'required', evidenceReview: 'required', accessibilityReview: 'required', licensingReview: 'required', blockers: ['synthetic-test-blocker'], sourceLinks: [], currentContent: { synthetic: true }, missingFields: ['synthetic content'] })] }
+  const mockRegistry = loadContentRegistry({ repositoryRoot, store, adapters: [createShoulderAdapter(), mockAdapter], config: mockConfig })
+  assert.ok(mockRegistry.items.some((item) => item.region === 'mock-region'))
   const config = {
     ...loadConfig({
       MSK_REVIEW_PORTAL_PASSPHRASE: passphrase,
@@ -118,12 +153,26 @@ try {
     assert.equal(authenticated.status, 200)
     const dashboard = await request('/api/dashboard', { headers: { Cookie: cookie } })
     const dashboardBody = await dashboard.json()
-    assert.equal(dashboardBody.headline.reviewTargets, 96)
-    assert.equal(dashboardBody.headline.pendingReviews, 431)
-    assert.equal(dashboardBody.headline.releaseBlockers, 500)
-    assert.equal(dashboardBody.headline.evidenceRecords, 3)
-    assert.equal(dashboardBody.datasets.find((dataset) => dataset.id === 'source-clearance').count, 12)
-    assert.equal(dashboardBody.datasets.find((dataset) => dataset.id === 'dependencies').count, 11)
+    const reviewLedger = JSON.parse(fs.readFileSync(path.join(repositoryRoot, 'ai-manager', 'clinical-platform', 'reviews', 'review-ledger.json'), 'utf8'))
+    const releaseCandidate = JSON.parse(fs.readFileSync(path.join(repositoryRoot, 'ai-manager', 'clinical-platform', 'release', 'v1-release-candidate.json'), 'utf8'))
+    const evidencePopulation = JSON.parse(fs.readFileSync(path.join(repositoryRoot, 'reports', 'clinical-platform', 'evidence-hub-population.json'), 'utf8'))
+    const reviewQueues = JSON.parse(fs.readFileSync(path.join(repositoryRoot, 'reports', 'clinical-platform', 'review-queues.json'), 'utf8'))
+    const dependencies = JSON.parse(fs.readFileSync(path.join(repositoryRoot, 'reports', 'private-review-portal', 'dependency-classification.json'), 'utf8'))
+    assert.equal(dashboardBody.headline.reviewTargets, reviewLedger.reviews.length)
+    assert.equal(dashboardBody.headline.pendingReviews, reviewLedger.reviews.reduce((total, item) => total + item.decisions.filter((decision) => decision.state !== 'approved').length, 0))
+    assert.equal(dashboardBody.headline.releaseBlockers, releaseCandidate.blockers.length)
+    assert.equal(dashboardBody.headline.evidenceRecords, Array.isArray(evidencePopulation.evidenceRecords) ? evidencePopulation.evidenceRecords.length : Number(evidencePopulation.evidenceRecords))
+    assert.equal(dashboardBody.datasets.find((dataset) => dataset.id === 'source-clearance').count, reviewQueues.queue.filter((item) => item.reviewKind === 'source').length)
+    assert.equal(dashboardBody.datasets.find((dataset) => dataset.id === 'dependencies').count, dependencies.findings.length)
+    assert.equal(dashboardBody.studio.summary.totalItems, registry.items.length)
+    assert.equal(dashboardBody.studio.summary.readyForApproval, 0)
+    assert.ok(dashboardBody.studio.items.every((item) => item.currentContent === undefined && item.grantsApproval === false))
+    const movementSummary = dashboardBody.studio.items.find((item) => item.contentType === 'movements')
+    const contentDetail = await request(`/api/content/${encodeURIComponent(movementSummary.id)}`, { headers: { Cookie: cookie } })
+    assert.equal(contentDetail.status, 200)
+    const contentItem = await contentDetail.json()
+    assert.equal(contentItem.id, movementSummary.id)
+    assert.equal(contentItem.currentContent.publicEligibility, false)
     const missingCsrf = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'add-note' }) })
     assert.equal(missingCsrf.status, 403)
     const upload = await request('/api/uploads', {
@@ -133,15 +182,21 @@ try {
     })
     assert.equal(upload.status, 201)
     const uploaded = await upload.json()
-    const action = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'accept-proposal', targetType: 'document', targetId: uploaded.id, note: 'Technical disposition only' }) })
+    const prohibited = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'accept-proposal', targetType: 'document', targetId: uploaded.id, note: 'Must remain prohibited' }) })
+    assert.equal(prohibited.status, 400)
+    const staleAction = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'add-note', targetType: 'content-item', targetId: contentItem.id, exactRevisionKey: 'sha256:stale', note: 'Synthetic stale action' }) })
+    assert.equal(staleAction.status, 409)
+    const action = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'add-note', targetType: 'content-item', targetId: contentItem.id, exactRevisionKey: contentItem.revisionHash, note: 'Private synthetic review note' }) })
     assert.equal(action.status, 201)
     assert.equal((await action.json()).grantsApproval, false)
-    const unknownRevision = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'link-exact-revision', targetType: 'document', targetId: uploaded.id, exactRevisionKey: 'unknown@1#sha256:none' }) })
-    assert.equal(unknownRevision.status, 400)
-    const exactRevisionKey = dashboardBody.datasets.find((dataset) => dataset.id === 'reviews').items[0].target.exactRevisionKey
-    const knownRevision = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'link-exact-revision', targetType: 'document', targetId: uploaded.id, exactRevisionKey }) })
-    assert.equal(knownRevision.status, 201)
-    assert.equal((await knownRevision.json()).grantsApproval, false)
+    const task = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'create-human-review-task', targetType: 'content-item', targetId: contentItem.id, exactRevisionKey: contentItem.revisionHash, note: 'Private synthetic review task' }) })
+    assert.equal(task.status, 201)
+    assert.equal((await task.json()).grantsApproval, false)
+    const materialResponse = await request('/api/extra-materials', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ title: 'Synthetic teaching reference', materialType: 'teaching-notes', region: 'non-region-specific', documentId: uploaded.id, notes: 'Private metadata only' }) })
+    assert.equal(materialResponse.status, 201)
+    const material = await materialResponse.json()
+    assert.equal(material.publicationState, 'private')
+    assert.equal(material.grantsApproval, false)
     const extraction = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'queue-extraction', targetType: 'document', targetId: uploaded.id }) })
     assert.equal((await extraction.json()).status, 'safe-text-preview-generated')
     const regeneration = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'queue-extraction', targetType: 'document', targetId: uploaded.id }) })
@@ -172,8 +227,14 @@ try {
   })
   assert.ok(!tracked.includes('msk-private-review-data'))
   const portalHtml = fs.readFileSync(path.join(repositoryRoot, 'ai-manager', 'private-review-portal', 'static', 'index.html'), 'utf8')
+  const portalApp = fs.readFileSync(path.join(repositoryRoot, 'ai-manager', 'private-review-portal', 'static', 'app.js'), 'utf8')
   assert.match(portalHtml, /capture="environment"/)
-  for (const actionType of ['queue-extraction', 'queue-proposal', 'link-exact-revision', 'add-note', 'accept-proposal', 'reject-proposal', 'defer-proposal', 'create-human-review-task', 'request-focused-packet', 'mark-superseded', 'archive']) assert.match(portalHtml, new RegExp(`value="${actionType}"`))
+  assert.match(portalHtml, /MSK Content Review Studio/)
+  for (const actionType of ['add-note', 'create-human-review-task']) assert.match(portalApp, new RegExp(`['"]${actionType}['"]`))
+  for (const prohibitedAction of ['accept-proposal', 'reject-proposal', 'defer-proposal', 'mark-superseded', 'archive']) assert.doesNotMatch(portalApp, new RegExp(`['"]${prohibitedAction}['"]`))
+  assert.doesNotMatch(portalApp, /mock-region/)
+  assert.deepEqual(Object.fromEntries(loadContentRegistry({ repositoryRoot, store }).items.filter((item) => publicationSnapshot[item.id] !== undefined).map((item) => [item.id, item.publicationState])), publicationSnapshot)
+  assert.deepEqual(sourceHashes(), originalSourceHashes)
   for (const script of ['tailscale-serve-start.ps1', 'tailscale-serve-stop.ps1', 'tailscale-serve-reset.ps1']) {
     const content = fs.readFileSync(path.join(repositoryRoot, 'scripts', 'private-review-portal', script), 'utf8')
     assert.ok(!/\bfunnel\s+(?:on|reset|--bg|--https)/i.test(content), `${script} must never configure Funnel`)

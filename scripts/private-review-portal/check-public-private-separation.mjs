@@ -8,9 +8,15 @@ const sourceRoot = path.join(root, 'src')
 const forbidden = [
   'private-review-portal',
   'Private Review Portal',
+  'Content Review Studio',
   'msk-private-review-data',
   'MSK_REVIEW_PORTAL_',
   '/api/uploads',
+  '/api/content/',
+  'movement.shoulder.joint.flexion',
+  'mcq-slot.shoulder-slice.01',
+  '3d-plan.structure.shoulder.scapula',
+  'extra-material.',
   'msk_review_session',
   '.ts.net',
   '127.0.0.1:4379',
@@ -38,6 +44,8 @@ function filesUnder(directory) {
 const violations = []
 for (const directory of [...scanRoots, sourceRoot]) {
   for (const file of filesUnder(directory)) {
+    const relativePath = path.relative(root, file).replaceAll('\\', '/')
+    if (directory !== sourceRoot && /(?:private-review-portal|content-review-studio|reviewer-studio)/i.test(relativePath)) violations.push(`${relativePath} is a reviewer-only path in public output`)
     if (!textExtensions.has(path.extname(file).toLowerCase()) && directory !== sourceRoot) continue
     const content = fs.readFileSync(file, 'utf8')
     for (const marker of forbidden) if (content.includes(marker)) violations.push(`${path.relative(root, file)} contains ${JSON.stringify(marker)}`)
@@ -50,4 +58,4 @@ for (const file of tracked.stdout.split(/\r?\n/).filter(Boolean)) {
   if (/\.(?:pdf|pptx|docx|png|jpe?g|webp|sqlite|db)$/i.test(file)) violations.push(`${file} is a private-data file tracked under the portal runtime`)
 }
 if (violations.length) throw new Error(`Public/private separation failed:\n${violations.join('\n')}`)
-console.log(`Public/private separation passed: scanned ${scanRoots.length} public roots plus learner source for ${forbidden.length} private markers; no private document formats are tracked under the portal runtime.`)
+console.log(`Public/private separation passed: scanned ${scanRoots.length} public roots plus learner source for ${forbidden.length} private markers and reviewer-only paths; no private document formats are tracked under the portal runtime.`)

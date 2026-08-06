@@ -4,7 +4,8 @@ import http from 'node:http'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadConfig } from './config.mjs'
-import { deriveProjectSnapshot, exactRevisionExists, initializeFutureBuild } from './domain.mjs'
+import { contentRevisionHash, findContentItem, loadContentRegistry, loadStudioConfig } from './content-studio.mjs'
+import { deriveProjectSnapshot, initializeFutureBuild } from './domain.mjs'
 import { regenerateSafePreview } from './derived.mjs'
 import { intakeUpload } from './intake.mjs'
 import { PrivateStore, resolveInside } from './store.mjs'
@@ -17,7 +18,7 @@ const staticRoutes = new Map([
   ['/app.js', ['app.js', 'text/javascript; charset=utf-8']],
   ['/styles.css', ['styles.css', 'text/css; charset=utf-8']],
 ])
-const actionTypes = new Set(['queue-extraction', 'queue-proposal', 'link-exact-revision', 'add-note', 'accept-proposal', 'reject-proposal', 'defer-proposal', 'create-human-review-task', 'request-focused-packet', 'mark-superseded', 'archive'])
+const actionTypes = new Set(['queue-extraction', 'add-note', 'create-human-review-task'])
 
 function respond(response, status, headers = {}, body = '') {
   response.writeHead(status, { ...securityHeaders, ...headers })
@@ -61,9 +62,23 @@ function safeActionPayload(input) {
   }
 }
 
+function safeExtraMaterial(input, studioConfig) {
+  const clean = (value, maximum = 1000) => String(value ?? '').normalize('NFKC').replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, maximum)
+  const materialType = clean(input.materialType, 40)
+  const region = clean(input.region, 80)
+  if (!studioConfig.extraMaterialTypes.includes(materialType)) throw new Error('Unknown extra-material type.')
+  if (!studioConfig.regions.some((item) => item.id === region)) throw new Error('Unknown Content Studio region.')
+  const title = clean(input.title, 180)
+  if (!title) throw new Error('Extra-material title is required.')
+  const documentId = clean(input.documentId, 80)
+  if (documentId && !/^[a-f0-9-]{36}$/.test(documentId)) throw new Error('Invalid private document identifier.')
+  return { title, materialType, region, documentId: documentId || null, notes: clean(input.notes, 3000) }
+}
+
 export function createPortalServer(options = {}) {
   const config = options.config ?? loadConfig()
   const store = options.store ?? new PrivateStore(config.dataRoot)
+  const studioConfig = options.studioConfig ?? loadStudioConfig()
   initializeFutureBuild(store)
   const sessions = options.sessions ?? new SessionStore(config)
   const verifyPassphrase = options.verifyPassphrase ?? createPassphraseVerifier(config.passphrase)
@@ -121,6 +136,33 @@ export function createPortalServer(options = {}) {
       }
       if (request.method === 'GET' && url.pathname === '/api/dashboard') return json(response, 200, deriveProjectSnapshot(config.repositoryRoot, store))
 
+      const contentDetail = url.pathname.match(/^\/api\/content\/([^/]+)$/)
+      if (request.method === 'GET' && contentDetail) {
+        const registry = loadContentRegistry({ repositoryRoot: config.repositoryRoot, store, config: studioConfig })
+        const item = findContentItem(registry, decodeURIComponent(contentDetail[1]))
+        if (!item) return json(response, 404, { error: 'content-item-not-found', requestId })
+        return json(response, 200, item)
+      }
+
+      if (request.method === 'POST' && url.pathname === '/api/extra-materials') {
+        const body = await readJsonBody(request, config.jsonBodyBytes)
+        const payload = safeExtraMaterial(body, studioConfig)
+        if (payload.documentId && !store.read().documents.some((item) => item.id === payload.documentId)) return json(response, 400, { error: 'private-document-not-found', requestId })
+        const material = {
+          id: `extra-material.${crypto.randomUUID()}`,
+          ...payload,
+          lifecycle: 'registered',
+          publicationState: 'private',
+          createdAt: new Date().toISOString(),
+          actorRole: session.role,
+          grantsApproval: false,
+        }
+        material.revisionHash = contentRevisionHash(material)
+        store.addExtraMaterial(material)
+        store.audit('extra-material-registered', { requestId, materialId: material.id, materialType: material.materialType, grantsApproval: false })
+        return json(response, 201, material)
+      }
+
       if (request.method === 'POST' && url.pathname === '/api/uploads') {
         const filename = request.headers['x-file-name']
         if (typeof filename !== 'string') return json(response, 400, { error: 'filename-required', requestId })
@@ -168,7 +210,16 @@ export function createPortalServer(options = {}) {
         const body = await readJsonBody(request, config.jsonBodyBytes)
         if (!actionTypes.has(body.type)) return json(response, 400, { error: 'action-not-permitted', requestId })
         const payload = safeActionPayload(body)
-        if (body.type === 'link-exact-revision' && !exactRevisionExists(config.repositoryRoot, payload.exactRevisionKey)) return json(response, 400, { error: 'unknown-exact-revision', requestId })
+        if (body.type === 'queue-extraction') {
+          if (payload.targetType !== 'document' || !store.read().documents.some((item) => item.id === payload.targetId)) return json(response, 400, { error: 'private-document-not-found', requestId })
+        } else if (payload.targetType === 'content-item') {
+          const registry = loadContentRegistry({ repositoryRoot: config.repositoryRoot, store, config: studioConfig })
+          const item = findContentItem(registry, payload.targetId)
+          if (!item) return json(response, 400, { error: 'content-item-not-found', requestId })
+          if (payload.exactRevisionKey !== item.revisionHash) return json(response, 409, { error: 'stale-content-revision', requestId })
+        } else if (payload.targetType !== 'document' || !store.read().documents.some((item) => item.id === payload.targetId)) {
+          return json(response, 400, { error: 'review-target-not-found', requestId })
+        }
         const action = { id: crypto.randomUUID(), type: body.type, ...payload, actorRole: session.role, createdAt: new Date().toISOString(), grantsApproval: false, status: 'recorded' }
         if (body.type === 'queue-extraction') {
           try {
@@ -179,8 +230,6 @@ export function createPortalServer(options = {}) {
             action.note = `${action.note} ${error.message}`.trim().slice(0, 3000)
           }
         }
-        if (body.type === 'archive') store.updateDocumentWorkflow(payload.targetId, { archivedAt: new Date().toISOString() })
-        if (body.type === 'mark-superseded') store.updateDocumentWorkflow(payload.targetId, { supersededBy: payload.exactRevisionKey || 'pending-replacement' })
         store.addAction(action)
         store.audit('review-action-recorded', { requestId, actionId: action.id, type: action.type, targetId: action.targetId, grantsApproval: false })
         return json(response, 201, action)

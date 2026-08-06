@@ -1,14 +1,22 @@
-# MSK Private Review Portal
+# MSK Private Review Portal and Content Review Studio
 
 This is a separate Node.js runtime for private research and project review. It is not a Next.js route and is never part of the learner/static export. It binds to an explicit loopback address only. Remote access, when available, is an authenticated Tailnet HTTPS proxy created by Tailscale Serve; Funnel is prohibited.
 
 ## Safety boundary
 
 - Do not upload patient-identifiable, Trust-confidential or clinical-record material.
-- Uploading, linking, accepting or reviewing a proposal never grants clinical, evidence, source-clearance, licensing, accessibility, beta, publication, release or deployment approval.
+- Uploading, registering material, adding a note or creating a task never grants clinical, evidence, source-clearance, licensing, accessibility, beta, publication, release or deployment approval.
 - The portal reads authoritative governed repository records at request time. It does not copy or mutate clinical truth.
 - Originals, derived files, audit logs and the private database stay outside Git.
 - A passphrase of at least 16 characters is mandatory and is read only from `MSK_REVIEW_PORTAL_PASSPHRASE`.
+
+## Content Review Studio
+
+The first Studio phase is a generic private registry, not a shoulder application. Regions and content types are declared in `content-studio-config.json`; the browser renders those values without region-specific UI code. The first read-only adapter loads current shoulder cases, conditions, movement slots, anatomy and module records, planned 3D structures, MCQ slots, evidence/source records and compatibility rules without modifying their source files. Additional adapters can return the same registry contract for any configured region or collection.
+
+Every item exposes an exact ID, region, content type, lifecycle, publication state, four review states, blockers, human-review tasks, source links, revision hash, completeness and an optional existing learner-route reference. The dashboard and library derive their counts and filters from those records. Missing or ambiguous authority is represented as not recorded or required; it is never inferred as approved.
+
+The only Content Studio mutations in this phase are private reviewer notes, human-review tasks and metadata-only Extra Materials registrations. Approval changes, publication changes, clinical or evidence editing and deletion are not implemented. Notes and tasks require the current item revision hash and fail on stale revisions. Extra Materials may classify a PDF, PowerPoint, image, video, legacy HTML or teaching note and may link an already quarantined private document; the registration remains in the external database with `publicationState: private` and `grantsApproval: false`.
 
 ## Private storage
 
@@ -67,9 +75,9 @@ Authorised browser on loopback/Tailnet
   -> separate derived preview (safe plain text only)
   -> external JSON database + append-only JSONL audit
 
-Governed repository JSON --read-only--> derived dashboard counts
-Private database ----------private----> documents/actions/Future Build
+Governed repository JSON --read-only--> generic content registry + derived counts
+Private database ----------private----> documents/notes/tasks/Extra Materials/Future Build
 Next.js learner build <---- no imports, routes, records or runtime code
 ```
 
-Primary threats and controls include public/static leakage (separate runtime plus output scans), traversal and malicious filenames (UUID storage and root-constrained resolution), active content (strict allowlist/magic checks/no active rendering), malware (quarantine and fail-closed scanner state), cross-site actions (Origin/CSRF/SameSite), credential guessing (environment secret/rate limits/timing-safe verification), stale approval (ledger-backed exact-revision validation), and accidental authority escalation (`grantsApproval` is always false and governed states are read-only).
+Primary threats and controls include public/static leakage (separate runtime plus output scans), traversal and malicious filenames (UUID storage and root-constrained resolution), active content (strict allowlist/magic checks/no active rendering), malware (quarantine and fail-closed scanner state), cross-site actions (Origin/CSRF/SameSite), credential guessing (environment secret/rate limits/timing-safe verification), stale review writes (current registry revision hashes are mandatory), and accidental authority escalation (`grantsApproval` is always false and governed states are read-only).

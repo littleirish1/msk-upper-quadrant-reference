@@ -25,11 +25,19 @@ export class PrivateStore {
     for (const folder of privateFolders) fs.mkdirSync(resolveInside(this.root, folder), { recursive: true })
     this.databaseFile = resolveInside(this.root, 'database', 'portal.json')
     this.auditFile = resolveInside(this.root, 'logs', 'audit.jsonl')
-    if (!fs.existsSync(this.databaseFile)) writeJsonAtomic(this.databaseFile, { schemaVersion: 1, documents: [], actions: [], futureItems: [] })
+    if (!fs.existsSync(this.databaseFile)) writeJsonAtomic(this.databaseFile, { schemaVersion: 2, documents: [], actions: [], futureItems: [], extraMaterials: [] })
   }
 
   read() {
-    return JSON.parse(fs.readFileSync(this.databaseFile, 'utf8'))
+    const database = JSON.parse(fs.readFileSync(this.databaseFile, 'utf8'))
+    return {
+      ...database,
+      schemaVersion: Math.max(2, Number(database.schemaVersion ?? 1)),
+      documents: database.documents ?? [],
+      actions: database.actions ?? [],
+      futureItems: database.futureItems ?? [],
+      extraMaterials: database.extraMaterials ?? [],
+    }
   }
 
   mutate(mutator) {
@@ -62,6 +70,16 @@ export class PrivateStore {
     return this.mutate((database) => {
       database.actions.push(structuredClone(action))
       return action
+    })
+  }
+
+  addExtraMaterial(material) {
+    return this.mutate((database) => {
+      database.schemaVersion = 2
+      database.extraMaterials ??= []
+      if (database.extraMaterials.some((item) => item.id === material.id)) throw new Error('Generated extra-material identifier collision.')
+      database.extraMaterials.push(structuredClone(material))
+      return material
     })
   }
 

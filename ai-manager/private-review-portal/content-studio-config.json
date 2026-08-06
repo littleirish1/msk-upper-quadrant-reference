@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "regions": [
+    { "id": "cervical", "label": "Cervical", "availability": "current" },
+    { "id": "thoracic", "label": "Thoracic", "availability": "current" },
+    { "id": "shoulder", "label": "Shoulder", "availability": "current" },
+    { "id": "elbow", "label": "Elbow", "availability": "current" },
+    { "id": "wrist-hand", "label": "Wrist and hand", "availability": "current" },
+    { "id": "lumbar", "label": "Lumbar", "availability": "planned" },
+    { "id": "hip", "label": "Hip", "availability": "planned" },
+    { "id": "knee", "label": "Knee", "availability": "planned" },
+    { "id": "ankle-foot", "label": "Ankle and foot", "availability": "planned" },
+    { "id": "neuro", "label": "Neurology", "availability": "planned" },
+    { "id": "anatomy-only", "label": "Anatomy-only collections", "availability": "collection" },
+    { "id": "non-region-specific", "label": "Non-region-specific", "availability": "collection" }
+  ],
+  "contentTypes": [
+    "cases",
+    "conditions",
+    "movements",
+    "anatomy",
+    "3d-assets",
+    "mcqs",
+    "evidence",
+    "extra-materials",
+    "modules",
+    "compatibility-rules"
+  ],
+  "extraMaterialTypes": [
+    "pdf",
+    "powerpoint",
+    "image",
+    "video",
+    "legacy-html",
+    "teaching-notes"
+  ]
+}
