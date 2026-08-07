@@ -18,7 +18,7 @@ const staticRoutes = new Map([
   ['/app.js', ['app.js', 'text/javascript; charset=utf-8']],
   ['/styles.css', ['styles.css', 'text/css; charset=utf-8']],
 ])
-const actionTypes = new Set(['queue-extraction', 'add-note', 'create-human-review-task'])
+const actionTypes = new Set(['queue-extraction', 'add-note', 'create-human-review-task', 'mark-review-complete', 'submit-integration-proposal'])
 
 function respond(response, status, headers = {}, body = '') {
   response.writeHead(status, { ...securityHeaders, ...headers })
@@ -59,7 +59,17 @@ function safeActionPayload(input) {
     targetId: clean(input.targetId, 180),
     exactRevisionKey: clean(input.exactRevisionKey, 300),
     note: clean(input.note, 3000),
+    reviewDeclaration: input.reviewDeclaration === true,
   }
+}
+
+function clientProposal(proposal) {
+  const { relativePath, ...safe } = proposal
+  return { ...safe, downloadUrl: `/api/integration-proposals/${proposal.id}/download` }
+}
+
+function actorFields(config) {
+  return { actorId: config.actorId, actorRoles: [...config.actorRoles], actorRole: config.actorRoles[0] }
 }
 
 function safeExtraMaterial(input, studioConfig) {
@@ -115,15 +125,15 @@ export function createPortalServer(options = {}) {
           return json(response, 401, { error: 'authentication-failed', requestId })
         }
         const session = sessions.create('reviewer')
-        store.audit('login-succeeded', { requestId, role: session.role })
-        return json(response, 200, { authenticated: true, csrf: session.csrf, role: session.role }, { 'Set-Cookie': sessionCookie(session.token, secureCookie) })
+        store.audit('login-succeeded', { requestId, role: session.role, actorId: config.actorId })
+        return json(response, 200, { authenticated: true, csrf: session.csrf, role: session.role, actorId: config.actorId, actorRoles: config.actorRoles }, { 'Set-Cookie': sessionCookie(session.token, secureCookie) })
       }
 
       const token = parseCookies(request.headers.cookie).msk_review_session
       const session = sessions.get(token)
       if (!session) return json(response, 401, { error: 'authentication-required', requestId }, { 'Set-Cookie': expiredSessionCookie(secureCookie) })
 
-      if (request.method === 'GET' && url.pathname === '/api/session') return json(response, 200, { authenticated: true, csrf: session.csrf, role: session.role })
+      if (request.method === 'GET' && url.pathname === '/api/session') return json(response, 200, { authenticated: true, csrf: session.csrf, role: session.role, actorId: config.actorId, actorRoles: config.actorRoles })
       if (request.method === 'POST') {
         if (!isAllowedOrigin(request, config.origins)) return json(response, 403, { error: 'origin-rejected', requestId })
         if (!csrfMatches(session, request)) return json(response, 403, { error: 'csrf-rejected', requestId })
@@ -134,14 +144,20 @@ export function createPortalServer(options = {}) {
         store.audit('logout', { requestId, role: session.role })
         return json(response, 200, { authenticated: false }, { 'Set-Cookie': expiredSessionCookie(secureCookie) })
       }
-      if (request.method === 'GET' && url.pathname === '/api/dashboard') return json(response, 200, deriveProjectSnapshot(config.repositoryRoot, store))
+      if (request.method === 'GET' && url.pathname === '/api/dashboard') return json(response, 200, deriveProjectSnapshot(config.repositoryRoot, store, config))
 
       const contentDetail = url.pathname.match(/^\/api\/content\/([^/]+)$/)
       if (request.method === 'GET' && contentDetail) {
         const registry = loadContentRegistry({ repositoryRoot: config.repositoryRoot, store, config: studioConfig })
         const item = findContentItem(registry, decodeURIComponent(contentDetail[1]))
         if (!item) return json(response, 404, { error: 'content-item-not-found', requestId })
-        return json(response, 200, item)
+        const database = store.read()
+        return json(response, 200, {
+          ...item,
+          privateReviewActions: database.actions.filter((action) => action.targetType === 'content-item' && action.targetId === item.id),
+          integrationProposals: database.integrationProposals.filter((proposal) => proposal.targetId === item.id).map(clientProposal),
+          integrationQueue: database.integrationQueue.filter((entry) => entry.targetId === item.id),
+        })
       }
 
       if (request.method === 'POST' && url.pathname === '/api/extra-materials') {
@@ -154,7 +170,7 @@ export function createPortalServer(options = {}) {
           lifecycle: 'registered',
           publicationState: 'private',
           createdAt: new Date().toISOString(),
-          actorRole: session.role,
+          ...actorFields(config),
           grantsApproval: false,
         }
         material.revisionHash = contentRevisionHash(material)
@@ -206,10 +222,46 @@ export function createPortalServer(options = {}) {
         return respond(response, 200, { 'Content-Type': 'text/plain; charset=utf-8' }, fs.readFileSync(resolveInside(store.root, derived.relativePath), 'utf8'))
       }
 
+      const proposalDownload = url.pathname.match(/^\/api\/integration-proposals\/([a-f0-9-]{36})\/download$/)
+      if (request.method === 'GET' && proposalDownload) {
+        const proposal = store.read().integrationProposals.find((item) => item.id === proposalDownload[1])
+        if (!proposal) return json(response, 404, { error: 'integration-proposal-not-found', requestId })
+        const file = resolveInside(store.root, proposal.relativePath)
+        store.audit('integration-proposal-downloaded', { requestId, role: session.role, proposalId: proposal.id, grantsApproval: false })
+        return respond(response, 200, { 'Content-Type': 'application/json; charset=utf-8', 'Content-Disposition': `attachment; filename="content-integration-proposal-${proposal.id}.json"` }, fs.readFileSync(file, 'utf8'))
+      }
+
       if (request.method === 'POST' && url.pathname === '/api/actions') {
         const body = await readJsonBody(request, config.jsonBodyBytes)
         if (!actionTypes.has(body.type)) return json(response, 400, { error: 'action-not-permitted', requestId })
         const payload = safeActionPayload(body)
+        if (body.type === 'mark-review-complete' && (payload.targetType !== 'content-item' || !payload.note || !payload.reviewDeclaration)) return json(response, 400, { error: 'review-completion-declaration-required', requestId })
+        if (body.type === 'submit-integration-proposal') {
+          if (!config.actorRoles.includes('integration-proposer')) return json(response, 403, { error: 'integration-proposer-role-required', requestId })
+          if (payload.targetType !== 'integration-proposal' || !/^[a-f0-9-]{36}$/.test(payload.targetId) || !payload.note || !payload.reviewDeclaration) return json(response, 400, { error: 'integration-submission-declaration-required', requestId })
+          const database = store.read()
+          const proposal = database.integrationProposals.find((item) => item.id === payload.targetId)
+          if (!proposal) return json(response, 400, { error: 'integration-proposal-not-found', requestId })
+          if (payload.exactRevisionKey !== proposal.exactRevisionKey) return json(response, 409, { error: 'stale-integration-proposal', requestId })
+          if (database.integrationQueue.some((entry) => entry.proposalId === proposal.id)) return json(response, 409, { error: 'integration-proposal-already-queued', requestId })
+          const proposalFile = resolveInside(store.root, proposal.relativePath)
+          const proposalHash = crypto.createHash('sha256').update(fs.readFileSync(proposalFile)).digest('hex')
+          if (proposalHash !== proposal.sha256) return json(response, 409, { error: 'integration-proposal-integrity-failed', requestId })
+          const registry = loadContentRegistry({ repositoryRoot: config.repositoryRoot, store, config: studioConfig })
+          const item = findContentItem(registry, proposal.targetId)
+          if (!item || item.revisionHash !== proposal.exactRevisionKey) return json(response, 409, { error: 'stale-content-revision', requestId })
+          if (item.contentType === 'extra-materials') return json(response, 409, { error: 'cleared-resource-adapter-required', requestId })
+          const createdAt = new Date().toISOString()
+          const action = { id: crypto.randomUUID(), type: body.type, ...payload, ...actorFields(config), createdAt, grantsApproval: false, status: 'integration-queued' }
+          const queueEntry = {
+            id: crypto.randomUUID(), proposalId: proposal.id, targetId: item.id, exactRevisionKey: item.revisionHash,
+            operation: 'review-adoption-only', status: 'queued', submittedAt: createdAt, submittedBy: { id: config.actorId, roles: [...config.actorRoles] }, note: payload.note,
+            controls: { grantsApproval: false, publicationAuthorized: false, publicationStateChangesAllowed: false, resourceImportAllowed: false, directMainPush: false, autoMerge: false },
+          }
+          store.enqueueIntegration(action, queueEntry)
+          store.audit('integration-proposal-queued', { requestId, actionId: action.id, queueId: queueEntry.id, proposalId: proposal.id, targetId: item.id, exactRevisionKey: item.revisionHash, actorId: config.actorId, grantsApproval: false, directMainPush: false })
+          return json(response, 201, { ...action, queueEntry })
+        }
         if (body.type === 'queue-extraction') {
           if (payload.targetType !== 'document' || !store.read().documents.some((item) => item.id === payload.targetId)) return json(response, 400, { error: 'private-document-not-found', requestId })
         } else if (payload.targetType === 'content-item') {
@@ -220,7 +272,51 @@ export function createPortalServer(options = {}) {
         } else if (payload.targetType !== 'document' || !store.read().documents.some((item) => item.id === payload.targetId)) {
           return json(response, 400, { error: 'review-target-not-found', requestId })
         }
-        const action = { id: crypto.randomUUID(), type: body.type, ...payload, actorRole: session.role, createdAt: new Date().toISOString(), grantsApproval: false, status: 'recorded' }
+        const action = { id: crypto.randomUUID(), type: body.type, ...payload, ...actorFields(config), createdAt: new Date().toISOString(), grantsApproval: false, status: 'recorded' }
+        if (body.type === 'mark-review-complete') {
+          const database = store.read()
+          if (database.integrationProposals.some((item) => item.targetId === payload.targetId && item.exactRevisionKey === payload.exactRevisionKey)) return json(response, 409, { error: 'integration-proposal-already-exists', requestId })
+          const registry = loadContentRegistry({ repositoryRoot: config.repositoryRoot, store, config: studioConfig })
+          const item = findContentItem(registry, payload.targetId)
+          const proposalId = crypto.randomUUID()
+          const proposalDocument = {
+            schemaVersion: 1,
+            kind: 'content-integration-proposal',
+            id: proposalId,
+            status: 'ready-for-integration-assessment',
+            targetId: item.id,
+            exactRevisionKey: item.revisionHash,
+            item: {
+              region: item.region,
+              contentType: item.contentType,
+              title: item.title,
+              lifecycleAtReview: item.lifecycle,
+              publicationStateAtReview: item.publicationState,
+              sourceLinks: item.sourceLinks,
+            },
+            review: { actionId: action.id, completedAt: action.createdAt, actorId: config.actorId, actorRoles: [...config.actorRoles], note: payload.note },
+            controls: {
+              grantsApproval: false,
+              publicationAuthorized: false,
+              repositoryModified: false,
+              clinicalContentCopied: false,
+              requiredNextSteps: ['inspect-authoritative-source-diff', 'create-feature-branch', 'run-public-boundary-validation', 'obtain-explicit-publication-authority-if-publication-is-proposed'],
+            },
+          }
+          const bytes = `${JSON.stringify(proposalDocument, null, 2)}\n`
+          const file = store.generatedPath('exports', proposalId, '.json')
+          fs.writeFileSync(file, bytes, { encoding: 'utf8', flag: 'wx' })
+          const proposal = { ...proposalDocument, sha256: crypto.createHash('sha256').update(bytes).digest('hex'), relativePath: path.relative(store.root, file) }
+          action.status = 'review-completed-proposal-created'
+          try {
+            store.recordReviewCompletion(action, proposal)
+          } catch (error) {
+            fs.rmSync(file, { force: true })
+            throw error
+          }
+          store.audit('review-completed-integration-proposal-created', { requestId, actionId: action.id, proposalId, targetId: item.id, exactRevisionKey: item.revisionHash, grantsApproval: false, publicationAuthorized: false })
+          return json(response, 201, { ...action, integrationProposal: clientProposal(proposal) })
+        }
         if (body.type === 'queue-extraction') {
           try {
             regenerateSafePreview(store, payload.targetId)

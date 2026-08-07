@@ -74,6 +74,9 @@ function renderDashboard() {
     ['Availability', region.availability],
     ['Loaded records', currentCounts.get(region.id) ?? 0],
   ], currentCounts.has(region.id) ? '' : 'muted-card')))
+  byId('integration-position').replaceChildren(detailCard('Integration automation', [
+    ['Actor ID', studio.actor.id], ['Roles', studio.actor.roles.join(', ')], ['Proposal submission', studio.capabilities.submitIntegrationProposal ? 'Enabled' : 'Disabled'], ['Direct main push', 'Prohibited'], ['Automatic publication', 'Prohibited'],
+  ]))
 }
 
 function renderDocuments() {
@@ -133,8 +136,9 @@ function renderContentLibrary() {
     return
   }
   byId('content-results').replaceChildren(...items.map((item) => {
+    const proposals = state.snapshot.studio.integrationProposals.filter((proposal) => proposal.targetId === item.id && proposal.exactRevisionKey === item.revisionHash)
     const card = detailCard(item.title, [
-      ['Region', humanise(item.region)], ['Type', humanise(item.contentType)], ['Lifecycle', item.lifecycle], ['Publication', item.publicationState], ['Completeness', `${item.completeness.score}%`], ['Blockers', item.blockers.length],
+      ['Region', humanise(item.region)], ['Type', humanise(item.contentType)], ['Lifecycle', item.lifecycle], ['Publication', item.publicationState], ['Completeness', `${item.completeness.score}%`], ['Blockers', item.blockers.length], ['Integration review', proposals.length ? 'Exact revision reviewed' : 'Not recorded'],
     ])
     const button = document.createElement('button')
     button.type = 'button'
@@ -206,6 +210,54 @@ function reviewForm(item) {
   return form
 }
 
+function reviewCompletionForm(item) {
+  const existing = item.integrationProposals?.find((proposal) => proposal.exactRevisionKey === item.revisionHash)
+  if (existing) {
+    const wrapper = document.createElement('div')
+    const summary = document.createElement('p')
+    summary.append(text(`This exact revision was marked reviewed at ${existing.review.completedAt}. It remains unapproved and unpublished.`))
+    const download = document.createElement('a')
+    download.href = existing.downloadUrl
+    download.textContent = 'Download private integration proposal'
+    wrapper.append(summary, download)
+    return wrapper
+  }
+  const form = document.createElement('form')
+  form.className = 'form-grid review-form proposal-controls'
+  const noteLabel = document.createElement('label')
+  noteLabel.className = 'wide'
+  noteLabel.append(text('Review completion note'))
+  const note = document.createElement('textarea')
+  note.name = 'note'
+  note.maxLength = 3000
+  note.rows = 4
+  note.required = true
+  noteLabel.append(note)
+  const declarationLabel = document.createElement('label')
+  declarationLabel.className = 'review-attestation'
+  const declaration = document.createElement('input')
+  declaration.type = 'checkbox'
+  declaration.name = 'reviewDeclaration'
+  declaration.value = 'confirmed'
+  declaration.required = true
+  declarationLabel.append(declaration, text(`I reviewed exact revision ${item.revisionHash}. I understand this creates a private integration-assessment proposal only and grants no approval or publication authority.`))
+  const button = document.createElement('button')
+  button.type = 'submit'
+  button.textContent = 'Mark reviewed — prepare integration proposal'
+  form.append(noteLabel, declarationLabel, button)
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault()
+    const values = new FormData(form)
+    try {
+      const recorded = await api('/api/actions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'mark-review-complete', targetType: 'content-item', targetId: item.id, exactRevisionKey: item.revisionHash, note: values.get('note'), reviewDeclaration: values.get('reviewDeclaration') === 'confirmed' }) })
+      setStatus(`Review completed for the exact revision. Proposal ${recorded.integrationProposal.id} is private; grantsApproval=false.`)
+      await refresh()
+      await openItem(item.id, false)
+    } catch (error) { setStatus(error.message, true) }
+  })
+  return form
+}
+
 function renderItemDetail(item) {
   const container = document.createElement('article')
   container.className = 'item-detail'
@@ -220,7 +272,10 @@ function renderItemDetail(item) {
   const current = document.createElement('pre')
   current.className = 'content-preview'
   current.append(text(JSON.stringify(item.currentContent, null, 2)))
-  container.append(title, metadata, review, section('Missing or incomplete fields', stringList(item.completeness.missingFields)), section('Blockers', stringList(item.blockers)), section('Existing human-review tasks', stringList(item.reviewTasks)), section('Authoritative source links', stringList(item.sourceLinks)), section('Current governed content (read-only)', current))
+  const privateActions = (item.privateReviewActions ?? []).map((action) => `${action.createdAt} · ${humanise(action.type)} · ${action.status} · grantsApproval=${action.grantsApproval}`)
+  const proposals = (item.integrationProposals ?? []).map((proposal) => `${proposal.review.completedAt} · ${proposal.status} · ${proposal.exactRevisionKey} · publicationAuthorized=${proposal.controls.publicationAuthorized}`)
+  const queue = (item.integrationQueue ?? []).map((entry) => `${entry.submittedAt} · ${entry.operation} · ${entry.status} · directMainPush=${entry.controls.directMainPush}`)
+  container.append(title, metadata, review, section('Missing or incomplete fields', stringList(item.completeness.missingFields)), section('Blockers', stringList(item.blockers)), section('Existing human-review tasks', stringList(item.reviewTasks)), section('Private reviewer actions', stringList(privateActions)), section('Private integration proposals', stringList(proposals)), section('Integration queue', stringList(queue)), section('Authoritative source links', stringList(item.sourceLinks)), section('Current governed content (read-only)', current))
   if (item.learnerPreview) {
     const preview = document.createElement('div')
     const label = document.createElement('strong')
@@ -230,7 +285,7 @@ function renderItemDetail(item) {
     preview.append(label, document.createElement('br'), route)
     container.append(section('Existing learner-facing preview reference', preview))
   }
-  container.append(section('Private review action', reviewForm(item)))
+  container.append(section('Private review action', reviewForm(item)), section('Complete review for this exact revision', reviewCompletionForm(item)))
   byId('item-detail').replaceChildren(container)
 }
 
@@ -255,6 +310,82 @@ function renderExtraMaterials() {
   }) : [detailCard('No Extra Materials registered', [['State', 'Private registry is ready for metadata-only registrations.']])]))
 }
 
+function renderIntegrationProposals() {
+  const proposals = state.snapshot.studio.integrationProposals
+  if (!proposals.length) {
+    byId('integration-proposals').replaceChildren(detailCard('No integration proposals', [['Next action', 'Open an exact content item, complete the review declaration and prepare a private proposal.']]))
+    return
+  }
+  byId('integration-proposals').replaceChildren(...proposals.map((proposal) => {
+    const queueEntry = state.snapshot.studio.integrationQueue.find((entry) => entry.proposalId === proposal.id)
+    const card = detailCard(proposal.item.title, [
+      ['Region', humanise(proposal.item.region)], ['Type', humanise(proposal.item.contentType)], ['Status', humanise(proposal.status)], ['Queue', queueEntry ? humanise(queueEntry.status) : 'Not submitted'], ['Exact revision', proposal.exactRevisionKey], ['Reviewed', proposal.review.completedAt], ['Approval granted', proposal.controls.grantsApproval], ['Publication authorised', proposal.controls.publicationAuthorized],
+    ])
+    const actions = document.createElement('div')
+    actions.className = 'actions'
+    const inspect = document.createElement('button')
+    inspect.type = 'button'
+    inspect.textContent = 'Inspect exact item'
+    inspect.addEventListener('click', () => openItem(proposal.targetId))
+    const download = document.createElement('a')
+    download.href = proposal.downloadUrl
+    download.textContent = 'Download proposal JSON'
+    actions.append(inspect, download)
+    card.append(actions)
+    if (queueEntry) {
+      const queued = document.createElement('p')
+      queued.className = 'muted'
+      queued.append(text(`Queued as ${queueEntry.operation}. The worker may prepare a feature-branch pull request; direct main push and publication remain prohibited.`))
+      card.append(queued)
+    } else if (proposal.item.contentType === 'extra-materials') {
+      const held = document.createElement('p')
+      held.className = 'muted'
+      held.append(text('Resource integration remains held until a cleared-resource adapter can prove source, licensing and derived-file controls.'))
+      card.append(held)
+    } else if (state.snapshot.studio.capabilities.submitIntegrationProposal) {
+      const form = document.createElement('form')
+      form.className = 'form-grid compact-submit-form'
+      const noteLabel = document.createElement('label')
+      noteLabel.className = 'wide'
+      noteLabel.append(text('Integration request note'))
+      const note = document.createElement('textarea')
+      note.name = 'note'
+      note.maxLength = 3000
+      note.rows = 3
+      note.required = true
+      noteLabel.append(note)
+      const declarationLabel = document.createElement('label')
+      declarationLabel.className = 'review-attestation'
+      const declaration = document.createElement('input')
+      declaration.type = 'checkbox'
+      declaration.name = 'integrationDeclaration'
+      declaration.value = 'confirmed'
+      declaration.required = true
+      declarationLabel.append(declaration, text('Queue this exact revision for review-adoption only. I understand the worker may push a feature branch and open a PR, but cannot push main, merge, publish or import resource files.'))
+      const submit = document.createElement('button')
+      submit.type = 'submit'
+      submit.textContent = 'Submit for guarded integration'
+      form.append(noteLabel, declarationLabel, submit)
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault()
+        const values = new FormData(form)
+        try {
+          const result = await api('/api/actions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'submit-integration-proposal', targetType: 'integration-proposal', targetId: proposal.id, exactRevisionKey: proposal.exactRevisionKey, note: values.get('note'), reviewDeclaration: values.get('integrationDeclaration') === 'confirmed' }) })
+          setStatus(`Proposal queued as ${result.queueEntry.operation}. Direct main push and publication remain prohibited.`)
+          await refresh()
+        } catch (error) { setStatus(error.message, true) }
+      })
+      card.append(form)
+    } else {
+      const unavailable = document.createElement('p')
+      unavailable.className = 'muted'
+      unavailable.append(text('Submission is disabled because this portal process does not have the integration-proposer role.'))
+      card.append(unavailable)
+    }
+    return card
+  }))
+}
+
 function renderFutureItems() {
   byId('future-items').replaceChildren(...state.snapshot.futureItems.map((item) => detailCard(item.title, [
     ['Status', item.status], ['Priority', item.priority], ['Owner role', item.ownerRole], ['Milestone', item.milestone], ['Blockers', item.blockers.join(', ') || 'None'], ['Next action', item.nextAction],
@@ -277,6 +408,7 @@ function renderSnapshot(firstLoad = false) {
   renderDashboard()
   renderContentLibrary()
   renderDocuments()
+  renderIntegrationProposals()
   renderExtraMaterials()
   renderFutureItems()
 }

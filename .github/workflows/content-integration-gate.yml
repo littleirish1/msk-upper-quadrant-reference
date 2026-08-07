@@ -1,0 +1,46 @@
+name: Guarded content integration
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "content-integration-${{ github.event.pull_request.number }}"
+  cancel-in-progress: true
+
+jobs:
+  review-adoption:
+    if: startsWith(github.head_ref, 'content-review/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.20.2"
+          cache: npm
+      - name: Install exact dependencies
+        run: npm ci
+      - name: Verify review-adoption-only diff
+        run: npm run check:content-integration -- --require-one --base=${{ github.event.pull_request.base.sha }}
+      - name: Focused private portal validation
+        run: npm run test:private-portal
+      - name: Type-check and lint
+        run: |
+          npm run type-check
+          npm run lint
+      - name: Complete repository preflight
+        run: npm run preflight
+      - name: Prove private content remains absent from public output
+        run: npm run check:private-separation
+      - name: Prove validation produced no tracked changes
+        run: |
+          git diff --exit-code
+          git diff --cached --exit-code
+          test -z "$(git status --porcelain --untracked-files=no)"

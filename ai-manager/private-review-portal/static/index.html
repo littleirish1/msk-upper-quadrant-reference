@@ -40,6 +40,7 @@
           <button type="button" role="tab" aria-selected="true" aria-controls="dashboard-panel" id="dashboard-tab" data-panel="dashboard-panel">Dashboard</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="content-panel" id="content-tab" data-panel="content-panel" tabindex="-1">Content library</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="detail-panel" id="detail-tab" data-panel="detail-panel" tabindex="-1">Item detail</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="proposals-panel" id="proposals-tab" data-panel="proposals-panel" tabindex="-1">Integration proposals</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="materials-panel" id="materials-tab" data-panel="materials-panel" tabindex="-1">Extra Materials</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="upload-panel" id="upload-tab" data-panel="upload-panel" tabindex="-1">Upload</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="documents-panel" id="documents-tab" data-panel="documents-panel" tabindex="-1">Documents</button>
@@ -52,6 +53,7 @@
           <h2>Review position</h2>
           <p>Every count is derived from authoritative repository records and the external private database. A green count is not an approval.</p>
           <div id="studio-metrics" class="metrics" aria-live="polite"></div>
+          <div id="integration-position" class="cards compact-cards"></div>
           <h3>Configured regions</h3>
           <div id="region-summary" class="cards compact-cards"></div>
         </section>
@@ -73,7 +75,13 @@
 
         <section id="detail-panel" role="tabpanel" aria-labelledby="detail-tab" hidden>
           <h2>Item detail</h2>
-          <div id="item-detail" class="empty-state">Choose an item from the Content library. No approval or publication control is available in this phase.</div>
+          <div id="item-detail" class="empty-state">Choose an item from the Content library. Review completion creates a private proposal only; no approval or publication control is available.</div>
+        </section>
+
+        <section id="proposals-panel" role="tabpanel" aria-labelledby="proposals-tab" hidden>
+          <h2>Private integration proposals</h2>
+          <p>These exact-revision metadata packets can enter a private worker queue for feature-branch and pull-request preparation. The worker cannot push main, merge, import unapproved resources or publish anything.</p>
+          <div id="integration-proposals" class="cards"></div>
         </section>
 
         <section id="materials-panel" role="tabpanel" aria-labelledby="materials-tab" hidden>

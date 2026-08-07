@@ -25,18 +25,20 @@ export class PrivateStore {
     for (const folder of privateFolders) fs.mkdirSync(resolveInside(this.root, folder), { recursive: true })
     this.databaseFile = resolveInside(this.root, 'database', 'portal.json')
     this.auditFile = resolveInside(this.root, 'logs', 'audit.jsonl')
-    if (!fs.existsSync(this.databaseFile)) writeJsonAtomic(this.databaseFile, { schemaVersion: 2, documents: [], actions: [], futureItems: [], extraMaterials: [] })
+    if (!fs.existsSync(this.databaseFile)) writeJsonAtomic(this.databaseFile, { schemaVersion: 4, documents: [], actions: [], futureItems: [], extraMaterials: [], integrationProposals: [], integrationQueue: [] })
   }
 
   read() {
     const database = JSON.parse(fs.readFileSync(this.databaseFile, 'utf8'))
     return {
       ...database,
-      schemaVersion: Math.max(2, Number(database.schemaVersion ?? 1)),
+      schemaVersion: Math.max(4, Number(database.schemaVersion ?? 1)),
       documents: database.documents ?? [],
       actions: database.actions ?? [],
       futureItems: database.futureItems ?? [],
       extraMaterials: database.extraMaterials ?? [],
+      integrationProposals: database.integrationProposals ?? [],
+      integrationQueue: database.integrationQueue ?? [],
     }
   }
 
@@ -73,9 +75,42 @@ export class PrivateStore {
     })
   }
 
+  recordReviewCompletion(action, proposal) {
+    return this.mutate((database) => {
+      database.schemaVersion = 4
+      database.integrationProposals ??= []
+      if (database.integrationProposals.some((item) => item.targetId === proposal.targetId && item.exactRevisionKey === proposal.exactRevisionKey)) throw new Error('An integration proposal already exists for this exact revision.')
+      database.actions.push(structuredClone(action))
+      database.integrationProposals.push(structuredClone(proposal))
+      return { action, proposal }
+    })
+  }
+
+  enqueueIntegration(action, queueEntry) {
+    return this.mutate((database) => {
+      database.schemaVersion = 4
+      database.integrationQueue ??= []
+      if (database.integrationQueue.some((item) => item.proposalId === queueEntry.proposalId)) throw new Error('This proposal is already in the integration queue.')
+      database.actions.push(structuredClone(action))
+      database.integrationQueue.push(structuredClone(queueEntry))
+      return { action, queueEntry }
+    })
+  }
+
+  updateIntegrationQueue(id, patch) {
+    const allowed = new Set(['status', 'validatedAt', 'packet', 'branch', 'pullRequest', 'failure'])
+    if (Object.keys(patch).some((key) => !allowed.has(key))) throw new Error('Immutable integration queue metadata cannot be changed.')
+    return this.mutate((database) => {
+      const entry = database.integrationQueue.find((item) => item.id === id)
+      if (!entry) throw new Error('Integration queue entry not found.')
+      Object.assign(entry, structuredClone(patch))
+      return entry
+    })
+  }
+
   addExtraMaterial(material) {
     return this.mutate((database) => {
-      database.schemaVersion = 2
+      database.schemaVersion = 4
       database.extraMaterials ??= []
       if (database.extraMaterials.some((item) => item.id === material.id)) throw new Error('Generated extra-material identifier collision.')
       database.extraMaterials.push(structuredClone(material))

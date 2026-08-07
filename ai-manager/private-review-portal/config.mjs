@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 const portalDirectory = path.dirname(fileURLToPath(import.meta.url))
 export const repositoryRoot = path.resolve(portalDirectory, '..', '..')
 const loopbackHosts = new Set(['127.0.0.1', '::1'])
+const allowedActorRoles = new Set(['content-reviewer', 'integration-proposer'])
 
 function positiveInteger(value, fallback, name, maximum = Number.MAX_SAFE_INTEGER) {
   const parsed = value === undefined ? fallback : Number(value)
@@ -45,6 +46,12 @@ export function loadConfig(environment = process.env) {
     throw new Error('Tailscale Serve exposure requires an explicit HTTPS origin in MSK_REVIEW_PORTAL_ORIGINS.')
   }
 
+  const actorId = String(environment.MSK_REVIEW_PORTAL_ACTOR_ID ?? 'local-reviewer').trim()
+  if (!/^[a-zA-Z0-9][a-zA-Z0-9._-]{2,79}$/.test(actorId)) throw new Error('MSK_REVIEW_PORTAL_ACTOR_ID must be a stable non-secret identifier using letters, numbers, dots, underscores or hyphens.')
+  const actorRoles = [...new Set(String(environment.MSK_REVIEW_PORTAL_ACTOR_ROLES ?? 'content-reviewer').split(',').map((value) => value.trim()).filter(Boolean))]
+  if (!actorRoles.length || actorRoles.some((role) => !allowedActorRoles.has(role))) throw new Error('MSK_REVIEW_PORTAL_ACTOR_ROLES contains an unsupported role.')
+  if (actorRoles.includes('integration-proposer') && environment.MSK_REVIEW_PORTAL_ACTOR_ID === undefined) throw new Error('Integration submission requires an explicit MSK_REVIEW_PORTAL_ACTOR_ID.')
+
   return Object.freeze({
     host,
     port,
@@ -52,6 +59,8 @@ export function loadConfig(environment = process.env) {
     passphrase,
     origins,
     networkExposure,
+    actorId,
+    actorRoles: Object.freeze(actorRoles),
     repositoryRoot,
     maxFileBytes: positiveInteger(environment.MSK_REVIEW_PORTAL_MAX_FILE_BYTES, 25 * 1024 * 1024, 'MSK_REVIEW_PORTAL_MAX_FILE_BYTES', 100 * 1024 * 1024),
     maxBatchBytes: positiveInteger(environment.MSK_REVIEW_PORTAL_MAX_BATCH_BYTES, 100 * 1024 * 1024, 'MSK_REVIEW_PORTAL_MAX_BATCH_BYTES', 500 * 1024 * 1024),

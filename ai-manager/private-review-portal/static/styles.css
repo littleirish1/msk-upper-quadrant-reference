@@ -75,6 +75,10 @@ progress { width: 100%; accent-color: var(--accent); }
 .detail-section ul { margin-bottom: 0; padding-left: 1.2rem; }
 .content-preview { max-height: 34rem; overflow: auto; padding: 1rem; border-radius: .55rem; background: #10201b; color: #e9fff7; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .82rem; }
 .review-form { margin-bottom: 0; }
+.review-attestation { display: flex !important; grid-column: 1 / -1; align-items: flex-start; gap: .65rem !important; font-weight: 600 !important; }
+.review-attestation input { width: auto; min-height: auto; margin-top: .2rem; }
+.proposal-controls { border-color: var(--accent); }
+.compact-submit-form { padding-top: .8rem; border-top: 1px solid var(--line); }
 code { overflow-wrap: anywhere; }
 
 @media (max-width: 620px) {

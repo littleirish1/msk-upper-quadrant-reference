@@ -16,7 +16,15 @@ The first Studio phase is a generic private registry, not a shoulder application
 
 Every item exposes an exact ID, region, content type, lifecycle, publication state, four review states, blockers, human-review tasks, source links, revision hash, completeness and an optional existing learner-route reference. The dashboard and library derive their counts and filters from those records. Missing or ambiguous authority is represented as not recorded or required; it is never inferred as approved.
 
-The only Content Studio mutations in this phase are private reviewer notes, human-review tasks and metadata-only Extra Materials registrations. Approval changes, publication changes, clinical or evidence editing and deletion are not implemented. Notes and tasks require the current item revision hash and fail on stale revisions. Extra Materials may classify a PDF, PowerPoint, image, video, legacy HTML or teaching note and may link an already quarantined private document; the registration remains in the external database with `publicationState: private` and `grantsApproval: false`.
+The Content Studio mutations are private reviewer notes, human-review tasks, exact-revision review completion and metadata-only Extra Materials registrations. Approval changes, publication changes, clinical or evidence editing and deletion are not implemented. Notes, tasks and review completion require the current item revision hash and fail on stale revisions. Review completion also requires an explicit no-approval/no-publication declaration. It creates a metadata-only JSON proposal under the external private `exports` folder for later Codex assessment on a feature branch; it copies no governed content, modifies no repository file, and records `grantsApproval: false`, `publicationAuthorized: false` and `repositoryModified: false`. Extra Materials may classify a PDF, PowerPoint, image, video, legacy HTML or teaching note and may link an already quarantined private document; the registration remains in the external database with `publicationState: private` and `grantsApproval: false`.
+
+## Guarded integration automation
+
+An explicitly identified process may receive the `integration-proposer` role through `MSK_REVIEW_PORTAL_ACTOR_ID` and `MSK_REVIEW_PORTAL_ACTOR_ROLES`. A reviewer can then submit a completed exact-revision proposal to the private integration queue. The first policy is deliberately `review-adoption-only`: it creates a metadata-only manifest, never copies uploaded resources, never changes publication state and never grants approval.
+
+`npm run private-portal:integration-worker -- --queue <uuid>` validates the immutable proposal, current repository revision and fail-closed controls, then prepares a private packet without Git or network mutations. Feature-branch execution additionally requires `MSK_REVIEW_INTEGRATION_EXECUTE=feature-branch-pr` and the explicit `--execute` flag in the dedicated worker process. Execution checks GitHub CLI authentication and main/origin identity, creates a generated worktree, stages exactly one allowlisted manifest, pushes only `content-review/<proposal>-<revision>` and opens a pull request. It contains no merge, auto-merge, force-push, direct-main or deployment command.
+
+The read-only `.github/workflows/content-integration-gate.yml` runs on those pull requests under Node 20.20.2. It rejects any diff outside `reports/content-integration/proposals/`, requires an exact current revision, runs the portal tests and full preflight, and uploads no artifact. Branch protection and human authority remain external required gates. A future cleared-resource adapter must independently prove source, licensing, malware, derivation and accessibility controls before this policy can ever permit a resource file; private originals remain outside Git.
 
 ## Private storage
 
@@ -76,7 +84,7 @@ Authorised browser on loopback/Tailnet
   -> external JSON database + append-only JSONL audit
 
 Governed repository JSON --read-only--> generic content registry + derived counts
-Private database ----------private----> documents/notes/tasks/Extra Materials/Future Build
+Private database ----------private----> documents/notes/tasks/integration proposals/Extra Materials/Future Build
 Next.js learner build <---- no imports, routes, records or runtime code
 ```
 

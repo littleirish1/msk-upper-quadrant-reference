@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "mode": "review-adoption-only",
+  "branchPrefix": "content-review/",
+  "baseBranch": "main",
+  "manifestRoot": "reports/content-integration/proposals",
+  "directMainPush": false,
+  "autoMerge": false,
+  "publicationStateChangesAllowed": false,
+  "resourceImportAllowed": false,
+  "allowedChangedPathPrefixes": [
+    "reports/content-integration/proposals/"
+  ]
+}

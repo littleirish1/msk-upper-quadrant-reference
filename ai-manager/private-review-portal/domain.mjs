@@ -39,7 +39,7 @@ function compactItem(item) {
   return Object.keys(compact).length ? compact : { summary: JSON.stringify(item).slice(0, 300) }
 }
 
-export function deriveProjectSnapshot(repositoryRoot, store) {
+export function deriveProjectSnapshot(repositoryRoot, store, portalConfig = { actorId: 'local-reviewer', actorRoles: ['content-reviewer'] }) {
   const datasets = datasetDefinitions.map((definition) => {
     const source = readJson(repositoryRoot, definition.path)
     const collection = source[definition.collection]
@@ -61,6 +61,11 @@ export function deriveProjectSnapshot(repositoryRoot, store) {
   const release = readJson(repositoryRoot, 'ai-manager/clinical-platform/release/v1-release-candidate.json')
   const database = store.read()
   const registry = loadContentRegistry({ repositoryRoot, store })
+  const integrationProposals = database.integrationProposals.map(({ relativePath, ...proposal }) => ({
+    ...proposal,
+    downloadUrl: `/api/integration-proposals/${proposal.id}/download`,
+  }))
+  const integrationQueue = database.integrationQueue.map((entry) => structuredClone(entry))
   return {
     generatedAt: new Date().toISOString(),
     authority: 'derived-read-only-from-repository-and-private-database',
@@ -79,11 +84,15 @@ export function deriveProjectSnapshot(repositoryRoot, store) {
     datasets,
     studio: {
       schemaVersion: registry.schemaVersion,
-      summary: deriveStudioSummary(registry),
+      summary: { ...deriveStudioSummary(registry), integrationProposals: integrationProposals.length, queuedForIntegration: integrationQueue.filter((entry) => !['pull-request-open', 'rejected'].includes(entry.status)).length },
       regions: registry.regions,
       contentTypes: registry.contentTypes,
       extraMaterialTypes: registry.extraMaterialTypes,
       items: registry.items.map(({ currentContent, ...item }) => item),
+      integrationProposals,
+      integrationQueue,
+      actor: { id: portalConfig.actorId, roles: portalConfig.actorRoles },
+      capabilities: { submitIntegrationProposal: portalConfig.actorRoles.includes('integration-proposer') },
       grantsApproval: false,
     },
     documents: database.documents.map(({ relativePath, ...document }) => document),
