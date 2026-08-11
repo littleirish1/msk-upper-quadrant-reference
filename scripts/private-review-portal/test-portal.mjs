@@ -24,6 +24,7 @@ const shoulderSourcePaths = [
   'ai-manager/clinical-platform/shoulder/source-inventory.json',
   'ai-manager/clinical-platform/shoulder/evidence-map.json',
   'ai-manager/clinical-platform/shoulder/compatibility-rules.json',
+  'ai-manager/clinical-platform/anatomy-3d/source-candidates.json',
   ...fs.readdirSync(path.join(repositoryRoot, 'content', 'shoulder')).filter((name) => name.endsWith('.mdx')).sort().map((name) => `content/shoulder/${name}`),
 ]
 const sourceHashes = () => Object.fromEntries(shoulderSourcePaths.map((relativePath) => [relativePath, crypto.createHash('sha256').update(fs.readFileSync(path.join(repositoryRoot, ...relativePath.split('/')))).digest('hex')]))
@@ -73,12 +74,22 @@ try {
   for (const region of ['cervical', 'thoracic', 'shoulder', 'elbow', 'wrist-hand', 'lumbar', 'hip', 'knee', 'ankle-foot', 'neuro', 'anatomy-only', 'non-region-specific']) assert.ok(studioConfig.regions.some((item) => item.id === region))
   for (const contentType of ['cases', 'conditions', 'movements', 'anatomy', '3d-assets', 'mcqs', 'evidence', 'extra-materials', 'modules', 'compatibility-rules']) assert.ok(studioConfig.contentTypes.includes(contentType))
   const registry = loadContentRegistry({ repositoryRoot, store })
-  assert.equal(registry.items.filter((item) => item.region === 'shoulder' && item.contentType === 'movements').length, 20)
+  assert.equal(registry.items.filter((item) => item.id.startsWith('movement.shoulder.')).length, 20)
   assert.equal(registry.items.filter((item) => item.region === 'shoulder' && item.contentType === '3d-assets').length, 16)
-  assert.ok(registry.items.filter((item) => item.contentType === '3d-assets').every((item) => item.currentContent.assetPath === null && item.currentContent.actualStructureCount === 0))
+  assert.ok(registry.items.filter((item) => item.id.startsWith('3d-plan.')).every((item) => item.currentContent.assetPath === null && item.currentContent.actualStructureCount === 0))
   assert.equal(registry.items.filter((item) => item.region === 'shoulder' && item.contentType === 'mcqs').length, 10)
   assert.ok(registry.items.filter((item) => item.contentType === 'mcqs').every((item) => item.currentContent.authoredContent === null))
   assert.equal(registry.items.filter((item) => item.region === 'shoulder' && item.contentType === 'compatibility-rules').length, 12)
+  const sourceCandidates = registry.items.filter((item) => ['upstream-source-archive', 'derived-candidate-archive', 'derived-glb', 'movement-definition'].includes(item.currentContent.candidateType))
+  assert.equal(sourceCandidates.length, 25)
+  assert.equal(sourceCandidates.filter((item) => item.contentType === '3d-assets').length, 7)
+  assert.equal(sourceCandidates.filter((item) => item.contentType === 'movements').length, 18)
+  assert.ok(sourceCandidates.every((item) => item.publicationState === 'private' && item.grantsApproval === false && item.currentContent.repositoryAssetPath === null))
+  assert.ok(sourceCandidates.every((item) => !item.sourceLinks.some((link) => /^[a-z]:[\\/]/i.test(link))))
+  assert.equal(sourceCandidates.find((item) => item.id.startsWith('candidate3d.z-anatomy.')).currentContent.upstream.exactArchiveMatch, true)
+  assert.equal(sourceCandidates.filter((item) => item.currentContent.candidateType === 'derived-glb').length, 5)
+  assert.equal(sourceCandidates.filter((item) => item.currentContent.candidateType === 'movement-definition' && item.currentContent.existingMovementSlotId).length, 5)
+  assert.ok(sourceCandidates.filter((item) => item.currentContent.candidateType === 'movement-definition').every((item) => item.currentContent.adoptedMovementData === null && item.currentContent.claimEvidenceRecordIds.length === 0))
   assert.ok(registry.items.filter((item) => item.contentType === 'cases' && item.learnerPreview).every((item) => item.learnerPreview.route.startsWith(`/cases/${item.region}/`)))
   assert.ok(registry.items.filter((item) => item.contentType === 'compatibility-rules').every((item) => item.currentContent.enabled === false))
   assert.equal(deriveStudioSummary(registry).readyForApproval, 0)
@@ -318,6 +329,7 @@ try {
   for (const actionType of ['add-note', 'create-human-review-task', 'mark-review-complete', 'submit-integration-proposal']) assert.match(portalApp, new RegExp(`['"]${actionType}['"]`))
   for (const prohibitedAction of ['accept-proposal', 'reject-proposal', 'defer-proposal', 'mark-superseded', 'archive', 'approve-content', 'publish-content', 'change-publication-state']) assert.doesNotMatch(portalApp, new RegExp(`['"]${prohibitedAction}['"]`))
   assert.doesNotMatch(portalApp, /mock-region/)
+  assert.doesNotMatch(portalApp, /candidate-movement\.synthetic|region\s*===\s*['"](?:shoulder|hip)['"]/)
   assert.deepEqual(Object.fromEntries(loadContentRegistry({ repositoryRoot, store }).items.filter((item) => publicationSnapshot[item.id] !== undefined).map((item) => [item.id, item.publicationState])), publicationSnapshot)
   assert.deepEqual(sourceHashes(), originalSourceHashes)
   for (const script of ['tailscale-serve-start.ps1', 'tailscale-serve-stop.ps1', 'tailscale-serve-reset.ps1']) {

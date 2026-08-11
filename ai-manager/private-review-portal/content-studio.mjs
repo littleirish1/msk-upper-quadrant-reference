@@ -2,6 +2,7 @@ import crypto from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { normalizeAnatomyCandidateLedger } from './anatomy-candidate-pipeline.mjs'
 
 const portalDirectory = path.dirname(fileURLToPath(import.meta.url))
 const defaultConfigPath = path.join(portalDirectory, 'content-studio-config.json')
@@ -97,6 +98,7 @@ export function loadStudioConfig(configPath = defaultConfigPath) {
   if (!Array.isArray(config.regions) || !Array.isArray(config.contentTypes)) throw new Error('Content Studio configuration is invalid.')
   const regionIds = config.regions.map((region) => region.id)
   if (new Set(regionIds).size !== regionIds.length) throw new Error('Content Studio region identifiers must be unique.')
+  if (!config.anatomyCandidatePipeline?.ledgerPath || !Array.isArray(config.anatomyCandidatePipeline.governedMovementRegistryPaths)) throw new Error('Content Studio anatomy candidate pipeline configuration is invalid.')
   return config
 }
 
@@ -237,6 +239,46 @@ export function createShoulderAdapter() {
   }
 }
 
+export function createAnatomy3dSourceCandidateAdapter({ candidatePath = null } = {}) {
+  return {
+    id: 'anatomy-3d-source-candidates-read-only',
+    regions: 'data-driven',
+    load({ repositoryRoot, config }) {
+      const pipelineConfig = config.anatomyCandidatePipeline
+      if (!pipelineConfig?.ledgerPath || !Array.isArray(pipelineConfig.governedMovementRegistryPaths)) throw new Error('Content Studio anatomy candidate pipeline configuration is invalid.')
+      const ledgerPath = candidatePath ?? pipelineConfig.ledgerPath
+      const governedMovementIds = pipelineConfig.governedMovementRegistryPaths.flatMap((registryPath) => readJson(repositoryRoot, registryPath).records.map((record) => record.id))
+      const ledger = readJson(repositoryRoot, ledgerPath)
+      return normalizeAnatomyCandidateLedger({
+        ledger,
+        configuredRegions: new Set(config.regions.map((region) => region.id)),
+        governedMovementIds: new Set(governedMovementIds),
+      }).map((candidate) => makeItem({
+        id: candidate.id,
+        region: candidate.region,
+        contentType: candidate.contentType,
+        title: candidate.title,
+        lifecycle: candidate.lifecycle,
+        publicationState: candidate.publicationState,
+        clinicalReview: candidate.reviews.clinical,
+        evidenceReview: candidate.reviews.provenance,
+        accessibilityReview: candidate.reviews.accessibility,
+        licensingReview: candidate.reviews.licensing,
+        blockers: candidate.blockers,
+        reviewTasks: candidate.reviewTasks,
+        sourceLinks: [ledgerPath, ...candidate.sourceLinks],
+        revisionHash: candidate.revisionHash,
+        currentContent: {
+          ...candidate,
+          assetPath: null,
+          actualStructureCount: candidate.candidateType === 'derived-glb' ? candidate.meshCount : 0,
+        },
+        missingFields: candidate.missingFields,
+      }))
+    },
+  }
+}
+
 function loadExtraMaterials(store) {
   return (store.read().extraMaterials ?? []).map((record) => makeItem({
     id: record.id,
@@ -251,7 +293,7 @@ function loadExtraMaterials(store) {
   }))
 }
 
-export function loadContentRegistry({ repositoryRoot, store, adapters = [createShoulderAdapter()], config = loadStudioConfig() }) {
+export function loadContentRegistry({ repositoryRoot, store, adapters = [createShoulderAdapter(), createAnatomy3dSourceCandidateAdapter()], config = loadStudioConfig() }) {
   const allowedRegions = new Set(config.regions.map((region) => region.id))
   const allowedTypes = new Set(config.contentTypes)
   const items = [...adapters.flatMap((adapter) => adapter.load({ repositoryRoot, store, config })), ...loadExtraMaterials(store)]

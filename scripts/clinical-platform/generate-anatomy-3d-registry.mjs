@@ -32,7 +32,7 @@ const shoulderStructures = [
   ['shoulder-landmarks', 'landmark', 'Major shoulder landmarks'],
 ]
 const acquisitionTasks = [
-  ['source', 'Identify a technically suitable shoulder asset without downloading it into the public repository.'],
+  ['source', 'Identify a technically suitable regional asset without downloading it into the public repository.'],
   ['licence', 'Verify creator, licence, permitted use and required attribution.'],
   ['anatomy', 'Map and clinically review every structure label against the exact asset revision.'],
   ['accessibility', 'Approve keyboard controls, text relationships, transcript and non-WebGL fallback.'],

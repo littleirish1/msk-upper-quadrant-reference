@@ -3224,7 +3224,7 @@
       {
         "domain": "technical",
         "publicEligibility": false,
-        "reason": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+        "reason": "Identify a technically suitable regional asset without downloading it into the public repository.",
         "requiredDecision": "Complete and record the named review task for the exact asset revision.",
         "state": "blocked",
         "targetId": "asset3d.shoulder.review-slot",

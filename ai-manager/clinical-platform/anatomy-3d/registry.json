@@ -4,7 +4,7 @@
       "acquisitionTasks": [
         {
           "id": "task.3d.cervical.source",
-          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "label": "Identify a technically suitable regional asset without downloading it into the public repository.",
           "status": "required"
         },
         {
@@ -101,7 +101,7 @@
       "acquisitionTasks": [
         {
           "id": "task.3d.shoulder.source",
-          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "label": "Identify a technically suitable regional asset without downloading it into the public repository.",
           "status": "required"
         },
         {
@@ -295,7 +295,7 @@
       "acquisitionTasks": [
         {
           "id": "task.3d.elbow.source",
-          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "label": "Identify a technically suitable regional asset without downloading it into the public repository.",
           "status": "required"
         },
         {
@@ -392,7 +392,7 @@
       "acquisitionTasks": [
         {
           "id": "task.3d.wrist-hand.source",
-          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "label": "Identify a technically suitable regional asset without downloading it into the public repository.",
           "status": "required"
         },
         {
@@ -489,7 +489,7 @@
       "acquisitionTasks": [
         {
           "id": "task.3d.lumbar.source",
-          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "label": "Identify a technically suitable regional asset without downloading it into the public repository.",
           "status": "required"
         },
         {
@@ -586,7 +586,7 @@
       "acquisitionTasks": [
         {
           "id": "task.3d.hip.source",
-          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "label": "Identify a technically suitable regional asset without downloading it into the public repository.",
           "status": "required"
         },
         {
@@ -683,7 +683,7 @@
       "acquisitionTasks": [
         {
           "id": "task.3d.knee.source",
-          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "label": "Identify a technically suitable regional asset without downloading it into the public repository.",
           "status": "required"
         },
         {
@@ -780,7 +780,7 @@
       "acquisitionTasks": [
         {
           "id": "task.3d.ankle-foot.source",
-          "label": "Identify a technically suitable shoulder asset without downloading it into the public repository.",
+          "label": "Identify a technically suitable regional asset without downloading it into the public repository.",
           "status": "required"
         },
         {

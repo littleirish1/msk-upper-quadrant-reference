@@ -1,0 +1,430 @@
+{
+  "schemaVersion": 1,
+  "authority": "private-anatomy-3d-source-candidate-ledger",
+  "privateAuthoringOnly": true,
+  "grantsApproval": false,
+  "candidateReviewDefaults": {
+    "provenance": "required",
+    "licensing": "required",
+    "anatomy": "required",
+    "clinical": "required",
+    "movementVisual": "required",
+    "accessibility": "required",
+    "performance": "required",
+    "publication": "required"
+  },
+  "movementSource": {
+    "sourceProject": "Unverified biomechanics derivative package",
+    "sourceUrl": null,
+    "upstreamRevision": null,
+    "originalFilename": "movements.ts",
+    "sha256": "49bfc3059780d39cdc436ee0ea222d3750c8f7e7e514c633c54b81890dc4d636",
+    "parentArchiveSha256": "dc190e05e3818543ede0eea0a6f9fe03d327ecf407401b4552ca05fd5451547f",
+    "derivedFrom": [
+      "candidate3d.biomechanics.dc190e05",
+      "candidate-asset.biomechanics.msk-rigged.4bf59e7f",
+      "candidate-asset.biomechanics.msk-rigged-muscles.2c87f6d7"
+    ]
+  },
+  "candidates": [
+    {
+      "id": "candidate3d.z-anatomy.upstream-98d6780f",
+      "title": "Z-Anatomy upstream source archive",
+      "candidateType": "upstream-source-archive",
+      "sourceProject": "Z-Anatomy",
+      "region": "anatomy-only",
+      "contentTypes": [
+        "3d-assets"
+      ],
+      "lifecycle": "candidate",
+      "publicationState": "private",
+      "archive": {
+        "filename": "Z-Anatomy.zip",
+        "bytes": 86734957,
+        "sha256": "e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+        "gitBlobSha1": "f43cabc6f366b2a6058dd2ed4a2b3c7b9b2492cb",
+        "malwareScan": {
+          "scanner": "Microsoft Defender",
+          "scannerVersion": "4.18.26070.9-0",
+          "result": "no-threats-detected",
+          "scanMode": "custom-file-scan-disable-remediation"
+        }
+      },
+      "upstream": {
+        "repository": "https://github.com/Z-Anatomy/Models-of-human-anatomy",
+        "commit": "98d6780fed69fa56ee43ff5c4f2f0abe2a12c2a4",
+        "archivePath": "Z-Anatomy.zip",
+        "archiveGitBlobSha1": "f43cabc6f366b2a6058dd2ed4a2b3c7b9b2492cb",
+        "exactArchiveMatch": true,
+        "licencePath": "License.txt",
+        "licenceGitBlobSha1": "4d48d7e83d2b79ba4510314c7612b2c3c0a90f67"
+      },
+      "licenceEvidence": {
+        "sourceContentLicence": "CC-BY-SA-4.0",
+        "licenceVersion": "4.0",
+        "status": "verified-upstream-evidence",
+        "licenceUrl": "https://github.com/Z-Anatomy/Models-of-human-anatomy/blob/98d6780fed69fa56ee43ff5c4f2f0abe2a12c2a4/License.txt",
+        "requiredAttribution": [
+          "BodyParts3D - The Database Center for Life Science - CC-BY-SA 2.1 Japan",
+          "Z-Anatomy - The libre 3D atlas of anatomy - CC-BY-SA 4.0"
+        ],
+        "componentLicenceExceptions": [
+          { "component": "Brain and White matter", "creator": "University of Washington", "licence": "not-stated-in-reviewed-attribution-list" },
+          { "component": "Cranial Nerves and Foramina", "creator": "University of Dundee CAHID", "licence": "CC-BY-4.0" },
+          { "component": "Anatomy of the Inner Ear", "creator": "University of Dundee School of Medicine", "licence": "CC-BY-NC-SA-4.0" },
+          { "component": "Kidneys", "creator": "Lissie Cowley", "licence": "CC-BY-NC-4.0" }
+        ],
+        "shareAlikeRequired": true,
+        "modificationDisclosureRequired": true,
+        "obligations": [
+          "Provide appropriate attribution and a licence link.",
+          "Identify modifications made to redistributed derivatives.",
+          "Distribute derivatives under the applicable share-alike terms.",
+          "Verify whether any selected structure incorporates separately attributed or non-commercial source material."
+        ],
+        "approvalGranted": false
+      },
+      "artifacts": [
+        {
+          "filename": "Z-Anatomy/Startup.blend",
+          "bytes": 306838281,
+          "sha256": "9f08a17ea0115fed80b2a73ecdf0a1bc2ab2f6956f37c593ce23d513ea35afcd",
+          "kind": "blender-source"
+        },
+        {
+          "filename": "Z-Anatomy/Anatomy-shortcuts.py",
+          "bytes": 299242,
+          "sha256": "c1b723cee484758598e88ac11714ef8126d51915999d9ceea06fa88fef8b17ff",
+          "kind": "active-code"
+        },
+        {
+          "filename": "Z-Anatomy/__init__.py",
+          "bytes": 61600,
+          "sha256": "bd4df0dd92872bd07d9d883d7c724584b72640a016df8d067fc7c5c3d5d85306",
+          "kind": "active-code"
+        }
+      ],
+      "technicalFindings": [
+        "The supplied ZIP is byte-identical to the archive stored at the pinned upstream commit.",
+        "The archive itself omits License.txt; licence evidence must travel with any derived package.",
+        "Bundled Python is active code and must never be executed as part of learner or review rendering.",
+        "No exact structure selection or derivative asset has been adopted into a governed regional slot."
+      ],
+      "reviews": {
+        "provenance": "required",
+        "licensing": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "accessibility": "required",
+        "performance": "required",
+        "publication": "required"
+      },
+      "missingFields": [
+        "selected exact asset revision",
+        "structure-level source mapping",
+        "derivative attribution and share-alike package",
+        "anatomical review",
+        "accessibility review",
+        "performance review"
+      ],
+      "blockers": [
+        "Source licence evidence is verified, but this does not establish the provenance or licence compliance of a future derivative.",
+        "No governed repository asset exists.",
+        "All human review and publication gates remain open."
+      ],
+      "repositoryAssetPath": null,
+      "publicEligibility": false,
+      "grantsApproval": false
+    },
+    {
+      "id": "candidate3d.biomechanics.dc190e05",
+      "title": "Biomechanics and derived GLB candidate package",
+      "candidateType": "derived-candidate-archive",
+      "sourceProject": "Unverified biomechanics derivative package",
+      "region": "non-region-specific",
+      "contentTypes": [
+        "3d-assets",
+        "movements"
+      ],
+      "lifecycle": "candidate",
+      "publicationState": "private",
+      "archive": {
+        "filename": "files (2).zip",
+        "bytes": 15294154,
+        "sha256": "dc190e05e3818543ede0eea0a6f9fe03d327ecf407401b4552ca05fd5451547f",
+        "malwareScan": {
+          "scanner": "Microsoft Defender",
+          "scannerVersion": "4.18.26070.9-0",
+          "result": "no-threats-detected",
+          "scanMode": "custom-file-scan-disable-remediation"
+        }
+      },
+      "declaredDerivation": {
+        "anatomySource": "Z-Anatomy Startup.glb derived from BodyParts3D",
+        "movementRigSource": "Startupbio.glb",
+        "status": "asserted-not-reproduced",
+        "missingInputs": [
+          "Startup.glb",
+          "Startupbio.glb",
+          "build-msk-models.py",
+          "build-rigged-model.py",
+          "build-skinned-muscles.py",
+          "page.tsx",
+          "Draco decoder files",
+          "tool-version lock and reproducible build command"
+        ]
+      },
+      "licenceEvidence": {
+        "sourceContentLicence": "CC-BY-SA-4.0",
+        "status": "source-evidence-only-derivative-unverified",
+        "licenceUrl": "https://github.com/Z-Anatomy/Models-of-human-anatomy/blob/98d6780fed69fa56ee43ff5c4f2f0abe2a12c2a4/License.txt",
+        "embeddedCopyrightMetadata": false,
+        "packagedLicenceFile": false,
+        "requiredAttribution": [
+          "BodyParts3D - The Database Center for Life Science - CC-BY-SA 2.1 Japan",
+          "Z-Anatomy - The libre 3D atlas of anatomy - CC-BY-SA 4.0"
+        ],
+        "shareAlikeRequired": true,
+        "modificationDisclosureRequired": true,
+        "approvalGranted": false
+      },
+      "artifacts": [
+        {
+          "id": "candidate-asset.biomechanics.msk-skeleton.9ace8006",
+          "title": "MSK skeleton derived GLB",
+          "region": "non-region-specific",
+          "filename": "msk-skeleton.glb",
+          "bytes": 2209456,
+          "sha256": "9ace8006a71317c9520e77f810076f7111fe1363f55fb17df6ee1207c8a745b5",
+          "kind": "gltf-binary",
+          "gltf": {
+            "version": 2,
+            "generator": "glTF-Transform v4.4.1",
+            "scenes": 1,
+            "nodes": 1200,
+            "meshes": 654,
+            "primitives": 759,
+            "skins": 0,
+            "animations": 0,
+            "materials": 42,
+            "dracoCompressed": true,
+            "animationNames": [],
+            "animationDurationsSeconds": [],
+            "externalResourceUris": [],
+            "bounds": { "min": [-0.07182003557682037, -0.5350176095962524, -0.10239744186401367], "max": [0.07129611819982529, 1.5872849225997925, 0.12710335850715637] }
+          },
+          "derivedFrom": ["candidate3d.biomechanics.dc190e05", "candidate3d.z-anatomy.upstream-98d6780f"],
+          "governedAssetSlotIds": [],
+          "licenceInheritance": "unverified",
+          "missingFields": ["exact derivation recipe", "structure-level regional mapping", "attribution package"]
+        },
+        {
+          "id": "candidate-asset.biomechanics.msk-muscles.1566f395",
+          "title": "MSK muscles derived GLB",
+          "region": "non-region-specific",
+          "filename": "msk-muscles.glb",
+          "bytes": 2729556,
+          "sha256": "1566f395036e949da360ed3dd067a025d404a19c6cec15aa4286ad7b6025416c",
+          "kind": "gltf-binary",
+          "gltf": {
+            "version": 2,
+            "generator": "glTF-Transform v4.4.1",
+            "scenes": 1,
+            "nodes": 469,
+            "meshes": 235,
+            "primitives": 329,
+            "skins": 0,
+            "animations": 0,
+            "materials": 22,
+            "dracoCompressed": true,
+            "animationNames": [],
+            "animationDurationsSeconds": [],
+            "externalResourceUris": [],
+            "bounds": { "min": [-0.11270206421613693, -0.3647461533546448, -0.10692538321018219], "max": [0.13843493163585663, 0.2958301901817322, 0.14458821713924408] }
+          },
+          "derivedFrom": ["candidate3d.biomechanics.dc190e05", "candidate3d.z-anatomy.upstream-98d6780f"],
+          "governedAssetSlotIds": [],
+          "licenceInheritance": "unverified",
+          "missingFields": ["exact derivation recipe", "structure-level regional mapping", "attribution package"]
+        },
+        {
+          "id": "candidate-asset.biomechanics.msk-nerves.2db37838",
+          "title": "MSK nerves derived GLB",
+          "region": "neuro",
+          "filename": "msk-nerves.glb",
+          "bytes": 903724,
+          "sha256": "2db37838236b237c81b23595cc2ed3bf50f770c27bfd04b90d91af4bba0bc909",
+          "kind": "gltf-binary",
+          "gltf": {
+            "version": 2,
+            "generator": "glTF-Transform v4.4.1",
+            "scenes": 1,
+            "nodes": 201,
+            "meshes": 102,
+            "primitives": 102,
+            "skins": 0,
+            "animations": 0,
+            "materials": 9,
+            "dracoCompressed": true,
+            "animationNames": [],
+            "animationDurationsSeconds": [],
+            "externalResourceUris": [],
+            "bounds": { "min": [-0.08956214785575867, -0.6645447611808777, -0.09601641446352005], "max": [0.08663030713796616, 0.4305715560913086, 0.17623241245746613] }
+          },
+          "derivedFrom": ["candidate3d.biomechanics.dc190e05", "candidate3d.z-anatomy.upstream-98d6780f"],
+          "governedAssetSlotIds": [],
+          "licenceInheritance": "unverified",
+          "missingFields": ["exact derivation recipe", "anatomical nerve-label review", "attribution package"]
+        },
+        {
+          "id": "candidate-asset.biomechanics.msk-rigged.4bf59e7f",
+          "title": "MSK rigged skeleton derived GLB",
+          "region": "non-region-specific",
+          "filename": "msk-rigged.glb",
+          "bytes": 1859888,
+          "sha256": "4bf59e7fac5d849d62dc96b932c3e80d86de13211ef0da15f5fcb7e252c6fd6f",
+          "kind": "gltf-binary",
+          "gltf": {
+            "version": 2,
+            "generator": "glTF-Transform v4.4.1",
+            "scenes": 1,
+            "nodes": 1135,
+            "meshes": 292,
+            "primitives": 407,
+            "skins": 0,
+            "animations": 0,
+            "materials": 7,
+            "dracoCompressed": true,
+            "animationNames": [],
+            "animationDurationsSeconds": [],
+            "externalResourceUris": [],
+            "bounds": { "min": [-0.07182003557682037, -0.20937804877758026, -0.06855033338069916], "max": [0.07129611819982529, 0.1945960372686386, 0.12710335850715637] }
+          },
+          "derivedFrom": ["candidate3d.biomechanics.dc190e05"],
+          "governedAssetSlotIds": [],
+          "licenceInheritance": "unverified",
+          "missingFields": ["Startupbio.glb source hash", "rig build script", "joint-level visual verification"]
+        },
+        {
+          "id": "candidate-asset.biomechanics.msk-rigged-muscles.2c87f6d7",
+          "title": "MSK rigged muscles derived GLB",
+          "region": "non-region-specific",
+          "filename": "msk-rigged-muscles.glb",
+          "bytes": 10503016,
+          "sha256": "2c87f6d7e60981a30db5ebd28e832ca4884259e0934c10d1ddc2f7ed13c496c3",
+          "kind": "gltf-binary",
+          "gltf": {
+            "version": 2,
+            "generator": "glTF-Transform v4.4.1",
+            "scenes": 1,
+            "nodes": 1401,
+            "meshes": 660,
+            "primitives": 962,
+            "skins": 1,
+            "animations": 0,
+            "materials": 0,
+            "dracoCompressed": true,
+            "animationNames": [],
+            "animationDurationsSeconds": [],
+            "externalResourceUris": [],
+            "bounds": { "min": [-0.3300246000289917, -0.1989770084619522, -0.11704853922128677], "max": [0.33002451062202454, 1.5754350423812866, 0.12841768562793732] }
+          },
+          "derivedFrom": ["candidate3d.biomechanics.dc190e05"],
+          "governedAssetSlotIds": [],
+          "licenceInheritance": "unverified",
+          "missingFields": ["Startupbio.glb source hash", "muscle skinning build script", "deformation visual verification"]
+        },
+        {
+          "filename": "movements.ts",
+          "bytes": 22031,
+          "sha256": "49bfc3059780d39cdc436ee0ea222d3750c8f7e7e514c633c54b81890dc4d636",
+          "kind": "unreviewed-clinical-code",
+          "declaredMovementCount": 18
+        },
+        {
+          "filename": "regions.ts",
+          "bytes": 23197,
+          "sha256": "4b2af4fa22f75ea4bd086c52dfcefc217ede5ffd3ad3eba876b0ab67c7ac1ab3",
+          "kind": "unreviewed-clinical-code"
+        },
+        {
+          "filename": "BodyModel3D.tsx",
+          "bytes": 45669,
+          "sha256": "6ff2d9d478c488c56cbb637a0bfe239e760b4f753f62163d1ad8e15e0d894368",
+          "kind": "private-prototype-code"
+        }
+      ],
+      "technicalFindings": [
+        "All five GLB files have valid glTF 2 binary headers and declared lengths matching their file sizes.",
+        "The README labels node counts as mesh counts; the exact node and mesh counts are recorded separately here.",
+        "No GLB contains embedded copyright metadata or animations.",
+        "The archive README says the movement rig was not visually validated.",
+        "The component defaults to public /models and /draco URLs and therefore cannot be integrated into the private-review architecture unchanged.",
+        "The focusable WebGL canvas is nested inside an aria-hidden container and requires accessibility correction before review use.",
+        "movements.ts and regions.ts contain uncited clinical ranges, muscle roles, conditions, tests and other claims; none has been adopted as governed content."
+      ],
+      "technicalInspection": {
+        "glbFilesInspected": 5,
+        "validGlb20Headers": 5,
+        "declaredLengthsMatch": 5,
+        "sceneCountPerFile": 1,
+        "externalResourceUris": 0,
+        "embeddedImages": 0,
+        "embeddedTextures": 0,
+        "animationClips": 0,
+        "dracoRequired": true,
+        "visualAnatomyInspectionCompleted": false,
+        "movementPlaybackInspectionCompleted": false
+      },
+      "reviews": {
+        "provenance": "required",
+        "licensing": "required",
+        "anatomy": "required",
+        "clinical": "required",
+        "accessibility": "required",
+        "performance": "required",
+        "publication": "required"
+      },
+      "missingFields": [
+        "reproducible derivation inputs",
+        "per-file source mapping",
+        "packaged licence and attribution",
+        "clinical evidence for movement claims",
+        "visual movement verification",
+        "anatomical label review",
+        "keyboard and assistive-technology review",
+        "mobile decoded-memory and frame-time measurements"
+      ],
+      "blockers": [
+        "The asserted derivative chain cannot be reproduced from the supplied archive.",
+        "The source licence does not by itself prove that these exact derivatives meet attribution and share-alike obligations.",
+        "Clinical and biomechanical claims are uncited and unreviewed.",
+        "No binary is permitted in Git, public assets or learner output.",
+        "All human review and publication gates remain open."
+      ],
+      "repositoryAssetPath": null,
+      "publicEligibility": false,
+      "grantsApproval": false
+    }
+  ],
+  "movementCandidates": [
+    { "id": "candidate-movement.elbow-flexion", "title": "Elbow flexion candidate", "region": "elbow", "existingMovementSlotId": null },
+    { "id": "candidate-movement.shoulder-abduction", "title": "Shoulder abduction candidate", "region": "shoulder", "existingMovementSlotId": "movement.shoulder.joint.abduction" },
+    { "id": "candidate-movement.shoulder-flexion", "title": "Shoulder flexion candidate", "region": "shoulder", "existingMovementSlotId": "movement.shoulder.joint.flexion" },
+    { "id": "candidate-movement.knee-flexion", "title": "Knee flexion candidate", "region": "knee", "existingMovementSlotId": null },
+    { "id": "candidate-movement.hip-flexion", "title": "Hip flexion candidate", "region": "hip", "existingMovementSlotId": null },
+    { "id": "candidate-movement.ankle-dorsiflexion", "title": "Ankle dorsiflexion candidate", "region": "ankle-foot", "existingMovementSlotId": null },
+    { "id": "candidate-movement.wrist-flexion", "title": "Wrist flexion candidate", "region": "wrist-hand", "existingMovementSlotId": null },
+    { "id": "candidate-movement.cervical-rotation", "title": "Cervical rotation candidate", "region": "cervical", "existingMovementSlotId": null },
+    { "id": "candidate-movement.lumbar-flexion", "title": "Lumbar flexion candidate", "region": "lumbar", "existingMovementSlotId": null },
+    { "id": "candidate-movement.cervical-side-flexion", "title": "Cervical side flexion candidate", "region": "cervical", "existingMovementSlotId": null },
+    { "id": "candidate-movement.shoulder-internal-rotation", "title": "Shoulder internal rotation candidate", "region": "shoulder", "existingMovementSlotId": "movement.shoulder.joint.internal-rotation" },
+    { "id": "candidate-movement.shoulder-external-rotation", "title": "Shoulder external rotation candidate", "region": "shoulder", "existingMovementSlotId": "movement.shoulder.joint.external-rotation" },
+    { "id": "candidate-movement.hand-behind-back", "title": "Hand behind back candidate", "region": "shoulder", "existingMovementSlotId": "movement.shoulder.functional.hand-behind-back" },
+    { "id": "candidate-movement.forearm-pronation", "title": "Forearm pronation candidate", "region": "elbow", "existingMovementSlotId": null },
+    { "id": "candidate-movement.forearm-supination", "title": "Forearm supination candidate", "region": "elbow", "existingMovementSlotId": null },
+    { "id": "candidate-movement.hip-extension", "title": "Hip extension candidate", "region": "hip", "existingMovementSlotId": null },
+    { "id": "candidate-movement.hip-internal-rotation", "title": "Hip internal rotation candidate", "region": "hip", "existingMovementSlotId": null },
+    { "id": "candidate-movement.hip-external-rotation", "title": "Hip external rotation candidate", "region": "hip", "existingMovementSlotId": null }
+  ]
+}

@@ -33,5 +33,12 @@
     "video",
     "legacy-html",
     "teaching-notes"
-  ]
+  ],
+  "anatomyCandidatePipeline": {
+    "ledgerPath": "ai-manager/clinical-platform/anatomy-3d/source-candidates.json",
+    "governedMovementRegistryPaths": [
+      "ai-manager/clinical-platform/movement/movement-library.json",
+      "ai-manager/clinical-platform/shoulder/movement-library.json"
+    ]
+  }
 }
