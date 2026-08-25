@@ -1,0 +1,1865 @@
+{
+  "schemaVersion": 1,
+  "scope": [
+    "cervical",
+    "shoulder",
+    "elbow"
+  ],
+  "authorityNote": "Inventory records repository state only; it grants no clinical, evidence, accessibility or publication approval.",
+  "summary": {
+    "cervical": {
+      "total": 17,
+      "byContentType": {
+        "anatomy-3d": 1,
+        "case": 3,
+        "condition": 6,
+        "mcq": 4,
+        "module": 2,
+        "region": 1
+      },
+      "publicRoutesExpected": 9,
+      "blocked": 14
+    },
+    "shoulder": {
+      "total": 84,
+      "byContentType": {
+        "anatomy-3d": 1,
+        "case": 2,
+        "condition": 8,
+        "mcq": 14,
+        "module": 38,
+        "movement": 20,
+        "region": 1
+      },
+      "publicRoutesExpected": 11,
+      "blocked": 81
+    },
+    "elbow": {
+      "total": 14,
+      "byContentType": {
+        "anatomy-3d": 1,
+        "case": 1,
+        "condition": 6,
+        "mcq": 4,
+        "module": 1,
+        "region": 1
+      },
+      "publicRoutesExpected": 8,
+      "blocked": 12
+    }
+  },
+  "items": [
+    {
+      "id": "asset3d.cervical.review-slot",
+      "region": "cervical",
+      "contentType": "anatomy-3d",
+      "sourceFile": "ai-manager/clinical-platform/anatomy-3d/registry.json",
+      "expectedRoute": null,
+      "publicationState": "private-review-record",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "missing",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "No governed source asset is present.",
+        "Source, creator, licence, permitted use and attribution are unknown.",
+        "Anatomy, clinical, accessibility, performance and publication review are pending.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "case.cervical.cervical-radiculopathy-case-01",
+      "region": "cervical",
+      "contentType": "case",
+      "sourceFile": "content/cases/cervical/cervical-radiculopathy-case-01.mdx",
+      "expectedRoute": "/cases/cervical/case-01-neck-arm-symptoms",
+      "publicationState": "published",
+      "clinicalReviewState": "baseline-reviewed",
+      "evidenceReviewState": "baseline-preserved",
+      "completenessState": "core-frontmatter-present",
+      "knownBlockers": []
+    },
+    {
+      "id": "case.cervical.craniocervical-instability-ra-patient-case-01",
+      "region": "cervical",
+      "contentType": "case",
+      "sourceFile": "content/cases/cervical/craniocervical-instability-ra-patient-case-01.mdx",
+      "expectedRoute": null,
+      "publicationState": "draft",
+      "clinicalReviewState": "needs-review",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "core-frontmatter-present",
+      "knownBlockers": [
+        "private-or-draft-case"
+      ]
+    },
+    {
+      "id": "case.cervical.early-degenerative-cervical-myelopathy-case-01",
+      "region": "cervical",
+      "contentType": "case",
+      "sourceFile": "content/cases/cervical/early-degenerative-cervical-myelopathy-case-01.mdx",
+      "expectedRoute": "/cases/cervical/case-02-hand-clumsiness-heavy-legs",
+      "publicationState": "published",
+      "clinicalReviewState": "baseline-reviewed",
+      "evidenceReviewState": "baseline-preserved",
+      "completenessState": "core-frontmatter-present",
+      "knownBlockers": []
+    },
+    {
+      "id": "condition.cervical.cervical-artery-dysfunction",
+      "region": "cervical",
+      "contentType": "condition",
+      "sourceFile": "content/cervical/cervical-artery-dysfunction.mdx",
+      "expectedRoute": "/cervical/cervical-artery-dysfunction",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.cervical.cervical-myelopathy",
+      "region": "cervical",
+      "contentType": "condition",
+      "sourceFile": "content/cervical/cervical-myelopathy.mdx",
+      "expectedRoute": "/cervical/cervical-myelopathy",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.cervical.cervical-radiculopathy",
+      "region": "cervical",
+      "contentType": "condition",
+      "sourceFile": "content/cervical/cervical-radiculopathy.mdx",
+      "expectedRoute": "/cervical/cervical-radiculopathy",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.cervical.cervicogenic-headache",
+      "region": "cervical",
+      "contentType": "condition",
+      "sourceFile": "content/cervical/cervicogenic-headache.mdx",
+      "expectedRoute": "/cervical/cervicogenic-headache",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.cervical.mechanical-neck-pain",
+      "region": "cervical",
+      "contentType": "condition",
+      "sourceFile": "content/cervical/mechanical-neck-pain.mdx",
+      "expectedRoute": "/cervical/mechanical-neck-pain",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.cervical.whiplash-associated-disorders",
+      "region": "cervical",
+      "contentType": "condition",
+      "sourceFile": "content/cervical/whiplash-associated-disorders.mdx",
+      "expectedRoute": "/cervical/whiplash-associated-disorders",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "mcq-slot.cervical.01",
+      "region": "cervical",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/mcq/bank.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.cervical.02",
+      "region": "cervical",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/mcq/bank.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.cervical.03",
+      "region": "cervical",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/mcq/bank.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.cervical.04",
+      "region": "cervical",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/mcq/bank.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "module.cervical.case-01.presentation",
+      "region": "cervical",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/modules/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Exact-revision clinical, evidence and publication review are required.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.cervical.case-02.presentation",
+      "region": "cervical",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/modules/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Exact-revision clinical, evidence and publication review are required.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "region.cervical",
+      "region": "cervical",
+      "contentType": "region",
+      "sourceFile": "src/data/taxonomy.ts",
+      "expectedRoute": "/cervical",
+      "publicationState": "emitted-public-route",
+      "clinicalReviewState": "not-applicable-navigation",
+      "evidenceReviewState": "not-applicable-navigation",
+      "completenessState": "route-present",
+      "knownBlockers": []
+    },
+    {
+      "id": "asset3d.elbow.review-slot",
+      "region": "elbow",
+      "contentType": "anatomy-3d",
+      "sourceFile": "ai-manager/clinical-platform/anatomy-3d/registry.json",
+      "expectedRoute": null,
+      "publicationState": "private-review-record",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "missing",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "No governed source asset is present.",
+        "Source, creator, licence, permitted use and attribution are unknown.",
+        "Anatomy, clinical, accessibility, performance and publication review are pending.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "case.elbow.distal-biceps-rupture-case-01",
+      "region": "elbow",
+      "contentType": "case",
+      "sourceFile": "content/cases/elbow/distal-biceps-rupture-case-01.mdx",
+      "expectedRoute": "/cases/elbow/case-03-sudden-anterior-elbow-pain-after-lifting",
+      "publicationState": "published",
+      "clinicalReviewState": "baseline-reviewed",
+      "evidenceReviewState": "baseline-preserved",
+      "completenessState": "core-frontmatter-present",
+      "knownBlockers": []
+    },
+    {
+      "id": "condition.elbow.cubital-tunnel-syndrome",
+      "region": "elbow",
+      "contentType": "condition",
+      "sourceFile": "content/elbow/cubital-tunnel-syndrome.mdx",
+      "expectedRoute": "/elbow/cubital-tunnel-syndrome",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.elbow.elbow-osteoarthritis",
+      "region": "elbow",
+      "contentType": "condition",
+      "sourceFile": "content/elbow/elbow-osteoarthritis.mdx",
+      "expectedRoute": "/elbow/elbow-osteoarthritis",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.elbow.lateral-epicondylalgia",
+      "region": "elbow",
+      "contentType": "condition",
+      "sourceFile": "content/elbow/lateral-epicondylalgia.mdx",
+      "expectedRoute": "/elbow/lateral-epicondylalgia",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.elbow.medial-epicondylalgia",
+      "region": "elbow",
+      "contentType": "condition",
+      "sourceFile": "content/elbow/medial-epicondylalgia.mdx",
+      "expectedRoute": "/elbow/medial-epicondylalgia",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.elbow.olecranon-bursitis",
+      "region": "elbow",
+      "contentType": "condition",
+      "sourceFile": "content/elbow/olecranon-bursitis.mdx",
+      "expectedRoute": "/elbow/olecranon-bursitis",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.elbow.radial-tunnel-syndrome",
+      "region": "elbow",
+      "contentType": "condition",
+      "sourceFile": "content/elbow/radial-tunnel-syndrome.mdx",
+      "expectedRoute": "/elbow/radial-tunnel-syndrome",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "mcq-slot.elbow.01",
+      "region": "elbow",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/mcq/bank.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.elbow.02",
+      "region": "elbow",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/mcq/bank.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.elbow.03",
+      "region": "elbow",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/mcq/bank.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.elbow.04",
+      "region": "elbow",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/mcq/bank.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "module.elbow.case-03.presentation",
+      "region": "elbow",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/modules/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Exact-revision clinical, evidence and publication review are required.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "region.elbow",
+      "region": "elbow",
+      "contentType": "region",
+      "sourceFile": "src/data/taxonomy.ts",
+      "expectedRoute": "/elbow",
+      "publicationState": "emitted-public-route",
+      "clinicalReviewState": "not-applicable-navigation",
+      "evidenceReviewState": "not-applicable-navigation",
+      "completenessState": "route-present",
+      "knownBlockers": []
+    },
+    {
+      "id": "asset3d.shoulder.review-slot",
+      "region": "shoulder",
+      "contentType": "anatomy-3d",
+      "sourceFile": "ai-manager/clinical-platform/anatomy-3d/registry.json",
+      "expectedRoute": null,
+      "publicationState": "private-review-record",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "missing",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "No governed source asset is present.",
+        "Source, creator, licence, permitted use and attribution are unknown.",
+        "Anatomy, clinical, accessibility, performance and publication review are pending.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "case.shoulder.adhesive-capsulitis-case-01",
+      "region": "shoulder",
+      "contentType": "case",
+      "sourceFile": "content/cases/shoulder/adhesive-capsulitis-case-01.mdx",
+      "expectedRoute": "/cases/shoulder/case-05-progressive-shoulder-stiffness",
+      "publicationState": "published",
+      "clinicalReviewState": "baseline-reviewed",
+      "evidenceReviewState": "baseline-preserved",
+      "completenessState": "core-frontmatter-present",
+      "knownBlockers": []
+    },
+    {
+      "id": "case.shoulder.rcrsp-case-01",
+      "region": "shoulder",
+      "contentType": "case",
+      "sourceFile": "content/cases/shoulder/rcrsp-case-01.mdx",
+      "expectedRoute": "/cases/shoulder/case-04-lateral-shoulder-pain-overhead-activity",
+      "publicationState": "published",
+      "clinicalReviewState": "baseline-reviewed",
+      "evidenceReviewState": "baseline-preserved",
+      "completenessState": "core-frontmatter-present",
+      "knownBlockers": []
+    },
+    {
+      "id": "condition.shoulder.acromioclavicular-joint",
+      "region": "shoulder",
+      "contentType": "condition",
+      "sourceFile": "content/shoulder/acromioclavicular-joint.mdx",
+      "expectedRoute": "/shoulder/acromioclavicular-joint",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.shoulder.adhesive-capsulitis",
+      "region": "shoulder",
+      "contentType": "condition",
+      "sourceFile": "content/shoulder/adhesive-capsulitis.mdx",
+      "expectedRoute": "/shoulder/adhesive-capsulitis",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.shoulder.calcific-tendinitis",
+      "region": "shoulder",
+      "contentType": "condition",
+      "sourceFile": "content/shoulder/calcific-tendinitis.mdx",
+      "expectedRoute": "/shoulder/calcific-tendinitis",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.shoulder.labral-tears",
+      "region": "shoulder",
+      "contentType": "condition",
+      "sourceFile": "content/shoulder/labral-tears.mdx",
+      "expectedRoute": "/shoulder/labral-tears",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.shoulder.rotator-cuff-tear",
+      "region": "shoulder",
+      "contentType": "condition",
+      "sourceFile": "content/shoulder/rotator-cuff-tear.mdx",
+      "expectedRoute": "/shoulder/rotator-cuff-tear",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.shoulder.rotator-cuff-tendinopathy",
+      "region": "shoulder",
+      "contentType": "condition",
+      "sourceFile": "content/shoulder/rotator-cuff-tendinopathy.mdx",
+      "expectedRoute": "/shoulder/rotator-cuff-tendinopathy",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.shoulder.shoulder-instability",
+      "region": "shoulder",
+      "contentType": "condition",
+      "sourceFile": "content/shoulder/shoulder-instability.mdx",
+      "expectedRoute": "/shoulder/shoulder-instability",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "condition.shoulder.subacromial-pain-syndrome",
+      "region": "shoulder",
+      "contentType": "condition",
+      "sourceFile": "content/shoulder/subacromial-pain-syndrome.mdx",
+      "expectedRoute": "/shoulder/subacromial-pain-syndrome",
+      "publicationState": "public-by-default-selection",
+      "clinicalReviewState": "not-recorded",
+      "evidenceReviewState": "not-recorded",
+      "completenessState": "standard-sections-present",
+      "knownBlockers": [
+        "explicit-clinical-review-decision-not-recorded",
+        "explicit-evidence-review-decision-not-recorded",
+        "explicit-publication-state-not-recorded"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder-slice.01",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/mcq-plan.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "review-required",
+      "evidenceReviewState": "missing",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder-slice.02",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/mcq-plan.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "review-required",
+      "evidenceReviewState": "missing",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder-slice.03",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/mcq-plan.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "review-required",
+      "evidenceReviewState": "missing",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder-slice.04",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/mcq-plan.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "review-required",
+      "evidenceReviewState": "missing",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder-slice.05",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/mcq-plan.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "review-required",
+      "evidenceReviewState": "missing",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder-slice.06",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/mcq-plan.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "review-required",
+      "evidenceReviewState": "missing",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder-slice.07",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/mcq-plan.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "review-required",
+      "evidenceReviewState": "missing",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder-slice.08",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/mcq-plan.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "review-required",
+      "evidenceReviewState": "missing",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder-slice.09",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/mcq-plan.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "review-required",
+      "evidenceReviewState": "missing",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder-slice.10",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/mcq-plan.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "review-required",
+      "evidenceReviewState": "missing",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "No cleared and appraised source supports an authored question.",
+        "Clinical, evidence, source-clearance, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder.01",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/mcq/bank.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder.02",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/mcq/bank.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder.03",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/mcq/bank.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "mcq-slot.shoulder.04",
+      "region": "shoulder",
+      "contentType": "mcq",
+      "sourceFile": "ai-manager/clinical-platform/mcq/bank.json",
+      "expectedRoute": null,
+      "publicationState": "source-insufficient",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Question, distractors, explanations, evidence, and exact-revision approvals are not yet authored.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.acromioclavicular-joint",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.biceps-long-head",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.capsule",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.clavicle",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.deltoid",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.glenohumeral-joint",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.key-ligaments",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.labrum",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.landmarks",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.nerve-relationships",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.proximal-humerus",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.rotator-cuff",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.scapula",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.scapular-muscles",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.scapulothoracic-articulation",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.anatomy.sternoclavicular-joint",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.assessment.functional-limitation",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.assessment.irritability",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.assessment.neurological-screen",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.assessment.pain-location-behaviour",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.assessment.range-pattern",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.assessment.red-flag-screen",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.assessment.relevant-negatives",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.assessment.sleep-night-symptoms",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.assessment.strength-pattern",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.assessment.test-findings",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.case-04.presentation",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/modules/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Exact-revision clinical, evidence and publication review are required.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.case-05.presentation",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/modules/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Exact-revision clinical, evidence and publication review are required.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.management.principles",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.presentation.acromioclavicular",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.presentation.acute-traumatic",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.presentation.adhesive-capsulitis",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.presentation.atypical-variant",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.presentation.cervical-neurological-mimic",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.presentation.instability",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.presentation.rcrsp",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.presentation.referred-systemic",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "module.shoulder.prognosis.reassessment",
+      "region": "shoulder",
+      "contentType": "module",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/module-library.json",
+      "expectedRoute": null,
+      "publicationState": "private",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Map exact evidence locators and claims after source clearance.",
+        "Complete exact-revision clinical, evidence and publication review.",
+        "private-review-only-no-public-route"
+      ]
+    },
+    {
+      "id": "movement.shoulder.functional.dressing",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.functional.grooming",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.functional.hand-behind-back",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.functional.hand-behind-head",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.functional.lifting-carrying",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.functional.pushing-pulling",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.functional.reaching-overhead",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.functional.sleeping-positioning",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.functional.throwing",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.functional.work-overhead",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.joint.abduction",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.joint.adduction",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.joint.extension",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.joint.external-rotation",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.joint.flexion",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.joint.horizontal-flexion-extension",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.joint.internal-rotation",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.joint.scapular-elevation-depression",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.joint.scapular-protraction-retraction",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "movement.shoulder.joint.scapular-upward-downward-rotation",
+      "region": "shoulder",
+      "contentType": "movement",
+      "sourceFile": "ai-manager/clinical-platform/shoulder/movement-library.json",
+      "expectedRoute": null,
+      "publicationState": "planned",
+      "clinicalReviewState": "required",
+      "evidenceReviewState": "required",
+      "completenessState": "blocked-or-incomplete",
+      "knownBlockers": [
+        "Plane, axis, phases, muscle roles, variation and compensation claims require exact source locators and review.",
+        "No range value or rhythm ratio is encoded.",
+        "Movement, anatomy, clinical, evidence, accessibility and publication review remain required.",
+        "publicEligibility-false"
+      ]
+    },
+    {
+      "id": "region.shoulder",
+      "region": "shoulder",
+      "contentType": "region",
+      "sourceFile": "src/data/taxonomy.ts",
+      "expectedRoute": "/shoulder",
+      "publicationState": "emitted-public-route",
+      "clinicalReviewState": "not-applicable-navigation",
+      "evidenceReviewState": "not-applicable-navigation",
+      "completenessState": "route-present",
+      "knownBlockers": []
+    }
+  ]
+}

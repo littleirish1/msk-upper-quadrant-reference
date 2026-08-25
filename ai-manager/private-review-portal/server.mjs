@@ -10,6 +10,9 @@ import { regenerateSafePreview } from './derived.mjs'
 import { intakeUpload } from './intake.mjs'
 import { PrivateStore, resolveInside } from './store.mjs'
 import { SlidingWindowRateLimiter, SessionStore, createPassphraseVerifier, csrfMatches, expiredSessionCookie, isAllowedHost, isAllowedOrigin, parseCookies, securityHeaders, sessionCookie } from './security.mjs'
+import { V1_CLAIM_REVIEW_OPTIONS } from './v1-claim-canonicalization.mjs'
+import { loadVerifiedV1FinalConditionConfirmation, V1_FINAL_CONFIRMATION_DECISIONS } from './v1-final-condition-confirmation.mjs'
+import { V1_REVIEW_DECISIONS } from './v1-publication-review.mjs'
 
 const portalDirectory = path.dirname(fileURLToPath(import.meta.url))
 const staticDirectory = path.join(portalDirectory, 'static')
@@ -18,7 +21,7 @@ const staticRoutes = new Map([
   ['/app.js', ['app.js', 'text/javascript; charset=utf-8']],
   ['/styles.css', ['styles.css', 'text/css; charset=utf-8']],
 ])
-const actionTypes = new Set(['queue-extraction', 'add-note', 'create-human-review-task', 'mark-review-complete', 'submit-integration-proposal'])
+const actionTypes = new Set(['queue-extraction', 'add-note', 'create-human-review-task', 'mark-review-complete', 'submit-integration-proposal', 'record-v1-publication-review', 'record-v1-claim-review', 'record-v1-final-condition-confirmation'])
 
 function respond(response, status, headers = {}, body = '') {
   response.writeHead(status, { ...securityHeaders, ...headers })
@@ -60,6 +63,15 @@ function safeActionPayload(input) {
     exactRevisionKey: clean(input.exactRevisionKey, 300),
     note: clean(input.note, 3000),
     reviewDeclaration: input.reviewDeclaration === true,
+    clinicalDecision: clean(input.clinicalDecision, 80),
+    evidenceDecision: clean(input.evidenceDecision, 80),
+    publicationRecommendation: clean(input.publicationRecommendation, 80),
+    confirmationRevisionKey: clean(input.confirmationRevisionKey, 300),
+    clinicalAccuracyDecision: clean(input.clinicalAccuracyDecision, 80),
+    evidenceSufficiencyDecision: clean(input.evidenceSufficiencyDecision, 80),
+    clinicalCompletenessDecision: clean(input.clinicalCompletenessDecision, 80),
+    evidenceRelationshipDecision: clean(input.evidenceRelationshipDecision, 80),
+    clinicalWordingDecision: clean(input.clinicalWordingDecision, 80),
   }
 }
 
@@ -261,6 +273,71 @@ export function createPortalServer(options = {}) {
           store.enqueueIntegration(action, queueEntry)
           store.audit('integration-proposal-queued', { requestId, actionId: action.id, queueId: queueEntry.id, proposalId: proposal.id, targetId: item.id, exactRevisionKey: item.revisionHash, actorId: config.actorId, grantsApproval: false, directMainPush: false })
           return json(response, 201, { ...action, queueEntry })
+        }
+        if (body.type === 'record-v1-publication-review') {
+          const allowed = V1_REVIEW_DECISIONS
+          if (payload.targetType !== 'content-item' || !payload.reviewDeclaration
+            || !allowed.clinical.includes(payload.clinicalDecision)
+            || !allowed.evidence.includes(payload.evidenceDecision)
+            || !allowed.publication.includes(payload.publicationRecommendation)) {
+            return json(response, 400, { error: 'v1-publication-review-declaration-required', requestId })
+          }
+          const registry = loadContentRegistry({ repositoryRoot: config.repositoryRoot, store, config: studioConfig })
+          const item = findContentItem(registry, payload.targetId)
+          if (!item || item.contentType !== 'conditions' || !['cervical', 'shoulder', 'elbow'].includes(item.region)) return json(response, 400, { error: 'v1-condition-review-target-required', requestId })
+          if (payload.exactRevisionKey !== item.revisionHash) return json(response, 409, { error: 'stale-content-revision', requestId })
+          const action = {
+            id: crypto.randomUUID(), type: body.type, ...payload, ...actorFields(config), createdAt: new Date().toISOString(),
+            grantsApproval: false, publicationAuthorized: false, publicationStateChanged: false, status: 'v1-review-recorded',
+          }
+          store.addAction(action)
+          store.audit('v1-publication-review-recorded', { requestId, actionId: action.id, targetId: item.id, exactRevisionKey: item.revisionHash, actorId: config.actorId, grantsApproval: false, publicationAuthorized: false })
+          return json(response, 201, action)
+        }
+        if (body.type === 'record-v1-claim-review') {
+          if (payload.targetType !== 'canonical-claim' || !payload.reviewDeclaration
+            || !V1_CLAIM_REVIEW_OPTIONS.evidenceRelationship.includes(payload.evidenceRelationshipDecision)
+            || !V1_CLAIM_REVIEW_OPTIONS.clinicalWording.includes(payload.clinicalWordingDecision)) {
+            return json(response, 400, { error: 'v1-claim-review-declaration-required', requestId })
+          }
+          const registry = loadContentRegistry({ repositoryRoot: config.repositoryRoot, store, config: studioConfig })
+          const canonicalClaims = [...new Map(registry.items.flatMap((item) => item.currentContent?.v1PublicationReview?.clinicalEvidenceAudit?.canonicalClaims ?? []).map((claim) => [claim.id, claim])).values()]
+          const claim = canonicalClaims.find((item) => item.id === payload.targetId)
+          if (!claim) return json(response, 400, { error: 'v1-canonical-claim-target-required', requestId })
+          if (payload.exactRevisionKey !== claim.revisionHash) return json(response, 409, { error: 'stale-canonical-claim-revision', requestId })
+          const action = {
+            id: crypto.randomUUID(), type: body.type, ...payload, ...actorFields(config), createdAt: new Date().toISOString(),
+            humanEvidenceReviewComplete: true, grantsApproval: false, publicationAuthorized: false, publicationStateChanged: false, status: 'v1-claim-review-recorded',
+          }
+          store.addAction(action)
+          store.audit('v1-canonical-claim-review-recorded', { requestId, actionId: action.id, targetId: claim.id, exactRevisionKey: claim.revisionHash, actorId: config.actorId, grantsApproval: false, publicationAuthorized: false })
+          return json(response, 201, action)
+        }
+        if (body.type === 'record-v1-final-condition-confirmation') {
+          if (payload.targetType !== 'v1-final-condition' || !payload.reviewDeclaration
+            || !V1_FINAL_CONFIRMATION_DECISIONS.clinicalAccuracy.includes(payload.clinicalAccuracyDecision)
+            || !V1_FINAL_CONFIRMATION_DECISIONS.evidenceSufficiency.includes(payload.evidenceSufficiencyDecision)
+            || !V1_FINAL_CONFIRMATION_DECISIONS.clinicalCompleteness.includes(payload.clinicalCompletenessDecision)
+            || !V1_FINAL_CONFIRMATION_DECISIONS.publicationRecommendation.includes(payload.publicationRecommendation)) {
+            return json(response, 400, { error: 'v1-final-condition-confirmation-declaration-required', requestId })
+          }
+          const packet = loadVerifiedV1FinalConditionConfirmation(config.repositoryRoot)
+          const condition = packet?.conditions.find((item) => item.conditionId === payload.targetId)
+          if (!condition || !condition.lineage.valid) return json(response, 400, { error: 'v1-final-condition-target-required', requestId })
+          if (payload.exactRevisionKey !== condition.exactCurrentRevisionHash || payload.confirmationRevisionKey !== condition.confirmationRevisionKey) return json(response, 409, { error: 'stale-final-condition-revision', requestId })
+          const action = {
+            id: crypto.randomUUID(), type: body.type, ...payload, ...actorFields(config), createdAt: new Date().toISOString(),
+            finalHumanConditionConfirmationComplete: true,
+            clinicalApprovalGranted: false,
+            evidenceApprovalGranted: false,
+            grantsApproval: false,
+            publicationAuthorized: false,
+            publicationStateChanged: false,
+            status: 'v1-final-condition-confirmation-recorded',
+          }
+          store.addAction(action)
+          store.audit('v1-final-condition-confirmation-recorded', { requestId, actionId: action.id, targetId: condition.conditionId, exactRevisionKey: condition.exactCurrentRevisionHash, confirmationRevisionKey: condition.confirmationRevisionKey, actorId: config.actorId, grantsApproval: false, publicationAuthorized: false })
+          return json(response, 201, action)
         }
         if (body.type === 'queue-extraction') {
           if (payload.targetType !== 'document' || !store.read().documents.some((item) => item.id === payload.targetId)) return json(response, 400, { error: 'private-document-not-found', requestId })

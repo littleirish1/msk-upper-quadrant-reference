@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "regions": [
+    "cervical",
+    "shoulder",
+    "elbow"
+  ],
+  "inScope": [
+    "learner-home-and-navigation",
+    "target-region-pages",
+    "publication-eligible-textual-anatomy",
+    "condition-pages",
+    "baseline-reviewed-public-cases",
+    "complete-existing-learner-interactions",
+    "present-governed-references"
+  ],
+  "notRequiredForV1UnlessExistingGovernanceRequires": [
+    "3d-models",
+    "private-movement-slots",
+    "unauthored-mcqs",
+    "private-modules",
+    "candidate-biomechanics-material"
+  ],
+  "existingGovernanceRequiresFutureFeaturesForV1": false,
+  "evidence": [
+    "ai-manager/clinical-platform/release/v1-release-candidate.json",
+    "src/lib/publicConditions.ts",
+    "scripts/clinical-platform/test-movement.mjs",
+    "scripts/clinical-platform/test-mcq-bank.mjs",
+    "scripts/clinical-platform/test-anatomy-3d.mjs"
+  ],
+  "grantsApproval": false
+}

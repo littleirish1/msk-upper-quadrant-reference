@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "artifact": "out/ served unchanged from a loopback-only static mount",
+  "localUrl": "http://127.0.0.1:4173/msk-upper-quadrant-reference/",
+  "baseCommit": "f233464a4fafaa3ba44f0756478a5d91aabe8a80",
+  "exactBuildBrowser": {
+    "status": "PARTIAL",
+    "completedViewport": "1280x720",
+    "themesTested": [
+      "light",
+      "dark"
+    ],
+    "routesTested": [
+      "/",
+      "/cervical/",
+      "/cervical/cervical-radiculopathy/",
+      "/cases/cervical/case-01-neck-arm-symptoms/",
+      "/shoulder/",
+      "/shoulder/adhesive-capsulitis/",
+      "/cases/shoulder/case-05-progressive-shoulder-stiffness/",
+      "/elbow/",
+      "/elbow/lateral-epicondylalgia/",
+      "/cases/elbow/case-03-sudden-anterior-elbow-pain-after-lifting/",
+      "/search/"
+    ],
+    "results": {
+      "singleH1": "PASS",
+      "breadcrumbs": "PASS",
+      "horizontalOverflow": "PASS",
+      "privateMarkers": "PASS",
+      "themeToggle": "PASS",
+      "homeQuickFind": "PASS",
+      "searchPage": "PASS",
+      "caseModeSwitch": "PASS",
+      "guidedPanelHiddenInConversationMode": "PASS",
+      "enterSubmitsConversationQuestion": "PASS",
+      "consoleErrorsOrWarnings": 0
+    },
+    "remainingHumanViewportChecks": [
+      "1440px desktop",
+      "approximately 768px tablet",
+      "390px mobile",
+      "200% zoom and reflow",
+      "mobile menu and touch-target visual confirmation"
+    ]
+  },
+  "externalLinks": [
+    {
+      "url": "https://bnf.nice.org.uk/",
+      "browserResult": "PASS",
+      "title": "BNF (British National Formulary) | NICE"
+    },
+    {
+      "url": "https://cks.nice.org.uk/",
+      "browserResult": "PASS",
+      "title": "CKS | NICE"
+    },
+    {
+      "url": "https://cks.nice.org.uk/topics/peripheral-neuropathy/",
+      "browserResult": "FAIL",
+      "title": "Page not found | CKS | NICE",
+      "finding": "The ordinary browser reaches NICE but the specific topic URL displays We can't find this page. An evidence reviewer must choose the authoritative replacement; no substitution was made automatically."
+    },
+    {
+      "url": "https://cks.nice.org.uk/topics/tennis-elbow/",
+      "browserResult": "PASS",
+      "title": "Tennis elbow | Health topics A to Z | CKS | NICE"
+    },
+    {
+      "url": "https://www.nimdta.gov.uk/",
+      "browserResult": "PASS",
+      "title": "Home"
+    }
+  ],
+  "summary": {
+    "externalLinksConfirmed": 4,
+    "externalLinksFailed": 1,
+    "manualViewportSignOffComplete": false,
+    "manualAccessibilitySignOffComplete": false
+  },
+  "grantsApproval": false,
+  "publicationAuthorized": false
+}

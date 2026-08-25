@@ -1,0 +1,3044 @@
+{
+  "schemaVersion": 1,
+  "packetType": "v1-final-human-evidence-decisions",
+  "authority": "private-revision-bound-review-preparation-only",
+  "scope": {
+    "regions": [
+      "cervical",
+      "shoulder",
+      "elbow"
+    ],
+    "conditions": 20
+  },
+  "summary": {
+    "startingCanonicalClaims": 304,
+    "currentCanonicalClaims": 217,
+    "canonicalClaimsRemovedOrCollapsedByContentHardening": 87,
+    "necessityCounts": {
+      "ESSENTIAL": 102,
+      "OUT-OF-SCOPE PRECISION": 4,
+      "USEFUL BUT NON-ESSENTIAL": 111
+    },
+    "outcomeCounts": {
+      "DIRECTLY VERIFIED": 3,
+      "FUTURE EVIDENCE EXPANSION": 88,
+      "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED": 46,
+      "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED": 48,
+      "SCOPE BOUNDARY RECORDED": 32
+    },
+    "startingSeverityCounts": {
+      "CRITICAL": 62,
+      "MAJOR": 240,
+      "SUPPORTING": 2
+    },
+    "currentSeverityCounts": {
+      "CRITICAL": 48,
+      "MAJOR": 168,
+      "SUPPORTING": 1
+    },
+    "critical": {
+      "starting": 62,
+      "directlyVerified": 0,
+      "safelyRewrittenOrRemoved": 14,
+      "scopeBoundaryRecorded": 0,
+      "ownerConfirmedRecommendationImplemented": 48,
+      "humanConfirmationRemaining": 0,
+      "contentChangeRequired": 0,
+      "blocked": 0
+    },
+    "major": {
+      "starting": 240,
+      "current": 168,
+      "directlyResolved": 194,
+      "ownerConfirmedRecommendationImplemented": 46,
+      "humanDecisionsRemaining": 0
+    },
+    "supporting": {
+      "starting": 2,
+      "publicationBlockers": 0,
+      "futureEvidenceFollowUp": 1
+    },
+    "diagnosticAccuracy": {
+      "startingCanonicalDecisions": 53,
+      "exactNumericStatisticsRetained": 0,
+      "currentQualitativeLimitations": 4,
+      "removedOrSoftened": 53
+    },
+    "prescribing": {
+      "currentClaims": 23,
+      "outcomes": {
+        "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED": 9,
+        "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED": 1,
+        "SCOPE BOUNDARY RECORDED": 13
+      }
+    },
+    "localService": {
+      "startingGroups": 9,
+      "currentDurableBoundaryRecords": 3,
+      "currentHumanDecisions": 0,
+      "disposition": "volatile named services, waiting times and mandatory local steps were removed or replaced by current-local-pathway wording"
+    },
+    "finalHumanEvidenceDecisionsRemaining": 0,
+    "conditionsReadyForHumanConfirmation": 20
+  },
+  "sourceBundles": {
+    "cervicalVascular": {
+      "title": "Cervical vascular safety",
+      "sources": [
+        {
+          "key": "ifompt2020",
+          "title": "International IFOMPT Cervical Framework",
+          "year": 2020,
+          "url": "https://www.ifompt.org/site/ifompt/IFOMPT%20Cervical%20Framework%20final%20September%202020.pdf",
+          "relevantSections": "History, risk assessment, clinical examination and clinical reasoning framework"
+        },
+        {
+          "key": "ahaCad2024",
+          "title": "Treatment and Outcomes of Cervical Artery Dissection in Adults",
+          "year": 2024,
+          "url": "https://doi.org/10.1161/STR.0000000000000457",
+          "relevantSections": "Abstract and diagnosis/treatment sections"
+        }
+      ],
+      "canSupport": [
+        "Risk-based cervical vascular clinical reasoning",
+        "Neurological/vascular feature recognition",
+        "Avoiding positional testing as a clearance screen",
+        "Specialist-led dissection treatment"
+      ],
+      "cannotSupport": [
+        "A fixed manipulation-causation rate",
+        "A single symptom checklist as a diagnostic rule",
+        "Automatic clearance for manual therapy after dissection"
+      ]
+    },
+    "dcm": {
+      "title": "Degenerative cervical myelopathy",
+      "sources": [
+        {
+          "key": "aoSpineDcm2017",
+          "title": "Clinical practice guideline for degenerative cervical myelopathy",
+          "year": 2017,
+          "url": "https://doi.org/10.1177/2192568217701914",
+          "relevantSections": "Summary of recommendations; mild, moderate and severe DCM sections"
+        }
+      ],
+      "canSupport": [
+        "Surgery for moderate/severe DCM",
+        "Mild DCM options and escalation after deterioration/failure to improve",
+        "Nonmyelopathic cord-compression counselling"
+      ],
+      "cannotSupport": [
+        "Fixed local referral times",
+        "Collar protocols",
+        "Postoperative rehabilitation timelines",
+        "Drug regimens"
+      ]
+    },
+    "neurologicalReferral": {
+      "title": "Neurological recognition and referral",
+      "sources": [
+        {
+          "key": "niceNg127",
+          "title": "NICE NG127: Suspected neurological conditions",
+          "year": 2019,
+          "url": "https://www.nice.org.uk/guidance/ng127/chapter/Recommendations-for-adults-aged-over-16",
+          "relevantSections": "1.7.9–1.7.10 compression neuropathy; 1.10.11–1.10.12 cervical radiculopathy"
+        }
+      ],
+      "canSupport": [
+        "Stable cervical-radiculopathy referral exceptions",
+        "Ulnar compression splint referral, six-week review and pressure avoidance"
+      ],
+      "cannotSupport": [
+        "Cubital-tunnel splint angle or duration",
+        "Electrodiagnostic thresholds",
+        "Surgical thresholds",
+        "Drug or injection regimens"
+      ]
+    },
+    "neuropathicPain": {
+      "title": "Neuropathic pain prescribing boundary",
+      "sources": [
+        {
+          "key": "niceCg173",
+          "title": "NICE CG173: Neuropathic pain in adults",
+          "year": 2013,
+          "url": "https://www.nice.org.uk/guidance/cg173/chapter/Recommendations",
+          "relevantSections": "1.1 pharmacological management"
+        }
+      ],
+      "canSupport": [
+        "Medicine choices for an established neuropathic-pain indication under current prescribing guidance"
+      ],
+      "cannotSupport": [
+        "Condition-specific dosing outside the guideline scope",
+        "Automatic diagnosis of neuropathic pain",
+        "Injection or surgical management"
+      ]
+    },
+    "cervicogenicHeadache": {
+      "title": "Cervicogenic headache classification",
+      "sources": [
+        {
+          "key": "ichd3Cgh",
+          "title": "ICHD-3 11.2.1 Cervicogenic headache",
+          "year": 2018,
+          "url": "https://ichd-3.org/11-headache-or-facial-pain-attributed-to-disorder-of-the-cranium-neck-eyes-ears-nose-sinuses-teeth-mouth-or-other-facial-or-cervical-structure/11-2-headache-attributed-to-disorder-of-the-neck/11-2-1-cervicogenic-headache/",
+          "relevantSections": "Diagnostic criteria and notes"
+        }
+      ],
+      "canSupport": [
+        "Secondary-headache definition",
+        "Diagnostic criteria and causation evidence",
+        "Caveats about imaging and provocative manoeuvres"
+      ],
+      "cannotSupport": [
+        "CFRT as a definitive standalone diagnosis",
+        "A fixed manual-therapy response",
+        "Medication regimens"
+      ]
+    },
+    "shoulderPathways": {
+      "title": "BESS shoulder pathways",
+      "sources": [
+        {
+          "key": "bessPathways",
+          "title": "BESS Patient Care Pathways and Guidelines",
+          "year": 2025,
+          "url": "https://bess.ac.uk/patient-care-pathways-and-guidelines/",
+          "relevantSections": "Condition-specific frozen shoulder, instability and subacromial pathways"
+        },
+        {
+          "key": "josptRct2025",
+          "title": "Rotator Cuff Tendinopathy Clinical Practice Guideline",
+          "year": 2025,
+          "url": "https://doi.org/10.2519/jospt.2025.13182",
+          "relevantSections": "Diagnosis, nonsurgical management and return-to-function recommendations"
+        }
+      ],
+      "canSupport": [
+        "Condition-specific clinical pathways where the named pathway applies",
+        "Exercise-led rotator-cuff tendinopathy care",
+        "Appropriate referral/escalation concepts"
+      ],
+      "cannotSupport": [
+        "Applying the subacromial pathway to every shoulder condition",
+        "Fixed injection doses",
+        "Unsupported local waiting times",
+        "A universal operative threshold"
+      ]
+    },
+    "calcificTendinopathy": {
+      "title": "Calcific tendinopathy / ESWT",
+      "sources": [
+        {
+          "key": "niceHtg645",
+          "title": "NICE HTG645: ESWT for calcific tendinopathy in the shoulder",
+          "year": 2022,
+          "url": "https://www.nice.org.uk/guidance/htg645",
+          "relevantSections": "Recommendation 1.1"
+        }
+      ],
+      "canSupport": [
+        "ESWT research-only governance position"
+      ],
+      "cannotSupport": [
+        "A routine ESWT protocol",
+        "A precise lavage or injection protocol",
+        "Comparative efficacy not established by the recommendation"
+      ]
+    },
+    "osteoarthritis": {
+      "title": "General osteoarthritis management",
+      "sources": [
+        {
+          "key": "niceNg226",
+          "title": "NICE NG226: Osteoarthritis in over 16s",
+          "year": 2022,
+          "url": "https://www.nice.org.uk/guidance/ng226/chapter/recommendations",
+          "relevantSections": "1.2 core treatments; 1.4 medicines/injections; 1.6 referral"
+        }
+      ],
+      "canSupport": [
+        "General OA education/exercise and medicine recommendations",
+        "Short-term nature of intra-articular corticosteroid relief"
+      ],
+      "cannotSupport": [
+        "Elbow-specific efficacy where evidence was derived from other joints",
+        "A local elbow pathway",
+        "A fixed injection protocol"
+      ]
+    },
+    "tennisElbow": {
+      "title": "Lateral elbow tendinopathy",
+      "sources": [
+        {
+          "key": "bessTennisElbow2023",
+          "title": "BESS patient care pathway: Tennis elbow",
+          "year": 2023,
+          "url": "https://doi.org/10.1177/17585732231170793",
+          "relevantSections": "Red flags, primary/community care, referral and treatment pathway"
+        }
+      ],
+      "canSupport": [
+        "Lateral elbow tendinopathy red flags and pathway-level management"
+      ],
+      "cannotSupport": [
+        "Medial epicondylalgia as automatically equivalent",
+        "Fixed medicine/injection regimens",
+        "Local provider availability"
+      ]
+    }
+  },
+  "criticalOwnerAdoption": {
+    "path": "reports/publication-readiness/V1-CRITICAL-INDEPENDENT-REVIEW-ADOPTION.json",
+    "independentReviewPacket": {
+      "filename": "1-V1-CRITICAL-INDEPENDENT-REVIEW-RECOMMENDATIONS.json",
+      "sha256": "4757cec86671d15105c9fe6fe399d4c082ad880a3aa9cb391139a9a19e954c10",
+      "criticalRecommendations": 47
+    },
+    "ownerConfirmation": {
+      "actor": "Eoin Casey",
+      "confirmedDate": "2026-08-18",
+      "statement": "I Eoin confirm the recommended changes",
+      "authority": "wording-change-and-removal-implementation-only"
+    },
+    "resultingFileCount": 20,
+    "grantsApproval": false,
+    "publicationAuthorized": false
+  },
+  "majorOwnerAdoption": {
+    "path": "reports/publication-readiness/V1-MAJOR-INDEPENDENT-REVIEW-ADOPTION.json",
+    "independentReviewPacket": {
+      "filename": "1-V1-MAJOR-INDEPENDENT-EVIDENCE-REVIEW-RECOMMENDATIONS.json",
+      "sha256": "1075f06adca7ac06919fcbc127f3f629c9e7a19bf3db07185d0f065cb4636873",
+      "majorRecommendations": 23
+    },
+    "ownerConfirmation": {
+      "actor": "Eoin Casey",
+      "confirmedDate": "2026-08-18",
+      "statement": "Apply the attached V1 MAJOR independent evidence review recommendations",
+      "authority": "wording-and-evidence-disposition-implementation-only"
+    },
+    "resultingFileCount": 15,
+    "grantsApproval": false,
+    "publicationAuthorized": false
+  },
+  "conditionReadiness": [
+    {
+      "conditionId": "condition.cervical.cervical-artery-dysfunction",
+      "title": "Cervical Artery Dysfunction",
+      "region": "cervical",
+      "learnerRoute": "/cervical/cervical-artery-dysfunction",
+      "exactRevisionHash": "sha256:18e9dd6f2c714eafd3d6955d3d15401a44c3845bf6954f3fe726e5282886cfcf",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.cervical.cervical-myelopathy",
+      "title": "Cervical Myelopathy",
+      "region": "cervical",
+      "learnerRoute": "/cervical/cervical-myelopathy",
+      "exactRevisionHash": "sha256:826787a59efa0c450e573357f82880a9830fdd01aec1758171df23b83b12b1cd",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.cervical.cervical-radiculopathy",
+      "title": "Cervical Radiculopathy",
+      "region": "cervical",
+      "learnerRoute": "/cervical/cervical-radiculopathy",
+      "exactRevisionHash": "sha256:b842bd4a9044395a964116443113d37263bb4902fbe668ffe917a34770270a82",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.cervical.cervicogenic-headache",
+      "title": "Cervicogenic Headache",
+      "region": "cervical",
+      "learnerRoute": "/cervical/cervicogenic-headache",
+      "exactRevisionHash": "sha256:e73d3c39edd54f72256cb6d47934d6ec530ffbee7a146f845bf95e7a89de47d4",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.cervical.mechanical-neck-pain",
+      "title": "Mechanical Neck Pain",
+      "region": "cervical",
+      "learnerRoute": "/cervical/mechanical-neck-pain",
+      "exactRevisionHash": "sha256:b6034edf1cf58be8e24481e4bf0f4cb85fcd229438cb3f0ab1130a4b18505c6d",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.cervical.whiplash-associated-disorders",
+      "title": "Whiplash Associated Disorders",
+      "region": "cervical",
+      "learnerRoute": "/cervical/whiplash-associated-disorders",
+      "exactRevisionHash": "sha256:0fc77f1acf8d3dfa0910fa7e9f51103795a4d6ce131431b5a1181978fd0afab4",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.shoulder.acromioclavicular-joint",
+      "title": "Acromioclavicular Joint Disorders",
+      "region": "shoulder",
+      "learnerRoute": "/shoulder/acromioclavicular-joint",
+      "exactRevisionHash": "sha256:cd65f84a571263b6a431b1863eef42bf9c371c42f9e950c1f771f598de8338b9",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.shoulder.adhesive-capsulitis",
+      "title": "Adhesive Capsulitis (Frozen Shoulder)",
+      "region": "shoulder",
+      "learnerRoute": "/shoulder/adhesive-capsulitis",
+      "exactRevisionHash": "sha256:0048b26236fd4e9a403103c6dee01df2bb24a0c9cb74b8a04b836f908368b7d7",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.shoulder.calcific-tendinitis",
+      "title": "Calcific Tendinitis of the Shoulder",
+      "region": "shoulder",
+      "learnerRoute": "/shoulder/calcific-tendinitis",
+      "exactRevisionHash": "sha256:ddebea52c398e008ec55074690dfc6174e9236b4b0bebefb31cea0737be3c181",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.shoulder.rotator-cuff-tear",
+      "title": "Rotator Cuff Tear",
+      "region": "shoulder",
+      "learnerRoute": "/shoulder/rotator-cuff-tear",
+      "exactRevisionHash": "sha256:23fe2c9ab028fbe7e0d5d5374e6827054d57d5fed53975673f96b00081da5b8c",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.shoulder.rotator-cuff-tendinopathy",
+      "title": "Rotator Cuff Tendinopathy",
+      "region": "shoulder",
+      "learnerRoute": "/shoulder/rotator-cuff-tendinopathy",
+      "exactRevisionHash": "sha256:eb1207474b08ad1555fc074bc4568eafafd980b341f574ee4561993e71f7225c",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.shoulder.shoulder-instability",
+      "title": "Shoulder Instability",
+      "region": "shoulder",
+      "learnerRoute": "/shoulder/shoulder-instability",
+      "exactRevisionHash": "sha256:522d1f1729dbaff151e1b0730331b3a09faf784614804be8d20bc8f419da749e",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.shoulder.labral-tears",
+      "title": "Shoulder Labral Tears (SLAP & Bankart Lesions)",
+      "region": "shoulder",
+      "learnerRoute": "/shoulder/labral-tears",
+      "exactRevisionHash": "sha256:fd6e2e6aa950ec7c3d5d93657a9d30d5ff0723a9c15da38be417494a185e739b",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.shoulder.subacromial-pain-syndrome",
+      "title": "Subacromial Pain Syndrome (SAPS)",
+      "region": "shoulder",
+      "learnerRoute": "/shoulder/subacromial-pain-syndrome",
+      "exactRevisionHash": "sha256:ab3e795718abee523af3ca0b7e7190a4414c23090ca1229fa4d60523e97eefb6",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.elbow.cubital-tunnel-syndrome",
+      "title": "Cubital Tunnel Syndrome (Ulnar Neuropathy at the Elbow)",
+      "region": "elbow",
+      "learnerRoute": "/elbow/cubital-tunnel-syndrome",
+      "exactRevisionHash": "sha256:edf4fdaf6212e21c8510e9a9329377ad042418573bcf4c3bd4b150da2aff65b4",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.elbow.elbow-osteoarthritis",
+      "title": "Elbow Osteoarthritis",
+      "region": "elbow",
+      "learnerRoute": "/elbow/elbow-osteoarthritis",
+      "exactRevisionHash": "sha256:a02663bc7bdd98b919afdbe25604d6287b5086315bba8e26d031d16fb6030335",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.elbow.lateral-epicondylalgia",
+      "title": "Lateral Epicondylalgia (Tennis Elbow)",
+      "region": "elbow",
+      "learnerRoute": "/elbow/lateral-epicondylalgia",
+      "exactRevisionHash": "sha256:ec93fed92a4e1050fed624c6f2185bc9563dd4a037b9889e98c000508f2c63d9",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.elbow.medial-epicondylalgia",
+      "title": "Medial Epicondylalgia (Golfer's Elbow)",
+      "region": "elbow",
+      "learnerRoute": "/elbow/medial-epicondylalgia",
+      "exactRevisionHash": "sha256:bb8095bd676a1469490b6233c05e7d0aa185a64d5885fca935b13997826246d5",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.elbow.olecranon-bursitis",
+      "title": "Olecranon Bursitis",
+      "region": "elbow",
+      "learnerRoute": "/elbow/olecranon-bursitis",
+      "exactRevisionHash": "sha256:73511c65eb274dfbb91486cf3f62ac5bdab683e835d30cf6a99d906a2f98a45d",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "conditionId": "condition.elbow.radial-tunnel-syndrome",
+      "title": "Radial Tunnel Syndrome",
+      "region": "elbow",
+      "learnerRoute": "/elbow/radial-tunnel-syndrome",
+      "exactRevisionHash": "sha256:966f98c446c7b468bac3e712e30093589ad0da46dc17046bcd121917d17ea888",
+      "outstandingHumanDecisions": 0,
+      "critical": 0,
+      "major": 0,
+      "readiness": "READY FOR HUMAN CONFIRMATION",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    }
+  ],
+  "humanDecisions": [],
+  "resolvedAudit": [
+    {
+      "id": "canonical-a-79eb541d90927e89",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.elbow.lateral-epicondylalgia"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "tennisElbow",
+      "revisionHash": "sha256:d0260108f1713445df4ba158e32d7762097815be1da447b1559b8a8b7f679c02"
+    },
+    {
+      "id": "canonical-a-d49850990e289dae",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:036d5e64c065ffb13e1bca1c8749ad77d6a8603154b0b7e33eae05a64c523322"
+    },
+    {
+      "id": "canonical-a-37fe8c41767bc923",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:130e9c7deeaa136526d98de70799cb81b33eefe946f454368a985db59f11b44e"
+    },
+    {
+      "id": "canonical-a-0c2dfca526c8e13c",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:bb02c040366ba406574a3396a5f6aa6caf5dfd917ffffb44006e666d73100593"
+    },
+    {
+      "id": "canonical-a-0c9de967341fbae3",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:9c21dd8760cec8d61ab69b0435ebcd428e26f6acab80b3739b2eefccece65390"
+    },
+    {
+      "id": "canonical-a-0236fdfa48838799",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:dd92e54d21ea1631eb7f2a46a4ba537e3edfc4e31845cd0edda44c2730dbb393"
+    },
+    {
+      "id": "canonical-a-912e934a8c6d23e4",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:e8d515515459b57c756968afb6505f2b2225148eda212ff549cf56a077d9e1c7"
+    },
+    {
+      "id": "canonical-a-d4696aba10dcc1ae",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tear"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:11804f3618e27933b9a7f9a3de7f9ebb77d48d275a212e418abac2916933252f"
+    },
+    {
+      "id": "canonical-a-a180b0e31b4937b1",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.shoulder-instability"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:5dfba67ec8bf9b1b4e7c65ae11e9aa0825f4f2274ae763694254c6b4a8219ed2"
+    },
+    {
+      "id": "canonical-a-04ebeea2248b3f69",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.elbow.olecranon-bursitis"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:6cc4eace0587e14981bc4111a9d13b026b2f424a3f9c5be459cbceacd764de98"
+    },
+    {
+      "id": "canonical-a-3245a41a2bd7d241",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.shoulder-instability"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "OUT-OF-SCOPE PRECISION",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:59c1119307f07e237a086b25d9861c6775bcc86f18a13d0b1773221cfb5aef34"
+    },
+    {
+      "id": "canonical-a-d93e250ecc8caf32",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.elbow.radial-tunnel-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:6db199edbd03ef2b182efebf123d5ba805dffc9030b98c12e477165df71e2d7a"
+    },
+    {
+      "id": "canonical-a-c8bbc43088338fba",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:8d2702f216d91506a19d4e2cbb64eaa0573d3bf2b70b270e697c306ffb8ee4d4"
+    },
+    {
+      "id": "canonical-a-3e8a992b0ac317fc",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:97ff878bb9195a7ade73cd4124652922e2062650034ab604d2b810777ff62ae1"
+    },
+    {
+      "id": "canonical-a-eab9cf09fb0619d8",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:1a106fe6b41c221b122bea441caf1633cef203e832c559115d69940ce592e775"
+    },
+    {
+      "id": "canonical-a-6062793117169b39",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "cervicogenicHeadache",
+      "revisionHash": "sha256:1e8349e128b85aa4b56e7eecc58d1a3444260295a5885eedc9a417d83b841f76"
+    },
+    {
+      "id": "canonical-a-34b9a89151fbb0c0",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:e8c5422a8e044116c7afb03b95580d211b6f00a2009df4f1fcf84d3e592aa06a"
+    },
+    {
+      "id": "canonical-a-1d79fc000e0ab4ce",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:302fda81c62ba78e0107789173673b73859626d8f21a1e3a3644cbd25114fe72"
+    },
+    {
+      "id": "canonical-a-f9da6019939adafd",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:a3b33b988ac9a236b09cb120f305dd8e46ace3d8e7c184d3e53b06754d2a21f3"
+    },
+    {
+      "id": "canonical-a-e4499a5bcbb2ff8e",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-artery-dysfunction",
+        "condition.cervical.cervical-radiculopathy",
+        "condition.cervical.cervicogenic-headache",
+        "condition.cervical.mechanical-neck-pain",
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "cervicalVascular",
+      "revisionHash": "sha256:71637dbdf9da5691a7520961379fde65d461f2b956b0163af9cd1444a58aff0c"
+    },
+    {
+      "id": "canonical-a-10297dc55d4b92e2",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy",
+        "condition.cervical.cervical-radiculopathy",
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:da8c83eab5bd645b4509f7ff9e66ac28d35868fe204999bd2135e3f6d0b1e117"
+    },
+    {
+      "id": "canonical-a-75526201cadfaae4",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-artery-dysfunction",
+        "condition.cervical.whiplash-associated-disorders",
+        "condition.elbow.cubital-tunnel-syndrome",
+        "condition.elbow.elbow-osteoarthritis",
+        "condition.elbow.lateral-epicondylalgia",
+        "condition.elbow.medial-epicondylalgia",
+        "condition.elbow.radial-tunnel-syndrome",
+        "condition.shoulder.acromioclavicular-joint",
+        "condition.shoulder.calcific-tendinitis",
+        "condition.shoulder.labral-tears",
+        "condition.shoulder.rotator-cuff-tear",
+        "condition.shoulder.shoulder-instability"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "cervicalVascular",
+      "revisionHash": "sha256:a07f47dd40fa973c6d79afcc32326b79a8d9fe5396aba0abbb6252cf7582b459"
+    },
+    {
+      "id": "canonical-a-af1a867f3a700e59",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-radiculopathy",
+        "condition.cervical.cervicogenic-headache",
+        "condition.cervical.mechanical-neck-pain",
+        "condition.elbow.elbow-osteoarthritis",
+        "condition.elbow.lateral-epicondylalgia",
+        "condition.elbow.medial-epicondylalgia",
+        "condition.elbow.olecranon-bursitis",
+        "condition.elbow.radial-tunnel-syndrome",
+        "condition.shoulder.acromioclavicular-joint",
+        "condition.shoulder.calcific-tendinitis",
+        "condition.shoulder.rotator-cuff-tear",
+        "condition.shoulder.rotator-cuff-tendinopathy",
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "cervicalVascular",
+      "revisionHash": "sha256:056b1078b25398ef4c20525456b63c4266542a0076fa9edcf8917e673d7ca0dc"
+    },
+    {
+      "id": "canonical-a-95d39a663b4560f7",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:ea8ac14c66429beda237486b6f8d145137005be8063b92a712d4114223c551fb"
+    },
+    {
+      "id": "canonical-a-8e169737a051578e",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.elbow.cubital-tunnel-syndrome",
+        "condition.elbow.medial-epicondylalgia",
+        "condition.shoulder.adhesive-capsulitis",
+        "condition.shoulder.labral-tears",
+        "condition.shoulder.rotator-cuff-tendinopathy",
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:674feb09251960f83f6f39859693199d37d522092a6778c33549e50e97c7e192"
+    },
+    {
+      "id": "canonical-a-c5795a3215abfe40",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:54379ae8e11490b6144a35957c034aefb9fdad6cf0fefc595375a226855ebdb4"
+    },
+    {
+      "id": "canonical-a-ba8764613012bfe5",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.elbow.lateral-epicondylalgia",
+        "condition.shoulder.adhesive-capsulitis",
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "tennisElbow",
+      "revisionHash": "sha256:23c727e7bd335c8cbf449b1eb7458ac22e41a1ca0f2a68effb090a29326fd77e"
+    },
+    {
+      "id": "canonical-a-e70a38c8850c6793",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:1dee102cd8c7b1cc28479c531248a5fa26d6860ad0fedcdb5ebaad42de061b5d"
+    },
+    {
+      "id": "canonical-a-1de08420bed39161",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:f610905a7fd0e450eaa2b3f992cd1eec0dc592cf4cb6ec046e438221d1881742"
+    },
+    {
+      "id": "canonical-b-232aefc806ccffeb",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:cc9da8d7d8910641340fa3657c3d6f26e35601deb85a122b4992011b37cf3f41"
+    },
+    {
+      "id": "canonical-b-6b7c8e7212b289cd",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:8f9975e273fc106ceb91aceebed7b8ed24d1aa4ecc84a726d7dc0b87e45ddd81"
+    },
+    {
+      "id": "canonical-b-ad1af7fd1128558b",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:6ad5e768b71ece10436c5ff9701fceeb8aecbdff85ecc900362c71452522abf2"
+    },
+    {
+      "id": "canonical-b-3330e8f66256b28c",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:390d508c405f05a8ad13b6304f36329a11c5c205a5e1fe4fb44dfb4e9bd94c80"
+    },
+    {
+      "id": "canonical-b-48d0f2f43dbac234",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:e56d6d59c72f32f8ac0dc7913751b63b5b9ef3def39b84f944bfba07e4cbdbcb"
+    },
+    {
+      "id": "canonical-b-c16c64ae3ab7a5e5",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:629e3eb2da20ff7ca4b06f1c9b49956a2531ee006fd37f5773399e962ed53fc4"
+    },
+    {
+      "id": "canonical-b-1aeb48af26c788d0",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-artery-dysfunction",
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "cervicalVascular",
+      "revisionHash": "sha256:012d45415b182c3b0abb51cfa7dbf4198e4373edda3bee5b787e9f3f4984ed42"
+    },
+    {
+      "id": "canonical-b-823390a3b8caa818",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy",
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:501248562c60a75c4dfe2ab0bed5f47a6a0673708a3df5779dd9b32121d3940b"
+    },
+    {
+      "id": "canonical-b-a46fbb3c62651180",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.mechanical-neck-pain",
+        "condition.cervical.whiplash-associated-disorders",
+        "condition.elbow.cubital-tunnel-syndrome",
+        "condition.elbow.lateral-epicondylalgia",
+        "condition.elbow.radial-tunnel-syndrome",
+        "condition.shoulder.acromioclavicular-joint",
+        "condition.shoulder.labral-tears",
+        "condition.shoulder.rotator-cuff-tear",
+        "condition.shoulder.shoulder-instability"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:492a898cbda691e6902723018837d5597e854d71021173c61c942f5990a64a84"
+    },
+    {
+      "id": "canonical-b-91961352526fb0b6",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.mechanical-neck-pain",
+        "condition.elbow.elbow-osteoarthritis",
+        "condition.elbow.lateral-epicondylalgia",
+        "condition.elbow.medial-epicondylalgia",
+        "condition.elbow.olecranon-bursitis",
+        "condition.shoulder.acromioclavicular-joint",
+        "condition.shoulder.adhesive-capsulitis",
+        "condition.shoulder.calcific-tendinitis",
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:49ac5fd0b545725f9510638f0fec3f469e12523966fece24bd93876254a702f3"
+    },
+    {
+      "id": "canonical-b-93f6a170dde9e660",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy",
+        "condition.cervical.cervical-radiculopathy",
+        "condition.cervical.whiplash-associated-disorders",
+        "condition.elbow.cubital-tunnel-syndrome",
+        "condition.elbow.radial-tunnel-syndrome",
+        "condition.shoulder.rotator-cuff-tear",
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:f642a1fcabede428f233fe857015741615237ebbeb4ee9d26697b930575164f2"
+    },
+    {
+      "id": "canonical-b-0764af2cc3bc5d3a",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:eec608344856ca0b5bfc89cd6373497bf2bba9b29758f45b35e09e0c52d4ad96"
+    },
+    {
+      "id": "canonical-e-12d328b4116ffb4c",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:56603cb3ba93931c798ac4d247ccdcd598ea6c530742a79413fa25cc1d47f54c"
+    },
+    {
+      "id": "canonical-f-047f80ed140d5151",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "cervicalVascular",
+      "revisionHash": "sha256:14b1c252c3ba2f26a527ec3b27c2162cf90d78d54b9015b0ead5d524b4806962"
+    },
+    {
+      "id": "canonical-f-1e4d5959050a1b6e",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-artery-dysfunction"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "cervicalVascular",
+      "revisionHash": "sha256:94f4a2b0eae6d89432b82e7cafc85f33f3a8714ae5771d765aa285a5a21f380e"
+    },
+    {
+      "id": "canonical-f-9b747a5161c087a3",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:b46d9916b56b10225e055d922ed5a3c723ba33c016b34c18e082eb94448a8955"
+    },
+    {
+      "id": "canonical-f-687033203be2f940",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "cervicalVascular",
+      "revisionHash": "sha256:bd20ba1d0358a490cdb28338439f19b4a0d3e7ac669ba171284473ee5ee2a85a"
+    },
+    {
+      "id": "canonical-f-63a6e255c385db27",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:eec86be3b6283df962913a0234807bba564ab022374a116c4be704b443689e9a"
+    },
+    {
+      "id": "canonical-f-7e0be86ba647e886",
+      "severity": "CRITICAL",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:b1a59a1e7b476d6014d95201b8b6d7282f5280795a4a9e891013f06405fb87b8"
+    },
+    {
+      "id": "canonical-b-881efd8374fb021d",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.olecranon-bursitis"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:5fc95abc961dae3ca44dc896e43816d3b608ef6d3f816b6dcd275063f889b2cd"
+    },
+    {
+      "id": "canonical-b-e2adc322baaa7db8",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:8252e35cb5ae104eed5a58942bb3277e1212e5743c291b9ba4fe647a6d0721e4"
+    },
+    {
+      "id": "canonical-b-9ae2ba953537cec6",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "OUT-OF-SCOPE PRECISION",
+      "sourceBundle": null,
+      "revisionHash": "sha256:b9189c071989b54b6c471484c3346a3bc6dee825b578e4f471826b17f2835dd3"
+    },
+    {
+      "id": "canonical-b-5700f628652c1da1",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:170f14d11c6f1aa2a1d529432b266ddd43eea4f3e21ce8807bcf9471795b096c"
+    },
+    {
+      "id": "canonical-b-40de3de7c8088867",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:3edc8ac3d64d21fbb4cd2a44f1ddc7a8c9a2a2050821692f70928c7546f27e26"
+    },
+    {
+      "id": "canonical-b-1d0a2ecc73212b62",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:728053163a5a34a34d6c4fcbdb7e8b6a49c2bdf1ced181b624acd67550cd9f89"
+    },
+    {
+      "id": "canonical-b-b6ea4713c6558338",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.shoulder-instability"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:fbe6bcaafe552236c787f644d6602b9c36f19f0af7ba69c3d55718be0d2d72e0"
+    },
+    {
+      "id": "canonical-b-d5c64d1d7fe95e56",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:b11f2e0dcfc5ae3161fb63735afad29cc9cfcf9313ea1a69ece9cb28ac859c49"
+    },
+    {
+      "id": "canonical-b-e7492e3ec6ffa036",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:2e027a49e9317a90e24d104d79d802f3f6fe1d9fb03e8a85ebb57a923b9ccf8b"
+    },
+    {
+      "id": "canonical-b-5a420cac9518982b",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:71e8cd58fe95a56c07b695b05b12de7d38a4146d86eddcbc882714aeea193147"
+    },
+    {
+      "id": "canonical-b-1170c3ef2c8fd5ca",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.radial-tunnel-syndrome"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:1f84c497ad8b88928068339ae1eade496b1b4790328bb8e5cb5ba4fdb4d4c32b"
+    },
+    {
+      "id": "canonical-b-e78d2d4b7e9b549b",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tear"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:938ea171df6bc97031e9c41612950cf55a5fc248a4d51b2d7f9e5f8d3fd176ae"
+    },
+    {
+      "id": "canonical-b-f745c83f9da521af",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.lateral-epicondylalgia"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "tennisElbow",
+      "revisionHash": "sha256:373c68564cac6999c438c46a8f7fd4b32f3566b645a24f4951fb2bc261b68e79"
+    },
+    {
+      "id": "canonical-b-0bd8c0c1661817f7",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:1a3e07e87fae40de202700df964af0ffe4d263106f80fe5cd006b13b052e7733"
+    },
+    {
+      "id": "canonical-b-8005a6605cab4713",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:396dd2010f39f13951778424ef7b071a2e13f490976a7b8615f3c128af494797"
+    },
+    {
+      "id": "canonical-b-8fea90823eef4325",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "cervicogenicHeadache",
+      "revisionHash": "sha256:a9d95e442099b547a2539a731147267bcc60aaf4842424df94c90087526e7d4c"
+    },
+    {
+      "id": "canonical-b-36eb7bdb6f9a3b6a",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "outcome": "DIRECTLY VERIFIED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:db7c669354ccb23bd052561e83d1feae1a800126238f0f6d361eb5ee7dc93a01"
+    },
+    {
+      "id": "canonical-b-dc213f1c6ce7e771",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:118ac1ff68f34e589d174a99c35667a3dc1aae494a7edf5c0857370dd3fa3fc0"
+    },
+    {
+      "id": "canonical-b-4ca83261b3581885",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "OUT-OF-SCOPE PRECISION",
+      "sourceBundle": null,
+      "revisionHash": "sha256:bb9b2ca01ce293e517e75a5530507eebde8a13e9611ede752fe40e453fd58d4c"
+    },
+    {
+      "id": "canonical-b-2bdab0e4853b6e9c",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:cccedaf988fd4207692429c41378a2589bc735c440e812e2cfcb668618e65820"
+    },
+    {
+      "id": "canonical-c-9b0ffcadde38bee1",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:db4c342ffcf48c7fe89a324def8f975dea8337a150723184b3e8d5d3a7faa6d2"
+    },
+    {
+      "id": "canonical-c-cafa5c8a35917326",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tear"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:952173e1c013526545298add39552865c28b6d3d81804930b9c528439d23e79f"
+    },
+    {
+      "id": "canonical-c-d81260fd8461863b",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:b200087fc81d8fe03592fafd1d719688a90363a246fa79f0784e53ff6b61b0f8"
+    },
+    {
+      "id": "canonical-c-1b80111360be16da",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:0d17aa94a0fed9b56a63778f4f340f8c88e5258699fbee148994b29b262c2962"
+    },
+    {
+      "id": "canonical-c-a23037e9b5c0fdb3",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:4d7c43fd5ff1921e5c7617c22daa1809a8d750d57ab037abc9c69d45d0a6ecda"
+    },
+    {
+      "id": "canonical-c-f0ef7f5183c18594",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:8c9fc07bca936671bda71dc859156f56f331d5e3f15950bca01c0b86fddca99a"
+    },
+    {
+      "id": "canonical-c-22d878be20054f65",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:cd7d037116afc27fdc35f35ab2142e42778554e6c4adcad717d22d30062cc9c9"
+    },
+    {
+      "id": "canonical-c-aaee14e22b328ff8",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:71f1c61a11f66f28442b3638153a065c4eaced7b73814e9a1ce52400f928b91d"
+    },
+    {
+      "id": "canonical-c-aec18d3dd9859f3d",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-artery-dysfunction"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "cervicalVascular",
+      "revisionHash": "sha256:82bf6a97e6197c008ca1bb30af7f1e4e912488fc2c8c73637de20f81b4d7e483"
+    },
+    {
+      "id": "canonical-c-99301352e9e0b543",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:1e681fab760e40e75f75ae9d1d62c156de8ecdfbb3bc191e8950dda00e750c61"
+    },
+    {
+      "id": "canonical-c-1c1ac2a3375ee6ce",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:bdb70125395c77b8a12f06b4c7a77850c87084003b3adf8c01a9a599b9b4280e"
+    },
+    {
+      "id": "canonical-c-ec13122ed3e565b8",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:7c5a13ef4138d98c57fcfca348eb95104e5f76c7e64fbca8f58996345698dddc"
+    },
+    {
+      "id": "canonical-c-8b6584167b46637e",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:99fea77aa25a5e693a8d67a2c896ee37cce7d3f778ee139e86135991dcb97177"
+    },
+    {
+      "id": "canonical-c-370ed5b72b34004b",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:2229886df5ac150c37e51160796cd09ee2c09a9c78e3c7febce9f4cd9d2971e8"
+    },
+    {
+      "id": "canonical-c-08d2c7dd3f295de9",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:650ee39c1c06671b31a8a74f35253ad246b1b200cd97b2368cde6f25bfc527a9"
+    },
+    {
+      "id": "canonical-c-2e63864b18777054",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.lateral-epicondylalgia"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "tennisElbow",
+      "revisionHash": "sha256:a6c084f034f2df092aa978be269a58bbf983a165e12d0f3a00d3d9e4f035ea2e"
+    },
+    {
+      "id": "canonical-c-dc1eb2ba661037e5",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:671a0fc09b71ca98d43730a7f557dd647b5b1e60533aa6650071e7803d1cab99"
+    },
+    {
+      "id": "canonical-c-2dcec51ab481582e",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.lateral-epicondylalgia"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "tennisElbow",
+      "revisionHash": "sha256:162857e1fe3cd77aa74906e0a2ec84659943676f7fcebe12ad623a1432f31348"
+    },
+    {
+      "id": "canonical-c-4e55a70e0d81fcd3",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:edf66ff65edff2b439df1cf83b980ba659ef59018593bacd00159fc82f44740d"
+    },
+    {
+      "id": "canonical-c-9b73752849b66840",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.shoulder-instability"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:cc0af1253f1057d07aa68d7dcd8ff4d3b4913bd89048b509f503fe64f573f66a"
+    },
+    {
+      "id": "canonical-c-2d8d3d67ff11a540",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-artery-dysfunction"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "cervicalVascular",
+      "revisionHash": "sha256:74208a64c616fe17c91c31c2caa6c56d50999d9fbc75b379eebe6be49c09d74e"
+    },
+    {
+      "id": "canonical-c-b34ebe97f63b224e",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:70f72feced7837b9e336e63867d596bedbda4ab306d601462789fd86adae7117"
+    },
+    {
+      "id": "canonical-c-9465c1419582fd14",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:c6cb2d9e95adf573829efe0a74999dc752c541247b72bc935c98d45f3c19df2c"
+    },
+    {
+      "id": "canonical-c-9243581c6b38a5f2",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:959fb469abc02a80b692fff5c7f051e4c1e09ab237b029da3a8150159c4e9e1e"
+    },
+    {
+      "id": "canonical-c-7e4ee3248154ca4b",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:95185ab1b0be3fb243044fcf6be132e3a9bda23513314a4b1af353c79c414c00"
+    },
+    {
+      "id": "canonical-c-76671e6ea32e1625",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.radial-tunnel-syndrome"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:b999b65bac99746bda093c5acd96c9db670e701a9ef97495b6458372cf1410a9"
+    },
+    {
+      "id": "canonical-c-ac323a01f570a643",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:b650bb86a93ad93aaddf503cb7d03634e9157d18efb8c3f2a4fb1aff8bc7defe"
+    },
+    {
+      "id": "canonical-c-b60e77d20266f3d3",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:f590241d2092bb94f1e886ca51cf0f759340561f5dc4fff0b5c8b1e613542fdf"
+    },
+    {
+      "id": "canonical-c-ba0da87866f511ee",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.shoulder-instability"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:13f846cfa9c6d7f8c391e2392fd9bffcd44a725b8d43782bae32c15b4c48b89d"
+    },
+    {
+      "id": "canonical-c-56a2428f2708bc82",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:9603057df3b7e7002aba221a2d909444f427a1d4122c632fd178c68001129f4b"
+    },
+    {
+      "id": "canonical-c-72b81014d5cdec29",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.olecranon-bursitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:ed42605130ced88bc47a26238a1af0a6821e7502e935c5a800488e4def86aa49"
+    },
+    {
+      "id": "canonical-c-664ffb4f44e87766",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:194110ca05ad9b294a8375f6e64cf4ab4871f4258975953cf5b61a963064e49e"
+    },
+    {
+      "id": "canonical-c-4ae889ece6ee957b",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:b131abbc2d6f554a5e24a7a74ebbe483560083c493652bc79e597ad2fc519965"
+    },
+    {
+      "id": "canonical-c-c12537bab65d8532",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:2ba27fd4f55cb5f758944967576d2460774c73ebb9f98b2a4448aad983a1657c"
+    },
+    {
+      "id": "canonical-c-1d5096129f588dd6",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.lateral-epicondylalgia"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "tennisElbow",
+      "revisionHash": "sha256:e99987e94c51d534cde4a961dc049a96515d86fc7c44f8de4bdcf34e953a41ec"
+    },
+    {
+      "id": "canonical-c-1a3af921c417135d",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:ff381d58c9ecd98bde6faeef435fe01cfd6db9a87c849658dbdd6c3e81d39c79"
+    },
+    {
+      "id": "canonical-c-717fa8a26868bee6",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:29d42a2c992354fad436108648a8d2854ec10db2d58b198f294aa96ceab5eca2"
+    },
+    {
+      "id": "canonical-c-826fee3b2e3112de",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:ab4fa3a77276b9e920f3119ba57d33ab41177f70c36d4ddad31cdbc7abcc91f9"
+    },
+    {
+      "id": "canonical-c-293ef7a5eeb54d9b",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:895b17e07ecbe107864fc4cafb68b83916c58557da3701039cfb474672f1876b"
+    },
+    {
+      "id": "canonical-c-6ee1bfa75c5c30b6",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:a1d549988a582351b05ffc892b229c765cb95545e5b2d9132541ee0e56764b18"
+    },
+    {
+      "id": "canonical-c-871c645cb2b6e292",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:12db58adb23b2848647e6b4388d2f49168c7d46689207f5ee5d6c1cc60442816"
+    },
+    {
+      "id": "canonical-c-50e40ad5aceccf86",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:2396875792af9a52371ad0380db3a201fa75c697c2709f24caad141dd158404f"
+    },
+    {
+      "id": "canonical-c-84ecd53fced7d545",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:77d9587819c83a4f8341b1affb4fe050092e3ac9b3207a70475154d9e703eeb3"
+    },
+    {
+      "id": "canonical-c-e0c2c8bb9131d224",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:eeb33b85866b4807d42c051597752369af20f6abf458e1a417511e78fa5ad26f"
+    },
+    {
+      "id": "canonical-c-403664184e8e3a0f",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:b882698a83c75d2a69a2d9dfeb2594e14efb8214e84af78af60a58fbd6076815"
+    },
+    {
+      "id": "canonical-c-3332ca39dd203c79",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:871417bb5b8d99b7c90d3a215d3c93fbed586821d71db428ac81e26921175977"
+    },
+    {
+      "id": "canonical-c-4ab535a0cbefc6df",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:2a70a5026a4a320920d1d6db48f84955ff0456af5bacdada172c74d8766aa077"
+    },
+    {
+      "id": "canonical-c-05f7d5764e293bc1",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:fa2081b36168c706b2f5abce252e613db9d7e48e45b9c1dd247d51579d0db19e"
+    },
+    {
+      "id": "canonical-c-248baa5231b06acd",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:ec35e8c878c3f7765f2ad75ab731ae25b87b93794031f4e278b5dbf8c32fe10d"
+    },
+    {
+      "id": "canonical-c-4b16e4abd63b6b91",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:b272127dc80e547dfe536147073fa152ab66782b810c7a8f736d44433066edef"
+    },
+    {
+      "id": "canonical-c-4bbb180b831751ff",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:a5650cb2c4d14e113bef7ea8c175505a536520ec329f4aa000bf80cc6c3cbc79"
+    },
+    {
+      "id": "canonical-c-eaa8419b6003cbe3",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:a7706e42e44d9663ff865ae23acdc950f194b6412330881909653f372593e808"
+    },
+    {
+      "id": "canonical-c-7111eb11bb083286",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:7b18021cda9143f4e0fc2829362701b2a29ac7a8de4761380e99317aea815a2c"
+    },
+    {
+      "id": "canonical-c-199e6c670584def7",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:e3abb2c18f721967eac5dfbdff018b4a6a662b368d69fd277fbc9235d1f02c83"
+    },
+    {
+      "id": "canonical-c-0dac7481798a83cc",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:42ba06a7cf5209bb4867bff5345555fb09a906fee873a940d44bd92e9d97416e"
+    },
+    {
+      "id": "canonical-c-251199b06b9ec18c",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:0581098aa2b1b0627502489b26fbf72c32e8c5f0613e3aa160bf13b424083e62"
+    },
+    {
+      "id": "canonical-c-22654997d630f2ba",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:aae3f78892a8883ec5931bd3c8c82d7b837298f432cb3dcdadd4fe1d3d5159ca"
+    },
+    {
+      "id": "canonical-c-965062ef1d797dda",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:3328b036e3ea4b16d0b6e69874ab766c9be4a6827f05d6623c330b98739e4221"
+    },
+    {
+      "id": "canonical-c-e7c2f57dbc674c0f",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:45cf2b03b6376f32ceae2e04287f9e3762cd8c25731c0569ea587d8e790680e6"
+    },
+    {
+      "id": "canonical-c-dde7b050cc482ec7",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:bd18994157e80f9c554f24608c9ba49be2f2ff4f3067e483569894cb8d58e15a"
+    },
+    {
+      "id": "canonical-c-fb63a228f2932445",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:71a386b6f0d30947943916f3b79a51392f993a4ba8d0eae6bed4292dd6508f65"
+    },
+    {
+      "id": "canonical-c-8e4ad3aa35bbd8bb",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:1bd31268506fab04c29082c12787cfa21f11752b0159c62174a9eeb175413214"
+    },
+    {
+      "id": "canonical-c-f99489e96011f8ad",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:9b796d8c099f4457a73e558151e5f0f7a9f28817daf48a571fc69d1a92d29e41"
+    },
+    {
+      "id": "canonical-c-7de0f887c0dc067b",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.shoulder-instability"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:127a729bab83f64b44b2ea4accad7411d0dcd88b651fd5a30ec85d0bbf52f112"
+    },
+    {
+      "id": "canonical-c-753f121270f5aae3",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:1f7255ec651dd2afd04259e33955c59bf5a7bc4547cda2a82908c8ebfad8b3e4"
+    },
+    {
+      "id": "canonical-c-006dcefd3b16a9e3",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:9fa999fdcc922e4bb64d6d68fc094090bbaff833674bdb30dad7436e09782312"
+    },
+    {
+      "id": "canonical-c-2b38622526a1fd66",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tear"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:ffa8c195beb57562a1eec9ccf295d091560ed6d54a92747713dcaebca73f89d7"
+    },
+    {
+      "id": "canonical-c-00c3cd89ee9eb87e",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:7baa1915643f009bbb21614e694e70a35eea39ced8f90b3e7af69358e2b9c3c2"
+    },
+    {
+      "id": "canonical-c-65bafe66f0266697",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:1998951234465a6f37ede6a6049110fd356baedc0deb83cf94065a11e0612850"
+    },
+    {
+      "id": "canonical-c-c364a1c92a898400",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.lateral-epicondylalgia"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "tennisElbow",
+      "revisionHash": "sha256:b53010e1e5972a54554cf68cd9b76c69dfb9128d08e3b4fa56eed9aaaaeb2a10"
+    },
+    {
+      "id": "canonical-c-72850a71e0bbef8e",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:cb028eeebf7dbda546002de3299a541c82560e074b9907a93ea8025d0709fa2f"
+    },
+    {
+      "id": "canonical-c-ac0f71b5ae718ffa",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.radial-tunnel-syndrome"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:2d7a43bc1958f0d28b25a0ff792a26cba4c49e5929347c55b8e70c33112559f0"
+    },
+    {
+      "id": "canonical-c-b963fc7e0c389405",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.olecranon-bursitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:5e2db7937273ad45d6dde6ae371dbaa5f68f048f7e5b8d6a41d436fcf7cb69db"
+    },
+    {
+      "id": "canonical-c-537c7556f3cec964",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tear"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:c97867f4d36277fd5f3305cabbaacc80f59d45729d473c2b870ccc97bd736b5a"
+    },
+    {
+      "id": "canonical-c-dcdac91ff01e9c08",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:9cbe7ebf8222691423e3b7cb82900a7c521ff2930695ec7c97e4a5b43fcdb726"
+    },
+    {
+      "id": "canonical-c-76ad49d2dbdd9212",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:c549b179fff5e83ffaab4ab71f733be1f8844c08846a364f2c7ad8413edee730"
+    },
+    {
+      "id": "canonical-c-19c518b07661ff4a",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:c0c02571bbdf9446ed794b86213e151b92294d0dcfed4ec559c66b02f890d2d2"
+    },
+    {
+      "id": "canonical-c-1a4fca8a8628cb06",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:05b0fc3155cf46398e7125dc277b43981ab441eee69226ad805e26419bf74fcb"
+    },
+    {
+      "id": "canonical-c-52469a6174f8406a",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:c2b90169e9ddc3b7e127458faa62673bd86c9e8fc7f696f85b206b340d3fc893"
+    },
+    {
+      "id": "canonical-c-8d30ea6247d687e7",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:8b014dde51e534f59f571f229597db554caac731897a145593e50609697ec4d9"
+    },
+    {
+      "id": "canonical-c-a3cf5eab27d89b8c",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:7e8c3d230ffa03ca52c713f37e0d71ee7d4911fc8762457e4e3f69ea8c0568b5"
+    },
+    {
+      "id": "canonical-c-c29bb966ec9b3e50",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.radial-tunnel-syndrome"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:d53637fa9efdfe3c8799e5e4f6c83c2399f45bf3fba5441ca21456720e8193e8"
+    },
+    {
+      "id": "canonical-c-7dc7af8be625dc82",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.lateral-epicondylalgia"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "tennisElbow",
+      "revisionHash": "sha256:74cbf9571304c1ca58b606fa9906b0ea88e8095b08ed82b78ae6ecfe96f5e2c6"
+    },
+    {
+      "id": "canonical-c-93a988202fa9b018",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:91158162be41b8487d78fdd8a8b34e7f4c2f6a91314d0ed8c88257c1f1a460cc"
+    },
+    {
+      "id": "canonical-c-d85ea7fd94989aba",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.radial-tunnel-syndrome"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:a30674df8818e1da80a145354fd042a1949d07f76d8fb3c36769e41c25d5b199"
+    },
+    {
+      "id": "canonical-c-e31578a6da0a109a",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.olecranon-bursitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:c1949ceba72be534e3e32ee59c4c81de143fe31b11a87475411e5491fe44e858"
+    },
+    {
+      "id": "canonical-c-52cc051147a7402f",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.shoulder-instability"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:fe9036d3981946117d29620b1131d167d3b35a8fe7180d2678097ccee3993670"
+    },
+    {
+      "id": "canonical-c-e10ab2da8b9cf709",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:27cf45473687965327408aaded1a39d3cfad79fd1530de4dcb0b3b0900e90765"
+    },
+    {
+      "id": "canonical-c-2951d45855f151a7",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tear"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:1b767769007c9391d4b6269db5e89862b1c4f6ccb78dd13512f44861d90a6d89"
+    },
+    {
+      "id": "canonical-c-e1f077243d92dd48",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.lateral-epicondylalgia"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "tennisElbow",
+      "revisionHash": "sha256:a705f88f6cf19d30f21ae3dfd62ed1737d53f029ddfe79cc1e86a54dd0caf837"
+    },
+    {
+      "id": "canonical-c-93ef8eb82685bdc0",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:c07c7e74d8c26fdc1973f6522a991ce66adba912ace176b0ab66b7028c565aad"
+    },
+    {
+      "id": "canonical-c-6fbca2684b24d4d1",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.olecranon-bursitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:e0ada2ebe71b484847ade162f3a1d37eecec752b24b6d5a983fb9a0c82473502"
+    },
+    {
+      "id": "canonical-c-37fa10878f8453b7",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-artery-dysfunction"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "cervicalVascular",
+      "revisionHash": "sha256:788203bb62f4adb9bd673598b2284e41e366aeb6e907521b259b5bdc6d34848a"
+    },
+    {
+      "id": "canonical-c-ee7fbf17dae06e24",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:376a28723c82f1406e0ad93ecf2864a07e356686f1b25bb53aaab395ba4df65d"
+    },
+    {
+      "id": "canonical-c-e1f8ec535a055966",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-artery-dysfunction"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "cervicalVascular",
+      "revisionHash": "sha256:2dbbf636db017de24c6c1f4cca2c6016e190780851bfa3455c35e72b66833cfe"
+    },
+    {
+      "id": "canonical-c-7c82b8648db3214e",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:74e7089f294f914d638437615f1bd21cd42f875a04390a1553a8c07aeec7a56e"
+    },
+    {
+      "id": "canonical-c-0be1564140c9130f",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:90188e1c6b1b786a53b94e2b337ffa05b7cd0a5746a247d3ea51250a2a09cddd"
+    },
+    {
+      "id": "canonical-c-09edc8a27fbafd5a",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:ef5e931aaa3887593abb7e2f21c59d774a47c2779fa31bc9d72ef781e9c984a3"
+    },
+    {
+      "id": "canonical-c-b90332ce085b1a81",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "dcm",
+      "revisionHash": "sha256:f5c394ca7d616d120f850c7f74e5d4a262adbb7aecc260932f71346b273201ba"
+    },
+    {
+      "id": "canonical-c-d04a72cec57c53a7",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:b33dee58d2b17263417f77750b52e8e8c7a587183fc96c6cb5a9400babf2bf11"
+    },
+    {
+      "id": "canonical-c-c5a6accc311e52f4",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:15edb16b55d48ada47671da3f49b2160b725004c72cf162ac9817a29f3ab934a"
+    },
+    {
+      "id": "canonical-d-4e5e6af68eb01ea6",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "cervicogenicHeadache",
+      "revisionHash": "sha256:e20a70f1186c15d195a7d819fec2931462a797fade943b01a0a8ba6120af0add"
+    },
+    {
+      "id": "canonical-d-eaef70a3464834ad",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "cervicogenicHeadache",
+      "revisionHash": "sha256:138215d9fac66e4690a90ed40fe954104de08cd2ce058a9a15f80968dbc440b9"
+    },
+    {
+      "id": "canonical-d-89caa598d2e838af",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "cervicogenicHeadache",
+      "revisionHash": "sha256:47371963073049ee6a9c3d548cace96325ce3bf6f50923c3149d8a5c3449382f"
+    },
+    {
+      "id": "canonical-d-0cc2658982379f0e",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.radial-tunnel-syndrome"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:2f61ad70d0251523440a0b801d8a312479496309ef1a13a30c4d16cdbeb3483a"
+    },
+    {
+      "id": "canonical-e-f0b40fe9e2f42087",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.olecranon-bursitis"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:473d0cc99fd0f0cf8fd05bd4f35b091a16797b4609be6a4d3859bb890451eff5"
+    },
+    {
+      "id": "canonical-e-bf48cfbdb16c2fae",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:14d7fc5487b553392f118ec70ce745ff9ed59b1fef72c2807a662cf68f029148"
+    },
+    {
+      "id": "canonical-e-30906812e97e9c37",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:a39db01672c8ca99a7a29318c395d0a62d8eb344399d2c28060a3c30e4503cc3"
+    },
+    {
+      "id": "canonical-e-f1a6e6361fc7b083",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "cervicogenicHeadache",
+      "revisionHash": "sha256:acad90814e12135348f95ff2a12c3510a425e8bc4a719ad0aca8bd3ff39f1c35"
+    },
+    {
+      "id": "canonical-e-cd99eee27681978e",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.radial-tunnel-syndrome"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:3718565369ed8267ced8a3a0c2d1f340d60b98f81ac17987758207ae8242f809"
+    },
+    {
+      "id": "canonical-e-22e83a9e5eae7861",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:4c1b65d7c8a446300f313d206252cbe1b64eb5d59954508a66fd41d17c4cbfe4"
+    },
+    {
+      "id": "canonical-e-87c3ceac83612e12",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "OUT-OF-SCOPE PRECISION",
+      "sourceBundle": "cervicogenicHeadache",
+      "revisionHash": "sha256:c955d923c00ebcf93a12a91d1d61e5095926d88be642847dcfa15bc52d1b022e"
+    },
+    {
+      "id": "canonical-e-a77d07b586e36806",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:1124362d9db0ab0f26670090db0f7045eb23291dd4d2d2c7715952f4c22c7f9f"
+    },
+    {
+      "id": "canonical-e-0c31eaf5aa847bd5",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:0c900f27c3f9beb0acb735c5ed6b80c2116fb4df701b6b21998bf774f56b4bcb"
+    },
+    {
+      "id": "canonical-e-99af101a8bb95418",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:ebb2f3dc00d3f2ddec9819731c4857f71c1afce08c0452a9944756ff089104f8"
+    },
+    {
+      "id": "canonical-e-3c3138d50e0c64d2",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.shoulder-instability"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:0b5ab6ba1bb02eb21be394d8da791251fb921747ed89c857c399d6ef22193c9c"
+    },
+    {
+      "id": "canonical-e-ed2c41ff2eff84d9",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:1af93957f16c5382817197c0b8dc480bad07da3e977d522f5e842ca169a5e872"
+    },
+    {
+      "id": "canonical-e-b6195f21ce7b7cfd",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tear"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:d5a1ca98966981cf85c56e367b8b54547ab2d6e508624cb1d098efc3eaf5adf1"
+    },
+    {
+      "id": "canonical-e-4ffa98322728e86a",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:c0249b91ee8190b12268d2e6168dc52ac7ad693805b2cb3ea2019a9dd1a90bc1"
+    },
+    {
+      "id": "canonical-e-2cc79607d5829dad",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "cervicogenicHeadache",
+      "revisionHash": "sha256:7857e428ef20a2d48729fd963d0e50ccd45b31a3f70b387c98d47739c5476caf"
+    },
+    {
+      "id": "canonical-e-3ed3cea912a9d7de",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:8c7851f93d454ac9c610219fa18f0c3b7163887f59cda4d0d02ac3ad9e1a9446"
+    },
+    {
+      "id": "canonical-e-793c603c45a57890",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "neuropathicPain",
+      "revisionHash": "sha256:aaf33862c2c2dbaf8c736210f509830e3f3808a5992ffa037129c95c522799a0"
+    },
+    {
+      "id": "canonical-e-d69351aa89e827d2",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:c61d2a6f0dba966253aa3255c404175160894010090b9fa3d2aba4494572e724"
+    },
+    {
+      "id": "canonical-e-8c4690cd4011168a",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "outcome": "OWNER-CONFIRMED MAJOR RECOMMENDATION IMPLEMENTED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:c9cde7efe97b7111c947235b0920e27df372797073f6c6d43500673369ea8e04"
+    },
+    {
+      "id": "canonical-e-8aa31431f9459e10",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:588102c28310d947fdf7df466a036128a460ea15b1403cd0eafe278feb1e6f4d"
+    },
+    {
+      "id": "canonical-e-9664022fa8624d0e",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.radial-tunnel-syndrome"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:c409d3e7a46f0517738cea3d50d593ea299ca76df786cd21ac1eac8ae520d4ac"
+    },
+    {
+      "id": "canonical-e-e84eb8529bd639e3",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:71c73b5baa730a004df456b8da702fadd275644880f73cff9b99e5be54070140"
+    },
+    {
+      "id": "canonical-f-aaef48dfab7f1220",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "outcome": "DIRECTLY VERIFIED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:e59d46dabfde8b825246021f3bbc7d6b39cc18cfd8bd26e5427a696743a59877"
+    },
+    {
+      "id": "canonical-f-be9a7741f92e7bfe",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:16b0d8f0b51a94a22b4df9aad8920a3f5f007de402ee25e1cd7b4025246a64f1"
+    },
+    {
+      "id": "canonical-f-98a8f403717a144b",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.olecranon-bursitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:2c886e6048e32bffdd1d7d9177a62417c7d89cdbd151c12a10626c00c112e748"
+    },
+    {
+      "id": "canonical-f-aceee607b7cf0050",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.radial-tunnel-syndrome"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:a5e22a01106309276235cd210cb46fdc841cfba9bf88b973b5aedfeb9f83ea9f"
+    },
+    {
+      "id": "canonical-f-3409e4437889b0cb",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:d5bca19ee6ca93eecc75f4881a537915e6a8eae1f1ae973c1b073be9fd11fee2"
+    },
+    {
+      "id": "canonical-f-a028a711866c6a9c",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-artery-dysfunction"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "cervicalVascular",
+      "revisionHash": "sha256:6d7a55e7480161737ed42fe1f393cd6f0f2c5de51995d033eb57b34462a1f66b"
+    },
+    {
+      "id": "canonical-f-aa47681dc5ccab89",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "neurologicalReferral",
+      "revisionHash": "sha256:8ca9a555fe97cb5f699aa39449e29f2a9ebcf95f8dc02f28fd00ae78ff2787c8"
+    },
+    {
+      "id": "canonical-f-7219cd3278418168",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervical-artery-dysfunction"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "cervicalVascular",
+      "revisionHash": "sha256:50deb3e4b7d43aaf9702c87afeaf16a7f642e603f9eaa37147265a4646b00961"
+    },
+    {
+      "id": "canonical-f-8df3bb1dca6d559e",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tear"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:bc44d92cfa55d4ae9b97faf0bfdfdaf310116fcdfcc5a11403117b363a57401b"
+    },
+    {
+      "id": "canonical-f-26bdf271bd3e1aed",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "DIRECTLY VERIFIED",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:cb08a7ca71eb596b12759a90091074823d76f9a551a5f617af4f5b86e8c4a8c4"
+    },
+    {
+      "id": "canonical-f-78c161e72881fd1b",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "cervicogenicHeadache",
+      "revisionHash": "sha256:a73dfb3533cdc6ccd8b1afb13c8af69028e7eb34b2349586705d88c5ccd25216"
+    },
+    {
+      "id": "canonical-f-734aa620580c55be",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:f3c3fd8c1aab4289acd37e7016d933932797f459dd2e32f2a1b07c62cb7e192c"
+    },
+    {
+      "id": "canonical-f-35167cfdf4166630",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "osteoarthritis",
+      "revisionHash": "sha256:acc072f222a4dd92bc99555066a65cfa644ac26d04b0006b061ba59a0929b841"
+    },
+    {
+      "id": "canonical-f-6b4411ea670e0616",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.labral-tears"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:5ecd34e12d5e11e5b4f6a8c738c811d9c2669e597ddcf7cbf1870b9ea5df5ec1"
+    },
+    {
+      "id": "canonical-f-957332479b03b70a",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:7753b5bf85f03b5a552399c2238249c3ee159b38ee5dd9a1a9101fa9670389eb"
+    },
+    {
+      "id": "canonical-f-6323de056c09874a",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.shoulder-instability"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:2d1a4132b05fe1dc468cea7ae924169ad81ab570a77c6cd42f538d13c65dcaaa"
+    },
+    {
+      "id": "canonical-g-a704d710fc0de556",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.elbow.olecranon-bursitis"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": null,
+      "revisionHash": "sha256:91d79f67b1dbcbeb5b24f5bd8d62f03917ee0483eca2d2a4029cc929f82e3a6e"
+    },
+    {
+      "id": "canonical-g-952304a39a936803",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.shoulder-instability"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:f9398bf89450f293747f0f93a6e485a4ef35d4618157c8e6ca7341d0b272b9f4"
+    },
+    {
+      "id": "canonical-g-97fee0f46d763a3f",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:61d8b3ac469c8b9d3a8b5eb7294dd40aa182758a37f15435a2fb71e42f819744"
+    },
+    {
+      "id": "canonical-g-f1567136f787f36d",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:b0672e95843570eb143b0e656e7af783233505122f6e347569116b8d786fa3fe"
+    },
+    {
+      "id": "canonical-g-c5e121ee12c7a0a3",
+      "severity": "MAJOR",
+      "conditionIds": [
+        "condition.shoulder.rotator-cuff-tear"
+      ],
+      "outcome": "SCOPE BOUNDARY RECORDED",
+      "necessity": "ESSENTIAL",
+      "sourceBundle": "shoulderPathways",
+      "revisionHash": "sha256:4cf70560c6ca3cea53c98f6e8afe2632f8b2e4464e7901f1950641f3a8c1a63a"
+    },
+    {
+      "id": "canonical-f-e133b0cf8e7f804a",
+      "severity": "SUPPORTING",
+      "conditionIds": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "outcome": "FUTURE EVIDENCE EXPANSION",
+      "necessity": "USEFUL BUT NON-ESSENTIAL",
+      "sourceBundle": "calcificTendinopathy",
+      "revisionHash": "sha256:85306313be6fb8d79d391d9d7893572cbcf2318f7d5ea517353bda0e7d083ff7"
+    }
+  ],
+  "clinicalApprovalGranted": false,
+  "evidenceApprovalGranted": false,
+  "grantsApproval": false,
+  "publicationAuthorized": false
+}

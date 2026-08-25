@@ -1,9 +1,20 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { deriveStudioSummary, loadContentRegistry } from './content-studio.mjs'
+import { createConditionReviewCard, loadAuditedV1ConditionReviewRecords, summarizeV1PublicationReview } from './v1-publication-review.mjs'
+import { createPublicationMinimumReview, V1_SOURCE_BUNDLES } from './v1-publication-minimum.mjs'
+import { criticalClaimCoveredByOwnerAdoption, loadVerifiedCriticalReviewAdoption } from './v1-critical-review-adoption.mjs'
+import { loadVerifiedMajorReviewAdoption, majorClaimCoveredByOwnerAdoption } from './v1-major-review-adoption.mjs'
+import { loadVerifiedV1FinalConditionConfirmation } from './v1-final-condition-confirmation.mjs'
+import { loadOptionalV1IndependentFinalRecommendations } from './v1-independent-final-recommendations.mjs'
 
 function readJson(root, relative) {
   return JSON.parse(fs.readFileSync(path.join(root, ...relative.split('/')), 'utf8'))
+}
+
+function readOptionalJson(root, relative) {
+  const file = path.join(root, ...relative.split('/'))
+  return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null
 }
 
 const datasetDefinitions = Object.freeze([
@@ -61,6 +72,33 @@ export function deriveProjectSnapshot(repositoryRoot, store, portalConfig = { ac
   const release = readJson(repositoryRoot, 'ai-manager/clinical-platform/release/v1-release-candidate.json')
   const database = store.read()
   const registry = loadContentRegistry({ repositoryRoot, store })
+  const v1Conditions = loadAuditedV1ConditionReviewRecords(repositoryRoot)
+  const v1Summary = summarizeV1PublicationReview(v1Conditions, database.actions)
+  const canonicalClaims = [...new Map(v1Conditions.flatMap((condition) => condition.clinicalEvidenceAudit?.canonicalClaims ?? []).map((claim) => [claim.id, claim])).values()]
+  const criticalOwnerAdoption = loadVerifiedCriticalReviewAdoption(repositoryRoot)
+  const majorOwnerAdoption = loadVerifiedMajorReviewAdoption(repositoryRoot)
+  const finalConditionConfirmation = loadVerifiedV1FinalConditionConfirmation(repositoryRoot)
+  const finalConfirmationById = new Map((finalConditionConfirmation?.conditions ?? []).map((item) => [item.conditionId, item]))
+  const independentRecommendations = loadOptionalV1IndependentFinalRecommendations(repositoryRoot, finalConditionConfirmation?.conditions ?? [])
+  const independentRecommendationById = new Map(independentRecommendations.conditions.map((item) => [item.conditionId, item]))
+  const validFinalConfirmationActions = database.actions.filter((action) => {
+    if (action.type !== 'record-v1-final-condition-confirmation') return false
+    const condition = finalConfirmationById.get(action.targetId)
+    return condition && action.exactRevisionKey === condition.exactCurrentRevisionHash && action.confirmationRevisionKey === condition.confirmationRevisionKey
+  })
+  const latestFinalConfirmationActionById = new Map()
+  for (const action of validFinalConfirmationActions) {
+    const previous = latestFinalConfirmationActionById.get(action.targetId)
+    if (!previous || String(previous.createdAt) < String(action.createdAt)) latestFinalConfirmationActionById.set(action.targetId, action)
+  }
+  const publicationMinimum = createPublicationMinimumReview(canonicalClaims, { criticalOwnerAdoption, criticalClaimCoveredByOwnerAdoption, majorOwnerAdoption, majorClaimCoveredByOwnerAdoption })
+  const reviewedCanonicalClaimIds = new Set(v1Summary.canonicalReview.reviewedCanonicalClaimIds)
+  const learnerAudit = readOptionalJson(repositoryRoot, 'reports/publication-readiness/learner-export-audit.json')
+  const externalLinkAudit = readOptionalJson(repositoryRoot, 'reports/publication-readiness/external-link-live-audit.json')
+  const browserQa = readOptionalJson(repositoryRoot, 'reports/publication-readiness/v1-browser-qa-observations.json')
+  const manualQa = readOptionalJson(repositoryRoot, 'reports/publication-readiness/v1-manual-qa-checklist.json')
+  const manualAccessibility = readOptionalJson(repositoryRoot, 'reports/publication-readiness/v1-accessibility-checklist.json')
+  const targetCases = cases.records.filter((item) => ['cervical', 'shoulder', 'elbow'].includes(item.region) && item.lifecycleState === 'published')
   const integrationProposals = database.integrationProposals.map(({ relativePath, ...proposal }) => ({
     ...proposal,
     downloadUrl: `/api/integration-proposals/${proposal.id}/download`,
@@ -94,6 +132,145 @@ export function deriveProjectSnapshot(repositoryRoot, store, portalConfig = { ac
       actor: { id: portalConfig.actorId, roles: portalConfig.actorRoles },
       capabilities: { submitIntegrationProposal: portalConfig.actorRoles.includes('integration-proposer') },
       grantsApproval: false,
+    },
+    v1PublicationReview: {
+      ...v1Summary,
+      finalConditionConfirmation: finalConditionConfirmation ? {
+        packetPath: finalConditionConfirmation.path,
+        packetSha256: finalConditionConfirmation.sha256,
+        conditionsIncluded: finalConditionConfirmation.conditions.length,
+        validReviewLineage: finalConditionConfirmation.summary.validReviewLineage,
+        confirmationsRecorded: new Set(validFinalConfirmationActions.map((item) => item.targetId)).size,
+        confirmationsRemaining: finalConditionConfirmation.conditions.length - new Set(validFinalConfirmationActions.map((item) => item.targetId)).size,
+        blankDecisionFieldsRemaining: (finalConditionConfirmation.conditions.length - new Set(validFinalConfirmationActions.map((item) => item.targetId)).size) * 4,
+        manualBrowserChecksRemaining: finalConditionConfirmation.manualQaAppendix.individualChecksRemaining,
+        manualAccessibilityChecksRemaining: finalConditionConfirmation.manualAccessibilityAppendix.checksRemaining,
+        independentRecommendations: {
+          available: independentRecommendations.available,
+          path: independentRecommendations.path,
+          reason: independentRecommendations.reason ?? null,
+          conditionCount: independentRecommendations.conditions.length,
+          grantsApproval: false,
+          publicationAuthorized: false,
+        },
+        conditions: finalConditionConfirmation.conditions.map((item) => ({
+          ...(() => {
+            const condition = v1Conditions.find((candidate) => candidate.id === item.conditionId)
+            const recommendation = independentRecommendationById.get(item.conditionId) ?? null
+            const ownerDecision = latestFinalConfirmationActionById.get(item.conditionId) ?? null
+            const canonicalClaims = condition?.clinicalEvidenceAudit?.canonicalClaims ?? []
+            return {
+              independentRecommendation: recommendation,
+              independentRecommendationStatus: recommendation ? 'revision-matched' : 'not-available',
+              independentRecommendationReason: recommendation ? recommendation.reviewerNote : independentRecommendations.reason,
+              ownerDecision: ownerDecision ? {
+                clinicalAccuracy: ownerDecision.clinicalAccuracyDecision,
+                evidenceSufficiency: ownerDecision.evidenceSufficiencyDecision,
+                clinicalCompleteness: ownerDecision.clinicalCompletenessDecision,
+                publicationRecommendation: ownerDecision.publicationRecommendation,
+                note: ownerDecision.note,
+                recordedAt: ownerDecision.createdAt,
+                grantsApproval: false,
+                publicationAuthorized: false,
+              } : null,
+              technicalAudit: {
+                canonicalConditionId: item.conditionId,
+                sourceFile: item.sourceFile,
+                conditionRevisionIdentifiers: [item.exactCurrentRevisionHash],
+                canonicalClaimIds: canonicalClaims.map((claim) => claim.id).sort(),
+                claimRevisionIdentifiers: canonicalClaims.map((claim) => `${claim.id}:${claim.revisionHash}`).sort(),
+                sourceIdentifiers: [...new Set(canonicalClaims.flatMap((claim) => claim.evidenceRelationship?.proposedSources?.map((source) => source.key) ?? []))].sort(),
+              },
+            }
+          })(),
+          conditionId: item.conditionId,
+          title: item.title,
+          region: item.region,
+          exactCurrentRevisionHash: item.exactCurrentRevisionHash,
+          confirmationRevisionKey: item.confirmationRevisionKey,
+          lineageValid: item.lineage.valid,
+          recorded: validFinalConfirmationActions.some((action) => action.targetId === item.conditionId),
+          lineage: item.lineage,
+        })),
+        clinicalApprovalGranted: false,
+        evidenceApprovalGranted: false,
+        grantsApproval: false,
+        publicationAuthorized: false,
+      } : null,
+      publicationMinimumEvidence: {
+        startingCanonicalClaims: publicationMinimum.startingCanonicalClaims,
+        currentCanonicalClaims: publicationMinimum.currentCanonicalClaims,
+        removedOrCollapsedByContentHardening: publicationMinimum.canonicalClaimsRemovedOrCollapsedByContentHardening,
+        necessityCounts: publicationMinimum.necessityCounts,
+        outcomeCounts: publicationMinimum.outcomeCounts,
+        severityOutcomes: publicationMinimum.severityOutcomes,
+        finalHumanEvidenceDecisionsRemaining: publicationMinimum.humanDecisionCount,
+        criticalOwnerAdoption: criticalOwnerAdoption ? {
+          owner: criticalOwnerAdoption.ownerConfirmation.actor,
+          confirmedDate: criticalOwnerAdoption.ownerConfirmation.confirmedDate,
+          recommendationCount: criticalOwnerAdoption.recommendations.length,
+          resultingFileCount: criticalOwnerAdoption.implementation.resultingFiles.length,
+          grantsApproval: false,
+          publicationAuthorized: false,
+        } : null,
+        majorOwnerAdoption: majorOwnerAdoption ? {
+          owner: majorOwnerAdoption.ownerConfirmation.actor,
+          confirmedDate: majorOwnerAdoption.ownerConfirmation.confirmedDate,
+          recommendationCount: majorOwnerAdoption.recommendations.length,
+          resultingFileCount: majorOwnerAdoption.implementation.resultingFiles.length,
+          grantsApproval: false,
+          publicationAuthorized: false,
+        } : null,
+        sourceBundles: V1_SOURCE_BUNDLES,
+        humanDecisions: publicationMinimum.humanDecisions.map((decision) => ({
+          ...decision,
+          humanDecisionRecorded: decision.canonicalClaimIds.every((claimId) => reviewedCanonicalClaimIds.has(claimId)),
+        })),
+        resolvedMappings: publicationMinimum.triagedClaims.filter((claim) => !['HUMAN CONFIRMATION', 'CONTENT CHANGE REQUIRED', 'BLOCKED'].includes(claim.outcome)).map((claim) => ({
+          id: claim.id,
+          severity: claim.severity,
+          conditionIds: claim.conditionIds,
+          outcome: claim.outcome,
+          necessity: claim.necessity,
+          sourceBundle: claim.sourceBundle,
+          revisionHash: claim.revisionHash,
+        })),
+        grantsApproval: false,
+        publicationAuthorized: false,
+      },
+      humanReviewItemsRemaining: {
+        conditionDecisionFields: finalConditionConfirmation
+          ? (finalConditionConfirmation.conditions.length - new Set(validFinalConfirmationActions.map((item) => item.targetId)).size) * 4
+          : Object.values(v1Summary.regions).reduce((total, region) => total + (region.totalConditions * 3) - region.clinicalReviewed - region.evidenceReviewed - region.publicationRecommendationsRecorded, 0),
+        browserViewportThemeReviews: manualQa?.viewportThemeMatrix?.filter((item) => item.checks.some((check) => check.status === 'NOT_TESTED')).length ?? 6,
+        accessibilityChecks: manualAccessibility?.manualChecks?.filter((item) => item.status === 'NOT_TESTED').length ?? 13,
+      },
+      scope: {
+        regions: ['cervical', 'shoulder', 'elbow'],
+        conditions: v1Conditions.length,
+        baselineCases: targetCases.length,
+        futureFeaturesRequiredForV1: { movements: false, mcqs: false, modules: false, anatomy3d: false },
+      },
+      conditions: v1Conditions.map((item) => ({
+        id: item.id,
+        title: item.title,
+        region: item.region,
+        learnerRoute: item.learnerRoute,
+        exactRevisionHash: item.exactRevisionHash,
+        finalBlockers: item.finalBlockers,
+        reviewCard: (() => {
+          const card = createConditionReviewCard(item)
+          card.canonicalClaims = card.canonicalClaims.map((claim) => ({ ...claim, humanDecisionRecorded: v1Summary.canonicalReview.reviewedCanonicalClaimIds.includes(claim.id) }))
+          card.canonicalClaimsRequiringHumanVerification = card.canonicalClaims.filter((claim) => !claim.humanDecisionRecorded).length
+          return card
+        })(),
+      })),
+      baselineCases: targetCases.map((item) => ({ caseId: item.caseId, region: item.region, title: item.neutralTitle, clinicalReviewStatus: item.clinicalReviewStatus, evidenceReviewStatus: item.evidenceReviewStatus, unresolvedEvidenceGapCount: item.unresolvedEvidenceGapCount })),
+      globalBuild: learnerAudit?.summary ?? null,
+      externalLinks: browserQa?.summary ?? externalLinkAudit?.summary ?? null,
+      manualExactBuildQa: browserQa?.exactBuildBrowser?.status ?? 'not-recorded',
+      manualAccessibility: browserQa?.summary?.manualAccessibilitySignOffComplete ? 'complete' : 'not-recorded',
+      notice: 'Human decisions recorded here are private recommendations only. They do not change publication state or grant approval.',
     },
     documents: database.documents.map(({ relativePath, ...document }) => document),
     actions: database.actions,

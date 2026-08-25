@@ -38,6 +38,7 @@
 
         <nav class="tabs" aria-label="Studio sections">
           <button type="button" role="tab" aria-selected="true" aria-controls="dashboard-panel" id="dashboard-tab" data-panel="dashboard-panel">Dashboard</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="v1-publication-panel" id="v1-publication-tab" data-panel="v1-publication-panel" tabindex="-1">Version 1 Publication Review</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="content-panel" id="content-tab" data-panel="content-panel" tabindex="-1">Content library</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="detail-panel" id="detail-tab" data-panel="detail-panel" tabindex="-1">Item detail</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="proposals-panel" id="proposals-tab" data-panel="proposals-panel" tabindex="-1">Integration proposals</button>
@@ -56,6 +57,18 @@
           <div id="integration-position" class="cards compact-cards"></div>
           <h3>Configured regions</h3>
           <div id="region-summary" class="cards compact-cards"></div>
+        </section>
+
+        <section id="v1-publication-panel" role="tabpanel" aria-labelledby="v1-publication-tab" hidden>
+          <h2>Version 1 Publication Review</h2>
+          <p>Revision-bound human review for cervical, shoulder and elbow conditions and baseline cases. Decisions are private recommendations only: grantsApproval=false and publication state cannot be changed here.</p>
+          <h3>20-condition decision summary</h3>
+          <div id="v1-condition-summary-table"></div>
+          <div id="v1-publication-summary" class="cards"></div>
+          <h3>Condition recommendations and owner decisions</h3>
+          <div id="v1-condition-review-list" class="cards"></div>
+          <h3>Global build evidence</h3>
+          <div id="v1-global-build" class="cards compact-cards"></div>
         </section>
 
         <section id="content-panel" role="tabpanel" aria-labelledby="content-tab" hidden>

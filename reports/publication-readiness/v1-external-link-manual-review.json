@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "links": [
+    {
+      "sourcePages": [
+        "/elbow/olecranon-bursitis"
+      ],
+      "linkLabels": [
+        "NICE BNF. 2023. Bacterial skin infections — management. Available at:"
+      ],
+      "targetUrl": "https://bnf.nice.org.uk/",
+      "classification": "evidence-or-source",
+      "automatedResult": "HTTP 403",
+      "manualReason": "The authoritative site rejects automated requests; an automated 403 is not evidence that the learner link is broken.",
+      "manualStatus": "PASS",
+      "browserEvidence": {
+        "url": "https://bnf.nice.org.uk/",
+        "browserResult": "PASS",
+        "title": "BNF (British National Formulary) | NICE"
+      }
+    },
+    {
+      "sourcePages": [
+        "/elbow/medial-epicondylalgia"
+      ],
+      "linkLabels": [
+        "NICE CKS. 2022. Elbow pain — Clinical Knowledge Summary. Available at:"
+      ],
+      "targetUrl": "https://cks.nice.org.uk/",
+      "classification": "evidence-or-source",
+      "automatedResult": "HTTP 403",
+      "manualReason": "The authoritative site rejects automated requests; an automated 403 is not evidence that the learner link is broken.",
+      "manualStatus": "PASS",
+      "browserEvidence": {
+        "url": "https://cks.nice.org.uk/",
+        "browserResult": "PASS",
+        "title": "CKS | NICE"
+      }
+    },
+    {
+      "sourcePages": [
+        "/cervical/cervicogenic-headache"
+      ],
+      "linkLabels": [
+        "HSC NI Referral Pathways: HSC NIMDTA Resources",
+        "HSC NIMDTA Resources"
+      ],
+      "targetUrl": "https://www.nimdta.gov.uk/",
+      "classification": "organisation-or-guideline",
+      "automatedResult": "fetch failed",
+      "manualReason": "The automated client could not establish a response; confirm in an ordinary browser without changing the source.",
+      "manualStatus": "PASS",
+      "browserEvidence": {
+        "url": "https://www.nimdta.gov.uk/",
+        "browserResult": "PASS",
+        "title": "Home"
+      }
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "complete": 3,
+    "remaining": 0,
+    "pass": 3,
+    "fail": 0
+  },
+  "deterministicBuildDependency": false
+}

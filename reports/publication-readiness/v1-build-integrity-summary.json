@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "generatedLearnerRoutes": 65,
+  "htmlPages": 67,
+  "internalHyperlinks": 3068,
+  "validInternalHyperlinks": 3068,
+  "brokenInternalHyperlinks": 0,
+  "fragmentLinks": 680,
+  "invalidAnchors": 0,
+  "localAssetReferences": 739,
+  "validLocalAssetReferences": 739,
+  "missingLocalAssets": 0,
+  "externalLinksInventoried": 25,
+  "malformedExternalLinks": 0,
+  "cervicalRoutes": 9,
+  "shoulderRoutes": 11,
+  "elbowRoutes": 8,
+  "orphanLearnerPages": 0,
+  "privateMarkerFindings": 0,
+  "expectedZeroes": {
+    "brokenInternalHyperlinks": 0,
+    "invalidAnchors": 0,
+    "missingLocalAssets": 0,
+    "orphanLearnerPages": 0,
+    "privateMarkerFindings": 0
+  },
+  "futureFeatureFallbacks": {
+    "movements": "no public controls/routes emitted",
+    "mcqs": "no placeholder questions exposed",
+    "modules": "no dead module CTA emitted",
+    "anatomy3d": "no public viewer/button or asset emitted"
+  }
+}

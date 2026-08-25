@@ -12,6 +12,7 @@ import { allowedExtensions, inspectFile, sanitizeFilename } from '../../ai-manag
 import { createPortalServer } from '../../ai-manager/private-review-portal/server.mjs'
 import { SessionStore, SlidingWindowRateLimiter, isAllowedHost, securityHeaders } from '../../ai-manager/private-review-portal/security.mjs'
 import { PrivateStore, privateFolders, resolveInside } from '../../ai-manager/private-review-portal/store.mjs'
+import { V1_INDEPENDENT_FINAL_RECOMMENDATIONS_PATH, loadOptionalV1IndependentFinalRecommendations } from '../../ai-manager/private-review-portal/v1-independent-final-recommendations.mjs'
 
 const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'msk-private-portal-test-'))
 const passphrase = 'synthetic-review-passphrase-2026'
@@ -81,12 +82,16 @@ try {
   assert.ok(registry.items.filter((item) => item.contentType === 'mcqs').every((item) => item.currentContent.authoredContent === null))
   assert.equal(registry.items.filter((item) => item.region === 'shoulder' && item.contentType === 'compatibility-rules').length, 12)
   const sourceCandidates = registry.items.filter((item) => ['upstream-source-archive', 'derived-candidate-archive', 'derived-glb', 'movement-definition'].includes(item.currentContent.candidateType))
-  assert.equal(sourceCandidates.length, 25)
-  assert.equal(sourceCandidates.filter((item) => item.contentType === '3d-assets').length, 7)
+  assert.equal(sourceCandidates.length, 26)
+  assert.equal(sourceCandidates.filter((item) => item.contentType === '3d-assets').length, 8)
   assert.equal(sourceCandidates.filter((item) => item.contentType === 'movements').length, 18)
   assert.ok(sourceCandidates.every((item) => item.publicationState === 'private' && item.grantsApproval === false && item.currentContent.repositoryAssetPath === null))
   assert.ok(sourceCandidates.every((item) => !item.sourceLinks.some((link) => /^[a-z]:[\\/]/i.test(link))))
   assert.equal(sourceCandidates.find((item) => item.id.startsWith('candidate3d.z-anatomy.')).currentContent.upstream.exactArchiveMatch, true)
+  const zBiomechanics = sourceCandidates.find((item) => item.id.startsWith('candidate3d.z-biomechanics.'))
+  assert.equal(zBiomechanics.currentContent.sha256, '0a74b2fa3c47db925b06241fa38c89b0811e58a78ee28ec440cd460e279cf22b')
+  assert.equal(zBiomechanics.currentContent.upstream.archiveGitBlobSha1, '0a59584deaf21773ffa3acb063f2cd06f3485a98')
+  assert.equal(zBiomechanics.currentContent.upstream.wipIsClinicalEvidence, false)
   assert.equal(sourceCandidates.filter((item) => item.currentContent.candidateType === 'derived-glb').length, 5)
   assert.equal(sourceCandidates.filter((item) => item.currentContent.candidateType === 'movement-definition' && item.currentContent.existingMovementSlotId).length, 5)
   assert.ok(sourceCandidates.filter((item) => item.currentContent.candidateType === 'movement-definition').every((item) => item.currentContent.adoptedMovementData === null && item.currentContent.claimEvidenceRecordIds.length === 0))
@@ -95,6 +100,44 @@ try {
   assert.equal(deriveStudioSummary(registry).readyForApproval, 0)
   assert.ok(registry.items.every((item) => item.grantsApproval === false))
   const publicationSnapshot = Object.fromEntries(registry.items.map((item) => [item.id, item.publicationState]))
+
+  const recommendationFixtureRoot = path.join(temporaryRoot, 'recommendation-fixture')
+  const recommendationFixturePath = path.join(recommendationFixtureRoot, ...V1_INDEPENDENT_FINAL_RECOMMENDATIONS_PATH.split('/'))
+  const expectedRecommendationConditions = Array.from({ length: 20 }, (_, index) => ({
+    conditionId: `condition.synthetic.${String(index + 1).padStart(2, '0')}`,
+    exactCurrentRevisionHash: `sha256:${String(index + 1).padStart(64, '0')}`,
+  }))
+  assert.equal(loadOptionalV1IndependentFinalRecommendations(recommendationFixtureRoot, expectedRecommendationConditions).available, false)
+  fs.mkdirSync(path.dirname(recommendationFixturePath), { recursive: true })
+  const recommendationFixture = {
+    packetType: 'v1-independent-final-20-condition-recommendations',
+    conditions: expectedRecommendationConditions.map((condition) => ({
+      ...condition,
+      recommendations: {
+        clinicalAccuracy: 'acceptable-for-v1',
+        evidenceSufficiency: 'changes-required',
+        clinicalCompleteness: 'future-expansion-non-blocking',
+        publicationRecommendation: 'recommend-hold',
+      },
+      reviewerNote: 'Synthetic independent recommendation for interface testing only.',
+    })),
+    grantsApproval: false,
+    publicationAuthorized: false,
+    publicationStateChanged: false,
+  }
+  fs.writeFileSync(recommendationFixturePath, `${JSON.stringify(recommendationFixture, null, 2)}\n`)
+  const loadedRecommendationFixture = loadOptionalV1IndependentFinalRecommendations(recommendationFixtureRoot, expectedRecommendationConditions)
+  assert.equal(loadedRecommendationFixture.available, true)
+  assert.equal(loadedRecommendationFixture.conditions.length, 20)
+  assert.equal(loadedRecommendationFixture.conditions[0].reviewerNote, 'Synthetic independent recommendation for interface testing only.')
+  const staleRecommendationFixture = structuredClone(recommendationFixture)
+  staleRecommendationFixture.conditions[0].exactCurrentRevisionHash = `sha256:${'f'.repeat(64)}`
+  fs.writeFileSync(recommendationFixturePath, `${JSON.stringify(staleRecommendationFixture, null, 2)}\n`)
+  assert.throws(() => loadOptionalV1IndependentFinalRecommendations(recommendationFixtureRoot, expectedRecommendationConditions), /Stale independent recommendation/)
+  const overreachingRecommendationFixture = structuredClone(recommendationFixture)
+  overreachingRecommendationFixture.grantsApproval = true
+  fs.writeFileSync(recommendationFixturePath, `${JSON.stringify(overreachingRecommendationFixture, null, 2)}\n`)
+  assert.throws(() => loadOptionalV1IndependentFinalRecommendations(recommendationFixtureRoot, expectedRecommendationConditions), /exceeds recommendation-only authority/)
 
   const mockConfig = { ...studioConfig, regions: [...studioConfig.regions, { id: 'mock-region', label: 'Mock region', availability: 'test-only' }] }
   const mockAdapter = { id: 'mock-adapter', regions: ['mock-region'], load: () => [createRegistryItem({ id: 'mock.item.1', region: 'mock-region', contentType: 'modules', title: 'Synthetic registry fixture', lifecycle: 'draft', publicationState: 'private', clinicalReview: 'required', evidenceReview: 'required', accessibilityReview: 'required', licensingReview: 'required', blockers: ['synthetic-test-blocker'], sourceLinks: [], currentContent: { synthetic: true }, missingFields: ['synthetic content'] })] }
@@ -189,6 +232,50 @@ try {
     assert.deepEqual(dashboardBody.studio.actor, { id: 'synthetic-reviewer', roles: ['content-reviewer', 'integration-proposer'] })
     assert.equal(dashboardBody.studio.capabilities.submitIntegrationProposal, true)
     assert.ok(dashboardBody.studio.items.every((item) => item.currentContent === undefined && item.grantsApproval === false))
+    assert.equal(dashboardBody.v1PublicationReview.scope.conditions, 20)
+    assert.equal(dashboardBody.v1PublicationReview.scope.baselineCases, 5)
+    assert.deepEqual(dashboardBody.v1PublicationReview.scope.futureFeaturesRequiredForV1, { movements: false, mcqs: false, modules: false, anatomy3d: false })
+    assert.equal(dashboardBody.v1PublicationReview.grantsApproval, false)
+    assert.equal(dashboardBody.v1PublicationReview.publicationAuthorized, false)
+    assert.deepEqual(dashboardBody.v1PublicationReview.categoryCounts, {
+      'no-automated-issue-detected-human-confirmation-only': 0,
+      'evidence-follow-up-required': 0,
+      'clinical-content-issue-detected': 0,
+      'publication-blocker': 20,
+    })
+    assert.ok(dashboardBody.v1PublicationReview.conditions.every((item) => item.reviewCard.priorityAClaimsRequiringHumanVerification > 0))
+    assert.ok(dashboardBody.v1PublicationReview.conditions.every((item) => item.reviewCard.grantsApproval === false && item.reviewCard.publicationAuthorized === false))
+    assert.equal(dashboardBody.v1PublicationReview.publicationMinimumEvidence.startingCanonicalClaims, 304)
+    assert.equal(dashboardBody.v1PublicationReview.publicationMinimumEvidence.currentCanonicalClaims, 217)
+    assert.equal(dashboardBody.v1PublicationReview.publicationMinimumEvidence.finalHumanEvidenceDecisionsRemaining, 0)
+    assert.equal(dashboardBody.v1PublicationReview.publicationMinimumEvidence.humanDecisions.length, 0)
+    assert.equal(dashboardBody.v1PublicationReview.publicationMinimumEvidence.criticalOwnerAdoption.recommendationCount, 47)
+    assert.equal(dashboardBody.v1PublicationReview.publicationMinimumEvidence.criticalOwnerAdoption.resultingFileCount, 20)
+    assert.equal(dashboardBody.v1PublicationReview.publicationMinimumEvidence.criticalOwnerAdoption.grantsApproval, false)
+    assert.equal(dashboardBody.v1PublicationReview.publicationMinimumEvidence.majorOwnerAdoption.recommendationCount, 23)
+    assert.equal(dashboardBody.v1PublicationReview.publicationMinimumEvidence.majorOwnerAdoption.resultingFileCount, 15)
+    assert.equal(dashboardBody.v1PublicationReview.publicationMinimumEvidence.majorOwnerAdoption.grantsApproval, false)
+    assert.equal(dashboardBody.v1PublicationReview.publicationMinimumEvidence.grantsApproval, false)
+    assert.equal(dashboardBody.v1PublicationReview.publicationMinimumEvidence.publicationAuthorized, false)
+    assert.equal(dashboardBody.v1PublicationReview.finalConditionConfirmation.conditionsIncluded, 20)
+    assert.equal(dashboardBody.v1PublicationReview.finalConditionConfirmation.validReviewLineage, 20)
+    assert.equal(dashboardBody.v1PublicationReview.finalConditionConfirmation.confirmationsRecorded, 0)
+    assert.equal(dashboardBody.v1PublicationReview.finalConditionConfirmation.blankDecisionFieldsRemaining, 80)
+    assert.equal(dashboardBody.v1PublicationReview.finalConditionConfirmation.manualBrowserChecksRemaining, 90)
+    assert.equal(dashboardBody.v1PublicationReview.finalConditionConfirmation.manualAccessibilityChecksRemaining, 13)
+    assert.equal(dashboardBody.v1PublicationReview.finalConditionConfirmation.grantsApproval, false)
+    assert.equal(dashboardBody.v1PublicationReview.finalConditionConfirmation.publicationAuthorized, false)
+    assert.equal(dashboardBody.v1PublicationReview.finalConditionConfirmation.independentRecommendations.available, false)
+    assert.equal(dashboardBody.v1PublicationReview.finalConditionConfirmation.independentRecommendations.conditionCount, 0)
+    assert.equal(dashboardBody.v1PublicationReview.finalConditionConfirmation.conditions.length, 20)
+    assert.ok(dashboardBody.v1PublicationReview.finalConditionConfirmation.conditions.every((condition) => condition.independentRecommendation === null && condition.independentRecommendationStatus === 'not-available'))
+    assert.ok(dashboardBody.v1PublicationReview.finalConditionConfirmation.conditions.every((condition) => condition.ownerDecision === null && condition.technicalAudit.canonicalConditionId === condition.conditionId))
+    assert.ok(dashboardBody.v1PublicationReview.finalConditionConfirmation.conditions.every((condition) => condition.lineageValid && condition.lineage.valid))
+    assert.deepEqual(dashboardBody.v1PublicationReview.humanReviewItemsRemaining, {
+      conditionDecisionFields: 80,
+      browserViewportThemeReviews: 6,
+      accessibilityChecks: 13,
+    })
     const movementSummary = dashboardBody.studio.items.find((item) => item.contentType === 'movements')
     const contentDetail = await request(`/api/content/${encodeURIComponent(movementSummary.id)}`, { headers: { Cookie: cookie } })
     assert.equal(contentDetail.status, 200)
@@ -217,6 +304,59 @@ try {
     const task = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'create-human-review-task', targetType: 'content-item', targetId: contentItem.id, exactRevisionKey: contentItem.revisionHash, note: 'Private synthetic review task' }) })
     assert.equal(task.status, 201)
     assert.equal((await task.json()).grantsApproval, false)
+    const v1Condition = registry.items.find((item) => item.contentType === 'conditions' && item.region === 'cervical')
+    const invalidV1Review = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'record-v1-publication-review', targetType: 'content-item', targetId: v1Condition.id, exactRevisionKey: v1Condition.revisionHash, clinicalDecision: 'approved', evidenceDecision: 'acceptable-for-v1', publicationRecommendation: 'recommend-publish', reviewDeclaration: true }) })
+    assert.equal(invalidV1Review.status, 400)
+    const v1Review = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'record-v1-publication-review', targetType: 'content-item', targetId: v1Condition.id, exactRevisionKey: v1Condition.revisionHash, clinicalDecision: 'acceptable', evidenceDecision: 'follow-up-non-blocking', publicationRecommendation: 'recommend-publish', note: 'Synthetic reviewer recommendation only', reviewDeclaration: true }) })
+    assert.equal(v1Review.status, 201)
+    const v1ReviewBody = await v1Review.json()
+    assert.equal(v1ReviewBody.grantsApproval, false)
+    assert.equal(v1ReviewBody.publicationAuthorized, false)
+    assert.equal(v1ReviewBody.publicationStateChanged, false)
+    const finalCondition = v1Condition.currentContent.finalConditionConfirmation
+    assert.ok(finalCondition?.lineage.valid)
+    const invalidFinalConfirmation = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'record-v1-final-condition-confirmation', targetType: 'v1-final-condition', targetId: finalCondition.conditionId, exactRevisionKey: finalCondition.exactCurrentRevisionHash, confirmationRevisionKey: finalCondition.confirmationRevisionKey, clinicalAccuracyDecision: 'approved', evidenceSufficiencyDecision: 'acceptable-for-v1', clinicalCompletenessDecision: 'acceptable-for-v1', publicationRecommendation: 'recommend-publish', reviewDeclaration: true }) })
+    assert.equal(invalidFinalConfirmation.status, 400)
+    const staleFinalConfirmation = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'record-v1-final-condition-confirmation', targetType: 'v1-final-condition', targetId: finalCondition.conditionId, exactRevisionKey: 'sha256:stale', confirmationRevisionKey: finalCondition.confirmationRevisionKey, clinicalAccuracyDecision: 'acceptable-for-v1', evidenceSufficiencyDecision: 'acceptable-for-v1', clinicalCompletenessDecision: 'future-expansion-non-blocking', publicationRecommendation: 'recommend-publish', reviewDeclaration: true }) })
+    assert.equal(staleFinalConfirmation.status, 409)
+    const finalConfirmationResponse = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'record-v1-final-condition-confirmation', targetType: 'v1-final-condition', targetId: finalCondition.conditionId, exactRevisionKey: finalCondition.exactCurrentRevisionHash, confirmationRevisionKey: finalCondition.confirmationRevisionKey, clinicalAccuracyDecision: 'acceptable-for-v1', evidenceSufficiencyDecision: 'acceptable-for-v1', clinicalCompletenessDecision: 'future-expansion-non-blocking', publicationRecommendation: 'recommend-publish', note: 'Synthetic final confirmation only', reviewDeclaration: true }) })
+    assert.equal(finalConfirmationResponse.status, 201)
+    const finalConfirmationBody = await finalConfirmationResponse.json()
+    assert.equal(finalConfirmationBody.finalHumanConditionConfirmationComplete, true)
+    assert.equal(finalConfirmationBody.clinicalApprovalGranted, false)
+    assert.equal(finalConfirmationBody.evidenceApprovalGranted, false)
+    assert.equal(finalConfirmationBody.grantsApproval, false)
+    assert.equal(finalConfirmationBody.publicationAuthorized, false)
+    assert.equal(finalConfirmationBody.publicationStateChanged, false)
+    const ownerDecisionDashboard = await request('/api/dashboard', { headers: { Cookie: cookie } })
+    const ownerDecisionDashboardBody = await ownerDecisionDashboard.json()
+    const recordedOwnerDecision = ownerDecisionDashboardBody.v1PublicationReview.finalConditionConfirmation.conditions.find((condition) => condition.conditionId === finalCondition.conditionId).ownerDecision
+    assert.deepEqual({
+      clinicalAccuracy: recordedOwnerDecision.clinicalAccuracy,
+      evidenceSufficiency: recordedOwnerDecision.evidenceSufficiency,
+      clinicalCompleteness: recordedOwnerDecision.clinicalCompleteness,
+      publicationRecommendation: recordedOwnerDecision.publicationRecommendation,
+      grantsApproval: recordedOwnerDecision.grantsApproval,
+      publicationAuthorized: recordedOwnerDecision.publicationAuthorized,
+    }, {
+      clinicalAccuracy: 'acceptable-for-v1',
+      evidenceSufficiency: 'acceptable-for-v1',
+      clinicalCompleteness: 'future-expansion-non-blocking',
+      publicationRecommendation: 'recommend-publish',
+      grantsApproval: false,
+      publicationAuthorized: false,
+    })
+    const canonicalClaim = v1Condition.currentContent.v1PublicationReview.clinicalEvidenceAudit.canonicalClaims[0]
+    const invalidClaimReview = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'record-v1-claim-review', targetType: 'canonical-claim', targetId: canonicalClaim.id, exactRevisionKey: canonicalClaim.revisionHash, evidenceRelationshipDecision: 'approved', clinicalWordingDecision: 'accept-as-written', reviewDeclaration: true }) })
+    assert.equal(invalidClaimReview.status, 400)
+    const staleClaimReview = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'record-v1-claim-review', targetType: 'canonical-claim', targetId: canonicalClaim.id, exactRevisionKey: 'sha256:stale', evidenceRelationshipDecision: 'partial-support', clinicalWordingDecision: 'soften-wording', reviewDeclaration: true }) })
+    assert.equal(staleClaimReview.status, 409)
+    const claimReview = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'record-v1-claim-review', targetType: 'canonical-claim', targetId: canonicalClaim.id, exactRevisionKey: canonicalClaim.revisionHash, evidenceRelationshipDecision: 'partial-support', clinicalWordingDecision: 'soften-wording', note: 'Synthetic canonical claim recommendation', reviewDeclaration: true }) })
+    assert.equal(claimReview.status, 201)
+    const claimReviewBody = await claimReview.json()
+    assert.equal(claimReviewBody.humanEvidenceReviewComplete, true)
+    assert.equal(claimReviewBody.grantsApproval, false)
+    assert.equal(claimReviewBody.publicationAuthorized, false)
     const missingDeclaration = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'mark-review-complete', targetType: 'content-item', targetId: contentItem.id, exactRevisionKey: contentItem.revisionHash, note: 'Synthetic completed review' }) })
     assert.equal(missingDeclaration.status, 400)
     const completion = await request('/api/actions', { method: 'POST', headers: { Cookie: cookie, 'X-CSRF-Token': loginBody.csrf, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'mark-review-complete', targetType: 'content-item', targetId: contentItem.id, exactRevisionKey: contentItem.revisionHash, note: 'Synthetic completed review', reviewDeclaration: true }) })
@@ -326,7 +466,14 @@ try {
   const portalApp = fs.readFileSync(path.join(repositoryRoot, 'ai-manager', 'private-review-portal', 'static', 'app.js'), 'utf8')
   assert.match(portalHtml, /capture="environment"/)
   assert.match(portalHtml, /MSK Content Review Studio/)
-  for (const actionType of ['add-note', 'create-human-review-task', 'mark-review-complete', 'submit-integration-proposal']) assert.match(portalApp, new RegExp(`['"]${actionType}['"]`))
+  assert.match(portalHtml, /v1-condition-summary-table/)
+  assert.match(portalHtml, /Condition recommendations and owner decisions/)
+  assert.match(portalApp, /Publication-minimum evidence/)
+  assert.match(portalApp, /alternative evidence needed/)
+  for (const clinicianFirstLabel of ['Independent reviewer recommendation', 'Clinical accuracy', 'Evidence sufficiency', 'Clinical completeness', 'Publication recommendation', 'Owner decision', 'Technical \/ audit details']) assert.match(portalApp, new RegExp(clinicianFirstLabel))
+  for (const readableStatus of ['✓ Accept V1', '⚠ Changes required', '⛔ Blocked', '↗ Future expansion', '✓ Recommend publish', '⏸ Recommend hold']) assert.match(portalApp, new RegExp(readableStatus))
+  assert.doesNotMatch(portalApp, /I reviewed exact condition revision \$\{/)
+  for (const actionType of ['add-note', 'create-human-review-task', 'mark-review-complete', 'submit-integration-proposal', 'record-v1-publication-review', 'record-v1-claim-review', 'record-v1-final-condition-confirmation']) assert.match(portalApp, new RegExp(`['"]${actionType}['"]`))
   for (const prohibitedAction of ['accept-proposal', 'reject-proposal', 'defer-proposal', 'mark-superseded', 'archive', 'approve-content', 'publish-content', 'change-publication-state']) assert.doesNotMatch(portalApp, new RegExp(`['"]${prohibitedAction}['"]`))
   assert.doesNotMatch(portalApp, /mock-region/)
   assert.doesNotMatch(portalApp, /candidate-movement\.synthetic|region\s*===\s*['"](?:shoulder|hip)['"]/)

@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "automatedStatus": "PASS",
+  "automatedEvidence": [
+    "npm run check:accessibility",
+    "npm run test:learner-export-audit",
+    "npm run preflight"
+  ],
+  "conformanceClaimed": false,
+  "manualChecks": [
+    {
+      "check": "keyboard-only-navigation",
+      "procedure": "Use Tab, Shift+Tab, Enter, Space and arrow keys across navigation, Search and one case; no keyboard trap.",
+      "status": "NOT_TESTED",
+      "allowed": [
+        "PASS",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ],
+      "notes": ""
+    },
+    {
+      "check": "focus-order",
+      "procedure": "Confirm focus follows the visual and semantic reading order on home, a condition and a case.",
+      "status": "NOT_TESTED",
+      "allowed": [
+        "PASS",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ],
+      "notes": ""
+    },
+    {
+      "check": "visible-focus",
+      "procedure": "Confirm every interactive element has a clearly visible focus indicator in both themes.",
+      "status": "NOT_TESTED",
+      "allowed": [
+        "PASS",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ],
+      "notes": ""
+    },
+    {
+      "check": "skip-navigation",
+      "procedure": "From a fresh page load, activate Skip to content and confirm focus lands at main content.",
+      "status": "NOT_TESTED",
+      "allowed": [
+        "PASS",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ],
+      "notes": ""
+    },
+    {
+      "check": "screen-reader-heading-and-landmark-sanity",
+      "procedure": "Inspect landmarks and heading hierarchy on home, one condition and one case.",
+      "status": "NOT_TESTED",
+      "allowed": [
+        "PASS",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ],
+      "notes": ""
+    },
+    {
+      "check": "accessible-control-names",
+      "procedure": "Confirm icon buttons, Search, menus, case tabs and form controls expose meaningful names.",
+      "status": "NOT_TESTED",
+      "allowed": [
+        "PASS",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ],
+      "notes": ""
+    },
+    {
+      "check": "case-mode-announcements",
+      "procedure": "Switch Guided, Conversation and Hybrid; confirm selected state and response updates are announced.",
+      "status": "NOT_TESTED",
+      "allowed": [
+        "PASS",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ],
+      "notes": ""
+    },
+    {
+      "check": "search-announcements",
+      "procedure": "Run Quick Find and full Search; confirm result count and status changes are announced.",
+      "status": "NOT_TESTED",
+      "allowed": [
+        "PASS",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ],
+      "notes": ""
+    },
+    {
+      "check": "200-percent-zoom",
+      "procedure": "At 200% zoom, confirm controls and content remain available without loss.",
+      "status": "NOT_TESTED",
+      "allowed": [
+        "PASS",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ],
+      "notes": ""
+    },
+    {
+      "check": "text-reflow",
+      "procedure": "At a 320 CSS-pixel equivalent width, confirm text reflows without two-dimensional scrolling.",
+      "status": "NOT_TESTED",
+      "allowed": [
+        "PASS",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ],
+      "notes": ""
+    },
+    {
+      "check": "mobile-orientation",
+      "procedure": "Check portrait and landscape on the 390px sample; content and controls remain usable.",
+      "status": "NOT_TESTED",
+      "allowed": [
+        "PASS",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ],
+      "notes": ""
+    },
+    {
+      "check": "reduced-motion",
+      "procedure": "Enable reduced motion and confirm non-essential transitions/animations are suppressed.",
+      "status": "NOT_TESTED",
+      "allowed": [
+        "PASS",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ],
+      "notes": ""
+    },
+    {
+      "check": "visual-contrast-confirmation",
+      "procedure": "Visually confirm text, controls, focus indicators and status messaging in light and dark themes.",
+      "status": "NOT_TESTED",
+      "allowed": [
+        "PASS",
+        "FAIL",
+        "NOT_APPLICABLE",
+        "NOT_TESTED"
+      ],
+      "notes": ""
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "caseId": "case.cervical.case-01",
+      "region": "cervical",
+      "title": "Neck and arm symptoms",
+      "lifecycleState": "published",
+      "publicationEligibility": true,
+      "clinicalReviewStatus": "baseline-reviewed",
+      "evidenceReviewStatus": "baseline-preserved",
+      "sourceClearanceStatus": "baseline-public-content",
+      "unresolvedEvidenceHubRelationships": 1,
+      "classification": "migration/follow-up",
+      "basis": "The governed published record is baseline-reviewed/baseline-preserved, retains its baseline source material, has no unresolved issue, and no existing rule makes Evidence Hub migration a Version 1 publication prerequisite.",
+      "humanDecisionNeeded": false
+    },
+    {
+      "caseId": "case.cervical.case-02",
+      "region": "cervical",
+      "title": "Hand clumsiness and heavy legs",
+      "lifecycleState": "published",
+      "publicationEligibility": true,
+      "clinicalReviewStatus": "baseline-reviewed",
+      "evidenceReviewStatus": "baseline-preserved",
+      "sourceClearanceStatus": "baseline-public-content",
+      "unresolvedEvidenceHubRelationships": 1,
+      "classification": "migration/follow-up",
+      "basis": "The governed published record is baseline-reviewed/baseline-preserved, retains its baseline source material, has no unresolved issue, and no existing rule makes Evidence Hub migration a Version 1 publication prerequisite.",
+      "humanDecisionNeeded": false
+    },
+    {
+      "caseId": "case.elbow.case-03",
+      "region": "elbow",
+      "title": "Sudden anterior elbow pain after lifting",
+      "lifecycleState": "published",
+      "publicationEligibility": true,
+      "clinicalReviewStatus": "baseline-reviewed",
+      "evidenceReviewStatus": "baseline-preserved",
+      "sourceClearanceStatus": "baseline-public-content",
+      "unresolvedEvidenceHubRelationships": 1,
+      "classification": "migration/follow-up",
+      "basis": "The governed published record is baseline-reviewed/baseline-preserved, retains its baseline source material, has no unresolved issue, and no existing rule makes Evidence Hub migration a Version 1 publication prerequisite.",
+      "humanDecisionNeeded": false
+    },
+    {
+      "caseId": "case.shoulder.case-04",
+      "region": "shoulder",
+      "title": "Lateral shoulder pain with overhead activity",
+      "lifecycleState": "published",
+      "publicationEligibility": true,
+      "clinicalReviewStatus": "baseline-reviewed",
+      "evidenceReviewStatus": "baseline-preserved",
+      "sourceClearanceStatus": "baseline-public-content",
+      "unresolvedEvidenceHubRelationships": 1,
+      "classification": "migration/follow-up",
+      "basis": "The governed published record is baseline-reviewed/baseline-preserved, retains its baseline source material, has no unresolved issue, and no existing rule makes Evidence Hub migration a Version 1 publication prerequisite.",
+      "humanDecisionNeeded": false
+    },
+    {
+      "caseId": "case.shoulder.case-05",
+      "region": "shoulder",
+      "title": "Progressive shoulder stiffness",
+      "lifecycleState": "published",
+      "publicationEligibility": true,
+      "clinicalReviewStatus": "baseline-reviewed",
+      "evidenceReviewStatus": "baseline-preserved",
+      "sourceClearanceStatus": "baseline-public-content",
+      "unresolvedEvidenceHubRelationships": 1,
+      "classification": "migration/follow-up",
+      "basis": "The governed published record is baseline-reviewed/baseline-preserved, retains its baseline source material, has no unresolved issue, and no existing rule makes Evidence Hub migration a Version 1 publication prerequisite.",
+      "humanDecisionNeeded": false
+    }
+  ],
+  "summary": {
+    "cases": 5,
+    "publicationBlockers": 0,
+    "migrationFollowUp": 5
+  },
+  "grantsApproval": false
+}

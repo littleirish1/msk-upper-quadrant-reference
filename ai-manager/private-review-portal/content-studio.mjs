@@ -3,6 +3,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { normalizeAnatomyCandidateLedger } from './anatomy-candidate-pipeline.mjs'
+import { createV1PublicationReviewAdapter } from './v1-publication-review.mjs'
 
 const portalDirectory = path.dirname(fileURLToPath(import.meta.url))
 const defaultConfigPath = path.join(portalDirectory, 'content-studio-config.json')
@@ -73,11 +74,6 @@ function makeItem(input) {
 
 export const createRegistryItem = makeItem
 
-function frontmatterValue(source, name) {
-  const match = source.match(new RegExp(`^${name}:\\s*["']?([^\\r\\n"']+)["']?\\s*$`, 'm'))
-  return match?.[1]?.trim() ?? null
-}
-
 function taskIndex(workspace) {
   const index = new Map()
   for (const task of workspace.reviewTasks ?? []) {
@@ -134,31 +130,6 @@ export function createShoulderAdapter() {
           currentContent: record,
           learnerPreview: route ? { route, label: 'Open existing learner case' } : null,
           missingFields: [record.unresolvedEvidenceGapCount ? 'evidence gaps' : null],
-        }))
-      }
-
-      const conditionDirectory = path.join(repositoryRoot, 'content', region)
-      for (const filename of fs.readdirSync(conditionDirectory).filter((name) => name.endsWith('.mdx')).sort()) {
-        const relativePath = `content/${region}/${filename}`
-        const source = fs.readFileSync(path.join(conditionDirectory, filename), 'utf8')
-        const slug = filename.slice(0, -4)
-        const title = frontmatterValue(source, 'title') ?? slug
-        items.push(makeItem({
-          id: `condition.${region}.${slug}`,
-          region,
-          contentType: 'conditions',
-          title,
-          lifecycle: 'published',
-          publicationState: 'published',
-          clinicalReview: 'baseline-public-content',
-          evidenceReview: frontmatterValue(source, 'evidence_level') ?? 'not-recorded',
-          accessibilityReview: 'not-recorded',
-          licensingReview: 'baseline-public-content',
-          sourceLinks: [relativePath],
-          revisionHash: hashValue(source),
-          currentContent: { repositoryPath: relativePath, frontmatter: { title, region: frontmatterValue(source, 'region'), category: frontmatterValue(source, 'category'), lastUpdated: frontmatterValue(source, 'lastUpdated'), evidenceLevel: frontmatterValue(source, 'evidence_level') } },
-          learnerPreview: { route: `/${region}/${slug}`, label: 'Open existing learner condition' },
-          missingFields: [],
         }))
       }
 
@@ -293,7 +264,7 @@ function loadExtraMaterials(store) {
   }))
 }
 
-export function loadContentRegistry({ repositoryRoot, store, adapters = [createShoulderAdapter(), createAnatomy3dSourceCandidateAdapter()], config = loadStudioConfig() }) {
+export function loadContentRegistry({ repositoryRoot, store, adapters = [createV1PublicationReviewAdapter(makeItem), createShoulderAdapter(), createAnatomy3dSourceCandidateAdapter()], config = loadStudioConfig() }) {
   const allowedRegions = new Set(config.regions.map((region) => region.id))
   const allowedTypes = new Set(config.contentTypes)
   const items = [...adapters.flatMap((adapter) => adapter.load({ repositoryRoot, store, config })), ...loadExtraMaterials(store)]

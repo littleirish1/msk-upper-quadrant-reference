@@ -1,0 +1,1177 @@
+{
+  "schemaVersion": 1,
+  "exactRevision": [
+    "sha256:0048b26236fd4e9a403103c6dee01df2bb24a0c9cb74b8a04b836f908368b7d7",
+    "sha256:0fc77f1acf8d3dfa0910fa7e9f51103795a4d6ce131431b5a1181978fd0afab4",
+    "sha256:18e9dd6f2c714eafd3d6955d3d15401a44c3845bf6954f3fe726e5282886cfcf",
+    "sha256:23fe2c9ab028fbe7e0d5d5374e6827054d57d5fed53975673f96b00081da5b8c",
+    "sha256:522d1f1729dbaff151e1b0730331b3a09faf784614804be8d20bc8f419da749e",
+    "sha256:73511c65eb274dfbb91486cf3f62ac5bdab683e835d30cf6a99d906a2f98a45d",
+    "sha256:826787a59efa0c450e573357f82880a9830fdd01aec1758171df23b83b12b1cd",
+    "sha256:966f98c446c7b468bac3e712e30093589ad0da46dc17046bcd121917d17ea888",
+    "sha256:a02663bc7bdd98b919afdbe25604d6287b5086315bba8e26d031d16fb6030335",
+    "sha256:ab3e795718abee523af3ca0b7e7190a4414c23090ca1229fa4d60523e97eefb6",
+    "sha256:b6034edf1cf58be8e24481e4bf0f4cb85fcd229438cb3f0ab1130a4b18505c6d",
+    "sha256:b842bd4a9044395a964116443113d37263bb4902fbe668ffe917a34770270a82",
+    "sha256:bb8095bd676a1469490b6233c05e7d0aa185a64d5885fca935b13997826246d5",
+    "sha256:cd65f84a571263b6a431b1863eef42bf9c371c42f9e950c1f771f598de8338b9",
+    "sha256:ddebea52c398e008ec55074690dfc6174e9236b4b0bebefb31cea0737be3c181",
+    "sha256:e73d3c39edd54f72256cb6d47934d6ec530ffbee7a146f845bf95e7a89de47d4",
+    "sha256:eb1207474b08ad1555fc074bc4568eafafd980b341f574ee4561993e71f7225c",
+    "sha256:ec93fed92a4e1050fed624c6f2185bc9563dd4a037b9889e98c000508f2c63d9",
+    "sha256:edf4fdaf6212e21c8510e9a9329377ad042418573bcf4c3bd4b150da2aff65b4",
+    "sha256:fd6e2e6aa950ec7c3d5d93657a9d30d5ff0723a9c15da38be417494a185e739b"
+  ],
+  "localBaseUrl": "http://127.0.0.1:3000/msk-upper-quadrant-reference",
+  "routeCatalogue": {
+    "home": "http://127.0.0.1:3000/msk-upper-quadrant-reference/",
+    "search": "http://127.0.0.1:3000/msk-upper-quadrant-reference/search/",
+    "cervicalLanding": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cervical/",
+    "cervicalCondition": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cervical/cervical-radiculopathy/",
+    "cervicalCase": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cases/cervical/case-01-neck-arm-symptoms/",
+    "shoulderLanding": "http://127.0.0.1:3000/msk-upper-quadrant-reference/shoulder/",
+    "shoulderCondition": "http://127.0.0.1:3000/msk-upper-quadrant-reference/shoulder/adhesive-capsulitis/",
+    "shoulderCase": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cases/shoulder/case-05-progressive-shoulder-stiffness/",
+    "elbowLanding": "http://127.0.0.1:3000/msk-upper-quadrant-reference/elbow/",
+    "elbowCondition": "http://127.0.0.1:3000/msk-upper-quadrant-reference/elbow/lateral-epicondylalgia/",
+    "elbowCase": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cases/elbow/case-03-sudden-anterior-elbow-pain-after-lifting/"
+  },
+  "viewportThemeMatrix": [
+    {
+      "viewport": "1440x900",
+      "theme": "light",
+      "routes": [
+        {
+          "name": "home",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/"
+        },
+        {
+          "name": "cervicalLanding",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cervical/"
+        },
+        {
+          "name": "cervicalCondition",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cervical/cervical-radiculopathy/"
+        },
+        {
+          "name": "cervicalCase",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cases/cervical/case-01-neck-arm-symptoms/"
+        }
+      ],
+      "checks": [
+        {
+          "check": "header-and-global-navigation",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "mobile-menu",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "breadcrumbs",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "cards-and-buttons",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "headings-and-links",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "images",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "accordions",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "case-tabs-and-modes",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "reveal-interactions",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "search",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "scrolling-and-horizontal-overflow",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "sticky-or-fixed-overlap",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "touch-targets",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "focus-visibility",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "console-errors",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "viewport": "1440x900",
+      "theme": "dark",
+      "routes": [
+        {
+          "name": "search",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/search/"
+        },
+        {
+          "name": "shoulderLanding",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/shoulder/"
+        },
+        {
+          "name": "shoulderCondition",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/shoulder/adhesive-capsulitis/"
+        },
+        {
+          "name": "shoulderCase",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cases/shoulder/case-05-progressive-shoulder-stiffness/"
+        }
+      ],
+      "checks": [
+        {
+          "check": "header-and-global-navigation",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "mobile-menu",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "breadcrumbs",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "cards-and-buttons",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "headings-and-links",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "images",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "accordions",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "case-tabs-and-modes",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "reveal-interactions",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "search",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "scrolling-and-horizontal-overflow",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "sticky-or-fixed-overlap",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "touch-targets",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "focus-visibility",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "console-errors",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "viewport": "768x1024",
+      "theme": "light",
+      "routes": [
+        {
+          "name": "home",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/"
+        },
+        {
+          "name": "elbowLanding",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/elbow/"
+        },
+        {
+          "name": "elbowCondition",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/elbow/lateral-epicondylalgia/"
+        },
+        {
+          "name": "elbowCase",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cases/elbow/case-03-sudden-anterior-elbow-pain-after-lifting/"
+        }
+      ],
+      "checks": [
+        {
+          "check": "header-and-global-navigation",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "mobile-menu",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "breadcrumbs",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "cards-and-buttons",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "headings-and-links",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "images",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "accordions",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "case-tabs-and-modes",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "reveal-interactions",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "search",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "scrolling-and-horizontal-overflow",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "sticky-or-fixed-overlap",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "touch-targets",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "focus-visibility",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "console-errors",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "viewport": "768x1024",
+      "theme": "dark",
+      "routes": [
+        {
+          "name": "search",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/search/"
+        },
+        {
+          "name": "cervicalCondition",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cervical/cervical-radiculopathy/"
+        },
+        {
+          "name": "shoulderCondition",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/shoulder/adhesive-capsulitis/"
+        },
+        {
+          "name": "elbowCondition",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/elbow/lateral-epicondylalgia/"
+        }
+      ],
+      "checks": [
+        {
+          "check": "header-and-global-navigation",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "mobile-menu",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "breadcrumbs",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "cards-and-buttons",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "headings-and-links",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "images",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "accordions",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "case-tabs-and-modes",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "reveal-interactions",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "search",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "scrolling-and-horizontal-overflow",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "sticky-or-fixed-overlap",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "touch-targets",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "focus-visibility",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "console-errors",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "viewport": "390x844",
+      "theme": "light",
+      "routes": [
+        {
+          "name": "home",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/"
+        },
+        {
+          "name": "search",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/search/"
+        },
+        {
+          "name": "cervicalCase",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cases/cervical/case-01-neck-arm-symptoms/"
+        },
+        {
+          "name": "shoulderCase",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cases/shoulder/case-05-progressive-shoulder-stiffness/"
+        }
+      ],
+      "checks": [
+        {
+          "check": "header-and-global-navigation",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "mobile-menu",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "breadcrumbs",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "cards-and-buttons",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "headings-and-links",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "images",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "accordions",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "case-tabs-and-modes",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "reveal-interactions",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "search",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "scrolling-and-horizontal-overflow",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "sticky-or-fixed-overlap",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "touch-targets",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "focus-visibility",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "console-errors",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "viewport": "390x844",
+      "theme": "dark",
+      "routes": [
+        {
+          "name": "cervicalLanding",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cervical/"
+        },
+        {
+          "name": "shoulderLanding",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/shoulder/"
+        },
+        {
+          "name": "elbowLanding",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/elbow/"
+        },
+        {
+          "name": "elbowCase",
+          "url": "http://127.0.0.1:3000/msk-upper-quadrant-reference/cases/elbow/case-03-sudden-anterior-elbow-pain-after-lifting/"
+        }
+      ],
+      "checks": [
+        {
+          "check": "header-and-global-navigation",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "mobile-menu",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "breadcrumbs",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "cards-and-buttons",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "headings-and-links",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "images",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "accordions",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "case-tabs-and-modes",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "reveal-interactions",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "search",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "scrolling-and-horizontal-overflow",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "sticky-or-fixed-overlap",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "touch-targets",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "focus-visibility",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        },
+        {
+          "check": "console-errors",
+          "status": "NOT_TESTED",
+          "allowed": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE",
+            "NOT_TESTED"
+          ],
+          "notes": ""
+        }
+      ]
+    }
+  ],
+  "optimisationBasis": "Each of the 11 representative pages is reviewed at least once; shared layouts are sampled across all six viewport/theme combinations instead of repeating all pages 66 times.",
+  "completionAuthority": "human-exact-build-browser-review"
+}
