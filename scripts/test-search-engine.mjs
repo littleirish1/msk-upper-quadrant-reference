@@ -202,6 +202,9 @@ run('search index URL respects the configured route base path', () => {
     '/msk-upper-quadrant-reference/search-index.json',
   )
   assert.equal(resolveSearchIndexUrl('/search/'), '/search-index.json')
+  assert.equal(resolveSearchIndexUrl('/msk-upper-quadrant-reference/'), '/msk-upper-quadrant-reference/search-index.json')
+  assert.equal(resolveSearchIndexUrl('/msk-upper-quadrant-reference/cervical/'), '/msk-upper-quadrant-reference/search-index.json')
+  assert.equal(resolveSearchIndexUrl('/msk-upper-quadrant-reference/cases/shoulder/example/'), '/msk-upper-quadrant-reference/search-index.json')
 })
 
 console.log(`Search engine tests passed. Deterministic assertions: ${checks}.`)

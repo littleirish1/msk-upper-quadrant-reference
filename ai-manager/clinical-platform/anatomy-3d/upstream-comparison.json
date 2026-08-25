@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "authority": "private-anatomy-3d-upstream-comparison",
+  "privateAuthoringOnly": true,
+  "grantsApproval": false,
+  "comparisonMethod": "relative-path, byte-size and SHA-256 inventory; cross-archive SHA-256 matching for renamed files",
+  "upstream": {
+    "sourceRepository": "https://github.com/Z-Anatomy/Models-of-human-anatomy",
+    "revision": "98d6780fed69fa56ee43ff5c4f2f0abe2a12c2a4",
+    "archivePath": "Z-Biomechanics.7z",
+    "archiveType": "7z",
+    "bytes": 21644942,
+    "sha256": "0a74b2fa3c47db925b06241fa38c89b0811e58a78ee28ec440cd460e279cf22b",
+    "gitBlobSha1": "0a59584deaf21773ffa3acb063f2cd06f3485a98",
+    "gitBlobIdentityVerified": true,
+    "retrievedAtUtc": "2026-08-12T08:01:31.9825632Z",
+    "malwareScan": {
+      "scanner": "Microsoft Defender",
+      "scannerVersion": "4.18.26070.9",
+      "result": "no-threats-detected",
+      "exitCode": 0
+    },
+    "introducedByCommit": "0acd5bdddb2dae2ef1ae44180e11d8a49cd42e8d",
+    "introducedByMessage": "Human biomechanics as a rig\n\nFirst attempt to translate Kapandji's biomechanics into a rig. (WIP)",
+    "wipIsClinicalEvidence": false,
+    "files": [
+      { "path": "Z-Biomechanics/Anatomy-shortcuts.py", "bytes": 301287, "sha256": "92c7e6ec81aa04061493c40cb91b0e887a4d8bad209452b75c7213220f182156" },
+      { "path": "Z-Biomechanics/Anatomy_Bright.xml", "bytes": 47831, "sha256": "be7c634e3f195f7ed253afd0e457936823396bfa72af2c66368557c8e6f87f86" },
+      { "path": "Z-Biomechanics/Anatomy_Dark.xml", "bytes": 47797, "sha256": "7daf14f7225f89d5025dbc6bdb8ec4a99e8ccac1e7b9f208bb82de3296c3f07b" },
+      { "path": "Z-Biomechanics/Startup.blend", "bytes": 138162728, "sha256": "0f7074c408fe789b7c2d652610c6d8c9a542eba37cc52d90aa90148877afd0a9" },
+      { "path": "Z-Biomechanics/__init__.py", "bytes": 61600, "sha256": "bd4df0dd92872bd07d9d883d7c724584b72640a016df8d067fc7c5c3d5d85306" },
+      { "path": "Z-Biomechanics/desktop.ini", "bytes": 244, "sha256": "ae013bff4f3cbf1615c6f760daf1c30c4a77e66d0b8f7f05f3be6a5d27c807be" },
+      { "path": "Z-Biomechanics/splash.png", "bytes": 706133, "sha256": "3ffe1b89130e7164561051fbcebe5ccfcbcdfc1f0be87bdb1d419c54250c27a1" }
+    ]
+  },
+  "localPackage": {
+    "archivePath": "files (2).zip",
+    "archiveType": "zip",
+    "bytes": 15294154,
+    "sha256": "dc190e05e3818543ede0eea0a6f9fe03d327ecf407401b4552ca05fd5451547f",
+    "files": [
+      { "path": "BodyModel3D.tsx", "bytes": 45669, "sha256": "6ff2d9d478c488c56cbb637a0bfe239e760b4f753f62163d1ad8e15e0d894368" },
+      { "path": "README.md", "bytes": 11208, "sha256": "ab041e40b650924bc4f3932997510943f4f41e4fa14cc97d9cc2f09ae17f8269" },
+      { "path": "movements.ts", "bytes": 22031, "sha256": "49bfc3059780d39cdc436ee0ea222d3750c8f7e7e514c633c54b81890dc4d636" },
+      { "path": "msk-muscles.glb", "bytes": 2729556, "sha256": "1566f395036e949da360ed3dd067a025d404a19c6cec15aa4286ad7b6025416c" },
+      { "path": "msk-nerves.glb", "bytes": 903724, "sha256": "2db37838236b237c81b23595cc2ed3bf50f770c27bfd04b90d91af4bba0bc909" },
+      { "path": "msk-rigged-muscles.glb", "bytes": 10503016, "sha256": "2c87f6d7e60981a30db5ebd28e832ca4884259e0934c10d1ddc2f7ed13c496c3" },
+      { "path": "msk-rigged.glb", "bytes": 1859888, "sha256": "4bf59e7fac5d849d62dc96b932c3e80d86de13211ef0da15f5fcb7e252c6fd6f" },
+      { "path": "msk-skeleton.glb", "bytes": 2209456, "sha256": "9ace8006a71317c9520e77f810076f7111fe1363f55fb17df6ee1207c8a745b5" },
+      { "path": "regions.ts", "bytes": 23197, "sha256": "4b2af4fa22f75ea4bd086c52dfcefc217ede5ffd3ad3eba876b0ab67c7ac1ab3" }
+    ]
+  },
+  "result": {
+    "exactPathAndBinaryMatches": [],
+    "renamedBinaryIdenticalMatches": [],
+    "upstreamOnlyPaths": [
+      "Z-Biomechanics/Anatomy-shortcuts.py",
+      "Z-Biomechanics/Anatomy_Bright.xml",
+      "Z-Biomechanics/Anatomy_Dark.xml",
+      "Z-Biomechanics/Startup.blend",
+      "Z-Biomechanics/__init__.py",
+      "Z-Biomechanics/desktop.ini",
+      "Z-Biomechanics/splash.png"
+    ],
+    "localOnlyPaths": [
+      "BodyModel3D.tsx",
+      "README.md",
+      "movements.ts",
+      "msk-muscles.glb",
+      "msk-nerves.glb",
+      "msk-rigged-muscles.glb",
+      "msk-rigged.glb",
+      "msk-skeleton.glb",
+      "regions.ts"
+    ],
+    "startupBlendRecovered": true,
+    "startupGlbRecovered": false,
+    "startupbioGlbRecovered": false,
+    "exportScriptsRecovered": false,
+    "buildScriptsRecovered": false,
+    "exactTransformationCommandsRecovered": false,
+    "exactExportSettingsRecovered": false,
+    "exactToolVersionLockRecovered": false,
+    "standaloneLicenceOrAttributionInEitherArchive": false,
+    "upstreamBlenderHeader": "BLENDER-v300",
+    "localGlbGeneratorMetadata": "glTF-Transform v4.4.1",
+    "localGlbGeneratorMetadataIsTransformationProof": false,
+    "derivativeRelationship": "UNRESOLVED",
+    "reason": "No local file is byte-identical to an upstream file and no input GLB, build/export script, exact command, exact export settings or reproducible input-to-output hash chain was recovered."
+  },
+  "containerRelationships": [
+    { "container": "Z-Biomechanics.7z", "members": 7, "relationship": "exact pinned upstream container" },
+    { "container": "files (2).zip", "members": 9, "relationship": "local candidate container" },
+    { "from": "Z-Biomechanics.7z", "to": "files (2).zip", "relationship": "UNRESOLVED", "exactMemberMatches": 0 }
+  ],
+  "zAnatomyContext": {
+    "exactSharedFiles": [
+      "Anatomy_Bright.xml",
+      "Anatomy_Dark.xml",
+      "__init__.py",
+      "splash.png"
+    ],
+    "startupBlendDiffers": true,
+    "relationshipUse": "project/archive context only; not proof of any local GLB derivative chain"
+  },
+  "movementContext": {
+    "localMovementNodeNames": 26,
+    "literalNamesPresentInUpstreamBlend": 22,
+    "literalNamesAbsentFromUpstreamBlend": ["ELBOW.l", "ELBOW.r", "PRONATION.l", "PRONATION.r"],
+    "runtimeCreatedNamesClaimedByLocalReadme": ["ELBOW.l", "ELBOW.r", "PRONATION.l", "PRONATION.r"],
+    "status": "contextual-correspondence-only",
+    "clinicalEvidence": false,
+    "limitations": "Literal strings inside a Blender binary do not prove joint identity, axes, ranges, transformation correctness or clinical validity."
+  },
+  "publicEligibility": false
+}

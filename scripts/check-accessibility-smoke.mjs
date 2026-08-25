@@ -27,6 +27,8 @@ if (!header.includes('xl:flex') || !header.includes('xl:hidden')) {
   findings.push('desktop navigation is not constrained to the non-wrapping xl layout')
 }
 if (!header.includes('aria-current=')) findings.push('header navigation lacks aria-current')
+if (!header.includes('resolvedTheme') || header.includes("theme === 'dark'")) findings.push('theme toggle does not use the resolved system theme')
+if (!header.includes('themeMounted') || !header.includes('useEffect(() => setThemeMounted(true), [])')) findings.push('theme toggle lacks a hydration-safe mounted state')
 
 const layout = read('src/app/layout.tsx')
 if (!layout.includes('href="#main-content"') || !layout.includes('id="main-content"')) {
@@ -35,6 +37,11 @@ if (!layout.includes('href="#main-content"') || !layout.includes('id="main-conte
 const globalStyles = read('src/app/globals.css')
 if (!globalStyles.includes(':focus-visible') || !globalStyles.includes('outline: 3px solid')) {
   findings.push('global high-contrast keyboard focus indicator is missing')
+}
+
+const mdxComponents = read('src/components/mdx/MDXComponents.tsx')
+if (mdxComponents.includes("'mt-10 mb-4 -mx-4 sm:-mx-6")) {
+  findings.push('condition section banners retain negative margins that create page-level horizontal overflow')
 }
 
 const caseModes = read('src/components/cases/CaseModeExperience.tsx')

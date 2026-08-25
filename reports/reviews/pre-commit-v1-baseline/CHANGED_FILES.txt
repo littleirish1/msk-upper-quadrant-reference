@@ -1,0 +1,127 @@
+Path	Class	Reason
+ai-manager/clinical-platform/anatomy-3d/attribution-template.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+ai-manager/clinical-platform/anatomy-3d/source-candidates.json	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/clinical-platform/anatomy-3d/upstream-comparison.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+ai-manager/clinical-platform/release/v1-release-candidate.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+ai-manager/clinical-platform/reviews/review-ledger.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+ai-manager/clinical-platform/shoulder/evidence-map.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+ai-manager/clinical-platform/shoulder/module-library.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+ai-manager/clinical-platform/shoulder/source-inventory.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+ai-manager/clinical-platform/workspace/snapshot.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+ai-manager/private-review-portal/anatomy-candidate-pipeline.mjs	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/content-studio.mjs	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/domain.mjs	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/README.md	D	Documentation aligned to the implemented governance and learner boundaries.
+ai-manager/private-review-portal/server.mjs	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/static/app.js	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/static/index.html	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/static/styles.css	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/v1-claim-canonicalization.mjs	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/v1-clinical-evidence-audit.mjs	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/v1-critical-review-adoption.mjs	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/v1-final-condition-confirmation.mjs	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/v1-independent-final-recommendations.mjs	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/v1-major-review-adoption.mjs	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/v1-publication-minimum.mjs	A	Intended clinical, private-review, governance-source, or learner implementation.
+ai-manager/private-review-portal/v1-publication-review.mjs	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/cervical/cervical-artery-dysfunction.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/cervical/cervical-myelopathy.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/cervical/cervical-radiculopathy.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/cervical/cervicogenic-headache.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/cervical/mechanical-neck-pain.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/cervical/whiplash-associated-disorders.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/elbow/cubital-tunnel-syndrome.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/elbow/elbow-osteoarthritis.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/elbow/lateral-epicondylalgia.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/elbow/medial-epicondylalgia.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/elbow/olecranon-bursitis.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/elbow/radial-tunnel-syndrome.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/evidence-hub/conditions/condition.shoulder.adhesive-capsulitis.json	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/evidence-hub/conditions/condition.shoulder.rcrsp.json	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/shoulder/acromioclavicular-joint.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/shoulder/adhesive-capsulitis.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/shoulder/calcific-tendinitis.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/shoulder/labral-tears.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/shoulder/rotator-cuff-tear.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/shoulder/rotator-cuff-tendinopathy.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/shoulder/shoulder-instability.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/shoulder/subacromial-pain-syndrome.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/wrist-hand/carpal-tunnel-syndrome.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/wrist-hand/de-quervains-tenosynovitis.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/wrist-hand/dupuytrens-contracture.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/wrist-hand/scaphoid-fracture.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/wrist-hand/tfcc-injury.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/wrist-hand/thumb-cmc-osteoarthritis.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+content/wrist-hand/trigger-finger.mdx	A	Intended clinical, private-review, governance-source, or learner implementation.
+docs/3D_ASSET_PROVENANCE.md	D	Documentation aligned to the implemented governance and learner boundaries.
+docs/GOVERNED_ANATOMY_3D.md	D	Documentation aligned to the implemented governance and learner boundaries.
+docs/MOVEMENT_MODULES.md	D	Documentation aligned to the implemented governance and learner boundaries.
+docs/product/UPPER_QUADRANT_COMPLETION_MATRIX.md	D	Documentation aligned to the implemented governance and learner boundaries.
+package.json	C	Generator, validator, regression test, or npm gate wiring.
+public/search-index.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/clinical-platform/review-packet-index.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/clinical-platform/review-queues.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/governance/project-inventory.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/programmes/upper-quadrant-production.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/cervical-shoulder-elbow-inventory.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/external-link-live-audit.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/learner-export-audit.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/v1-accessibility-checklist.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/v1-baseline-case-assessment.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/v1-browser-qa-observations.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/v1-build-integrity-summary.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/v1-clinical-evidence-audit.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/v1-condition-review-pack.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/V1-CRITICAL-INDEPENDENT-REVIEW-ADOPTION.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/v1-external-link-manual-review.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/V1-FINAL-20-CONDITION-HUMAN-CONFIRMATION.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/V1-FINAL-20-CONDITION-HUMAN-CONFIRMATION.md	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/V1-FINAL-HUMAN-EVIDENCE-DECISIONS.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/V1-FINAL-HUMAN-EVIDENCE-DECISIONS.md	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/v1-governance-migration.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/V1-HUMAN-CLINICAL-EVIDENCE-REVIEW.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/V1-HUMAN-CLINICAL-EVIDENCE-REVIEW.md	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/V1-MAJOR-INDEPENDENT-REVIEW-ADOPTION.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/v1-manual-qa-checklist.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/V1-PRIORITY-A-CLAIM-REVIEW.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/V1-PRIORITY-A-CLAIM-REVIEW.md	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/publication-readiness/v1-publication-scope.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/release/exact-revision-review-matrix.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/release/maintenance-status.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/release/release-candidate-summary.md	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/release/release-candidate.json	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/reviews/pre-commit-v1-baseline/CHANGED_FILES.txt	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/reviews/pre-commit-v1-baseline/COMMIT_PLAN.md	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/reviews/pre-commit-v1-baseline/DIFF_STAT.txt	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/reviews/pre-commit-v1-baseline/STATUS.md	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+reports/reviews/pre-commit-v1-baseline/VALIDATION.txt	B	Deterministic governance, review, inventory, release, or public-safe generated record.
+scripts/apply-v1-critical-independent-review.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/apply-v1-major-independent-review.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/audit-learner-export.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/check-accessibility-smoke.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/check-external-links-live.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/clinical-platform/test-anatomy-3d.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/clinical-platform/test-anatomy-candidates.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/generate-v1-final-condition-confirmation.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/generate-v1-final-human-evidence-decisions.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/generate-v1-human-clinical-evidence-review.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/generate-v1-priority-a-claim-review.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/generate-v1-publication-review.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/private-review-portal/check-public-private-separation.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/private-review-portal/inspect-glb.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/private-review-portal/test-portal.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/test-learner-export-audit.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/test-search-engine.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/test-search-indexing.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/test-v1-clinical-evidence-audit.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/test-v1-critical-independent-review-adoption.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/test-v1-final-condition-confirmation.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/test-v1-final-human-evidence-decisions.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/test-v1-human-clinical-evidence-review.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/test-v1-major-independent-review-adoption.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/test-v1-priority-a-claim-review.mjs	C	Generator, validator, regression test, or npm gate wiring.
+scripts/test-v1-publication-review.mjs	C	Generator, validator, regression test, or npm gate wiring.
+src/components/layout/Header.tsx	A	Intended clinical, private-review, governance-source, or learner implementation.
+src/components/mdx/MDXComponents.tsx	A	Intended clinical, private-review, governance-source, or learner implementation.
+src/lib/search.ts	A	Intended clinical, private-review, governance-source, or learner implementation.
+docs/reviews/current/platform-v2-independent-review/	F	Protected untracked historical review evidence; excluded and not inspected.

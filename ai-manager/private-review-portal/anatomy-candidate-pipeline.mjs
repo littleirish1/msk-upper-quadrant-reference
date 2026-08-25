@@ -2,6 +2,7 @@ import crypto from 'node:crypto'
 
 const SHA256 = /^[a-f0-9]{64}$/
 const REVIEW_DOMAINS = ['provenance', 'licensing', 'anatomy', 'clinical', 'movementVisual', 'accessibility', 'performance', 'publication']
+const PROVENANCE_OUTCOMES = new Set(['PROVEN', 'PARTIALLY PROVEN', 'UNRESOLVED'])
 
 function hashValue(value) {
   return `sha256:${crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex')}`
@@ -50,8 +51,8 @@ function sourcePackageRecords(ledger, configuredRegions) {
     candidateType: candidate.candidateType ?? 'source-package',
     contentType: '3d-assets',
     sourceProject: candidate.sourceProject ?? candidate.title,
-    sourceUrl: candidate.upstream?.repository ?? null,
-    upstreamRevision: candidate.upstream?.commit ?? null,
+    sourceUrl: candidate.sourceUrl ?? candidate.upstream?.repository ?? null,
+    upstreamRevision: candidate.upstreamRevision ?? candidate.upstream?.commit ?? null,
     originalFilename: candidate.archive?.filename ?? null,
     sha256: candidate.archive?.sha256 ?? null,
     parentArchiveSha256: null,
@@ -73,7 +74,16 @@ function derivedAssetRecords(ledger, configuredRegions) {
   return ledger.candidates.flatMap((candidate) => (candidate.artifacts ?? [])
     .filter((artifact) => artifact.kind === 'gltf-binary')
     .map((artifact) => {
-      const lineageExceptions = (artifact.derivedFrom ?? []).flatMap((sourceId) => ledger.candidates.find((entry) => entry.id === sourceId)?.licenceEvidence?.componentLicenceExceptions ?? [])
+      const provenanceOutcome = artifact.provenanceOutcome ?? 'UNRESOLVED'
+      requireCondition(PROVENANCE_OUTCOMES.has(provenanceOutcome), `${artifact.id} has an invalid provenance outcome`)
+      const reproducibleTransformation = artifact.transformationEvidence?.reproducible === true
+        && SHA256.test(artifact.transformationEvidence?.inputSha256 ?? '')
+        && artifact.transformationEvidence?.outputSha256 === artifact.sha256
+      if (provenanceOutcome === 'PROVEN') requireCondition(artifact.exactBinaryMatchToUpstream === true || reproducibleTransformation, `${artifact.id} cannot claim PROVEN provenance without binary identity or a reproducible input-to-output transformation`)
+      requireCondition(artifact.filenameSimilarityEstablishesProvenance !== true, `${artifact.id} cannot use filename similarity as provenance`)
+      const lineageExceptions = [...new Map((artifact.derivedFrom ?? [])
+        .flatMap((sourceId) => ledger.candidates.find((entry) => entry.id === sourceId)?.licenceEvidence?.componentLicenceExceptions ?? [])
+        .map((entry) => [JSON.stringify(entry), entry])).values()]
       return commonRecord({
       id: artifact.id,
       title: artifact.title ?? artifact.filename,
@@ -81,14 +91,17 @@ function derivedAssetRecords(ledger, configuredRegions) {
       contentType: '3d-assets',
       candidateType: 'derived-glb',
       sourceProject: candidate.sourceProject ?? candidate.title,
-      sourceUrl: candidate.upstream?.repository ?? null,
-      upstreamRevision: candidate.upstream?.commit ?? null,
+      sourceUrl: candidate.sourceUrl ?? candidate.upstream?.repository ?? null,
+      upstreamRevision: candidate.upstreamRevision ?? candidate.upstream?.commit ?? null,
       originalFilename: artifact.filename,
+      bytes: artifact.bytes ?? null,
       sha256: artifact.sha256,
       parentArchiveSha256: candidate.archive?.sha256 ?? null,
       derivedFrom: artifact.derivedFrom ?? [candidate.id],
       format: 'glb-2.0',
       nodeCount: artifact.gltf?.nodes ?? null,
+      namedNodeCount: artifact.gltf?.namedNodes ?? null,
+      rootNodeCount: artifact.gltf?.rootNodes ?? null,
       meshCount: artifact.gltf?.meshes ?? null,
       primitiveCount: artifact.gltf?.primitives ?? null,
       materialCount: artifact.gltf?.materials ?? null,
@@ -98,7 +111,12 @@ function derivedAssetRecords(ledger, configuredRegions) {
       sceneCount: artifact.gltf?.scenes ?? null,
       bounds: artifact.gltf?.bounds ?? null,
       externalResourceUris: artifact.gltf?.externalResourceUris ?? [],
+      generatorMetadata: artifact.gltf?.generator ?? null,
       governedAssetSlotIds: artifact.governedAssetSlotIds ?? [],
+      provenanceOutcome,
+      exactBinaryMatchToUpstream: artifact.exactBinaryMatchToUpstream === true,
+      transformationEvidence: artifact.transformationEvidence ?? null,
+      modificationDescription: artifact.modificationDescription ?? null,
       licence: artifact.licence ?? null,
       licenceVersion: artifact.licenceVersion ?? null,
       licenceInheritance: artifact.licenceInheritance ?? 'unverified',
@@ -109,9 +127,18 @@ function derivedAssetRecords(ledger, configuredRegions) {
       shareAlikeRequired: artifact.shareAlikeRequired ?? true,
       modificationDisclosureRequired: artifact.modificationDisclosureRequired ?? true,
       reviews: candidate.reviews,
-      blockers: [...(candidate.blockers ?? []), ...(artifact.blockers ?? []), artifact.licenceInheritance === 'verified-exact-file' ? null : 'exact-file-licence-lineage-required', lineageExceptions.length && artifact.componentLicenceExclusionStatus !== 'verified-excluded' ? 'differently-licensed-component-exclusion-required' : null].filter(Boolean),
+      blockers: [
+        ...(candidate.blockers ?? []),
+        ...(artifact.blockers ?? []),
+        provenanceOutcome === 'PROVEN' ? null : 'exact-derivative-provenance-required',
+        artifact.transformationEvidence ? null : 'transformation-script-or-command-required',
+        artifact.licenceInheritance === 'verified-exact-file' ? null : 'exact-file-licence-lineage-required',
+        artifact.modificationDescription ? null : 'modification-description-required',
+        lineageExceptions.length && artifact.componentLicenceExclusionStatus !== 'verified-excluded' ? 'differently-licensed-component-exclusion-required' : null,
+      ].filter(Boolean),
       missingFields: [...(candidate.missingFields ?? []), ...(artifact.missingFields ?? [])],
-      sourceLinks: [candidate.upstream?.repository, candidate.licenceEvidence?.licenceUrl],
+      sourceLinks: [candidate.upstream?.repository, candidate.licenceEvidence?.licenceUrl, candidate.declaredDerivation?.comparisonLedger, candidate.licenceEvidence?.attributionTemplate],
+      reviewTasks: [...(candidate.reviewTasks ?? []), ...(artifact.reviewTasks ?? [])],
       repositoryAssetPath: null,
       publicEligibility: false,
       grantsApproval: false,
@@ -131,6 +158,8 @@ function movementRecords(ledger, configuredRegions, governedMovementIds) {
     if (movement.existingMovementSlotId) requireCondition(governedMovementIds.has(movement.existingMovementSlotId), `${movement.id} links to unknown governed movement slot ${movement.existingMovementSlotId}`)
     requireCondition(candidate.adoptedMovementData === null, `${movement.id} must not adopt unreviewed movement data`)
     requireCondition(Array.isArray(candidate.claimEvidenceRecordIds) && candidate.claimEvidenceRecordIds.length === 0, `${movement.id} must not claim evidence that is not present`)
+    requireCondition(candidate.wipIsClinicalEvidence === false, `${movement.id} must not treat WIP source metadata as clinical evidence`)
+    requireCondition(candidate.adoptedClinicalClaims === false, `${movement.id} must not adopt unreviewed clinical claims`)
     return commonRecord({
       ...candidate,
       contentType: 'movements',
@@ -145,6 +174,11 @@ function movementRecords(ledger, configuredRegions, governedMovementIds) {
       reviews: movement.reviews ?? ledger.candidateReviewDefaults,
       blockers: [...(movement.blockers ?? []), 'uncited-biomechanical-claims-not-adopted', 'visual-movement-verification-required', 'exact-file-licence-lineage-required'],
       missingFields: [...(movement.missingFields ?? []), 'evidence-linked movement claims', 'visual movement verification', 'exact derivative provenance'],
+      reviewTasks: [
+        'Verify the movement visually against the exact candidate rig.',
+        'Verify joint identity, laterality, pivot and deformation.',
+        'Keep ranges, axes, planes, muscle roles and clinical claims excluded until evidence and human review exist.',
+      ],
       repositoryAssetPath: null,
       publicEligibility: false,
       grantsApproval: false,

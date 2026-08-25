@@ -1,0 +1,131 @@
+Tracked diff from base:
+
+ .../anatomy-3d/source-candidates.json              | 221 +++++++-
+ .../release/v1-release-candidate.json              | 386 +++++++-------
+ .../clinical-platform/reviews/review-ledger.json   | 128 ++---
+ .../clinical-platform/shoulder/evidence-map.json   |  10 +-
+ .../clinical-platform/shoulder/module-library.json | 104 ++--
+ .../shoulder/source-inventory.json                 |  10 +-
+ .../clinical-platform/workspace/snapshot.json      |  62 +--
+ ai-manager/private-review-portal/README.md         |   8 +-
+ .../anatomy-candidate-pipeline.mjs                 |  48 +-
+ .../private-review-portal/content-studio.mjs       |  33 +-
+ ai-manager/private-review-portal/domain.mjs        | 177 +++++++
+ ai-manager/private-review-portal/server.mjs        |  79 ++-
+ ai-manager/private-review-portal/static/app.js     | 494 ++++++++++++++++++
+ ai-manager/private-review-portal/static/index.html |  13 +
+ ai-manager/private-review-portal/static/styles.css |  28 +
+ content/cervical/cervical-artery-dysfunction.mdx   | 149 ++----
+ content/cervical/cervical-myelopathy.mdx           | 103 ++--
+ content/cervical/cervical-radiculopathy.mdx        | 102 +---
+ content/cervical/cervicogenic-headache.mdx         | 217 +++-----
+ content/cervical/mechanical-neck-pain.mdx          |  84 +--
+ content/cervical/whiplash-associated-disorders.mdx |  99 +---
+ content/elbow/cubital-tunnel-syndrome.mdx          | 123 +----
+ content/elbow/elbow-osteoarthritis.mdx             | 104 +---
+ content/elbow/lateral-epicondylalgia.mdx           |  91 +---
+ content/elbow/medial-epicondylalgia.mdx            |  91 +---
+ content/elbow/olecranon-bursitis.mdx               |  76 +--
+ content/elbow/radial-tunnel-syndrome.mdx           |  67 +--
+ .../condition.shoulder.adhesive-capsulitis.json    |   2 +-
+ .../conditions/condition.shoulder.rcrsp.json       |   2 +-
+ content/shoulder/acromioclavicular-joint.mdx       |  69 +--
+ content/shoulder/adhesive-capsulitis.mdx           |  68 +--
+ content/shoulder/calcific-tendinitis.mdx           | 109 +---
+ content/shoulder/labral-tears.mdx                  | 111 ++--
+ content/shoulder/rotator-cuff-tear.mdx             | 118 ++---
+ content/shoulder/rotator-cuff-tendinopathy.mdx     | 130 ++---
+ content/shoulder/shoulder-instability.mdx          | 109 ++--
+ content/shoulder/subacromial-pain-syndrome.mdx     | 125 ++---
+ content/wrist-hand/carpal-tunnel-syndrome.mdx      |   2 -
+ content/wrist-hand/de-quervains-tenosynovitis.mdx  |   2 -
+ content/wrist-hand/dupuytrens-contracture.mdx      |   2 -
+ content/wrist-hand/scaphoid-fracture.mdx           |   2 +-
+ content/wrist-hand/tfcc-injury.mdx                 |   2 -
+ content/wrist-hand/thumb-cmc-osteoarthritis.mdx    |   2 -
+ content/wrist-hand/trigger-finger.mdx              |   2 -
+ docs/3D_ASSET_PROVENANCE.md                        |   7 +-
+ docs/GOVERNED_ANATOMY_3D.md                        |   4 +-
+ docs/MOVEMENT_MODULES.md                           |   2 +-
+ docs/product/UPPER_QUADRANT_COMPLETION_MATRIX.md   |  28 +-
+ package.json                                       |  20 +-
+ public/search-index.json                           | 168 +++---
+ reports/clinical-platform/review-packet-index.json | 192 +++----
+ reports/clinical-platform/review-queues.json       | 576 ++++++++++-----------
+ reports/governance/project-inventory.json          | 176 +++----
+ reports/programmes/upper-quadrant-production.json  |  84 +--
+ reports/release/exact-revision-review-matrix.json  |  54 +-
+ reports/release/maintenance-status.json            |   2 +-
+ reports/release/release-candidate-summary.md       |   2 +-
+ reports/release/release-candidate.json             |   2 +-
+ scripts/check-accessibility-smoke.mjs              |   7 +
+ scripts/clinical-platform/test-anatomy-3d.mjs      |  14 +-
+ .../clinical-platform/test-anatomy-candidates.mjs  |  67 ++-
+ .../check-public-private-separation.mjs            |  15 +
+ scripts/private-review-portal/test-portal.mjs      | 153 +++++-
+ scripts/test-search-engine.mjs                     |   3 +
+ scripts/test-search-indexing.mjs                   |   4 +-
+ src/components/layout/Header.tsx                   |  10 +-
+ src/components/mdx/MDXComponents.tsx               |   2 +-
+ src/lib/search.ts                                  |   7 +-
+ 68 files changed, 2921 insertions(+), 2642 deletions(-)
+
+Untracked files proposed for commit:
+5304 bytes	ai-manager/clinical-platform/anatomy-3d/attribution-template.json
+6229 bytes	ai-manager/clinical-platform/anatomy-3d/upstream-comparison.json
+19800 bytes	ai-manager/private-review-portal/v1-claim-canonicalization.mjs
+21439 bytes	ai-manager/private-review-portal/v1-clinical-evidence-audit.mjs
+3983 bytes	ai-manager/private-review-portal/v1-critical-review-adoption.mjs
+13588 bytes	ai-manager/private-review-portal/v1-final-condition-confirmation.mjs
+4808 bytes	ai-manager/private-review-portal/v1-independent-final-recommendations.mjs
+2913 bytes	ai-manager/private-review-portal/v1-major-review-adoption.mjs
+20442 bytes	ai-manager/private-review-portal/v1-publication-minimum.mjs
+21405 bytes	ai-manager/private-review-portal/v1-publication-review.mjs
+48922 bytes	reports/publication-readiness/V1-CRITICAL-INDEPENDENT-REVIEW-ADOPTION.json
+274315 bytes	reports/publication-readiness/V1-FINAL-20-CONDITION-HUMAN-CONFIRMATION.json
+97896 bytes	reports/publication-readiness/V1-FINAL-20-CONDITION-HUMAN-CONFIRMATION.md
+111046 bytes	reports/publication-readiness/V1-FINAL-HUMAN-EVIDENCE-DECISIONS.json
+4684 bytes	reports/publication-readiness/V1-FINAL-HUMAN-EVIDENCE-DECISIONS.md
+3329944 bytes	reports/publication-readiness/V1-HUMAN-CLINICAL-EVIDENCE-REVIEW.json
+929489 bytes	reports/publication-readiness/V1-HUMAN-CLINICAL-EVIDENCE-REVIEW.md
+26683 bytes	reports/publication-readiness/V1-MAJOR-INDEPENDENT-REVIEW-ADOPTION.json
+805832 bytes	reports/publication-readiness/V1-PRIORITY-A-CLAIM-REVIEW.json
+341899 bytes	reports/publication-readiness/V1-PRIORITY-A-CLAIM-REVIEW.md
+74856 bytes	reports/publication-readiness/cervical-shoulder-elbow-inventory.json
+18249 bytes	reports/publication-readiness/external-link-live-audit.json
+50652 bytes	reports/publication-readiness/learner-export-audit.json
+4381 bytes	reports/publication-readiness/v1-accessibility-checklist.json
+3851 bytes	reports/publication-readiness/v1-baseline-case-assessment.json
+2594 bytes	reports/publication-readiness/v1-browser-qa-observations.json
+922 bytes	reports/publication-readiness/v1-build-integrity-summary.json
+2956716 bytes	reports/publication-readiness/v1-clinical-evidence-audit.json
+4545936 bytes	reports/publication-readiness/v1-condition-review-pack.json
+2149 bytes	reports/publication-readiness/v1-external-link-manual-review.json
+12783 bytes	reports/publication-readiness/v1-governance-migration.json
+29653 bytes	reports/publication-readiness/v1-manual-qa-checklist.json
+913 bytes	reports/publication-readiness/v1-publication-scope.json
+5838 bytes	reports/reviews/pre-commit-v1-baseline/COMMIT_PLAN.md
+1150 bytes	reports/reviews/pre-commit-v1-baseline/STATUS.md
+1725 bytes	reports/reviews/pre-commit-v1-baseline/VALIDATION.txt
+43440 bytes	scripts/apply-v1-critical-independent-review.mjs
+22709 bytes	scripts/apply-v1-major-independent-review.mjs
+25478 bytes	scripts/audit-learner-export.mjs
+2209 bytes	scripts/check-external-links-live.mjs
+9351 bytes	scripts/generate-v1-final-condition-confirmation.mjs
+13021 bytes	scripts/generate-v1-final-human-evidence-decisions.mjs
+24806 bytes	scripts/generate-v1-human-clinical-evidence-review.mjs
+6264 bytes	scripts/generate-v1-priority-a-claim-review.mjs
+14036 bytes	scripts/generate-v1-publication-review.mjs
+4856 bytes	scripts/private-review-portal/inspect-glb.mjs
+2329 bytes	scripts/test-learner-export-audit.mjs
+4358 bytes	scripts/test-v1-clinical-evidence-audit.mjs
+3716 bytes	scripts/test-v1-critical-independent-review-adoption.mjs
+5062 bytes	scripts/test-v1-final-condition-confirmation.mjs
+3463 bytes	scripts/test-v1-final-human-evidence-decisions.mjs
+7994 bytes	scripts/test-v1-human-clinical-evidence-review.mjs
+5292 bytes	scripts/test-v1-major-independent-review-adoption.mjs
+5651 bytes	scripts/test-v1-priority-a-claim-review.mjs
+8864 bytes	scripts/test-v1-publication-review.mjs
+
+Protected and excluded:
+docs/reviews/current/platform-v2-independent-review/

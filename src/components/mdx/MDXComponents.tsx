@@ -527,7 +527,7 @@ export const mdxComponents: MDXComponents = {
     const style = getSectionStyle(id)
     return (
       <div className={cn(
-        'mt-10 mb-4 -mx-4 sm:-mx-6 px-4 sm:px-6 pt-6 pb-2',
+        'mt-10 mb-4 mx-0 px-4 sm:px-6 pt-6 pb-2',
         style ? `border-t-2 ${style.border} ${style.bg} rounded-t-lg` : 'border-t border-surface-200 dark:border-surface-700'
       )}>
         <h2 id={id} className="flex items-center gap-2 text-2xl font-semibold text-surface-800 dark:text-surface-100 scroll-mt-20" {...props}>

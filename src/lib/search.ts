@@ -11,13 +11,12 @@ export {
 } from './searchEngine'
 
 let cachedIndexPromise: Promise<SearchIndexEntry[]> | null = null
+const DEPLOYMENT_BASE_PATH = '/msk-upper-quadrant-reference'
 
 export function resolveSearchIndexUrl(pathname: string): string {
   const normalizedPath = pathname.replace(/\/+$/, '')
-  const routeSuffix = '/search'
-  const routeIndex = normalizedPath.lastIndexOf(routeSuffix)
-  const basePath = routeIndex >= 0 && routeIndex + routeSuffix.length === normalizedPath.length
-    ? normalizedPath.slice(0, routeIndex)
+  const basePath = normalizedPath === DEPLOYMENT_BASE_PATH || normalizedPath.startsWith(`${DEPLOYMENT_BASE_PATH}/`)
+    ? DEPLOYMENT_BASE_PATH
     : ''
   return `${basePath}/search-index.json`
 }

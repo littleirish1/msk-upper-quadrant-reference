@@ -174,13 +174,13 @@
   "reviewState": "review-required",
   "schemaVersion": 1,
   "sourceRevisionIds": [
-    "source.repository.shoulder.acromioclavicular-reference@sha256:12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
-    "source.repository.shoulder.adhesive-capsulitis-reference@sha256:d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
+    "source.repository.shoulder.acromioclavicular-reference@sha256:cd65f84a571263b6a431b1863eef42bf9c371c42f9e950c1f771f598de8338b9",
+    "source.repository.shoulder.adhesive-capsulitis-reference@sha256:0048b26236fd4e9a403103c6dee01df2bb24a0c9cb74b8a04b836f908368b7d7",
     "source.repository.shoulder.case-04@sha256:f3104ff96861a3f55709f7f03b3f5707fb0b4fb9c8b354bb89fbac8cb9343361",
     "source.repository.shoulder.case-05@sha256:af4c5da2492a30566f731fa5216863558776f6f8386f2659781f840ff3a890fe",
-    "source.repository.shoulder.cervical-mimic-reference@sha256:2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
-    "source.repository.shoulder.instability-reference@sha256:25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
-    "source.repository.shoulder.rotator-cuff-reference@sha256:32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
+    "source.repository.shoulder.cervical-mimic-reference@sha256:b842bd4a9044395a964116443113d37263bb4902fbe668ffe917a34770270a82",
+    "source.repository.shoulder.instability-reference@sha256:522d1f1729dbaff151e1b0730331b3a09faf784614804be8d20bc8f419da749e",
+    "source.repository.shoulder.rotator-cuff-reference@sha256:eb1207474b08ad1555fc074bc4568eafafd980b341f574ee4561993e71f7225c",
     "src-07f5bc8680f6@sha256:07f5bc8680f66a8a9ceb7e1c53a3c90327df228506284bdda558c2187d737b25",
     "src-09c409d4ae26@sha256:09c409d4ae267d9a7fbb70f72a26ac2b88c8d69649fe8b5dade0cf9ada7d83e9",
     "src-0b5b2e3de9c6@sha256:0b5b2e3de9c6df86edb9ee7e29745758b8cba955eb2a7e4f058ea5fc001aef5c"

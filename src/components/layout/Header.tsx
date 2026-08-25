@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { Activity, Menu, Moon, Search, Sun, X } from 'lucide-react'
 import { useTheme } from 'next-themes'
@@ -19,9 +19,11 @@ const navigation = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const [themeMounted, setThemeMounted] = useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
   const pathname = usePathname()
   const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`)
+  useEffect(() => setThemeMounted(true), [])
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/95 text-white shadow-lg shadow-slate-950/10 backdrop-blur supports-[backdrop-filter]:bg-slate-950/90">
@@ -54,8 +56,8 @@ export function Header() {
             <span className="hidden md:block">Search</span>
             <kbd className="hidden rounded border border-white/15 px-1.5 py-0.5 text-[10px] text-slate-400 md:block">Ctrl K</kbd>
           </Link>
-          <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-300 transition hover:bg-white/10 hover:text-white" aria-label="Toggle dark mode">
-            {theme === 'dark' ? <Sun className="h-5 w-5" aria-hidden /> : <Moon className="h-5 w-5" aria-hidden />}
+          <button onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')} className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-300 transition hover:bg-white/10 hover:text-white" aria-label="Toggle dark mode">
+            {themeMounted && resolvedTheme === 'dark' ? <Sun className="h-5 w-5" aria-hidden /> : <Moon className="h-5 w-5" aria-hidden />}
           </button>
           <button className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-300 transition hover:bg-white/10 xl:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu" aria-expanded={mobileOpen} aria-controls="mobile-primary-navigation">
             {mobileOpen ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}

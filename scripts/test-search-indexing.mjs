@@ -24,11 +24,11 @@ run('MDX module declarations and implementation syntax are excluded', () => {
   assert.match(indexed, /Learner heading Useful learner text\./)
 })
 
-run('cervicogenic search snippet starts with learner content', () => {
+run('cervicogenic search snippet starts with learner content without requiring a duplicate H1', () => {
   const file = path.join(process.cwd(), 'content', 'cervical', 'cervicogenic-headache.mdx')
   const indexed = stripMdxForSearch(fs.readFileSync(file, 'utf8'))
   assert.equal(indexed.includes('@/components/clinical'), false)
-  assert.equal(indexed.startsWith('Cervicogenic Headache'), true)
+  assert.equal(indexed.startsWith('> Clinical Summary: Cervicogenic headache'), true)
 })
 
 run('fenced implementation examples and MDX expressions are excluded', () => {

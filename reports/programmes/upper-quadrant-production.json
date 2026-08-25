@@ -38,11 +38,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 17,
+      "referenceMarkers": 20,
       "region": "cervical",
       "route": "/cervical/cervical-artery-dysfunction",
       "slug": "cervical-artery-dysfunction",
-      "sourceChecksum": "sha256:9a59360ca90cd32b0ada19ba99f59bc2b067fe6f4855368c1cc47607ce074441",
+      "sourceChecksum": "sha256:18e9dd6f2c714eafd3d6955d3d15401a44c3845bf6954f3fe726e5282886cfcf",
       "sourcePath": "content/cervical/cervical-artery-dysfunction.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -83,11 +83,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 17,
+      "referenceMarkers": 18,
       "region": "cervical",
       "route": "/cervical/cervical-myelopathy",
       "slug": "cervical-myelopathy",
-      "sourceChecksum": "sha256:679f060c0279b9b52dc6ec7e4ad28b6024f9cf45dda0cba4129828a97ea19c0c",
+      "sourceChecksum": "sha256:826787a59efa0c450e573357f82880a9830fdd01aec1758171df23b83b12b1cd",
       "sourcePath": "content/cervical/cervical-myelopathy.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -128,11 +128,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 24,
+      "referenceMarkers": 25,
       "region": "cervical",
       "route": "/cervical/cervical-radiculopathy",
       "slug": "cervical-radiculopathy",
-      "sourceChecksum": "sha256:2254946dd8724ef4807fb049ef53b50e2c3fa48dab74355d0c3e09cd27093f60",
+      "sourceChecksum": "sha256:b842bd4a9044395a964116443113d37263bb4902fbe668ffe917a34770270a82",
       "sourcePath": "content/cervical/cervical-radiculopathy.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -173,11 +173,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 33,
+      "referenceMarkers": 31,
       "region": "cervical",
       "route": "/cervical/cervicogenic-headache",
       "slug": "cervicogenic-headache",
-      "sourceChecksum": "sha256:4d7c85dfb98cc608196a20e54bd333e9478995a91a0b1c5a7e4d8cdeafb22c3b",
+      "sourceChecksum": "sha256:e73d3c39edd54f72256cb6d47934d6ec530ffbee7a146f845bf95e7a89de47d4",
       "sourcePath": "content/cervical/cervicogenic-headache.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -218,11 +218,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 28,
+      "referenceMarkers": 27,
       "region": "cervical",
       "route": "/cervical/mechanical-neck-pain",
       "slug": "mechanical-neck-pain",
-      "sourceChecksum": "sha256:8529fcfd869d5f1835dc7ad7556d3b057d4c7e53462356dd5a852a62fd70e387",
+      "sourceChecksum": "sha256:b6034edf1cf58be8e24481e4bf0f4cb85fcd229438cb3f0ab1130a4b18505c6d",
       "sourcePath": "content/cervical/mechanical-neck-pain.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -267,7 +267,7 @@
       "region": "cervical",
       "route": "/cervical/whiplash-associated-disorders",
       "slug": "whiplash-associated-disorders",
-      "sourceChecksum": "sha256:df53ccd9172ca5d55b360a8dee94366984ae983c0b0fb41ab09f82c5253027d4",
+      "sourceChecksum": "sha256:0fc77f1acf8d3dfa0910fa7e9f51103795a4d6ce131431b5a1181978fd0afab4",
       "sourcePath": "content/cervical/whiplash-associated-disorders.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -308,11 +308,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 15,
+      "referenceMarkers": 12,
       "region": "elbow",
       "route": "/elbow/cubital-tunnel-syndrome",
       "slug": "cubital-tunnel-syndrome",
-      "sourceChecksum": "sha256:f496bc6df35ea8edb51307c8a34fac963cbdd578b77b33b4fe94d06ee471497c",
+      "sourceChecksum": "sha256:edf4fdaf6212e21c8510e9a9329377ad042418573bcf4c3bd4b150da2aff65b4",
       "sourcePath": "content/elbow/cubital-tunnel-syndrome.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -358,7 +358,7 @@
       "region": "elbow",
       "route": "/elbow/elbow-osteoarthritis",
       "slug": "elbow-osteoarthritis",
-      "sourceChecksum": "sha256:6dcbc25f4d0f474583747aae03b445c45d2fc8ee0062a2c8983b764ba4572edc",
+      "sourceChecksum": "sha256:a02663bc7bdd98b919afdbe25604d6287b5086315bba8e26d031d16fb6030335",
       "sourcePath": "content/elbow/elbow-osteoarthritis.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -403,7 +403,7 @@
       "region": "elbow",
       "route": "/elbow/lateral-epicondylalgia",
       "slug": "lateral-epicondylalgia",
-      "sourceChecksum": "sha256:d0ad4122fd624b8a71844803484938ebfd6b7deeb50b8c523f4a1cab5f05390b",
+      "sourceChecksum": "sha256:ec93fed92a4e1050fed624c6f2185bc9563dd4a037b9889e98c000508f2c63d9",
       "sourcePath": "content/elbow/lateral-epicondylalgia.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -448,7 +448,7 @@
       "region": "elbow",
       "route": "/elbow/medial-epicondylalgia",
       "slug": "medial-epicondylalgia",
-      "sourceChecksum": "sha256:319cb13323174a317d63dfbc81fb8f2234f134a3b85cc676239346a61a34cc01",
+      "sourceChecksum": "sha256:bb8095bd676a1469490b6233c05e7d0aa185a64d5885fca935b13997826246d5",
       "sourcePath": "content/elbow/medial-epicondylalgia.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -493,7 +493,7 @@
       "region": "elbow",
       "route": "/elbow/olecranon-bursitis",
       "slug": "olecranon-bursitis",
-      "sourceChecksum": "sha256:0d6131f2d5419b64be53a51dd83e2aa97439918901230cb1a5c49d60311c36b6",
+      "sourceChecksum": "sha256:73511c65eb274dfbb91486cf3f62ac5bdab683e835d30cf6a99d906a2f98a45d",
       "sourcePath": "content/elbow/olecranon-bursitis.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -534,11 +534,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 12,
+      "referenceMarkers": 10,
       "region": "elbow",
       "route": "/elbow/radial-tunnel-syndrome",
       "slug": "radial-tunnel-syndrome",
-      "sourceChecksum": "sha256:deeb3beefe643770c2ce244b85630cbe22f47505336590e8ae5d138cc86a96ce",
+      "sourceChecksum": "sha256:966f98c446c7b468bac3e712e30093589ad0da46dc17046bcd121917d17ea888",
       "sourcePath": "content/elbow/radial-tunnel-syndrome.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -583,7 +583,7 @@
       "region": "shoulder",
       "route": "/shoulder/acromioclavicular-joint",
       "slug": "acromioclavicular-joint",
-      "sourceChecksum": "sha256:12658e78c5c256a70b36b31b1a370e0d5773ce42c1c6664f8cc7bfc677a7acae",
+      "sourceChecksum": "sha256:cd65f84a571263b6a431b1863eef42bf9c371c42f9e950c1f771f598de8338b9",
       "sourcePath": "content/shoulder/acromioclavicular-joint.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -624,11 +624,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 18,
+      "referenceMarkers": 16,
       "region": "shoulder",
       "route": "/shoulder/adhesive-capsulitis",
       "slug": "adhesive-capsulitis",
-      "sourceChecksum": "sha256:d9958457b13c3bea80d36cba9258b7ebf5b5db84cb91691a7ceb215297909361",
+      "sourceChecksum": "sha256:0048b26236fd4e9a403103c6dee01df2bb24a0c9cb74b8a04b836f908368b7d7",
       "sourcePath": "content/shoulder/adhesive-capsulitis.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -669,11 +669,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 15,
+      "referenceMarkers": 14,
       "region": "shoulder",
       "route": "/shoulder/calcific-tendinitis",
       "slug": "calcific-tendinitis",
-      "sourceChecksum": "sha256:d3637b454bd018ccb337f99911b2a677aee45f4b5ff330cc36bd53f0f184aeab",
+      "sourceChecksum": "sha256:ddebea52c398e008ec55074690dfc6174e9236b4b0bebefb31cea0737be3c181",
       "sourcePath": "content/shoulder/calcific-tendinitis.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -718,7 +718,7 @@
       "region": "shoulder",
       "route": "/shoulder/labral-tears",
       "slug": "labral-tears",
-      "sourceChecksum": "sha256:9aed97cfb0712c4fad186107a53c9a383d23938b66116ba5d44306bbc0a24071",
+      "sourceChecksum": "sha256:fd6e2e6aa950ec7c3d5d93657a9d30d5ff0723a9c15da38be417494a185e739b",
       "sourcePath": "content/shoulder/labral-tears.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -759,11 +759,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 22,
+      "referenceMarkers": 19,
       "region": "shoulder",
       "route": "/shoulder/rotator-cuff-tear",
       "slug": "rotator-cuff-tear",
-      "sourceChecksum": "sha256:009fc0757ab678a60bdecc2c220c637fecba7e2bb5f0cf0a746b3ef19c6d6007",
+      "sourceChecksum": "sha256:23fe2c9ab028fbe7e0d5d5374e6827054d57d5fed53975673f96b00081da5b8c",
       "sourcePath": "content/shoulder/rotator-cuff-tear.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -804,11 +804,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 27,
+      "referenceMarkers": 24,
       "region": "shoulder",
       "route": "/shoulder/rotator-cuff-tendinopathy",
       "slug": "rotator-cuff-tendinopathy",
-      "sourceChecksum": "sha256:32ed33f801677bc53530926490fdc83391794e5d06dbc5804c24c954f5d82ded",
+      "sourceChecksum": "sha256:eb1207474b08ad1555fc074bc4568eafafd980b341f574ee4561993e71f7225c",
       "sourcePath": "content/shoulder/rotator-cuff-tendinopathy.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -849,11 +849,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 18,
+      "referenceMarkers": 17,
       "region": "shoulder",
       "route": "/shoulder/shoulder-instability",
       "slug": "shoulder-instability",
-      "sourceChecksum": "sha256:25bdfcbd41a4d0dddce92663242107f40167bbde8d59f7fa07795ca2dc2a0769",
+      "sourceChecksum": "sha256:522d1f1729dbaff151e1b0730331b3a09faf784614804be8d20bc8f419da749e",
       "sourcePath": "content/shoulder/shoulder-instability.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -894,11 +894,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 18,
+      "referenceMarkers": 20,
       "region": "shoulder",
       "route": "/shoulder/subacromial-pain-syndrome",
       "slug": "subacromial-pain-syndrome",
-      "sourceChecksum": "sha256:14db2a0a4fbad76dedd14027986cc8cf3c51e83ea08fef079b61a775c243f8f3",
+      "sourceChecksum": "sha256:ab3e795718abee523af3ca0b7e7190a4414c23090ca1229fa4d60523e97eefb6",
       "sourcePath": "content/shoulder/subacromial-pain-syndrome.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -1213,7 +1213,7 @@
       "region": "wrist-hand",
       "route": "/wrist-hand/carpal-tunnel-syndrome",
       "slug": "carpal-tunnel-syndrome",
-      "sourceChecksum": "sha256:04dd3cc8e750275bcde2e199521bb491afc0adce50e394dba53f264269ab021d",
+      "sourceChecksum": "sha256:f547d80aa21b32099016e8bcbe8e8182dccf91b43ea60967ee3cbb3686836b01",
       "sourcePath": "content/wrist-hand/carpal-tunnel-syndrome.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -1258,7 +1258,7 @@
       "region": "wrist-hand",
       "route": "/wrist-hand/de-quervains-tenosynovitis",
       "slug": "de-quervains-tenosynovitis",
-      "sourceChecksum": "sha256:0917c6d02e4c49418e8344b971520e0c7308f0ed4dfdd64f395d76fb17a4e667",
+      "sourceChecksum": "sha256:c8c8798b6b0742b0145983f0445ee326ec8783d643eb97c83898e6619a11f854",
       "sourcePath": "content/wrist-hand/de-quervains-tenosynovitis.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -1303,7 +1303,7 @@
       "region": "wrist-hand",
       "route": "/wrist-hand/dupuytrens-contracture",
       "slug": "dupuytrens-contracture",
-      "sourceChecksum": "sha256:0e0be31bc16f0033fd4f1fcd2f4cbd6fb807856dbe45cf71225d8f359003b072",
+      "sourceChecksum": "sha256:a9ca43083419a1c2e4356574ef7ed4e6a247462ba6fee7eaf838806fcebbd1b9",
       "sourcePath": "content/wrist-hand/dupuytrens-contracture.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -1344,11 +1344,11 @@
         "references"
       ],
       "publicBaselinePreserved": true,
-      "referenceMarkers": 17,
+      "referenceMarkers": 19,
       "region": "wrist-hand",
       "route": "/wrist-hand/scaphoid-fracture",
       "slug": "scaphoid-fracture",
-      "sourceChecksum": "sha256:61b108ee4534873d7a90f2844bb5a49489bb3c7332a2b0ab632a514c27cb3e78",
+      "sourceChecksum": "sha256:d7a1583a9406ffe93e45879f68c2fa5a75688f271229db6079907ec5c764a64c",
       "sourcePath": "content/wrist-hand/scaphoid-fracture.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -1393,7 +1393,7 @@
       "region": "wrist-hand",
       "route": "/wrist-hand/tfcc-injury",
       "slug": "tfcc-injury",
-      "sourceChecksum": "sha256:394e461bb03dc88be23cdadb32f1d3ecb9dbfaf8e1b194456a0754ade17ddd54",
+      "sourceChecksum": "sha256:f03f7ee5fc85ed0cde03e4128c32c06109ce6e9a40e3335b795c35721e10a5aa",
       "sourcePath": "content/wrist-hand/tfcc-injury.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -1438,7 +1438,7 @@
       "region": "wrist-hand",
       "route": "/wrist-hand/thumb-cmc-osteoarthritis",
       "slug": "thumb-cmc-osteoarthritis",
-      "sourceChecksum": "sha256:ba3315eba2ef9f78549360dfe3974dfec758f3fd51bcd0e7dd8518fa5e4e9fa8",
+      "sourceChecksum": "sha256:841ec661b433de49f629dde7c3e3e4c71ca7045ca2baf0b9041f9afaaa61b307",
       "sourcePath": "content/wrist-hand/thumb-cmc-osteoarthritis.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     },
@@ -1483,7 +1483,7 @@
       "region": "wrist-hand",
       "route": "/wrist-hand/trigger-finger",
       "slug": "trigger-finger",
-      "sourceChecksum": "sha256:c34cffd211743b73a684163eba674500717bb67617f359cceb93d5d9afdb7edf",
+      "sourceChecksum": "sha256:8744838e89f4aa466fd297b71f0397b64957b09c2fbb94ccf71c383438083489",
       "sourcePath": "content/wrist-hand/trigger-finger.mdx",
       "substantiveChangeAllowedWithoutHumanReview": false
     }
@@ -1496,6 +1496,6 @@
     "conditionCount": 33,
     "conditionsWithRecordedClinicianReview": 0,
     "conditionsWithStructuralGaps": 33,
-    "totalReferenceMarkers": 571
+    "totalReferenceMarkers": 562
   }
 }

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "authority": "private-anatomy-3d-attribution-template",
+  "id": "attribution.z-anatomy-bodyparts3d.private-template-v1",
+  "privateAuthoringOnly": true,
+  "grantsApproval": false,
+  "licenceFamilyStatus": "LICENCE FAMILY VERIFIED",
+  "exactAssetLicenceLineageStatus": "UNRESOLVED",
+  "source": {
+    "project": "Z-Anatomy - The libre 3D atlas of anatomy",
+    "repository": "https://github.com/Z-Anatomy/Models-of-human-anatomy",
+    "revision": "98d6780fed69fa56ee43ff5c4f2f0abe2a12c2a4",
+    "licence": "Creative Commons Attribution-ShareAlike 4.0 International",
+    "licenceVersion": "4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "licenceEvidenceUrl": "https://github.com/Z-Anatomy/Models-of-human-anatomy/blob/98d6780fed69fa56ee43ff5c4f2f0abe2a12c2a4/License.txt"
+  },
+  "requiredAttribution": [
+    "BodyParts3D - The Database Center for Life Science - CC-BY-SA 2.1 Japan",
+    "Z-Anatomy - The libre 3D atlas of anatomy - CC-BY-SA 4.0"
+  ],
+  "attributionEntities": [
+    {
+      "project": "BodyParts3D",
+      "creator": "The Database Center for Life Science",
+      "sourceUrl": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html",
+      "licence": "CC-BY-SA 2.1 Japan",
+      "licenceVersion": "2.1 Japan",
+      "licenceUrl": null,
+      "attributionWording": "BodyParts3D - The Database Center for Life Science - CC-BY-SA 2.1 Japan"
+    },
+    {
+      "project": "Z-Anatomy - The libre 3D atlas of anatomy",
+      "creator": "Z-Anatomy contributors",
+      "sourceUrl": "https://github.com/Z-Anatomy/Models-of-human-anatomy",
+      "licence": "CC-BY-SA 4.0",
+      "licenceVersion": "4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attributionWording": "Z-Anatomy - The libre 3D atlas of anatomy - CC-BY-SA 4.0"
+    }
+  ],
+  "obligations": {
+    "attributionRequired": true,
+    "shareAlikeRequired": true,
+    "modificationDisclosureRequired": true,
+    "changesMade": true,
+    "modificationDescription": null,
+    "derivativeSourceRelationship": "UNRESOLVED"
+  },
+  "componentExceptions": [
+    { "component": "Brain and White matter", "creator": "University of Washington", "licence": "not-stated-in-reviewed-attribution-list", "exclusionStatus": "unverified" },
+    { "component": "Cranial Nerves and Foramina", "creator": "University of Dundee CAHID", "licence": "CC-BY-4.0", "exclusionStatus": "unverified" },
+    { "component": "Anatomy of the Inner Ear", "creator": "University of Dundee School of Medicine", "licence": "CC-BY-NC-SA-4.0", "exclusionStatus": "unverified" },
+    { "component": "Kidneys", "creator": "Lissie Cowley", "licence": "CC-BY-NC-4.0", "exclusionStatus": "unverified" }
+  ],
+  "candidateAssets": [
+    { "id": "candidate-asset.biomechanics.msk-skeleton.9ace8006", "sha256": "9ace8006a71317c9520e77f810076f7111fe1363f55fb17df6ee1207c8a745b5", "attributionTemplateId": "attribution.z-anatomy-bodyparts3d.private-template-v1", "modificationDescription": null, "exactAssetLicenceLineage": "unverified", "componentExceptionExclusion": "unverified", "publicEligibility": false },
+    { "id": "candidate-asset.biomechanics.msk-muscles.1566f395", "sha256": "1566f395036e949da360ed3dd067a025d404a19c6cec15aa4286ad7b6025416c", "attributionTemplateId": "attribution.z-anatomy-bodyparts3d.private-template-v1", "modificationDescription": null, "exactAssetLicenceLineage": "unverified", "componentExceptionExclusion": "unverified", "publicEligibility": false },
+    { "id": "candidate-asset.biomechanics.msk-nerves.2db37838", "sha256": "2db37838236b237c81b23595cc2ed3bf50f770c27bfd04b90d91af4bba0bc909", "attributionTemplateId": "attribution.z-anatomy-bodyparts3d.private-template-v1", "modificationDescription": null, "exactAssetLicenceLineage": "unverified", "componentExceptionExclusion": "unverified", "publicEligibility": false },
+    { "id": "candidate-asset.biomechanics.msk-rigged.4bf59e7f", "sha256": "4bf59e7fac5d849d62dc96b932c3e80d86de13211ef0da15f5fcb7e252c6fd6f", "attributionTemplateId": "attribution.z-anatomy-bodyparts3d.private-template-v1", "modificationDescription": null, "exactAssetLicenceLineage": "unverified", "componentExceptionExclusion": "unverified", "publicEligibility": false },
+    { "id": "candidate-asset.biomechanics.msk-rigged-muscles.2c87f6d7", "sha256": "2c87f6d7e60981a30db5ebd28e832ca4884259e0934c10d1ddc2f7ed13c496c3", "attributionTemplateId": "attribution.z-anatomy-bodyparts3d.private-template-v1", "modificationDescription": null, "exactAssetLicenceLineage": "unverified", "componentExceptionExclusion": "unverified", "publicEligibility": false }
+  ],
+  "reviewTasks": [
+    "Describe every modification and the exact source-to-derivative relationship.",
+    "Verify required BodyParts3D and Z-Anatomy attribution wording and licence links.",
+    "Verify ShareAlike packaging for each distributed derivative.",
+    "Prove exclusion or obtain appropriate rights for every differently licensed component.",
+    "Complete a separate licensing review; this template does not grant approval."
+  ],
+  "blockers": [
+    "exact-file-licence-lineage-required",
+    "modification-description-required",
+    "differently-licensed-component-exclusion-required",
+    "licensing-review-required"
+  ],
+  "publicEligibility": false
+}
