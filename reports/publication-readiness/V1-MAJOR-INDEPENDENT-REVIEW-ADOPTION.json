@@ -1,0 +1,550 @@
+{
+  "schemaVersion": 1,
+  "packetType": "v1-major-independent-review-owner-adoption",
+  "independentReviewPacket": {
+    "filename": "1-V1-MAJOR-INDEPENDENT-EVIDENCE-REVIEW-RECOMMENDATIONS.json",
+    "sha256": "1075f06adca7ac06919fcbc127f3f629c9e7a19bf3db07185d0f065cb4636873",
+    "majorRecommendations": 23
+  },
+  "predecessorCriticalAdoption": {
+    "path": "reports/publication-readiness/V1-CRITICAL-INDEPENDENT-REVIEW-ADOPTION.json",
+    "sha256": "09e30b4bd0ce9750365aedcb3d37f432bfb32ae8c4d8f2f0f1f20d5ff8d31d28"
+  },
+  "ownerConfirmation": {
+    "actor": "Eoin Casey",
+    "confirmedDate": "2026-08-18",
+    "statement": "Apply the attached V1 MAJOR independent evidence review recommendations",
+    "authority": "wording-and-evidence-disposition-implementation-only"
+  },
+  "sourceDecisionPacket": {
+    "path": "reports/publication-readiness/V1-FINAL-HUMAN-EVIDENCE-DECISIONS.json",
+    "majorDecisionCount": 23
+  },
+  "recommendations": [
+    {
+      "id": "v1-human-034eae0bddad2bb3",
+      "severity": "MAJOR",
+      "primaryClass": "Referral / escalation",
+      "priorRevisionHash": "sha256:d79f829c294dd2fa10eb648f6bf7e29c54b143c0e5c51ce0ceddc1d809f90667",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "partial",
+      "wordingDisposition": "accept-softened-wording",
+      "affectedConditions": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "affectedFile": "content/cervical/cervicogenic-headache.mdx",
+      "resultingFileSha256": "e73d3c39edd54f72256cb6d47934d6ec530ffbee7a146f845bf95e7a89de47d4",
+      "resultingRevisionHash": "sha256:f20a699fabe923d0911ef49f20ef29318c28900bbda7211a1eef39920a5467fe",
+      "contentChange": "Narrow NICE CG150 to secondary-headache investigation/referral and individual review need.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-0d2bfb68f56aafe9",
+      "severity": "MAJOR",
+      "primaryClass": "Referral / escalation",
+      "priorRevisionHash": "sha256:b70aca437a04c20c214c14d63d291000f0374ff9a6d445ba360596406851ff98",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "supported",
+      "wordingDisposition": "accept-softened-wording",
+      "affectedConditions": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "affectedFile": "content/shoulder/acromioclavicular-joint.mdx",
+      "resultingFileSha256": "cd65f84a571263b6a431b1863eef42bf9c371c42f9e950c1f771f598de8338b9",
+      "resultingRevisionHash": "sha256:8434d862f97fba0340d0de29f9e4ed24f47447389ba2cb7de63384d9cf340be0",
+      "contentChange": "Retain non-automatic Rockwood grade management principle.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-108d28ff370a695a",
+      "severity": "MAJOR",
+      "primaryClass": "Imaging / investigation",
+      "priorRevisionHash": "sha256:a9ff009e1468e1b58816772d9628a7f2a0afd79f947b2eff043abd8b272139e4",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "partial",
+      "wordingDisposition": "modify",
+      "affectedConditions": [
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "affectedFile": "content/shoulder/subacromial-pain-syndrome.mdx",
+      "resultingFileSha256": "ab3e795718abee523af3ca0b7e7190a4414c23090ca1229fa4d60523e97eefb6",
+      "resultingRevisionHash": "sha256:aef21ec71fca7e9d0f948ae1e625beac933d3f9e6db7bf1c22ed0a1c6c362fac",
+      "contentChange": "Remove prescriptive investigation assignments from the differential table.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-1f8b4164ed9dc6a9",
+      "severity": "MAJOR",
+      "primaryClass": "Imaging / investigation",
+      "priorRevisionHash": "sha256:ffa170d43d453cdd9521bb40e987ca1ff70934e0507eb4a778cd3af65a17df74",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "partial",
+      "wordingDisposition": "modify",
+      "affectedConditions": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "affectedFile": "content/elbow/cubital-tunnel-syndrome.mdx",
+      "resultingFileSha256": "edf4fdaf6212e21c8510e9a9329377ad042418573bcf4c3bd4b150da2aff65b4",
+      "resultingRevisionHash": "sha256:1dd127ab836d542f12e23b786bad85727e917d0b6379ba645ccc0005e76d0925",
+      "contentChange": "Replace fixed thoracic-outlet test/imaging package with subtype-specific clinical assessment.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-2b4fd70f92ce18d7",
+      "severity": "MAJOR",
+      "primaryClass": "Imaging / investigation",
+      "priorRevisionHash": "sha256:27d505b22faf2dbe69aa3f40fc8904f7fb1d6f61de2cff8af8bd69dec58b79a6",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "partial",
+      "wordingDisposition": "modify",
+      "affectedConditions": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "affectedFile": "content/shoulder/rotator-cuff-tendinopathy.mdx",
+      "resultingFileSha256": "eb1207474b08ad1555fc074bc4568eafafd980b341f574ee4561993e71f7225c",
+      "resultingRevisionHash": "sha256:1ef567b9d94702f36211a928a91e9d7432b8d0ef7088dde925d72f9a59612697",
+      "contentChange": "Remove automatic investigation assignments from the rotator-cuff differential table.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-3187854b07c777e5",
+      "severity": "MAJOR",
+      "primaryClass": "Referral / escalation",
+      "priorRevisionHash": "sha256:9a9261383ffaac6ffe734523daed6525f9ce83e29cc449e0fc5a141f19c926a2",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "supported",
+      "wordingDisposition": "accept",
+      "affectedConditions": [
+        "condition.elbow.lateral-epicondylalgia"
+      ],
+      "affectedFile": "content/elbow/lateral-epicondylalgia.mdx",
+      "resultingFileSha256": "ec93fed92a4e1050fed624c6f2185bc9563dd4a037b9889e98c000508f2c63d9",
+      "resultingRevisionHash": "sha256:459f4baf347c4a9cd2d793b26d3bbf74b622b59da2408c7329d41a69152fe353",
+      "contentChange": "No content change: Retain supported BESS referral boundary without content change.",
+      "contentChanged": false,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-3701e80e4669c077",
+      "severity": "MAJOR",
+      "primaryClass": "Medication / prescribing",
+      "priorRevisionHash": "sha256:cc92de2e4c1a39dc739bac371f683f0937af35155aeb20df3734c865adf11aa2",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "supported",
+      "wordingDisposition": "accept",
+      "affectedConditions": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "affectedFile": "content/shoulder/rotator-cuff-tendinopathy.mdx",
+      "resultingFileSha256": "eb1207474b08ad1555fc074bc4568eafafd980b341f574ee4561993e71f7225c",
+      "resultingRevisionHash": "sha256:ad66ce3098902e137bf891c6a0c8641e42c0f20fa8981034dff14c31c0564903",
+      "contentChange": "No content change: Retain supported prescribing/injection governance boundary without content change.",
+      "contentChanged": false,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-3b853e6ab780beca",
+      "severity": "MAJOR",
+      "primaryClass": "Referral / escalation",
+      "priorRevisionHash": "sha256:bb8caa632c402388fcf70de7ac1864bdd08f8227fa86fd2a2f5a59a7e1dbebcf",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "supported",
+      "wordingDisposition": "accept-softened-wording",
+      "affectedConditions": [
+        "condition.cervical.cervical-artery-dysfunction"
+      ],
+      "affectedFile": "content/cervical/cervical-artery-dysfunction.mdx",
+      "resultingFileSha256": "18e9dd6f2c714eafd3d6955d3d15401a44c3845bf6954f3fe726e5282886cfcf",
+      "resultingRevisionHash": "sha256:94ab95d7fb7df85b54fab0d7758e22ac812384979f8960d8e1474432ecd9b122",
+      "contentChange": "Clarify that positional testing and a negative historical mnemonic cannot reduce vascular concern.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-4b2c1f3f7db592ad",
+      "severity": "MAJOR",
+      "primaryClass": "Medication / prescribing",
+      "priorRevisionHash": "sha256:9051ea44cbd4a11b49dcac519132f6f4d29ef5e0aaa5c1fa2fa2fb817c112884",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "partial",
+      "wordingDisposition": "modify",
+      "affectedConditions": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "affectedFile": "content/cervical/cervicogenic-headache.mdx",
+      "resultingFileSha256": "e73d3c39edd54f72256cb6d47934d6ec530ffbee7a146f845bf95e7a89de47d4",
+      "resultingRevisionHash": "sha256:b5b6c2c800ddf9c46d47548672daa81ae20164b65c0d63db253310d013dab7bd",
+      "contentChange": "Make medication-overuse frequency a screening threshold rather than a taper target.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-5f8d37819c5eca03",
+      "severity": "MAJOR",
+      "primaryClass": "Referral / escalation",
+      "priorRevisionHash": "sha256:01746574610223d0d9dfa999a7668481f5c154fcd0120060126a8f5a5da05277",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "supported",
+      "wordingDisposition": "accept-softened-wording",
+      "affectedConditions": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "affectedFile": "content/cervical/whiplash-associated-disorders.mdx",
+      "resultingFileSha256": "0fc77f1acf8d3dfa0910fa7e9f51103795a4d6ce131431b5a1181978fd0afab4",
+      "resultingRevisionHash": "sha256:58cf2a5d222c03c6a4bb04977fdf6b257776caec76085095791a251ddcb6c911",
+      "contentChange": "Retain individual need/current-pathway referral wording without fixed timing.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-63cff227682942f1",
+      "severity": "MAJOR",
+      "primaryClass": "Imaging / investigation",
+      "priorRevisionHash": "sha256:bbd055392d5035ebe3aebbae786b7e09f4e33b6610fc15d4c134b58b27ebe9f5",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "partial",
+      "wordingDisposition": "modify",
+      "affectedConditions": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "affectedFile": "content/cervical/whiplash-associated-disorders.mdx",
+      "resultingFileSha256": "0fc77f1acf8d3dfa0910fa7e9f51103795a4d6ce131431b5a1181978fd0afab4",
+      "resultingRevisionHash": "sha256:beae1476063b7720b04b6ccc20872f2aaa3dd5286ed253a70480d75e330d1eac",
+      "contentChange": "Move vascular imaging choice into the acute medical/stroke pathway.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-6b0bfed498e376ab",
+      "severity": "MAJOR",
+      "primaryClass": "Imaging / investigation",
+      "priorRevisionHash": "sha256:a844fa5df44766e60405099b84f928b64d4f4c430091d47539acbf804aacebf3",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "partial",
+      "wordingDisposition": "accept-softened-wording",
+      "affectedConditions": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "affectedFile": "content/cervical/cervical-myelopathy.mdx",
+      "resultingFileSha256": "826787a59efa0c450e573357f82880a9830fdd01aec1758171df23b83b12b1cd",
+      "resultingRevisionHash": "sha256:c3704985ddb9d412dc45521250041ca5274684949491314b4e51a845405375e8",
+      "contentChange": "Clarify MRI primacy and specialist-selected alternative imaging.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-6eec280d2dedaa6c",
+      "severity": "MAJOR",
+      "primaryClass": "Referral / escalation",
+      "priorRevisionHash": "sha256:04ec0e14a3221cb3b9c30b45df6d80a27a8c0a39453b54a7d7af519691804684",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "partial",
+      "wordingDisposition": "accept-softened-wording",
+      "affectedConditions": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "affectedFile": "content/cervical/cervical-myelopathy.mdx",
+      "resultingFileSha256": "826787a59efa0c450e573357f82880a9830fdd01aec1758171df23b83b12b1cd",
+      "resultingRevisionHash": "sha256:029d8a9dffd08d0bf68993c9812ca2b5c1dd938367aaa3e7ef01d75b7d1e4bd7",
+      "contentChange": "Use individual functional-need wording for gait, mobility aids and orthotics.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-72c88d0ca3bb2225",
+      "severity": "MAJOR",
+      "primaryClass": "Medication / prescribing",
+      "priorRevisionHash": "sha256:55336190934828697af3fc2711c434dc684f0e270082872c5f7b2bdb501c1a44",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "partial",
+      "wordingDisposition": "modify",
+      "affectedConditions": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "affectedFile": "content/shoulder/adhesive-capsulitis.mdx",
+      "resultingFileSha256": "0048b26236fd4e9a403103c6dee01df2bb24a0c9cb74b8a04b836f908368b7d7",
+      "resultingRevisionHash": "sha256:e2797266dfe0bf796b2f090d0aa6b97812db6ada249fdb64ebbc018f33364df4",
+      "contentChange": "Replace unsupported inflammation mechanism with irritability/tolerability dosing.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-7a91c9af7c65ec16",
+      "severity": "MAJOR",
+      "primaryClass": "Referral / escalation",
+      "priorRevisionHash": "sha256:3839b2756e1deb8eb0e32e7ba98dcdf5e457ffba9c1b093e6dbc3edcb5b11b91",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "supported",
+      "wordingDisposition": "accept-softened-wording",
+      "affectedConditions": [
+        "condition.elbow.olecranon-bursitis"
+      ],
+      "affectedFile": "content/elbow/olecranon-bursitis.mdx",
+      "resultingFileSha256": "73511c65eb274dfbb91486cf3f62ac5bdab683e835d30cf6a99d906a2f98a45d",
+      "resultingRevisionHash": "sha256:6eb0c8588f76312e851cb7f2ed39f2ff110c29dff83d0aaa6fedc83d7bb7b3a5",
+      "contentChange": "Use consider-specialist language and retain clinician-led intervention boundary.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-817b6491b2b50e9a",
+      "severity": "MAJOR",
+      "primaryClass": "Referral / escalation",
+      "priorRevisionHash": "sha256:7dc3c59a2535c86e8656a93e2d08564dd6d65771eaff0707870d4b82c6456ba1",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "partial",
+      "wordingDisposition": "accept-softened-wording",
+      "affectedConditions": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "affectedFile": "content/cervical/mechanical-neck-pain.mdx",
+      "resultingFileSha256": "b6034edf1cf58be8e24481e4bf0f4cb85fcd229438cb3f0ab1130a4b18505c6d",
+      "resultingRevisionHash": "sha256:8b4c91c6786cf638df2d3cfb3df71acaa81fdfe4efd7e8bf618cba6355b7f683",
+      "contentChange": "Use reassess/consider wording based on individual need rather than duration.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-8311172f5649a9e9",
+      "severity": "MAJOR",
+      "primaryClass": "Referral / escalation",
+      "priorRevisionHash": "sha256:3c6356ec44afb6b8d42911629a2af183eed9e53c09548fd4662e9ce9daef2c2c",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "partial",
+      "wordingDisposition": "modify",
+      "affectedConditions": [
+        "condition.shoulder.labral-tears"
+      ],
+      "affectedFile": "content/shoulder/labral-tears.mdx",
+      "resultingFileSha256": "fd6e2e6aa950ec7c3d5d93657a9d30d5ff0723a9c15da38be417494a185e739b",
+      "resultingRevisionHash": "sha256:bc8dbe171e9a874a592bb4633821533a335625efbad42cbe1a1c76d6812b52d0",
+      "contentChange": "Use context-specific specialist assessment and remove blanket referral rule.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-b14c0bc38a972bb9",
+      "severity": "MAJOR",
+      "primaryClass": "Medication / prescribing",
+      "priorRevisionHash": "sha256:b5dd2c356fc10a0d1bdc79e584ccb6603a0f06dbd1e35efb3fb2079336a27d45",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "supported",
+      "wordingDisposition": "accept",
+      "affectedConditions": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "affectedFile": "content/shoulder/adhesive-capsulitis.mdx",
+      "resultingFileSha256": "0048b26236fd4e9a403103c6dee01df2bb24a0c9cb74b8a04b836f908368b7d7",
+      "resultingRevisionHash": "sha256:7a70145cd815f40bcd902be25dcbce0f3a441572c47bbd86dd07d4749f78fab5",
+      "contentChange": "No content change: Retain supported frozen-shoulder injection governance boundary without content change.",
+      "contentChanged": false,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-baa5a8f34ab80f39",
+      "severity": "MAJOR",
+      "primaryClass": "Medication / prescribing",
+      "priorRevisionHash": "sha256:6617c9ba2d2f2ae7719f76356ca542bf031b4bf417db65dcd2396025f41c52cd",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "supported",
+      "wordingDisposition": "accept",
+      "affectedConditions": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "affectedFile": "content/elbow/elbow-osteoarthritis.mdx",
+      "resultingFileSha256": "a02663bc7bdd98b919afdbe25604d6287b5086315bba8e26d031d16fb6030335",
+      "resultingRevisionHash": "sha256:281932958c9630047916a7acc25a68d04cdc449b6dd771e56d2032fa3c16f78a",
+      "contentChange": "No content change: Retain supported NICE NG226 NSAID boundary without content change.",
+      "contentChanged": false,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-c9138a6211084878",
+      "severity": "MAJOR",
+      "primaryClass": "Medication / prescribing",
+      "priorRevisionHash": "sha256:be2654c2a105b501e3db59a5abf365d1fef087fc6fb5e88cc6e11a1c629e4647",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "supported",
+      "wordingDisposition": "modify",
+      "affectedConditions": [
+        "condition.elbow.lateral-epicondylalgia"
+      ],
+      "affectedFile": "content/elbow/lateral-epicondylalgia.mdx",
+      "resultingFileSha256": "ec93fed92a4e1050fed624c6f2185bc9563dd4a037b9889e98c000508f2c63d9",
+      "resultingRevisionHash": "sha256:3f5a65bf67a41f999b5a4e96dae581ab73b722a43f596373815de36dec451eeb",
+      "contentChange": "Represent BESS physiotherapy and corticosteroid-injection recommendations directly.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-cea968e6457a92e5",
+      "severity": "MAJOR",
+      "primaryClass": "Referral / escalation",
+      "priorRevisionHash": "sha256:ed943669eed9624ceed613b8f0dd8b32346f64f1a940929bc5bc54b12b2b57df",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "partial",
+      "wordingDisposition": "accept-softened-wording",
+      "affectedConditions": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "affectedFile": "content/shoulder/adhesive-capsulitis.mdx",
+      "resultingFileSha256": "0048b26236fd4e9a403103c6dee01df2bb24a0c9cb74b8a04b836f908368b7d7",
+      "resultingRevisionHash": "sha256:c3cc3f3bc73f9d759ba8ee8aae1d9ef809fe313dbfcc06607d1e78b1a3a1287e",
+      "contentChange": "Use seek/consider wording for systemic and specialist assessment.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-e5cd1da1e449b20f",
+      "severity": "MAJOR",
+      "primaryClass": "Referral / escalation",
+      "priorRevisionHash": "sha256:eeebd20ee4cb8a6a6338a7833bddb15e2b85c8fbe950c8da6fa3006a7a88f07c",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "partial",
+      "wordingDisposition": "accept-softened-wording",
+      "affectedConditions": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "affectedFile": "content/shoulder/calcific-tendinitis.mdx",
+      "resultingFileSha256": "ddebea52c398e008ec55074690dfc6174e9236b4b0bebefb31cea0737be3c181",
+      "resultingRevisionHash": "sha256:c956db690ec0d019ae8190be5fb437c066fd6de0bf6894857dbb3e6403f9fbd2",
+      "contentChange": "Use consider-specialist wording while retaining HTG645 research-only restriction.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-ea2de5c78ce109b6",
+      "severity": "MAJOR",
+      "primaryClass": "Referral / escalation",
+      "priorRevisionHash": "sha256:9c59256107207718fb96be7217800cce5eaa133e6df46e0f87a99fd2ee6d2f1a",
+      "ownerAdoptionStatus": "owner-confirmed-recommendation-implemented",
+      "evidenceDisposition": "unsupported",
+      "wordingDisposition": "modify",
+      "affectedConditions": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "affectedFile": "content/elbow/elbow-osteoarthritis.mdx",
+      "resultingFileSha256": "a02663bc7bdd98b919afdbe25604d6287b5086315bba8e26d031d16fb6030335",
+      "resultingRevisionHash": "sha256:523a9600b21744971e9986e0c349e64e1c488ad8621c9a34694a946e97a0cef0",
+      "contentChange": "Remove unsupported prevalence and mandatory NCS instruction.",
+      "contentChanged": true,
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    }
+  ],
+  "implementation": {
+    "touchedFiles": [
+      "content/cervical/cervicogenic-headache.mdx",
+      "content/shoulder/acromioclavicular-joint.mdx",
+      "content/shoulder/subacromial-pain-syndrome.mdx",
+      "content/elbow/cubital-tunnel-syndrome.mdx",
+      "content/shoulder/rotator-cuff-tendinopathy.mdx",
+      "content/elbow/lateral-epicondylalgia.mdx",
+      "content/cervical/cervical-artery-dysfunction.mdx",
+      "content/cervical/whiplash-associated-disorders.mdx",
+      "content/cervical/cervical-myelopathy.mdx",
+      "content/shoulder/adhesive-capsulitis.mdx",
+      "content/elbow/olecranon-bursitis.mdx",
+      "content/cervical/mechanical-neck-pain.mdx",
+      "content/shoulder/labral-tears.mdx",
+      "content/elbow/elbow-osteoarthritis.mdx",
+      "content/shoulder/calcific-tendinitis.mdx"
+    ],
+    "filesChangedByThisRun": [],
+    "resultingFiles": [
+      {
+        "relativePath": "content/cervical/cervicogenic-headache.mdx",
+        "sha256": "e73d3c39edd54f72256cb6d47934d6ec530ffbee7a146f845bf95e7a89de47d4"
+      },
+      {
+        "relativePath": "content/shoulder/acromioclavicular-joint.mdx",
+        "sha256": "cd65f84a571263b6a431b1863eef42bf9c371c42f9e950c1f771f598de8338b9"
+      },
+      {
+        "relativePath": "content/shoulder/subacromial-pain-syndrome.mdx",
+        "sha256": "ab3e795718abee523af3ca0b7e7190a4414c23090ca1229fa4d60523e97eefb6"
+      },
+      {
+        "relativePath": "content/elbow/cubital-tunnel-syndrome.mdx",
+        "sha256": "edf4fdaf6212e21c8510e9a9329377ad042418573bcf4c3bd4b150da2aff65b4"
+      },
+      {
+        "relativePath": "content/shoulder/rotator-cuff-tendinopathy.mdx",
+        "sha256": "eb1207474b08ad1555fc074bc4568eafafd980b341f574ee4561993e71f7225c"
+      },
+      {
+        "relativePath": "content/elbow/lateral-epicondylalgia.mdx",
+        "sha256": "ec93fed92a4e1050fed624c6f2185bc9563dd4a037b9889e98c000508f2c63d9"
+      },
+      {
+        "relativePath": "content/cervical/cervical-artery-dysfunction.mdx",
+        "sha256": "18e9dd6f2c714eafd3d6955d3d15401a44c3845bf6954f3fe726e5282886cfcf"
+      },
+      {
+        "relativePath": "content/cervical/whiplash-associated-disorders.mdx",
+        "sha256": "0fc77f1acf8d3dfa0910fa7e9f51103795a4d6ce131431b5a1181978fd0afab4"
+      },
+      {
+        "relativePath": "content/cervical/cervical-myelopathy.mdx",
+        "sha256": "826787a59efa0c450e573357f82880a9830fdd01aec1758171df23b83b12b1cd"
+      },
+      {
+        "relativePath": "content/shoulder/adhesive-capsulitis.mdx",
+        "sha256": "0048b26236fd4e9a403103c6dee01df2bb24a0c9cb74b8a04b836f908368b7d7"
+      },
+      {
+        "relativePath": "content/elbow/olecranon-bursitis.mdx",
+        "sha256": "73511c65eb274dfbb91486cf3f62ac5bdab683e835d30cf6a99d906a2f98a45d"
+      },
+      {
+        "relativePath": "content/cervical/mechanical-neck-pain.mdx",
+        "sha256": "b6034edf1cf58be8e24481e4bf0f4cb85fcd229438cb3f0ab1130a4b18505c6d"
+      },
+      {
+        "relativePath": "content/shoulder/labral-tears.mdx",
+        "sha256": "fd6e2e6aa950ec7c3d5d93657a9d30d5ff0723a9c15da38be417494a185e739b"
+      },
+      {
+        "relativePath": "content/elbow/elbow-osteoarthritis.mdx",
+        "sha256": "a02663bc7bdd98b919afdbe25604d6287b5086315bba8e26d031d16fb6030335"
+      },
+      {
+        "relativePath": "content/shoulder/calcific-tendinitis.mdx",
+        "sha256": "ddebea52c398e008ec55074690dfc6174e9236b4b0bebefb31cea0737be3c181"
+      }
+    ],
+    "exactRevisionDecisionsMustBeRecomputed": true
+  },
+  "clinicalApprovalGranted": false,
+  "evidenceApprovalGranted": false,
+  "grantsApproval": false,
+  "publicationAuthorized": false,
+  "publicationStateChanged": false
+}

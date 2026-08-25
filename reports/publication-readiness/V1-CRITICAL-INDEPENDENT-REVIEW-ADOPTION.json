@@ -1,0 +1,993 @@
+{
+  "schemaVersion": 1,
+  "packetType": "v1-critical-independent-review-owner-adoption",
+  "independentReviewPacket": {
+    "filename": "1-V1-CRITICAL-INDEPENDENT-REVIEW-RECOMMENDATIONS.json",
+    "sha256": "4757cec86671d15105c9fe6fe399d4c082ad880a3aa9cb391139a9a19e954c10",
+    "criticalRecommendations": 47
+  },
+  "ownerConfirmation": {
+    "actor": "Eoin Casey",
+    "confirmedDate": "2026-08-18",
+    "statement": "I Eoin confirm the recommended changes",
+    "authority": "wording-change-and-removal-implementation-only"
+  },
+  "sourceDecisionPacket": {
+    "path": "reports/publication-readiness/V1-FINAL-HUMAN-EVIDENCE-DECISIONS.json",
+    "criticalDecisionCount": 47
+  },
+  "recommendations": [
+    {
+      "id": "v1-human-061feffd9d3917dc",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Retain the Canadian C-Spine Rule using NICE NG41. For adults, use CT when imaging is indicated by the rule. Remove NEXUS from V1 unless separately sourced. Keep vascular/neurological red flags separate from the trauma-imaging rule; do not use 5Ds/3Ns as a clearance rule.",
+      "revisionHash": "sha256:87816bd7e38e2fbab0ce42345d4f444cb032cf647e3bd28aab416fb2d18bc862",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-076e5889e59e8e6c",
+      "severity": "CRITICAL",
+      "primaryClass": "Referral / escalation",
+      "conditions": [
+        "condition.cervical.cervical-radiculopathy",
+        "condition.cervical.whiplash-associated-disorders",
+        "condition.elbow.cubital-tunnel-syndrome",
+        "condition.shoulder.rotator-cuff-tear",
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "The general principle that progressive neurological or motor deficit needs prompt reassessment/escalation is sound, but the grouped claims span different conditions and referral routes. Replace fixed specialty/timing language with condition-appropriate prompt specialist assessment unless an exact pathway supports it.",
+      "revisionHash": "sha256:e353fce2a8bca6215e2633256c86d6c479f7b3df5d7a7ff3a2c7ac31bc5ee6f9",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-0e87ae9406a9123e",
+      "severity": "CRITICAL",
+      "primaryClass": "Medication / prescribing",
+      "conditions": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "currentSupportStatus": [
+        "EXTRAPOLATED"
+      ],
+      "independentEvidenceRecommendation": "supported",
+      "independentWordingRecommendation": "accept",
+      "reviewerRecommendation": "NICE NG226 directly supports not routinely offering paracetamol/weak opioids except infrequent short-term use when other options are unsuitable, and not offering strong opioids for OA. Keep the existing caveat that this is general OA guidance, not elbow-specific evidence.",
+      "revisionHash": "sha256:bba2f5d8795af33832c7f61d89bfff0aeae597ee36a84da2ccd587c504c54b8c",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-100196731d2fe930",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.cervical.cervical-myelopathy",
+        "condition.cervical.cervicogenic-headache",
+        "condition.elbow.cubital-tunnel-syndrome",
+        "condition.elbow.lateral-epicondylalgia",
+        "condition.elbow.medial-epicondylalgia",
+        "condition.elbow.radial-tunnel-syndrome",
+        "condition.shoulder.adhesive-capsulitis",
+        "condition.shoulder.calcific-tendinitis",
+        "condition.shoulder.labral-tears",
+        "condition.shoulder.rotator-cuff-tendinopathy",
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Retain progressive focal/motor neurological deficit as a reason for prompt medical/specialist assessment. Remove automatic MRI, neurophysiology, decompression and fixed 'within weeks' instructions unless individually sourced. Separate DCM, peripheral nerve palsy and shoulder weakness pathways.",
+      "revisionHash": "sha256:34c723b99cfff2a365689ad50d241513dc6983035f54449dfd2c833cef3581fe",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-17b9c8fa38ad2622",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.cervical.cervical-artery-dysfunction"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "accept-softened-wording",
+      "reviewerRecommendation": "Use: 'If acute cervical artery dissection or stroke is suspected, stop cervical treatment and arrange emergency medical assessment; call 999 for acute focal neurological/stroke features.' Avoid implying every possible vascular presentation automatically requires a 999 call.",
+      "revisionHash": "sha256:1e3196f5b5d02a206f24fc093bcb89f62048acb39219970f409bb921c3f19234",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-1a02bd013640916e",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Keep acute neurological deficit and genuine systemic/infective or malignancy concern as escalation triggers. Remove the dental/GI/UTI-to-reactive-arthritis linkage, fixed 3-month MRI rule, and cortical-erosion pathway unless separately evidenced.",
+      "revisionHash": "sha256:c31fd510a507f0dfe6014f41619b549a2fbb451972642b3a8556c3272cd22cbe",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-1d1ed4112f9a29f0",
+      "severity": "CRITICAL",
+      "primaryClass": "Contraindication / precaution",
+      "conditions": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "currentSupportStatus": [
+        "PARTIAL SUPPORT"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "accept-softened-wording",
+      "reviewerRecommendation": "Retain the IFOMPT 2020 risk-based framework and do not perform cervical manipulation when vascular pathology or instability is suspected. Keep wording non-prescriptive and based on individual risk-benefit reasoning and consent.",
+      "revisionHash": "sha256:9f9af17c36d357ff0b8108f718404a3e24717406abec7f813879e03173aa5657",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-1f47d39acbbac293",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Split this bundle into: DCM/UMN warning features; trauma imaging via Canadian C-Spine Rule; vascular risk reasoning via IFOMPT; and infection/other serious pathology. Remove 5Ds/3Ns as a rule and avoid 'urgent MRI' or imaging modality directives unless specifically sourced.",
+      "revisionHash": "sha256:48365602c32ec82142fb5ba0055005c95766f3f95488c9771fd1825e28d67cc1",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-2164c970e39c3cbe",
+      "severity": "CRITICAL",
+      "primaryClass": "Referral / escalation",
+      "conditions": [
+        "condition.cervical.whiplash-associated-disorders",
+        "condition.elbow.medial-epicondylalgia",
+        "condition.shoulder.labral-tears",
+        "condition.shoulder.rotator-cuff-tear",
+        "condition.shoulder.shoulder-instability"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Retain fracture/dislocation/neurovascular compromise as urgent/emergency assessment triggers. Remove first-dislocation age cut-offs, recurrent-dislocation counts and ISIS thresholds as universal referral rules; use current shoulder pathway/shared specialist decision wording.",
+      "revisionHash": "sha256:eba6d8d0c7282cc7bd43692a69e7fc12e5f4da92d5a19bc43b83732118b7a489",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-245bc0410a551908",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.cervical.cervical-artery-dysfunction",
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Active/suspected arterial dissection is a clear reason not to proceed with cervical OMT. Replace 'any positive cranial nerve finding' with new cranial nerve dysfunction in a concerning vascular/neurological presentation. Keep 5Ds/3Ns historical rather than diagnostic.",
+      "revisionHash": "sha256:f9eda79bef70033f358ed6203181b43f313994b01135eed78ad2b80ea5174abd",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-2dce035879d2daac",
+      "severity": "CRITICAL",
+      "primaryClass": "Referral / escalation",
+      "conditions": [
+        "condition.cervical.cervical-radiculopathy",
+        "condition.cervical.cervicogenic-headache",
+        "condition.cervical.mechanical-neck-pain",
+        "condition.elbow.elbow-osteoarthritis",
+        "condition.elbow.olecranon-bursitis"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Retain suspected serious infection, fracture, malignancy and meningitis/meningism as medical escalation issues. Do not make every item the same urgency. Suspected septic arthritis requires prompt urgent assessment; treatment/investigation details should remain medical-team-led.",
+      "revisionHash": "sha256:c485f10dcb42b97ef8faf891ad28db13ab4e018894bf59ba25da1a539f61ed07",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-2f59a603a6ab5317",
+      "severity": "CRITICAL",
+      "primaryClass": "Referral / escalation",
+      "conditions": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "AO Spine supports surgery for moderate/severe DCM and surgery if neurological deterioration occurs during non-operative care. Remove the fixed 3-month conservative threshold and local referral route. Use prompt specialist assessment and shared decision-making for mild DCM.",
+      "revisionHash": "sha256:6bf268100faaa670c9762fc44e1a5bea46becb79816da589f75c6a1d336418aa",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-2f9033c9e6e3a89c",
+      "severity": "CRITICAL",
+      "primaryClass": "Referral / escalation",
+      "conditions": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Retain emergency assessment for suspected cervical artery dissection/stroke and acute spinal cord injury. Remove fixed PTSD 4-week, 12-week pain-clinic, persistent-WAD-III surgery and PiP/CBT timing rules unless a current pathway is supplied.",
+      "revisionHash": "sha256:9dd6e32956ea22be5b99c3fefa207d55e0be75c1af303eec9df0401fc098a31a",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-3a9c2f942eb6025e",
+      "severity": "CRITICAL",
+      "primaryClass": "Referral / escalation",
+      "conditions": [
+        "condition.cervical.cervical-radiculopathy"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Rebuild around NICE NG127: stable cervical radiculopathy at 6+ weeks is not routinely referred unless pain is uncontrolled, symptoms disabling, or specified neurological features exist. Remove generic 6–12-week, pain-clinic, epidural and spinal-cord-stimulation pathways from V1 unless separately governed.",
+      "revisionHash": "sha256:325f66268beef72c4946753187dd72f6288af7d534a2f671f90611d60c518c3c",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-41652e0c0de0b8c4",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.shoulder.rotator-cuff-tear"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Keep cardiac-symptom presentation as an emergency. For pseudoparalysis/marked acute weakness after trauma, use urgent shoulder assessment for possible acute cuff tear; avoid making urgent ultrasound/MRI automatic in the learner wording.",
+      "revisionHash": "sha256:4dcb788b8997b720378b44385d4c4aaaec6608457ca7d8108c7e19669faaaf22",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-432ea8238d7442b9",
+      "severity": "CRITICAL",
+      "primaryClass": "Contraindication / precaution",
+      "conditions": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "currentSupportStatus": [
+        "PARTIAL SUPPORT"
+      ],
+      "independentEvidenceRecommendation": "supported",
+      "independentWordingRecommendation": "accept",
+      "reviewerRecommendation": "Retain the correction: AO Spine DCM severity uses mJOA bands; the separate 0–5 scale is the Nurick walking grade and should not be labelled as an AO Spine grading system.",
+      "revisionHash": "sha256:da287cabed180fbd99a2ee85f833f28feedddc20501a56b733de94edfebc606d",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-592fe594bca0d7d4",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.shoulder.labral-tears"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Remove 'immobilisation 2–3 weeks' as a default pathway; BESS supports early mobilisation and reports no recurrence benefit from immobilisation beyond 1 week. Move glenoid bone-loss/Latarjet and engaging Hill-Sachs/remplissage statements out of red flags into specialist planning, with cautious wording.",
+      "revisionHash": "sha256:5acec7f3fe76023e32633646578bcbab0a8c117acafbc3cfda5f02bba5d22372",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-5c06809ffa87ed3b",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.cervical.cervical-myelopathy",
+        "condition.cervical.cervical-radiculopathy",
+        "condition.cervical.mechanical-neck-pain",
+        "condition.cervical.whiplash-associated-disorders",
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Keep worsening hand function, gait disturbance, UMN findings and new bladder/bowel disturbance as DCM warning features. Avoid blanket wording that all DCM is an emergency; mild DCM can have supervised rehabilitation. Remove 'cauda equina equivalent' cervical terminology and the ethnicity/age→CT rule unless independently supported.",
+      "revisionHash": "sha256:9ae024c19304a3cad13416f4651f4cc9a810352a2e99a93b7a814113d6206b19",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-5cc61ce8408452ed",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.elbow.radial-tunnel-syndrome"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Keep the distinction that true wrist/finger extensor motor deficit is not typical painful radial tunnel syndrome and warrants prompt specialist assessment. Remove automatic MRI/NCS/EMG/surgical decompression from the red-flag statement.",
+      "revisionHash": "sha256:914185ffd9da3ae04326bf951cd57377603341d5ee0f1ffd029af14ebbf8c30c",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-5ebecfae91358225",
+      "severity": "CRITICAL",
+      "primaryClass": "Referral / escalation",
+      "conditions": [
+        "condition.shoulder.shoulder-instability"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Retain emergency escalation for vascular compromise and specialist assessment for recurrent/persistent instability. Move procedure choice, ISIS, fixed 6-month MDI threshold and exact bone-loss/procedure rules into specialist-level context or future expansion rather than V1 referral criteria.",
+      "revisionHash": "sha256:df359fa90e6a781654918fe3a74be662f2c406be3cb70f073049238219f50ac7",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-5fc9cfa2bd705cea",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Align headache red flags to current NICE CG150. Use sudden-onset headache reaching maximum intensity within 5 minutes, not an unsupported 60-second threshold. Keep new neurological deficit, head trauma, Valsalva/exertional, orthostatic and GCA features. Remove automatic ESR>50, steroid and imaging destination instructions unless separately sourced.",
+      "revisionHash": "sha256:ff5d55dc867b58845c4ddf2c68b46f0091080c87790839bf5dd3e076f0806200",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-6707fea5a237897c",
+      "severity": "CRITICAL",
+      "primaryClass": "Referral / escalation",
+      "conditions": [
+        "condition.elbow.elbow-osteoarthritis",
+        "condition.elbow.olecranon-bursitis",
+        "condition.shoulder.calcific-tendinitis"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "accept-softened-wording",
+      "reviewerRecommendation": "Use: 'If malignancy is suspected, follow the current suspected-cancer pathway according to applicable NICE/local criteria.' Diagnostic uncertainty or a mass alone should not automatically be labelled a cancer-pathway referral without meeting the relevant criteria.",
+      "revisionHash": "sha256:a6214922e641d3dbfa93d1ecb62bf170dbd116b758686babb0c8e9b041763e43",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-6fe08a87d72c286a",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.shoulder.shoulder-instability"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Retain post-reduction neurovascular examination and emergency escalation for suspected vascular injury. If a neurological deficit persists, BESS supports EMG at about 6 weeks with specialist nerve referral if no recovery; change the current 4–6 week wording accordingly. Wrist drop needs prompt assessment, not a fixed specialty route.",
+      "revisionHash": "sha256:2cef8a4bb5cfdc6565c44c6ea04ff0238556c91d7b1a6679ec9a259b3db153a4",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-6fe6285db9b10f0a",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Retain emergency medical assessment for acute neurological deterioration/myelopathy. Do not mandate a specific cervical imaging sequence from the physiotherapy page; imaging should be determined by the acute medical/spinal pathway, with trauma imaging following NICE NG41 where applicable.",
+      "revisionHash": "sha256:1a13d6b173b61929c42263ceaea7f781e191b3d870c2c58cede6a98e473cd285",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-76a856a0be4f905c",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.cervical.cervical-myelopathy",
+        "condition.cervical.cervical-radiculopathy",
+        "condition.cervical.cervicogenic-headache",
+        "condition.cervical.mechanical-neck-pain",
+        "condition.elbow.cubital-tunnel-syndrome",
+        "condition.elbow.elbow-osteoarthritis",
+        "condition.elbow.lateral-epicondylalgia",
+        "condition.elbow.medial-epicondylalgia",
+        "condition.elbow.olecranon-bursitis",
+        "condition.elbow.radial-tunnel-syndrome",
+        "condition.shoulder.acromioclavicular-joint",
+        "condition.shoulder.adhesive-capsulitis",
+        "condition.shoulder.calcific-tendinitis",
+        "condition.shoulder.rotator-cuff-tear",
+        "condition.shoulder.rotator-cuff-tendinopathy",
+        "condition.shoulder.shoulder-instability",
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Split infection, septic arthritis/bursitis and malignancy. Suspected septic arthritis needs urgent assessment and usually hospital treatment, but not every suspected septic bursitis requires emergency aspiration/admission. Replace generic 'night pain + age >50 = cancer pathway' rules with current NICE NG12 criteria; remove automatic imaging/aspiration instructions where unsupported.",
+      "revisionHash": "sha256:e8fd25d726ffebcf3808e75be33abecfdf3b5830567e03dc459f5253d92b98c3",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-794614cc8e648cb8",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.elbow.radial-tunnel-syndrome",
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "accept-softened-wording",
+      "reviewerRecommendation": "Retain that multi-joint/systemic inflammatory features should prompt consideration of inflammatory disease and appropriate medical/rheumatology assessment. Avoid a rigid >30-minute threshold or condition-specific causation unless separately sourced.",
+      "revisionHash": "sha256:c4b06fc52137ddff91b58d1a4c4a912d1f6cadb24005ced06b9625133b61271a",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-7a0f3baa64c44188",
+      "severity": "CRITICAL",
+      "primaryClass": "Referral / escalation",
+      "conditions": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Significant weakness, wasting or progressive neurological change warrants reassessment/specialist evaluation, but 'urgent surgical referral' is too specific for medial epicondylalgia without a defined diagnosis/source.",
+      "revisionHash": "sha256:da290d5bccebc4dce349ba1955367ca90cff8c08d0126da1f7be33f35a89306a",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-82d7c904a06cc3d2",
+      "severity": "CRITICAL",
+      "primaryClass": "Referral / escalation",
+      "conditions": [
+        "condition.elbow.medial-epicondylalgia",
+        "condition.elbow.radial-tunnel-syndrome"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "unsupported",
+      "independentWordingRecommendation": "remove",
+      "reviewerRecommendation": "Remove the detailed operative thresholds, approaches, fixed 2–4 week PIN timing, 6-month RTS surgery rule, outcome percentages and recovery timelines from V1. Replace with high-level specialist referral for persistent symptoms, objective motor deficit, suspected UCL injury or mass lesion; retain detailed surgery as future evidence expansion.",
+      "revisionHash": "sha256:fb442152338977d9c7e90d523e6264559e627e61006d954edd0a1fe2bf2538f3",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-8336ee7acb5797f8",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.elbow.cubital-tunnel-syndrome"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Marked/progressive ulnar motor weakness, atrophy or major sensory loss warrants prompt specialist/neurological assessment. Do not state that both sites in 'double crush' necessarily require treatment; evaluate each clinically and remove automatic decompression implications.",
+      "revisionHash": "sha256:2ca0cb9455446a3ce1cdb6db4bc6155b7f8a5972b9e6bbdff8da630466d7e7e4",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-83622cdb65e89737",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.shoulder.adhesive-capsulitis"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Use BESS frozen-shoulder red flags: infection, unreduced dislocation, suspected tumour/malignancy, inflammatory polyarthritis and acute traumatic cuff tear. Remove onset <40→MRI, Paget-specific testing, and CRPS/alternative-diagnosis pathways unless separately sourced.",
+      "revisionHash": "sha256:73bd5431f286d4987b9ea84e59187d24d39ec8605bf10f3ac2eea4e53d7dada0",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-8400f6a7dbf262fe",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.elbow.olecranon-bursitis"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "unsupported",
+      "independentWordingRecommendation": "remove",
+      "reviewerRecommendation": "Remove MRSA-specific antibiotic selection, diabetes→IV-antibiotic threshold, mandatory bursal excision and gout testing instructions from the physiotherapy learner page. Replace with suspected septic bursitis/gout requiring medical assessment and management under current local prescribing/infection guidance.",
+      "revisionHash": "sha256:a4d1c470f2733268d9881251c341efab4feaadc72b7685c3986e66af24f2d5bd",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-9c1be7d18de1a63f",
+      "severity": "CRITICAL",
+      "primaryClass": "Referral / escalation",
+      "conditions": [
+        "condition.cervical.cervical-myelopathy"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Use prompt specialist/spinal assessment for suspected DCM rather than a fixed 'via GP' route. Do not say physiotherapy is never primary treatment in all DCM: AO Spine allows a supervised structured rehabilitation trial in mild DCM, with surgery if deterioration and consideration if no improvement.",
+      "revisionHash": "sha256:433284548e986674d1b1bead75b5a6d6b4fbda37598080b456d1303fc15dc5b3",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-9c7e8e842030160d",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.cervical.mechanical-neck-pain"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Retain serious-pathology screening and use the Canadian C-Spine Rule only in appropriate trauma. Keep psychosocial assessment, but remove the fixed STarT MSK ≥4 treatment rule unless the exact validated neck-pain use and threshold are sourced.",
+      "revisionHash": "sha256:2a59c97be4b36178ae08a77ac996925cff20e7c1be88a3f3a4aa904f44600024",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-aa0857a693fa5522",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Keep chest/jaw/arm symptoms with dyspnoea or other cardiac features as a 999 emergency. Referred diaphragmatic pain and rapid muscle wasting require medical/neurological assessment according to context; do not make MRI automatic.",
+      "revisionHash": "sha256:7a11bbb1386cef16d61f66a3126ff5b3802a3a1a36ebf1156ba949ebe50e7d46",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-ab8c08bfc3b0dd54",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.elbow.elbow-osteoarthritis"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Retain inflammatory/systemic, neurological and infection differentials in elbow OA, but avoid automatic NCS, aspiration, antibiotic or specialty routes. Use high-level prompt medical/specialist assessment when findings are atypical for OA.",
+      "revisionHash": "sha256:db924d6ed9a24cd7d5e889de8784c62416957eac9e6b85afdb0f804fe792abfe",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-b7e228aab69b49db",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Keep cardiac-symptom 999 wording. For diaphragmatic referral and suprascapular-pattern wasting, use prompt medical/neurological assessment based on context rather than automatic MRI.",
+      "revisionHash": "sha256:274984068840dadd25eb9ab9e03f9edd8219d19c9a4c27aeec86cf920b8e4d0a",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-b916bb234ec6dfff",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.elbow.lateral-epicondylalgia"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "accept-softened-wording",
+      "reviewerRecommendation": "Retain acute vascular compromise after limb injury as an emergency. Prefer concrete neurovascular language such as absent pulse, cold/pale limb or acute sensorimotor compromise rather than presenting the classic '5 Ps' as a stand-alone diagnostic rule.",
+      "revisionHash": "sha256:c0a26933cdc93fb282ee98615f2d7861894cf6e3979e08e6619057871d443cf4",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-be43e4169d2c4560",
+      "severity": "CRITICAL",
+      "primaryClass": "Referral / escalation",
+      "conditions": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Keep current-local-pathway wording and urgent escalation for neurovascular compromise/severe traumatic ACJ injury. Remove fixed 'within days', 3–6 month, 6–12 week/injection and 6-month osteolysis thresholds unless a current pathway supports each.",
+      "revisionHash": "sha256:70739358ec832084355bc20f01e226211ab867551798fc4139fd0bd7824b721f",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-c17262d8863f94ac",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.elbow.medial-epicondylalgia"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Retain suspected physeal/avulsion injury in a young athlete and acute unstable UCL injury as reasons for appropriate imaging/specialist assessment. Hypothenar-hammer/ulnar-artery thrombosis is a separate vascular differential; keep only if clinically relevant and specifically sourced.",
+      "revisionHash": "sha256:18cbcf9cd73cc2f68d2f6dae94868d843ecb08013d64ecc2afcd4899c7cce1c1",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-c7b403e4258c6da8",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Use urgency according to the actual red flag rather than 'all red flags same-day'. Before upper cervical manual therapy, use IFOMPT 2020 risk-based history/exam; do not document a negative 5Ds/3Ns checklist as clearance. Retain that sustained positional testing is not a safety screen.",
+      "revisionHash": "sha256:c7ae12212431ba2d5052ee481fd8174e3d54bb6508c6f66f514413869b293d24",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-ca06da3778074b24",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.cervical.cervical-artery-dysfunction",
+        "condition.cervical.mechanical-neck-pain",
+        "condition.elbow.cubital-tunnel-syndrome",
+        "condition.elbow.elbow-osteoarthritis",
+        "condition.elbow.lateral-epicondylalgia",
+        "condition.elbow.medial-epicondylalgia",
+        "condition.elbow.radial-tunnel-syndrome",
+        "condition.shoulder.acromioclavicular-joint",
+        "condition.shoulder.labral-tears",
+        "condition.shoulder.rotator-cuff-tear",
+        "condition.shoulder.rotator-cuff-tendinopathy",
+        "condition.shoulder.shoulder-instability",
+        "condition.shoulder.subacromial-pain-syndrome"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Keep trauma/fracture/dislocation/neurovascular compromise as urgent or emergency assessment triggers. Use Canadian C-Spine Rule for cervical trauma and BESS shoulder pathways for dislocation/cuff injury. Remove fixed recurrence rates, universal age cut-offs, 2-week cuff timing, 4–6 week EMG and routine age-based imaging unless the exact claim is retained with its source.",
+      "revisionHash": "sha256:ba866b1966c97be55175a1018e8c218b56cc1fcb12e9d6a5f189f8650e4fac21",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-cb61ace37f85382b",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.cervical.cervical-artery-dysfunction"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Retain concerning vascular/neurological features such as new severe headache, focal neurological signs, ataxia, cranial nerve dysfunction and Horner syndrome as part of risk reasoning. Remove positional provocation as a vascular red flag/clearance concept, treat 5Ds/3Ns historically, and avoid blanket relative-contraindication labels not directly supported by IFOMPT.",
+      "revisionHash": "sha256:d59d22dcb6c04f2659cc069e80dfad31dcc9c10be9ed25f4927ffaa4e82534d4",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-d0354d02313aa89d",
+      "severity": "CRITICAL",
+      "primaryClass": "Emergency / red flag",
+      "conditions": [
+        "condition.shoulder.acromioclavicular-joint"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Post-traumatic neurovascular compromise warrants urgent/emergency assessment. The distal-clavicle-osteolysis/PVNS/metabolic-bone-disease statement is not established by the shoulder pathway; remove or separately source it.",
+      "revisionHash": "sha256:8bb86da1e190a935f72f46ed92dccd48b6475d0334c3a5b8e2f5fa3d41665455",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-d198107d1d1a2e4e",
+      "severity": "CRITICAL",
+      "primaryClass": "Contraindication / precaution",
+      "conditions": [
+        "condition.cervical.whiplash-associated-disorders"
+      ],
+      "currentSupportStatus": [
+        "PARTIAL SUPPORT"
+      ],
+      "independentEvidenceRecommendation": "supported",
+      "independentWordingRecommendation": "accept",
+      "reviewerRecommendation": "Retain: apply the IFOMPT 2020 cervical vascular framework and do not use provocative positional testing as a vascular safety-clearance test.",
+      "revisionHash": "sha256:0cefe22d6682a6e32f65171703d7e8b7813359001e86af8cef6607e1688afd51",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-d7cba47f3b0ec6d3",
+      "severity": "CRITICAL",
+      "primaryClass": "Referral / escalation",
+      "conditions": [
+        "condition.cervical.cervicogenic-headache"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "modify",
+      "reviewerRecommendation": "Keep NICE CG150 secondary-headache warning features. Remove fixed 8–12 week physiotherapy failure, procedure/block indications, spinal-cord stimulation, and percentage/session discharge thresholds from the V1 cervicogenic-headache referral section unless separately evidenced and governed.",
+      "revisionHash": "sha256:b8b1e89f18830dbff7706dbea2962815b8778176b3e3005dd3c55a46b88007b1",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-f10916d2ed293845",
+      "severity": "CRITICAL",
+      "primaryClass": "Contraindication / precaution",
+      "conditions": [
+        "condition.cervical.cervical-artery-dysfunction"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "partial",
+      "independentWordingRecommendation": "accept-softened-wording",
+      "reviewerRecommendation": "The no-positional-clearance statement is directly supported by IFOMPT. Soften the second statement to: 'Acute suspected cervical artery dissection is not a condition for primary musculoskeletal treatment; stop cervical treatment and arrange appropriate urgent/emergency medical assessment.'",
+      "revisionHash": "sha256:e73f4a436305d91c7e5baa443415cb38fde3b16404e96ff94aedcf740b8430ab",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "v1-human-f6dc738eed11bfd6",
+      "severity": "CRITICAL",
+      "primaryClass": "Contraindication / precaution",
+      "conditions": [
+        "condition.shoulder.rotator-cuff-tendinopathy"
+      ],
+      "currentSupportStatus": [
+        "UNVERIFIED"
+      ],
+      "independentEvidenceRecommendation": "supported",
+      "independentWordingRecommendation": "accept-softened-wording",
+      "reviewerRecommendation": "Retain the principle as: 'Do not rely on a single provocative/special test in isolation to diagnose rotator cuff tendinopathy; interpret tests with the history and the rest of the examination.'",
+      "revisionHash": "sha256:9e112933c8d8492b316b41209d7a331a27e5470402586339fcfcb18ed5d3ca0c",
+      "grantsApproval": false,
+      "publicationAuthorized": false
+    }
+  ],
+  "implementation": {
+    "touchedFiles": [
+      "content/cervical/cervical-artery-dysfunction.mdx",
+      "content/cervical/cervical-myelopathy.mdx",
+      "content/cervical/cervical-radiculopathy.mdx",
+      "content/cervical/cervicogenic-headache.mdx",
+      "content/cervical/mechanical-neck-pain.mdx",
+      "content/cervical/whiplash-associated-disorders.mdx",
+      "content/shoulder/acromioclavicular-joint.mdx",
+      "content/shoulder/adhesive-capsulitis.mdx",
+      "content/shoulder/calcific-tendinitis.mdx",
+      "content/shoulder/labral-tears.mdx",
+      "content/shoulder/rotator-cuff-tear.mdx",
+      "content/shoulder/rotator-cuff-tendinopathy.mdx",
+      "content/shoulder/shoulder-instability.mdx",
+      "content/shoulder/subacromial-pain-syndrome.mdx",
+      "content/elbow/cubital-tunnel-syndrome.mdx",
+      "content/elbow/elbow-osteoarthritis.mdx",
+      "content/elbow/lateral-epicondylalgia.mdx",
+      "content/elbow/medial-epicondylalgia.mdx",
+      "content/elbow/olecranon-bursitis.mdx",
+      "content/elbow/radial-tunnel-syndrome.mdx"
+    ],
+    "filesChangedByThisRun": [],
+    "resultingFiles": [
+      {
+        "relativePath": "content/cervical/cervical-artery-dysfunction.mdx",
+        "sha256": "b2b5cdd1ad2772303360802c8bb2b8978f4716289851021d9af2c326b2c75189"
+      },
+      {
+        "relativePath": "content/cervical/cervical-myelopathy.mdx",
+        "sha256": "5b556d7ec2fecfab721e600800609fcd33ade8516e922c7f141bb09b5cee53c6"
+      },
+      {
+        "relativePath": "content/cervical/cervical-radiculopathy.mdx",
+        "sha256": "b842bd4a9044395a964116443113d37263bb4902fbe668ffe917a34770270a82"
+      },
+      {
+        "relativePath": "content/cervical/cervicogenic-headache.mdx",
+        "sha256": "0ee88f5ff23d3e508c4dd3a3c3763acc01955a2db1f0c7817d7046e25f48544d"
+      },
+      {
+        "relativePath": "content/cervical/mechanical-neck-pain.mdx",
+        "sha256": "293619679a224edbb6eeb5a81df16ac277a1f2231cc122003a539bbef18b0d24"
+      },
+      {
+        "relativePath": "content/cervical/whiplash-associated-disorders.mdx",
+        "sha256": "b774b723e4a2b5660edbe131983fbcbd508797b8bfc3d4cf7bf72315c13cda08"
+      },
+      {
+        "relativePath": "content/shoulder/acromioclavicular-joint.mdx",
+        "sha256": "e8e33801c655d3fc0f45906d9ad427ed9fd47ffe7c5f20537dafaac3d2f8a335"
+      },
+      {
+        "relativePath": "content/shoulder/adhesive-capsulitis.mdx",
+        "sha256": "6181dd15434a8d42c805fe7149c5e97254d3157291bda75a856d4107772484ce"
+      },
+      {
+        "relativePath": "content/shoulder/calcific-tendinitis.mdx",
+        "sha256": "7cc7e8020751592cb023b6712862d7ce41561d9f7a4362f980a7fe12fecf612b"
+      },
+      {
+        "relativePath": "content/shoulder/labral-tears.mdx",
+        "sha256": "30d649d940a794c156f73c49f4c96bd54604aacba5a260946afd6e3bce69baa4"
+      },
+      {
+        "relativePath": "content/shoulder/rotator-cuff-tear.mdx",
+        "sha256": "23fe2c9ab028fbe7e0d5d5374e6827054d57d5fed53975673f96b00081da5b8c"
+      },
+      {
+        "relativePath": "content/shoulder/rotator-cuff-tendinopathy.mdx",
+        "sha256": "fab838456d7883d404a41f7c9eb794bfbdf06b41e01aabc78bcb6fa4c152549d"
+      },
+      {
+        "relativePath": "content/shoulder/shoulder-instability.mdx",
+        "sha256": "522d1f1729dbaff151e1b0730331b3a09faf784614804be8d20bc8f419da749e"
+      },
+      {
+        "relativePath": "content/shoulder/subacromial-pain-syndrome.mdx",
+        "sha256": "c72bb97cd75ff510cc85443696141ac3690d3504cfe1ccb182083dfd1588cf33"
+      },
+      {
+        "relativePath": "content/elbow/cubital-tunnel-syndrome.mdx",
+        "sha256": "2a3661ef652f03162dbc780a572fa78de249a5ce36fb622a06b8ba8ffcb4c2b5"
+      },
+      {
+        "relativePath": "content/elbow/elbow-osteoarthritis.mdx",
+        "sha256": "f33496641511d8a590f2021262bf4a6bf425aa82236964c80d20e0c9e5667387"
+      },
+      {
+        "relativePath": "content/elbow/lateral-epicondylalgia.mdx",
+        "sha256": "a66f0b5f287dfa2fbdd331dadd5a395e1968ff8b2e3b4ab61864fbc4660f2add"
+      },
+      {
+        "relativePath": "content/elbow/medial-epicondylalgia.mdx",
+        "sha256": "bb8095bd676a1469490b6233c05e7d0aa185a64d5885fca935b13997826246d5"
+      },
+      {
+        "relativePath": "content/elbow/olecranon-bursitis.mdx",
+        "sha256": "8f676f6bda68887ce7a8a4c1c35e9ba95368ee913ff000fb1094c297318d4ae5"
+      },
+      {
+        "relativePath": "content/elbow/radial-tunnel-syndrome.mdx",
+        "sha256": "966f98c446c7b468bac3e712e30093589ad0da46dc17046bcd121917d17ea888"
+      }
+    ],
+    "regeneratedDecisionPacketRequired": true,
+    "exactRevisionDecisionsMustBeRecomputed": true
+  },
+  "clinicalApprovalGranted": false,
+  "evidenceApprovalGranted": false,
+  "grantsApproval": false,
+  "publicationAuthorized": false,
+  "publicationStateChanged": false
+}
